@@ -1,1 +1,1 @@
-@livewire(App\Http\Livewire\Acp\TripForm::class, ['trip' => $model])
+@livewire(App\Livewire\Acp\TripForm::class, ['id' => $model->id])

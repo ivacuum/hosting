@@ -21,7 +21,7 @@ class MyPasswordUpdateForm extends FormRequest
     public function rules(): array
     {
         return [
-            'password' => Rule::when($this->userHasPassword(), 'required'),
+            'password' => Rule::requiredIf($this->userHasPassword()),
             'new_password' => 'required|string|min:8',
         ];
     }

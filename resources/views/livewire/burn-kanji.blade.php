@@ -1,4 +1,4 @@
-<?php /** @var \App\Http\Livewire\BurnKanji $this */ ?>
+<?php /** @var \App\Livewire\BurnKanji $this */ ?>
 
 <div>
   <button

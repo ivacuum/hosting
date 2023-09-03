@@ -4,8 +4,7 @@ namespace Tests\Feature;
 
 use App\Domain\TripStatus;
 use App\Factory\TripFactory;
-use App\Http\Livewire\Acp\TripForm;
-use App\Trip;
+use App\Livewire\Acp\TripForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -50,8 +49,8 @@ class AcpTripsTest extends TestCase
     {
         $trip = TripFactory::new()->make();
 
-        \Livewire::test(TripForm::class, ['trip' => new Trip])
-            ->set('trip.city_id', $trip->city_id)
+        \Livewire::test(TripForm::class)
+            ->set('cityId', $trip->city_id)
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/trips');
@@ -64,8 +63,8 @@ class AcpTripsTest extends TestCase
     {
         $trip = TripFactory::new()->create();
 
-        \Livewire::test(TripForm::class, ['trip' => $trip])
-            ->set('trip.status', TripStatus::Hidden)
+        \Livewire::test(TripForm::class, ['id' => $trip->id])
+            ->set('status', TripStatus::Hidden->value)
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/trips');

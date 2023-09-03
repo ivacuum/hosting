@@ -1,4 +1,4 @@
-<?php /** @var \App\Http\Livewire\Chat $this */ ?>
+<?php /** @var \App\Livewire\Chat $this */ ?>
 
 <div>
   <div wire:poll.60s>
@@ -39,14 +39,14 @@
         </div>
       @endforeach
     </div>
-    <form class="mt-1 mb-4" wire:submit.prevent="post">
+    <form class="mt-1 mb-4" wire:submit="post">
       <div class="flex w-full">
         <input
           class="form-input rounded-r-none"
           type="text"
           enterkeyhint="send"
           placeholder="Сообщение в чат..."
-          wire:model.lazy="text"
+          wire:model="text"
         >
         <button class="btn btn-default -ml-px rounded-l-none">Отправить</button>
       </div>
@@ -74,8 +74,8 @@
 
       scrollChatDown()
 
-      document.addEventListener('livewire:load', function () {
-        window.Livewire.hook('message.processed', function () {
+      document.addEventListener('livewire:init', function () {
+        window.Livewire.on('ScrollChatDown', () => {
           if (isScrolledDown(getChatContainer())) {
             scrollChatDown()
           }

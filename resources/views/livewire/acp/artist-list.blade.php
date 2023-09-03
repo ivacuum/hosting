@@ -1,4 +1,4 @@
-<?php /** @var \App\Http\Livewire\Acp\ArtistList $this */ ?>
+<?php /** @var \App\Livewire\Acp\ArtistList $this */ ?>
 
 <div>
   <table class="table-stats table-adaptive">

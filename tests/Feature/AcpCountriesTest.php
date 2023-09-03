@@ -2,9 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Country;
 use App\Factory\CountryFactory;
-use App\Http\Livewire\Acp\CountryForm;
+use App\Livewire\Acp\CountryForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -51,11 +50,11 @@ class AcpCountriesTest extends TestCase
     {
         $country = CountryFactory::new()->make();
 
-        \Livewire::test(CountryForm::class, ['country' => new Country])
-            ->set('country.slug', $country->slug)
-            ->set('country.emoji', $country->emoji)
-            ->set('country.title_en', $country->title_en)
-            ->set('country.title_ru', $country->title_ru)
+        \Livewire::test(CountryForm::class)
+            ->set('slug', $country->slug)
+            ->set('emoji', $country->emoji)
+            ->set('titleEn', $country->title_en)
+            ->set('titleRu', $country->title_ru)
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/countries');
@@ -68,11 +67,11 @@ class AcpCountriesTest extends TestCase
     {
         $country = CountryFactory::new()->create();
 
-        \Livewire::test(CountryForm::class, ['country' => $country])
-            ->set('country.slug', 'country-slug')
-            ->set('country.emoji', '🌚')
-            ->set('country.title_en', 'title en')
-            ->set('country.title_ru', 'title ru')
+        \Livewire::test(CountryForm::class, ['id' => $country->id])
+            ->set('slug', 'country-slug')
+            ->set('emoji', '🌚')
+            ->set('titleEn', 'title en')
+            ->set('titleRu', 'title ru')
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/countries');

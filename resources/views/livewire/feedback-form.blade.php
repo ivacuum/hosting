@@ -1,4 +1,4 @@
-<?php /** @var \App\Http\Livewire\FeedbackForm $this */ ?>
+<?php /** @var \App\Livewire\FeedbackForm $this */ ?>
 
 <div>
   @if (Session::has('message'))
@@ -8,13 +8,13 @@
       </x-alert-info-dismissable>
     </div>
   @endif
-  <form wire:submit.prevent="submit">
+  <form wire:submit="submit">
     {{ ViewHelper::inputHiddenMail() }}
 
     @if(!$this->hideName)
       <div class="mb-4">
         <div class="form-label-group">
-          <input required class="form-input" type="text" wire:model.lazy="name" placeholder="@lang('Ваше имя')">
+          <input required class="form-input" type="text" wire:model="name" placeholder="@lang('Ваше имя')">
           <label>@lang('Ваше имя')</label>
         </div>
         <x-invalid-feedback field="name"/>
@@ -23,7 +23,7 @@
 
     <div class="mb-4">
       <div class="form-label-group">
-        <input required class="form-input" type="email" wire:model.lazy="email" placeholder="@lang('Электронная почта')">
+        <input required class="form-input" type="email" wire:model="email" placeholder="@lang('Электронная почта')">
         <label>@lang('Электронная почта')</label>
       </div>
       <x-invalid-feedback field="email"/>
@@ -32,7 +32,7 @@
     @if(!$this->hideTitle)
       <div class="mb-4">
         <div class="form-label-group">
-          <input required class="form-input" type="text" wire:model.lazy="title" placeholder="@lang('Тема')">
+          <input required class="form-input" type="text" wire:model="title" placeholder="@lang('Тема')">
           <label>@lang('Тема')</label>
         </div>
         <x-invalid-feedback field="title"/>
@@ -47,7 +47,7 @@
         name="text"
         rows="4"
         maxlength="1000"
-        wire:model.lazy="text"
+        wire:model="text"
       ></textarea>
       <x-invalid-feedback field="text"/>
     </div>

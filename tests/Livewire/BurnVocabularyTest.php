@@ -4,7 +4,7 @@ namespace Tests\Livewire;
 
 use App\Factory\UserFactory;
 use App\Factory\VocabularyFactory;
-use App\Http\Livewire\BurnVocabulary;
+use App\Livewire\BurnVocabulary;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 

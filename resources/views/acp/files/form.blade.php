@@ -1,1 +1,1 @@
-@livewire(App\Http\Livewire\Acp\FileForm::class, ['file' => $model])
+@livewire(App\Livewire\Acp\FileForm::class, ['id' => $model->id])

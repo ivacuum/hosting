@@ -1,4 +1,4 @@
-<?php /** @var \App\Http\Livewire\VocabularyList $this */ ?>
+<?php /** @var \App\Livewire\VocabularyList $this */ ?>
 
 <div>
   <div class="sm:flex items-center justify-between mt-6 mb-1">

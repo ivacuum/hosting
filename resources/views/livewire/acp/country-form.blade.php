@@ -1,16 +1,16 @@
-<?php /** @var \App\Http\Livewire\Acp\CountryForm $this */ ?>
+<?php /** @var \App\Livewire\Acp\CountryForm $this */ ?>
 
-<form class="grid grid-cols-1 gap-4" wire:submit.prevent="submit">
-  <?php $form = LivewireForm::model($this->country); ?>
+<form class="grid grid-cols-1 gap-4" wire:submit="submit">
+  <?php $form = LivewireForm::model(App\Country::class); ?>
 
-  {{ $form->text('country.title_ru')->required() }}
-  {{ $form->text('country.title_en')->required() }}
-  {{ $form->text('country.slug')->required() }}
-  {{ $form->text('country.emoji') }}
+  {{ $form->text('titleRu')->required() }}
+  {{ $form->text('titleEn')->required() }}
+  {{ $form->text('slug')->required() }}
+  {{ $form->text('emoji') }}
 
   <div class="sticky-bottom-buttons">
     <button type="submit" class="btn btn-primary">
-      @lang($this->country->exists ? 'acp.save' : 'acp.countries.add')
+      @lang($this->id ? 'acp.save' : 'acp.countries.add')
     </button>
   </div>
 </form>

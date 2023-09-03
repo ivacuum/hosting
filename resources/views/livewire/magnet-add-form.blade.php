@@ -1,13 +1,13 @@
-<?php /** @var \App\Http\Livewire\MagnetAddForm $this */ ?>
+<?php /** @var \App\Livewire\MagnetAddForm $this */ ?>
 
-<form class="grid grid-cols-1 gap-4" wire:submit.prevent="submit">
+<form class="grid grid-cols-1 gap-4" wire:submit="submit">
   <div>
     <div class="relative">
       <input
         required
         type="text"
         class="form-input pr-10"
-        wire:model="input"
+        wire:model.live="input"
         placeholder="Ссылка или инфо-хэш"
       >
       <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
@@ -42,7 +42,7 @@
     </div>
 
     <div>
-      <select required class="form-input" wire:model="categoryId">
+      <select required class="form-input" wire:model.live="categoryId">
         <option value="">Выберите рубрику...</option>
         @foreach (TorrentCategoryHelper::tree() as $id => $category)
           <option value="{{ $id }}" {{ !empty($category['children']) ? 'disabled' : '' }}>

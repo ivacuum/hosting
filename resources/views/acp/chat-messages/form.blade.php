@@ -1,1 +1,1 @@
-@livewire(App\Http\Livewire\Acp\ChatMessageForm::class, ['chatMessage' => $model])
+@livewire(App\Livewire\Acp\ChatMessageForm::class, ['id' => $model->id])

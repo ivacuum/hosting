@@ -1,6 +1,6 @@
-<?php /** @var \App\Http\Livewire\Acp\PhotoEditForm $this */ ?>
+<?php /** @var \App\Livewire\Acp\PhotoEditForm $this */ ?>
 
-<form class="grid grid-cols-1 gap-4" wire:submit.prevent="submit">
+<form class="grid grid-cols-1 gap-4" wire:submit="submit">
   <?php LivewireForm::model($this->photo); ?>
 
   @include('tpl.form_errors')
@@ -17,7 +17,7 @@
           <input
             class="border-gray-300 rounded"
             type="checkbox"
-            wire:model="tags"
+            wire:model.live="tags"
             value="{{ $tag->id }}"
           >
           {{ $tag->title }}

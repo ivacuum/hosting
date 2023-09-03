@@ -3,7 +3,7 @@
 namespace Tests\Livewire;
 
 use App\Factory\UserFactory;
-use App\Http\Livewire\AvatarManager;
+use App\Livewire\AvatarManager;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
 use Tests\TestCase;

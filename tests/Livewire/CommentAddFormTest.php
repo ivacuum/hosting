@@ -11,7 +11,7 @@ use App\Factory\MagnetFactory;
 use App\Factory\NewsFactory;
 use App\Factory\TripFactory;
 use App\Factory\UserFactory;
-use App\Http\Livewire\CommentAddForm;
+use App\Livewire\CommentAddForm;
 use App\Mail\CommentConfirmMail;
 use App\Notifications\IssueCommentedNotification;
 use App\User;
@@ -113,7 +113,7 @@ class CommentAddFormTest extends TestCase
             ->test(CommentAddForm::class, ['model' => $news])
             ->set('text', 'Comment news')
             ->call('submit')
-            ->assertEmitted(LivewireEvent::RefreshComments->name)
+            ->assertDispatched(LivewireEvent::RefreshComments->name)
             ->assertSet('text', '');
 
         $comment = $user->comments[0];

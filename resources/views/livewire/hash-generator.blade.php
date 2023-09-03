@@ -1,9 +1,9 @@
-<?php /** @var \App\Http\Livewire\HashGenerator $this */ ?>
+<?php /** @var \App\Livewire\HashGenerator $this */ ?>
 
 <div class="grid grid-cols-1 gap-4">
   <div>
     <label class="block mb-1 font-semibold">@lang('Ввод')</label>
-    <textarea class="form-input font-mono select-all" rows="4" wire:model="input"></textarea>
+    <textarea class="form-input font-mono select-all" rows="4" wire:model.live="input"></textarea>
   </div>
 
   <div>

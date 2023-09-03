@@ -4,8 +4,7 @@ namespace Tests\Feature;
 
 use App\Domain\GigStatus;
 use App\Factory\GigFactory;
-use App\Gig;
-use App\Http\Livewire\Acp\GigForm;
+use App\Livewire\Acp\GigForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -52,9 +51,9 @@ class AcpGigsTest extends TestCase
     {
         $gig = GigFactory::new()->make();
 
-        \Livewire::test(GigForm::class, ['gig' => new Gig])
-            ->set('gig.city_id', $gig->city_id)
-            ->set('gig.artist_id', $gig->artist_id)
+        \Livewire::test(GigForm::class)
+            ->set('cityId', $gig->city_id)
+            ->set('artistId', $gig->artist_id)
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/gigs');
@@ -67,8 +66,8 @@ class AcpGigsTest extends TestCase
     {
         $gig = GigFactory::new()->create();
 
-        \Livewire::test(GigForm::class, ['gig' => $gig])
-            ->set('gig.status', GigStatus::Hidden)
+        \Livewire::test(GigForm::class, ['id' => $gig->id])
+            ->set('status', GigStatus::Hidden->value)
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/gigs');

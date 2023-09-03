@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Http\Livewire\NumberTrainer;
+use App\Livewire\NumberTrainer;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 

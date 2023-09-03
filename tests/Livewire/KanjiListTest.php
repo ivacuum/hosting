@@ -6,7 +6,7 @@ use App\Action\SplitVocabToKanjiAction;
 use App\Collection\ShowKanjiInTheSameOrderAsInVocab;
 use App\Factory\KanjiFactory;
 use App\Factory\VocabularyFactory;
-use App\Http\Livewire\KanjiList;
+use App\Livewire\KanjiList;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;

@@ -1,1 +1,1 @@
-@livewire(App\Http\Livewire\Acp\CommentForm::class, ['comment' => $model])
+@livewire(App\Livewire\Acp\CommentForm::class, ['id' => $model->id])

@@ -3,7 +3,7 @@
 namespace Tests\Livewire;
 
 use App\Factory\RadicalFactory;
-use App\Http\Livewire\RadicalList;
+use App\Livewire\RadicalList;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 

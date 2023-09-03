@@ -2,10 +2,9 @@
 
 namespace Tests\Feature;
 
-use App\DcppHub;
 use App\Domain\DcppHubStatus;
 use App\Factory\DcppHubFactory;
-use App\Http\Livewire\Acp\DcppHubForm;
+use App\Livewire\Acp\DcppHubForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -50,9 +49,9 @@ class AcpDcppHubsTest extends TestCase
     {
         $hub = DcppHubFactory::new()->make();
 
-        \Livewire::test(DcppHubForm::class, ['dcppHub' => new DcppHub])
-            ->set('dcppHub.title', $hub->title)
-            ->set('dcppHub.address', $hub->address)
+        \Livewire::test(DcppHubForm::class)
+            ->set('title', $hub->title)
+            ->set('address', $hub->address)
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/dcpp-hubs');
@@ -65,8 +64,8 @@ class AcpDcppHubsTest extends TestCase
     {
         $hub = DcppHubFactory::new()->create();
 
-        \Livewire::test(DcppHubForm::class, ['dcppHub' => $hub])
-            ->set('dcppHub.status', DcppHubStatus::Hidden)
+        \Livewire::test(DcppHubForm::class, ['id' => $hub->id])
+            ->set('status', DcppHubStatus::Hidden->value)
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/dcpp-hubs');

@@ -43,7 +43,7 @@
   </aside>
   <div class="grow">
     @if (Auth::check() && empty(request()->query()))
-      @livewire(App\Http\Livewire\Chat::class)
+      @livewire(App\Livewire\Chat::class)
     @endif
     @if ($q)
       @ru

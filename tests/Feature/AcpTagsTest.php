@@ -3,8 +3,7 @@
 namespace Tests\Feature;
 
 use App\Factory\TagFactory;
-use App\Http\Livewire\Acp\TagForm;
-use App\Tag;
+use App\Livewire\Acp\TagForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -49,9 +48,9 @@ class AcpTagsTest extends TestCase
     {
         $tag = TagFactory::new()->make();
 
-        \Livewire::test(TagForm::class, ['tag' => new Tag])
-            ->set('tag.title_ru', $tag->title_ru)
-            ->set('tag.title_en', $tag->title_en)
+        \Livewire::test(TagForm::class)
+            ->set('titleRu', $tag->title_ru)
+            ->set('titleEn', $tag->title_en)
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/tags');
@@ -64,9 +63,9 @@ class AcpTagsTest extends TestCase
     {
         $tag = TagFactory::new()->create();
 
-        \Livewire::test(TagForm::class, ['tag' => $tag])
-            ->set('tag.title_ru', '🇷🇺')
-            ->set('tag.title_en', '🇬🇧')
+        \Livewire::test(TagForm::class, ['id' => $tag->id])
+            ->set('titleRu', '🇷🇺')
+            ->set('titleEn', '🇬🇧')
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/tags');

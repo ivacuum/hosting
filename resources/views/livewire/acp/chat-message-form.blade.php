@@ -1,14 +1,14 @@
-<?php /** @var \App\Http\Livewire\Acp\ChatMessageForm $this */ ?>
+<?php /** @var \App\Livewire\Acp\ChatMessageForm $this */ ?>
 
-<form class="grid grid-cols-1 gap-4" wire:submit.prevent="submit">
-  <?php $form = LivewireForm::model($this->chatMessage); ?>
+<form class="grid grid-cols-1 gap-4" wire:submit="submit">
+  <?php $form = LivewireForm::model(App\ChatMessage::class); ?>
 
-  {{ $form->radio('chatMessage.status')->required()->values(App\Domain\ChatMessageStatus::labels()) }}
-  {{ $form->textarea('chatMessage.text')->required()->wide() }}
+  {{ $form->radio('status')->required()->values(App\Domain\ChatMessageStatus::labels()) }}
+  {{ $form->textarea('text')->required()->wide() }}
 
   <div class="sticky-bottom-buttons">
     <button type="submit" class="btn btn-primary">
-      @lang($this->chatMessage->exists ? 'acp.save' : 'acp.chat-messages.add')
+      @lang($this->id ? 'acp.save' : 'acp.chat-messages.add')
     </button>
   </div>
 </form>

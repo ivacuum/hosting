@@ -1,1 +1,1 @@
-@livewire(App\Http\Livewire\Acp\ArtistForm::class, ['artist' => $model])
+@livewire(App\Livewire\Acp\ArtistForm::class, ['id' => $model->id])

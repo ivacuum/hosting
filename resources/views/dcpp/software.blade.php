@@ -123,7 +123,7 @@
           @en
             <p>Use the form below to ask a question or just to tell us how to make this page better.</p>
           @endru
-          @livewire(App\Http\Livewire\FeedbackForm::class, [
+          @livewire(App\Livewire\FeedbackForm::class, [
             'title' => 'DC++ Client',
             'hideTitle' => true,
           ])

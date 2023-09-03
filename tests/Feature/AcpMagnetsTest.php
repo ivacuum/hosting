@@ -4,7 +4,7 @@ namespace Tests\Feature;
 
 use App\Domain\MagnetStatus;
 use App\Factory\MagnetFactory;
-use App\Http\Livewire\Acp\MagnetForm;
+use App\Livewire\Acp\MagnetForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -42,9 +42,9 @@ class AcpMagnetsTest extends TestCase
     {
         $magnet = MagnetFactory::new()->create();
 
-        \Livewire::test(MagnetForm::class, ['magnet' => $magnet])
-            ->set('magnet.status', MagnetStatus::Deleted)
-            ->set('magnet.related_query', 'example')
+        \Livewire::test(MagnetForm::class, ['id' => $magnet->id])
+            ->set('status', MagnetStatus::Deleted->value)
+            ->set('relatedQuery', 'example')
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/magnets');

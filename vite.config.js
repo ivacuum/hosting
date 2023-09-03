@@ -9,7 +9,6 @@ export default defineConfig({
       'resources/js/hiragana-katakana.js',
       'resources/js/view-magnet-post.js',
       'node_modules/mousetrap/mousetrap.min.js',
-      'node_modules/livewire-vue/dist/livewire-vue.js',
       'node_modules/@github/details-menu-element/dist/index.js',
     ]),
   ],

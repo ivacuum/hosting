@@ -1,4 +1,4 @@
-<?php /** @var \App\Http\Livewire\GalleryUploader $this */ ?>
+<?php /** @var \App\Livewire\GalleryUploader $this */ ?>
 
 <div>
   @include('tpl.form_errors')
@@ -9,7 +9,7 @@
       type="file"
       multiple
       max="10"
-      wire:model="files"
+      wire:model.live="files"
     >
     <div class="form-help">@lang('Файлы можно выбрать в появившемся окне или перетащить прямо на элемент выбора')</div>
   </div>
@@ -38,9 +38,9 @@
           </div>
           <div class="lg:col-span-3">
             <div>Ссылка:</div>
-            <input class="form-input select-all" type="text" value="{{ $link['original'] }}">
+            <input class="form-input select-all" type="text" value="{{ url($link['original']) }}">
             <div class="mt-2">Полная картинка:</div>
-            <input class="form-input select-all" type="text" value="[img]{{ $link['thumbnail'] }}[/img]">
+            <input class="form-input select-all" type="text" value="[img]{{ url($link['thumbnail']) }}[/img]">
           </div>
           <div class="lg:col-span-2"></div>
         @endforeach

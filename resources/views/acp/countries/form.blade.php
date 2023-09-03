@@ -1,1 +1,1 @@
-@livewire(App\Http\Livewire\Acp\CountryForm::class, ['country' => $model])
+@livewire(App\Livewire\Acp\CountryForm::class, ['id' => $model->id])

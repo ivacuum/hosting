@@ -1,4 +1,4 @@
-<?php /** @var \App\Http\Livewire\ThumbnailMaker $this */ ?>
+<?php /** @var \App\Livewire\ThumbnailMaker $this */ ?>
 
 <div class="grid grid-cols-1 gap-4">
   @include('tpl.form_errors')
@@ -13,7 +13,7 @@
           accept="image/jpeg,image/png"
           type="file"
           multiple
-          wire:change="$emit('upload-files', $event.currentTarget.files)"
+          wire:change="$dispatch('upload-files', $event.currentTarget.files)"
         >
       @else
         @lang('Идет загрузка...') {{ $this->uploaded }} из {{ $this->total }}
@@ -31,8 +31,8 @@
   @endif
 
   <script>
-  document.addEventListener('livewire:load', function () {
-    window.livewire.on('upload-files', function (files) {
+  document.addEventListener('livewire:init', function () {
+    window.Livewire.on('upload-files', function (files) {
       @this.total += files.length
 
       for (let i = 0, length = files.length; i < length; i++) {

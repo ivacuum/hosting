@@ -3,7 +3,7 @@
 namespace Tests\Feature;
 
 use App\Factory\ChatMessageFactory;
-use App\Http\Livewire\Acp\ChatMessageForm;
+use App\Livewire\Acp\ChatMessageForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -41,8 +41,8 @@ class AcpChatMessagesTest extends TestCase
     {
         $chatMessage = ChatMessageFactory::new()->create();
 
-        \Livewire::test(ChatMessageForm::class, ['chatMessage' => $chatMessage])
-            ->set('chatMessage.text', 'Markdown text! 🌚️')
+        \Livewire::test(ChatMessageForm::class, ['id' => $chatMessage->id])
+            ->set('text', 'Markdown text! 🌚️')
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/chat-messages');

@@ -182,9 +182,6 @@ window.AppOptions = JSON.parse('<?= json_encode([
 @vite('node_modules/mousetrap/mousetrap.min.js?commonjs-entry')
 @vite('node_modules/@github/details-menu-element/dist/index.js')
 @stack('js_vendor')
-@if ($locale !== 'ru')
-<script>window.livewire_app_url = '/{{ $locale }}'</script>
-@endif
 @vite('resources/js/app.js')
 @stack('js')
 @section('counters')

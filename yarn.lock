@@ -600,11 +600,6 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.2.4.tgz#eca284f75d2965079309dc0ad9255abb2ebc1632"
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
 
-livewire-vue@0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/livewire-vue/-/livewire-vue-0.3.1.tgz#897655acb292fecaf6cac5291623bffcb8d31ce4"
-  integrity sha512-R04O2zq86goM0Hw2MztDxK1cEVb196wCiGr3fFF6j4CTA2ocox1bLB4sF7qzyu+mnXmNSy1Wo3CZoY5BJNpl4w==
-
 lodash.castarray@^4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/lodash.castarray/-/lodash.castarray-4.4.0.tgz#c02513515e309daddd4c24c60cfddcf5976d9115"

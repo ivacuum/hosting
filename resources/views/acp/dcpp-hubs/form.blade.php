@@ -1,1 +1,1 @@
-@livewire(App\Http\Livewire\Acp\DcppHubForm::class, ['dcppHub' => $model])
+@livewire(App\Livewire\Acp\DcppHubForm::class, ['id' => $model->id])

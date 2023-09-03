@@ -2,7 +2,7 @@
 @include('livewire')
 
 @section('content')
-@livewire(App\Http\Livewire\VocabularyTrainer::class)
+@livewire(App\Livewire\VocabularyTrainer::class)
 
 <div class="max-w-lg mt-12">
   <h1 class="font-medium text-3xl tracking-tight mb-2">@lang('Тренажер по набору слов хираганой и катаканой')</h1>

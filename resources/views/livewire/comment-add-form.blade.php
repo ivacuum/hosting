@@ -1,4 +1,4 @@
-<?php /** @var \App\Http\Livewire\CommentAddForm $this */ ?>
+<?php /** @var \App\Livewire\CommentAddForm $this */ ?>
 
 <div>
   @if (Session::has('message'))
@@ -56,7 +56,7 @@
           </div>
         </div>
       @endif
-      <form wire:submit.prevent="submit">
+      <form wire:submit="submit">
         {{ ViewHelper::inputHiddenMail() }}
 
         @if (!Auth::check())
@@ -65,7 +65,7 @@
               required
               class="form-input"
               type="email"
-              wire:model.lazy="email"
+              wire:model="email"
               placeholder="@lang('model.email')"
             >
             <x-invalid-feedback field="email"/>
@@ -77,7 +77,7 @@
           placeholder="@lang('Оставьте комментарий...')"
           rows="4"
           maxlength="1000"
-          wire:model.lazy="text"
+          wire:model="text"
         ></textarea>
         <x-invalid-feedback field="text"/>
         <button class="btn btn-primary mt-2">

@@ -2,5 +2,5 @@
 @include('livewire')
 
 @section('content_header')
-@livewire(App\Http\Livewire\WanikaniSearch::class)
+@livewire(App\Livewire\WanikaniSearch::class)
 @endsection

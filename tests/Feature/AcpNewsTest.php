@@ -5,7 +5,7 @@ namespace Tests\Feature;
 use App\Domain\Locale;
 use App\Domain\NewsStatus;
 use App\Factory\NewsFactory;
-use App\Http\Livewire\Acp\NewsForm;
+use App\Livewire\Acp\NewsForm;
 use App\News;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -53,9 +53,9 @@ class AcpNewsTest extends TestCase
             ->withTitle('Store Russian Post Like It Is Done In ACP')
             ->make();
 
-        \Livewire::test(NewsForm::class, ['news' => new News])
-            ->set('news.title', $news->title)
-            ->set('news.markdown', $news->markdown)
+        \Livewire::test(NewsForm::class)
+            ->set('title', $news->title)
+            ->set('markdown', $news->markdown)
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/news');
@@ -76,10 +76,10 @@ class AcpNewsTest extends TestCase
 
         $this->app->setLocale(Locale::Eng->value);
 
-        \Livewire::test(NewsForm::class, ['news' => new News])
+        \Livewire::test(NewsForm::class)
             ->withHeaders(['LARAVEL_LOCALE' => 'en'])
-            ->set('news.title', $news->title)
-            ->set('news.markdown', $news->markdown)
+            ->set('title', $news->title)
+            ->set('markdown', $news->markdown)
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/news');
@@ -96,10 +96,10 @@ class AcpNewsTest extends TestCase
     {
         $news = NewsFactory::new()->create();
 
-        \Livewire::test(NewsForm::class, ['news' => $news])
-            ->set('news.title', 'Lyrics')
-            ->set('news.status', NewsStatus::Hidden)
-            ->set('news.markdown', '**strong text**')
+        \Livewire::test(NewsForm::class, ['id' => $news->id])
+            ->set('title', 'Lyrics')
+            ->set('status', NewsStatus::Hidden->value)
+            ->set('markdown', '**strong text**')
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/news');

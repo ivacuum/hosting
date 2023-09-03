@@ -2,9 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Artist;
 use App\Factory\ArtistFactory;
-use App\Http\Livewire\Acp\ArtistForm;
+use App\Livewire\Acp\ArtistForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -49,9 +48,9 @@ class AcpArtistsTest extends TestCase
     {
         $artist = ArtistFactory::new()->make();
 
-        \Livewire::test(ArtistForm::class, ['artist' => new Artist])
-            ->set('artist.title', $artist->title)
-            ->set('artist.slug', $artist->slug)
+        \Livewire::test(ArtistForm::class)
+            ->set('title', $artist->title)
+            ->set('slug', $artist->slug)
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/artists');
@@ -64,8 +63,8 @@ class AcpArtistsTest extends TestCase
     {
         $artist = ArtistFactory::new()->create();
 
-        \Livewire::test(ArtistForm::class, ['artist' => $artist])
-            ->set('artist.title', 'Eyes 👀')
+        \Livewire::test(ArtistForm::class, ['id' => $artist->id])
+            ->set('title', 'Eyes 👀')
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/artists');

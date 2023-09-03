@@ -5,7 +5,7 @@ namespace App\Spatial;
 use GeoIO\WKB\Parser\Parser;
 use Illuminate\Contracts\Support\Jsonable;
 
-abstract class Geometry implements GeometryInterface, Jsonable, \JsonSerializable
+abstract class Geometry implements \JsonSerializable, GeometryInterface, Jsonable
 {
     public static function fromWkb($wkb): self
     {

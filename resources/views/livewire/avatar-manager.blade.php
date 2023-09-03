@@ -1,4 +1,4 @@
-<?php /** @var \App\Http\Livewire\AvatarManager $this */ ?>
+<?php /** @var \App\Livewire\AvatarManager $this */ ?>
 
 <div>
   @if ($this->avatar)
@@ -27,7 +27,7 @@
       accept="image/jpeg,image/png"
       type="file"
       id="{{ $this->randomId }}"
-      wire:model="image"
+      wire:model.live="image"
     >
     <div class="form-help">@lang('Аватар сохраняется автоматически после выбора файла')</div>
   </div>

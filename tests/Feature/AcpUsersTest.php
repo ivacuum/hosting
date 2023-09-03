@@ -4,7 +4,7 @@ namespace Tests\Feature;
 
 use App\Domain\UserStatus;
 use App\Factory\UserFactory;
-use App\Http\Livewire\Acp\UserForm;
+use App\Livewire\Acp\UserForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -58,9 +58,9 @@ class AcpUsersTest extends TestCase
     {
         $user = UserFactory::new()->create();
 
-        \Livewire::test(UserForm::class, ['user' => $user])
-            ->set('user.status', UserStatus::Inactive->value)
-            ->set('user.email', 'livewire@example.com')
+        \Livewire::test(UserForm::class, ['id' => $user->id])
+            ->set('status', UserStatus::Inactive->value)
+            ->set('email', 'livewire@example.com')
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/users');

@@ -4,7 +4,7 @@
 @section('content')
 <div class="grid lg:grid-cols-2 gap-8">
   <div>
-    @livewire(App\Http\Livewire\MagnetAddForm::class)
+    @livewire(App\Livewire\MagnetAddForm::class)
   </div>
   <div>
     @ru

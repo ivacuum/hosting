@@ -2,7 +2,7 @@
 
 namespace Tests\Livewire;
 
-use App\Http\Livewire\NumberTrainer;
+use App\Livewire\NumberTrainer;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\Feature\MockGetNumberLocales;
 use Tests\TestCase;
@@ -73,19 +73,19 @@ class NumberTrainerTest extends TestCase
             ->call('reveal')
             ->assertSet('answer', 4)
             ->assertSet('incorrectAnswer', false)
-            ->assertSet('reveal', true)
+            ->assertSet('shouldReveal', true)
             ->assertSet('revealed', 1)
             ->call('reveal')
             ->assertSet('answer', '')
             ->assertSet('incorrectAnswer', false)
-            ->assertSet('reveal', false)
+            ->assertSet('shouldReveal', false)
             ->assertSet('revealed', 1)
             ->set('number', 4)
             ->set('answer', 4)
             ->call('reveal')
             ->assertSet('answer', 4)
             ->assertSet('incorrectAnswer', false)
-            ->assertSet('reveal', true)
+            ->assertSet('shouldReveal', true)
             ->assertSet('revealed', 2);
     }
 
@@ -142,12 +142,12 @@ class NumberTrainerTest extends TestCase
             ->call('check')
             ->assertSet('answer', 4)
             ->assertSet('incorrectAnswer', true)
-            ->assertSet('reveal', true)
+            ->assertSet('shouldReveal', true)
             ->assertSet('revealed', 1)
             ->call('check')
             ->assertSet('answer', '')
             ->assertSet('incorrectAnswer', false)
-            ->assertSet('reveal', false)
+            ->assertSet('shouldReveal', false)
             ->assertSet('revealed', 1);
     }
 }

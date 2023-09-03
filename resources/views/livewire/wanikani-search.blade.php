@@ -1,4 +1,4 @@
-<?php /** @var \App\Http\Livewire\WanikaniSearch $this */ ?>
+<?php /** @var \App\Livewire\WanikaniSearch $this */ ?>
 
 <div>
   <div class="items-center md:flex justify-between mb-4 md:mb-0 -mt-2">
@@ -11,7 +11,7 @@
       <div class="bg-yellow-300 px-2 py-1 rounded">@lang('japanese.no-matches')</div>
     @endif
     <div class="hidden md:block">&nbsp;</div>
-    <form class="max-w-[500px]" wire:submit.prevent="search">
+    <form class="max-w-[500px]" wire:submit="search">
       <div class="flex w-full">
         <input
           class="form-input rounded-r-none js-search-input"
@@ -19,7 +19,7 @@
           enterkeyhint="search"
           placeholder="@lang('Поиск...')"
           autocapitalize="none"
-          wire:model.lazy="q"
+          wire:model="q"
         >
         <button class="btn btn-default -ml-px rounded-l-none">
           @svg (search)

@@ -34,6 +34,6 @@
   <div class="antialiased hanging-punctuation-first lg:text-lg markdown-body break-words" itemprop="articleBody">{!! $news->html !!}</div>
 </article>
 
-@livewire(App\Http\Livewire\Comments::class, ['model' => $news])
-@livewire(App\Http\Livewire\CommentAddForm::class, ['model' => $news])
+@livewire(App\Livewire\Comments::class, ['model' => $news])
+@livewire(App\Livewire\CommentAddForm::class, ['model' => $news])
 @endsection

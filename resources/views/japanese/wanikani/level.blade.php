@@ -3,9 +3,9 @@
 @section('content')
 <h1 class="font-medium text-3xl tracking-tight mb-2">@lang('Уровень :level', ['level' => $level])</h1>
 
-@livewire(App\Http\Livewire\RadicalList::class, ['level' => $level])
-@livewire(App\Http\Livewire\KanjiList::class, ['level' => $level])
-@livewire(App\Http\Livewire\VocabularyList::class, ['level' => $level])
+@livewire(App\Livewire\RadicalList::class, ['level' => $level])
+@livewire(App\Livewire\KanjiList::class, ['level' => $level])
+@livewire(App\Livewire\VocabularyList::class, ['level' => $level])
 
 <div class="flex items-center justify-between mt-4">
   <div>

@@ -3,8 +3,8 @@
 namespace Tests\Feature;
 
 use App\Factory\PhotoFactory;
-use App\Http\Livewire\Acp\PhotoEditForm;
-use App\Http\Livewire\Acp\PhotoUploadForm;
+use App\Livewire\Acp\PhotoEditForm;
+use App\Livewire\Acp\PhotoUploadForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 

@@ -3,8 +3,8 @@
 namespace Tests\Livewire;
 
 use App\Factory\UserFactory;
-use App\Http\Livewire\FeedbackForm;
 use App\Issue;
+use App\Livewire\FeedbackForm;
 use App\Notifications\IssueReportedNotification;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;

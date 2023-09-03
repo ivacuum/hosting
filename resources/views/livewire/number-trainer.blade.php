@@ -1,4 +1,4 @@
-<?php /** @var \App\Http\Livewire\NumberTrainer $this */ ?>
+<?php /** @var \App\Livewire\NumberTrainer $this */ ?>
 
 <div class="grid gap-8 max-w-xl mx-auto">
   <div>
@@ -10,12 +10,12 @@
   </div>
   <div>
     <div class="text-center">
-      <div class="inline-block bg-gray-50 dark:bg-slate-800 border border-gray-100 dark:border-slate-700 text-3xl px-3 py-2 rounded leading-none {{ $this->sayOutLoud && !$this->reveal ? 'invisible' : '' }}">
+      <div class="inline-block bg-gray-50 dark:bg-slate-800 border border-gray-100 dark:border-slate-700 text-3xl px-3 py-2 rounded leading-none {{ $this->sayOutLoud && !$this->shouldReveal ? 'invisible' : '' }}">
         {{ $this->guessingSpellOut ? $this->number : $this->spellOut }}
       </div>
       <div hidden class="js-utterance">{{ $this->number }}</div>
       <div class="text-2xl">
-        @if($this->reveal)
+        @if($this->shouldReveal)
           <span class="flex flex-wrap gap-x-4 justify-center text-green-600">
             @foreach($this->acceptedAnswers() as $answer)
               <span>{{ $answer }}</span>
@@ -47,7 +47,7 @@
         enterkeyhint="send"
         class="form-input text-center {{ $this->incorrectAnswer ? 'animate-incorrect-answer' : '' }} js-answer"
         {{ $this->incorrectAnswer ? 'wire:dirty.class.remove="animate-incorrect-answer"' : '' }}
-        wire:model.defer="answer"
+        wire:model="answer"
         wire:keydown.enter="check"
       >
     </div>
@@ -58,7 +58,7 @@
         accesskey="s"
         type="button"
         wire:click="skip"
-      >@lang($this->reveal ? 'Далее' : 'Пропустить')</button>
+      >@lang($this->shouldReveal ? 'Далее' : 'Пропустить')</button>
       <div>
         <button
           class="btn border border-blue-300 dark:border-blue-700 hover:border-blue-400 hover:dark:border-blue-800 bg-blue-200 dark:bg-blue-600 hover:bg-blue-300 hover:dark:bg-blue-700 dark:text-white w-full js-speak"
@@ -97,7 +97,7 @@
   <div>
     <div class="border dark:border-slate-700 rounded overflow-hidden">
       <div class="border-b dark:border-slate-700 bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-slate-400 px-4 py-2 font-medium leading-tight text-lg" itemprop="name">@lang('Настройки')</div>
-      <form class="grid gap-6 px-4 py-3" wire:submit.prevent>
+      <form class="grid gap-6 px-4 py-3" wire:submit>
         <div>
           <div class="font-medium text-lg">@lang('Язык')</div>
           <div class="text-gray-500 text-sm mb-2">
@@ -107,7 +107,7 @@
               You will practice the numbers of this language.
             @endru
           </div>
-          <select class="form-input" wire:model="lang">
+          <select class="form-input" wire:model.live="lang">
             @foreach($this->locales as $lang => $name)
               <option value="{{ $lang }}">{{ $name }}</option>
             @endforeach
@@ -153,7 +153,7 @@
           </div>
           <div class="flex gap-4 items-center">
             <label class="flex gap-2 items-center">
-              <input class="border-gray-300" type="radio" wire:model="guessingSpellOut" value="0">
+              <input class="border-gray-300" type="radio" wire:model.live="guessingSpellOut" value="0">
               @ru
                 Сами числа
               @en
@@ -161,7 +161,7 @@
               @endru
             </label>
             <label class="flex gap-2 items-center">
-              <input class="border-gray-300" type="radio" wire:model="guessingSpellOut" value="1">
+              <input class="border-gray-300" type="radio" wire:model.live="guessingSpellOut" value="1">
               @ru
                 Написание чисел
               @en
@@ -175,11 +175,11 @@
           {{--<div class="text-gray-500 text-sm mb-2">Вам доступна возможность ввода чисел на слух.</div>--}}
           <div class="flex gap-4 items-center">
             <label class="flex gap-2 items-center">
-              <input class="border-gray-300" type="radio" wire:model="sayOutLoud" value="0">
+              <input class="border-gray-300" type="radio" wire:model.live="sayOutLoud" value="0">
               @lang('Хочу читать')
             </label>
             <label class="flex gap-2 items-center">
-              <input class="border-gray-300" type="radio" wire:model="sayOutLoud" value="1">
+              <input class="border-gray-300" type="radio" wire:model.live="sayOutLoud" value="1">
               @lang('Хочу слушать')
             </label>
           </div>
@@ -196,7 +196,9 @@
 
     <div class="font-medium text-xl mt-12 mb-2">Поддерживаемые вашим устройством голоса</div>
     <p>Этот раздел поможет узнать числа каких языков вы можете потренировать на слух.</p>
-    <p wire:ignore><button class="btn btn-default js-print-supported-voices">Какие голоса есть в моем устройстве?</button></p>
+    <p wire:ignore>
+      <button class="btn btn-default js-print-supported-voices">Какие голоса есть в моем устройстве?</button>
+    </p>
     <ul class="js-voice-list" wire:ignore></ul>
   </div>
   <script>
@@ -258,15 +260,15 @@
         }
       }
 
-      window.livewire.on('answer.focus', () => {
+      window.Livewire.on('FocusOnAnswer', () => {
         focusOnAnswer()
       })
 
-      window.livewire.on('lang.updated', (locale) => {
+      window.Livewire.on('LanguageChanged', (locale) => {
         populateVoiceList(locale)
       })
 
-      window.livewire.on('say-out-loud', () => {
+      window.Livewire.on('SayOutLoud', () => {
         sayOutLoud()
       })
 

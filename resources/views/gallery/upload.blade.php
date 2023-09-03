@@ -2,5 +2,5 @@
 @include('livewire')
 
 @section('content')
-@livewire(App\Http\Livewire\GalleryUploader::class)
+@livewire(App\Livewire\GalleryUploader::class)
 @endsection

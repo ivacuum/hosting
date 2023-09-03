@@ -1,1 +1,1 @@
-@livewire(App\Http\Livewire\Acp\TagForm::class, ['tag' => $model])
+@livewire(App\Livewire\Acp\TagForm::class, ['id' => $model->id])

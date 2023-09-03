@@ -4,8 +4,7 @@ namespace Tests\Feature;
 
 use App\Domain\FileStatus;
 use App\Factory\FileFactory;
-use App\File;
-use App\Http\Livewire\Acp\FileForm;
+use App\Livewire\Acp\FileForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
@@ -55,9 +54,9 @@ class AcpFilesTest extends TestCase
         $file = FileFactory::new()->make();
         $uploadedFile = UploadedFile::fake()->image('IMG_0025.jpeg');
 
-        \Livewire::test(FileForm::class, ['file' => new File])
-            ->set('file.title', $file->title)
-            ->set('file.slug', $file->slug)
+        \Livewire::test(FileForm::class)
+            ->set('title', $file->title)
+            ->set('slug', $file->slug)
             ->set('upload', $uploadedFile)
             ->call('submit')
             ->assertHasNoErrors()
@@ -73,9 +72,9 @@ class AcpFilesTest extends TestCase
     {
         $file = FileFactory::new()->create();
 
-        \Livewire::test(FileForm::class, ['file' => $file])
-            ->set('file.title', 'Our File 📁')
-            ->set('file.status', FileStatus::Hidden)
+        \Livewire::test(FileForm::class, ['id' => $file->id])
+            ->set('title', 'Our File 📁')
+            ->set('status', FileStatus::Hidden->value)
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/files');

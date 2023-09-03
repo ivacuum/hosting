@@ -36,7 +36,7 @@
     @en
       <p>Use the form below to send us new hubs or just to tell how to make this page better.</p>
     @endru
-    @livewire(App\Http\Livewire\FeedbackForm::class, [
+    @livewire(App\Livewire\FeedbackForm::class, [
       'title' => 'DC++ Hubs',
       'hideName' => true,
       'hideTitle' => true,

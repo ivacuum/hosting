@@ -3,7 +3,7 @@
 namespace Tests\Livewire;
 
 use App\Factory\VocabularyFactory;
-use App\Http\Livewire\VocabularyTrainer;
+use App\Livewire\VocabularyTrainer;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 

@@ -1,4 +1,4 @@
-<?php /** @var \App\Http\Livewire\Comments $this */ ?>
+<?php /** @var \App\Livewire\Comments $this */ ?>
 
 <div>
   <div class="font-medium text-2xl mb-2 mt-12">

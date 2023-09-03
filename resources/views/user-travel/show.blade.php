@@ -45,7 +45,7 @@
 @parent
 
 @if (isset($comments))
-  @livewire(App\Http\Livewire\Comments::class, ['model' => $trip])
-  @livewire(App\Http\Livewire\CommentAddForm::class, ['model' => $trip])
+  @livewire(App\Livewire\Comments::class, ['model' => $trip])
+  @livewire(App\Livewire\CommentAddForm::class, ['model' => $trip])
 @endif
 @endsection

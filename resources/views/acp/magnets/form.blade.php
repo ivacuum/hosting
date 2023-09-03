@@ -1,1 +1,1 @@
-@livewire(App\Http\Livewire\Acp\MagnetForm::class, ['magnet' => $model])
+@livewire(App\Livewire\Acp\MagnetForm::class, ['id' => $model->id])

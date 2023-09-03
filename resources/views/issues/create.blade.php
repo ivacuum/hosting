@@ -9,6 +9,6 @@
   @en
     <p>Use the form below to ask a question, leave a feedback, or tell us how to make the site better.</p>
   @endru
-  @livewire(App\Http\Livewire\FeedbackForm::class)
+  @livewire(App\Livewire\FeedbackForm::class)
 </div>
 @endsection

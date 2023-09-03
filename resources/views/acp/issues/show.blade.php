@@ -39,10 +39,10 @@
 <div class="my-4 whitespace-pre-line">{{ $model->text }}</div>
 
 <div>
-  @livewire(App\Http\Livewire\Comments::class, ['model' => $model])
+  @livewire(App\Livewire\Comments::class, ['model' => $model])
 
   @if($model->canBeCommented())
-    @livewire(App\Http\Livewire\CommentAddForm::class, ['model' => $model])
+    @livewire(App\Livewire\CommentAddForm::class, ['model' => $model])
   @endif
 </div>
 

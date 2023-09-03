@@ -3,7 +3,7 @@
 namespace Tests\Livewire;
 
 use App\Factory\UserFactory;
-use App\Http\Livewire\Chat;
+use App\Livewire\Chat;
 use App\Notifications\ChatMessagePublishedAdminNotification;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;

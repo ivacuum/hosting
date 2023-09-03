@@ -1,1 +1,1 @@
-@livewire(App\Http\Livewire\Acp\GigForm::class, ['gig' => $model])
+@livewire(App\Livewire\Acp\GigForm::class, ['id' => $model->id])

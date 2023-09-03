@@ -1,4 +1,4 @@
-<form class="mt-5 sm:flex sm:items-start" wire:submit.prevent="submit">
+<form class="mt-5 sm:flex sm:items-start" wire:submit="submit">
   <div class="w-full sm:max-w-xs">
     <input required type="text" wire:model="input" class="form-input" placeholder="Ссылка или инфо-хэш">
     <x-invalid-feedback field="input"/>

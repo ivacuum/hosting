@@ -1,4 +1,4 @@
-<?php /** @var \App\Http\Livewire\HangulTrainer $this */ ?>
+<?php /** @var \App\Livewire\HangulTrainer $this */ ?>
 
 @once
 @push('head')
@@ -43,7 +43,7 @@
         enterkeyhint="enter"
         class="form-input text-center {{ $this->reveal ? 'animate-incorrect-answer' : '' }}"
         {{ $this->reveal ? 'wire:dirty.class.remove="animate-incorrect-answer"' : '' }}
-        wire:model.defer="answer"
+        wire:model="answer"
         wire:keydown.enter="check"
         wire:keydown.space.prevent="check"
       >
@@ -70,15 +70,15 @@
         <div class="font-medium text-lg">@ru Что будем тренировать? @en What to train? @endru</div>
         <div>
           <label class="flex gap-2 items-center">
-            <input class="border-gray-300" type="radio" wire:model="whatToTrain" value="{{ App\Domain\HangulWhatToTrain::Consonants->value }}">
+            <input class="border-gray-300" type="radio" wire:model.live="whatToTrain" value="{{ App\Domain\HangulWhatToTrain::Consonants->value }}">
             @lang('согласные')
           </label>
           <label class="flex gap-2 items-center">
-            <input class="border-gray-300" type="radio" wire:model="whatToTrain" value="{{ App\Domain\HangulWhatToTrain::Vowels->value }}">
+            <input class="border-gray-300" type="radio" wire:model.live="whatToTrain" value="{{ App\Domain\HangulWhatToTrain::Vowels->value }}">
             @lang('гласные')
           </label>
           <label class="flex gap-2 items-center">
-            <input class="border-gray-300" type="radio" wire:model="whatToTrain" value="{{ App\Domain\HangulWhatToTrain::AllTogether->value }}">
+            <input class="border-gray-300" type="radio" wire:model.live="whatToTrain" value="{{ App\Domain\HangulWhatToTrain::AllTogether->value }}">
             @lang('все вместе')
           </label>
         </div>
@@ -87,7 +87,7 @@
         <div class="font-medium text-lg">@ru Стиль шрифта @en Font style @endru</div>
         <div>
           <label class="flex gap-2 items-center">
-            <input class="border-gray-300" type="radio" wire:model="italic" value="0">
+            <input class="border-gray-300" type="radio" wire:model.live="italic" value="0">
             @ru
               обычный
             @en
@@ -95,7 +95,7 @@
             @endru
           </label>
           <label class="flex gap-2 items-center">
-            <input class="border-gray-300" type="radio" wire:model="italic" value="1">
+            <input class="border-gray-300" type="radio" wire:model.live="italic" value="1">
             @ru
               курсив
             @en
@@ -308,7 +308,7 @@
 
       <div class="text-base flex gap-4 items-center justify-center mt-4">
           <label class="flex gap-2 items-center">
-            <input class="border-gray-300" type="radio" wire:model="shiftPressed" value="0">
+            <input class="border-gray-300" type="radio" wire:model.live="shiftPressed" value="0">
             @ru
               ⇧ Shift отпущен
             @en
@@ -316,7 +316,7 @@
             @endru
           </label>
           <label class="flex gap-2 items-center">
-            <input class="border-gray-300" type="radio" wire:model="shiftPressed" value="1">
+            <input class="border-gray-300" type="radio" wire:model.live="shiftPressed" value="1">
             @ru
               ⇧ Shift нажат
             @en

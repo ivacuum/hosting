@@ -1,35 +1,35 @@
-<?php /** @var \App\Http\Livewire\Acp\TripForm $this */ ?>
+<?php /** @var \App\Livewire\Acp\TripForm $this */ ?>
 
-<form class="grid grid-cols-1 gap-4" wire:submit.prevent="submit">
-  <?php $form = LivewireForm::model($this->trip); ?>
+<form class="grid grid-cols-1 gap-4" wire:submit="submit">
+  <?php $form = LivewireForm::model(App\Trip::class); ?>
 
-  @if($this->trip->exists)
-    {{ $form->text('trip.title_ru')->required() }}
-    {{ $form->text('trip.title_en')->required() }}
+  @if($this->id)
+    {{ $form->text('titleRu')->required() }}
+    {{ $form->text('titleEn')->required() }}
   @endif
 
-  {{ $form->select('trip.city_id')->required()->values($this->cityIds) }}
+  {{ $form->select('cityId')->required()->values($this->cityIds)->live() }}
 
-  {{ $form->text('trip.slug')->required() }}
+  {{ $form->text('slug')->required() }}
 
-  {{ $form->text('trip.date_start')->required() }}
-  {{ $form->text('trip.date_end')->required() }}
+  {{ $form->text('dateStart')->required() }}
+  {{ $form->text('dateEnd')->required() }}
 
-  {{ $form->radio('trip.status')->required()->values(App\Domain\TripStatus::labels()) }}
+  {{ $form->radio('status')->required()->values(App\Domain\TripStatus::labels()) }}
 
-  {{ $form->text('trip.meta_description_ru') }}
-  {{ $form->text('trip.meta_description_en') }}
-  {{ $form->text('trip.meta_image') }}
+  {{ $form->text('metaDescriptionRu') }}
+  {{ $form->text('metaDescriptionEn') }}
+  {{ $form->text('metaImage') }}
 
-  @if ($this->trip->metaImage())
+  @if ($this->metaImage)
     <div>
-      <img class="max-w-full h-auto rounded" src="{{ $this->trip->metaImage() }}" alt="">
+      <img class="max-w-full h-auto rounded" src="{{ $this->metaImage }}" alt="">
     </div>
   @endif
 
   <div class="sticky-bottom-buttons">
     <button type="submit" class="btn btn-primary">
-      @lang($this->trip->exists ? 'acp.save' : 'acp.trips.add')
+      @lang($this->id ? 'acp.save' : 'acp.trips.add')
     </button>
   </div>
 </form>

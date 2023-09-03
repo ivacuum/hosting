@@ -3,7 +3,7 @@
 @section('content')
 <h1 class="font-medium text-3xl tracking-tight mb-2">@lang('japanese.radicals')</h1>
 @foreach (range($from, $to) as $level)
-  @livewire(App\Http\Livewire\RadicalList::class, ['level' => $level, 'range' => true])
+  @livewire(App\Livewire\RadicalList::class, ['level' => $level, 'range' => true])
 @endforeach
 
 <div class="flex items-center justify-between mt-4">

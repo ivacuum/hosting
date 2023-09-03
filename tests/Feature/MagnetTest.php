@@ -8,7 +8,7 @@ use App\Domain\RtoTopicStatus;
 use App\Factory\CommentFactory;
 use App\Factory\MagnetFactory;
 use App\Factory\UserFactory;
-use App\Http\Livewire\MagnetAddForm;
+use App\Livewire\MagnetAddForm;
 use App\Magnet;
 use App\Notifications\AnonymousMagnetNotification;
 use App\User;

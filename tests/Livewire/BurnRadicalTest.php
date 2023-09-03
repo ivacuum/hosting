@@ -4,7 +4,7 @@ namespace Tests\Livewire;
 
 use App\Factory\RadicalFactory;
 use App\Factory\UserFactory;
-use App\Http\Livewire\BurnRadical;
+use App\Livewire\BurnRadical;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 

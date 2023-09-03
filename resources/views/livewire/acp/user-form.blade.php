@@ -1,14 +1,14 @@
-<?php /** @var \App\Http\Livewire\Acp\UserForm $this */ ?>
+<?php /** @var \App\Livewire\Acp\UserForm $this */ ?>
 
-<form class="grid grid-cols-1 gap-4" wire:submit.prevent="submit">
-  <?php $form = LivewireForm::model($this->user); ?>
+<form class="grid grid-cols-1 gap-4" wire:submit="submit">
+  <?php $form = LivewireForm::model(App\User::class); ?>
 
-  {{ $form->text('user.email')->required() }}
-  {{ $form->radio('user.status')->values(App\Domain\UserStatus::labels()) }}
+  {{ $form->text('email')->required() }}
+  {{ $form->radio('status')->values(App\Domain\UserStatus::labels()) }}
 
   <div class="sticky-bottom-buttons">
     <button type="submit" class="btn btn-primary">
-      @lang($this->user->exists ? 'acp.save' : 'acp.users.add')
+      @lang($this->id ? 'acp.save' : 'acp.users.add')
     </button>
   </div>
 </form>

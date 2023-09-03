@@ -1,4 +1,4 @@
-<?php /** @var \App\Http\Livewire\Youtube $this */ ?>
+<?php /** @var \App\Livewire\Youtube $this */ ?>
 
 <div class="-mt-4 mb-4 relative">
   @if (!$this->expanded)

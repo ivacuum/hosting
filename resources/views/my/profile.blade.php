@@ -46,6 +46,6 @@
   </form>
 
   <h3 class="font-medium text-2xl mb-2 mt-12">@lang('Аватар')</h3>
-  @livewire(App\Http\Livewire\AvatarManager::class)
+  @livewire(App\Livewire\AvatarManager::class)
 </div>
 @endsection

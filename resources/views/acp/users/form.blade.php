@@ -1,1 +1,1 @@
-@livewire(App\Http\Livewire\Acp\UserForm::class, ['user' => $model])
+@livewire(App\Livewire\Acp\UserForm::class, ['id' => $model->id])

@@ -1,4 +1,4 @@
-<?php /** @var \App\Http\Livewire\VocabularyTrainer $this */ ?>
+<?php /** @var \App\Livewire\VocabularyTrainer $this */ ?>
 
 <div class="grid lg:grid-cols-2 gap-4">
   <div>
@@ -38,7 +38,7 @@
         enterkeyhint="send"
         class="form-input text-center {{ $this->reveal ? 'animate-incorrect-answer focus:border-red-300 focus:ring-red-300' : '' }}"
         {{ $this->reveal ? 'wire:dirty.class.remove="animate-incorrect-answer"' : '' }}
-        wire:model.defer="answer"
+        wire:model="answer"
         wire:keydown.enter="check"
       >
     </div>
@@ -117,11 +117,11 @@
         <div class="text-gray-500 mb-2">@lang('japanese.settings.syllabary_help')</div>
         <div class="flex gap-4 items-center">
           <label class="flex gap-2 items-center">
-            <input class="border-gray-300" type="radio" wire:model="hiragana" value="1">
+            <input class="border-gray-300" type="radio" wire:model.live="hiragana" value="1">
             @lang('Хирагана')
           </label>
           <label class="flex gap-2 items-center">
-            <input class="border-gray-300" type="radio" wire:model="hiragana" value="0">
+            <input class="border-gray-300" type="radio" wire:model.live="hiragana" value="0">
             @lang('Катакана')
           </label>
         </div>

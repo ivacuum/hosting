@@ -1,17 +1,17 @@
-<?php /** @var \App\Http\Livewire\Acp\DcppHubForm $this */ ?>
+<?php /** @var \App\Livewire\Acp\DcppHubForm $this */ ?>
 
-<form class="grid grid-cols-1 gap-4" wire:submit.prevent="submit">
-  <?php $form = LivewireForm::model($this->dcppHub); ?>
+<form class="grid grid-cols-1 gap-4" wire:submit="submit">
+  <?php $form = LivewireForm::model(App\DcppHub::class); ?>
 
-  {{ $form->text('dcppHub.title')->required() }}
-  {{ $form->text('dcppHub.address')->required() }}
-  {{ $form->text('dcppHub.port')->required() }}
+  {{ $form->text('title')->required() }}
+  {{ $form->text('address')->required() }}
+  {{ $form->text('port')->required() }}
 
-  {{ $form->radio('dcppHub.status')->required()->values(App\Domain\DcppHubStatus::labels()) }}
+  {{ $form->radio('status')->required()->values(App\Domain\DcppHubStatus::labels()) }}
 
   <div class="sticky-bottom-buttons">
     <button type="submit" class="btn btn-primary">
-      @lang($this->dcppHub->exists ? 'acp.save' : 'acp.dcpp-hubs.add')
+      @lang($this->id ? 'acp.save' : 'acp.dcpp-hubs.add')
     </button>
   </div>
 </form>

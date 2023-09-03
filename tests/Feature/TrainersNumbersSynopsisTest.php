@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Http\Livewire\NumberSynopsis;
+use App\Livewire\NumberSynopsis;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 

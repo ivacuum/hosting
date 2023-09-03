@@ -33,8 +33,8 @@ class TripUpdateForm extends FormRequest
             ],
             'city_id' => 'required|integer|min:1',
             'markdown' => '',
-            'title_ru' => Rule::when($trip !== null, 'required'),
-            'title_en' => Rule::when($trip !== null, 'required'),
+            'title_ru' => Rule::requiredIf($trip !== null),
+            'title_en' => Rule::requiredIf($trip !== null),
             'date_end' => 'required|date',
             'date_start' => 'required|date',
         ];

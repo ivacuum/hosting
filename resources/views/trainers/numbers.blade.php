@@ -2,7 +2,7 @@
 @include('livewire')
 
 @section('content')
-@livewire(App\Http\Livewire\NumberTrainer::class)
+@livewire(App\Livewire\NumberTrainer::class)
 
 <div class="mt-12 max-w-xl mx-auto">
   <div class="font-medium text-2xl mb-2 mt-12">@lang('Обратная связь')</div>
@@ -11,7 +11,7 @@
   @en
     <p>Use the form below to ask a question or share your thoughts. We will use your feedback to make the trainer better. There are certainly things to improve.</p>
   @endru
-  @livewire(App\Http\Livewire\FeedbackForm::class, [
+  @livewire(App\Livewire\FeedbackForm::class, [
     'title' => 'Number Trainer',
     'hideTitle' => true,
   ])

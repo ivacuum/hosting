@@ -10,5 +10,5 @@
     <p>Using this summary, you can discover number formation principles of the selected language on your own.</p>
   @endru
 </div>
-@livewire(App\Http\Livewire\NumberSynopsis::class)
+@livewire(App\Livewire\NumberSynopsis::class)
 @endsection

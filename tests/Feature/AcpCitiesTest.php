@@ -2,10 +2,9 @@
 
 namespace Tests\Feature;
 
-use App\City;
 use App\Factory\CityFactory;
 use App\Factory\CountryFactory;
-use App\Http\Livewire\Acp\CityForm;
+use App\Livewire\Acp\CityForm;
 use App\Spatial\Point;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -53,11 +52,11 @@ class AcpCitiesTest extends TestCase
     {
         $city = CityFactory::new()->make();
 
-        \Livewire::test(CityForm::class, ['city' => new City])
-            ->set('city.slug', $city->slug)
-            ->set('city.title_en', $city->title_en)
-            ->set('city.title_ru', $city->title_ru)
-            ->set('city.country_id', $city->country_id)
+        \Livewire::test(CityForm::class)
+            ->set('slug', $city->slug)
+            ->set('titleEn', $city->title_en)
+            ->set('titleRu', $city->title_ru)
+            ->set('countryId', $city->country_id)
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/cities');
@@ -71,16 +70,16 @@ class AcpCitiesTest extends TestCase
         $city = CityFactory::new()->withPoint(new Point('5.55', '7.77'))->create();
         $country = CountryFactory::new()->create();
 
-        \Livewire::test(CityForm::class, ['city' => $city])
+        \Livewire::test(CityForm::class, ['id' => $city->id])
             ->assertSet('lat', '5.55')
             ->assertSet('lon', '7.77')
             ->set('lat', '23.984')
             ->set('lon', '15.522')
-            ->set('city.iata', 'LED')
-            ->set('city.slug', 'city-slug')
-            ->set('city.title_en', 'title en')
-            ->set('city.title_ru', 'title ru')
-            ->set('city.country_id', $country->id)
+            ->set('iata', 'LED')
+            ->set('slug', 'city-slug')
+            ->set('titleEn', 'title en')
+            ->set('titleRu', 'title ru')
+            ->set('countryId', $country->id)
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/cities');

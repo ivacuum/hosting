@@ -4,7 +4,7 @@ namespace Tests\Feature;
 
 use App\Domain\CommentStatus;
 use App\Factory\CommentFactory;
-use App\Http\Livewire\Acp\CommentForm;
+use App\Livewire\Acp\CommentForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -42,9 +42,9 @@ class AcpCommentsTest extends TestCase
     {
         $comment = CommentFactory::new()->create();
 
-        \Livewire::test(CommentForm::class, ['comment' => $comment])
-            ->set('comment.html', 'Markdown html! 🌚️')
-            ->set('comment.status', CommentStatus::Hidden)
+        \Livewire::test(CommentForm::class, ['id' => $comment->id])
+            ->set('html', 'Markdown html! 🌚️')
+            ->set('status', CommentStatus::Hidden->value)
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/comments');

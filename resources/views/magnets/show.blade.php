@@ -99,8 +99,8 @@
   @endforeach
 @endif
 
-@livewire(App\Http\Livewire\Comments::class, ['model' => $magnet])
-@livewire(App\Http\Livewire\CommentAddForm::class, ['model' => $magnet])
+@livewire(App\Livewire\Comments::class, ['model' => $magnet])
+@livewire(App\Livewire\CommentAddForm::class, ['model' => $magnet])
 @endsection
 
 @push('js_vendor')
