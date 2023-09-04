@@ -131,7 +131,6 @@ class NumberTrainer extends Component
         $this->dispatch(LivewireEvent::FocusOnAnswer->name);
     }
 
-    // Renderless?
     public function updatedGuessingSpellOut()
     {
         match ($this->guessingSpellOut) {
@@ -187,7 +186,7 @@ class NumberTrainer extends Component
     private function sayOutLoud()
     {
         if ($this->sayOutLoud) {
-            $this->dispatch(LivewireEvent::SayOutLoud->name);
+            $this->dispatch(LivewireEvent::SayOutLoud->name, number: $this->number);
         }
     }
 

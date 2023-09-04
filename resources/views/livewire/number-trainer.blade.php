@@ -268,16 +268,16 @@
         populateVoiceList(locale)
       })
 
-      window.Livewire.on('SayOutLoud', () => {
-        sayOutLoud()
+      window.Livewire.on('SayOutLoud', ({ number }) => {
+        sayOutLoud(number)
       })
 
-      function sayOutLoud() {
+      function sayOutLoud(number = null) {
         if (voiceSelect.selectedOptions[0] === undefined) {
           return
         }
 
-        const text = document.querySelector('.js-utterance').textContent
+        const text = number ?? document.querySelector('.js-utterance').textContent
         const utterance = new SpeechSynthesisUtterance(text)
 
         utterance.voice = voices.find((voice) => voice.voiceURI === voiceSelect.selectedOptions[0].value)
