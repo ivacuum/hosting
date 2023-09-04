@@ -37,6 +37,15 @@ class TripForm extends Component
     public CarbonInterface|string|null $dateEnd = '';
     public CarbonInterface|string|null $dateStart = '';
 
+    public function metaImageSrc()
+    {
+        $trip = new Trip;
+        $trip->slug = $this->slug;
+        $trip->meta_image = $this->metaImage;
+
+        return $trip->metaImage();
+    }
+
     public function mount()
     {
         if ($this->id) {

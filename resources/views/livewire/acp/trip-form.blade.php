@@ -19,11 +19,11 @@
 
   {{ $form->text('metaDescriptionRu') }}
   {{ $form->text('metaDescriptionEn') }}
-  {{ $form->text('metaImage') }}
+  {{ $form->text('metaImage')->blur() }}
 
-  @if ($this->metaImage)
+  @if ($this->metaImageSrc())
     <div>
-      <img class="max-w-full h-auto rounded" src="{{ $this->metaImage }}" alt="">
+      <img class="max-w-full h-auto rounded" src="{{ $this->metaImageSrc() }}" alt="">
     </div>
   @endif
 
