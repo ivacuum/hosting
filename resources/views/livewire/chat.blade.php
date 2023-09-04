@@ -77,7 +77,7 @@
       document.addEventListener('livewire:init', function () {
         window.Livewire.on('ScrollChatDown', () => {
           if (isScrolledDown(getChatContainer())) {
-            scrollChatDown()
+            setTimeout(() => { scrollChatDown() }, 1)
           }
         })
       })
