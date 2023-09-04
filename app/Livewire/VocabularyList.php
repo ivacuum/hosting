@@ -14,7 +14,7 @@ class VocabularyList extends Component
     /** @var \Illuminate\Database\Eloquent\Collection|Vocabulary[] */
     public $vocabularies;
     public bool $flat;
-    public bool $range;
+    public bool $range = false;
     public bool $showBurned = false;
     public bool $showLabels = false;
     public array $visible = [];
@@ -36,11 +36,9 @@ class VocabularyList extends Component
         }
     }
 
-    public function mount(int $level = null, string $kanji = null, bool $range = false)
+    public function mount(int $level = null, string $kanji = null)
     {
         $this->flat = $kanji !== null;
-        $this->level = $level;
-        $this->range = $range;
         $this->vocabularies = Vocabulary::query()
             ->orderBy('level')
             ->orderBy('meaning')
