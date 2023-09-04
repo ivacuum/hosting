@@ -9,7 +9,7 @@
   {{ $form->text('titleRu')->required() }}
   {{ $form->text('titleEn')->required() }}
   {{ $form->text('slug')->required() }}
-  {{ $form->text('date')->required() }}
+  {{ $form->datetimeLocal('date')->required() }}
 
   {{ $form->radio('status')->required()->values(App\Domain\GigStatus::labels()) }}
 

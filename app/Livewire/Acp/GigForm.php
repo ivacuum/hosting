@@ -46,7 +46,7 @@ class GigForm extends Component
         if ($this->id) {
             $gig = Gig::findOrFail($this->id);
 
-            $this->date = $gig->date;
+            $this->date = $gig->date->toDateTimeLocalString();
             $this->slug = $gig->slug;
             $this->cityId = $gig->city_id;
             $this->status = $gig->status;
@@ -57,7 +57,7 @@ class GigForm extends Component
             $this->metaDescriptionEn = $gig->meta_description_en;
             $this->metaDescriptionRu = $gig->meta_description_ru;
         } else {
-            $this->date = now()->startOfDay();
+            $this->date = now()->startOfDay()->toDateTimeLocalString();
             $this->slug = 'artist.' . now()->year;
         }
     }

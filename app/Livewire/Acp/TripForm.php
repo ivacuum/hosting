@@ -54,10 +54,10 @@ class TripForm extends Component
             $this->slug = $trip->slug;
             $this->cityId = $trip->city_id;
             $this->status = $trip->status;
-            $this->dateEnd = $trip->date_end;
+            $this->dateEnd = $trip->date_end->toDateTimeLocalString();
             $this->titleEn = $trip->title_en;
             $this->titleRu = $trip->title_ru;
-            $this->dateStart = $trip->date_start;
+            $this->dateStart = $trip->date_start->toDateTimeLocalString();
             $this->metaImage = $trip->meta_image;
             $this->metaTitleEn = $trip->meta_title_en;
             $this->metaTitleRu = $trip->meta_title_ru;
@@ -65,8 +65,8 @@ class TripForm extends Component
             $this->metaDescriptionRu = $trip->meta_description_ru;
         } else {
             $this->slug = 'city.' . now()->year;
-            $this->dateEnd = now()->startOfDay();
-            $this->dateStart = now()->startOfDay();
+            $this->dateEnd = now()->startOfDay()->toDateTimeLocalString();
+            $this->dateStart = now()->startOfDay()->toDateTimeLocalString();
         }
     }
 

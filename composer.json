@@ -10,7 +10,7 @@
     "geo-io/wkb-parser": "^1.0",
     "guzzlehttp/guzzle": "^7.0",
     "http-interop/http-factory-guzzle": "^1.2",
-    "ivacuum/generic": "^25.0",
+    "ivacuum/generic": "^26.0",
     "laravel/fortify": "^1.8",
     "laravel/framework": "^10.0",
     "laravel/octane": "^2.0",

@@ -12,8 +12,8 @@
 
   {{ $form->text('slug')->required() }}
 
-  {{ $form->text('dateStart')->required() }}
-  {{ $form->text('dateEnd')->required() }}
+  {{ $form->datetimeLocal('dateStart')->required() }}
+  {{ $form->datetimeLocal('dateEnd')->required() }}
 
   {{ $form->radio('status')->required()->values(App\Domain\TripStatus::labels()) }}
 
