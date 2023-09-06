@@ -28,7 +28,7 @@ class ParserVkController
         $this->vkPage = $vkPage;
         $this->token = $token = request('token', config('services.vk.access_token'));
         $own = request('own');
-        $date = false === $date ? '-1 day' : $date;
+        $date = $date === false ? '-1 day' : $date;
         $date = CarbonImmutable::parse($date);
         $token = $token === config('services.vk.access_token') ? null : $token;
 
@@ -42,7 +42,7 @@ class ParserVkController
         $previous = CarbonImmutable::parse($date)->subDay();
         $next = now()->startOfDay()->gt($date) ? CarbonImmutable::parse($date)->addDay() : null;
 
-        while (false === $parsed) {
+        while ($parsed === false) {
             $json = $this->getPosts($count, $offset);
 
             if (isset($json->error)) {
@@ -114,7 +114,7 @@ class ParserVkController
                 ]);
             }
 
-            if ($offset + $portion === $total) {
+            if ($total === $offset + $portion) {
                 $previous = null;
                 $parsed = true;
                 break;

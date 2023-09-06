@@ -29,7 +29,7 @@ class ThumbnailsController
     {
         $file = request()->file('file');
 
-        if (null === $file || !$file->isValid()) {
+        if ($file === null || !$file->isValid()) {
             throw new \Exception('Необходимо предоставить хотя бы один файл');
         }
 

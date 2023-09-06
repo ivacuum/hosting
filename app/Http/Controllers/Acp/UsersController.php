@@ -32,7 +32,7 @@ class UsersController extends Controller
 
         $models = User::query()
             ->withCount(['chatMessages', 'comments', 'emails', 'images', 'issues', 'magnets', 'trips'])
-            ->when(null !== $avatar, fn (Builder $query) => $query->where('avatar', $avatar ? '<>' : '=', ''))
+            ->when($avatar !== null, fn (Builder $query) => $query->where('avatar', $avatar ? '<>' : '=', ''))
             ->when($lastLoginAt instanceof CarbonInterval, fn (Builder $query) => $query->where('last_login_at', '>', now()->sub($lastLoginAt)->toDateTimeString()))
             ->when($q, function (Builder $query) use ($q) {
                 if (is_numeric($q)) {

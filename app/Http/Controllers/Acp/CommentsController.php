@@ -38,7 +38,7 @@ class CommentsController extends Controller
 
         $models = Comment::query()
             ->with('user')
-            ->when(null !== $status, fn (Builder $query) => $query->where('status', $status))
+            ->when($status !== null, fn (Builder $query) => $query->where('status', $status))
             ->when($issueId, fn (Builder $query) => $query->tap(new CommentRelationScope(new Issue, $issueId)))
             ->when($newsId, fn (Builder $query) => $query->tap(new CommentRelationScope(new News, $newsId)))
             ->when($tripId, fn (Builder $query) => $query->tap(new CommentRelationScope(new Trip, $tripId)))

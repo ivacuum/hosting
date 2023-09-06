@@ -80,7 +80,7 @@ class Comment extends Model
             ->unique('user_id')
             ->pluck('user')
             // Фильтр удаленных пользователей
-            ->filter(fn ($value) => null !== $value);
+            ->filter(fn ($value) => $value !== null);
     }
 
     public function www(): string

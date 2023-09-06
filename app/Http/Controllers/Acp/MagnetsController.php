@@ -31,7 +31,7 @@ class MagnetsController extends Controller
         $models = Magnet::query()
             ->with('user')
             ->withCount('comments')
-            ->when(null !== $status, fn (Builder $query) => $query->where('status', $status))
+            ->when($status !== null, fn (Builder $query) => $query->where('status', $status))
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
             ->when($q, fn (Builder $query) => $query->where('title', 'LIKE', "%{$q}%"))
             ->orderBy(match ($sort->key) {

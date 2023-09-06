@@ -57,7 +57,7 @@ class SubscriptionController
         /** @var User $user */
         $user = request()->user();
         $email = request('email');
-        $isGuest = null === $user;
+        $isGuest = $user === null;
 
         request()->validate([
             'gigs' => 'in:0,1',

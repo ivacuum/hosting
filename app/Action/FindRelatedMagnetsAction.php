@@ -20,7 +20,7 @@ class FindRelatedMagnetsAction
 
         return array_filter(
             \Arr::pluck($builder->raw(), 'id'),
-            fn ($item) => intval($item) !== $magnet->id
+            fn ($item) => $magnet->id !== intval($item)
         );
     }
 }

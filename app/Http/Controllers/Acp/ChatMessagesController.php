@@ -30,7 +30,7 @@ class ChatMessagesController extends Controller
 
         $models = ChatMessage::query()
             ->with('user')
-            ->unless(null === $status, fn (Builder $query) => $query->where('status', $status))
+            ->unless($status === null, fn (Builder $query) => $query->where('status', $status))
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
             ->orderBy('id', $sort->direction->value)
             ->paginate();

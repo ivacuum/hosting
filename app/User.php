@@ -174,11 +174,11 @@ class User extends Authenticatable implements HasLocalePreference
 
     public function isOldPasswordCorrect($password): bool
     {
-        if ($this->salt && md5($password . $this->salt) === $this->password) {
+        if ($this->salt && $this->password === md5($password . $this->salt)) {
             return true;
         }
 
-        if (!$this->salt && md5($password) === $this->password) {
+        if (!$this->salt && $this->password === md5($password)) {
             return true;
         }
 

@@ -30,7 +30,7 @@ class IssuesController extends Controller
         $models = Issue::query()
             ->withCount('comments')
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
-            ->unless(null === $status, fn (Builder $query) => $query->where('status', $status))
+            ->unless($status === null, fn (Builder $query) => $query->where('status', $status))
             ->orderBy(match ($sort->key) {
                 'comments_count' => $sort->key,
                 default => 'id',

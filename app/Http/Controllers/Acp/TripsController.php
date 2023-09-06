@@ -37,7 +37,7 @@ class TripsController extends Controller
             ->when($cityId, fn (Builder $query) => $query->where('city_id', $cityId))
             ->when($countryId, fn (Builder $query) => $query->whereRelation('city.country', 'country_id', $countryId))
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
-            ->unless(null === $status, fn (Builder $query) => $query->where('status', $status))
+            ->unless($status === null, fn (Builder $query) => $query->where('status', $status))
             ->when($q,
                 fn (Builder $query) => $query->where('id', $q)
                     ->orWhere(Trip::titleField(), 'LIKE', "%{$q}%")

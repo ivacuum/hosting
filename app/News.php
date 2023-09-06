@@ -84,11 +84,11 @@ class News extends Model
     {
         $start = CarbonImmutable::createFromDate($year, $month, $day);
 
-        if (null !== $day) {
+        if ($day !== null) {
             return [$start->startOfDay(), $start->endOfDay()];
         }
 
-        if (null !== $month) {
+        if ($month !== null) {
             return [$start->startOfMonth(), $start->endOfMonth()];
         }
 
