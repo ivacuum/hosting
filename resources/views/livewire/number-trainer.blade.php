@@ -122,7 +122,11 @@
               Your device can pronounce numbers in the selected language with the voices below.
             @endru
           </div>
-          <select class="form-input js-voices" data-locale="{{ $this->lang }}" wire:ignore></select>
+          <select class="form-input js-voices" data-locale="{{ $this->lang }}" wire:model.live="voice">
+            @foreach($this->voiceListForLang as $uri => $label)
+              <option value="{{ $uri }}">{{ $label }}</option>
+            @endforeach
+          </select>
         </div>
         <div>
           <div class="font-medium text-lg">@lang('Интервал возможных чисел')</div>
@@ -232,8 +236,19 @@
 
       function populateVoiceList(locale) {
         voices = speechSynthesis.getVoices()
-        voiceSelect.textContent = ''
+        // voiceSelect.textContent = ''
 
+        setTimeout(() => {
+          @this.call('initVoiceList', voices.map((voice) => {
+            return {
+              uri: voice.voiceURI,
+              name: voice.name,
+              lang: voice.lang,
+            }
+          }))
+        }, 1)
+
+        /*
         voices
           .filter((voice) => voice.lang === locale || voice.lang.replace('_', '-').startsWith(`${locale}-`))
           .forEach((voice) => {
@@ -244,6 +259,7 @@
 
             voiceSelect.appendChild(option)
           })
+         */
       }
 
       function focusOnAnswer() {

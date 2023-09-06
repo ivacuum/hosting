@@ -29,6 +29,10 @@ class NumberTrainer extends Component
     public string $lang = 'en';
     public string $answer = '';
 
+    public string $voice = '';
+    public array $voiceList = [];
+    public array $voiceListForLang = [];
+
     protected $queryString = [
         'lang' => ['except' => 'en'],
     ];
@@ -86,6 +90,23 @@ class NumberTrainer extends Component
         $this->maximum *= 10;
 
         event(new \App\Events\Stats\NumberIncreaseMaximum);
+    }
+
+    public function initVoiceList(array $voiceList)
+    {
+        $this->voiceList = collect($voiceList)
+            ->mapWithKeys(fn ($voice) => [$voice['uri'] => "{$voice['name']} ({$voice['lang']})"])
+            ->sort()
+            ->all();
+
+        $this->voiceListForLang = collect($voiceList)
+            ->filter(function (array $voice) {
+                return $voice['lang'] === $this->lang
+                    || str($voice['lang'])->startsWith(["{$this->lang}_", "{$this->lang}-"]);
+            })
+            ->mapWithKeys(fn ($voice) => [$voice['uri'] => "{$voice['name']} ({$voice['lang']})"])
+            ->sort()
+            ->all();
     }
 
     public function mount(Request $request, GetNumberLocalesAction $getNumberLocales)
