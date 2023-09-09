@@ -28,7 +28,7 @@ class GetTripsPublishedWithCoverAction
                 ->orderByDesc('date_start')
                 ->get();
         })->when($count > 0, function (Collection $trips) use ($count) {
-            return $count < $trips->count()
+            return $trips->count() > $count
                 ? $trips->random($count)
                 : $trips;
         });

@@ -94,7 +94,7 @@ class HangulTrainer extends Component
     private function acceptedAnswers(): array
     {
         return collect()
-            ->when(Locale::Rus->value === app()->getLocale(), $this->appendCyrillicAnswers(...))
+            ->when(app()->getLocale() === Locale::Rus->value, $this->appendCyrillicAnswers(...))
             ->push($this->romanizeJamo())
             ->unique()
             ->all();

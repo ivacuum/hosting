@@ -114,7 +114,7 @@ class ParserVkController
                 ]);
             }
 
-            if ($total === $offset + $portion) {
+            if ($offset + $portion === $total) {
                 $previous = null;
                 $parsed = true;
                 break;
