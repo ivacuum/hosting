@@ -2638,16 +2638,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v3.0.4",
+            "version": "v3.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "23d035b6353c6dfe7ea9c8d288295dbbb46ef84a"
+                "reference": "37f11583c61a75d51b2146c2fe38f506ad36014b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/23d035b6353c6dfe7ea9c8d288295dbbb46ef84a",
-                "reference": "23d035b6353c6dfe7ea9c8d288295dbbb46ef84a",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/37f11583c61a75d51b2146c2fe38f506ad36014b",
+                "reference": "37f11583c61a75d51b2146c2fe38f506ad36014b",
                 "shasum": ""
             },
             "require": {
@@ -2700,7 +2700,7 @@
             "description": "A front-end framework for Laravel.",
             "support": {
                 "issues": "https://github.com/livewire/livewire/issues",
-                "source": "https://github.com/livewire/livewire/tree/v3.0.4"
+                "source": "https://github.com/livewire/livewire/tree/v3.0.5"
             },
             "funding": [
                 {
@@ -2708,7 +2708,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-09-14T22:57:11+00:00"
+            "time": "2023-09-16T11:51:32+00:00"
         },
         {
             "name": "masterminds/html5",
@@ -3811,16 +3811,16 @@
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "3.0.21",
+            "version": "3.0.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "4580645d3fc05c189024eb3b834c6c1e4f0f30a1"
+                "reference": "b6bd1c5f79b2c39e144770eb6d9180fbdb00d09b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/4580645d3fc05c189024eb3b834c6c1e4f0f30a1",
-                "reference": "4580645d3fc05c189024eb3b834c6c1e4f0f30a1",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/b6bd1c5f79b2c39e144770eb6d9180fbdb00d09b",
+                "reference": "b6bd1c5f79b2c39e144770eb6d9180fbdb00d09b",
                 "shasum": ""
             },
             "require": {
@@ -3901,7 +3901,7 @@
             ],
             "support": {
                 "issues": "https://github.com/phpseclib/phpseclib/issues",
-                "source": "https://github.com/phpseclib/phpseclib/tree/3.0.21"
+                "source": "https://github.com/phpseclib/phpseclib/tree/3.0.22"
             },
             "funding": [
                 {
@@ -3917,7 +3917,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-09T15:24:48+00:00"
+            "time": "2023-09-16T11:49:37+00:00"
         },
         {
             "name": "pragmarx/google2fa",
