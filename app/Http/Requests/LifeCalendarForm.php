@@ -7,7 +7,6 @@ use App\Scope\TripOfAdminScope;
 use App\Scope\TripVisibleScope;
 use App\Trip;
 use App\User;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Http\FormRequest;
 
 class LifeCalendarForm extends FormRequest
@@ -24,7 +23,7 @@ class LifeCalendarForm extends FormRequest
         return Trip::query()
             ->tap(new TripOfAdminScope)
             ->tap(new TripNotToKalugaScope)
-            ->when($this->includeOnlyVisibleTrips(), fn (Builder $query) => $query->tap(new TripVisibleScope))
+            ->when($this->includeOnlyVisibleTrips(), new TripVisibleScope)
             ->orderBy('date_start')
             ->get();
     }
