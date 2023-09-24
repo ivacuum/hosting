@@ -12,9 +12,12 @@ class IssueCommentedMail extends Mailable implements ShouldQueue
 {
     use RecordsEmail;
 
-    public function __construct(public Issue $issue, public Comment $comment, public User $user)
+    public function __construct(public Issue $issue, public Comment $comment, User $user)
     {
         $this->email = $this->email($issue->emails(), $user);
+
+        $this->issue = $issue->withoutRelations();
+        $this->comment = $comment->withoutRelations();
     }
 
     public function build()

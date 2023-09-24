@@ -20,6 +20,8 @@ class GigPublishedMail extends Mailable implements ShouldQueue
         $this->email = $this->email($gig->emails(), $user);
         $this->gigLink = $this->email->signedLink($gig->wwwLocale($user->locale));
         $this->mySettingsLink = $this->email->signedLink(path_locale([MySettingsController::class, 'edit'], [], false, $user->locale));
+
+        $this->gig = $gig->withoutRelations();
     }
 
     public function build()

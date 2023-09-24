@@ -15,11 +15,13 @@ class NewsPublishedMail extends Mailable implements ShouldQueue
     public $newsLink;
     public $mySettingsLink;
 
-    public function __construct(public News $news, public User $user)
+    public function __construct(public News $news, User $user)
     {
         $this->email = $this->email($news->emails(), $user);
         $this->newsLink = $this->email->signedLink($news->www());
         $this->mySettingsLink = $this->email->signedLink(path_locale([MySettingsController::class, 'edit'], [], false, $user->locale));
+
+        $this->news = $news->withoutRelations();
     }
 
     public function build()

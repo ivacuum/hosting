@@ -22,6 +22,7 @@ class TripPublishedMail extends Mailable implements ShouldQueue
         $this->mySettingsLink = $this->email->signedLink(path_locale([MySettingsController::class, 'edit'], [], false, $user->locale));
 
         $this->trip->photos_count ??= $trip->photos()->count();
+        $this->trip = $trip->withoutRelations();
     }
 
     public function build()

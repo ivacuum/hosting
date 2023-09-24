@@ -32,6 +32,8 @@ class SubscriptionConfirmMail extends Mailable implements ShouldQueue
         $this->confirmLink = $this->email->signedLink(
             path([SubscriptionController::class, 'confirm'], ['hash' => $hash])
         );
+
+        $this->user = $user->withoutRelations();
     }
 
     public function build()
