@@ -2,14 +2,10 @@
 
 namespace App\Notifications;
 
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
 
-class TypoReportedNotification extends Notification implements ShouldQueue
+class TypoReportedNotification extends Notification
 {
-    use Queueable;
-
     public function __construct(private string $selection, private string $page)
     {
     }

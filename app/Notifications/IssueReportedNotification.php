@@ -3,14 +3,10 @@
 namespace App\Notifications;
 
 use App\Issue;
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
 
-class IssueReportedNotification extends Notification implements ShouldQueue
+class IssueReportedNotification extends Notification
 {
-    use Queueable;
-
     public function __construct(private Issue $issue)
     {
     }

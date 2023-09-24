@@ -3,14 +3,10 @@
 namespace App\Notifications;
 
 use App\Magnet;
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
 
-class MagnetDuplicateDeletedAdminNotification extends Notification implements ShouldQueue
+class MagnetDuplicateDeletedAdminNotification extends Notification
 {
-    use Queueable;
-
     public function __construct(public Magnet $magnet)
     {
     }
