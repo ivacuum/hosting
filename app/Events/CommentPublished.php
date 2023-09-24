@@ -3,7 +3,6 @@
 namespace App\Events;
 
 use App\Comment;
-use Illuminate\Queue\SerializesModels;
 
 /**
  * Комментарий опубликован
@@ -12,8 +11,6 @@ use Illuminate\Queue\SerializesModels;
  */
 class CommentPublished extends Event
 {
-    use SerializesModels;
-
     public function __construct(public Comment $comment)
     {
     }
