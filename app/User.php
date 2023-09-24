@@ -64,6 +64,9 @@ class User extends Authenticatable implements HasLocalePreference
     protected $attributes = [
         'avatar' => '',
         'remember_token' => null,
+        'notify_gigs' => NotificationDeliveryMethod::Disabled,
+        'notify_news' => NotificationDeliveryMethod::Disabled,
+        'notify_trips' => NotificationDeliveryMethod::Disabled,
     ];
 
     protected $casts = [

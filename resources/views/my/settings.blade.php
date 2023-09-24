@@ -55,7 +55,7 @@
         type="checkbox"
         name="notify_gigs"
         value="{{ App\Domain\NotificationDeliveryMethod::Mail->value }}"
-        {{ old('notify_gigs', $user->notify_gigs) ? 'checked' : '' }}
+        {{ old('notify_gigs', $user->notify_gigs->isEnabled()) ? 'checked' : '' }}
       >
       @lang('Концерты')
     </label>
@@ -67,7 +67,7 @@
         type="checkbox"
         name="notify_news"
         value="{{ App\Domain\NotificationDeliveryMethod::Mail->value }}"
-        {{ old('notify_news', $user->notify_news) ? 'checked' : '' }}
+        {{ old('notify_news', $user->notify_news->isEnabled()) ? 'checked' : '' }}
       >
       @lang('Новости сайта')
     </label>
@@ -80,7 +80,7 @@
           type="checkbox"
           name="notify_trips"
           value="{{ App\Domain\NotificationDeliveryMethod::Mail->value }}"
-          {{ old('notify_trips', $user->notify_trips) ? 'checked' : '' }}
+          {{ old('notify_trips', $user->notify_trips->isEnabled()) ? 'checked' : '' }}
         >
         @lang('Путешествия')
       </label>

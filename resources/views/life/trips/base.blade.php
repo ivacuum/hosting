@@ -31,7 +31,7 @@
 <div class="mt-6 py-3 px-5 text-teal-800 dark:text-teal-400 bg-teal-200/50 dark:bg-teal-400/25 border border-teal-200/50 rounded">
   <div class="mb-2">@lang('life.newsletter.description')</div>
   @if (Auth::check())
-    @if (!Auth::user()->notify_trips)
+    @if (Auth::user()->notify_trips?->isDisabled())
       <form action="@lng/subscriptions" method="post">
         {{ ViewHelper::inputHiddenMail() }}
         <button class="btn btn-default text-sm py-1 small-caps svg-flex svg-label">

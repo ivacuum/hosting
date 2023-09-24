@@ -14,9 +14,9 @@
           {{ ViewHelper::inputHiddenMail() }}
           <button class="btn btn-default leading-none text-sm small-caps svg-flex svg-label">
             @svg (mail)
-            {{ Auth::user()->notify_trips ? __('mail.unsubscribe') : __('mail.subscribe') }}
+            {{ Auth::user()->notify_trips->isEnabled() ? __('mail.unsubscribe') : __('mail.subscribe') }}
           </button>
-          <input type="hidden" name="trips" value="{{ Auth::user()->notify_trips ? App\Domain\NotificationDeliveryMethod::Disabled->value : App\Domain\NotificationDeliveryMethod::Mail->value }}">
+          <input type="hidden" name="trips" value="{{ Auth::user()->notify_trips->isEnabled() ? App\Domain\NotificationDeliveryMethod::Disabled->value : App\Domain\NotificationDeliveryMethod::Mail->value }}">
           @method('put')
           @csrf
         </form>

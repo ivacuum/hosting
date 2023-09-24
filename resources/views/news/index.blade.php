@@ -14,9 +14,9 @@
       {{ ViewHelper::inputHiddenMail() }}
       <button class="btn btn-default text-sm py-1 small-caps svg-flex svg-label">
         @svg (mail)
-        @lang(Auth::user()->notify_news ? 'mail.unsubscribe' : 'mail.subscribe')
+        @lang(Auth::user()->notify_news->isEnabled() ? 'mail.unsubscribe' : 'mail.subscribe')
       </button>
-      <input type="hidden" name="news" value="{{ Auth::user()->notify_news ? App\Domain\NotificationDeliveryMethod::Disabled->value : App\Domain\NotificationDeliveryMethod::Mail->value }}">
+      <input type="hidden" name="news" value="{{ Auth::user()->notify_news->isEnabled() ? App\Domain\NotificationDeliveryMethod::Disabled->value : App\Domain\NotificationDeliveryMethod::Mail->value }}">
       @method('put')
       @csrf
     </form>
