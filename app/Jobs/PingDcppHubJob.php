@@ -3,8 +3,10 @@
 namespace App\Jobs;
 
 use App\DcppHub;
+use Illuminate\Queue\Attributes\WithoutRelations;
 use Illuminate\Queue\SerializesModels;
 
+#[WithoutRelations]
 class PingDcppHubJob extends AbstractJob
 {
     use SerializesModels;

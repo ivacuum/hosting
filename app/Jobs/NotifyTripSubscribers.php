@@ -7,8 +7,10 @@ use App\Domain\UserStatus;
 use App\Notifications\TripPublishedNotification;
 use App\Trip;
 use App\User;
+use Illuminate\Queue\Attributes\WithoutRelations;
 use Illuminate\Queue\SerializesModels;
 
+#[WithoutRelations]
 class NotifyTripSubscribers extends AbstractJob
 {
     use SerializesModels;
