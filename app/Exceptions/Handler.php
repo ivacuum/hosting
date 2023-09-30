@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use App\Http\Controllers\Auth\SignIn;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Session\TokenMismatchException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -26,6 +27,11 @@ class Handler extends ExceptionHandler
                     ->with('message', __('Пожалуйста, повторите отправку формы. За два часа мы вас подзабыли'));
             }
         });
+    }
+
+    protected function throttle(\Throwable $e)
+    {
+        return Limit::perDay(50);
     }
 
     protected function unauthenticated($request, AuthenticationException $exception)
