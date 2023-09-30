@@ -5,7 +5,7 @@ return [
     'driver' => 'bcrypt',
 
     'bcrypt' => [
-        'rounds' => env('BCRYPT_ROUNDS', 10),
+        'rounds' => env('BCRYPT_ROUNDS', 12),
     ],
 
     'argon' => [
