@@ -3,9 +3,9 @@ name: deploy
 on:
   push:
     branches:
-      - master
+      - main
 
-concurrency: master
+concurrency: main
 
 jobs:
   deploy:

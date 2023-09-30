@@ -397,9 +397,9 @@ body {
     @endru
 
     @ru
-      <p>Проект разработан с использованием PHP, Laravel, MySQL, Memcached, Javascript (ES6), Vue.js, SASS, Webpack, Sphinxsearch. Работает на 2 VDS, развернутых и настроенных с помощью Ansible. Код хранится в Bitbucket. Деплой выполняется с помощью Jenkins при каждом коммите в ветку master.</p>
+      <p>Проект разработан с использованием PHP, Laravel, MySQL, Memcached, Javascript (ES6), Vue.js, SASS, Webpack, Sphinxsearch. Работает на 2 VDS, развернутых и настроенных с помощью Ansible. Код хранится в Bitbucket. Деплой выполняется с помощью Jenkins при каждом коммите в ветку main.</p>
     @en
-      <p>It was built using PHP, Laravel, MySQL, Memcached, Javascript (ES6), Vue.js, SASS, Webpack, Sphinxsearch. 2 VDS were deployed and configured by Ansible. Code is hosted on Bitbucket and deployed by Jenkins on every commit to the master branch.</p>
+      <p>It was built using PHP, Laravel, MySQL, Memcached, Javascript (ES6), Vue.js, SASS, Webpack, Sphinxsearch. 2 VDS were deployed and configured by Ansible. Code is hosted on Bitbucket and deployed by Jenkins on every commit to the main branch.</p>
     @endru
 
     @ru
