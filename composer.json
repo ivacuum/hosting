@@ -49,7 +49,6 @@
   "scripts": {
     "fresh": "@php artisan migrate:fresh --seed --seeder='App\\Seeder\\DatabaseSeeder' --ansi",
     "outdated-direct": "composer outdated --direct",
-    "phpcs": "phpcs --standard=PSR12",
     "pint": "vendor/bin/pint --test -v",
     "post-root-package-install": [
       "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
