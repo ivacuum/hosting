@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Domain\MagnetStatus;
 use App\Magnet;
 use App\Notifications\AnonymousMagnetNotification;
+use App\RateLimit\MagnetRateLimiter;
 use App\Rules\MagnetCategoryId;
 use App\Services\Rto;
 use App\Services\RtoMagnetNotFoundException;
@@ -29,7 +30,7 @@ class MagnetAddForm extends Component
         ];
     }
 
-    public function submit(Rto $rto)
+    public function submit(Rto $rto, MagnetRateLimiter $limiter)
     {
         $this->validate();
 
@@ -60,6 +61,12 @@ class MagnetAddForm extends Component
         }
 
         $userId = auth()->id();
+
+        if ($limiter->tooManyAttempts()) {
+            $this->addError('input', __('Исчерпан лимит добавления раздач на сегодня. Повторите попытку через 24 часа'));
+
+            return null;
+        }
 
         if ($userId === null) {
             event(new \App\Events\Stats\TorrentAddedAnonymously);

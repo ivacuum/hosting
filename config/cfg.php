@@ -27,6 +27,9 @@ return [
             'user' => 50,
             'flood_interval' => 2,
         ],
+        'magnet' => [
+            'per_day' => 20,
+        ],
         'comment' => [
             'ip' => 100,
             'user' => 50,
