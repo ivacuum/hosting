@@ -154,7 +154,7 @@ class PhotoTest extends TestCase
 
         $this->get('photos/tags')
             ->assertOk()
-            ->assertSee($photo->tags[0]->title);
+            ->assertSee($photo->tags->first()->title);
     }
 
     public function testTag()
@@ -164,9 +164,9 @@ class PhotoTest extends TestCase
             ->withTrip()
             ->create();
 
-        $this->get("photos/tags/{$photo->tags[0]->id}")
+        $this->get("photos/tags/{$photo->tags->first()->id}")
             ->assertOk()
-            ->assertSee($photo->tags[0]->title);
+            ->assertSee($photo->tags->first()->title);
     }
 
     public function testTrips()

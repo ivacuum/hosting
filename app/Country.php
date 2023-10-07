@@ -14,8 +14,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $views
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
- * @property \Illuminate\Database\Eloquent\Collection|City[] $cities
- * @property \Illuminate\Database\Eloquent\Collection|Trip[] $trips
+ * @property \Illuminate\Database\Eloquent\Collection<int, City> $cities
+ * @property \Illuminate\Database\Eloquent\Collection<int, Trip> $trips
  * @property-read int $cities_count
  * @property-read string $title
  * @property int $trips_count

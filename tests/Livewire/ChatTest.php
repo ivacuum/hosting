@@ -25,7 +25,7 @@ class ChatTest extends TestCase
             ->call('post');
 
         $this->assertCount(1, $user->chatMessages);
-        $this->assertSame($text, $user->chatMessages[0]->text);
+        $this->assertSame($text, $user->chatMessages->first()->text);
 
         \Notification::assertCount(1);
         \Notification::assertSentTimes(ChatMessagePublishedAdminNotification::class, 1);

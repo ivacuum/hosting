@@ -210,7 +210,7 @@ class MagnetTest extends TestCase
             ->call('submit')
             ->assertHasNoErrors();
 
-        $magnet = $user->magnets[0];
+        $magnet = $user->magnets->first();
 
         $livewire->assertRedirect($magnet->www());
 

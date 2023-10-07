@@ -17,9 +17,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  * @property Burnable $burnable
- * @property \Illuminate\Database\Eloquent\Collection|Burnable[] $burnables
- * @property \Illuminate\Database\Eloquent\Collection|Radical[] $radicals
- * @property \Illuminate\Database\Eloquent\Collection|Kanji[] $similar
+ * @property \Illuminate\Database\Eloquent\Collection<int, Burnable> $burnables
+ * @property \Illuminate\Database\Eloquent\Collection<int, Radical> $radicals
+ * @property \Illuminate\Database\Eloquent\Collection<int, Kanji> $similar
  * @property int $sort
  *
  * @mixin \Eloquent

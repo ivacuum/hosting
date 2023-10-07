@@ -36,7 +36,7 @@ class CommentAddFormTest extends TestCase
 
         \Notification::assertSentTo($issue->user, IssueCommentedNotification::class);
 
-        $comment = $user->comments[0];
+        $comment = $user->comments->first();
 
         $this->assertCount(1, $user->comments);
         $this->assertSame(CommentStatus::Published, $comment->status);
@@ -55,7 +55,7 @@ class CommentAddFormTest extends TestCase
             ->set('text', 'Comment magnet')
             ->call('submit');
 
-        $comment = $user->comments[0];
+        $comment = $user->comments->first();
 
         $this->assertCount(1, $user->comments);
         $this->assertSame(CommentStatus::Published, $comment->status);
@@ -85,7 +85,7 @@ class CommentAddFormTest extends TestCase
 
         $user = User::firstWhere(['email' => 'guest-commentator@example.com']);
         $user->activate();
-        $comment = $user->comments[0];
+        $comment = $user->comments->first();
 
         $this->assertCount(1, $user->comments);
         $this->assertSame(CommentStatus::Pending, $comment->status);
@@ -116,7 +116,7 @@ class CommentAddFormTest extends TestCase
             ->assertDispatched(LivewireEvent::RefreshComments->name)
             ->assertSet('text', '');
 
-        $comment = $user->comments[0];
+        $comment = $user->comments->first();
 
         $this->assertCount(1, $user->comments);
         $this->assertSame(CommentStatus::Published, $comment->status);
@@ -137,7 +137,7 @@ class CommentAddFormTest extends TestCase
             ->set('text', 'Comment trip')
             ->call('submit');
 
-        $comment = $user->comments[0];
+        $comment = $user->comments->first();
 
         $this->assertCount(1, $user->comments);
         $this->assertSame(CommentStatus::Published, $comment->status);
@@ -156,7 +156,7 @@ class CommentAddFormTest extends TestCase
             ->set('text', 'Comment <em>text</em> " & \'')
             ->call('submit');
 
-        $this->assertSame('Comment &lt;em&gt;text&lt;/em&gt; &quot; &amp; &#039;', $user->comments[0]->html);
+        $this->assertSame('Comment &lt;em&gt;text&lt;/em&gt; &quot; &amp; &#039;', $user->comments->first()->html);
     }
 
     public function testHiddenNews()

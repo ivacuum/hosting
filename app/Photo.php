@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  * @property Trip $rel
- * @property \Illuminate\Database\Eloquent\Collection|Tag[] $tags
+ * @property \Illuminate\Database\Eloquent\Collection<int, Tag> $tags
  * @property User $user
  *
  * @mixin \Eloquent

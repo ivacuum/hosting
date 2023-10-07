@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  * @property Burnable $burnable
- * @property \Illuminate\Database\Eloquent\Collection|Kanji[] $kanjis
+ * @property \Illuminate\Database\Eloquent\Collection<int, Kanji> $kanjis
  *
  * @mixin \Eloquent
  */

@@ -26,7 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\CarbonImmutable $updated_at
  * @property Artist $artist
  * @property City $city
- * @property \Illuminate\Database\Eloquent\Collection|Email[] $emails
+ * @property \Illuminate\Database\Eloquent\Collection<int, Email> $emails
  * @property-read string $title
  * @property-read int $year
  *

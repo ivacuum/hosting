@@ -33,11 +33,11 @@ use League\CommonMark\CommonMarkConverter;
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  * @property City $city
- * @property \Illuminate\Support\Collection|Comment[] $comments
- * @property \Illuminate\Support\Collection|Comment[] $commentsPublished
+ * @property \Illuminate\Support\Collection<int, Comment> $comments
+ * @property \Illuminate\Support\Collection<int, Comment> $commentsPublished
  * @property Country $country
- * @property \Illuminate\Database\Eloquent\Collection|Email[] $emails
- * @property \Illuminate\Database\Eloquent\Collection|Photo[] $photos
+ * @property \Illuminate\Database\Eloquent\Collection<int, Email> $emails
+ * @property \Illuminate\Database\Eloquent\Collection<int, Photo> $photos
  * @property User $user
  * @property-read int $comments_count
  * @property int $photos_count

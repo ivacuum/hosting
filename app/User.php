@@ -31,15 +31,15 @@ use Illuminate\Notifications\Notifiable;
  * @property \Carbon\CarbonImmutable $updated_at
  * @property \Carbon\CarbonImmutable $last_login_at
  * @property \Carbon\CarbonImmutable $password_changed_at
- * @property \Illuminate\Database\Eloquent\Collection|ChatMessage[] $chatMessages
- * @property \Illuminate\Database\Eloquent\Collection|Comment[] $comments
- * @property \Illuminate\Database\Eloquent\Collection|Email[] $emails
+ * @property \Illuminate\Database\Eloquent\Collection<int, ChatMessage> $chatMessages
+ * @property \Illuminate\Database\Eloquent\Collection<int, Comment> $comments
+ * @property \Illuminate\Database\Eloquent\Collection<int, Email> $emails
  * @property \Illuminate\Database\Eloquent\Collection<int, ExternalIdentity> $externalIdentities
- * @property \Illuminate\Database\Eloquent\Collection|Image[] $images
- * @property \Illuminate\Database\Eloquent\Collection|Magnet[] $magnets
- * @property \Illuminate\Database\Eloquent\Collection|News[] $news
- * @property \Illuminate\Database\Eloquent\Collection|Notification[] $notifications
- * @property \Illuminate\Database\Eloquent\Collection|Trip[] $trips
+ * @property \Illuminate\Database\Eloquent\Collection<int, Image> $images
+ * @property \Illuminate\Database\Eloquent\Collection<int, Magnet> $magnets
+ * @property \Illuminate\Database\Eloquent\Collection<int, News> $news
+ * @property \Illuminate\Database\Eloquent\Collection<int, Notification> $notifications
+ * @property \Illuminate\Database\Eloquent\Collection<int, Trip> $trips
  * @property-read int $chat_messages_count
  * @property-read int $comments_count
  * @property-read int $emails_count

@@ -28,7 +28,7 @@ class AcpNotificationsTest extends TestCase
 
         \Notification::send($user, new PlainTextNotification('text'));
 
-        $notification = $user->notifications[0];
+        $notification = $user->notifications->first();
 
         $this->get("acp/notifications/{$notification->id}")
             ->assertOk();
