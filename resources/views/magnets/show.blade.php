@@ -8,11 +8,11 @@
 @include('livewire')
 
 @section('magnet-download-button')
-  @if (Auth::user()?->isRoot())
-    <a class="btn btn-default" href="{{ Acp::show($magnet) }}">
-      @lang('В админке')
-    </a>
-  @endif
+@if (Auth::user()?->isRoot())
+  <a class="btn btn-default" href="{{ Acp::show($magnet) }}">
+    @lang('В админке')
+  </a>
+@endif
 <div class="mr-4 text-center">
   <a class="btn btn-success js-magnet" href="{{ $magnet->magnet() }}" data-action="{{ to('magnets/{magnet}/magnet', $magnet) }}">
     <span class="mr-1">
@@ -78,7 +78,7 @@
         @svg ($icon)
       </div>
       <a class="grow mb-2 md:mb-0 md:mr-4 visited" href="{{ $row->www() }}">
-        @if (Auth::user()?->torrent_short_title)
+        @if (Auth::user()?->magnet_short_title)
           <div>{{ $row->shortTitle() }}</div>
         @else
           <div class="font-bold">
@@ -86,10 +86,11 @@
           </div>
         @endif
       </a>
-      <a class="flex-shrink-0 pr-2 magnets-list-magnet text-center md:text-left whitespace-nowrap js-magnet"
-         href="{{ $row->magnet() }}"
-         title="@lang('Магнет')"
-         data-action="{{ to('magnets/{magnet}/magnet', $row) }}"
+      <a
+        class="flex-shrink-0 pr-2 magnets-list-magnet text-center md:text-left whitespace-nowrap js-magnet"
+        href="{{ $row->magnet() }}"
+        title="@lang('Магнет')"
+        data-action="{{ to('magnets/{magnet}/magnet', $row) }}"
       >
         @svg (magnet)
         <span class="js-magnet-counter">{{ $row->clicks ?: '' }}</span>

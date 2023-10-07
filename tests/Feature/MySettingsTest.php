@@ -179,18 +179,18 @@ class MySettingsTest extends TestCase
     public function testUpdateTorrentShortTitle()
     {
         $user = UserFactory::new()->make();
-        $user->torrent_short_title = 0;
+        $user->magnet_short_title = 0;
         $user->save();
 
         \Event::fake(\App\Events\Stats\MySettingsChanged::class);
 
         $this->be($user)
-            ->put('my/settings', ['torrent_short_title' => 1])
+            ->put('my/settings', ['magnet_short_title' => 1])
             ->assertFound();
 
         $user->refresh();
 
-        $this->assertSame(1, $user->torrent_short_title);
+        $this->assertSame(1, $user->magnet_short_title);
 
         \Event::assertDispatched(\App\Events\Stats\MySettingsChanged::class);
     }

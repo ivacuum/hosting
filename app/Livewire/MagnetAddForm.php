@@ -79,7 +79,7 @@ class MagnetAddForm extends Component
         $magnet->clicks = 0;
         $magnet->rto_id = $data->id;
         $magnet->status = MagnetStatus::Published;
-        $magnet->user_id = $userId ?? config('cfg.torrent_anonymous_releaser');
+        $magnet->user_id = $userId ?? config('cfg.magnet_anonymous_releaser');
         $magnet->info_hash = $data->infoHash;
         $magnet->announcer = $data->announcer;
         $magnet->category_id = $this->categoryId;

@@ -177,8 +177,8 @@ class MagnetTest extends TestCase
             ->call('submit')
             ->assertHasNoErrors();
 
-        $user = User::find(config('cfg.torrent_anonymous_releaser'))
-            ?? UserFactory::new()->withId(config('cfg.torrent_anonymous_releaser'))->create();
+        $user = User::find(config('cfg.magnet_anonymous_releaser'))
+            ?? UserFactory::new()->withId(config('cfg.magnet_anonymous_releaser'))->create();
 
         /** @var Magnet $magnet */
         $magnet = $user->magnets()->latest('id')->first();

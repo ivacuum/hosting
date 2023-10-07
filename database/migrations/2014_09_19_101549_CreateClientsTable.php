@@ -349,7 +349,7 @@ return new class extends Migration {
             $table->string('salt', 5)->default('');
             $table->unsignedTinyInteger('status')->default(0);
             $table->string('locale', 10)->default(App\Domain\Locale::Rus->value);
-            $table->unsignedTinyInteger('torrent_short_title')->default(0);
+            $table->unsignedTinyInteger('magnet_short_title')->default(0);
             $table->unsignedTinyInteger('notify_gigs')->default(App\Domain\NotificationDeliveryMethod::Disabled->value);
             $table->unsignedTinyInteger('notify_news')->default(App\Domain\NotificationDeliveryMethod::Disabled->value);
             $table->unsignedTinyInteger('notify_trips')->default(App\Domain\NotificationDeliveryMethod::Disabled->value);

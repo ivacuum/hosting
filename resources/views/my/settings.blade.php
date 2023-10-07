@@ -13,18 +13,18 @@
 
     <div class="font-bold">@lang('Магнеты')</div>
     <div class="mb-4">
-      <input type="hidden" name="torrent_short_title" value="0">
+      <input type="hidden" name="magnet_short_title" value="0">
       <label class="flex gap-2 items-center">
         <input
           class="border-gray-300 rounded"
           type="checkbox"
-          name="torrent_short_title"
+          name="magnet_short_title"
           value="1"
-          {{ old('torrent_short_title', $user->torrent_short_title) ? 'checked' : '' }}
+          {{ old('magnet_short_title', $user->magnet_short_title) ? 'checked' : '' }}
         >
         @lang('Короткие названия раздач')
       </label>
-      <x-invalid-feedback field="torrent_short_title"/>
+      <x-invalid-feedback field="magnet_short_title"/>
       @ru
         <div class="form-help">Из названий раздач будут скрыты данные в скобках, например, Deus Ex <s>[RePack] [RUS] (2007)</s>.</div>
       @endru

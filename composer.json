@@ -71,7 +71,7 @@
     "test": "@php artisan test --parallel",
     "test-linear": "vendor/bin/phpunit --colors=always",
     "test-profile": "@php artisan test --profile",
-    "test-recreate-db": "@php artisan test --parallel --recreate-databases"
+    "test-fresh": "@php artisan test --parallel --recreate-databases"
   },
   "extra": {
     "laravel": {

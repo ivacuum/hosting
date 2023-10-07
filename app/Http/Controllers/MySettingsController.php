@@ -18,7 +18,7 @@ class MySettingsController
         $user->notify_gigs = $request->notifyGigs;
         $user->notify_news = $request->notifyNews;
         $user->notify_trips = $request->notifyTrips;
-        $user->torrent_short_title = $request->magnetShortTitle;
+        $user->magnet_short_title = $request->magnetShortTitle;
         $user->save();
 
         event(new \App\Events\Stats\MySettingsChanged);

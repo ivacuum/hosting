@@ -85,7 +85,7 @@
             @svg ($icon)
           </div>
           <a class="grow mb-2 md:mb-0 md:mr-4 visited" href="{{ $magnet->www() }}">
-            @if (Auth::user()?->torrent_short_title)
+            @if (Auth::user()?->magnet_short_title)
               <div>{{ $magnet->shortTitle() }}</div>
             @else
               <div class="font-bold">
@@ -93,10 +93,11 @@
               </div>
             @endif
           </a>
-          <a class="flex-shrink-0 pr-2 magnets-list-magnet text-center md:text-left whitespace-nowrap js-magnet"
-             href="{{ $magnet->magnet() }}"
-             title="@lang('Магнет')"
-             data-action="{{ to('magnets/{magnet}/magnet', $magnet) }}"
+          <a
+            class="flex-shrink-0 pr-2 magnets-list-magnet text-center md:text-left whitespace-nowrap js-magnet"
+            href="{{ $magnet->magnet() }}"
+            title="@lang('Магнет')"
+            data-action="{{ to('magnets/{magnet}/magnet', $magnet) }}"
           >
             @svg (magnet)
             <span class="js-magnet-counter">{{ $magnet->clicks ?: '' }}</span>

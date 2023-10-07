@@ -25,7 +25,7 @@ class MySettingsUpdateForm extends FormRequest
             'notify_gigs' => new Enum(NotificationDeliveryMethod::class),
             'notify_news' => new Enum(NotificationDeliveryMethod::class),
             'notify_trips' => new Enum(NotificationDeliveryMethod::class),
-            'torrent_short_title' => 'in:0,1',
+            'magnet_short_title' => 'in:0,1',
         ];
     }
 
@@ -33,7 +33,7 @@ class MySettingsUpdateForm extends FormRequest
     {
         $this->user = $this->user();
         $this->theLocale = $this->input('locale', Locale::Rus->value);
-        $this->magnetShortTitle = $this->input('torrent_short_title', 0);
+        $this->magnetShortTitle = $this->input('magnet_short_title', 0);
 
         $this->notifyGigs = $this->enum('notify_gigs', NotificationDeliveryMethod::class) ?? NotificationDeliveryMethod::Disabled;
 

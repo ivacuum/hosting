@@ -40,13 +40,13 @@ return [
         App\Domain\Locale::Rus->value => ['posix' => 'ru_RU.UTF-8'],
         App\Domain\Locale::Eng->value => ['posix' => 'en_US.UTF-8'],
     ],
+    'magnet_anonymous_releaser' => env('MAGNET_ANONYMOUS_RELEASER', 3),
     'sitename' => 'vacuum.kaluga',
     'sphinx' => [
         'host' => env('SPHINX_HOST', 'localhost'),
         'port' => env('SPHINX_PORT', 9306),
         'socket' => env('SPHINX_SOCKET', ''),
     ],
-    'torrent_anonymous_releaser' => env('TORRENT_ANONYMOUS_RELEASER', 3),
 
     // Купоны
     'airbnb_link' => 'c/spankov1?s=8',
