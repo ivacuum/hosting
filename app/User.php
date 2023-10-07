@@ -34,7 +34,7 @@ use Illuminate\Notifications\Notifiable;
  * @property \Illuminate\Database\Eloquent\Collection|ChatMessage[] $chatMessages
  * @property \Illuminate\Database\Eloquent\Collection|Comment[] $comments
  * @property \Illuminate\Database\Eloquent\Collection|Email[] $emails
- * @property \Illuminate\Database\Eloquent\Collection|ExternalIdentity[] $externalIdentities
+ * @property \Illuminate\Database\Eloquent\Collection<int, ExternalIdentity> $externalIdentities
  * @property \Illuminate\Database\Eloquent\Collection|Image[] $images
  * @property \Illuminate\Database\Eloquent\Collection|Magnet[] $magnets
  * @property \Illuminate\Database\Eloquent\Collection|News[] $news
