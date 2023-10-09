@@ -30,6 +30,11 @@ class UserFactory
         return $model;
     }
 
+    public function english()
+    {
+        return $this->withLocale(Locale::Eng);
+    }
+
     public function inactive()
     {
         return $this->withStatus(UserStatus::Inactive);
@@ -77,6 +82,14 @@ class UserFactory
     {
         $factory = clone $this;
         $factory->lastLoginAt = $lastLoginAt ?? now();
+
+        return $factory;
+    }
+
+    public function withLocale(Locale $locale)
+    {
+        $factory = clone $this;
+        $factory->locale = $locale;
 
         return $factory;
     }

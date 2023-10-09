@@ -15,15 +15,35 @@ class IssueSeeder extends Seeder
 
     public function run()
     {
-        $user = UserFactory::new()
-            ->withEmail('issue@example.com')
-            ->create();
+        $this->english();
+        $this->russian();
+    }
 
+    private function english()
+    {
         IssueFactory::new()
             ->closed()
             ->withTitle('Checking one-two-three, testicles, check!')
             ->withText('It seems to be working just fine.')
             ->withUser(User::find(1))
+            ->create();
+
+        $user = UserFactory::new()
+            ->english()
+            ->withEmail('issue-en@example.com')
+            ->create();
+
+        IssueFactory::new()
+            ->withTitle('Greeting from Finland—not spam, 100% verified')
+            ->withText('We would like to invite you to visit our country again some day!')
+            ->withUser($user)
+            ->create();
+    }
+
+    private function russian()
+    {
+        $user = UserFactory::new()
+            ->withEmail('issue-ru@example.com')
             ->create();
 
         IssueFactory::new()
@@ -37,12 +57,6 @@ class IssueSeeder extends Seeder
             ->withComment(CommentFactory::new()->withText('Так и задумано.')->withUserId(1))
             ->withTitle('Поездки на главной')
             ->withText('Истории выводятся все время случайные. Меня картинка привлекла, а я обновил страницу, и она пропала.')
-            ->withUser($user)
-            ->create();
-
-        IssueFactory::new()
-            ->withTitle('Greeting from Finland—not spam, 100% verified')
-            ->withText('We would like to invite you to visit our country again some day!')
             ->withUser($user)
             ->create();
     }
