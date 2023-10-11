@@ -7,7 +7,7 @@
     "concat_space": {
       "spacing": "one"
     },
-    "curly_braces_position": {
+    "braces_position": {
       "anonymous_classes_opening_brace": "same_line"
     },
     "linebreak_after_opening_tag": false,
