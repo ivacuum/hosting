@@ -53,8 +53,7 @@ class Chat extends Component
             ->take(20)
             ->get()
             ->reverse()
-            ->values()
-            ->groupBy(fn (ChatMessage $chatMessage) => $chatMessage->created_at->toDateString());
+            ->values();
 
         return view('livewire.chat');
     }

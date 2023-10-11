@@ -55,13 +55,20 @@ class MagnetTest extends TestCase
             ->assertOk();
     }
 
-    public function testIndex()
+    public function testIndexAsGuest()
     {
         $magnet = MagnetFactory::new()->create();
 
         $this->get('magnets')
             ->assertOk()
             ->assertSee($magnet->title);
+    }
+
+    public function testIndexAsUser()
+    {
+        $this->be(UserFactory::new()->withId(1)->make())
+            ->get('magnets')
+            ->assertOk();
     }
 
     public function testLivewireState()
