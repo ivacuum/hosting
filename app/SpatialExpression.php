@@ -14,7 +14,7 @@ class SpatialExpression extends Expression
             throw new \DomainException('Unexpected value type.');
         }
 
-        $wkt = \DB::connection()->getPdo()->quote($this->value->toWkt());
+        $wkt = $grammar->escape($this->value->toWkt());
 
         return "ST_GeomFromText({$wkt}, {$this->value->srid}, 'axis-order=long-lat')";
     }
