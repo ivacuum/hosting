@@ -29,7 +29,7 @@
   @vite('resources/css/app.css')
   @stack('head')
 </head>
-<body class="flex flex-col tabular-nums min-h-full dark:bg-slate-900 dark:text-slate-400 {{ $bodyClasses ?? 'body-with-bottom-tabbar' }} {{ $cssClasses }}" data-route="{{ $routeUri }}">
+<body class="flex flex-col tabular-nums min-h-full dark:bg-slate-950 dark:text-slate-400 {{ $bodyClasses ?? 'body-with-bottom-tabbar' }} {{ $cssClasses }}" data-route="{{ $routeUri }}">
 @section('body')
 @section('header-navbar')
   @include('tpl.header-navbar')
@@ -125,7 +125,7 @@
 </div>
 
 @section('footer_container')
-<footer class="footer bg-[#fafafa] dark:bg-slate-800 border-t border-[#dee2e6] dark:border-slate-700 mt-6 py-3 text-2sm">
+<footer class="footer bg-[#fafafa] dark:bg-slate-900 border-t border-[#dee2e6] dark:border-slate-800 mt-6 py-3 text-2sm">
   <div class="container">
     @section('footer')
       <nav class="flex flex-wrap gap-3">

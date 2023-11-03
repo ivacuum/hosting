@@ -1,5 +1,5 @@
 @if (!empty($breadcrumbs))
-  <div class="bg-[#fafafa] dark:bg-slate-800 text-xs py-2 border-b border-grey-200 dark:border-slate-700 leading-snug">
+  <div class="bg-[#fafafa] dark:bg-slate-900 text-xs py-2 border-b border-grey-200 dark:border-slate-800 leading-snug">
     <nav class="container flex flex-wrap items-center" {!! count($breadcrumbs) > 1 ? 'itemscope itemtype="https://schema.org/BreadcrumbList"' : '' !!}>
       <span class="hidden sm:flex">
         <a href="{{ to('/') }}">

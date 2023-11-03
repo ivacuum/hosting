@@ -1,4 +1,4 @@
-<header class="bg-light dark:bg-slate-800 shadow-box-b shadow-grey-200 dark:shadow-slate-700 {{ $navbarClasses ?? 'hidden md:flex' }}">
+<header class="bg-light dark:bg-slate-900 shadow-box-b shadow-grey-200 dark:shadow-slate-800 {{ $navbarClasses ?? 'hidden md:flex' }}">
   <div class="container">
     <div class="flex flex-wrap justify-between items-stretch w-full">
       @section('brand')
