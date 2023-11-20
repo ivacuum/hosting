@@ -7,7 +7,7 @@ use App\Domain\CommentStatus;
 use App\Livewire\WithGoto;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Locked;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class CommentForm extends Component
@@ -18,10 +18,10 @@ class CommentForm extends Component
     #[Locked]
     public int $id;
 
-    #[Rule('required')]
+    #[Validate('required')]
     public string|null $html = '';
 
-    #[Rule('required')]
+    #[Validate('required')]
     public CommentStatus|string|null $status = CommentStatus::Published;
 
     public function mount()

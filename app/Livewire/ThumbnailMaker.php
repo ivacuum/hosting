@@ -5,7 +5,7 @@ namespace App\Livewire;
 use App\Photo;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Ivacuum\Generic\Services\ImageConverter;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
@@ -19,7 +19,7 @@ class ThumbnailMaker extends Component
     public int $uploaded = 0;
     public array $thumbnails = [];
 
-    #[Rule([
+    #[Validate([
         'required',
         'image',
         'mimetypes:image/jpeg,image/png',

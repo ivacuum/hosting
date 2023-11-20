@@ -8,7 +8,7 @@ use App\Domain\LivewireEvent;
 use App\Events\ChatMessagePublished;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class Chat extends Component
@@ -16,7 +16,7 @@ class Chat extends Component
     /** @var \Illuminate\Database\Eloquent\Collection|array<string, ChatMessage[]> */
     public $rows;
 
-    #[Rule(['required', 'string', 'min:1'])]
+    #[Validate(['required', 'string', 'min:1'])]
     public string $text = '';
 
     public function boot()

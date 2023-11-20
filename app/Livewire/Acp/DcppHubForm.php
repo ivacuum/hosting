@@ -7,7 +7,7 @@ use App\Domain\DcppHubStatus;
 use App\Livewire\WithGoto;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Locked;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class DcppHubForm extends Component
@@ -18,16 +18,16 @@ class DcppHubForm extends Component
     #[Locked]
     public int|null $id = null;
 
-    #[Rule(['required', 'integer', 'min:1', 'max:65535'])]
+    #[Validate(['required', 'integer', 'min:1', 'max:65535'])]
     public int|null $port = 411;
 
-    #[Rule('required')]
+    #[Validate('required')]
     public string|null $title = '';
 
-    #[Rule('required')]
+    #[Validate('required')]
     public string|null $address = '';
 
-    #[Rule('required')]
+    #[Validate('required')]
     public DcppHubStatus|string|null $status = DcppHubStatus::Published;
 
     public function mount()

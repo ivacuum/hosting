@@ -7,7 +7,7 @@ use App\Livewire\WithGoto;
 use App\News;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Locked;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class NewsForm extends Component
@@ -18,13 +18,13 @@ class NewsForm extends Component
     #[Locked]
     public int|null $id = null;
 
-    #[Rule('required')]
+    #[Validate('required')]
     public string|null $title = '';
 
-    #[Rule('required')]
+    #[Validate('required')]
     public string|null $markdown = '';
 
-    #[Rule('required')]
+    #[Validate('required')]
     public NewsStatus|string|null $status = NewsStatus::Published;
 
     public function mount()

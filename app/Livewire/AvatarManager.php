@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use App\User;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -14,7 +14,7 @@ class AvatarManager extends Component
     public string $avatar;
     public string $randomId;
 
-    #[Rule([
+    #[Validate([
         'required',
         'image',
         'mimetypes:image/jpeg,image/png',

@@ -7,7 +7,7 @@ use App\Livewire\WithGoto;
 use App\Rules\LifeSlug;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Locked;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class ArtistForm extends Component
@@ -20,7 +20,7 @@ class ArtistForm extends Component
 
     public string|null $slug = '';
 
-    #[Rule('required')]
+    #[Validate('required')]
     public string|null $title = '';
 
     public function mount()

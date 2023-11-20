@@ -7,7 +7,7 @@ use App\Domain\ChatMessageStatus;
 use App\Livewire\WithGoto;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Locked;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class ChatMessageForm extends Component
@@ -18,10 +18,10 @@ class ChatMessageForm extends Component
     #[Locked]
     public int $id;
 
-    #[Rule('required')]
+    #[Validate('required')]
     public string|null $text = '';
 
-    #[Rule('required')]
+    #[Validate('required')]
     public ChatMessageStatus|string|null $status = ChatMessageStatus::Published;
 
     public function mount()

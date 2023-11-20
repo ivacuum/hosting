@@ -12,7 +12,7 @@ use App\Rules\LifeSlug;
 use Carbon\CarbonInterface;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Locked;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class GigForm extends Component
@@ -29,10 +29,10 @@ class GigForm extends Component
     public int|null $artistId = null;
     public string|null $slug = '';
 
-    #[Rule('required')]
+    #[Validate('required')]
     public string|null $titleEn = '';
 
-    #[Rule('required')]
+    #[Validate('required')]
     public string|null $titleRu = '';
 
     public string|null $metaImage = '';

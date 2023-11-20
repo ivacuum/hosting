@@ -9,7 +9,7 @@ use App\Rules\LifeSlug;
 use App\Spatial\Point;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Locked;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class CityForm extends Component
@@ -21,24 +21,24 @@ class CityForm extends Component
     #[Locked]
     public int|null $id = null;
 
-    #[Rule(['required', 'integer', 'min:1'])]
+    #[Validate(['required', 'integer', 'min:1'])]
     public int|null $countryId = null;
 
-    #[Rule(['nullable', 'string'])]
+    #[Validate(['nullable', 'string'])]
     public string|null $lat = null;
 
-    #[Rule(['nullable', 'string'])]
+    #[Validate(['nullable', 'string'])]
     public string|null $lon = null;
 
-    #[Rule('string')]
+    #[Validate('string')]
     public string|null $iata = '';
 
     public string|null $slug = '';
 
-    #[Rule('required')]
+    #[Validate('required')]
     public string|null $titleEn = '';
 
-    #[Rule('required')]
+    #[Validate('required')]
     public string|null $titleRu = '';
 
     public function mount()
