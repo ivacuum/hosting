@@ -35,8 +35,9 @@ Route::get('comments/{comment}/confirm', Ctrl\CommentConfirmController::class)->
 
 Route::view('contact', 'issues.create');
 
+Route::view('dc', 'dcpp.index');
+
 Route::middleware('nav:О DC++,dc')->group(function () {
-    Route::view('dc', 'dcpp.index')->withoutMiddleware('nav:О DC++,dc');
     Route::view('dc/airdc', 'dcpp.airdc')->middleware('nav:dcpp.airdc');
     Route::view('dc/apexdc', 'dcpp.apexdc')->middleware('nav:dcpp.apexdc');
     Route::view('dc/clients', 'dcpp.clients')->middleware('nav:Клиенты');

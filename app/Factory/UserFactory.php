@@ -78,7 +78,7 @@ class UserFactory
         return $factory;
     }
 
-    public function withLastLoginAt(CarbonInterface $lastLoginAt = null)
+    public function withLastLoginAt(CarbonInterface|null $lastLoginAt = null)
     {
         $factory = clone $this;
         $factory->lastLoginAt = $lastLoginAt ?? now();

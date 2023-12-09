@@ -81,7 +81,7 @@ class MagnetFactory
         return $factory;
     }
 
-    public function withComment(CommentFactory $commentFactory = null)
+    public function withComment(CommentFactory|null $commentFactory = null)
     {
         $factory = clone $this;
         $factory->commentFactory = $commentFactory ?? CommentFactory::new();

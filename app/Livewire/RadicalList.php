@@ -18,7 +18,7 @@ class RadicalList extends Component
     public bool $showBurned = false;
     public bool $showLabels = false;
 
-    public function mount(int $kanjiId = null)
+    public function mount(int|null $kanjiId = null)
     {
         $this->flat = $kanjiId !== null;
         $this->radicals = Radical::query()

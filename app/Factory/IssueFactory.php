@@ -60,7 +60,7 @@ class IssueFactory
         return new self;
     }
 
-    public function withComment(CommentFactory $commentFactory = null)
+    public function withComment(CommentFactory|null $commentFactory = null)
     {
         $factory = clone $this;
         $factory->commentFactory = $commentFactory ?? CommentFactory::new();
@@ -92,7 +92,7 @@ class IssueFactory
         return $factory;
     }
 
-    public function withUser(User|UserFactory $user = null)
+    public function withUser(User|UserFactory|null $user = null)
     {
         $factory = clone $this;
 

@@ -36,7 +36,7 @@ class VocabularyList extends Component
         }
     }
 
-    public function mount(int $level = null, string $kanji = null)
+    public function mount(int|null $level = null, string|null $kanji = null)
     {
         $this->flat = $kanji !== null;
         $this->vocabularies = Vocabulary::query()

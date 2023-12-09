@@ -24,7 +24,7 @@ class KanjiList extends Component
     public bool $showBurned = false;
     public bool $showLabels = false;
 
-    public function mount(SplitVocabToKanjiAction $splitVocabToKanji, int $radicalId = null, string $vocabularyWord = null)
+    public function mount(SplitVocabToKanjiAction $splitVocabToKanji, int|null $radicalId = null, string|null $vocabularyWord = null)
     {
         $this->flat = $this->similarId !== null || $vocabularyWord !== null;
 

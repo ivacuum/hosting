@@ -68,7 +68,7 @@ class CommentFactory
         return $factory;
     }
 
-    public function withMagnet(MagnetFactory $magnetFactory = null)
+    public function withMagnet(MagnetFactory|null $magnetFactory = null)
     {
         $factory = clone $this;
         $factory->magnetFactory = $magnetFactory ?? MagnetFactory::new();
@@ -85,7 +85,7 @@ class CommentFactory
         return $factory;
     }
 
-    public function withNews(NewsFactory $newsFactory = null)
+    public function withNews(NewsFactory|null $newsFactory = null)
     {
         $factory = clone $this;
         $factory->newsFactory = $newsFactory ?? NewsFactory::new();

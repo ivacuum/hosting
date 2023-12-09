@@ -16,7 +16,7 @@ class GetTripsPublishedWithCoverAction
     {
     }
 
-    public function execute(int $count = null): Collection
+    public function execute(int|null $count = null): Collection
     {
         $key = CacheKey::TripsPublishedWithCover;
 

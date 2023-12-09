@@ -92,7 +92,7 @@ class PhotoFactory
         return $factory;
     }
 
-    public function withTag(TagFactory $tagFactory = null)
+    public function withTag(TagFactory|null $tagFactory = null)
     {
         $factory = clone $this;
         $factory->tagFactory = $tagFactory ?? TagFactory::new();
@@ -100,7 +100,7 @@ class PhotoFactory
         return $factory;
     }
 
-    public function withTrip(TripFactory $tripFactory = null)
+    public function withTrip(TripFactory|null $tripFactory = null)
     {
         $factory = clone $this;
         $factory->tripFactory = $tripFactory ?? TripFactory::new()->metaImage();

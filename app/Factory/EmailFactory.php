@@ -41,7 +41,7 @@ class EmailFactory
         return new self;
     }
 
-    public function withTripPublished(Trip|TripFactory $trip = null)
+    public function withTripPublished(Trip|TripFactory|null $trip = null)
     {
         $factory = clone $this;
         $factory->template = class_basename(TripPublishedMail::class);

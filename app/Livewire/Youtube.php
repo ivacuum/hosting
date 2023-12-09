@@ -18,7 +18,7 @@ class Youtube extends Component
         event(new \App\Events\Stats\YoutubeOpened);
     }
 
-    public function mount(int $start = null)
+    public function mount(int|null $start = null)
     {
         $this->start = $start
             ? "&start={$start}"

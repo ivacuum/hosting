@@ -71,7 +71,7 @@ class TripFactory
         return $factory;
     }
 
-    public function withComment(CommentFactory $commentFactory = null)
+    public function withComment(CommentFactory|null $commentFactory = null)
     {
         $factory = clone $this;
         $factory->commentFactory = $commentFactory ?? CommentFactory::new();
@@ -95,7 +95,7 @@ class TripFactory
         return $factory;
     }
 
-    public function withUser(UserFactory $userFactory = null)
+    public function withUser(UserFactory|null $userFactory = null)
     {
         $factory = clone $this;
         $factory->userFactory = $userFactory ?? UserFactory::new();
