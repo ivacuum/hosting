@@ -16,15 +16,15 @@ class LifeSlugRuleTest extends TestCase
 
     public function testUnique()
     {
-        ArtistFactory::new()
+        $artist = ArtistFactory::new()
             ->withSlug('phpunit-artist')
             ->create();
 
-        CityFactory::new()
+        $city = CityFactory::new()
             ->withSlug('phpunit-city')
             ->create();
 
-        GigFactory::new()
+        $gig = GigFactory::new()
             ->withSlug('phpunit-gig')
             ->create();
 
@@ -32,18 +32,56 @@ class LifeSlugRuleTest extends TestCase
             ->withSlug('phpunit-trip')
             ->create();
 
-        $rules = ['slug' => LifeSlug::rules($trip)];
+        $this->assertFalse(\Validator::make(
+            ['slug' => 'phpunit-artist'],
+            ['slug' => LifeSlug::rules($trip)]
+        )->passes());
+        $this->assertTrue(\Validator::make(
+            ['slug' => 'phpunit-artist-unknown'],
+            ['slug' => LifeSlug::rules($trip)]
+        )->passes());
+        $this->assertTrue(\Validator::make(
+            ['slug' => 'phpunit-artist'],
+            ['slug' => LifeSlug::rules($artist)]
+        )->passes());
 
-        $this->assertFalse(\Validator::make(['slug' => 'phpunit-artist'], $rules)->passes());
-        $this->assertTrue(\Validator::make(['slug' => 'phpunit-artist-unknown'], $rules)->passes());
+        $this->assertFalse(\Validator::make(
+            ['slug' => 'phpunit-city'],
+            ['slug' => LifeSlug::rules($trip)]
+        )->passes());
+        $this->assertTrue(\Validator::make(
+            ['slug' => 'phpunit-city-unknown'],
+            ['slug' => LifeSlug::rules($trip)]
+        )->passes());
+        $this->assertTrue(\Validator::make(
+            ['slug' => 'phpunit-city'],
+            ['slug' => LifeSlug::rules($city)]
+        )->passes());
 
-        $this->assertFalse(\Validator::make(['slug' => 'phpunit-city'], $rules)->passes());
-        $this->assertTrue(\Validator::make(['slug' => 'phpunit-city-unknown'], $rules)->passes());
+        $this->assertFalse(\Validator::make(
+            ['slug' => 'phpunit-gig'],
+            ['slug' => LifeSlug::rules($trip)]
+        )->passes());
+        $this->assertTrue(\Validator::make(
+            ['slug' => 'phpunit-gig-unknown'],
+            ['slug' => LifeSlug::rules($trip)]
+        )->passes());
+        $this->assertTrue(\Validator::make(
+            ['slug' => 'phpunit-gig'],
+            ['slug' => LifeSlug::rules($gig)]
+        )->passes());
 
-        $this->assertFalse(\Validator::make(['slug' => 'phpunit-gig'], $rules)->passes());
-        $this->assertTrue(\Validator::make(['slug' => 'phpunit-gig-unknown'], $rules)->passes());
-
-        $this->assertTrue(\Validator::make(['slug' => 'phpunit-trip'], $rules)->passes());
-        $this->assertTrue(\Validator::make(['slug' => 'phpunit-trip-unknown'], $rules)->passes());
+        $this->assertTrue(\Validator::make(
+            ['slug' => 'phpunit-trip'],
+            ['slug' => LifeSlug::rules($trip)]
+        )->passes());
+        $this->assertTrue(\Validator::make(
+            ['slug' => 'phpunit-trip-unknown'],
+            ['slug' => LifeSlug::rules($trip)]
+        )->passes());
+        $this->assertFalse(\Validator::make(
+            ['slug' => 'phpunit-trip'],
+            ['slug' => LifeSlug::rules($artist)]
+        )->passes());
     }
 }

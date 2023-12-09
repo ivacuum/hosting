@@ -7,6 +7,7 @@ use App\City;
 use App\Gig;
 use App\Trip;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Unique;
 
 class LifeSlug
 {
@@ -16,12 +17,15 @@ class LifeSlug
             'bail',
             'required',
             'string',
-            Rule::unique(Artist::class, 'slug')->ignoreModel($model),
-            Rule::unique(City::class, 'slug')->ignoreModel($model),
-            Rule::unique(Gig::class, 'slug')->ignoreModel($model),
+            Rule::unique(Artist::class, 'slug')
+                ->when($model instanceof Artist, fn (Unique $rule) => $rule->ignoreModel($model)),
+            Rule::unique(City::class, 'slug')
+                ->when($model instanceof City, fn (Unique $rule) => $rule->ignoreModel($model)),
+            Rule::unique(Gig::class, 'slug')
+                ->when($model instanceof Gig, fn (Unique $rule) => $rule->ignoreModel($model)),
             Rule::unique(Trip::class, 'slug')
                 ->where('user_id', 1)
-                ->ignoreModel($model),
+                ->when($model instanceof Trip, fn (Unique $rule) => $rule->ignoreModel($model)),
         ];
     }
 }
