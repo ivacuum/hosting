@@ -422,6 +422,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_3359.jpg'])
 
+<a id="market_curtain"></a>
 @ru
   <p>При входе на рынок обязательно нужно обтереться о шторку.</p>
 @endru

@@ -2,44 +2,44 @@
 
 @section('content')
 @ru
-  <p>Потрясающая подробность навигации на экране поезда московского метро.</p>
+  <p>Потрясающая подробность навигации на экране поезда московского метро. Состав идет со скоростью 60 км/ч.</p>
 @endru
-IMG_0923.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0923.jpg'])
 
 @ru
-  <p>Бургер Кинг прямо на вокзале.</p>
+  <p>Бургер Кинг прямо на Белорусском вокзале.</p>
 @endru
-IMG_0924.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0924.jpg'])
 
 @ru
   <p>В зале аэроэкспресса картины с локомотивами.</p>
 @endru
-IMG_0925.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0925.jpg'])
 
 @ru
-  <p>Зал ожидания аэроэкспресса.</p>
+  <p>Зал ожидания полуночного аэроэкспресса.</p>
 @endru
-IMG_0926.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0926.jpg'])
 
 @ru
   <p>Платформа аэроэкспресса на Белорусском вокзале.</p>
 @endru
-IMG_0927.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0927.jpg'])
 
 @ru
-  <p>Аэроэкспресс доставил в Шереметьево.</p>
+  <p>Аэроэкспресс доставил в Шереметьево в первом часу ночи.</p>
 @endru
-IMG_0929.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0929.jpg'])
 
 @ru
   <p>Новогоднее оформление и навигация в аэропорту.</p>
 @endru
-IMG_0930.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0930.jpg'])
 
 @ru
   <p>Еще новогоднее оформление.</p>
 @endru
-IMG_0931.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0931.jpg'])
 
 @ru
   <p>На посадку пришел настолько поздно, что за мной приехал отдельный микроавтобус с сидячими местами. Обычно в таких подвозят к самолету пассажиров бизнес-класса.</p>
@@ -48,444 +48,462 @@ IMG_0931.jpeg
 @ru
   <p>Международный аэропорт Манас.</p>
 @endru
-IMG_0933.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0933.jpg'])
 
 @ru
   <p>Парковка перед аэропортом.</p>
 @endru
-IMG_0934.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0934.jpg'])
 
 @ru
-  <p>Меню в Чайхане. За 100 российских рублей дают примерно 130 киргизских сомов, значит цены можно делить на четверть.</p>
+  <p>Меню в Чайхане. За 100 российских рублей дают примерно 130 киргизских сомов, значит цены можно делить на четверть. За обслуживание автоматически берут 15%.</p>
 @endru
-IMG_0936.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0936.jpg'])
 
 @ru
   <p>Зимние улицы.</p>
 @endru
-IMG_0935.jpeg
-IMG_0937.jpeg
-IMG_0941.jpeg
-IMG_0944.jpeg
-IMG_0963.jpeg
-IMG_0964.jpeg
-IMG_0970.jpeg
-IMG_1001.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_0935.jpg',
+  'IMG_0937.jpg',
+  'IMG_0941.jpg',
+  'IMG_0944.jpg',
+  'IMG_0963.jpg',
+  'IMG_0964.jpg',
+  'IMG_0970.jpg',
+  'IMG_1001.jpg',
+]])
 
 @ru
   <p>Здание кинотеатра.</p>
 @endru
-IMG_0945.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0945.jpg'])
 
 @ru
   <p>Гаражные пейзажи.</p>
 @endru
-IMG_0946.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0946.jpg'])
 
 @ru
   <p>Люди на остановке общественного транспорта.</p>
 @endru
-IMG_0947.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0947.jpg'])
 
 @ru
   <p>Уличный банкомат.</p>
 @endru
-IMG_0948.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0948.jpg'])
 
 @ru
   <p>Троллейбус и электрон.</p>
 @endru
-IMG_0949.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0949.jpg'])
 
 @ru
   <p>Тарелка и антенна на крыше здания. Еще можно заметить, что реклама на двух языках: киргизском и русском.</p>
 @endru
-IMG_0950.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0950.jpg'])
 
 @ru
-  <p>И не только реклама на двух языках. А солнце справа похоже на логотип икс-бокса.</p>
+  <p>Не только реклама на двух языках, но и вывески. А справа солнце государственного флага похоже на логотип икс-бокса.</p>
 @endru
-IMG_0965.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0965.jpg'])
 
 @ru
   <p>Навигация по университетам мира.</p>
 @endru
-IMG_0951.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0951.jpg'])
 
 @ru
-  <p>Здание?</p>
+  <p>Здание мэрии.</p>
 @endru
-IMG_0952.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0952.jpg'])
 
 @ru
   <p>Автобус ходит в аэропорт каждые полчаса круглые сутки.</p>
 @endru
-IMG_0953.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0953.jpg'])
 
 @ru
   <p>Здание университета.</p>
 @endru
-IMG_0954.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0954.jpg'])
 
 @ru
   <p>Ухоженные деревья.</p>
 @endru
-IMG_0955.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0955.jpg'])
 
 @ru
   <p>Снежная скамейка.</p>
 @endru
-IMG_0956.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0956.jpg'])
 
 @ru
   <p>Самокаты почему-то не убрали на зимний сезон.</p>
 @endru
-IMG_0957.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0957.jpg'])
 
 @ru
-  <p>Пленка в подземном переходе, как при входе в магазин в Будапеште.</p>
+  <p>Пленка в подземном переходе, как шторка при входе на рынок в <a class="link" href="budapest.2017.01#market_curtain">Будапеште</a>.</p>
 @endru
-IMG_0958.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0958.jpg'])
 
 @ru
   <p>Торговля в подземном переходе.</p>
 @endru
-IMG_0959.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0959.jpg'])
 
 @ru
   <p>Похоже, что слова в киргизском языке не склоняются, судя по уличной табличке. Подъем к высокой двери по кирпичам.</p>
 @endru
-IMG_0960.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0960.jpg'])
 
 @ru
-  <p>Реклама природных богатств Киргизии.</p>
+  <p>Реклама природных богатств Кыргызстана.</p>
 @endru
-IMG_0961.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0961.jpg'])
 
 @ru
   <p>Столовая.</p>
 @endru
-IMG_0962.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0962.jpg'])
 
 @ru
   <p>Найдена Московская улица.</p>
 @endru
-IMG_0966.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0966.jpg'])
 
 @ru
   <p>Уличная табличка без уличной таблички.</p>
 @endru
-IMG_0967.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0967.jpg'])
 
 @ru
   <p>Фасад здания с магазином обуви.</p>
 @endru
-IMG_0968.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0968.jpg'])
 
 @ru
   <p>Светофор с секундомером.</p>
 @endru
-IMG_0969.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0969.jpg'])
 
 @ru
   <p>Местами подмерзшая река.</p>
 @endru
-IMG_0971.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0971.jpg'])
 
 @ru
-  <p>В баржевом контейнеры неожиданно проделаны окна.</p>
+  <p>В железнодорожном контейнере неожиданно проделаны окна.</p>
 @endru
-IMG_0972.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0972.jpg'])
 
 @ru
-  <p>Контейнеры друг на друге напоминает надстройку балконов.</p>
+  <p>Контейнеры друг на друге напоминают надстройку балконов.</p>
 @endru
-IMG_0973.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0973.jpg'])
 
 @ru
   <p>Железная дорога.</p>
 @endru
-IMG_0974.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0974.jpg'])
 
 @ru
   <p>Вывеска магазина на столбе.</p>
 @endru
-IMG_0975.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0975.jpg'])
 
 @ru
   <p>Бездорожье в пустынном районе с отдельными домами.</p>
 @endru
-IMG_0976.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0976.jpg'])
 
 @ru
   <p>Грузовик с иностранным оформлением.</p>
 @endru
-IMG_0977.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0977.jpg'])
 
 @ru
   <p>В двух половинах дома разные стеклянные рамы и разные заборы. Похоже на таунхаус.</p>
 @endru
-IMG_0978.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0978.jpg'])
 
 @ru
   <p>Огромной высоты рекламный щит.</p>
 @endru
-IMG_0979.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0979.jpg'])
 
 @ru
   <p>Люди на промерзшей местами реке.</p>
 @endru
-IMG_0980.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0980.jpg'])
 
 @ru
   <p>Неожиданная траншея.</p>
 @endru
-IMG_0981.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0981.jpg'])
 
 @ru
   <p>Приближается поезд.</p>
 @endru
-IMG_0982.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0982.jpg'])
 
 @ru
   <p>Окрестности железной дороги.</p>
 @endru
-IMG_0983.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0983.jpg'])
 
 @ru
   <p>Вот и поезд.</p>
 @endru
-IMG_0984.jpeg
-IMG_0985.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_0984.jpg',
+  'IMG_0985.jpg',
+]])
 
 @ru
   <p>Ледяная металлическая скамейка.</p>
 @endru
-IMG_0988.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0988.jpg'])
 
 @ru
   <p>Автомобильные номера.</p>
 @endru
-IMG_0989.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0989.jpg'])
 
 @ru
   <p>Брендированные под рекламу Пепси остановки.</p>
 @endru
-IMG_0990.jpeg
-IMG_1013.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_0990.jpg',
+  'IMG_1013.jpg',
+]])
 
 @ru
-  <p>На остановке отсутствует информация о маршрутах. Благо есть 2Гис.</p>
+  <p>На остановке отсутствует информация о маршрутах. Благо есть 2ГИС.</p>
 @endru
-IMG_0991.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0991.jpg'])
 
 @ru
   <p>Днем и с солнцем пейзажи повеселее.</p>
 @endru
-IMG_0992.jpeg
-IMG_0993.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_0992.jpg',
+  'IMG_0993.jpg',
+]])
 
 @ru
-  <p>Здание?</p>
+  <p>Жогорку Кенеш или верховный совет.</p>
+@en
+  <p>Supreme Council.</p>
 @endru
-IMG_0994.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0994.jpg'])
 
 @ru
   <p>Дороги.</p>
 @endru
-IMG_0987.jpeg
-IMG_0995.jpeg
-IMG_0998.jpeg
-IMG_1002.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_0987.jpg',
+  'IMG_0995.jpg',
+  'IMG_0998.jpg',
+  'IMG_1002.jpg',
+]])
 
 @ru
   <p>Колесо обозрения виднеется.</p>
 @endru
-IMG_0996.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0996.jpg'])
 
 @ru
   <p>Солнечная скамейка.</p>
 @endru
-IMG_0997.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0997.jpg'])
 
 @ru
-  <p>Общественный туалет.</p>
+  <p>Общественный туалет в парке.</p>
 @endru
-IMG_0999.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_0999.jpg'])
 
 @ru
   <p>Зимние парки.</p>
 @endru
-IMG_1003.jpeg
-IMG_1004.jpeg
-IMG_1005.jpeg
-IMG_1007.jpeg
-IMG_1012.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_1003.jpg',
+  'IMG_1004.jpg',
+  'IMG_1005.jpg',
+  'IMG_1007.jpg',
+  'IMG_1012.jpg',
+]])
 
 @ru
-  <p>Скамейки с половинами в разные стороны.</p>
+  <p>Скамейки с половинами в разные стороны, чтобы можно было смотреть друг на друга.</p>
 @endru
-IMG_1006.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1006.jpg'])
 
 @ru
   <p>Еще скамейки.</p>
 @endru
-IMG_1008.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1008.jpg'])
 
 @ru
   <p>Памятник советскому артисту.</p>
 @endru
-IMG_1009.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1009.jpg'])
 
 @ru
   <p>Здание театра.</p>
 @endru
-IMG_1011.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1011.jpg'])
 
 @ru
-  <p>Самокат на парковке нет, но есть объяснение как их арендовать через приложение.</p>
+  <p>Самокатов на парковке нет, но есть объяснение как их арендовать через приложение.</p>
 @endru
-IMG_1014.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1014.jpg'])
 
 @ru
   <p>Солнечная улица.</p>
 @endru
-IMG_1015.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1015.jpg'])
 
 @ru
   <p>Парковка для инвалидов.</p>
 @endru
-IMG_1016.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1016.jpg'])
 
 @ru
   <p>Новогоднюю елку готовятся украшать.</p>
 @endru
-IMG_1018.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1018.jpg'])
 
 @ru
   <p>Важные люди.</p>
 @endru
-IMG_1019.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1019.jpg'])
 
 @ru
   <p>Между зданиями есть переход.</p>
 @endru
-IMG_1020.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1020.jpg'])
 
 @ru
   <p>Пешеходная часть центральная улица не только хорошо отдалена от проезжей части, но еще и имеет ров для водоотвода дождевой воды.</p>
 @endru
-IMG_1021.jpeg
-IMG_1022.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_1021.jpg',
+  'IMG_1022.jpg',
+]])
 
 @ru
   <p>Конвейер суши.</p>
 @endru
-IMG_1023.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1023.jpg'])
 
 @ru
   <p>Нарисованный персонаж на стене.</p>
 @endru
-IMG_1024.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1024.jpg'])
 
 @ru
   <p>Огни вечернего города.</p>
 @endru
-IMG_1025.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1025.jpg'])
 
 @ru
   <p>Завтрак в отеле. Центральное расположение позволило обойтись без транспорта.</p>
 @endru
-IMG_1026.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1026.jpg'])
 
 @ru
-  <p>Агитация пользоваться мобильным приложением.</p>
+  <p>Агитация пользоваться мобильным приложением банка.</p>
 @endru
-IMG_1027.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1027.jpg'])
 
 @ru
   <p>Банк не только рано закрывается, но еще и имеет обеденный перерыв. В разных отделениях перерыв в разное время, поэтому можно подорваться в соседнее.</p>
 @endru
-IMG_1028.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1028.jpg'])
 
 @ru
   <p>Пейзаж за окном автобуса на пути в аэропорт.</p>
 @endru
-IMG_1029.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1029.jpg'])
 
 @ru
   <p>Вход в аэропорт.</p>
 @endru
-IMG_1030.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1030.jpg'])
 
 @ru
   <p>Зона ожидания.</p>
 @endru
-IMG_1031.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1031.jpg'])
 
 @ru
   <p>Широкий ассортимент банкоматов.</p>
 @endru
-IMG_1032.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1032.jpg'])
 
 @ru
   <p>Еще зона ожидания.</p>
 @endru
-IMG_1033.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1033.jpg'])
 
 @ru
   <p>Стойки регистрации на рейс.</p>
 @endru
-IMG_1034.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1034.jpg'])
 
 @ru
   <p>Дверь вентиляционной камеры.</p>
 @endru
-IMG_1035.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1035.jpg'])
 
 @ru
   <p>Самолеты на аэродроме.</p>
 @endru
-IMG_1036.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1036.jpg'])
 
 @ru
   <p>Зона ожидания посадки в самолет.</p>
 @endru
-IMG_1037.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1037.jpg'])
 
 @ru
   <p>Самолет Аэрофлота заправляют через крыло.</p>
 @endru
-IMG_1038.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1038.jpg'])
 
 @ru
   <p>Самолет Аэрофлота в Шереметьево.</p>
 @endru
-IMG_1040.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1040.jpg'])
 
 @ru
   <p>Автоматический паспортный контроль для взрослых владельцев паспортов серии 75 и новее.</p>
 @endru
-IMG_1041.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1041.jpg'])
 
 @ru
   <p>Для растений бывает карантин.</p>
 @endru
-IMG_1042.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1042.jpg'])
 
 @ru
   <p>Ожидание прибытия аэроэкспресса.</p>
 @endru
-IMG_1043.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1043.jpg'])
 
 @ru
   <p>Грузовик почты России у вокзала в Калуге.</p>
 @endru
-IMG_1044.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1044.jpg'])
 
 @ru
   <p>Снежные калужские улицы.</p>
 @endru
-IMG_1045.jpeg
-IMG_1046.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_1045.jpg',
+  'IMG_1046.jpg',
+]])
 @endsection
