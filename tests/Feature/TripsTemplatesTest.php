@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Action\FindTripTemplatesAction;
+use App\Factory\TripFactory;
 use App\Factory\UserFactory;
 use Tests\TestCase;
 
@@ -12,6 +13,8 @@ class TripsTemplatesTest extends TestCase
     public function testTripsTemplates()
     {
         $this->be(UserFactory::new()->admin()->make());
+
+        TripFactory::new()->create();
 
         foreach (resolve(FindTripTemplatesAction::class)->execute() as $template) {
             $this->get("acp/dev/templates/{$template->getBasename('.blade.php')}")

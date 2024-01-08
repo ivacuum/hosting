@@ -74,7 +74,7 @@ jobs:
         run: |
           cp .env.ci .env
           php artisan key:generate
-          composer fresh
+          php artisan migrate:fresh
 
       - name: Run PHPUnit
         run: composer test
