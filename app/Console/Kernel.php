@@ -21,6 +21,7 @@ class Kernel extends ConsoleKernel
      * month         1-12
      * day of week   0-7 (0 or 7 is Sun)
      */
+    #[\Override]
     protected function schedule(Schedule $schedule)
     {
         $cronOutput = config('cfg.cron_output');
@@ -64,6 +65,7 @@ class Kernel extends ConsoleKernel
             ->appendOutputTo($cronOutput);
     }
 
+    #[\Override]
     protected function commands()
     {
         $this->load(__DIR__ . '/Commands');

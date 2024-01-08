@@ -18,6 +18,7 @@ class BeaconStoreForm extends FormRequest
         ];
     }
 
+    #[\Override]
     protected function passedValidation()
     {
         $this->events = $this->collect('events')
@@ -25,6 +26,7 @@ class BeaconStoreForm extends FormRequest
             ->all();
     }
 
+    #[\Override]
     protected function prepareForValidation()
     {
         try {

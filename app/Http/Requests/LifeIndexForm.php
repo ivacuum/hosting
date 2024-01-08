@@ -17,6 +17,7 @@ class LifeIndexForm extends FormRequest
         ];
     }
 
+    #[\Override]
     protected function passedValidation()
     {
         $this->to = $this->input('to');

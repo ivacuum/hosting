@@ -20,6 +20,7 @@ class PhotosMapForm extends FormRequest
         ];
     }
 
+    #[\Override]
     protected function passedValidation()
     {
         $this->tripId = $this->input('trip_id');

@@ -37,6 +37,7 @@ class NewsShowForm extends FormRequest
         return $this->news === null;
     }
 
+    #[\Override]
     protected function passedValidation()
     {
         $this->news = News::find($this->route('id'));

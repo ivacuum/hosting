@@ -19,6 +19,7 @@ class MagnetRequestReleaseForm extends FormRequest
         ];
     }
 
+    #[\Override]
     protected function passedValidation()
     {
         $this->q = $this->input('query');

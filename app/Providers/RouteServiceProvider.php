@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\RateLimiter;
 
 class RouteServiceProvider extends ServiceProvider
 {
+    #[\Override]
     public function boot()
     {
         $this->configureRateLimiting();

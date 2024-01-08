@@ -29,6 +29,7 @@ class MySettingsUpdateForm extends FormRequest
         ];
     }
 
+    #[\Override]
     protected function passedValidation()
     {
         $this->user = $this->user();

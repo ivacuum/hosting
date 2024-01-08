@@ -15,6 +15,7 @@ use Ivacuum\Generic\Commands\SitemapBuild as BaseSitemapBuild;
 
 class SitemapBuild extends BaseSitemapBuild
 {
+    #[\Override]
     protected function pages()
     {
         $this->page('');

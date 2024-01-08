@@ -12,6 +12,7 @@ class Polygon extends Geometry implements \Stringable
         $this->items = $items;
     }
 
+    #[\Override]
     public function __toString(): string
     {
         return implode(
@@ -20,6 +21,7 @@ class Polygon extends Geometry implements \Stringable
         );
     }
 
+    #[\Override]
     public static function fromString(string $wktArgument, int $srid = 4326)
     {
         $str = preg_split('/\)\s*,\s*\(/', substr(trim($wktArgument), 1, -1));
@@ -28,6 +30,7 @@ class Polygon extends Geometry implements \Stringable
         return new static($srid, ...$lineStrings);
     }
 
+    #[\Override]
     public function jsonSerialize(): array
     {
         return [
@@ -38,6 +41,7 @@ class Polygon extends Geometry implements \Stringable
         ];
     }
 
+    #[\Override]
     public function toWkt(): string
     {
         return sprintf('POLYGON(%s)', $this->__toString());

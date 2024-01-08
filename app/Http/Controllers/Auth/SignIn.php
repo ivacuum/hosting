@@ -9,6 +9,7 @@ class SignIn extends BaseSignIn
 {
     protected $remember = true;
 
+    #[\Override]
     protected function attemptLogin(Request $request)
     {
         $credentials = $this->credentials($request);
@@ -34,6 +35,7 @@ class SignIn extends BaseSignIn
         return false;
     }
 
+    #[\Override]
     protected function attemptLoginCustom(Request $request)
     {
         $this->username = 'login';
@@ -41,6 +43,7 @@ class SignIn extends BaseSignIn
         return $this->attemptLogin($request);
     }
 
+    #[\Override]
     protected function loginCustomOkCallback()
     {
         event(new \App\Events\Stats\UserSignedInWithUsername);

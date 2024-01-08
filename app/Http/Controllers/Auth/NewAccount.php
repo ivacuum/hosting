@@ -7,6 +7,7 @@ use Ivacuum\Generic\Controllers\Auth\NewAccount as BaseNewAccount;
 
 class NewAccount extends BaseNewAccount
 {
+    #[\Override]
     protected function registeredResponse(User $user)
     {
         $user->activate();

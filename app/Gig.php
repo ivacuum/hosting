@@ -143,6 +143,7 @@ class Gig extends Model
         return path_locale([Http\Controllers\LifeController::class, 'page'], $this->slug, false, $locale);
     }
 
+    #[\Override]
     protected function serializeDate(\DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');

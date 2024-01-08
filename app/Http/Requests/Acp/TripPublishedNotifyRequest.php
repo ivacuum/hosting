@@ -16,6 +16,7 @@ class TripPublishedNotifyRequest extends FormRequest
         ];
     }
 
+    #[\Override]
     protected function passedValidation()
     {
         $this->date = CarbonImmutable::make($this->input('date'));

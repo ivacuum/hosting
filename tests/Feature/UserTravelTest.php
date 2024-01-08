@@ -11,7 +11,7 @@ class UserTravelTest extends TestCase
 {
     use DatabaseTransactions;
 
-    private const LOGIN = '_test-user5';
+    private const string LOGIN = '_test-user5';
 
     public function testCitiesIndex()
     {

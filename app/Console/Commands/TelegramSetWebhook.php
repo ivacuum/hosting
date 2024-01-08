@@ -11,7 +11,7 @@ class TelegramSetWebhook extends Command
     protected $signature = 'telegram:set-webhook {host?} {--secret}';
     protected $description = 'Set webhook address';
 
-    public function handle(TelegramClient $telegram)
+    public function handle(TelegramClient $telegram): never
     {
         $secretToken = $this->option('secret')
             ? \Str::random()

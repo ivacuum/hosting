@@ -17,6 +17,7 @@ class MagnetsIndexForm extends FormRequest
         return [];
     }
 
+    #[\Override]
     protected function passedValidation()
     {
         $this->searchQuery = mb_strlen($this->input('q', '')) > 1

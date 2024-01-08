@@ -21,6 +21,7 @@ class PhotoShowForm extends FormRequest
         return [];
     }
 
+    #[\Override]
     protected function passedValidation()
     {
         $this->tagId = $this->input('tag_id');

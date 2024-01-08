@@ -19,6 +19,7 @@ class TelegramWebhook extends FormRequest
         return [];
     }
 
+    #[\Override]
     protected function passedValidation()
     {
         $this->chatId = $this->json('message.chat.id')

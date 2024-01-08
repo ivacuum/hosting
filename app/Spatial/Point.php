@@ -11,6 +11,7 @@ class Point extends Geometry implements \Stringable
     ) {
     }
 
+    #[\Override]
     public function __toString(): string
     {
         return "{$this->lon} {$this->lat}";
@@ -23,11 +24,13 @@ class Point extends Geometry implements \Stringable
         return new static($lat, $lon, $srid);
     }
 
+    #[\Override]
     public static function fromString(string $wktArgument, int $srid = 4326)
     {
         return static::fromPair($wktArgument, $srid);
     }
 
+    #[\Override]
     public function jsonSerialize(): array
     {
         return [
@@ -40,6 +43,7 @@ class Point extends Geometry implements \Stringable
         return "{$this->lon} {$this->lat}";
     }
 
+    #[\Override]
     public function toWkt(): string
     {
         return sprintf('POINT(%s)', $this->__toString());

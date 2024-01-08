@@ -14,11 +14,13 @@ class LineString extends Geometry implements \Stringable
         $this->items = $items;
     }
 
+    #[\Override]
     public function __toString(): string
     {
         return $this->toPairList();
     }
 
+    #[\Override]
     public static function fromString(string $wktArgument, int $srid = 4326)
     {
         $pairs = explode(',', trim($wktArgument));
@@ -27,6 +29,7 @@ class LineString extends Geometry implements \Stringable
         return new static($srid, ...$points);
     }
 
+    #[\Override]
     public function jsonSerialize(): array
     {
         return [
@@ -41,6 +44,7 @@ class LineString extends Geometry implements \Stringable
         return implode(',', array_map(fn (Point $point) => $point->toPair(), $this->items));
     }
 
+    #[\Override]
     public function toWkt(): string
     {
         return sprintf('LINESTRING(%s)', $this->__toString());

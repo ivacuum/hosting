@@ -8,6 +8,7 @@ use Illuminate\Database\Query\Expression;
 
 class SpatialExpression extends Expression
 {
+    #[\Override]
     public function getValue(Grammar $grammar)
     {
         if (!$this->value instanceof GeometryInterface) {

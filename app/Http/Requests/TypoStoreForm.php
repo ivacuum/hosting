@@ -21,6 +21,7 @@ class TypoStoreForm extends FormRequest
         ];
     }
 
+    #[\Override]
     protected function passedValidation()
     {
         $this->page = $this->session()->previousUrl();

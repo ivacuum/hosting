@@ -43,6 +43,7 @@ class ResizeImageForm extends FormRequest
         ];
     }
 
+    #[\Override]
     protected function failedValidation(Validator $validator)
     {
         if ($validator->failed()['extension']) {
@@ -52,6 +53,7 @@ class ResizeImageForm extends FormRequest
         parent::failedValidation($validator);
     }
 
+    #[\Override]
     protected function passedValidation()
     {
         $this->image = $this->input('image');
@@ -65,6 +67,7 @@ class ResizeImageForm extends FormRequest
         abort_unless($this->extension, 422);
     }
 
+    #[\Override]
     protected function prepareForValidation()
     {
         abort_unless($this->input('image'), 404);

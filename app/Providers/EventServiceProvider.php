@@ -16,6 +16,7 @@ class EventServiceProvider extends ServiceProvider
         ],
     ];
 
+    #[\Override]
     public function shouldDiscoverEvents()
     {
         return true;

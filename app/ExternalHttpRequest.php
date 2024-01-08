@@ -60,6 +60,7 @@ class ExternalHttpRequest extends Model
             ->where('created_at', '<', now()->subWeeks(2));
     }
 
+    #[\Override]
     protected function asJson($value)
     {
         return json_encode($value, JSON_UNESCAPED_UNICODE);

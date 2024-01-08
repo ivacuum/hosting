@@ -11,6 +11,7 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class Handler extends ExceptionHandler
 {
+    #[\Override]
     public function register()
     {
         $this->reportable(app(SkipDatabaseOffline::class));
@@ -29,11 +30,13 @@ class Handler extends ExceptionHandler
         });
     }
 
+    #[\Override]
     protected function throttle(\Throwable $e)
     {
         return Limit::perDay(50);
     }
 
+    #[\Override]
     protected function unauthenticated($request, AuthenticationException $exception)
     {
         return $request->expectsJson()

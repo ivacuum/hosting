@@ -31,6 +31,7 @@ class MyPasswordUpdateForm extends FormRequest
         return !empty($this->user->password);
     }
 
+    #[\Override]
     protected function passedValidation()
     {
         $this->user = $this->user();

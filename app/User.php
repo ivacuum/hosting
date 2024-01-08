@@ -230,6 +230,7 @@ class User extends Authenticatable implements HasLocalePreference
         return $this->login ?: "user #{$this->id}";
     }
 
+    #[\Override]
     public function sendPasswordResetNotification($token): void
     {
         \Mail::to($this)->send(new Mail\ResetPasswordMail($token));
