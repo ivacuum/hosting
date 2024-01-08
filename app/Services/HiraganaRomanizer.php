@@ -4,7 +4,7 @@ namespace App\Services;
 
 class HiraganaRomanizer
 {
-    public const DICTIONARY = [
+    public const array DICTIONARY = [
         'あ' => 'a',
         'か' => 'ka',
         'さ' => 'sa',

@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 
 class TagSeeder extends Seeder
 {
-    private const TAGS = [
+    private const array TAGS = [
         ['title_ru' => 'закат', 'title_en' => 'sunset'],
         ['title_ru' => 'железная дорога', 'title_en' => 'railroad'],
         ['title_ru' => 'вокзал', 'title_en' => 'railway terminal'],

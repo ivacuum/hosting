@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 
 class FileSeeder extends Seeder
 {
-    private const COUNT = 5;
+    private const int COUNT = 5;
 
     public function run()
     {

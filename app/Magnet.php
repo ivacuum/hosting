@@ -42,7 +42,7 @@ class Magnet extends Model
     use Notifiable;
     use Searchable;
 
-    public const LIST_COLUMNS = [
+    public const array LIST_COLUMNS = [
         'id',
         'category_id',
         'rto_id',

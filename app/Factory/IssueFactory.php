@@ -8,7 +8,7 @@ use App\User;
 
 class IssueFactory
 {
-    private const PAGES = [
+    private const array PAGES = [
         '/',
         '/about',
         '/life/kaluga',

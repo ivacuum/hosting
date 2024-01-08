@@ -7,10 +7,10 @@ use Ivacuum\Generic\Services\ImageConverter;
 
 class Avatar
 {
-    private const WIDTH = 200;
-    private const HEIGHT = 200;
-    private const FILTER = 'triangle';
-    private const QUALITY = 75;
+    private const int WIDTH = 200;
+    private const int HEIGHT = 200;
+    private const string FILTER = 'triangle';
+    private const int QUALITY = 75;
 
     public function delete($filename): bool
     {

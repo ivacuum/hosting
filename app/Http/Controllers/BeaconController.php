@@ -8,7 +8,7 @@ use App\Http\Requests\BeaconStoreForm;
 
 class BeaconController
 {
-    private const METRICS = [
+    private const array METRICS = [
         Stats\NumberSpoken::class,
         Stats\HiraganaAnswered::class,
         Stats\HiraganaSelected::class,

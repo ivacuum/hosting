@@ -9,7 +9,7 @@ use Ivacuum\Generic\Telegram\TelegramClient;
 class TelegramDeleteMyCommands extends Command
 {
     /** @var array<LanguageCode> */
-    private const LANGUAGE_CODES = [
+    private const array LANGUAGE_CODES = [
         LanguageCode::English,
         LanguageCode::Russian,
     ];

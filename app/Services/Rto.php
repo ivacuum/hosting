@@ -7,8 +7,8 @@ use Illuminate\Http\Client\Factory;
 
 class Rto
 {
-    private const API_ENDPOINT = 'https://api.rutracker.cc/v1/';
-    private const SITE_ENDPOINT = 'https://rutracker.org/forum/';
+    private const string API_ENDPOINT = 'https://api.rutracker.cc/v1/';
+    private const string SITE_ENDPOINT = 'https://rutracker.org/forum/';
 
     public function __construct(private Factory $http)
     {

@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class CountryHelper
 {
-    private const CACHED_FIELDS = [
+    private const array CACHED_FIELDS = [
         'id',
         'title_ru',
         'title_en',

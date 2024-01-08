@@ -4,7 +4,7 @@ namespace App;
 
 class SearchSynonym
 {
-    private const SYNONYMS_TO_ADD = [
+    private const array SYNONYMS_TO_ADD = [
         'word|excel|power point' => 'office',
         'gta|гта' => 'grand theft auto',
         'nfs|нфс' => 'need for speed',
@@ -15,7 +15,7 @@ class SearchSynonym
         'фифа' => 'fifa',
     ];
 
-    private const SYNONYMS_TO_REPLACE = [
+    private const array SYNONYMS_TO_REPLACE = [
         'к?с[ия]оми|xiaomi' => 'ксиоми|ксяоми|сиоми|сяоми|xiaomi',
     ];
 

@@ -7,7 +7,7 @@ use Illuminate\Http\Client\PendingRequest;
 
 class Vk
 {
-    public const API_ENDPOINT = 'https://api.vk.com/method/';
+    public const string API_ENDPOINT = 'https://api.vk.com/method/';
 
     protected PendingRequest $http;
     protected $version = '5.131';

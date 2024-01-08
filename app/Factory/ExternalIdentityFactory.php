@@ -6,7 +6,7 @@ use App\ExternalIdentity;
 
 class ExternalIdentityFactory
 {
-    private const PROVIDERS = [
+    private const array PROVIDERS = [
         ExternalIdentity::VK,
         ExternalIdentity::GITHUB,
         ExternalIdentity::GOOGLE,

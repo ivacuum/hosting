@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 
 class DcppHubSeeder extends Seeder
 {
-    private const COUNT = 3;
+    private const int COUNT = 3;
 
     public function run()
     {

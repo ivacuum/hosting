@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 
 class CountrySeeder extends Seeder
 {
-    private const COUNTRIES = [
+    private const array COUNTRIES = [
         ['slug' => 'russia', 'title_ru' => 'Россия', 'title_en' => 'Russia', 'emoji' => '🇷🇺'],
         ['slug' => 'argentina', 'title_ru' => 'Аргентина', 'title_en' => 'Argentina', 'emoji' => '🇦🇷'],
         ['slug' => 'austria', 'title_ru' => 'Австрия', 'title_en' => 'Austria', 'emoji' => '🇦🇹'],
