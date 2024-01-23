@@ -10,6 +10,7 @@ use Carbon\CarbonInterface;
 class UserFactory
 {
     private int|null $id = null;
+    private int|null $magnetShortTitle = 0;
     private string $login = '';
     private string|null $email = null;
     private string|null $password = null;
@@ -49,6 +50,7 @@ class UserFactory
         $model->locale = $this->locale->value;
         $model->status = $this->status->value;
         $model->last_login_at = $this->lastLoginAt;
+        $model->magnet_short_title = $this->magnetShortTitle;
 
         if ($this->password) {
             $model->password = $this->password;
