@@ -10,6 +10,7 @@ class PhotoPointCollectionResponse implements \JsonSerializable
     {
     }
 
+    #[\Override]
     public function jsonSerialize(): array
     {
         return [

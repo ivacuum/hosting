@@ -15,6 +15,7 @@ class CachedResponse implements \JsonSerializable
         return new self($response);
     }
 
+    #[\Override]
     public function jsonSerialize(): array
     {
         return [

@@ -20,6 +20,7 @@ abstract class Geometry implements \JsonSerializable, GeometryInterface, Jsonabl
         return $parser->parse($wkb);
     }
 
+    #[\Override]
     public static function fromWkt(string $wkt, int $srid = 4326)
     {
         $wktArgument = static::getWktArgument($wkt);
@@ -35,6 +36,7 @@ abstract class Geometry implements \JsonSerializable, GeometryInterface, Jsonabl
         return substr($value, $left + 1, $right - $left - 1);
     }
 
+    #[\Override]
     public function toJson($options = 0)
     {
         return json_encode($this, $options);

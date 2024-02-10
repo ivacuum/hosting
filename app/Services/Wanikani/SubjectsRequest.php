@@ -10,11 +10,13 @@ class SubjectsRequest implements HttpRequest
     {
     }
 
+    #[\Override]
     public function endpoint(): string
     {
         return 'subjects';
     }
 
+    #[\Override]
     public function jsonSerialize(): array
     {
         return [

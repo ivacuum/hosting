@@ -45,10 +45,10 @@ class TripStatsCalculatorTest extends TestCase
         $trips = new Collection([$trip1, $trip2, $trip3]);
         $stats = new TripStatsCalculator($trips);
 
-        $this->assertEquals([
-            2015 => 32,
-            2016 => 1,
+        $this->assertSame([
             2017 => 1,
+            2016 => 1,
+            2015 => 32,
         ], $stats->daysInTrips()->toArray());
 
         $this->assertEquals($trip1->date_start, $stats->firstDate());

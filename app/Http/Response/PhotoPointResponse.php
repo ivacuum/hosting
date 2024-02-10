@@ -10,6 +10,7 @@ class PhotoPointResponse implements \JsonSerializable
     {
     }
 
+    #[\Override]
     public function jsonSerialize(): array
     {
         $basename = basename($this->photo->slug);

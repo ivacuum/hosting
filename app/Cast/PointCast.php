@@ -8,6 +8,7 @@ use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 
 class PointCast implements CastsAttributes
 {
+    #[\Override]
     public function get($model, string $key, $value, array $attributes)
     {
         if (is_string($value) && strlen($value) >= 13) {
@@ -17,6 +18,7 @@ class PointCast implements CastsAttributes
         return $value;
     }
 
+    #[\Override]
     public function set($model, string $key, $value, array $attributes)
     {
         if ($value === null) {

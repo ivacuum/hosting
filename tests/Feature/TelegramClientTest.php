@@ -58,10 +58,10 @@ class TelegramClientTest extends TestCase
             ->chat(12345)
             ->sendMessage('Some info to notify about');
 
-        $this->assertEquals([
-            'method' => 'sendMessage',
+        $this->assertSame([
             'text' => 'Some info to notify about',
             'chat_id' => 12345,
+            'method' => 'sendMessage',
         ], $response);
 
         $this->assertArrayNotHasKey('reply_markup', $response);
