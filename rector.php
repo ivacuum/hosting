@@ -4,15 +4,19 @@ declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
 
-return static function (RectorConfig $rectorConfig): void {
-    $rectorConfig->sets([
-        Rector\Set\ValueObject\SetList::DEAD_CODE,
-        Rector\Set\ValueObject\LevelSetList::UP_TO_PHP_83,
-        // Rector\Laravel\Set\LaravelSetList::LARAVEL_90,
-        Rector\PHPUnit\Set\PHPUnitLevelSetList::UP_TO_PHPUNIT_100,
-    ]);
-
-    $rectorConfig->skip([
+return RectorConfig::configure()
+    ->withPreparedSets(deadCode: true)
+    ->withAttributesSets(phpunit: true)
+    ->withPhpSets()
+    ->withSets([
+        Rector\PHPUnit\Set\PHPUnitSetList::PHPUNIT_100,
+        Rector\PHPUnit\Set\PHPUnitSetList::PHPUNIT_CODE_QUALITY,
+    ])
+    ->withPaths([
+        __DIR__ . '/app',
+        __DIR__ . '/tests',
+    ])
+    ->withSkip([
         Rector\Php55\Rector\String_\StringClassNameToClassConstantRector::class,
         Rector\Php74\Rector\Closure\ClosureToArrowFunctionRector::class,
         Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector::class,
@@ -21,4 +25,3 @@ return static function (RectorConfig $rectorConfig): void {
         Rector\Php81\Rector\FuncCall\NullToStrictStringFuncCallArgRector::class,
         Rector\Php81\Rector\Array_\FirstClassCallableRector::class,
     ]);
-};

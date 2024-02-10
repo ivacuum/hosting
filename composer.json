@@ -66,7 +66,7 @@
       "@php artisan ide-helper:meta"
     ],
     "queue": "@php artisan queue:work --stop-when-empty --ansi",
-    "rector": "vendor/bin/rector process app tests --dry-run",
+    "rector": "vendor/bin/rector process --dry-run",
     "share": "expose",
     "test": "@php artisan test --parallel",
     "test-linear": "vendor/bin/phpunit --colors=always",
