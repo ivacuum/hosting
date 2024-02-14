@@ -2,7 +2,9 @@
 
 namespace App;
 
+use App\Observers\TagObserver;
 use App\Scope\PhotoPublishedScope;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -20,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @mixin \Eloquent
  */
+#[ObservedBy(TagObserver::class)]
 class Tag extends Model
 {
     use Traits\HasLocalizedTitle;

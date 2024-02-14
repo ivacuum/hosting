@@ -4,7 +4,9 @@ namespace App;
 
 use App\Cast\VocabularyAudioCast;
 use App\Domain\VocabularyAudio;
+use App\Observers\VocabularyObserver;
 use App\Services\HiraganaRomanizer;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -23,6 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @mixin \Eloquent
  */
+#[ObservedBy(VocabularyObserver::class)]
 class Vocabulary extends Model
 {
     protected $perPage = 50;

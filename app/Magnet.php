@@ -8,7 +8,9 @@ use App\Action\FormatMagnetDateAction;
 use App\Domain\CommentStatus;
 use App\Domain\MagnetCategory;
 use App\Domain\MagnetStatus;
+use App\Observers\MagnetObserver;
 use App\Scope\MagnetPublishedScope;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Scout\Searchable;
@@ -37,6 +39,7 @@ use Laravel\Scout\Searchable;
  *
  * @mixin \Eloquent
  */
+#[ObservedBy(MagnetObserver::class)]
 class Magnet extends Model
 {
     use Notifiable;

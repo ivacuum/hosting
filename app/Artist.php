@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Observers\ArtistObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -13,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @mixin \Eloquent
  */
+#[ObservedBy(ArtistObserver::class)]
 class Artist extends Model
 {
     // Relations

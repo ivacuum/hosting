@@ -4,7 +4,9 @@ namespace App;
 
 use App\Action\FormatCommentDateAction;
 use App\Domain\CommentStatus;
+use App\Observers\CommentObserver;
 use App\Scope\CommentRelationScope;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -21,6 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @mixin \Eloquent
  */
+#[ObservedBy(CommentObserver::class)]
 class Comment extends Model
 {
     protected $perPage = 20;

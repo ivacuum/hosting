@@ -5,7 +5,9 @@ namespace App;
 use App\Domain\CommentStatus;
 use App\Domain\Locale;
 use App\Domain\NewsStatus;
+use App\Observers\NewsObserver;
 use Carbon\CarbonImmutable;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use League\CommonMark\CommonMarkConverter;
@@ -28,6 +30,7 @@ use League\CommonMark\CommonMarkConverter;
  *
  * @mixin \Eloquent
  */
+#[ObservedBy(NewsObserver::class)]
 class News extends Model
 {
     protected $casts = [

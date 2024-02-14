@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Observers\CityObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -23,6 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @mixin \Eloquent
  */
+#[ObservedBy(CityObserver::class)]
 class City extends Model
 {
     use Traits\HasLocalizedTitle;

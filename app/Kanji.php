@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Observers\KanjiObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -24,6 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @mixin \Eloquent
  */
+#[ObservedBy(KanjiObserver::class)]
 class Kanji extends Model
 {
     protected $perPage = 50;

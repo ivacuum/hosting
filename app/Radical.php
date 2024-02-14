@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Observers\RadicalObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -18,6 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @mixin \Eloquent
  */
+#[ObservedBy(RadicalObserver::class)]
 class Radical extends Model
 {
     protected $perPage = 50;

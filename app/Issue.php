@@ -4,6 +4,8 @@ namespace App;
 
 use App\Domain\CommentStatus;
 use App\Domain\IssueStatus;
+use App\Observers\IssueObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
@@ -25,6 +27,7 @@ use Illuminate\Notifications\Notifiable;
  *
  * @mixin \Eloquent
  */
+#[ObservedBy(IssueObserver::class)]
 class Issue extends Model
 {
     use Notifiable;

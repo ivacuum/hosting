@@ -3,6 +3,8 @@
 namespace App;
 
 use App\Domain\PhotoStatus;
+use App\Observers\PhotoObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
@@ -23,6 +25,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  *
  * @mixin \Eloquent
  */
+#[ObservedBy(PhotoObserver::class)]
 class Photo extends Model
 {
     protected $perPage = 50;

@@ -3,7 +3,9 @@
 namespace App;
 
 use App\Domain\GigStatus;
+use App\Observers\GigObserver;
 use Carbon\CarbonInterface;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 
@@ -32,6 +34,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @mixin \Eloquent
  */
+#[ObservedBy(GigObserver::class)]
 class Gig extends Model
 {
     use Traits\HasLocalizedTitle;

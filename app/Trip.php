@@ -6,7 +6,9 @@ use App\Action\FormatTripPeriodAction;
 use App\Action\FormatTripPeriodWithYearAction;
 use App\Domain\CommentStatus;
 use App\Domain\TripStatus;
+use App\Observers\TripObserver;
 use Carbon\CarbonInterface;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Ivacuum\Generic\Utilities\TextImagesParser;
@@ -46,6 +48,7 @@ use League\CommonMark\CommonMarkConverter;
  *
  * @mixin \Eloquent
  */
+#[ObservedBy(TripObserver::class)]
 class Trip extends Model
 {
     use Traits\HasLocalizedTitle;

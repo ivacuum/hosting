@@ -3,6 +3,8 @@
 namespace App;
 
 use App\Action\GetTripCountByCitiesAction;
+use App\Observers\CountryObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -23,6 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @mixin \Eloquent
  */
+#[ObservedBy(CountryObserver::class)]
 class Country extends Model
 {
     use Traits\HasLocalizedTitle;
