@@ -44,16 +44,16 @@ class Image extends Model
         return "#{$this->id}";
     }
 
-    public function deleteFiles()
+    public function deleteFiles(): bool
     {
         return \Storage::disk('gallery')->delete([
-            "{$this->splittedDate()}/s/{$this->slug}",
-            "{$this->splittedDate()}/t/{$this->slug}",
-            "{$this->splittedDate()}/{$this->slug}",
+            "{$this->splitDate()}/s/{$this->slug}",
+            "{$this->splitDate()}/t/{$this->slug}",
+            "{$this->splitDate()}/{$this->slug}",
         ]);
     }
 
-    public static function newFromFile(UploadedFile $file, $userId)
+    public static function newFromFile(UploadedFile $file, $userId): self
     {
         $model = new self;
         $model->date = date('ymd');
@@ -69,17 +69,17 @@ class Image extends Model
     {
         $date = \App::isProduction()
             ? $this->date
-            : $this->splittedDate();
+            : $this->splitDate();
 
         return \Storage::disk('gallery')->url("{$date}/{$this->slug}");
     }
 
     public function originalSecretUrl(): string
     {
-        return \Storage::disk('gallery-raw')->url("{$this->splittedDate()}/{$this->slug}");
+        return \Storage::disk('gallery-raw')->url("{$this->splitDate()}/{$this->slug}");
     }
 
-    public function resize(UploadedFile $file, $newWidth, $newHeight)
+    public function resize(UploadedFile $file, $newWidth, $newHeight): UploadedFile
     {
         $source = $file->getRealPath();
 
@@ -97,14 +97,14 @@ class Image extends Model
         return $this->convert($source, $newWidth, $newHeight);
     }
 
-    public function siteThumbnail(UploadedFile $file)
+    public function siteThumbnail(UploadedFile $file): string|false
     {
         $thumbnail = $this->resize($file, 150, 150);
 
-        return \Storage::disk('gallery')->putFileAs("{$this->splittedDate()}/t", $thumbnail, $this->slug);
+        return \Storage::disk('gallery')->putFileAs("{$this->splitDate()}/t", $thumbnail, $this->slug);
     }
 
-    public function splittedDate(): string
+    public function splitDate(): string
     {
         return implode('/', str_split($this->date, 2));
     }
@@ -113,26 +113,26 @@ class Image extends Model
     {
         $date = \App::isProduction()
             ? $this->date
-            : $this->splittedDate();
+            : $this->splitDate();
 
         return \Storage::disk('gallery')->url("{$date}/t/{$this->slug}");
     }
 
     public function thumbnailSecretUrl(): string
     {
-        return \Storage::disk('gallery-raw')->url("{$this->splittedDate()}/t/{$this->slug}");
+        return \Storage::disk('gallery-raw')->url("{$this->splitDate()}/t/{$this->slug}");
     }
 
-    public function upload(UploadedFile $file)
+    public function upload(UploadedFile $file): string|false
     {
         $newFile = $this->resize($file, 2000, 2000);
 
         $this->size = $newFile->getSize();
 
-        return \Storage::disk('gallery')->putFileAs($this->splittedDate(), $newFile, $this->slug);
+        return \Storage::disk('gallery')->putFileAs($this->splitDate(), $newFile, $this->slug);
     }
 
-    private function convert($source, $width, $height)
+    private function convert($source, $width, $height): UploadedFile
     {
         return (new ImageConverter)
             ->autoOrient()
@@ -142,7 +142,7 @@ class Image extends Model
             ->convert($source);
     }
 
-    private function convertSmallSource($source)
+    private function convertSmallSource($source): UploadedFile
     {
         return (new ImageConverter)
             ->autoOrient()
@@ -150,7 +150,7 @@ class Image extends Model
             ->convert($source);
     }
 
-    private function gifFirstFrame($source, $width, $height)
+    private function gifFirstFrame($source, $width, $height): UploadedFile
     {
         return (new ImageConverter)
             ->firstFrame()
