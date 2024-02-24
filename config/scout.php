@@ -19,6 +19,8 @@ return [
         'index-settings' => [
             App\Magnet::class => [
                 'filterableAttributes' => ['id', 'category_id'],
+                // 'displayedAttributes' => ['*'],
+                // 'searchableAttributes' => ['*'],
             ],
         ],
     ],
