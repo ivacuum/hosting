@@ -6,6 +6,7 @@ use App\Domain\CacheKey;
 use App\Magnet;
 use App\Scope\MagnetPublishedScope;
 use Illuminate\Cache\Repository;
+use Illuminate\Support\Collection;
 
 class CountMagnetsByCategoriesAction
 {
@@ -13,7 +14,7 @@ class CountMagnetsByCategoriesAction
     {
     }
 
-    public function execute()
+    public function execute(): Collection
     {
         return $this->cache->remember(
             CacheKey::MagnetStatsByCategories->value,

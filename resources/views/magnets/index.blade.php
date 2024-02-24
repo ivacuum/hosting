@@ -15,18 +15,18 @@
             @endif
           </h4>
           @if (!empty($category['children']))
-            @foreach ($category['children'] as $id => $child)
-              @continue (empty($stats[$id]))
+            @foreach ($category['children'] as $childId => $child)
+              @continue (empty($stats[$childId]))
               <div class="whitespace-nowrap">
-                @if (!empty($categoryId) && $id == $categoryId)
+                @if (!empty($categoryId) && $childId == $categoryId)
                   <mark>{{ $child['title'] }}</mark>
                 @else
                   <a
                     class="visited"
-                    href="{{ to('magnets', ['category_id' => $id]) }}"
+                    href="{{ to('magnets', ['category_id' => $childId, 'q' => $q]) }}"
                   >{{ $child['title'] }}</a>
                 @endif
-                <span class="text-muted text-xs">{{ $stats[$id] }}</span>
+                <span class="text-muted text-xs">{{ $stats[$childId] }}</span>
               </div>
             @endforeach
           @endif

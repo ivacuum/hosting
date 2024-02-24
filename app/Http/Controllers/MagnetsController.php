@@ -17,8 +17,11 @@ use Illuminate\Database\Eloquent\Builder;
 
 class MagnetsController
 {
-    public function index(MagnetsIndexForm $request, SearchForMagnetIdsAction $searchForMagnetIds)
-    {
+    public function index(
+        MagnetsIndexForm $request,
+        SearchForMagnetIdsAction $searchForMagnetIds,
+        CountMagnetsByCategoriesAction $countMagnetsByCategories,
+    ) {
         $magnets = Magnet::query();
 
         if ($request->searchQuery) {
@@ -38,7 +41,7 @@ class MagnetsController
         return view('magnets.index', [
             'q' => $request->searchQuery,
             'tree' => \TorrentCategoryHelper::tree(),
-            'stats' => resolve(CountMagnetsByCategoriesAction::class)->execute(),
+            'stats' => $countMagnetsByCategories->execute(),
             'magnets' => $magnets,
             'fulltext' => $request->isFulltextSearch,
             'categoryId' => $request->categoryId,
