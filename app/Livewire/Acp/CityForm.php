@@ -46,8 +46,8 @@ class CityForm extends Component
         if ($this->id) {
             $city = City::findOrFail($this->id);
 
-            $this->lat = $city->point->lat;
-            $this->lon = $city->point->lon;
+            $this->lat = $city->point?->lat;
+            $this->lon = $city->point?->lon;
             $this->iata = $city->iata;
             $this->slug = $city->slug;
             $this->titleEn = $city->title_en;
