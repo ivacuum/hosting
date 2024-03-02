@@ -9,7 +9,7 @@ use App\Livewire\WithArtistIds;
 use App\Livewire\WithCityIds;
 use App\Livewire\WithGoto;
 use App\Rules\LifeSlug;
-use Carbon\CarbonInterface;
+use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
@@ -39,7 +39,7 @@ class GigForm extends Component
     public string|null $metaDescriptionEn = '';
     public string|null $metaDescriptionRu = '';
     public GigStatus|string|null $status = GigStatus::Published;
-    public CarbonInterface|string|null $date = '';
+    public CarbonImmutable|string|null $date = '';
 
     public function mount()
     {

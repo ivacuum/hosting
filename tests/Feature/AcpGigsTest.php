@@ -54,6 +54,7 @@ class AcpGigsTest extends TestCase
         \Livewire::test(GigForm::class)
             ->set('cityId', $gig->city_id)
             ->set('artistId', $gig->artist_id)
+            ->set('date', '2024-03-01T00:00')
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/gigs');

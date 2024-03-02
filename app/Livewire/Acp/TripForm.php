@@ -8,7 +8,7 @@ use App\Livewire\WithCityIds;
 use App\Livewire\WithGoto;
 use App\Rules\LifeSlug;
 use App\Trip;
-use Carbon\CarbonInterface;
+use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Enum;
@@ -34,8 +34,8 @@ class TripForm extends Component
     public string|null $metaDescriptionEn = '';
     public string|null $metaDescriptionRu = '';
     public TripStatus|string|null $status = TripStatus::Published;
-    public CarbonInterface|string|null $dateEnd = '';
-    public CarbonInterface|string|null $dateStart = '';
+    public CarbonImmutable|string|null $dateEnd = '';
+    public CarbonImmutable|string|null $dateStart = '';
 
     public function metaImageSrc()
     {

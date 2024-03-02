@@ -51,6 +51,8 @@ class AcpTripsTest extends TestCase
 
         \Livewire::test(TripForm::class)
             ->set('cityId', $trip->city_id)
+            ->set('dateStart', '2024-03-01T00:00')
+            ->set('dateEnd', '2024-03-03T00:00')
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/trips');
