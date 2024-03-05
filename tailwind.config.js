@@ -101,6 +101,7 @@ module.exports = {
       },
       fontFamily: {
         sans: [
+          'InterVariable',
           'ui-rounded',
           'system-ui',
           '-apple-system',
