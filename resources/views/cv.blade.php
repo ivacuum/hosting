@@ -3,7 +3,7 @@
 <html lang="{{ $locale }}" prefix="og: http://ogp.me/ns#">
 <head>
   <meta charset="utf-8">
-  <title>@ru Сергей Панков &middot; Резюме &middot; Веб-программист (Laravel PHP, Vue.js) @en Sergey Pankov &middot; CV &middot; Laravel PHP + Vue.js Developer @endru</title>
+  <title>@ru Сергей Панков &middot; Резюме &middot; Веб-программист (Laravel PHP, Vue.js) @en Sergei Pankov &middot; CV &middot; Laravel PHP + Vue.js Developer @endru</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="robots" content="noindex, nofollow">
   @vite('resources/css/app.css')
@@ -14,11 +14,11 @@
   <meta content="206702146011627" property="fb:app_id">
   <meta content="100001136135534" property="fb:admins">
   <meta content="profile" property="og:type">
-  <meta content="@ru Сергей Панков &middot; Резюме &middot; Веб-программист (Laravel PHP, Vue.js) @en Sergey Pankov &middot; CV &middot; Laravel PHP + Vue.js Developer @endru" property="og:title">
+  <meta content="@ru Сергей Панков &middot; Резюме &middot; Веб-программист (Laravel PHP, Vue.js) @en Sergei Pankov &middot; CV &middot; Laravel PHP + Vue.js Developer @endru" property="og:title">
   <meta content="{{ canonical() }}" property="og:url">
   <meta content="https://life.ivacuum.org/me.jpg" property="og:image">
   <meta content="@ru Веб-программист (Laravel PHP, Vue.js). Заинтересован в создании полезных людям веб-сервисов. Веб-технологиями увлекаюсь с 2003 года. С кодом моих проектов можно ознакомиться на Гитхабе. Только удаленная работа. @en Laravel PHP + Vue.js Developer. Only remote work. @endru" property="og:description">
-  <meta content="@ru Сергей @en Sergey @endru" property="profile:first_name">
+  <meta content="@ru Сергей @en Sergei @endru" property="profile:first_name">
   <meta content="@ru Панков @en Pankov @endru" property="profile:last_name">
   <meta content="male" property="profile:gender">
   <meta content="vacuum" property="profile:username">
@@ -63,7 +63,7 @@ body {
           <img class="my-picture bg-white mr-4 p-1 w-32 h-32 max-w-none" src="https://life.ivacuum.org/me.jpg" alt="">
         </div>
         <div>
-          <h1 class="text-2xl font-semibold tracking-tight uppercase">@ru Сергей Панков @en Sergey Pankov @endru</h1>
+          <h1 class="text-2xl font-semibold tracking-tight uppercase">@ru Сергей Панков @en Sergei Pankov @endru</h1>
           <h2 class="font-medium text-xl mb-2 text-teal-600">@ru Веб-программист (Laravel PHP, Vue.js) @en Laravel PHP + Vue.js Developer @endru</h2>
           @ru
             <div>Заинтересован в создании полезных людям веб-сервисов. Веб-технологиями увлекаюсь с 2003 года. С кодом моих проектов можно ознакомиться на <a href="https://github.com/ivacuum" rel="nofollow">Гитхабе</a>. Только удаленная работа.</div>

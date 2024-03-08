@@ -4,7 +4,7 @@
 
 @section('content')
 <h1 class="font-semibold text-lg md:hidden mb-6">
-  @ru Сергей Панков @en Sergey Pankov @endru
+  @ru Сергей Панков @en Sergei Pankov @endru
   <span class="text-muted">
     &middot;
     vacuum kaluga

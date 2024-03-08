@@ -1,7 +1,7 @@
 <?php
 
 return [
-    '/' => 'Sergey Pankov · vacuum.kaluga',
+    '/' => 'Sergei Pankov · vacuum.kaluga',
 
     'contact' => __('Обратная связь'),
 
