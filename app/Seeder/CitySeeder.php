@@ -40,6 +40,11 @@ class CitySeeder extends Seeder
         'denmark' => [
             ['slug' => 'copenhagen', 'title_ru' => 'Копенгаген', 'title_en' => 'Copenhagen'],
         ],
+        'estonia' => [
+            ['slug' => 'narva', 'title_ru' => 'Нарва', 'title_en' => 'Narva'],
+            ['slug' => 'parnu', 'title_ru' => 'Пярну', 'title_en' => 'Pärnu'],
+            ['slug' => 'tallinn', 'title_ru' => 'Таллинн', 'title_en' => 'Tallinn'],
+        ],
         'finland' => [
             ['slug' => 'helsinki', 'title_ru' => 'Хельсинки', 'title_en' => 'Helsinki'],
         ],
@@ -52,6 +57,9 @@ class CitySeeder extends Seeder
         ],
         'hungary' => [
             ['slug' => 'budapest', 'title_ru' => 'Будапешт', 'title_en' => 'Budapest'],
+        ],
+        'iceland' => [
+            ['slug' => 'reykjavik', 'title_ru' => 'Рейкьявик', 'title_en' => 'Reykjavik'],
         ],
         'italy' => [
             ['slug' => 'milan', 'title_ru' => 'Милан', 'title_en' => 'Milan'],
@@ -70,6 +78,14 @@ class CitySeeder extends Seeder
             ['slug' => 'amsterdam', 'title_ru' => 'Амстердам', 'title_en' => 'Amsterdam'],
             ['slug' => 'rotterdam', 'title_ru' => 'Роттердам', 'title_en' => 'Rotterdam'],
         ],
+        'portugal' => [
+            ['slug' => 'lisbon', 'title_ru' => 'Лиссабон', 'title_en' => 'Lisbon'],
+            ['slug' => 'porto', 'title_ru' => 'Порту', 'title_en' => 'Porto'],
+        ],
+        'serbia' => [
+            ['slug' => 'belgrade', 'title_ru' => 'Белград', 'title_en' => 'Belgrade'],
+            ['slug' => 'novi-sad', 'title_ru' => 'Нови Сад', 'title_en' => 'Novi Sad'],
+        ],
         'south-korea' => [
             ['slug' => 'busan', 'title_ru' => 'Пусан', 'title_en' => 'Busan'],
             ['slug' => 'daejeon', 'title_ru' => 'Тэджон', 'title_en' => 'Daejeon'],
@@ -78,6 +94,9 @@ class CitySeeder extends Seeder
         ],
         'spain' => [
             ['slug' => 'barcelona', 'title_ru' => 'Барселона', 'title_en' => 'Barcelona'],
+        ],
+        'turkey' => [
+            ['slug' => 'istanbul', 'title_ru' => 'Стамбул', 'title_en' => 'Istanbul'],
         ],
     ];
 
