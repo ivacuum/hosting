@@ -22,8 +22,8 @@ export default class {
 
     if (window.matchMedia('(min-width: 1200px)').matches) {
       params.screen_width = '1200+' // xl
-    } else if (window.matchMedia('(min-width: 992px)').matches) {
-      params.screen_width = '992+' // lg
+    } else if (window.matchMedia('(min-width: 1024px)').matches) {
+      params.screen_width = '1024+' // lg
     } else if (window.matchMedia('(min-width: 768px)').matches) {
       params.screen_width = '768+' // md
     } else if (window.matchMedia('(min-width: 576px)').matches) {
