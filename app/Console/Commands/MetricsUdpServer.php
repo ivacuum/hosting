@@ -41,7 +41,7 @@ class MetricsUdpServer extends Command
         ViewsAggregator $viewsAggregator,
         ImageViewsAggregator $imageViewsAggregator,
         PhotoViewsAggregator $photoViewsAggregator,
-        PingDatabaseAction $pingDatabase
+        PingDatabaseAction $pingDatabase,
     ) {
         $this->pingDatabase = $pingDatabase;
         $this->viewsAggregator = $viewsAggregator;

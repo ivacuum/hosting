@@ -10,7 +10,7 @@ readonly class Message
         public int $id,
         public User $from,
         public CarbonImmutable $date,
-        public string|null $text
+        public string|null $text,
     ) {
     }
 

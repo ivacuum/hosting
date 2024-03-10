@@ -8,7 +8,7 @@ readonly class CallbackQuery
         public int $id,
         public string $data,
         public User $from,
-        public Message $message
+        public Message $message,
     ) {
     }
 

@@ -43,6 +43,13 @@
         "method": "one"
       }
     },
-    "not_operator_with_successor_space": false
+    "not_operator_with_successor_space": false,
+    "trailing_comma_in_multiline": {
+      "elements": [
+        "arrays",
+        "match",
+        "parameters"
+      ]
+    }
   }
 }

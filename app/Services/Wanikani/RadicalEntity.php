@@ -12,7 +12,7 @@ class RadicalEntity
         public string $character,
         public string $imageUrl,
         public string $meaning,
-        public Collection $foundInKanji
+        public Collection $foundInKanji,
     ) {
     }
 

@@ -6,7 +6,7 @@ readonly class RateLimitExceeded
 {
     public function __construct(
         public string $key,
-        public string $maxAttempts
+        public string $maxAttempts,
     ) {
     }
 }

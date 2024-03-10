@@ -21,7 +21,7 @@ class RtoTopicData
         public int $forumId,
         public int $posterId,
         public int $seeders,
-        public CarbonInterface $seederLastSeenAt
+        public CarbonInterface $seederLastSeenAt,
     ) {
     }
 

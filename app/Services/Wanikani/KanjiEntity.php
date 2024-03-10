@@ -13,7 +13,7 @@ class KanjiEntity
         public Collection $meanings,
         private Collection $readings,
         public Collection $componentRadicals,
-        public Collection $similarKanji
+        public Collection $similarKanji,
     ) {
     }
 

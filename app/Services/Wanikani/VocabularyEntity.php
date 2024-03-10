@@ -15,7 +15,7 @@ class VocabularyEntity
         private Collection $sentences,
         public string $maleAudio,
         public string $femaleAudio,
-        public Collection $partsOfSpeech
+        public Collection $partsOfSpeech,
     ) {
     }
 

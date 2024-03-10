@@ -107,7 +107,7 @@ class PhotoController
         PhotoShowForm $request,
         Photo $photo,
         GetTripsPublishedByCityAction $getTripsPublishedByCity,
-        GetTripsPublishedByCountryAction $getTripsPublishedByCountry
+        GetTripsPublishedByCountryAction $getTripsPublishedByCountry,
     ) {
         abort_unless($photo->isPublished(), 404);
 

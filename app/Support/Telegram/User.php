@@ -9,7 +9,7 @@ readonly class User
         public string $firstName,
         public string|null $lastName,
         public string|null $username,
-        public string|null $language
+        public string|null $language,
     ) {
     }
 

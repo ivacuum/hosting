@@ -17,7 +17,7 @@ class HandleMetricPayloadAction
         MetricsAggregator $metricsAggregator,
         ViewsAggregator $viewsAggregator,
         ImageViewsAggregator $imageViewsAggregator,
-        PhotoViewsAggregator $photoViewsAggregator
+        PhotoViewsAggregator $photoViewsAggregator,
     ): void {
         foreach ($json as $payload) {
             if (empty($payload['event'])) {

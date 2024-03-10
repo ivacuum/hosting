@@ -64,7 +64,7 @@ class MyTripController
         Trip $trip,
         CityHelper $cityHelper,
         TripUpdateForm $request,
-        RedirectAfterUpdateAction $redirectAfterUpdate
+        RedirectAfterUpdateAction $redirectAfterUpdate,
     ) {
         $city = $cityHelper->findByIdOrFail($request->input('city_id'));
 

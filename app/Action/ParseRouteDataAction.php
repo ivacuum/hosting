@@ -18,7 +18,7 @@ class ParseRouteDataAction
     public function __construct(
         GetControllerBasenameAction $getControllerBasename,
         GetControllerClassnameAction $getControllerClassname,
-        DeduceTplFromControllerAction $deduceTplFromController
+        DeduceTplFromControllerAction $deduceTplFromController,
     ) {
         $this->action = \Route::currentRouteAction() ?? '';
         $this->method = $this->method();

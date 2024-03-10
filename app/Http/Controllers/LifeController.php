@@ -23,7 +23,7 @@ class LifeController
     public function index(
         LifeIndexForm $request,
         GetMyVisibleTripsAction $getMyVisibleTrips,
-        GetMyVisibleGigsAction $getMyVisibleGigs
+        GetMyVisibleGigsAction $getMyVisibleGigs,
     ) {
         $trips = $getMyVisibleTrips->execute($request->from, $request->to);
         $gigs = $getMyVisibleGigs->execute($request->from, $request->to);

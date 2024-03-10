@@ -11,7 +11,7 @@ class Post
         private bool $canLike,
         private bool $isUserLiked,
         private bool $isPinned = false,
-        private bool $isAd = false
+        private bool $isAd = false,
     ) {
     }
 

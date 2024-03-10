@@ -7,7 +7,7 @@ class Point extends Geometry implements \Stringable
     public function __construct(
         public readonly string $lat,
         public readonly string $lon,
-        public readonly int $srid = 4326
+        public readonly int $srid = 4326,
     ) {
     }
 

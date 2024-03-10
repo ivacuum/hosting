@@ -6,7 +6,7 @@ readonly class Sort
 {
     public function __construct(
         public string $key,
-        public SortDirection $direction
+        public SortDirection $direction,
     ) {
     }
 
