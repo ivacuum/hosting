@@ -38,7 +38,7 @@ return new class extends Migration {
             $table->string('title_en')->default('');
             $table->string('slug');
             $table->char('iata', 3);
-            $table->point('point', 4326)->nullable();
+            $table->geography('point', 'point')->nullable();
             $table->unsignedInteger('views')->default(0);
             $table->timestamps();
         });
@@ -256,7 +256,7 @@ return new class extends Migration {
             $table->unsignedInteger('user_id')->default(0);
             $table->morphs('rel');
             $table->string('slug');
-            $table->point('point', 4326)->nullable();
+            $table->geography('point', 'point')->nullable();
             $table->unsignedTinyInteger('status')->default(1);
             $table->unsignedInteger('views')->default(0);
             $table->timestamps();

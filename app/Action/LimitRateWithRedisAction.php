@@ -20,7 +20,7 @@ class LimitRateWithRedisAction
         }
 
         $limiter = new DurationLimiter(
-            $this->redis, $limit->key, $limit->maxAttempts, $limit->decayMinutes * 60
+            $this->redis, $limit->key, $limit->maxAttempts, $limit->decaySeconds
         );
 
         if ($limiter->tooManyAttempts()) {

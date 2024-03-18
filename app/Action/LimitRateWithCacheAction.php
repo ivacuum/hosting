@@ -24,7 +24,7 @@ class LimitRateWithCacheAction
             return true;
         }
 
-        $this->limiter->hit($limit->key, $limit->decayMinutes * 60);
+        $this->limiter->hit($limit->key, $limit->decaySeconds);
 
         return false;
     }
