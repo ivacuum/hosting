@@ -27,9 +27,6 @@ class Tag extends Model
 {
     use Traits\HasLocalizedTitle;
 
-    protected $casts = [
-        'views' => 'int',
-    ];
     protected $perPage = 50;
 
     // Relations
@@ -62,5 +59,13 @@ class Tag extends Model
     public function www(): string
     {
         return to('photos/tags/{tag}', $this);
+    }
+
+    #[\Override]
+    protected function casts(): array
+    {
+        return [
+            'views' => 'int',
+        ];
     }
 }

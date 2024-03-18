@@ -33,13 +33,6 @@ use League\CommonMark\CommonMarkConverter;
 #[ObservedBy(NewsObserver::class)]
 class News extends Model
 {
-    protected $casts = [
-        'views' => 'int',
-        'locale' => Locale::class,
-        'status' => NewsStatus::class,
-        'user_id' => 'int',
-    ];
-
     protected $attributes = [
         'status' => NewsStatus::Hidden,
         'markdown' => '',
@@ -96,6 +89,17 @@ class News extends Model
         }
 
         return [$start->startOfYear(), $start->endOfYear()];
+    }
+
+    #[\Override]
+    protected function casts(): array
+    {
+        return [
+            'views' => 'int',
+            'locale' => Locale::class,
+            'status' => NewsStatus::class,
+            'user_id' => 'int',
+        ];
     }
 
     protected function markdown(): Attribute

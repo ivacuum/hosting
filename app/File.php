@@ -23,12 +23,6 @@ class File extends Model
 {
     protected $perPage = 50;
 
-    protected $casts = [
-        'size' => 'int',
-        'status' => FileStatus::class,
-        'downloads' => 'int',
-    ];
-
     protected $attributes = [
         'folder' => '',
         'status' => FileStatus::Published,
@@ -67,5 +61,15 @@ class File extends Model
         $this->timestamps = true;
 
         event(new \App\Events\Stats\FileDownloadClicked);
+    }
+
+    #[\Override]
+    protected function casts(): array
+    {
+        return [
+            'size' => 'int',
+            'status' => FileStatus::class,
+            'downloads' => 'int',
+        ];
     }
 }

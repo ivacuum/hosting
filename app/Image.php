@@ -26,12 +26,6 @@ class Image extends Model
 {
     protected $perPage = 50;
 
-    protected $casts = [
-        'size' => 'int',
-        'views' => 'int',
-        'user_id' => 'int',
-    ];
-
     // Relations
     public function user()
     {
@@ -130,6 +124,16 @@ class Image extends Model
         $this->size = $newFile->getSize();
 
         return \Storage::disk('gallery')->putFileAs($this->splitDate(), $newFile, $this->slug);
+    }
+
+    #[\Override]
+    protected function casts(): array
+    {
+        return [
+            'size' => 'int',
+            'views' => 'int',
+            'user_id' => 'int',
+        ];
     }
 
     private function convert($source, $width, $height): UploadedFile

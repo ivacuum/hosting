@@ -31,10 +31,6 @@ class Kanji extends Model
 {
     protected $perPage = 50;
 
-    protected $casts = [
-        'level' => 'int',
-    ];
-
     // Relations
     public function burnable()
     {
@@ -87,5 +83,13 @@ class Kanji extends Model
     public function www(): string
     {
         return to('japanese/wanikani/kanji/{character}', $this->character);
+    }
+
+    #[\Override]
+    protected function casts(): array
+    {
+        return [
+            'level' => 'int',
+        ];
     }
 }

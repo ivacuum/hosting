@@ -28,12 +28,6 @@ class Comment extends Model
 {
     protected $perPage = 20;
 
-    protected $casts = [
-        'rel_id' => 'int',
-        'status' => CommentStatus::class,
-        'user_id' => 'int',
-    ];
-
     // Relations
     public function emails()
     {
@@ -94,5 +88,15 @@ class Comment extends Model
             (new Trip)->getMorphClass() => to('trips/{trip}', [$this->rel_id, 'anchor' => $this->anchor()]),
             default => '',
         };
+    }
+
+    #[\Override]
+    protected function casts(): array
+    {
+        return [
+            'rel_id' => 'int',
+            'status' => CommentStatus::class,
+            'user_id' => 'int',
+        ];
     }
 }

@@ -58,17 +58,6 @@ class Magnet extends Model
         'registered_at',
     ];
 
-    protected $casts = [
-        'size' => 'int',
-        'views' => 'int',
-        'clicks' => 'int',
-        'rto_id' => 'int',
-        'status' => MagnetStatus::class,
-        'user_id' => 'int',
-        'category_id' => MagnetCategory::class,
-        'registered_at' => 'datetime',
-    ];
-
     protected $hidden = ['html'];
     protected $perPage = 50;
 
@@ -192,5 +181,20 @@ class Magnet extends Model
     public function wwwAcp(): string
     {
         return to('acp/magnets/{magnet}', $this->id);
+    }
+
+    #[\Override]
+    protected function casts(): array
+    {
+        return [
+            'size' => 'int',
+            'views' => 'int',
+            'clicks' => 'int',
+            'rto_id' => 'int',
+            'status' => MagnetStatus::class,
+            'user_id' => 'int',
+            'category_id' => MagnetCategory::class,
+            'registered_at' => 'datetime',
+        ];
     }
 }

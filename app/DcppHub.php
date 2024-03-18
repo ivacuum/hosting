@@ -21,13 +21,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class DcppHub extends Model
 {
-    protected $casts = [
-        'port' => 'int',
-        'status' => DcppHubStatus::class,
-        'clicks' => 'int',
-        'queried_at' => 'datetime',
-    ];
-
     protected $attributes = [
         'port' => 411,
         'status' => DcppHubStatus::Published,
@@ -73,5 +66,16 @@ class DcppHub extends Model
         fclose($handle);
 
         return $online;
+    }
+
+    #[\Override]
+    protected function casts(): array
+    {
+        return [
+            'port' => 'int',
+            'status' => DcppHubStatus::class,
+            'clicks' => 'int',
+            'queried_at' => 'datetime',
+        ];
     }
 }

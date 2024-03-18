@@ -72,16 +72,6 @@ class User extends Authenticatable implements HasLocalePreference
         'notify_trips' => NotificationDeliveryMethod::Disabled,
     ];
 
-    protected $casts = [
-        'status' => 'int',
-        'notify_gigs' => NotificationDeliveryMethod::class,
-        'notify_news' => NotificationDeliveryMethod::class,
-        'notify_trips' => NotificationDeliveryMethod::class,
-        'last_login_at' => 'datetime',
-        'magnet_short_title' => 'int',
-        'password_changed_at' => 'datetime',
-    ];
-
     // Relations
     public function chatMessages()
     {
@@ -255,6 +245,20 @@ class User extends Authenticatable implements HasLocalePreference
     public function www(): string
     {
         return to('users/{user}', $this->id);
+    }
+
+    #[\Override]
+    protected function casts(): array
+    {
+        return [
+            'status' => 'int',
+            'notify_gigs' => NotificationDeliveryMethod::class,
+            'notify_news' => NotificationDeliveryMethod::class,
+            'notify_trips' => NotificationDeliveryMethod::class,
+            'last_login_at' => 'datetime',
+            'magnet_short_title' => 'int',
+            'password_changed_at' => 'datetime',
+        ];
     }
 
     protected function password(): Attribute

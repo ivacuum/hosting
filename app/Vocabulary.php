@@ -30,13 +30,6 @@ class Vocabulary extends Model
 {
     protected $perPage = 50;
 
-    protected $casts = [
-        'level' => 'int',
-        'wk_id' => 'int',
-        'male_audio' => VocabularyAudioCast::class,
-        'female_audio' => VocabularyAudioCast::class,
-    ];
-
     // Relations
     public function burnable()
     {
@@ -77,5 +70,16 @@ class Vocabulary extends Model
     public function www(): string
     {
         return to('japanese/wanikani/vocabulary/{characters}', $this->character);
+    }
+
+    #[\Override]
+    protected function casts(): array
+    {
+        return [
+            'level' => 'int',
+            'wk_id' => 'int',
+            'male_audio' => VocabularyAudioCast::class,
+            'female_audio' => VocabularyAudioCast::class,
+        ];
     }
 }

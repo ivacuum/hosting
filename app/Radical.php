@@ -25,10 +25,6 @@ class Radical extends Model
 {
     protected $perPage = 50;
 
-    protected $casts = [
-        'level' => 'int',
-    ];
-
     // Relations
     public function burnable()
     {
@@ -66,5 +62,13 @@ class Radical extends Model
     public function www(): string
     {
         return to('japanese/wanikani/radicals/{meaning}', $this->meaning);
+    }
+
+    #[\Override]
+    protected function casts(): array
+    {
+        return [
+            'level' => 'int',
+        ];
     }
 }

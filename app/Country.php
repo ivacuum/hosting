@@ -31,10 +31,6 @@ class Country extends Model
     use Traits\HasLocalizedTitle;
     use Traits\HasTripsMetaDescription;
 
-    protected $casts = [
-        'views' => 'int',
-    ];
-
     protected $attributes = [
         'emoji' => '',
     ];
@@ -123,5 +119,13 @@ class Country extends Model
     public function www(): string
     {
         return to('life/countries/{slug}', $this->slug);
+    }
+
+    #[\Override]
+    protected function casts(): array
+    {
+        return [
+            'views' => 'int',
+        ];
     }
 }

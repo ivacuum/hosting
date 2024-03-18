@@ -37,17 +37,6 @@ class ExternalHttpRequest extends Model
 
     protected $dateFormat = 'Y-m-d H:i:s.u';
 
-    protected $casts = [
-        'http_code' => 'int',
-        'service_name' => ExternalService::class,
-        'response_size' => 'int',
-        'total_time_us' => 'int',
-        'redirect_count' => 'int',
-        'request_headers' => AsArrayObject::class,
-        'redirect_time_us' => 'int',
-        'response_headers' => 'array',
-    ];
-
     // Methods
     public function breadcrumb()
     {
@@ -64,5 +53,20 @@ class ExternalHttpRequest extends Model
     protected function asJson($value)
     {
         return json_encode($value, JSON_UNESCAPED_UNICODE);
+    }
+
+    #[\Override]
+    protected function casts(): array
+    {
+        return [
+            'http_code' => 'int',
+            'service_name' => ExternalService::class,
+            'response_size' => 'int',
+            'total_time_us' => 'int',
+            'redirect_count' => 'int',
+            'request_headers' => AsArrayObject::class,
+            'redirect_time_us' => 'int',
+            'response_headers' => 'array',
+        ];
     }
 }

@@ -20,12 +20,6 @@ class FavoriteMovie extends Model
 {
     protected $perPage = 50;
 
-    protected $casts = [
-        'year' => 'int',
-        'kp_id' => 'int',
-        'is_tv_series' => 'bool',
-    ];
-
     // Methods
     public function breadcrumb(): string
     {
@@ -40,5 +34,15 @@ class FavoriteMovie extends Model
     public function externalLink(): string
     {
         return "https://www.kinopoisk.ru/film/{$this->kp_id}/";
+    }
+
+    #[\Override]
+    protected function casts(): array
+    {
+        return [
+            'year' => 'int',
+            'kp_id' => 'int',
+            'is_tv_series' => 'bool',
+        ];
     }
 }

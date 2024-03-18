@@ -77,15 +77,6 @@ class Trip extends Model
         'meta_description_ru' => '',
     ];
 
-    protected $casts = [
-        'views' => 'int',
-        'status' => TripStatus::class,
-        'city_id' => 'int',
-        'user_id' => 'int',
-        'date_end' => 'datetime',
-        'date_start' => 'datetime',
-    ];
-
     // Relations
     public function city()
     {
@@ -263,6 +254,19 @@ class Trip extends Model
         return $this->user_id === 1
             ? path_locale([Http\Controllers\LifeController::class, 'page'], $this->slug, false, $locale) . $anchor
             : path_locale([Http\Controllers\UserTravelTripController::class, 'show'], [$this->user->login, $this->slug], false, $locale) . $anchor;
+    }
+
+    #[\Override]
+    protected function casts(): array
+    {
+        return [
+            'views' => 'int',
+            'status' => TripStatus::class,
+            'city_id' => 'int',
+            'user_id' => 'int',
+            'date_end' => 'datetime',
+            'date_start' => 'datetime',
+        ];
     }
 
     protected function markdown(): Attribute

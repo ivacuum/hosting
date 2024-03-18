@@ -33,10 +33,6 @@ class Issue extends Model
     use Notifiable;
 
     protected $perPage = 50;
-    protected $casts = [
-        'status' => IssueStatus::class,
-        'user_id' => 'int',
-    ];
 
     // Relations
     public function comments()
@@ -78,5 +74,14 @@ class Issue extends Model
     public function canBeOpened(): bool
     {
         return $this->status === IssueStatus::Closed;
+    }
+
+    #[\Override]
+    protected function casts(): array
+    {
+        return [
+            'status' => IssueStatus::class,
+            'user_id' => 'int',
+        ];
     }
 }

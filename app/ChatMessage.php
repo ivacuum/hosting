@@ -25,11 +25,6 @@ class ChatMessage extends Model
 {
     use Notifiable;
 
-    protected $casts = [
-        'status' => ChatMessageStatus::class,
-        'user_id' => 'int',
-    ];
-
     // Relations
     public function user()
     {
@@ -40,6 +35,15 @@ class ChatMessage extends Model
     public function breadcrumb()
     {
         return "#{$this->id}";
+    }
+
+    #[\Override]
+    protected function casts(): array
+    {
+        return [
+            'status' => ChatMessageStatus::class,
+            'user_id' => 'int',
+        ];
     }
 
     protected function text(): Attribute

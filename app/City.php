@@ -33,12 +33,6 @@ class City extends Model
 
     protected $perPage = 50;
 
-    protected $casts = [
-        'point' => Cast\PointCast::class,
-        'views' => 'int',
-        'country_id' => 'int',
-    ];
-
     protected $attributes = [
         'iata' => '',
     ];
@@ -98,5 +92,15 @@ class City extends Model
     public function www(): string
     {
         return to('life/{slug}', $this->slug);
+    }
+
+    #[\Override]
+    protected function casts(): array
+    {
+        return [
+            'point' => Cast\PointCast::class,
+            'views' => 'int',
+            'country_id' => 'int',
+        ];
     }
 }

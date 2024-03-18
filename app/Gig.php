@@ -39,14 +39,6 @@ class Gig extends Model
 {
     use Traits\HasLocalizedTitle;
 
-    protected $casts = [
-        'date' => 'datetime',
-        'views' => 'int',
-        'status' => GigStatus::class,
-        'city_id' => 'int',
-        'artist_id' => 'int',
-    ];
-
     protected $attributes = [
         'status' => GigStatus::Hidden,
         'meta_image' => '',
@@ -144,6 +136,18 @@ class Gig extends Model
     public function wwwLocale(string $locale = ''): string
     {
         return path_locale([Http\Controllers\LifeController::class, 'page'], $this->slug, false, $locale);
+    }
+
+    #[\Override]
+    protected function casts(): array
+    {
+        return [
+            'date' => 'datetime',
+            'views' => 'int',
+            'status' => GigStatus::class,
+            'city_id' => 'int',
+            'artist_id' => 'int',
+        ];
     }
 
     #[\Override]

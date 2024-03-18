@@ -30,14 +30,6 @@ class Photo extends Model
 {
     protected $perPage = 50;
 
-    protected $casts = [
-        'point' => Cast\PointCast::class,
-        'views' => 'int',
-        'rel_id' => 'int',
-        'status' => PhotoStatus::class,
-        'user_id' => 'int',
-    ];
-
     // Relations
     public function rel()
     {
@@ -120,5 +112,17 @@ class Photo extends Model
     public function www(): string
     {
         return to('photos/{photo}', $this->id);
+    }
+
+    #[\Override]
+    protected function casts(): array
+    {
+        return [
+            'point' => Cast\PointCast::class,
+            'views' => 'int',
+            'rel_id' => 'int',
+            'status' => PhotoStatus::class,
+            'user_id' => 'int',
+        ];
     }
 }

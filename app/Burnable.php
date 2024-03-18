@@ -22,8 +22,12 @@ class Burnable extends Model
     protected $fillable = ['user_id'];
     protected $perPage = 50;
 
-    protected $casts = [
-        'rel_id' => 'int',
-        'user_id' => 'int',
-    ];
+    #[\Override]
+    protected function casts(): array
+    {
+        return [
+            'rel_id' => 'int',
+            'user_id' => 'int',
+        ];
+    }
 }
