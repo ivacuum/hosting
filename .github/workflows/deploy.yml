@@ -21,7 +21,7 @@ jobs:
           repository: ivacuum/ansible
 
       - name: Cache yarn dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: node_modules
           key: yarn-${{ hashFiles('yarn.lock') }}
@@ -42,7 +42,7 @@ jobs:
             -cf deploy.tar .
 
       - name: ansible
-        uses: dawidd6/action-ansible-playbook@5d970176ea4bfd99a3f5004d48e293fe0994eda1 # v2.6.1
+        uses: dawidd6/action-ansible-playbook@c97d71562fcba83cc1ea0602d5a77013427f7571 # v2.8.0
         with:
           key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
           playbook: vacuum.name.yml
