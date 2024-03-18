@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "18b082afa1cd4d2d2629a7e39fdad38d",
+    "content-hash": "36794cf809a56b360d73bdb8631d0fcb",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1428,7 +1428,7 @@
         },
         {
             "name": "ivacuum/generic",
-            "version": "dev-master",
+            "version": "27.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivacuum/generic.git",
@@ -1444,7 +1444,6 @@
                 "laravel/framework": "^11.0",
                 "php": ">=8.3"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -1489,7 +1488,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ivacuum/generic/issues",
-                "source": "https://github.com/ivacuum/generic/tree/master"
+                "source": "https://github.com/ivacuum/generic/tree/27.0.0"
             },
             "time": "2024-03-18T11:09:25+00:00"
         },
@@ -10889,9 +10888,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "ivacuum/generic": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
