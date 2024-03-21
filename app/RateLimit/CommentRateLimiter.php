@@ -31,7 +31,7 @@ class CommentRateLimiter
             return false;
         }
 
-        $diff = now()->diffInSeconds($last->created_at);
+        $diff = now()->diffInSeconds($last->created_at, true);
 
         if ($diff < $interval) {
             return true;

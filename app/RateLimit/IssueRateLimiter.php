@@ -32,7 +32,7 @@ class IssueRateLimiter
             return false;
         }
 
-        $diff = now()->diffInSeconds($last->created_at);
+        $diff = now()->diffInSeconds($last->created_at, true);
 
         if ($diff < $interval) {
             event(new LimitExceeded('issue.flood_interval', $userId));
