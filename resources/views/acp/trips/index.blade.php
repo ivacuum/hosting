@@ -98,7 +98,7 @@
       </td>
       <td class="md:text-right">
         @if ($model->user_id === 1)
-          <a class="leading-none text-xl" href="{{ to('dev/templates/{template}', str_replace('.', '_', $model->slug)) }}">
+          <a class="leading-none text-xl" href="{{ to('acp/dev/templates/{template}', str_replace('.', '_', $model->slug)) }}">
             @svg (file-richtext)
           </a>
         @else
