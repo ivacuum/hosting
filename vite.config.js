@@ -7,14 +7,17 @@ export default defineConfig({
     assetsDir: './'
   },
   plugins: [
-    laravel([
-      'resources/css/app.css',
-      'resources/js/app.js',
-      'resources/js/hiragana-katakana.js',
-      'resources/js/view-magnet-post.js',
-      'node_modules/mousetrap/mousetrap.min.js',
-      'node_modules/@github/details-menu-element/dist/index.js',
-    ]),
+    laravel({
+      buildDirectory: 'assets',
+      input: [
+        'resources/css/app.css',
+        'resources/js/app.js',
+        'resources/js/hiragana-katakana.js',
+        'resources/js/view-magnet-post.js',
+        'node_modules/mousetrap/mousetrap.min.js',
+        'node_modules/@github/details-menu-element/dist/index.js',
+      ]
+    }),
   ],
   resolve: {
     alias: {
