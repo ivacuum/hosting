@@ -161,6 +161,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9884.jpg'])
 
+<a id="crossed_sign"></a>
 @ru
   <p>В смысле Кутна-Гора начинается? А я где был?</p>
 @endru
