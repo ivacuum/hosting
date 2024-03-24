@@ -2,758 +2,782 @@
 
 @section('content')
 @ru
-  <p>Ожидание объявления посадки.</p>
+  <p>Ожидание объявления посадки в шесть утра.</p>
 @endru
-IMG_1678.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1678.jpg'])
 
 @ru
-  <p>Аэродром столицы Черногории.</p>
+  <p>Аэродром столицы Черногории — Подгорицы.</p>
 @endru
-IMG_1680.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1680.jpg'])
 
 @ru
-  <p>Привезший самолет.</p>
+  <p>Привезший самолет. Выходим и идем в терминал пешком — без помощи автобуса.</p>
 @endru
-IMG_1681.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1681.jpg'])
 
 @ru
   <p>Послание на двери туалета.</p>
 @endru
-IMG_1682.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1682.jpg'])
 
 @ru
-  <p>Аэропорт в Подгорице настолько крохотный, что на рейсы сильно заранее не пускают — приглашают на досмотр в лучшем случае за полтора часа.</p>
+  <p>Аэропорт в Подгорице настолько крохотный, что на рейсы сильно заранее не пускают — приглашают на досмотр в лучшем случае за полтора часа до отправления.</p>
 @endru
-IMG_1683.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1683.jpg'])
 
 @ru
   <p>Из общественного транспорта только такси.</p>
 @endru
-IMG_1684.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1684.jpg'])
 
 @ru
-  <p>Окрестности.</p>
+  <p>Окрестности аэропорта.</p>
 @endru
-IMG_1685.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1685.jpg'])
 
 @ru
-  <p>Буквально в километре от аэропорта есть железнодорожная станция, через которую ходят редкие поезда. Ее существование сотрудники аэропорта отрицают. Отрицают нам же во благо, чтобы по обочине не шли этот километр.</p>
+  <p>Буквально в километре от аэропорта есть железнодорожная станция, через которую ходят редкие поезда. Ее существование сотрудники аэропорта отрицают. Отрицают нам же во благо, чтобы по обочине не шли этот километр. Скинулись в итоге на попутное такси до центрального вокзала с человеком в оранжевой куртке на той стороне дороги.</p>
 @endru
-IMG_1686.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1686.jpg'])
 
 @ru
   <p>У центрального автовокзала.</p>
 @endru
-IMG_1687.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1687.jpg'])
 
 @ru
-  <p>Электрокар?</p>
+  <p>Гибридный BMW i8, который больше не производят.</p>
 @endru
-IMG_1688.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1688.jpg'])
 
 @ru
   <p>Футбольная площадка среди жилых домов.</p>
 @endru
-IMG_1689.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1689.jpg'])
 
 @ru
-  <p>14 января на дворе.</p>
+  <p>Солнечное 14 января на дворе.</p>
 @endru
-IMG_1690.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1690.jpg'])
 
 @ru
   <p>Доступ к подземному накопителю мусора.</p>
 @endru
-IMG_1691.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1691.jpg'])
 
 @ru
   <p>Торговый центр неспешно начинает работу в выходной день.</p>
 @endru
-IMG_1692.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1692.jpg'])
 
 @ru
-  <p>Велодорожка.</p>
+  <p>Велодорожка на тротуаре.</p>
 @endru
-IMG_1693.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1693.jpg'])
 
 @ru
   <p>Заасфальтированная футбольная площадка во дворе школы.</p>
 @endru
-IMG_1694.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1694.jpg'])
 
 @ru
   <p>Фасад и балконы жилого дома.</p>
 @endru
-IMG_1695.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1695.jpg'])
 
 @ru
   <p>Щит с навигацией к примечательным объектам города.</p>
 @endru
-IMG_1696.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1696.jpg'])
 
 @ru
   <p>Река.</p>
 @endru
-IMG_1697.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1697.jpg'])
 
 @ru
   <p>Спуск к воде на том берегу.</p>
 @endru
-IMG_1698.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1698.jpg'])
 
 @ru
   <p>Широкая велодорожка.</p>
 @endru
-IMG_1699.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1699.jpg'])
 
 @ru
   <p>Здание наполовину затянуто государственным флагом.</p>
 @endru
-IMG_1700.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1700.jpg'])
 
 @ru
   <p>Скамейка.</p>
 @endru
-IMG_1701.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1701.jpg'])
 
 @ru
   <p>Телефонный люк.</p>
 @endru
-IMG_1702.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1702.jpg'])
 
 @ru
   <p>Приятно оказаться в зоне действия евро, которые есть на руках.</p>
 @endru
-IMG_1703.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1703.jpg'])
 
 @ru
   <p>Желтый рюкзак расширяет географию поездок.</p>
 @endru
-IMG_1704.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1704.jpg'])
 
 @ru
   <p>Двойная крытая урна и приветствие на заборе.</p>
 @endru
-IMG_1705.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1705.jpg'])
 
 @ru
   <p>У входа в парк.</p>
 @endru
-IMG_1706.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1706.jpg'])
 
 @ru
   <p>Шикарный подъем к зданию.</p>
 @endru
-IMG_1707.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1707.jpg'])
 
 @ru
   <p>Скамейка в зелени.</p>
 @endru
-IMG_1708.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1708.jpg'])
 
 @ru
   <p>Со всякого ракурса хороша.</p>
 @endru
-IMG_1709.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1709.jpg'])
 
 @ru
   <p>Боковой вход.</p>
 @endru
-IMG_1710.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1710.jpg'])
 
 @ru
   <p>Главный вход.</p>
 @endru
-IMG_1711.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1711.jpg'])
 
 @ru
   <p>Аллея.</p>
 @endru
-IMG_1712.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1712.jpg'])
 
 @ru
   <p>Главный фасад здания.</p>
 @endru
-IMG_1713.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1713.jpg'])
 
 @ru
   <p>Статуя.</p>
 @endru
-IMG_1714.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1714.jpg'])
 
 @ru
   <p>Изумрудного цвета вода.</p>
 @endru
-IMG_1715.jpeg
-IMG_1716.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_1715.jpg',
+  'IMG_1716.jpg',
+]])
 
 @ru
   <p>Заметный овраг.</p>
 @endru
-IMG_1717.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1717.jpg'])
 
 @ru
   <p>Высоченные деревья.</p>
 @endru
-IMG_1718.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1718.jpg'])
 
 @ru
   <p>Скамейка вокруг дерева в форме ромба и урна.</p>
 @endru
-IMG_1719.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1719.jpg'])
 
 @ru
-  <p>Просторное кладбище в живописном месте и практически без деревьев.</p>
+  <p>Просторное кладбище в живописном месте и практически без деревьев и оград.</p>
 @endru
-IMG_1720.jpeg
-IMG_1721.jpeg
-IMG_1722.jpeg
-IMG_1723.jpeg
-IMG_1724.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_1720.jpg',
+  'IMG_1721.jpg',
+  'IMG_1722.jpg',
+  'IMG_1723.jpg',
+  'IMG_1724.jpg',
+]])
 
 @ru
   <p>Парковка на тротуарах не обошла стороной и Черногорию.</p>
 @endru
-IMG_1725.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1725.jpg'])
 
 @ru
-  <p>Так выглядит зеленый участок на карте.</p>
+  <p>Так выглядит зеленый участок на карте. На парк совсем не смахивает.</p>
 @endru
-IMG_1726.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1726.jpg'])
 
 @ru
   <p>Поиск дома, в котором арендовано жилье. Процесс шел проблематично, потому что не все новые дома снабжены уличными табличками.</p>
 @endru
-IMG_1727.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1727.jpg'])
 
 @ru
   <p>Дороги во дворе еще нет, зато есть стихийная парковка.</p>
 @endru
-IMG_1728.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1728.jpg'])
 
 @ru
   <p>Строящийся дом.</p>
 @endru
-IMG_1729.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1729.jpg'])
 
 @ru
   <p>Самокаты прикованы к деревьям.</p>
 @endru
-IMG_1731.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1731.jpg'])
 
 @ru
   <p>Интерьер в заведении общепита.</p>
 @endru
-IMG_1732.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1732.jpg'])
 
 @ru
-  <p>На ужин суп и лазанья.</p>
+  <p>На ужин суп с хлебом и лазанья. Осилить непросто.</p>
 @endru
-IMG_1733.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1733.jpg'])
 
 @ru
   <p>Почтовые ящики в жилом доме.</p>
 @endru
-IMG_1734.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1734.jpg'])
 
 @ru
   <p>Входная дверь в квартиру с фамилией.</p>
 @endru
-IMG_1735.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1735.jpg'])
 
 @ru
   <p>Газированная вода из бокала.</p>
 @endru
-IMG_1738.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1738.jpg'])
 
 @ru
   <p>Часы в форме самолета показывают неправильное время.</p>
 @endru
-IMG_1739.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1739.jpg'])
 
 @ru
   <p>Из-за парковки на улице остается всего одна полоса для проезда.</p>
 @endru
-IMG_1740.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1740.jpg'])
 
 @ru
   <p>Завтрак на улице.</p>
 @endru
-IMG_1741.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1741.jpg'])
 
 @ru
-  <p>Всего десять евро.</p>
+  <p>Всего десять евро за две тарелки. Осилить снова непросто.</p>
 @endru
-IMG_1742.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1742.jpg'])
 
 @ru
   <p>Дерево сбросило листву.</p>
 @endru
-IMG_1743.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1743.jpg'])
 
 @ru
-  <p>Неожиданная уличная табличка.</p>
+  <p>Неожиданно огромная уличная табличка.</p>
 @endru
-IMG_1745.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1745.jpg'])
 
 @ru
   <p>Черногория ощущается как деревня.</p>
 @endru
-IMG_1746.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1746.jpg'])
 
 @ru
   <p>Улицы старого города.</p>
 @endru
-IMG_1747.jpeg
-IMG_1748.jpeg
-IMG_1750.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_1747.jpg',
+  'IMG_1748.jpg',
+  'IMG_1750.jpg',
+]])
 
 @ru
   <p>Дверь выше символического забора.</p>
 @endru
-IMG_1749.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1749.jpg'])
 
 @ru
   <p>Кот на заборе.</p>
 @endru
-IMG_1751.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1751.jpg'])
 
 @ru
   <p>Подъезд жилого дома.</p>
 @endru
-IMG_1752.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1752.jpg'])
 
 @ru
   <p>Баскетбольное кольцо на щите посреди автомобильной парковки.</p>
 @endru
-IMG_1753.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1753.jpg'])
 
 @ru
-  <p>Трибуны на улице.</p>
+  <p>Трибуны и сцена на улице.</p>
 @endru
-IMG_1754.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1754.jpg'])
 
 @ru
   <p>Стены крепости.</p>
 @endru
-IMG_1755.jpeg
-IMG_1756.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_1755.jpg',
+  'IMG_1756.jpg',
+]])
 
 @ru
   <p>Ступеньки.</p>
 @endru
-IMG_1757.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1757.jpg'])
 
 @ru
   <p>Панорама.</p>
 @endru
-IMG_1758.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1758.jpg'])
 
 @ru
   <p>Мост через реку.</p>
 @endru
-IMG_1759.jpeg
-IMG_1765.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_1759.jpg',
+  'IMG_1765.jpg',
+]])
 
 @ru
   <p>Приятна чистая зима.</p>
 @endru
-IMG_1761.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1761.jpg'])
 
 @ru
   <p>Скамейки возле воды.</p>
 @endru
-IMG_1762.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1762.jpg'])
 
 @ru
   <p>Река.</p>
 @endru
-IMG_1764.jpeg
-IMG_1766.jpeg
-IMG_1767.jpeg
-IMG_1768.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_1764.jpg',
+  'IMG_1766.jpg',
+  'IMG_1767.jpg',
+  'IMG_1768.jpg',
+]])
 
 @ru
   <p>Ступеньки среди зелени.</p>
 @endru
-IMG_1769.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1769.jpg'])
 
 @ru
   <p>Что растет на мхе среди камней.</p>
 @endru
-IMG_1770.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1770.jpg'])
 
 @ru
   <p>Стенки из камней.</p>
 @endru
-IMG_1772.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1772.jpg'])
 
 @ru
   <p>Припрятанные скамейки.</p>
 @endru
-IMG_1773.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1773.jpg'])
 
 @ru
   <p>Парк.</p>
 @endru
-IMG_1774.jpeg
-IMG_1775.jpeg
-IMG_1776.jpeg
-IMG_1780.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_1774.jpg',
+  'IMG_1775.jpg',
+  'IMG_1776.jpg',
+  'IMG_1780.jpg',
+]])
 
 @ru
   <p>Обособленная велодорожка в парке.</p>
 @endru
-IMG_1777.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1777.jpg'])
 
 @ru
   <p>Улица.</p>
 @endru
-IMG_1778.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1778.jpg'])
 
 @ru
   <p>Общественный туалет в подвале.</p>
 @endru
-IMG_1779.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1779.jpg'])
 
 @ru
   <p>Снова приветствие на ограде.</p>
 @endru
-IMG_1781.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1781.jpg'])
 
 @ru
   <p>Дорога.</p>
 @endru
-IMG_1782.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1782.jpg'])
 
 @ru
   <p>Спуск к воде.</p>
 @endru
-IMG_1783.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1783.jpg'])
 
 @ru
   <p>Пешеходный переход с островком безопасности.</p>
 @endru
-IMG_1784.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1784.jpg'])
 
 @ru
-  <p>Тротуар с плиткой для незрячих.</p>
+  <p>Тротуар с плиткой для незрячих и велодорожкой.</p>
 @endru
-IMG_1785.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1785.jpg'])
 
 @ru
   <p>Навигационный щит для автомобилистов.</p>
 @endru
-IMG_1786.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1786.jpg'])
 
 @ru
   <p>Фасад жилого дома. Сушка вещей на балконах.</p>
 @endru
-IMG_1787.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1787.jpg'])
 
 @ru
   <p>Поминают ушедших людей.</p>
 @endru
-IMG_1788.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1788.jpg'])
 
 @ru
   <p>Точка опоры для отдыха велосипедистов на перекрестке.</p>
 @endru
-IMG_1789.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1789.jpg'])
 
 @ru
-  <p>Люди мусор выбрасывают с тротуара, а мусоровоз забирает накопленное с дороги.</p>
+  <p>Люди с тротуара выбрасывают мусор, а мусоровоз с дороги забирает накопленное.</p>
 @endru
-IMG_1790.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1790.jpg'])
 
 @ru
   <p>Фонтан.</p>
 @endru
-IMG_1791.jpeg
-IMG_1792.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_1791.jpg',
+  'IMG_1792.jpg',
+]])
 
 @ru
   <p>Здания повыше, чем в деревне.</p>
 @endru
-IMG_1793.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1793.jpg'])
 
 @ru
   <p>Наружная винтовая лестница.</p>
 @endru
-IMG_1794.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1794.jpg'])
 
 @ru
   <p>Много людей на улице в выходной солнечный день.</p>
 @endru
-IMG_1795.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1795.jpg'])
 
 @ru
   <p>Дети имеют счастье играть на газоне с мячом в январе.</p>
 @endru
-IMG_1796.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1796.jpg'])
 
 @ru
   <p>Озера около дома.</p>
 @endru
-IMG_1797.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1797.jpg'])
 
 @ru
   <p>Масштабное озеро.</p>
 @endru
-IMG_1798.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1798.jpg'])
 
 @ru
-  <p>Храм?</p>
+  <p>Воскресенский собор.</p>
 @endru
-IMG_1799.jpeg
-IMG_1802.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_1799.jpg',
+  'IMG_1802.jpg',
+]])
 
 @ru
-  <p>Небольшая дверь в углу.</p>
+  <p>Небольшая дверь в углу собора.</p>
 @endru
-IMG_1800.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1800.jpg'])
 
 @ru
-  <p>Дверь побольше. Напоминает дверь в Великом Новгороде.</p>
+  <p>Дверь побольше. Напоминает <a class="link" href="veliky-novgorod.2021#door">дверь в Великом Новгороде</a>.</p>
 @endru
-IMG_1801.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1801.jpg'])
 
 @ru
   <p>Дерево разветвилось словно их тут три.</p>
 @endru
-IMG_1803.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1803.jpg'])
 
 @ru
   <p>Фамилии жителей на домофоне.</p>
 @endru
-IMG_1804.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1804.jpg'])
 
 @ru
   <p>Фасад магазина цветов и подарков.</p>
 @endru
-IMG_1805.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1805.jpg'])
 
 @ru
   <p>Скамейки у магазина.</p>
 @endru
-IMG_1806.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1806.jpg'])
 
 @ru
   <p>Улица 13 июля — моего дня рождения.</p>
 @endru
-IMG_1807.jpeg
-IMG_1812.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_1807.jpg',
+  'IMG_1812.jpg',
+]])
 
 @ru
   <p>Барная стойка у дома. И стена из камней.</p>
 @endru
-IMG_1808.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1808.jpg'])
 
 @ru
   <p>Частично прозрачная дверь в подъезд дома на улице 13 июля.</p>
 @endru
-IMG_1809.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1809.jpg'])
 
 @ru
   <p>Здание с яркой оранжевой крышей.</p>
 @endru
-IMG_1810.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1810.jpg'])
 
 @ru
   <p>Улица, переходящая в мост.</p>
 @endru
-IMG_1811.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1811.jpg'])
 
 @ru
   <p>Пешеходный переход с островком безопасности.</p>
 @endru
-IMG_1813.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1813.jpg'])
 
 @ru
   <p>Парк.</p>
 @endru
-IMG_1814.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1814.jpg'])
 
 @ru
   <p>Мост с широкой пешеходной частью.</p>
 @endru
-IMG_1815.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1815.jpg'])
 
 @ru
   <p>Урна с ручками для выемки ведра.</p>
 @endru
-IMG_1816.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1816.jpg'])
 
 @ru
   <p>Мост сбоку.</p>
 @endru
-IMG_1817.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1817.jpg'])
 
 @ru
   <p>Рядом отдельный пешеходный мост.</p>
 @endru
-IMG_1818.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1818.jpg'])
 
 @ru
   <p>Пешеходный мост с освещением и скамейками.</p>
 @endru
-IMG_1819.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1819.jpg'])
 
 @ru
   <p>Под мостом что-то знакомое на вид.</p>
 @endru
-IMG_1820.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1820.jpg'])
 
 @ru
-  <p>Бетонные ириски. Похоже на правду.</p>
+  <p>Бетонные ириски. Аутентичное оформление.</p>
 @endru
-IMG_1821.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1821.jpg'])
 
 @ru
   <p>Раскрашенные электрощиты.</p>
 @endru
-IMG_1822.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1822.jpg'])
 
 @ru
   <p>Скамейки на пешеходной улице.</p>
 @endru
-IMG_1823.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1823.jpg'])
 
 @ru
   <p>Ухоженная пешеходная улица.</p>
 @endru
-IMG_1824.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1824.jpg'])
 
 @ru
   <p>Стадион на площади Аргентины.</p>
 @endru
-IMG_1825.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1825.jpg'])
 
 @ru
-  <p>Колокола. Часовня?</p>
+  <p>Колокола храма святого Георгия.</p>
 @endru
-IMG_1826.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1826.jpg'])
 
 @ru
   <p>Закрытые автомобильные ворота в парк шума.</p>
 @endru
-IMG_1827.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1827.jpg'])
 
 @ru
-  <p>Пешая короткая прогулка по части парка.</p>
+  <p>Пешая короткая прогулка по парку.</p>
 @endru
-IMG_1828.jpeg
-IMG_1829.jpeg
-IMG_1830.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_1828.jpg',
+  'IMG_1829.jpg',
+  'IMG_1830.jpg',
+]])
 
 @ru
   <p>Деревянная скамейка.</p>
 @endru
-IMG_1831.jpeg
-IMG_1832.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_1831.jpg',
+  'IMG_1832.jpg',
+]])
 
 @ru
   <p>Веревочный парк.</p>
 @endru
-IMG_1833.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1833.jpg'])
 
 @ru
   <p>Лошадка припаркована.</p>
 @endru
-IMG_1834.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1834.jpg'])
 
 @ru
   <p>Большой фонтан на площади.</p>
 @endru
-IMG_1835.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1835.jpg'])
 
 @ru
   <p>Памятник снаряду второй мировой.</p>
 @endru
-IMG_1836.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1836.jpg'])
 
 @ru
   <p>Разноцветный дом.</p>
 @endru
-IMG_1837.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1837.jpg'])
 
 @ru
   <p>Улица.</p>
 @endru
-IMG_1838.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1838.jpg'])
 
 @ru
   <p>Река.</p>
 @endru
-IMG_1839.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1839.jpg'])
 
 @ru
   <p>Автобусная остановка.</p>
 @endru
-IMG_1840.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1840.jpg'])
 
 @ru
   <p>Ветки дерева в лобовом стекле.</p>
 @endru
-IMG_1841.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1841.jpg'])
 
 @ru
   <p>Железная дорога.</p>
 @endru
-IMG_1842.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1842.jpg'])
 
 @ru
   <p>Мусорные баки на фоне гор.</p>
 @endru
-IMG_1843.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1843.jpg'])
 
 @ru
   <p>Жилые дома на фоне гор.</p>
 @endru
-IMG_1844.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1844.jpg'])
 
 @ru
-  <p>Храм?</p>
+  <p>Католическая церковь.</p>
 @endru
-IMG_1845.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1845.jpg'])
 
 @ru
   <p>Обогрев сидящих вечером на улице в общепите.</p>
 @endru
-IMG_1846.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1846.jpg'])
 
 @ru
   <p>Электро-такси до аэропорта. Тариф у Теслы через приложение был даже ниже, чем фиксированная ставка у таксистов в аэропорту.</p>
 @endru
-IMG_1847.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1847.jpg'])
 
 @ru
   <p>Пейзаж за окном.</p>
 @endru
-IMG_1848.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1848.jpg'])
 
 @ru
   <p>Сама Тесла.</p>
 @endru
-IMG_1851.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1851.jpg'])
 
 @ru
   <p>За полтора часа до вылета на досмотр еще не пускают.</p>
 @endru
-IMG_1852.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1852.jpg'])
 
 @ru
   <p>За 45 минут пустили.</p>
 @endru
-IMG_1853.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1853.jpg'])
 
 @ru
   <p>Пеший самостоятельный проход к самолету.</p>
 @endru
-IMG_1854.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1854.jpg'])
 
 @ru
   <p>Кто-то отгрыз подлокотник в самолете.</p>
 @endru
-IMG_1856.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1856.jpg'])
 @endsection

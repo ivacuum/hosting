@@ -54,6 +54,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7811.jpg'])
 
+<a id="door"></a>
 @ru
   <p>Дверь с потрясающим количеством объемных деталей.</p>
 @endru
