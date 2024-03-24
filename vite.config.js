@@ -2,6 +2,10 @@ import {defineConfig} from 'vite'
 import laravel from 'laravel-vite-plugin'
 
 export default defineConfig({
+  build: {
+    outDir: 'public/assets',
+    assetsDir: './'
+  },
   plugins: [
     laravel([
       'resources/css/app.css',
