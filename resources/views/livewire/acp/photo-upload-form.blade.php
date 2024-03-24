@@ -5,8 +5,8 @@
 
   <?php LivewireForm::model(new App\Photo); ?>
 
-  {{ LivewireForm::select('tripId')->values($this->tripIds) }}
-  {{ LivewireForm::select('gigId')->values($this->gigIds) }}
+  {{ LivewireForm::select('tripId')->live()->values($this->tripIds) }}
+  {{ LivewireForm::select('gigId')->live()->values($this->gigIds) }}
 
   @include('tpl.form_errors')
 
