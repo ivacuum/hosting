@@ -19,7 +19,7 @@
       <div class="absolute bottom-0 text-white trip-cover-info p-12 w-full">
         <div class="flex flex-wrap gap-3 items-baseline font-bold text-[4.5rem]">
           <img class="flag-4x3 text-6xl svg-shadow" src="{{ $trip->city->country->flagUrl() }}" alt="">
-          <span class="leading-none">{{ $trip->title }}</span>
+          <span class="leading-none tracking-tight">{{ $trip->title }}</span>
           <span class="leading-tight self-end text-grey-300 text-4xl">{{ $trip->timelinePeriodWithYear() }}</span>
         </div>
         @if ($trip->metaDescription())
