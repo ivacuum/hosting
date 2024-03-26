@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'support' => 'support@ivacuum.ru',
+    'support' => 'support@vacuum.name',
 ];
