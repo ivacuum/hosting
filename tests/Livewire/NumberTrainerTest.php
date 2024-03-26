@@ -63,6 +63,18 @@ class NumberTrainerTest extends TestCase
             ->assertSet('answered', 1);
     }
 
+    public function testMaximumIsNotLowerThan10()
+    {
+        \Livewire::test(NumberTrainer::class)
+            ->set('lang', 'en')
+            ->call('decreaseLevel')
+            ->set('number', 2)
+            ->set('answer', 2)
+            ->call('check')
+            ->assertSet('answered', 1)
+            ->assertSet('maximum', 10);
+    }
+
     public function testReveal()
     {
         \Livewire::test(NumberTrainer::class)

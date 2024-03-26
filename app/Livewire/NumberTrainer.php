@@ -68,7 +68,7 @@ class NumberTrainer extends Component
     public function decreaseLevel()
     {
         $this->validate(['maximum' => 'integer|min:10|max:100000000']);
-        $this->maximum /= 10;
+        $this->maximum = max($this->maximum / 10, 10);
 
         event(new \App\Events\Stats\NumberDecreaseMaximum);
     }
