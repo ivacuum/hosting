@@ -114,9 +114,6 @@ class Rto
             ->timeout(\App::runningInConsole() ? 60 : 15)
             ->withOptions([
                 RequestOptions::PROXY => config('services.rto.proxy'),
-                RequestOptions::FORCE_IP_RESOLVE => \App::isProduction()
-                    ? 'v4'
-                    : null,
             ]);
     }
 
@@ -128,9 +125,6 @@ class Rto
             ->retry(5, 5000)
             ->withOptions([
                 RequestOptions::PROXY => config('services.rto.proxy'),
-                RequestOptions::FORCE_IP_RESOLVE => \App::isProduction() && !config('services.rto.proxy')
-                    ? 'v6'
-                    : null,
             ]);
     }
 }
