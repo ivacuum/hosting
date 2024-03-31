@@ -1,6 +1,8 @@
 <?php /** @var \App\City $model */ ?>
 
-@extends('acp.list')
+@extends('acp.list', [
+  'searchForm' => true,
+])
 
 @section('content-list')
 <table class="table-stats table-adaptive">

@@ -26,12 +26,14 @@ class CitiesController extends Controller
     {
         $sort = $applyIndexGoods->execute(new City, Sort::asc('title'));
 
+        $q = request('q');
         $countryId = request('country_id');
 
         $models = City::query()
             ->with('country')
             ->withCount('trips')
             ->when($countryId, fn (Builder $query) => $query->where('country_id', $countryId))
+            ->when($q, fn (Builder $query) => $query->whereAny(['title_ru', 'title_en'], 'LIKE', "%{$q}%"))
             ->orderBy(match ($sort->key) {
                 'trips_count',
                 'views' => $sort->key,
