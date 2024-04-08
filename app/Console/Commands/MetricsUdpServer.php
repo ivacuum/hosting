@@ -13,11 +13,12 @@ use Ivacuum\Generic\Commands\Command;
 use Swoole\Process;
 use Swoole\Server;
 use Swoole\Timer;
+use Symfony\Component\Console\Attribute\AsCommand;
 
+#[AsCommand('app:metrics-udp-server', 'Metrics daemon')]
 class MetricsUdpServer extends Command
 {
     protected $signature = 'app:metrics-udp-server {host=127.0.0.1} {port=2720}';
-    protected $description = 'Metrics daemon';
 
     private int $acceptedConnections = 0;
     private bool $started = false;

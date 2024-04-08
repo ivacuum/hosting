@@ -6,7 +6,9 @@ use Ivacuum\Generic\Commands\Command;
 use Ivacuum\Generic\Telegram\BotCommand;
 use Ivacuum\Generic\Telegram\LanguageCode;
 use Ivacuum\Generic\Telegram\TelegramClient;
+use Symfony\Component\Console\Attribute\AsCommand;
 
+#[AsCommand('telegram:set-my-commands', 'Set menu commands')]
 class TelegramSetMyCommands extends Command
 {
     /** @var array<LanguageCode> */
@@ -16,7 +18,6 @@ class TelegramSetMyCommands extends Command
     ];
 
     protected $signature = 'telegram:set-my-commands';
-    protected $description = 'Set menu commands';
 
     public function handle(TelegramClient $telegram)
     {

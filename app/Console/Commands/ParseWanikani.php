@@ -7,11 +7,12 @@ use App\Radical;
 use App\Services\Wanikani\WanikaniApi;
 use App\Vocabulary;
 use Ivacuum\Generic\Commands\Command;
+use Symfony\Component\Console\Attribute\AsCommand;
 
+#[AsCommand('app:parse-wanikani', 'Parse radicals, kanji or vocabulary from wanikani.com')]
 class ParseWanikani extends Command
 {
     protected $signature = 'app:parse-wanikani {min_level=1} {max_level=1} {sleep=1}';
-    protected $description = 'Parse radicals, kanji or vocabulary from wanikani.com';
 
     public function handle(WanikaniApi $wanikani)
     {
