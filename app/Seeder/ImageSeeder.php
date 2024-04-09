@@ -27,5 +27,13 @@ class ImageSeeder extends Seeder
             $image->upload($file);
             $image->save();
         }
+
+        $image = $factory->obsolete()->create();
+
+        $file = UploadedFile::fake()->image($image->slug, random_int(600, 800), random_int(400, 600));
+
+        $image->siteThumbnail($file);
+        $image->upload($file);
+        $image::withoutTimestamps(fn () => $image->save());
     }
 }
