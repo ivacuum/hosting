@@ -4,22 +4,22 @@
 @ru
   <p>Авиарейс задержался, поэтому шансы успеть на метро, а затем на автобус до жилья растворялись с каждой минутой.</p>
 @endru
-IMG_1926.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1926.jpg'])
 
 @ru
   <p>Роскошь страны чувствуется уже в аэропорту.</p>
 @endru
-IMG_1927.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1927.jpg'])
 
 @ru
   <p>Траволатор.</p>
 @endru
-IMG_1928.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1928.jpg'])
 
 @ru
   <p>Лента выдачи багажа.</p>
 @endru
-IMG_1929.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1929.jpg'])
 
 @ru
   <p>Довез в итоге таксист за евро, потому что местные деньги не наменял в аэропорту. А стоило наменять.</p>
@@ -28,504 +28,522 @@ IMG_1929.jpeg
 @ru
   <p>У отеля есть автобус до пляжа и информация на русском языке.</p>
 @endru
-IMG_1930.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1930.jpg'])
 
 @ru
   <p>33 этажа в отеле.</p>
 @endru
-IMG_1931.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1931.jpg'])
 
 @ru
   <p>Номер на ближайшую неделю.</p>
 @endru
-IMG_1932.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1932.jpg'])
 
 @ru
   <p>Соседний небоскреб совсем рядом.</p>
 @endru
-IMG_1935.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1935.jpg'])
 
 @ru
   <p>Видны окрестности и соседние башни пониже. Вдали море.</p>
 @endru
-IMG_1936.jpeg
-IMG_1962.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_1936.jpg',
+  'IMG_1962.jpg',
+]])
 
 @ru
   <p>Ближайшая к отелю автобусная остановка, с которой можно уехать в Дубай или его аэропорт. Только нужна транспортная карта, так как банковской картой и наличными оплатить проезд нельзя. Карты подсказывают, что неподалеку есть вокзал — стоит попытать счастья найти транспортную карту там.</p>
 @endru
-IMG_1937.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1937.jpg'])
 
 @ru
   <p>Контейнер для вещей.</p>
 @endru
-IMG_1938.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1938.jpg'])
 
 @ru
   <p>Пальмы.</p>
 @endru
-IMG_1939.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1939.jpg'])
 
 @ru
   <p>Длинный и пустынный тротуар.</p>
 @endru
-IMG_1940.jpeg
-IMG_1941.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_1940.jpg',
+  'IMG_1941.jpg',
+]])
 
 @ru
   <p>Озеро.</p>
 @endru
-IMG_1942.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1942.jpg'])
 
 @ru
   <p>Таксофон.</p>
 @endru
-IMG_1943.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1943.jpg'])
 
 @ru
   <p>На вокзале тоже карты не нашлось. Пришлось покупать в отеле дирхамы, чтобы без переплат доехать на такси до аэропорта и изучить каким бы был путь до жилья в Шардже в дневное время.</p>
 @endru
-IMG_1944.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1944.jpg'])
 
 @ru
   <p>Окрестности аэропорта.</p>
 @endru
-IMG_1945.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1945.jpg'])
 
 @ru
   <p>Первый терминал аэропорта на красной ветке метро.</p>
 @endru
-IMG_1946.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1946.jpg'])
 
 @ru
   <p>Вагон метро.</p>
 @endru
-IMG_1948.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1948.jpg'])
 
 @ru
   <p>Эскалаторы в начале и конце платформы ходят в разные стороны. Если ошибиться, то предстоит путь по крутой лестнице.</p>
 @endru
-IMG_1949.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1949.jpg'])
 
 @ru
   <p>Автобусные остановки.</p>
 @endru
-IMG_1951.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1951.jpg'])
 
 @ru
   <p>В автобусе-полуэкспрессе до Шарджи.</p>
 @endru
-IMG_1952.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1952.jpg'])
 
 @ru
   <p>В Эмиратах свой разъем электрической розетки. Еще в отеле выведены другие распространенные компьютерные и ТВ-порты. Когда-нибудь я начну ими пользоваться, но это неточно.</p>
 @endru
-IMG_1953.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1953.jpg'])
 
 @ru
   <p>Купюра в десять дирхам. Фон портрета шейха просвечивается.</p>
 @endru
-IMG_1954.jpeg
-IMG_1955.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_1954.jpg',
+  'IMG_1955.jpg',
+]])
 
 @ru
   <p>Парковка в озере.</p>
 @endru
-IMG_1956.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1956.jpg'])
 
 @ru
   <p>Набережная.</p>
 @endru
-IMG_1957.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1957.jpg'])
 
 @ru
   <p>Колесо обозрения подсвечено.</p>
 @endru
-IMG_1959.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1959.jpg'])
 
 @ru
   <p>Сушеные фрукты и орехи в ассортименте.</p>
 @endru
-IMG_1960.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1960.jpg'])
 
 @ru
   <p>Круглосуточный супермаркет, в котором товары со всего света.</p>
 @endru
-IMG_1983.jpeg
-IMG_1961.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_1983.jpg',
+  'IMG_1961.jpg',
+]])
 
 @ru
   <p>Коридор 27 этажа.</p>
 @endru
-IMG_1963.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1963.jpg'])
 
 @ru
   <p>Фонтан.</p>
 @endru
-IMG_1965.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1965.jpg'])
 
 @ru
   <p>Прогулка по набережной.</p>
 @endru
-IMG_1966.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1966.jpg'])
 
 @ru
   <p>Два камня в качестве скамейки. Скамеек действительно могли бы поставить в разы больше.</p>
 @endru
-IMG_1967.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1967.jpg'])
 
 @ru
   <p>Какова отделка потолка под мостом!</p>
 @endru
-IMG_1968.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1968.jpg'])
 
 @ru
   <p>Набережная канала.</p>
 @endru
-IMG_1970.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1970.jpg'])
 
 @ru
   <p>Скамейки вокруг дерева.</p>
 @endru
-IMG_1971.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1971.jpg'])
 
 @ru
   <p>Отель снаружи.</p>
 @endru
-IMG_1972.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1972.jpg'])
 
 @ru
   <p>Метро Дубая хоть и беспилотное, но не круглосуточное.</p>
 @endru
-IMG_1973.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1973.jpg'])
 
 @ru
   <p>Турникеты на станции метро.</p>
 @endru
-IMG_1974.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1974.jpg'])
 
 @ru
   <p>Первый вагон для заплативших двойную цену.</p>
 @endru
-IMG_1975.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1975.jpg'])
 
 @ru
   <p>Идем слева, стоим справа.</p>
 @endru
-IMG_1976.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1976.jpg'])
 
 @ru
   <p>Последний вагон для женщин и детей.</p>
 @endru
-IMG_1977.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1977.jpg'])
 
 @ru
   <p>Двухэтажный автобус до Шарджи.</p>
 @endru
-IMG_1978.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1978.jpg'])
 
 @ru
   <p>Завтрак.</p>
 @endru
-IMG_1981.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1981.jpg'])
 
 @ru
   <p>Шведский стол.</p>
 @endru
-IMG_1982.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1982.jpg'])
 
 @ru
   <p>Озеро.</p>
 @endru
-IMG_1986.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1986.jpg'])
 
 @ru
   <p>Неприлично узкий тротуар.</p>
 @endru
-IMG_1987.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_1987.jpg'])
 
 @ru
   <p>Рупоры на вышке, через которые пять раз в день голосят молитвы. Прямо с шести утра.</p>
 @endru
-IMG_2105.jpeg
-IMG_2111.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2105.jpg',
+  'IMG_2111.jpg',
+]])
 
 @ru
   <p>Уличная табличка.</p>
 @endru
-IMG_2106.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2106.jpg'])
 
 @ru
   <p>Арбузы из Австралии и Бразилии.</p>
 @endru
-IMG_2108.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2108.jpg'])
 
 @ru
   <p>Киви из Италии, желтые сливы, желтые нектарины и абрикосы из Южной Африки, нектарины и персики из Австралии.</p>
 @endru
-IMG_2109.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2109.jpg'])
 
 @ru
   <p>Почтовый ящик.</p>
 @endru
-IMG_2110.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2110.jpg'])
 
 @ru
   <p>Пешеходный переход поплавился от жары. Если зимой хотя бы +20&deg;C, то летом далеко на +40&deg;C.</p>
 @endru
-IMG_2112.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2112.jpg'])
 
 @ru
   <p>Отель с гипермаркетом на первом этаже.</p>
 @endru
-IMG_2198.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2198.jpg'])
 
 @ru
   <p>Бассейн на седьмом этаже. Солнце его посещает лишь некоторую часть дня.</p>
 @endru
-IMG_2200.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2200.jpg'])
 
 @ru
   <p>Комната для важных переговоров.</p>
 @endru
-IMG_2201.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2201.jpg'])
 
 @ru
   <p>Джакузи.</p>
 @endru
-IMG_2203.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2203.jpg'])
 
 @ru
   <p>Фруктовые ассорти.</p>
 @endru
-IMG_2206.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2206.jpg'])
 
 @ru
   <p>Апельсины из США, лимон из Турции, апельсины из Египта и мандарины из Пакистана.</p>
 @endru
-IMG_2207.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2207.jpg'])
 
 @ru
   <p>Манго из Кении, Шри Ланки, Бразилии, Австралии, Перу и Индии, дыня из Омана и гуава из Индии.</p>
 @endru
-IMG_2208.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2208.jpg'])
 
 @ru
   <p>Свежие финики из Намибии, груша из Китая, маракуйя из Испании, питахайя из Вьетнама.</p>
 @endru
-IMG_2209.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2209.jpg'])
 
 @ru
   <p>Арбузы из Эмиратов, дыни из Бразилии, Индии и Австралии, папайя из Шри Ланки.</p>
 @endru
-IMG_2210.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2210.jpg'])
 
 @ru
   <p>На щите с информацией о парковке упомянут Рамадан.</p>
 @endru
-IMG_2212.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2212.jpg'])
 
 @ru
   <p>Дорога.</p>
 @endru
-IMG_2213.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2213.jpg'])
 
 @ru
   <p>Мечеть?</p>
 @endru
-IMG_2214.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2214.jpg'])
 
 @ru
   <p>Сбор одежды.</p>
 @endru
-IMG_2215.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2215.jpg'])
 
 @ru
   <p>Реклама центра переработки.</p>
 @endru
-IMG_2216.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2216.jpg'])
 
 @ru
   <p>Общественный туалет.</p>
 @endru
-IMG_2217.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2217.jpg'])
 
 @ru
   <p>Едва видимая надпись на тротуаре пугает штрафом за переход дороги.</p>
 @endru
-IMG_2218.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2218.jpg'])
 
 @ru
   <p>При этом пешеходного перехода даже не видать.</p>
 @endru
-IMG_2219.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2219.jpg'])
 
 @ru
   <p>Золотистого цвета светильники.</p>
 @endru
-IMG_2220.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2220.jpg'])
 
 @ru
   <p>Фасад жилого дома.</p>
 @endru
-IMG_2221.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2221.jpg'])
 
 @ru
   <p>Рекламные объявления о сдаче жилья.</p>
 @endru
-IMG_2222.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2222.jpg'])
 
 @ru
   <p>У сайта фестиваля света весьма короткий адрес: slf.ae</p>
 @endru
-IMG_2223.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2223.jpg'])
 
 @ru
   <p>Реклама фестиваля света. Еще бросается в глаза какая в домах узкая щель для солнца на каждом этаже.</p>
 @endru
-IMG_2224.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2224.jpg'])
 
 @ru
   <p>Пушки у форта.</p>
 @endru
-IMG_2225.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2225.jpg'])
 
 @ru
   <p>Набережная на закате.</p>
 @endru
-IMG_2226.jpeg
-IMG_2227.jpeg
-IMG_2230.jpeg
-IMG_2232.jpeg
-IMG_2239.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2226.jpg',
+  'IMG_2227.jpg',
+  'IMG_2230.jpg',
+  'IMG_2232.jpg',
+  'IMG_2239.jpg',
+]])
 
 @ru
   <p>Реновация фасада мечети?</p>
 @endru
-IMG_2229.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2229.jpg'])
 
 @ru
   <p>Много кораблей и лодок пришвартовано.</p>
 @endru
-IMG_2231.jpeg
-IMG_2234.jpeg
-IMG_2238.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2231.jpg',
+  'IMG_2234.jpg',
+  'IMG_2238.jpg',
+]])
 
 @ru
   <p>Скамейка.</p>
 @endru
-IMG_2233.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2233.jpg'])
 
 @ru
   <p>Велосипед и скамейка.</p>
 @endru
-IMG_2235.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2235.jpg'])
 
 @ru
   <p>Поле. Вдали дети играют в мяч.</p>
 @endru
-IMG_2236.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2236.jpg'])
 
 @ru
   <p>Задняя дверь в автомобиль.</p>
 @endru
-IMG_2237.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2237.jpg'])
 
 @ru
   <p>Флаг Эмиратов на острове.</p>
 @endru
-IMG_2240.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2240.jpg'])
 
 @ru
   <p>Навес над автомобильной парковкой.</p>
 @endru
-IMG_2241.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2241.jpg'])
 
 @ru
   <p>Фасад галереи. И фонтан.</p>
 @endru
-IMG_2242.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2242.jpg'])
 
 @ru
   <p>Фонтан поближе.</p>
 @endru
-IMG_2244.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2244.jpg'])
 
 @ru
   <p>Чайник — точка продаж.</p>
 @endru
-IMG_2246.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2246.jpg'])
 
 @ru
   <p>С наступлением темноты начался фестиваль света.</p>
 @endru
-IMG_2248.jpeg
-IMG_2249.jpeg
-IMG_2250.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2248.jpg',
+  'IMG_2249.jpg',
+  'IMG_2250.jpg',
+]])
 
 @ru
   <p>Результат проекции.</p>
 @endru
-IMG_2247.jpeg
-IMG_2252.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2247.jpg',
+  'IMG_2252.jpg',
+]])
 
 @ru
   <p>Набережная вечером.</p>
 @endru
-IMG_2253.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2253.jpg'])
 
 @ru
   <p>Пылесос для борьбы с мусором.</p>
 @endru
-IMG_2254.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2254.jpg'])
 
 @ru
   <p>Мечеть подсвечена со всех сторон.</p>
 @endru
-IMG_2256.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2256.jpg'])
 
 @ru
   <p>Санитайзер для рук в лифте.</p>
 @endru
-IMG_2265.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2265.jpg'])
 
 @ru
   <p>Места для женщин в автобусе в аэропорт.</p>
 @endru
-IMG_2267.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2267.jpg'])
 
 @ru
   <p>2ГИС подсказал прямой автобус в аэропорт, о котором не знал Гугл.</p>
 @endru
-IMG_2268.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2268.jpg'])
 
 @ru
   <p>У входа в терминал.</p>
 @endru
-IMG_2269.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2269.jpg'])
 
 @ru
   <p>Навесы на автомобильной парковке, чтобы не поплавиться, когда сядешь в свою машину после самолета.</p>
 @endru
-IMG_2270.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2270.jpg'])
 
 @ru
   <p>В терминале.</p>
 @endru
-IMG_2271.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2271.jpg'])
 
 @ru
   <p>Ожидание приглашения на посадку в самолет.</p>
 @endru
-IMG_2272.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2272.jpg'])
 
 @ru
   <p>Раздельная посадка в переднюю половину самолета и в заднюю.</p>
 @endru
-IMG_2273.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2273.jpg'])
 
 @ru
   <p>На табло перед самолетом написан его номер рейса FZ753, время вылета в часовом поясе UTC, оставшееся до вылета время. Под табло координаты парковки.</p>
 @endru
-IMG_2274.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2274.jpg'])
 @endsection
