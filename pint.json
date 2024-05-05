@@ -1,17 +1,23 @@
 {
   "preset": "laravel",
   "rules": {
+    "blank_line_after_opening_tag": false,
     "braces": {
       "position_after_anonymous_constructs": "same"
-    },
-    "concat_space": {
-      "spacing": "one"
     },
     "braces_position": {
       "anonymous_classes_opening_brace": "same_line"
     },
+    "class_attributes_separation": {
+      "elements": {
+        "method": "one"
+      }
+    },
+    "concat_space": {
+      "spacing": "one"
+    },
     "linebreak_after_opening_tag": false,
-    "blank_line_after_opening_tag": false,
+    "not_operator_with_successor_space": false,
     "nullable_type_declaration": {
       "syntax": "union"
     },
@@ -38,12 +44,6 @@
       "sort_algorithm": "none",
       "null_adjustment": "always_last"
     },
-    "class_attributes_separation": {
-      "elements": {
-        "method": "one"
-      }
-    },
-    "not_operator_with_successor_space": false,
     "trailing_comma_in_multiline": {
       "elements": [
         "arrays",
