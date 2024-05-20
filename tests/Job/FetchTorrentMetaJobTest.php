@@ -21,10 +21,10 @@ class FetchTorrentMetaJobTest extends TestCase
         \Bus::fake();
 
         $infoHash = 'updated-info-hash';
-        $magnet = MagnetFactory::new()->create();
+        $magnet = MagnetFactory::new()->withRtoId(911)->create();
 
         $topicData = new RtoTopicData(
-            $magnet->rto_id,
+            911,
             $magnet->title,
             $infoHash,
             $magnet->registered_at,
@@ -38,7 +38,7 @@ class FetchTorrentMetaJobTest extends TestCase
 
         $this->fakeHttpClient($topicData);
 
-        $job = new FetchTorrentMetaJob($magnet->rto_id);
+        $job = new FetchTorrentMetaJob(911);
         $this->app->call($job->handle(...));
 
         $magnet->refresh();
@@ -50,10 +50,10 @@ class FetchTorrentMetaJobTest extends TestCase
 
     public function testDuplicateDeleted()
     {
-        $magnet = MagnetFactory::new()->create();
+        $magnet = MagnetFactory::new()->withRtoId(911)->create();
 
         $topicData = new RtoTopicData(
-            $magnet->rto_id,
+            911,
             $magnet->title,
             $magnet->info_hash,
             $magnet->registered_at,
@@ -69,7 +69,7 @@ class FetchTorrentMetaJobTest extends TestCase
 
         \Event::fake(\App\Events\Stats\TorrentDuplicateDeleted::class);
 
-        $job = new FetchTorrentMetaJob($magnet->rto_id);
+        $job = new FetchTorrentMetaJob(911);
         $this->app->call($job->handle(...));
 
         $magnet->refresh();
@@ -83,10 +83,10 @@ class FetchTorrentMetaJobTest extends TestCase
     {
         $size = 1234567890;
         $title = 'TITLE';
-        $magnet = MagnetFactory::new()->create();
+        $magnet = MagnetFactory::new()->withRtoId(911)->create();
 
         $topicData = new RtoTopicData(
-            $magnet->rto_id,
+            911,
             $title,
             $magnet->info_hash,
             $magnet->registered_at,
@@ -100,7 +100,7 @@ class FetchTorrentMetaJobTest extends TestCase
 
         $this->fakeHttpClient($topicData);
 
-        $job = new FetchTorrentMetaJob($magnet->rto_id);
+        $job = new FetchTorrentMetaJob(911);
         $this->app->call($job->handle(...));
 
         $magnet->refresh();
@@ -111,12 +111,12 @@ class FetchTorrentMetaJobTest extends TestCase
 
     public function testNotFoundAndDeleted()
     {
-        $magnet = MagnetFactory::new()->create();
+        $magnet = MagnetFactory::new()->withRtoId(911)->create();
 
         \Http::fake([
-            "api.rutracker.cc/v1/get_tor_topic_data?by=topic_id&val={$magnet->rto_id}" => \Http::response([
+            'api.rutracker.cc/v1/get_tor_topic_data?by=topic_id&val=911' => \Http::response([
                 'result' => [
-                    $magnet->rto_id => null,
+                    911 => null,
                 ],
             ]),
             ...TelegramResponse::fakeSuccess(),
@@ -124,7 +124,7 @@ class FetchTorrentMetaJobTest extends TestCase
 
         \Event::fake(\App\Events\Stats\TorrentNotFoundDeleted::class);
 
-        $job = new FetchTorrentMetaJob($magnet->rto_id);
+        $job = new FetchTorrentMetaJob(911);
         $this->app->call($job->handle(...));
 
         $magnet->refresh();
@@ -136,13 +136,13 @@ class FetchTorrentMetaJobTest extends TestCase
 
     public function testPremoderationLeavesTorrentMetaUntouched()
     {
-        $magnet = MagnetFactory::new()->create();
+        $magnet = MagnetFactory::new()->withRtoId(911)->create();
 
         $size = $magnet->size;
         $title = $magnet->title;
 
         $topicData = new RtoTopicData(
-            $magnet->rto_id,
+            911,
             'NEW TITLE',
             $magnet->info_hash,
             $magnet->registered_at,
@@ -156,7 +156,7 @@ class FetchTorrentMetaJobTest extends TestCase
 
         $this->fakeHttpClient($topicData);
 
-        $job = new FetchTorrentMetaJob($magnet->rto_id);
+        $job = new FetchTorrentMetaJob(911);
         $this->app->call($job->handle(...));
 
         $magnet->refresh();

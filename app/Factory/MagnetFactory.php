@@ -9,6 +9,7 @@ use App\Magnet;
 class MagnetFactory
 {
     private string $relatedQuery = '';
+    private int|null $rtoId = null;
     private int|null $userId = null;
     private string|null $html = null;
     private string|null $title = null;
@@ -56,7 +57,7 @@ class MagnetFactory
         $model->title = $this->title ?? fake()->words(3, true);
         $model->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $model->clicks = fake()->optional(0.9, 0)->numberBetween(1, 10000);
-        $model->rto_id = fake()->numberBetween(1_000_000, 5_000_000);
+        $model->rto_id = $this->rtoId ?? fake()->numberBetween(1_000_000, 5_000_000);
         $model->status = $this->status;
         $model->user_id = $this->userId ?? UserFactory::new()->create()->id;
         $model->info_hash = fake()->regexify('[A-F0-9]{40}');
@@ -101,6 +102,14 @@ class MagnetFactory
     {
         $factory = clone $this;
         $factory->relatedQuery = $relatedQuery;
+
+        return $factory;
+    }
+
+    public function withRtoId(int $rtoId)
+    {
+        $factory = clone $this;
+        $factory->rtoId = $rtoId;
 
         return $factory;
     }

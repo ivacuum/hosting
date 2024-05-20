@@ -16,15 +16,15 @@ class FetchTorrentBodyJobTest extends TestCase
     {
         $body = 'new body';
         $announcer = 'announcer';
-        $magnet = MagnetFactory::new()->create();
+        $magnet = MagnetFactory::new()->withRtoId(911)->create();
 
         $http = \Http::fake([
-            "rutracker.org/forum/viewtopic.php?t={$magnet->rto_id}" => \Http::response('<div class="post_body">' . $body . '<fieldset class="attach"><span class="attach_link"><a class="magnet-link" href="magnet:?xt=urn:btih:info_hash&tr=' . urlencode($announcer) . '"></a></span></fieldset></div>'),
+            'rutracker.org/forum/viewtopic.php?t=911' => \Http::response('<div class="post_body">' . $body . '<fieldset class="attach"><span class="attach_link"><a class="magnet-link" href="magnet:?xt=urn:btih:info_hash&tr=' . urlencode($announcer) . '"></a></span></fieldset></div>'),
         ]);
 
         $rto = new Rto($http);
 
-        $job = new FetchTorrentBodyJob($magnet->rto_id);
+        $job = new FetchTorrentBodyJob(911);
         $job->handle($rto);
 
         $magnet->refresh();
