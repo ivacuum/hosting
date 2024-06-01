@@ -68,9 +68,9 @@
     "rector": "vendor/bin/rector process --dry-run",
     "share": "expose",
     "test": "@php artisan test --parallel",
+    "test-fresh": "@php artisan test --parallel --recreate-databases",
     "test-linear": "vendor/bin/phpunit --colors=always",
-    "test-profile": "@php artisan test --profile",
-    "test-fresh": "@php artisan test --parallel --recreate-databases"
+    "test-profile": "@php artisan test --profile"
   },
   "extra": {
     "laravel": {
