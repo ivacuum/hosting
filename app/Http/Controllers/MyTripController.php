@@ -17,7 +17,7 @@ class MyTripController
             ->withCount('comments', 'photos')
             ->whereBelongsTo(request()->user())
             ->orderByDesc('date_start')
-            ->paginate(50, Trip::COLUMNS_LIST);
+            ->paginate(40, Trip::COLUMNS_LIST);
 
         return view('my.trips.index', ['models' => $models]);
     }

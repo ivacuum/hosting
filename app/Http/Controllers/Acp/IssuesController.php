@@ -35,7 +35,7 @@ class IssuesController extends Controller
                 'comments_count' => $sort->key,
                 default => 'id',
             }, $sort->direction->value)
-            ->paginate(50);
+            ->paginate(40);
 
         return view('acp.issues.index', ['models' => $models]);
     }
