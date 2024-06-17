@@ -33,7 +33,7 @@ class EmailsController extends Controller
                 'clicks' => $sort->key,
                 default => 'id',
             }, $sort->direction->value)
-            ->paginate();
+            ->paginate(40);
 
         return view('acp.emails.index', ['models' => $models]);
     }

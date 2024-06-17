@@ -12,7 +12,7 @@ class FileController
         $models = File::query()
             ->tap(new FilePublishedScope)
             ->orderByDesc('id')
-            ->paginate();
+            ->paginate(40);
 
         return view('files.index', ['models' => $models]);
     }

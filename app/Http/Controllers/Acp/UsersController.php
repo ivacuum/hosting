@@ -52,7 +52,7 @@ class UsersController extends Controller
                 'trips_count' => $sort->key,
                 default => 'id',
             }, $sort->direction->value)
-            ->paginate();
+            ->paginate(40);
 
         return view('acp.users.index', [
             'avatar' => $avatar,

@@ -32,8 +32,6 @@ class Issue extends Model
 {
     use Notifiable;
 
-    protected $perPage = 50;
-
     // Relations
     public function comments()
     {

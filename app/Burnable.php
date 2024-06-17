@@ -20,7 +20,6 @@ class Burnable extends Model
 
     protected $primaryKey;
     protected $fillable = ['user_id'];
-    protected $perPage = 50;
 
     #[\Override]
     protected function casts(): array

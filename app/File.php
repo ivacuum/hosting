@@ -21,8 +21,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class File extends Model
 {
-    protected $perPage = 50;
-
     protected $attributes = [
         'folder' => '',
         'status' => FileStatus::Published,

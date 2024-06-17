@@ -18,7 +18,7 @@ class NewsController
             ->tap(new NewsCurrentLocaleScope)
             ->when($year || $month || $day, fn (Builder $query) => $query->whereBetween('created_at', News::interval($year, $month, $day)))
             ->orderByDesc('created_at')
-            ->paginate();
+            ->paginate(10);
 
         return view('news.index', ['news' => $news]);
     }

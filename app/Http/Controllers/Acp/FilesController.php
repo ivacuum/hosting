@@ -30,7 +30,7 @@ class FilesController extends Controller
                 'downloads' => $sort->key,
                 default => 'id',
             }, $sort->direction->value)
-            ->paginate();
+            ->paginate(40);
 
         return view('acp.files.index', ['models' => $models]);
     }

@@ -27,8 +27,6 @@ class Tag extends Model
 {
     use Traits\HasLocalizedTitle;
 
-    protected $perPage = 50;
-
     // Relations
     public function news()
     {

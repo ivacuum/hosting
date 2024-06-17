@@ -25,7 +25,7 @@ class NotificationsController extends Controller
 
         $models = Notification::query()
             ->orderBy('created_at', $sort->direction->value)
-            ->paginate();
+            ->paginate(40);
 
         return view('acp.notifications.index', ['models' => $models]);
     }

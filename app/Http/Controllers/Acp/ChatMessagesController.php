@@ -33,7 +33,7 @@ class ChatMessagesController extends Controller
             ->unless($status === null, fn (Builder $query) => $query->where('status', $status))
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
             ->orderBy('id', $sort->direction->value)
-            ->paginate();
+            ->paginate(40);
 
         return view('acp.chat-messages.index', [
             'models' => $models,

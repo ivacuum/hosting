@@ -29,8 +29,6 @@ use Illuminate\Database\Eloquent\Model;
 #[ObservedBy(KanjiObserver::class)]
 class Kanji extends Model
 {
-    protected $perPage = 50;
-
     // Relations
     public function burnable()
     {

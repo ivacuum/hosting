@@ -28,8 +28,6 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 #[ObservedBy(PhotoObserver::class)]
 class Photo extends Model
 {
-    protected $perPage = 50;
-
     // Relations
     public function rel()
     {

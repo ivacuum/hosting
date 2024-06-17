@@ -48,7 +48,7 @@ class TripsController extends Controller
                 'photos_count' => $sort->key,
                 default => 'date_start',
             }, $sort->direction->value)
-            ->paginate(50);
+            ->paginate(40);
 
         return view('acp.trips.index', ['models' => $models]);
     }

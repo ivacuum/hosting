@@ -32,7 +32,7 @@ class ExternalIdentitiesController extends Controller
             ->when($userId === null, fn (Builder $query) => $query->where('user_id', '<>', 0))
             ->when($provider, fn (Builder $query) => $query->where('provider', $provider))
             ->orderBy('id', $sort->direction->value)
-            ->paginate();
+            ->paginate(40);
 
         return view('acp.external-identities.index', ['models' => $models]);
     }

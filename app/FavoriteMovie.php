@@ -18,8 +18,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class FavoriteMovie extends Model
 {
-    protected $perPage = 50;
-
     // Methods
     public function breadcrumb(): string
     {

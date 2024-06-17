@@ -28,8 +28,6 @@ use Illuminate\Database\Eloquent\Model;
 #[ObservedBy(VocabularyObserver::class)]
 class Vocabulary extends Model
 {
-    protected $perPage = 50;
-
     // Relations
     public function burnable()
     {

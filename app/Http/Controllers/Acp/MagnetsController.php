@@ -40,7 +40,7 @@ class MagnetsController extends Controller
                 'clicks' => $sort->key,
                 default => 'id',
             }, $sort->direction->value)
-            ->paginate();
+            ->paginate(40);
 
         return view('acp.magnets.index', [
             'models' => $models,

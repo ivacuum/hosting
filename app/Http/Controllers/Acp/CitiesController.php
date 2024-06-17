@@ -39,7 +39,7 @@ class CitiesController extends Controller
                 'views' => $sort->key,
                 default => City::titleField(),
             }, $sort->direction->value)
-            ->paginate();
+            ->paginate(40);
 
         return view('acp.cities.index', ['models' => $models]);
     }

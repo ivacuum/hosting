@@ -26,8 +26,6 @@ use Illuminate\Database\Eloquent\Model;
 #[ObservedBy(CommentObserver::class)]
 class Comment extends Model
 {
-    protected $perPage = 20;
-
     // Relations
     public function emails()
     {

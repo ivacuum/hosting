@@ -24,8 +24,6 @@ use Ivacuum\Generic\Services\ImageConverter;
 #[ObservedBy(ImageObserver::class)]
 class Image extends Model
 {
-    protected $perPage = 50;
-
     // Relations
     public function user()
     {

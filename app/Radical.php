@@ -23,8 +23,6 @@ use Illuminate\Database\Eloquent\Model;
 #[ObservedBy(RadicalObserver::class)]
 class Radical extends Model
 {
-    protected $perPage = 50;
-
     // Relations
     public function burnable()
     {

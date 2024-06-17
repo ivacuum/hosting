@@ -59,7 +59,6 @@ class Magnet extends Model
     ];
 
     protected $hidden = ['html'];
-    protected $perPage = 50;
 
     // Relations
     public function comments()
