@@ -24,13 +24,15 @@ class PhotoPointResponse implements \JsonSerializable
             ],
             'properties' => [
                 'balloonContent' => sprintf(
-                    '<div><a href="%s#%s">%s, %s %s<br><img class="mt-1 image-200 object-cover rounded" src="%s" alt=""></a></div>',
+                    '<div><a href="%s#%s">%s, %s %s<br><img class="mt-1 image-200 object-cover rounded" src="%s" alt=""></a></div><div class="mt-1">%s, %s</div>',
                     $this->photo->rel->www(),
                     $basename,
                     $this->photo->rel->title,
                     $this->photo->rel->period(),
                     $this->photo->rel->year,
-                    $this->photo->thumbnailUrl()
+                    $this->photo->thumbnailUrl(),
+                    $this->photo->point->lat,
+                    $this->photo->point->lon,
                 ),
                 'clusterCaption' => $basename,
             ],
