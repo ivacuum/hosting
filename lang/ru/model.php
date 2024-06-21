@@ -105,6 +105,7 @@ return [
 
     'tag.title' => 'Тэг',
 
+    'trip.dates' => 'Даты',
     'trip.status' => 'Состояние',
     'trip.markdown' => 'Текст',
     'trip.date_end' => 'Дата окончания',

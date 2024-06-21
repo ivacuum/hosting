@@ -22,7 +22,7 @@
     <th class="md:text-right">#</th>
     <x-th key="title"/>
     <th></th>
-    <x-th-sortable key="date_start"/>
+    <x-th-sortable key="dates"/>
     <x-th key="slug"></x-th>
     <x-th-numeric-sortable key="views">@svg (eye)</x-th-numeric-sortable>
     <x-th-numeric-sortable key="comments_count">@svg (comment-o)</x-th-numeric-sortable>

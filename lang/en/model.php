@@ -94,6 +94,7 @@ return [
 
     'tag.title' => 'Tag',
 
+    'trip.dates' => 'Dates',
     'trip.status' => 'Status',
     'trip.markdown' => 'Text',
     'trip.date_end' => 'End date',
