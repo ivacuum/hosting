@@ -15,8 +15,7 @@ class ApplyIndexGoodsAction
         private GetSortKeyAction $getSortKey,
         private Request $request,
         private UrlHelper $urlHelper,
-    ) {
-    }
+    ) {}
 
     public function execute(
         Model $model,

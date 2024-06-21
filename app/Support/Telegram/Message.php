@@ -11,8 +11,7 @@ readonly class Message
         public User $from,
         public CarbonImmutable $date,
         public string|null $text,
-    ) {
-    }
+    ) {}
 
     public static function fromArray(array $payload)
     {

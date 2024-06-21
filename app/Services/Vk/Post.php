@@ -12,8 +12,7 @@ class Post
         private bool $isUserLiked,
         private bool $isPinned = false,
         private bool $isAd = false,
-    ) {
-    }
+    ) {}
 
     public function canLike(): bool
     {

@@ -8,8 +8,7 @@ readonly class BeaconEvent
         public string $event,
         public int|null $id,
         public string|null $slug,
-    ) {
-    }
+    ) {}
 
     public static function fromArray(array $payload)
     {

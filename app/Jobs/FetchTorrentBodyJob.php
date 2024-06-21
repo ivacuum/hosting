@@ -10,9 +10,7 @@ class FetchTorrentBodyJob extends AbstractJob
 {
     public $delay = 5;
 
-    public function __construct(private int $rtoId)
-    {
-    }
+    public function __construct(private int $rtoId) {}
 
     public function handle(Rto $rto)
     {

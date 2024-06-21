@@ -2,6 +2,4 @@
 
 namespace App\Events\Stats;
 
-class HangulShiftReleased
-{
-}
+class HangulShiftReleased {}

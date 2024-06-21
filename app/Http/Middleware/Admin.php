@@ -7,9 +7,7 @@ use Illuminate\Contracts\Auth\Guard;
 
 class Admin
 {
-    public function __construct(protected Guard $auth)
-    {
-    }
+    public function __construct(protected Guard $auth) {}
 
     public function handle($request, Closure $next)
     {

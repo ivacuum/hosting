@@ -9,9 +9,7 @@ use Illuminate\Cache\Repository;
 
 class GetTripsPublishedByCountryAction
 {
-    public function __construct(private Repository $cache)
-    {
-    }
+    public function __construct(private Repository $cache) {}
 
     public function execute(int|null $countryId = null): array
     {

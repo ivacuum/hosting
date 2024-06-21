@@ -8,7 +8,5 @@ class GigViewed extends Event
 {
     public $table = 'gigs';
 
-    public function __construct(public int $id)
-    {
-    }
+    public function __construct(public int $id) {}
 }

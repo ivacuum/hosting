@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class KanjiSimilarToScope
 {
-    public function __construct(private int|null $similarToId)
-    {
-    }
+    public function __construct(private int|null $similarToId) {}
 
     public function __invoke(Builder $query)
     {

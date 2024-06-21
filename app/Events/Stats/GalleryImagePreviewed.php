@@ -6,7 +6,5 @@ use App\Events\Event;
 
 class GalleryImagePreviewed extends Event
 {
-    public function __construct(public int $id)
-    {
-    }
+    public function __construct(public int $id) {}
 }

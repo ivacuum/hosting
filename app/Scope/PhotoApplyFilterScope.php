@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class PhotoApplyFilterScope
 {
-    public function __construct(private string|null $filter = null)
-    {
-    }
+    public function __construct(private string|null $filter = null) {}
 
     public function __invoke(Builder $query)
     {

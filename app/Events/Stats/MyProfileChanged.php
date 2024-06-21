@@ -4,6 +4,4 @@ namespace App\Events\Stats;
 
 use App\Events\Event;
 
-class MyProfileChanged extends Event
-{
-}
+class MyProfileChanged extends Event {}

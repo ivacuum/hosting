@@ -9,8 +9,7 @@ class LimitRateAction
     public function __construct(
         private LimitRateWithCacheAction $limitRateWithCache,
         private LimitRateWithRedisAction $limitRateWithRedis,
-    ) {
-    }
+    ) {}
 
     public function execute(Limit $limit): bool
     {

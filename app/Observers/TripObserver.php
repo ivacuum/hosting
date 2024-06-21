@@ -8,9 +8,7 @@ use App\Utilities\CacheHelper;
 
 class TripObserver
 {
-    public function __construct(private CacheHelper $cache)
-    {
-    }
+    public function __construct(private CacheHelper $cache) {}
 
     public function deleting(Trip $trip)
     {

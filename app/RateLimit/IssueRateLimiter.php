@@ -10,9 +10,7 @@ use Ivacuum\Generic\Events\LimitExceeded;
 
 class IssueRateLimiter
 {
-    public function __construct(private Request $request, private LimitRateAction $limitRate)
-    {
-    }
+    public function __construct(private Request $request, private LimitRateAction $limitRate) {}
 
     public function flooded(int $userId): bool
     {

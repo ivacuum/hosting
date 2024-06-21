@@ -7,9 +7,7 @@ use Illuminate\Notifications\Notification;
 
 class AnonymousMagnetNotification extends Notification
 {
-    public function __construct(private Magnet $magnet)
-    {
-    }
+    public function __construct(private Magnet $magnet) {}
 
     public function toTelegram(): string
     {

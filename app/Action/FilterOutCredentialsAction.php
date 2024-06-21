@@ -6,9 +6,7 @@ use App\ExternalHttpRequest;
 
 class FilterOutCredentialsAction
 {
-    public function __construct(private GetAllCredentialsAction $getAllCredentials)
-    {
-    }
+    public function __construct(private GetAllCredentialsAction $getAllCredentials) {}
 
     public function execute(ExternalHttpRequest $model)
     {

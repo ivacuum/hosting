@@ -8,6 +8,5 @@ readonly class RouteData
         public string $tpl,
         public string $view,
         public string $controller,
-    ) {
-    }
+    ) {}
 }

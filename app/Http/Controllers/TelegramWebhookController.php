@@ -14,8 +14,7 @@ class TelegramWebhookController
         private OnCommandStartAction $onCommandStart,
         private OnCommandPhotoAction $onCommandPhoto,
         private OnCallbackQueryPhotoOnMapAction $onCallbackQueryPhotoOnMap,
-    ) {
-    }
+    ) {}
 
     public function __invoke(Logger $logger, TelegramWebhook $request)
     {

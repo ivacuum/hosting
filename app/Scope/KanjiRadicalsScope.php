@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class KanjiRadicalsScope
 {
-    public function __construct(private int|null $radicalId)
-    {
-    }
+    public function __construct(private int|null $radicalId) {}
 
     public function __invoke(Builder $query)
     {

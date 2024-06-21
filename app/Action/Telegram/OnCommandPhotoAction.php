@@ -11,9 +11,7 @@ use Ivacuum\Generic\Telegram\TelegramClient;
 
 class OnCommandPhotoAction
 {
-    public function __construct(private TelegramClient $telegram)
-    {
-    }
+    public function __construct(private TelegramClient $telegram) {}
 
     public function execute(int $chatId): array
     {

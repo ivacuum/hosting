@@ -2,6 +2,4 @@
 
 namespace App\Services;
 
-class RtoMagnetNotFoundException extends \Exception
-{
-}
+class RtoMagnetNotFoundException extends \Exception {}

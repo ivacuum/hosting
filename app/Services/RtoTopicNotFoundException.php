@@ -2,6 +2,4 @@
 
 namespace App\Services;
 
-class RtoTopicNotFoundException extends \Exception
-{
-}
+class RtoTopicNotFoundException extends \Exception {}

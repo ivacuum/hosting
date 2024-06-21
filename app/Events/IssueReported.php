@@ -6,7 +6,5 @@ use App\Issue;
 
 class IssueReported
 {
-    public function __construct(public Issue $issue)
-    {
-    }
+    public function __construct(public Issue $issue) {}
 }

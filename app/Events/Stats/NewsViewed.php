@@ -8,7 +8,5 @@ class NewsViewed extends Event
 {
     public $table = 'news';
 
-    public function __construct(public int $id)
-    {
-    }
+    public function __construct(public int $id) {}
 }

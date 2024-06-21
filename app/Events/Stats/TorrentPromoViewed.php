@@ -4,6 +4,4 @@ namespace App\Events\Stats;
 
 use App\Events\Event;
 
-class TorrentPromoViewed extends Event
-{
-}
+class TorrentPromoViewed extends Event {}

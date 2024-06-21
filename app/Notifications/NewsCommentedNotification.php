@@ -8,9 +8,7 @@ use Illuminate\Notifications\Notification;
 
 class NewsCommentedNotification extends Notification
 {
-    public function __construct(public News $news, public Comment $comment)
-    {
-    }
+    public function __construct(public News $news, public Comment $comment) {}
 
     public function via($notifiable)
     {

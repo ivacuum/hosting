@@ -4,7 +4,5 @@ namespace App\Events\Stats;
 
 class Photo500Viewed
 {
-    public function __construct(public string $slug)
-    {
-    }
+    public function __construct(public string $slug) {}
 }

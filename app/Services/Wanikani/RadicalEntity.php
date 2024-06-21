@@ -13,8 +13,7 @@ class RadicalEntity
         public string $imageUrl,
         public string $meaning,
         public Collection $foundInKanji,
-    ) {
-    }
+    ) {}
 
     public static function fromArray(int $id, array $json)
     {

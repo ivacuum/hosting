@@ -4,6 +4,4 @@ namespace App\Events\Stats;
 
 use App\Events\Event;
 
-class TorrentAdded extends Event
-{
-}
+class TorrentAdded extends Event {}

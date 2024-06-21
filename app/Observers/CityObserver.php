@@ -6,9 +6,7 @@ use App\Utilities\CacheHelper;
 
 class CityObserver
 {
-    public function __construct(private CacheHelper $cache)
-    {
-    }
+    public function __construct(private CacheHelper $cache) {}
 
     public function deleted()
     {

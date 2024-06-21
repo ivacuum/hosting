@@ -6,9 +6,7 @@ use App\Http\HttpRequest;
 
 class SubjectsRequest implements HttpRequest
 {
-    public function __construct(private int $level)
-    {
-    }
+    public function __construct(private int $level) {}
 
     #[\Override]
     public function endpoint(): string

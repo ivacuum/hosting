@@ -22,8 +22,7 @@ class RtoTopicData
         public int $posterId,
         public int $seeders,
         public CarbonInterface $seederLastSeenAt,
-    ) {
-    }
+    ) {}
 
     public static function fromArray(int $id, array $payload): self
     {

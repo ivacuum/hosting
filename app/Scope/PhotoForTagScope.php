@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class PhotoForTagScope
 {
-    public function __construct(private int|null $id = null)
-    {
-    }
+    public function __construct(private int|null $id = null) {}
 
     public function __invoke(Builder $query)
     {

@@ -13,9 +13,7 @@ use Illuminate\Database\Seeder;
 
 class TripSeeder extends Seeder
 {
-    public function __construct(private FindTripTemplatesAction $findTripTemplates)
-    {
-    }
+    public function __construct(private FindTripTemplatesAction $findTripTemplates) {}
 
     public function run()
     {

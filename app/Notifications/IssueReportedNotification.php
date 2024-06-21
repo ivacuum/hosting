@@ -7,9 +7,7 @@ use Illuminate\Notifications\Notification;
 
 class IssueReportedNotification extends Notification
 {
-    public function __construct(private Issue $issue)
-    {
-    }
+    public function __construct(private Issue $issue) {}
 
     public function toTelegram(): string
     {

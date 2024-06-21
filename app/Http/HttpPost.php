@@ -2,6 +2,4 @@
 
 namespace App\Http;
 
-interface HttpPost extends HttpRequest
-{
-}
+interface HttpPost extends HttpRequest {}

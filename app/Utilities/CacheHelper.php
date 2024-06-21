@@ -7,9 +7,7 @@ use Illuminate\Cache\Repository;
 
 class CacheHelper
 {
-    public function __construct(protected Repository $cache)
-    {
-    }
+    public function __construct(protected Repository $cache) {}
 
     public function forgetCities()
     {

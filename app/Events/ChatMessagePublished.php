@@ -6,7 +6,5 @@ use App\ChatMessage;
 
 class ChatMessagePublished extends Event
 {
-    public function __construct(public ChatMessage $chatMessage)
-    {
-    }
+    public function __construct(public ChatMessage $chatMessage) {}
 }

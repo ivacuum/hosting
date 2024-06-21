@@ -6,9 +6,7 @@ use Illuminate\Notifications\Notification;
 
 class PlainTextNotification extends Notification
 {
-    public function __construct(public string $text)
-    {
-    }
+    public function __construct(public string $text) {}
 
     public function via()
     {

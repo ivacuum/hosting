@@ -12,9 +12,7 @@ use Illuminate\Cache\Repository;
 
 class GetPhotoPointsAction
 {
-    public function __construct(private Repository $cache)
-    {
-    }
+    public function __construct(private Repository $cache) {}
 
     public function execute(int|null $tripId): array
     {

@@ -7,9 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class ShowKanjiInTheSameOrderAsInVocab
 {
-    public function __construct(private array $characters)
-    {
-    }
+    public function __construct(private array $characters) {}
 
     public function __invoke(Collection $collection)
     {

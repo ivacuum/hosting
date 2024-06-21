@@ -9,9 +9,7 @@ use Illuminate\Http\Request;
 
 class CommentRateLimiter
 {
-    public function __construct(private Request $request, private LimitRateAction $limitRate)
-    {
-    }
+    public function __construct(private Request $request, private LimitRateAction $limitRate) {}
 
     public function flooded(int $userId): bool
     {

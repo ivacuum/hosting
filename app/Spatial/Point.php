@@ -8,8 +8,7 @@ class Point extends Geometry implements \Stringable
         public readonly string $lat,
         public readonly string $lon,
         public readonly int $srid = 4326,
-    ) {
-    }
+    ) {}
 
     #[\Override]
     public function __toString(): string

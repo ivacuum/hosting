@@ -11,9 +11,7 @@ class PingDcppHubJob extends AbstractJob
 {
     use SerializesModels;
 
-    public function __construct(private DcppHub $hub)
-    {
-    }
+    public function __construct(private DcppHub $hub) {}
 
     public function handle()
     {

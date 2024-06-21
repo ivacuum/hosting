@@ -4,9 +4,7 @@ namespace App\Spatial;
 
 class Factory implements \GeoIO\Factory
 {
-    public function __construct(private int $srid = 4326)
-    {
-    }
+    public function __construct(private int $srid = 4326) {}
 
     #[\Override]
     public function createGeometryCollection($dimension, array $geometries, $srid = null)

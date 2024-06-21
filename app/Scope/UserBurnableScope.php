@@ -7,9 +7,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class UserBurnableScope
 {
-    public function __construct(private int|null $userId = null)
-    {
-    }
+    public function __construct(private int|null $userId = null) {}
 
     public function __invoke(Builder $query)
     {

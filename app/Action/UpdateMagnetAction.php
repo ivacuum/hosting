@@ -8,9 +8,7 @@ use App\Services\Rto;
 
 class UpdateMagnetAction
 {
-    public function __construct(private Rto $rto)
-    {
-    }
+    public function __construct(private Rto $rto) {}
 
     public function execute(Magnet $magnet, int $topicId)
     {

@@ -10,9 +10,7 @@ use Illuminate\Database\Seeder;
 
 class GigSeeder extends Seeder
 {
-    public function __construct(private FindGigTemplatesAction $findGigTemplates)
-    {
-    }
+    public function __construct(private FindGigTemplatesAction $findGigTemplates) {}
 
     public function run()
     {

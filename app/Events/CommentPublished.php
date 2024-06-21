@@ -11,7 +11,5 @@ use App\Comment;
  */
 class CommentPublished extends Event
 {
-    public function __construct(public Comment $comment)
-    {
-    }
+    public function __construct(public Comment $comment) {}
 }

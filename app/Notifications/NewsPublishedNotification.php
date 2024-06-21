@@ -12,9 +12,7 @@ class NewsPublishedNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    public function __construct(public News $news)
-    {
-    }
+    public function __construct(public News $news) {}
 
     public function via()
     {

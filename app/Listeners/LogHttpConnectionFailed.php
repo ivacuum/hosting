@@ -9,9 +9,7 @@ use Illuminate\Http\Client\Events\ConnectionFailed;
 
 class LogHttpConnectionFailed
 {
-    public function __construct(private FilterOutCredentialsAction $filterOutCredentials)
-    {
-    }
+    public function __construct(private FilterOutCredentialsAction $filterOutCredentials) {}
 
     public function handle(ConnectionFailed $event)
     {

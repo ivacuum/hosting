@@ -6,9 +6,7 @@ use Illuminate\Notifications\Notification;
 
 class TypoReportedNotification extends Notification
 {
-    public function __construct(private string $selection, private string $page)
-    {
-    }
+    public function __construct(private string $selection, private string $page) {}
 
     public function toTelegram(): string
     {

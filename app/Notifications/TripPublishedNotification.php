@@ -12,9 +12,7 @@ class TripPublishedNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    public function __construct(public Trip $trip)
-    {
-    }
+    public function __construct(public Trip $trip) {}
 
     public function via()
     {

@@ -6,9 +6,7 @@ use App\Photo;
 
 class PhotoPointResponse implements \JsonSerializable
 {
-    public function __construct(private Photo $photo)
-    {
-    }
+    public function __construct(private Photo $photo) {}
 
     #[\Override]
     public function jsonSerialize(): array

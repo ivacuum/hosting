@@ -8,6 +8,5 @@ readonly class ModelAccessibleRelation
         public string $path,
         public int $count,
         public string $i18nIndex,
-    ) {
-    }
+    ) {}
 }

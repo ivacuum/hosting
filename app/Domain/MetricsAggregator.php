@@ -9,9 +9,7 @@ class MetricsAggregator
     /** @var array<string, int> */
     private array $metrics = [];
 
-    public function __construct(private IfMetricExistsAction $ifMetricExists)
-    {
-    }
+    public function __construct(private IfMetricExistsAction $ifMetricExists) {}
 
     public function data(): array
     {

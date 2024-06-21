@@ -9,9 +9,7 @@ use Ivacuum\Generic\Utilities\NamingHelper;
 
 class GetModelAccessibleRelationsAction
 {
-    public function __construct(private GenerateModelRelationLinkAction $generateModelRelationLink)
-    {
-    }
+    public function __construct(private GenerateModelRelationLinkAction $generateModelRelationLink) {}
 
     /** @return Collection|ModelAccessibleRelation[] */
     public function execute(Model $model, array $showWithCount = []): Collection

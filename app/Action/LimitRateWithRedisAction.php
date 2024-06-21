@@ -9,9 +9,7 @@ use Illuminate\Redis\Limiters\DurationLimiter;
 
 class LimitRateWithRedisAction
 {
-    public function __construct(private Factory $redis)
-    {
-    }
+    public function __construct(private Factory $redis) {}
 
     public function execute(Limit $limit): bool
     {

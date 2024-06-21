@@ -8,9 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class TripPreviousScope
 {
-    public function __construct(private Trip $trip, private int $nextTrips = 2)
-    {
-    }
+    public function __construct(private Trip $trip, private int $nextTrips = 2) {}
 
     public function __invoke(Builder $query)
     {

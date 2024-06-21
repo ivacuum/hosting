@@ -7,9 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class PhotoForTripsScope
 {
-    public function __construct(private array $ids = [])
-    {
-    }
+    public function __construct(private array $ids = []) {}
 
     public function __invoke(Builder $query)
     {

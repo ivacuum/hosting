@@ -7,9 +7,7 @@ use Illuminate\Notifications\Notification;
 
 class MagnetNotFoundAndDeletedAdminNotification extends Notification
 {
-    public function __construct(public Magnet $magnet)
-    {
-    }
+    public function __construct(public Magnet $magnet) {}
 
     public function toTelegram()
     {

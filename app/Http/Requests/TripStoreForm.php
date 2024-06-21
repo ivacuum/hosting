@@ -2,6 +2,4 @@
 
 namespace App\Http\Requests;
 
-class TripStoreForm extends TripUpdateForm
-{
-}
+class TripStoreForm extends TripUpdateForm {}

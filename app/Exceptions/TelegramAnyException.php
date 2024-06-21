@@ -6,9 +6,7 @@ use Ivacuum\Generic\Services\Telegram;
 
 class TelegramAnyException
 {
-    public function __construct(private Telegram $telegram)
-    {
-    }
+    public function __construct(private Telegram $telegram) {}
 
     public function __invoke(\Throwable $e): void
     {

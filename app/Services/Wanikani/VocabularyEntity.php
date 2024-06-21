@@ -16,8 +16,7 @@ class VocabularyEntity
         public string $maleAudio,
         public string $femaleAudio,
         public Collection $partsOfSpeech,
-    ) {
-    }
+    ) {}
 
     public static function fromArray(int $id, array $json, bool $isKanaVocabulary = false)
     {

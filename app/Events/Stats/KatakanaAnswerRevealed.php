@@ -4,6 +4,4 @@ namespace App\Events\Stats;
 
 use App\Events\Event;
 
-class KatakanaAnswerRevealed extends Event
-{
-}
+class KatakanaAnswerRevealed extends Event {}

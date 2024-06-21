@@ -8,9 +8,7 @@ use Ivacuum\Generic\Utilities\EnvironmentForCss;
 
 class AppendViewSharedVars
 {
-    public function __construct(private ParseRouteDataAction $parseRouteData)
-    {
-    }
+    public function __construct(private ParseRouteDataAction $parseRouteData) {}
 
     public function handle(Request $request, \Closure $next)
     {

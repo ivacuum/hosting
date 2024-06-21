@@ -15,9 +15,7 @@ class NotifyTripSubscribers extends AbstractJob
 {
     use SerializesModels;
 
-    public function __construct(private Trip $trip)
-    {
-    }
+    public function __construct(private Trip $trip) {}
 
     public function handle()
     {

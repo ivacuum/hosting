@@ -12,9 +12,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class GetMyVisibleTripsAction
 {
-    public function __construct(private Repository $cache)
-    {
-    }
+    public function __construct(private Repository $cache) {}
 
     public function execute(string|null $from, string|null $to): Collection
     {

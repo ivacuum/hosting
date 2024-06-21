@@ -7,9 +7,7 @@ use Illuminate\Http\Client\Response;
 
 class HttpStash
 {
-    public function __construct(private Repository $cache)
-    {
-    }
+    public function __construct(private Repository $cache) {}
 
     public function store(HttpRequest $request, callable $fn): Response
     {

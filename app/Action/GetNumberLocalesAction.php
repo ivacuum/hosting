@@ -7,9 +7,7 @@ use Illuminate\Cache\Repository;
 
 class GetNumberLocalesAction
 {
-    public function __construct(private Repository $cache)
-    {
-    }
+    public function __construct(private Repository $cache) {}
 
     public function execute(): array
     {

@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class MagnetFilterByCategoryScope
 {
-    public function __construct(private int $categoryId)
-    {
-    }
+    public function __construct(private int $categoryId) {}
 
     public function __invoke(Builder $query)
     {

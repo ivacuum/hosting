@@ -6,9 +6,7 @@ use Ivacuum\Generic\Services\Telegram;
 
 class TelegramAdminChannel
 {
-    public function __construct(private Telegram $telegram)
-    {
-    }
+    public function __construct(private Telegram $telegram) {}
 
     public function send($notifiable, $notification): void
     {

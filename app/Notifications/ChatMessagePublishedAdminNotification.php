@@ -7,9 +7,7 @@ use Illuminate\Notifications\Notification;
 
 class ChatMessagePublishedAdminNotification extends Notification
 {
-    public function __construct(private ChatMessage $chatMessage)
-    {
-    }
+    public function __construct(private ChatMessage $chatMessage) {}
 
     public function toTelegram(): string
     {

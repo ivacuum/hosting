@@ -9,9 +9,7 @@ use Ivacuum\Generic\Utilities\UserAgent;
 
 class TelegramValidationException
 {
-    public function __construct(private Telegram $telegram, private Request $request)
-    {
-    }
+    public function __construct(private Telegram $telegram, private Request $request) {}
 
     public function __invoke(ValidationException $e): bool
     {

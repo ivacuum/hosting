@@ -9,9 +9,7 @@ class UrlHelper
 {
     private Sort|null $sort = null;
 
-    public function __construct(private GetSortDirAction $getSortDir)
-    {
-    }
+    public function __construct(private GetSortDirAction $getSortDir) {}
 
     public function edit(string $controller, $model): string
     {

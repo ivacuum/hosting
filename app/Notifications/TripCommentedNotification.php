@@ -8,9 +8,7 @@ use Illuminate\Notifications\Notification;
 
 class TripCommentedNotification extends Notification
 {
-    public function __construct(public Trip $trip, public Comment $comment)
-    {
-    }
+    public function __construct(public Trip $trip, public Comment $comment) {}
 
     public function via($notifiable)
     {

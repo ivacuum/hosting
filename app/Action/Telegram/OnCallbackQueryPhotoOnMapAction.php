@@ -9,9 +9,7 @@ use Ivacuum\Generic\Telegram\TelegramClient;
 
 class OnCallbackQueryPhotoOnMapAction
 {
-    public function __construct(private TelegramClient $telegram)
-    {
-    }
+    public function __construct(private TelegramClient $telegram) {}
 
     public function execute(int $chatId, int $photoId, int $messageId): array|null
     {

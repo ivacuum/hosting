@@ -12,9 +12,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class GetTripsPublishedWithCoverAction
 {
-    public function __construct(private Repository $cache)
-    {
-    }
+    public function __construct(private Repository $cache) {}
 
     public function execute(int|null $count = null): Collection
     {

@@ -6,9 +6,7 @@ use Illuminate\Http\Client\Response;
 
 class CachedResponse implements \JsonSerializable
 {
-    public function __construct(private Response $response)
-    {
-    }
+    public function __construct(private Response $response) {}
 
     public static function fromResponse(Response $response)
     {

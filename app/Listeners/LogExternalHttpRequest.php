@@ -10,9 +10,7 @@ use Illuminate\Http\Client\Response;
 
 class LogExternalHttpRequest
 {
-    public function __construct(private FilterOutCredentialsAction $filterOutCredentials)
-    {
-    }
+    public function __construct(private FilterOutCredentialsAction $filterOutCredentials) {}
 
     public function handle(ResponseReceived $event)
     {

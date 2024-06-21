@@ -7,9 +7,7 @@ use Illuminate\Support\Stringable;
 
 class GetSortKeyAction
 {
-    public function __construct(private Request $request)
-    {
-    }
+    public function __construct(private Request $request) {}
 
     public function execute(string $defaultSortKey): string
     {

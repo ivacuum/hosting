@@ -2,6 +2,4 @@
 
 namespace App\Services;
 
-class RtoTopicDuplicateException extends \Exception
-{
-}
+class RtoTopicDuplicateException extends \Exception {}

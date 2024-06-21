@@ -13,9 +13,7 @@ class IssueCommentedNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    public function __construct(public Issue $issue, public Comment $comment)
-    {
-    }
+    public function __construct(public Issue $issue, public Comment $comment) {}
 
     public function via()
     {

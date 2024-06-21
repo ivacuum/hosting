@@ -6,9 +6,7 @@ use Illuminate\Database\Connection;
 
 class PingDatabaseAction
 {
-    public function __construct(private Connection $db)
-    {
-    }
+    public function __construct(private Connection $db) {}
 
     public function execute(): void
     {

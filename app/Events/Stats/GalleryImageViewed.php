@@ -6,9 +6,7 @@ use App\Events\Event;
 
 class GalleryImageViewed extends Event
 {
-    public function __construct(public string $dateAndSlug)
-    {
-    }
+    public function __construct(public string $dateAndSlug) {}
 
     public static function fromArray(array $payload)
     {

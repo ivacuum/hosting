@@ -8,9 +8,7 @@ use Illuminate\Cache\RateLimiting\Limit;
 
 class LimitRateWithCacheAction
 {
-    public function __construct(private RateLimiter $limiter)
-    {
-    }
+    public function __construct(private RateLimiter $limiter) {}
 
     public function execute(Limit $limit): bool
     {

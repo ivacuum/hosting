@@ -10,8 +10,7 @@ class ResponseToShowAction
     public function __construct(
         private GetModelAccessibleRelationsAction $getModelAccessibleRelations,
         private ParseRouteDataAction $parseRouteData,
-    ) {
-    }
+    ) {}
 
     public function execute(Model $model, array $showWithCount = [])
     {

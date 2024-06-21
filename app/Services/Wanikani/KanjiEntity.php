@@ -14,8 +14,7 @@ class KanjiEntity
         private Collection $readings,
         public Collection $componentRadicals,
         public Collection $similarKanji,
-    ) {
-    }
+    ) {}
 
     public static function fromArray(int $id, array $json): self
     {

@@ -10,8 +10,7 @@ readonly class User
         public string|null $lastName,
         public string|null $username,
         public string|null $language,
-    ) {
-    }
+    ) {}
 
     public static function fromArray(array $payload)
     {

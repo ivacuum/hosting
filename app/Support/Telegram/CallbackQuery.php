@@ -9,8 +9,7 @@ readonly class CallbackQuery
         public string $data,
         public User $from,
         public Message $message,
-    ) {
-    }
+    ) {}
 
     public static function fromArray(array $payload)
     {

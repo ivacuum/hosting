@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class PhotoPointCollectionResponse implements \JsonSerializable
 {
-    public function __construct(private Collection $photos)
-    {
-    }
+    public function __construct(private Collection $photos) {}
 
     #[\Override]
     public function jsonSerialize(): array

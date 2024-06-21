@@ -8,9 +8,7 @@ use Illuminate\Notifications\Notification;
 
 class MagnetCommentedNotification extends Notification
 {
-    public function __construct(public Magnet $magnet, public Comment $comment)
-    {
-    }
+    public function __construct(public Magnet $magnet, public Comment $comment) {}
 
     public function via($notifiable)
     {

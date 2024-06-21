@@ -4,6 +4,4 @@ namespace App\Events\Stats;
 
 use App\Events\Event;
 
-class NewsSubscribed extends Event
-{
-}
+class NewsSubscribed extends Event {}

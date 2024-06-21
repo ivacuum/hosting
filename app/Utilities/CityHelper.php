@@ -23,9 +23,7 @@ class CityHelper
     private Collection|null $cachedById = null;
     private Collection|null $cachedBySlug = null;
 
-    public function __construct(private Repository $cache)
-    {
-    }
+    public function __construct(private Repository $cache) {}
 
     public function cachedById()
     {

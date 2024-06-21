@@ -8,9 +8,7 @@ use Illuminate\Http\Request;
 
 class AcpNavigation
 {
-    public function __construct(private GetModelBreadcrumbAction $getModelBreadcrumb)
-    {
-    }
+    public function __construct(private GetModelBreadcrumbAction $getModelBreadcrumb) {}
 
     public function handle(Request $request, \Closure $next)
     {

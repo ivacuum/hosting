@@ -6,9 +6,7 @@ use Ivacuum\Generic\Telegram\TelegramClient;
 
 class OnCommandStartAction
 {
-    public function __construct(private TelegramClient $telegram)
-    {
-    }
+    public function __construct(private TelegramClient $telegram) {}
 
     public function execute(int $chatId): array
     {

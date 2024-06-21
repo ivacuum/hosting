@@ -13,9 +13,7 @@ class MagnetUpdatedNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    public function __construct(public Magnet $magnet)
-    {
-    }
+    public function __construct(public Magnet $magnet) {}
 
     public function toArray()
     {

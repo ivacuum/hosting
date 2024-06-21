@@ -7,9 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AcpHelper
 {
-    public function __construct(private GetModelControllerAction $getModelController)
-    {
-    }
+    public function __construct(private GetModelControllerAction $getModelController) {}
 
     public function create(Model $model): string
     {

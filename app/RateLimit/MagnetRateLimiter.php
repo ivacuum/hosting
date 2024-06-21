@@ -7,9 +7,7 @@ use Illuminate\Cache\RateLimiting\Limit;
 
 class MagnetRateLimiter
 {
-    public function __construct(private LimitRateAction $limitRate)
-    {
-    }
+    public function __construct(private LimitRateAction $limitRate) {}
 
     public function tooManyAttempts(): bool
     {

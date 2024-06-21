@@ -8,7 +8,5 @@ class CountryViewed extends Event
 {
     public $table = 'countries';
 
-    public function __construct(public int $id)
-    {
-    }
+    public function __construct(public int $id) {}
 }

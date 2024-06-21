@@ -10,9 +10,7 @@ class Rto
     private const string API_ENDPOINT = 'https://api.rutracker.cc/v1/';
     private const string SITE_ENDPOINT = 'https://rutracker.org/forum/';
 
-    public function __construct(private Factory $http)
-    {
-    }
+    public function __construct(private Factory $http) {}
 
     public function findTopicId(int|string|null $input): int|null
     {

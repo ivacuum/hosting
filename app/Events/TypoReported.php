@@ -7,7 +7,5 @@ namespace App\Events;
  */
 class TypoReported extends Event
 {
-    public function __construct(public string $selection, public string $page)
-    {
-    }
+    public function __construct(public string $selection, public string $page) {}
 }

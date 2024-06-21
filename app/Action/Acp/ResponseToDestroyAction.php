@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ResponseToDestroyAction
 {
-    public function __construct(private GetModelControllerAction $getModelController)
-    {
-    }
+    public function __construct(private GetModelControllerAction $getModelController) {}
 
     public function execute(Model $model)
     {
