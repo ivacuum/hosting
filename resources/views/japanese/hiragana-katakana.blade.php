@@ -84,6 +84,7 @@
               spellcheck="false"
               enterkeyhint="enter"
               placeholder="kana"
+              writingsuggestions="false"
               :autofocus="focus"
               :value="input"
               @input="checkInput($event.target.value, $event)"

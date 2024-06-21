@@ -40,6 +40,7 @@
         autocorrect="off"
         spellcheck="false"
         placeholder="@lang('Ваш ответ')"
+        writingsuggestions="false"
         enterkeyhint="enter"
         class="form-input text-center {{ $this->reveal ? 'animate-incorrect-answer' : '' }}"
         {{ $this->reveal ? 'wire:dirty.class.remove="animate-incorrect-answer"' : '' }}

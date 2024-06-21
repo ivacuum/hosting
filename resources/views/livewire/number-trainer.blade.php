@@ -44,6 +44,7 @@
         autocorrect="off"
         spellcheck="false"
         placeholder="@lang('Ваш ответ')"
+        writingsuggestions="false"
         enterkeyhint="send"
         class="form-input text-center {{ $this->incorrectAnswer ? 'animate-incorrect-answer' : '' }} js-answer"
         {{ $this->incorrectAnswer ? 'wire:dirty.class.remove="animate-incorrect-answer"' : '' }}
