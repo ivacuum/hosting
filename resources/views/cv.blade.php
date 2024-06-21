@@ -47,7 +47,6 @@ body {
   padding-bottom: .25rem;
   padding-top: .25rem;
   margin-top: 2rem;
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   background: #fff;
