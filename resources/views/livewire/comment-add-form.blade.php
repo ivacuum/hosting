@@ -25,8 +25,8 @@
       @if (!Auth::check())
         <div class="mb-4">
           <div>@lang('Для комментирования необходимо ввести электронную почту или войти в один клик через один из социальных сервисов ниже.')</div>
-          <div class="flex mt-2">
-            <div class="mr-2 text-center">
+          <div class="flex gap-2 mt-2">
+            <div class="text-center">
               <a
                 class="btn bg-vk-600 inline-flex justify-center items-center w-12 h-12 text-xl rounded-full text-white hover:bg-vk-700 hover:text-white"
                 href="{{ path([App\Http\Controllers\Auth\Vk::class, 'index'], ['goto' => to(request()->path() . "#comment-add")]) }}"
@@ -35,16 +35,7 @@
               </a>
               <div class="mt-1 text-xs text-muted">@lang('auth.vk')</div>
             </div>
-            <div class="mr-2 text-center">
-              <a
-                class="btn bg-facebook-600 inline-flex justify-center items-center w-12 h-12 text-xl rounded-full text-white hover:bg-facebook-700 hover:text-white"
-                href="{{ path([App\Http\Controllers\Auth\Facebook::class, 'index'], ['goto' => to(request()->path() . "#comment-add")]) }}"
-              >
-                @svg (facebook)
-              </a>
-              <div class="mt-1 text-xs text-muted">@lang('auth.facebook')</div>
-            </div>
-            <div class="mr-2 text-center">
+            <div class="text-center">
               <a
                 class="btn bg-google-600 inline-flex justify-center items-center w-12 h-12 text-xl rounded-full text-white hover:bg-google-700 hover:text-white"
                 href="{{ path([App\Http\Controllers\Auth\Google::class, 'index'], ['goto' => to(request()->path() . "#comment-add")]) }}"

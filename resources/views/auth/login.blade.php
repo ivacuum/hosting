@@ -17,15 +17,6 @@
       </div>
       <div>
         <a
-          class="btn bg-facebook-600 inline-flex justify-center items-center w-12 h-12 text-xl rounded-full text-white hover:bg-facebook-700 hover:text-white"
-          href="@lng/auth/facebook"
-        >
-          @svg (facebook)
-        </a>
-        <div class="mt-1 text-xs text-muted">@lang('auth.facebook')</div>
-      </div>
-      <div>
-        <a
           class="btn bg-google-600 inline-flex justify-center items-center w-12 h-12 text-xl rounded-full text-white hover:bg-google-700 hover:text-white"
           href="@lng/auth/google"
         >
