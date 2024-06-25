@@ -139,6 +139,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4569.jpg'])
 
+<a id="castle"></a>
 @ru
   <p>Территория около замка.</p>
 @en
