@@ -1,0 +1,24 @@
+@extends('life.trips.base')
+
+@section('content')
+@ru
+  <p></p>
+@endru
+IMG_6783.jpeg
+IMG_6784.jpeg
+IMG_6785.jpeg
+IMG_6786.jpeg
+IMG_6787.jpeg
+IMG_6788.jpeg
+IMG_6789.jpeg
+IMG_6790.jpeg
+IMG_6791.jpeg
+IMG_6792.jpeg
+IMG_6794.jpeg
+IMG_6795.jpeg
+IMG_6796.jpeg
+IMG_6797.jpeg
+IMG_6798.jpeg
+IMG_6799.jpeg
+IMG_6800.jpeg
+@endsection
