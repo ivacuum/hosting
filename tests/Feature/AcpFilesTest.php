@@ -52,7 +52,7 @@ class AcpFilesTest extends TestCase
         \Storage::fake('tmp-for-tests');
 
         $file = FileFactory::new()->make();
-        $uploadedFile = UploadedFile::fake()->image('IMG_0025.jpeg');
+        $uploadedFile = UploadedFile::fake()->image('IMG_0025.jpg');
 
         \Livewire::test(FileForm::class)
             ->set('title', $file->title)
