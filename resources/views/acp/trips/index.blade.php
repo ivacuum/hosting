@@ -1,6 +1,8 @@
 <?php /** @var \App\Trip $model */ ?>
 
-@extends('acp.list')
+@extends('acp.list', [
+  'searchForm' => true,
+])
 
 @section('heading-after-search')
 @include('acp.tpl.dropdown-filter', [
