@@ -40,8 +40,7 @@ class TripsController extends Controller
             ->unless($status === null, fn (Builder $query) => $query->where('status', $status))
             ->when($q,
                 fn (Builder $query) => $query->where('id', $q)
-                    ->orWhere(Trip::titleField(), 'LIKE', "%{$q}%")
-                    ->orWhere('slug', 'LIKE', "%{$q}%"))
+                    ->orWhereAny([Trip::titleField(), 'slug'], 'LIKE', "%{$q}%"))
             ->orderBy(match ($sort->key) {
                 'views',
                 'comments_count',
