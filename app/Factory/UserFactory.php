@@ -104,7 +104,7 @@ class UserFactory
         return $factory;
     }
 
-    public function withPassword(string $password): self
+    public function withPassword(#[\SensitiveParameter] string $password): self
     {
         $factory = clone $this;
         $factory->password = $password;

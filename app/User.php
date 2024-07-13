@@ -167,7 +167,7 @@ class User extends Authenticatable implements HasLocalePreference
         return $this->isRoot();
     }
 
-    public function isOldPasswordCorrect($password): bool
+    public function isOldPasswordCorrect(#[\SensitiveParameter] $password): bool
     {
         if ($this->salt && $this->password === md5($password . $this->salt)) {
             return true;
@@ -224,7 +224,7 @@ class User extends Authenticatable implements HasLocalePreference
     }
 
     #[\Override]
-    public function sendPasswordResetNotification($token): void
+    public function sendPasswordResetNotification(#[\SensitiveParameter] $token): void
     {
         \Mail::to($this)->send(new Mail\ResetPasswordMail($token));
     }
