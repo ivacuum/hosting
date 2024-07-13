@@ -49,7 +49,7 @@ class TripForm extends Component
     public function mount()
     {
         if ($this->id) {
-            $trip = Trip::findOrFail($this->id);
+            $trip = Trip::query()->findOrFail($this->id);
 
             $this->slug = $trip->slug;
             $this->cityId = $trip->city_id;
@@ -73,7 +73,7 @@ class TripForm extends Component
     public function rules()
     {
         return [
-            'slug' => LifeSlug::rules(Trip::find($this->id) ?? new Trip),
+            'slug' => LifeSlug::rules(Trip::query()->find($this->id) ?? new Trip),
             'cityId' => 'required|integer|min:1',
             'status' => new Enum(TripStatus::class),
             'dateEnd' => 'required|date|after_or_equal:dateStart',
@@ -99,7 +99,7 @@ class TripForm extends Component
 
     public function updatedCityId()
     {
-        $city = City::find($this->cityId);
+        $city = City::query()->find($this->cityId);
 
         if ($city) {
             $this->slug = "{$city->slug}." . now()->year;
@@ -111,7 +111,7 @@ class TripForm extends Component
     private function store()
     {
         $trip = $this->id
-            ? Trip::findOrFail($this->id)
+            ? Trip::query()->findOrFail($this->id)
             : new Trip;
 
         if (!$this->id) {

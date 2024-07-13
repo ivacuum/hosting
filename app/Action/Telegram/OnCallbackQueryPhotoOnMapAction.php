@@ -15,7 +15,7 @@ class OnCallbackQueryPhotoOnMapAction
     {
         event(new \App\Events\Stats\TelegramPhotoOnMapCallbackQuery);
 
-        $photo = Photo::find($photoId);
+        $photo = Photo::query()->find($photoId);
 
         if ($photo === null) {
             return null;

@@ -70,8 +70,7 @@ class TemplatesController
 
         \Breadcrumbs::push($slug);
 
-        /** @var Trip $trip */
-        $trip = Trip::inRandomOrder()->first();
+        $trip = Trip::query()->inRandomOrder()->first();
         $trip->slug = $slug;
 
         if (request('images')) {

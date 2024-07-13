@@ -31,7 +31,8 @@ class GetMyVisibleTripsAction
 
     private function findModels(string|null $from, string|null $to)
     {
-        return Trip::withCount('photos')
+        return Trip::query()
+            ->withCount('photos')
             ->tap(new TripOfAdminScope)
             ->tap(new TripVisibleScope)
             ->when($from, fn (Builder $query) => $query->where('date_start', '>=', $from))

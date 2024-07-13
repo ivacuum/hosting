@@ -10,7 +10,8 @@ class DcppHubController
 {
     public function __invoke(ViewHelper $viewHelper)
     {
-        $hubs = DcppHub::where('status', DcppHubStatus::Published)
+        $hubs = DcppHub::query()
+            ->where('status', DcppHubStatus::Published)
             ->orderBy('title')
             ->get();
 

@@ -27,7 +27,7 @@ class GalleryUploaderTest extends TestCase
             ->test(GalleryUploader::class)
             ->set('files', [$file]);
 
-        $image = Image::firstWhere(['user_id' => $user->id]);
+        $image = Image::query()->firstWhere(['user_id' => $user->id]);
 
         \Event::assertDispatched(\App\Events\Stats\GalleryImageUploaded::class);
         \Storage::disk('gallery')->assertExists("{$image->splitDate()}/{$image->slug}");

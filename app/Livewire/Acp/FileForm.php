@@ -37,7 +37,7 @@ class FileForm extends Component
     public function mount()
     {
         if ($this->id) {
-            $file = File::findOrFail($this->id);
+            $file = File::query()->findOrFail($this->id);
 
             $this->slug = $file->slug;
             $this->title = $file->title;
@@ -57,7 +57,7 @@ class FileForm extends Component
             'slug' => [
                 'required',
                 Rule::unique(File::class, 'slug')
-                    ->ignore(File::find($this->id)),
+                    ->ignore(File::query()->find($this->id)),
             ],
         ];
     }
@@ -65,7 +65,7 @@ class FileForm extends Component
     public function submit()
     {
         $file = $this->id
-            ? File::findOrFail($this->id)
+            ? File::query()->findOrFail($this->id)
             : new File;
 
         $this->authorize('create', File::class);

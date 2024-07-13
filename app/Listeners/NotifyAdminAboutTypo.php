@@ -10,7 +10,7 @@ class NotifyAdminAboutTypo
 {
     public function handle(TypoReported $event): void
     {
-        $admin = User::first();
+        $admin = User::query()->first();
 
         if ($admin === null) {
             return;

@@ -114,7 +114,7 @@ class MagnetAddForm extends Component
 
             $topicData = $rto->topicDataById($topicId);
 
-            $magnet = Magnet::firstWhere('rto_id', $topicId);
+            $magnet = Magnet::query()->firstWhere('rto_id', $topicId);
 
             if ($magnet) {
                 event(new \App\Events\Stats\TorrentDuplicateFound);

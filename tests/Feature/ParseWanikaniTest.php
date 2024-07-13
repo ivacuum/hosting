@@ -92,7 +92,7 @@ class ParseWanikaniTest extends TestCase
 
         $this->artisan(ParseWanikani::class, ['min_level' => 2, 'max_level' => 2]);
 
-        $vocab = Vocabulary::firstWhere('wk_id', 9177);
+        $vocab = Vocabulary::query()->firstWhere('wk_id', 9177);
 
         $this->assertSame(2, $vocab->level);
         $this->assertSame('おはよう', $vocab->character);
@@ -170,7 +170,7 @@ class ParseWanikaniTest extends TestCase
 
         $this->artisan(ParseWanikani::class);
 
-        $kanji = Kanji::firstWhere('wk_id', 452);
+        $kanji = Kanji::query()->firstWhere('wk_id', 452);
 
         $this->assertSame(13, $kanji->level);
         $this->assertSame('口口口', $kanji->character);
@@ -231,7 +231,7 @@ class ParseWanikaniTest extends TestCase
 
         $this->artisan(ParseWanikani::class);
 
-        $radical = Radical::firstWhere('wk_id', 1);
+        $radical = Radical::query()->firstWhere('wk_id', 1);
 
         $this->assertSame(12, $radical->level);
         $this->assertSame('一一一', $radical->character);
@@ -327,7 +327,7 @@ class ParseWanikaniTest extends TestCase
 
         $this->artisan(ParseWanikani::class);
 
-        $vocab = Vocabulary::firstWhere('wk_id', 2484);
+        $vocab = Vocabulary::query()->firstWhere('wk_id', 2484);
 
         $this->assertSame(14, $vocab->level);
         $this->assertSame('力力力', $vocab->character);
@@ -439,7 +439,7 @@ class ParseWanikaniTest extends TestCase
 
         $this->artisan(ParseWanikani::class);
 
-        $vocab = Vocabulary::firstWhere('wk_id', 2484);
+        $vocab = Vocabulary::query()->firstWhere('wk_id', 2484);
 
         $this->assertSame(14, $vocab->level);
         $this->assertSame('力力力', $vocab->character);

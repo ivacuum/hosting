@@ -22,7 +22,7 @@ class TripSeeder extends Seeder
             $slug = str($template->getBasename('.blade.php'))->replace('_', '.');
             $citySlug = $slug->before('.');
 
-            if (null === $city = City::firstWhere('slug', $citySlug)) {
+            if (null === $city = City::query()->firstWhere('slug', $citySlug)) {
                 continue;
             }
 
@@ -34,14 +34,15 @@ class TripSeeder extends Seeder
             $trip->save();
         }
 
-        /** @var Trip $trip */
-        $trip = Trip::where('status', TripStatus::Published)
+        $trip = Trip::query()
+            ->where('status', TripStatus::Published)
             ->orderByDesc('date_start')
             ->first();
         $trip->status = TripStatus::Inactive;
         $trip->save();
 
-        $trip = Trip::where('status', TripStatus::Published)
+        $trip = Trip::query()
+            ->where('status', TripStatus::Published)
             ->orderByDesc('date_start')
             ->first();
         $trip->status = TripStatus::Hidden;
@@ -52,8 +53,7 @@ class TripSeeder extends Seeder
             ->withLogin('trip')
             ->create();
 
-        /** @var City $randomCity */
-        $randomCity = City::inRandomOrder()->first();
+        $randomCity = City::query()->inRandomOrder()->first();
 
         TripFactory::new()
             ->withComment(CommentFactory::new()->withText('С первой публикацией!')->withUserId(1))

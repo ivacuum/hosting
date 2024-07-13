@@ -30,7 +30,7 @@ class NewsForm extends Component
     public function mount()
     {
         if ($this->id) {
-            $news = News::findOrFail($this->id);
+            $news = News::query()->findOrFail($this->id);
 
             $this->title = $news->title;
             $this->status = $news->status;
@@ -50,7 +50,7 @@ class NewsForm extends Component
     private function store()
     {
         $news = $this->id
-            ? News::findOrFail($this->id)
+            ? News::query()->findOrFail($this->id)
             : new News;
 
         if (!$this->id) {

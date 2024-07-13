@@ -16,7 +16,8 @@ class MetricsController
         $events = Metric::possibleMetrics();
         $metrics = $dates = [];
 
-        Metric::tap(new MetricWeekScope)
+        Metric::query()
+            ->tap(new MetricWeekScope)
             ->get()
             ->map(function (Metric $item) use (&$metrics, &$dates) {
                 $dates[$item->date->toDateString()] = true;
@@ -34,7 +35,7 @@ class MetricsController
     {
         \Breadcrumbs::push($event);
 
-        $metrics = Metric::where('event', $event)->pluck('count', 'date');
+        $metrics = Metric::query()->where('event', $event)->pluck('count', 'date');
         $lastDay = Carbon::parse(array_key_last($metrics->toArray()));
         $firstDay = Carbon::parse(array_key_first($metrics->toArray()));
 

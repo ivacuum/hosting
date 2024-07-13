@@ -35,7 +35,7 @@ class MagnetForm extends Component
     public function mount()
     {
         if ($this->id) {
-            $magnet = Magnet::findOrFail($this->id);
+            $magnet = Magnet::query()->findOrFail($this->id);
 
             $this->rtoId = $magnet->rto_id;
             $this->status = $magnet->status;
@@ -50,14 +50,14 @@ class MagnetForm extends Component
             'rtoId' => [
                 'required',
                 Rule::unique(Magnet::class, 'rto_id')
-                    ->ignore(Magnet::find($this->id)),
+                    ->ignore(Magnet::query()->find($this->id)),
             ],
         ];
     }
 
     public function submit()
     {
-        $magnet = Magnet::findOrFail($this->id);
+        $magnet = Magnet::query()->findOrFail($this->id);
 
         $this->authorize('update', $magnet);
         $this->validate();

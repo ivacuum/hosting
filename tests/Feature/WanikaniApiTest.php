@@ -22,7 +22,7 @@ class WanikaniApiTest extends TestCase
         app(WanikaniApi::class)
             ->subject(555);
 
-        $request = ExternalHttpRequest::latest('id')->first();
+        $request = ExternalHttpRequest::query()->latest('id')->first();
 
         $this->assertSame('Bearer WanikaniApiKey', $request->request_headers['Authorization'][0]);
     }

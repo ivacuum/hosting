@@ -47,7 +47,7 @@ class ChatMessagesController extends Controller
         $ids = request('ids', []);
         $action = request('action');
 
-        $models = ChatMessage::find($ids);
+        $models = ChatMessage::query()->find($ids);
 
         foreach ($models as $model) {
             /** @var ChatMessage $model */

@@ -9,7 +9,8 @@ class ListTripsForInputSelectAction
 {
     public function execute(): Collection
     {
-        return Trip::orderByDesc('date_start')
+        return Trip::query()
+            ->orderByDesc('date_start')
             ->pluck('slug', 'id');
     }
 }

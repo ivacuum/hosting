@@ -27,7 +27,7 @@ class CommentForm extends Component
     public function mount()
     {
         if ($this->id) {
-            $comment = Comment::findOrFail($this->id);
+            $comment = Comment::query()->findOrFail($this->id);
 
             $this->html = $comment->html;
             $this->status = $comment->status;
@@ -36,7 +36,7 @@ class CommentForm extends Component
 
     public function submit()
     {
-        $comment = Comment::findOrFail($this->id);
+        $comment = Comment::query()->findOrFail($this->id);
 
         $this->authorize('update', $comment);
         $this->validate();

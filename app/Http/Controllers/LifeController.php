@@ -139,7 +139,8 @@ class LifeController
 
     public function gigs()
     {
-        $gigs = Gig::with('artist')
+        $gigs = Gig::query()
+            ->with('artist')
             ->orderByDesc('date')
             ->get()
             ->groupBy(fn (Gig $model) => $model->date->year);
@@ -209,12 +210,13 @@ class LifeController
 
     protected function getGig(string $slug): Gig|null
     {
-        return Gig::firstWhere('slug', $slug);
+        return Gig::query()->firstWhere('slug', $slug);
     }
 
     protected function getTrip(string $slug): Trip|null
     {
-        return Trip::withCount('photos')
+        return Trip::query()
+            ->withCount('photos')
             ->where('slug', $slug)
             ->tap(new TripOfAdminScope)
             ->tap(new TripPublishedScope)

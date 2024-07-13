@@ -15,7 +15,8 @@ class GigsRssController
             'description' => __('life.gigs.rss.description'),
         ];
 
-        $items = Gig::where('status', GigStatus::Published)
+        $items = Gig::query()
+            ->where('status', GigStatus::Published)
             ->where('meta_image', '<>', '')
             ->take(50)
             ->orderByDesc('date')

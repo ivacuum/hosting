@@ -23,7 +23,7 @@ class TagForm extends Component
     public function mount()
     {
         if ($this->id) {
-            $tag = Tag::findOrFail($this->id);
+            $tag = Tag::query()->findOrFail($this->id);
 
             $this->titleEn = $tag->title_en;
             $this->titleRu = $tag->title_ru;
@@ -32,7 +32,7 @@ class TagForm extends Component
 
     public function rules()
     {
-        $tag = Tag::find($this->id);
+        $tag = Tag::query()->find($this->id);
 
         return [
             'titleRu' => [
@@ -58,7 +58,7 @@ class TagForm extends Component
     private function store()
     {
         $tag = $this->id
-            ? Tag::findOrFail($this->id)
+            ? Tag::query()->findOrFail($this->id)
             : new Tag;
 
         $tag->title_en = $this->titleEn;

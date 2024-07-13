@@ -60,7 +60,7 @@ class AcpNewsTest extends TestCase
             ->assertHasNoErrors()
             ->assertRedirect('/acp/news');
 
-        $model = News::firstWhere(['title' => $news->title]);
+        $model = News::query()->firstWhere(['title' => $news->title]);
 
         $this->assertSame(Locale::Rus, $model->locale);
 
@@ -84,7 +84,7 @@ class AcpNewsTest extends TestCase
             ->assertHasNoErrors()
             ->assertRedirect('/acp/news');
 
-        $model = News::firstWhere(['title' => $news->title]);
+        $model = News::query()->firstWhere(['title' => $news->title]);
 
         $this->assertSame(Locale::Eng, $model->locale);
 

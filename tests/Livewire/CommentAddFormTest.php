@@ -83,7 +83,7 @@ class CommentAddFormTest extends TestCase
         \Mail::assertQueued(CommentConfirmMail::class);
         \Mail::assertOutgoingCount(1);
 
-        $user = User::firstWhere(['email' => 'guest-commentator@example.com']);
+        $user = User::query()->firstWhere(['email' => 'guest-commentator@example.com']);
         $user->activate();
         $comment = $user->comments->first();
 

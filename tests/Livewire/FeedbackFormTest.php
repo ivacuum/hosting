@@ -46,7 +46,7 @@ class FeedbackFormTest extends TestCase
             ->call('submit')
             ->assertHasNoErrors();
 
-        $issue = Issue::firstWhere(['email' => 'post-issue-as-guest@example.com']);
+        $issue = Issue::query()->firstWhere(['email' => 'post-issue-as-guest@example.com']);
 
         $this->assertSame('name', $issue->name);
         $this->assertSame('title', $issue->title);
@@ -71,7 +71,7 @@ class FeedbackFormTest extends TestCase
             ->call('submit')
             ->assertHasNoErrors();
 
-        $issue = Issue::firstWhere(['user_id' => $user->id]);
+        $issue = Issue::query()->firstWhere(['user_id' => $user->id]);
 
         $this->assertSame('post-issue', $issue->name);
         $this->assertSame('title', $issue->title);
@@ -91,7 +91,7 @@ class FeedbackFormTest extends TestCase
             ->call('submit')
             ->assertHasNoErrors();
 
-        $issue = Issue::firstWhere(['email' => 'name-hidden@example.com']);
+        $issue = Issue::query()->firstWhere(['email' => 'name-hidden@example.com']);
 
         $this->assertSame('', $issue->name);
         $this->assertSame('title', $issue->title);
@@ -109,7 +109,7 @@ class FeedbackFormTest extends TestCase
             ->call('submit')
             ->assertHasNoErrors();
 
-        $issue = Issue::firstWhere(['email' => 'title-hidden@example.com']);
+        $issue = Issue::query()->firstWhere(['email' => 'title-hidden@example.com']);
 
         $this->assertSame('name', $issue->name);
         $this->assertSame('', $issue->title);
@@ -127,7 +127,7 @@ class FeedbackFormTest extends TestCase
             ->call('submit')
             ->assertHasNoErrors();
 
-        $issue = Issue::firstWhere(['email' => 'title-prefilled@example.com']);
+        $issue = Issue::query()->firstWhere(['email' => 'title-prefilled@example.com']);
 
         $this->assertSame('name', $issue->name);
         $this->assertSame('FAQ', $issue->title);

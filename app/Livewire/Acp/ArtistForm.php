@@ -26,7 +26,7 @@ class ArtistForm extends Component
     public function mount()
     {
         if ($this->id) {
-            $artist = Artist::findOrFail($this->id);
+            $artist = Artist::query()->findOrFail($this->id);
 
             $this->slug = $artist->slug;
             $this->title = $artist->title;
@@ -36,7 +36,7 @@ class ArtistForm extends Component
     public function rules()
     {
         return [
-            'slug' => LifeSlug::rules(Artist::find($this->id) ?? new Artist),
+            'slug' => LifeSlug::rules(Artist::query()->find($this->id) ?? new Artist),
         ];
     }
 
@@ -52,7 +52,7 @@ class ArtistForm extends Component
     private function store()
     {
         $artist = $this->id
-            ? Artist::findOrFail($this->id)
+            ? Artist::query()->findOrFail($this->id)
             : new Artist;
 
         $artist->slug = $this->slug;

@@ -44,7 +44,7 @@ class GigForm extends Component
     public function mount()
     {
         if ($this->id) {
-            $gig = Gig::findOrFail($this->id);
+            $gig = Gig::query()->findOrFail($this->id);
 
             $this->date = $gig->date->toDateTimeLocalString();
             $this->slug = $gig->slug;
@@ -66,7 +66,7 @@ class GigForm extends Component
     {
         return [
             'date' => 'required|date',
-            'slug' => LifeSlug::rules(Gig::find($this->id) ?? new Gig),
+            'slug' => LifeSlug::rules(Gig::query()->find($this->id) ?? new Gig),
             'cityId' => 'required|integer|min:1',
             'status' => 'required',
             'artistId' => 'required|integer|min:1',
@@ -87,7 +87,7 @@ class GigForm extends Component
 
     public function updatedArtistId()
     {
-        $artist = Artist::find($this->artistId);
+        $artist = Artist::query()->find($this->artistId);
 
         if ($artist) {
             $this->slug = "{$artist->slug}." . now()->year;
@@ -99,7 +99,7 @@ class GigForm extends Component
     private function store()
     {
         $gig = $this->id
-            ? Gig::findOrFail($this->id)
+            ? Gig::query()->findOrFail($this->id)
             : new Gig;
 
         $gig->date = $this->date;

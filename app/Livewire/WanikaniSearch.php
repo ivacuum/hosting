@@ -35,17 +35,20 @@ class WanikaniSearch extends Component
             'min' => __('japanese.short-query'),
         ]);
 
-        $this->radicals = Radical::where('meaning', 'LIKE', "%{$this->q}%")
+        $this->radicals = Radical::query()
+            ->where('meaning', 'LIKE', "%{$this->q}%")
             ->orderBy('level')
             ->orderBy('meaning')
             ->get(['id', 'level', 'character', 'meaning', 'image']);
 
-        $this->kanjis = Kanji::where('meaning', 'LIKE', "%{$this->q}%")
+        $this->kanjis = Kanji::query()
+            ->where('meaning', 'LIKE', "%{$this->q}%")
             ->orderBy('level')
             ->orderBy('meaning')
             ->get(['id', 'level', 'character', 'meaning', 'onyomi', 'kunyomi', 'important_reading']);
 
-        $this->vocabularies = Vocabulary::where('meaning', 'LIKE', "%{$this->q}%")
+        $this->vocabularies = Vocabulary::query()
+            ->where('meaning', 'LIKE', "%{$this->q}%")
             ->orderBy('level')
             ->orderBy('meaning')
             ->get(['id', 'level', 'character', 'kana', 'meaning']);

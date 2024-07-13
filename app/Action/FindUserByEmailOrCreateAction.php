@@ -15,7 +15,7 @@ class FindUserByEmailOrCreateAction
         Event $userFoundEvent,
         UserStatus $status = UserStatus::Inactive,
     ) {
-        if ($user = User::firstWhere('email', $email)) {
+        if ($user = User::query()->firstWhere('email', $email)) {
             return $user;
         }
 

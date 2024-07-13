@@ -54,7 +54,7 @@ class ImagesController extends Controller
         $ids = request('ids', []);
         $action = request('action');
 
-        $images = Image::find($ids);
+        $images = Image::query()->find($ids);
 
         foreach ($images as $image) {
             /** @var Image $image */

@@ -61,7 +61,8 @@ class Comment extends Model
 
     public function usersForNotification(Issue|Magnet|News|Trip $model)
     {
-        return static::with('user')
+        return static::query()
+            ->with('user')
             ->distinct()
             ->tap(new CommentRelationScope($model))
             ->where('rel_id', $model->id)

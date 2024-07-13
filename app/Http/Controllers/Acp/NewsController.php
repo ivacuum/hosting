@@ -70,7 +70,8 @@ class NewsController extends Controller
             return back()->with('message', 'Для рассылки уведомлений новость должна быть опубликована');
         }
 
-        $users = User::where('notify_news', NotificationDeliveryMethod::Mail)
+        $users = User::query()
+            ->where('notify_news', NotificationDeliveryMethod::Mail)
             ->where('status', UserStatus::Active)
             ->where('locale', $news->locale)
             ->get();

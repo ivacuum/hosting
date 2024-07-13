@@ -11,7 +11,8 @@ class ListCitiesForInputSelectAction
     {
         $titleField = City::titleField();
 
-        return City::orderBy($titleField)
+        return City::query()
+            ->orderBy($titleField)
             ->pluck($titleField, 'id');
     }
 }

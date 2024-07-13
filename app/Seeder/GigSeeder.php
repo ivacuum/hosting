@@ -14,14 +14,14 @@ class GigSeeder extends Seeder
 
     public function run()
     {
-        $cityIds = City::pluck('id');
+        $cityIds = City::query()->pluck('id');
 
         // Для каждого шаблона нужно создать концерт
         foreach ($this->findGigTemplates->execute() as $template) {
             $slug = str($template->getBasename('.blade.php'))->replace('_', '.');
             $artistSlug = $slug->before('.');
 
-            if (null === $artist = Artist::firstWhere('slug', $artistSlug)) {
+            if (null === $artist = Artist::query()->firstWhere('slug', $artistSlug)) {
                 continue;
             }
 

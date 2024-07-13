@@ -45,7 +45,7 @@ class IssuesController extends Controller
         $ids = request('selected', []);
         $action = request('action');
 
-        $models = Issue::find($ids);
+        $models = Issue::query()->find($ids);
         $affected = 0;
 
         foreach ($models as $model) {

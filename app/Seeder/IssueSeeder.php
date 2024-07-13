@@ -25,7 +25,7 @@ class IssueSeeder extends Seeder
             ->closed()
             ->withTitle('Checking one-two-three, testicles, check!')
             ->withText('It seems to be working just fine.')
-            ->withUser(User::find(1))
+            ->withUser(User::query()->find(1))
             ->create();
 
         $user = UserFactory::new()

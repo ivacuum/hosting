@@ -82,7 +82,7 @@ class VocabularyTrainer extends Component
 
     public function setVocabId(int $vocabId)
     {
-        $this->vocab = Vocabulary::findOrFail($vocabId);
+        $this->vocab = Vocabulary::query()->findOrFail($vocabId);
     }
 
     public function skip()

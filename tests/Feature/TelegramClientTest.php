@@ -25,7 +25,7 @@ class TelegramClientTest extends TestCase
             ->chat(12345)
             ->sendMessage('Text');
 
-        $request = ExternalHttpRequest::latest('id')->first();
+        $request = ExternalHttpRequest::query()->latest('id')->first();
 
         $this->assertSame('/botTelegramBotToken/sendMessage', $request->path);
     }

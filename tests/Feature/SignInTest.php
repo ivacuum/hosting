@@ -24,7 +24,7 @@ class SignInTest extends TestCase
 
         $this->assertAuthenticated();
 
-        $user = User::firstWhere(['email' => 'facebook@example.com']);
+        $user = User::query()->firstWhere(['email' => 'facebook@example.com']);
         $externalIdentity = $user->externalIdentities->first();
 
         $this->assertSame('1', $externalIdentity->uid);
@@ -70,7 +70,7 @@ class SignInTest extends TestCase
 
         $this->assertAuthenticated();
 
-        $user = User::firstWhere(['email' => 'google@example.com']);
+        $user = User::query()->firstWhere(['email' => 'google@example.com']);
         $externalIdentity = $user->externalIdentities->first();
 
         $this->assertSame('1', $externalIdentity->uid);
@@ -113,7 +113,7 @@ class SignInTest extends TestCase
 
         $this->assertAuthenticated();
 
-        $user = User::firstWhere(['email' => 'vk@example.com']);
+        $user = User::query()->firstWhere(['email' => 'vk@example.com']);
         $externalIdentity = $user->externalIdentities->first();
 
         $this->assertSame('1', $externalIdentity->uid);

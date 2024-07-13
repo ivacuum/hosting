@@ -30,7 +30,7 @@ class PhotoUploadFormTest extends TestCase
             ->set('gigId', $gig->id)
             ->set('file', $file);
 
-        $photo = Photo::firstWhere([
+        $photo = Photo::query()->firstWhere([
             'rel_type' => $gig->getMorphClass(),
             'rel_id' => $gig->id,
         ]);
@@ -63,7 +63,7 @@ class PhotoUploadFormTest extends TestCase
             ->set('tripId', $trip->id)
             ->set('file', $file);
 
-        $uploadedPhoto = Photo::firstWhere([
+        $uploadedPhoto = Photo::query()->firstWhere([
             'rel_type' => $trip->getMorphClass(),
             'rel_id' => $trip->id,
         ]);
@@ -89,7 +89,7 @@ class PhotoUploadFormTest extends TestCase
             ->set('tripId', $trip->id)
             ->set('file', $file);
 
-        $photo = Photo::firstWhere([
+        $photo = Photo::query()->firstWhere([
             'rel_type' => $trip->getMorphClass(),
             'rel_id' => $trip->id,
         ]);

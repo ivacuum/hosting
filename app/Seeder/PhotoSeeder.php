@@ -17,8 +17,7 @@ class PhotoSeeder extends Seeder
 
     private function seedMoscow()
     {
-        /** @var Trip $trip */
-        $trip = Trip::where('slug', 'msk.2019.09.29')->firstOrFail();
+        $trip = Trip::query()->where('slug', 'msk.2019.09.29')->firstOrFail();
 
         $factory = PhotoFactory::new()->withTripId($trip->id);
         $factory->withSlug('msk.2019.09.29/IMG_1345.jpg')->create();
@@ -28,8 +27,7 @@ class PhotoSeeder extends Seeder
 
     private function seedSuwon()
     {
-        /** @var Trip $trip */
-        $trip = Trip::where('slug', 'suwon.2019')->firstOrFail();
+        $trip = Trip::query()->where('slug', 'suwon.2019')->firstOrFail();
 
         $factory = PhotoFactory::new()->withTripId($trip->id);
         $factory->withSlug('suwon.2019/IMG_4277.jpg')->create();

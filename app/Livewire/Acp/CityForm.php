@@ -44,7 +44,7 @@ class CityForm extends Component
     public function mount()
     {
         if ($this->id) {
-            $city = City::findOrFail($this->id);
+            $city = City::query()->findOrFail($this->id);
 
             $this->lat = $city->point?->lat;
             $this->lon = $city->point?->lon;
@@ -59,7 +59,7 @@ class CityForm extends Component
     public function rules()
     {
         return [
-            'slug' => LifeSlug::rules(City::find($this->id) ?? new City),
+            'slug' => LifeSlug::rules(City::query()->find($this->id) ?? new City),
         ];
     }
 
@@ -69,7 +69,7 @@ class CityForm extends Component
         $this->validate();
 
         $city = $this->id
-            ? City::findOrFail($this->id)
+            ? City::query()->findOrFail($this->id)
             : new City;
 
         $city->iata = $this->iata;

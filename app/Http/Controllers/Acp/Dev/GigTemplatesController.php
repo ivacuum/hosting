@@ -69,8 +69,7 @@ class GigTemplatesController
         $slug = str_replace('_', '.', $template);
         \Breadcrumbs::push($slug);
 
-        /** @var Gig $gig */
-        $gig = Gig::inRandomOrder()->first();
+        $gig = Gig::query()->inRandomOrder()->first();
         $gig->slug = $slug;
 
         if (request('images')) {

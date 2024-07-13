@@ -26,8 +26,8 @@ class ParseWanikani extends Command
             $response = $wanikani->subjects($level);
 
             foreach ($response->getRadicals() as $radical) {
-                $model = Radical::firstWhere('wk_id', $radical->id)
-                    ?? Radical::firstWhere('meaning', $radical->meaning)
+                $model = Radical::query()->firstWhere('wk_id', $radical->id)
+                    ?? Radical::query()->firstWhere('meaning', $radical->meaning)
                     ?? new Radical;
 
                 $model->image = '';
@@ -47,8 +47,8 @@ class ParseWanikani extends Command
             }
 
             foreach ($response->getKanjis() as $kanji) {
-                $model = Kanji::firstWhere('wk_id', $kanji->id)
-                    ?? Kanji::firstWhere('character', $kanji->character)
+                $model = Kanji::query()->firstWhere('wk_id', $kanji->id)
+                    ?? Kanji::query()->firstWhere('character', $kanji->character)
                     ?? new Kanji;
 
                 $model->level = $kanji->level;
@@ -71,8 +71,8 @@ class ParseWanikani extends Command
             }
 
             foreach ($response->getVocabularies() as $vocab) {
-                $model = Vocabulary::firstWhere('wk_id', $vocab->id)
-                    ?? Vocabulary::firstWhere('character', $vocab->characters)
+                $model = Vocabulary::query()->firstWhere('wk_id', $vocab->id)
+                    ?? Vocabulary::query()->firstWhere('character', $vocab->characters)
                     ?? new Vocabulary;
 
                 $model->kana = mb_strtolower($vocab->readings->implode(', '));

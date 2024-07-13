@@ -27,7 +27,7 @@ class UserForm extends Component
     public function mount()
     {
         if ($this->id) {
-            $user = User::findOrFail($this->id);
+            $user = User::query()->findOrFail($this->id);
 
             $this->email = $user->email;
             $this->status = $user->status;
@@ -41,14 +41,14 @@ class UserForm extends Component
                 'required',
                 'email',
                 Rule::unique(User::class, 'email')
-                    ->ignore(User::find($this->id)),
+                    ->ignore(User::query()->find($this->id)),
             ],
         ];
     }
 
     public function submit()
     {
-        $user = User::findOrFail($this->id);
+        $user = User::query()->findOrFail($this->id);
 
         $this->authorize('update', $user);
         $this->validate();

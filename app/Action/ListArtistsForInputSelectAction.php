@@ -9,7 +9,8 @@ class ListArtistsForInputSelectAction
 {
     public function execute(): Collection
     {
-        return Artist::orderBy('title')
+        return Artist::query()
+            ->orderBy('title')
             ->pluck('title', 'id');
     }
 }

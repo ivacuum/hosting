@@ -11,7 +11,8 @@ class ListCountriesForInputSelectAction
     {
         $titleField = Country::titleField();
 
-        return Country::orderBy($titleField)
+        return Country::query()
+            ->orderBy($titleField)
             ->pluck($titleField, 'id');
     }
 }

@@ -184,7 +184,7 @@ class MagnetTest extends TestCase
             ->call('submit')
             ->assertHasNoErrors();
 
-        $user = User::find(config('cfg.magnet_anonymous_releaser'))
+        $user = User::query()->find(config('cfg.magnet_anonymous_releaser'))
             ?? UserFactory::new()->withId(config('cfg.magnet_anonymous_releaser'))->create();
 
         /** @var Magnet $magnet */

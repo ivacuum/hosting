@@ -75,7 +75,7 @@ class KanjiSeeder extends Seeder
             $kanji->save();
         }
 
-        Kanji::each(function (Kanji $kanji) {
+        Kanji::query()->each(function (Kanji $kanji) {
             match ($kanji->character) {
                 '一',
                 '二' => $this->attachRadicals($kanji, ['ground']),
@@ -89,11 +89,11 @@ class KanjiSeeder extends Seeder
 
     private function attachRadicals(Kanji $kanji, array $meanings): void
     {
-        $kanji->radicals()->sync(Radical::whereIn('meaning', $meanings)->pluck('id'));
+        $kanji->radicals()->sync(Radical::query()->whereIn('meaning', $meanings)->pluck('id'));
     }
 
     private function attachSimilarKanji(Kanji $kanji, array $characters): void
     {
-        $kanji->similar()->sync(Kanji::whereIn('character', $characters)->pluck('id'));
+        $kanji->similar()->sync(Kanji::query()->whereIn('character', $characters)->pluck('id'));
     }
 }

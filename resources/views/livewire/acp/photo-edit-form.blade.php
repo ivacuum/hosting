@@ -12,7 +12,7 @@
   <div class="mb-4">
     <label class="font-bold">@lang('acp.tags.index')</label>
     <div class="column-width-48">
-      @foreach (App\Tag::orderBy(App\Tag::titleField())->get() as $tag)
+      @foreach (App\Tag::query()->orderBy(App\Tag::titleField())->get() as $tag)
         <label class="flex gap-2 items-center">
           <input
             class="border-gray-300 rounded"

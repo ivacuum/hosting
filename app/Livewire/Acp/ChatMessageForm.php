@@ -27,7 +27,7 @@ class ChatMessageForm extends Component
     public function mount()
     {
         if ($this->id) {
-            $chatMessage = ChatMessage::findOrFail($this->id);
+            $chatMessage = ChatMessage::query()->findOrFail($this->id);
 
             $this->text = $chatMessage->text;
             $this->status = $chatMessage->status;
@@ -36,7 +36,7 @@ class ChatMessageForm extends Component
 
     public function submit()
     {
-        $chatMessage = ChatMessage::findOrFail($this->id);
+        $chatMessage = ChatMessage::query()->findOrFail($this->id);
 
         $this->authorize('update', $chatMessage);
         $this->validate();

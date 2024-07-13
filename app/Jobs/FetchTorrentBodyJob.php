@@ -14,7 +14,7 @@ class FetchTorrentBodyJob extends AbstractJob
 
     public function handle(Rto $rto)
     {
-        $magnet = Magnet::firstWhere('rto_id', $this->rtoId);
+        $magnet = Magnet::query()->firstWhere('rto_id', $this->rtoId);
 
         $topicData = $rto->parseTopicBody($magnet->rto_id);
 

@@ -63,9 +63,9 @@ class PhotoUploadForm extends Component
         $this->validate();
 
         if ($this->gigId) {
-            $model = Gig::findOrFail($this->gigId);
+            $model = Gig::query()->findOrFail($this->gigId);
         } elseif ($this->tripId) {
-            $model = Trip::findOrFail($this->tripId);
+            $model = Trip::query()->findOrFail($this->tripId);
         } else {
             throw new \DomainException('Нужно выбрать концерт или поездку.');
         }

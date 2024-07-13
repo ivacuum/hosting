@@ -19,7 +19,8 @@ class NotifyTripSubscribers extends AbstractJob
 
     public function handle()
     {
-        $users = User::where('notify_trips', NotificationDeliveryMethod::Mail)
+        $users = User::query()
+            ->where('notify_trips', NotificationDeliveryMethod::Mail)
             ->where('status', UserStatus::Active)
             ->get();
 

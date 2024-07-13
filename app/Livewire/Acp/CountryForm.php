@@ -31,7 +31,7 @@ class CountryForm extends Component
     public function mount()
     {
         if ($this->id) {
-            $country = Country::findOrFail($this->id);
+            $country = Country::query()->findOrFail($this->id);
 
             $this->slug = $country->slug;
             $this->emoji = $country->emoji;
@@ -46,7 +46,7 @@ class CountryForm extends Component
             'slug' => [
                 'required',
                 Rule::unique(Country::class, 'slug')
-                    ->ignore(Country::find($this->id)),
+                    ->ignore(Country::query()->find($this->id)),
             ],
         ];
     }
@@ -63,7 +63,7 @@ class CountryForm extends Component
     private function store()
     {
         $country = $this->id
-            ? Country::findOrFail($this->id)
+            ? Country::query()->findOrFail($this->id)
             : new Country;
 
         $country->slug = $this->slug;

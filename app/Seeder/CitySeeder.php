@@ -103,7 +103,7 @@ class CitySeeder extends Seeder
     public function run()
     {
         foreach (self::CITIES_BY_COUNTRY as $countrySlug => $cities) {
-            $country = Country::firstWhere('slug', $countrySlug);
+            $country = Country::query()->firstWhere('slug', $countrySlug);
 
             array_map(function (array $data) use ($country) {
                 $city = CityFactory::new()->withCountryId($country->id)->make();

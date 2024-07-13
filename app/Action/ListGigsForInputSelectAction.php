@@ -9,7 +9,8 @@ class ListGigsForInputSelectAction
 {
     public function execute(): Collection
     {
-        return Gig::orderBy('slug')
+        return Gig::query()
+            ->orderBy('slug')
             ->pluck('slug', 'id');
     }
 }

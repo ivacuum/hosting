@@ -19,7 +19,8 @@ class GigPublishedNotifyController
             ];
         }
 
-        $users = User::where('notify_gigs', NotificationDeliveryMethod::Mail)
+        $users = User::query()
+            ->where('notify_gigs', NotificationDeliveryMethod::Mail)
             ->where('status', UserStatus::Active)
             ->get();
 

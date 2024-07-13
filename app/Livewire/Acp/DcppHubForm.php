@@ -33,7 +33,7 @@ class DcppHubForm extends Component
     public function mount()
     {
         if ($this->id) {
-            $dcppHub = DcppHub::findOrFail($this->id);
+            $dcppHub = DcppHub::query()->findOrFail($this->id);
 
             $this->port = $dcppHub->port;
             $this->title = $dcppHub->title;
@@ -54,7 +54,7 @@ class DcppHubForm extends Component
     private function store()
     {
         $dcppHub = $this->id
-            ? DcppHub::findOrFail($this->id)
+            ? DcppHub::query()->findOrFail($this->id)
             : new DcppHub;
 
         $dcppHub->port = $this->port;

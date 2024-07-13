@@ -114,8 +114,14 @@ class PhotoController
         $photo->load('rel', 'tags');
         $photo->rel->loadCityAndCountry();
 
-        $next = Photo::where('id', '>', $photo->id)->tap(new PhotoPublishedScope);
-        $prev = Photo::where('id', '<', $photo->id)->tap(new PhotoPublishedScope)->orderByDesc('id');
+        $next = Photo::query()
+            ->where('id', '>', $photo->id)
+            ->tap(new PhotoPublishedScope);
+
+        $prev = Photo::query()
+            ->where('id', '<', $photo->id)
+            ->tap(new PhotoPublishedScope)
+            ->orderByDesc('id');
 
         if ($request->tagId) {
             // Просмотр в пределах одного тэга
@@ -146,7 +152,7 @@ class PhotoController
         }
 
         if ($request->tagId) {
-            $tag = Tag::findOrFail($request->tagId);
+            $tag = Tag::query()->findOrFail($request->tagId);
 
             \Breadcrumbs::push(__('Тэги'), 'photos/tags')
                 ->push($tag->breadcrumb(), "photos/tags/{$request->tagId}");
@@ -202,7 +208,8 @@ class PhotoController
             ->distinct()
             ->pluck('tag_id');
 
-        $tags = Tag::withCount('photosPublished')
+        $tags = Tag::query()
+            ->withCount('photosPublished')
             ->whereIn('id', $tagIds)
             ->orderBy(Tag::titleField())
             ->get();
