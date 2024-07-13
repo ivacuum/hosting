@@ -43,7 +43,7 @@
       @foreach ($news as $model)
         <article itemscope itemtype="https://schema.org/BlogPosting">
           <header>
-            <h3 class="font-semibold text-2xl mb-2" itemprop="headline"><a class="link tracking-tight" href="{{ $model->www() }}" itemprop="url">{{ $model->title }}</a></h3>
+            <h3 class="font-semibold text-2xl text-balance mb-2" itemprop="headline"><a class="link tracking-tight" href="{{ $model->www() }}" itemprop="url">{{ $model->title }}</a></h3>
             <div class="svg-labels svg-muted text-muted text-sm mb-4">
               <span class="svg-flex svg-label">
                 @svg (calendar-o)

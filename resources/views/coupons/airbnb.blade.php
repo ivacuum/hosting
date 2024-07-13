@@ -2,7 +2,7 @@
 @include('livewire')
 
 @section('content')
-<h1 class="font-medium text-4xl tracking-tight mb-2">{{ $metaTitle }}</h1>
+<h1 class="font-medium text-4xl tracking-tight text-balance mb-2">{{ $metaTitle }}</h1>
 <div class="max-w-[600px]">
   @ru
     <p>Вы легко можете получить скидку около 10 евро на ваши следующие бронирования на <a class="link" href="https://www.airbnb.ru/{{ config('cfg.airbnb_link') }}">airbnb.ru</a> с помощью купонов ниже. Также я привожу информацию где удалось успешно воспользоваться данными купонами. Коды <span class="font-bold">работают для уже зарегистрированных пользователей</span>.</p>

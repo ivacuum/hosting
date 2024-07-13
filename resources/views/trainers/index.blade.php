@@ -9,7 +9,7 @@
     <div class="flex flex-col gap-2">
       <a class="flex flex-col gap-2 link-parent group" href="{{ to('japanese/hiragana-katakana') }}">
         <div class="flex items-center justify-center border border-amber-200 dark:border-amber-700/25 rounded bg-amber-100 dark:bg-amber-800/40 group-hover:dark:bg-amber-800/60 w-24 h-12 text-2xl text-amber-900 dark:text-amber-200">五十音</div>
-        <h2 class="text-2xl link">
+        <h2 class="text-2xl text-balance link">
           @lang('japanese.hiragana-katakana-trainer')
         </h2>
       </a>
@@ -20,7 +20,7 @@
     <div class="flex flex-col gap-2">
       <a class="flex flex-col gap-2 link-parent group" href="{{ to('japanese/words-trainer') }}">
         <div class="flex items-center justify-center border border-cyan-200 dark:border-cyan-700/25 rounded bg-cyan-100 dark:bg-cyan-700/40 group-hover:dark:bg-cyan-700/60 w-24 h-12 text-2xl text-cyan-900 dark:text-cyan-200">単語</div>
-        <h2 class="text-2xl link">
+        <h2 class="text-2xl text-balance link">
           @lang('Тренажер по набору слов хираганой и катаканой')
         </h2>
       </a>
@@ -31,7 +31,7 @@
     <div class="flex flex-col gap-2">
       <a class="flex flex-col gap-2 link-parent group" href="{{ to('korean/hangul') }}">
         <div class="flex items-center justify-center border border-indigo-200 dark:border-indigo-700/25 rounded bg-indigo-100 dark:bg-indigo-700/40 group-hover:dark:bg-indigo-700/60 w-24 h-12 text-2xl text-indigo-900 dark:text-indigo-200">한글</div>
-        <h2 class="text-2xl link">
+        <h2 class="text-2xl text-balance link">
           @lang('Тренажер хангыля')
         </h2>
       </a>
@@ -42,7 +42,7 @@
     <div class="flex flex-col gap-2">
       <a class="flex flex-col gap-2 link-parent group" href="{{ to('trainers/numbers') }}">
         <div class="flex items-center justify-center border border-lime-200 dark:border-lime-700/25 rounded bg-lime-100 dark:bg-lime-800/40 group-hover:dark:bg-lime-800/60 w-24 h-12 text-2xl text-lime-900 dark:text-lime-200">123</div>
-        <h2 class="text-2xl link">
+        <h2 class="text-2xl text-balance link">
           @lang('Тренажер чисел')
         </h2>
       </a>
