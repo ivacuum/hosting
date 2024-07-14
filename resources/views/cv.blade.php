@@ -1,6 +1,6 @@
 @php($locale = app()->getLocale())
 <!DOCTYPE html>
-<html lang="{{ $locale }}" prefix="og: http://ogp.me/ns#">
+<html lang="{{ $locale }}" prefix="og: https://ogp.me/ns#">
 <head>
   <meta charset="utf-8">
   <title>@ru Сергей Панков &middot; Резюме &middot; Веб-программист (Laravel PHP, Vue.js) @en Sergei Pankov &middot; CV &middot; Laravel PHP + Vue.js Developer @endru</title>
@@ -531,7 +531,7 @@ body {
   <div>
     <div class="font-medium text-lg mb-2">
       <span class="text-green-500">@svg (primitive-dot)</span>
-      <a href="http://www.veloman.org/" rel="nofollow">veloman.org</a>
+      <a href="https://www.veloman.org/" rel="nofollow">veloman.org</a>
     </div>
     @ru
       <p>В дополнение к физическому магазину Веломан был сделан интернет-магазин с <strong>интеграцией с 1С</strong>. Все представленные на сайте товары можно купить с оплатой через Робокассу.</p>

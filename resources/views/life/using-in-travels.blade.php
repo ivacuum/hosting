@@ -99,7 +99,7 @@
     — Европа
   </div>
   <div>
-    <a class="link" href="http://www.seat61.com/" rel="nofollow">seat61.com</a>
+    <a class="link" href="https://www.seat61.com/" rel="nofollow">seat61.com</a>
     — советы по перемещениям на поездах
   </div>
 </section>
