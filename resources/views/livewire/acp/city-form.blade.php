@@ -9,7 +9,7 @@
   {{ $form->text('titleEn')->required() }}
   {{ $form->text('slug')->required() }}
   {{ $form->text('iata') }}
-  {{ $form->text('lat') }}
+  {{ $form->text('lat')->live() }}
   {{ $form->text('lon') }}
 
   <div class="sticky-bottom-buttons">

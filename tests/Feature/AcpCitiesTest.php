@@ -39,6 +39,14 @@ class AcpCitiesTest extends TestCase
             ->assertOk();
     }
 
+    public function testPasteCoordinates()
+    {
+        \Livewire::test(CityForm::class)
+            ->set('lat', '54.513678, 36.261341')
+            ->assertSet('lat', '54.513678')
+            ->assertSet('lon', '36.261341');
+    }
+
     public function testShow()
     {
         $city = CityFactory::new()->create();

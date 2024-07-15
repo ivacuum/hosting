@@ -84,4 +84,11 @@ class CityForm extends Component
 
         return redirect()->to($this->goto ?? to('acp/cities'));
     }
+
+    public function updatedLat()
+    {
+        if (str_contains($this->lat, ', ')) {
+            [$this->lat, $this->lon] = explode(', ', $this->lat);
+        }
+    }
 }
