@@ -32,7 +32,7 @@ class HiraganaRomanizer
         'り' => 'ri',
         'ぎ' => 'gi',
         'じ' => 'ji',
-        'ぢ' => 'ji',
+        'ぢ' => 'di',
         'び' => 'bi',
         'ぴ' => 'pi',
 
@@ -47,7 +47,7 @@ class HiraganaRomanizer
         'る' => 'ru',
         'ぐ' => 'gu',
         'ず' => 'zu',
-        'づ' => 'zu',
+        'づ' => 'du',
         'ぶ' => 'bu',
         'ぷ' => 'pu',
 
