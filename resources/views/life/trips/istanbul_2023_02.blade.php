@@ -2,776 +2,825 @@
 
 @section('content')
 @ru
-  <p>Напрягало каждую неделю выбирать страну и жилье. Поэтому в Стамбуле был сразу взят месяц. Землетрясение было несколько дней до прилета.</p>
+  <p>После еженедельных мук выбора в Эмиратах куда податься, облегчением стал выбор жилья в Стамбуле сразу на месяц. Оказалось, что на Эйрбнб есть немало вариантов жилья, которое сдается только на длительный срок. А посуточное жилье там может быть с нарастающей скидкой при выборе срока пребывания от одной недели, двух и четырех.</p>
 @endru
 
 @ru
-  <p>На удивление, рейс был в малый аэропорт Стамбула — имени Сабихи Гёкчен.</p>
+  <p>В начале недели (6 февраля) на юге Турции возле границы с Сирией происходит несколько страшных землетрясений с максимальной магнитудой 7,8 баллов. Информация о трагедии не будет сходить с экранов телевизоров по городу весь проведенный в городе месяц. Задумывался что делать, если трясти начнет Стамбул. Благо, беда его миновала.</p>
 @endru
-IMG_2275.jpeg
 
 @ru
-  <p>Самолет эмиратского лоукостера.</p>
+  <p>Рейс в малый аэропорт Стамбула — имени Сабихи Гёкчен.</p>
 @endru
-IMG_2276.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2275.jpg'])
 
 @ru
-  <p>Табло ленты выдачи багажа. Реклама тестов на ковид. Однако, люди в масках уже редкость.</p>
+  <p>Самолет эмиратского лоукостера ЭйрАрабия.</p>
 @endru
-IMG_2277.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2276.jpg'])
+
+@ru
+  <p>Табло ленты выдачи багажа. Реклама тестов на ковид. Однако, накануне весны 2023 года люди в масках уже практически не встречаются.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2277.jpg'])
 
 @ru
   <p>До города можно добраться на метро.</p>
 @endru
-IMG_2278.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2278.jpg'])
 
 @ru
   <p>Понадобятся пересадки, чтобы добраться до противоположного берега.</p>
 @endru
-IMG_2279.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2279.jpg'])
 
 @ru
   <p>Линия поезда Мармарэй проходит над землей.</p>
 @endru
-IMG_2281.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2281.jpg'])
 
 @ru
   <p>Напольная навигация на станции метро.</p>
 @endru
-IMG_2282.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2282.jpg'])
 
 @ru
   <p>Вид из поезда метро на остановке на мосту.</p>
 @endru
-IMG_2283.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2283.jpg'])
 
 @ru
   <p>Знакомый по прошлому году красный автомобиль.</p>
 @endru
-IMG_2284.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2284.jpg'])
 
 @ru
-  <p>Удобно, что в центре много общепитов в шаговой доступности.</p>
+  <p>Удобно, что в центре много общепитов в шаговой доступности. Поражает режим работы допоздна — словно сотрудники только на сон перерыв делают.</p>
 @endru
-IMG_2285.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2285.jpg'])
 
 @ru
-  <p>Фасад здания.</p>
+  <p>Фасад здания с вечерней подсветкой.</p>
 @endru
-IMG_2286.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2286.jpg'])
 
 @ru
   <p>Юсб-зарядки в вагоне метро.</p>
 @endru
-IMG_2324.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2324.jpg'])
 
 @ru
   <p>Небольшая фирменная урна перед турникетами метро.</p>
 @endru
-IMG_2325.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2325.jpg'])
 
 @ru
   <p>Терминал, в котором можно пополнить транспортную карту Стамбула с помощью банковской карты. К сожалению, такие встречаются не на каждой станции.</p>
 @endru
-IMG_2326.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2326.jpg'])
 
 @ru
   <p>Поезд линии Мармарэй.</p>
 @endru
-IMG_2327.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2327.jpg'])
 
 @ru
-  <p>Исследование невиданного района Кадыкой.</p>
+  <p>Исследование невиданного ранее района Кадыкёй.</p>
 @endru
-IMG_2328.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2328.jpg'])
 
 @ru
   <p>Желтая зебра.</p>
 @endru
-IMG_2329.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2329.jpg'])
 
 @ru
   <p>Слон на торце дома.</p>
 @endru
-IMG_2330.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2330.jpg'])
 
 @ru
   <p>Еще граффити на торцах домов.</p>
 @endru
-IMG_2332.jpeg
-IMG_2333.jpeg
-IMG_2334.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2332.jpg',
+  'IMG_2333.jpg',
+  'IMG_2334.jpg',
+]])
 
 @ru
-  <p>Надпись на проезжей части перед пешеходным переходом.</p>
+  <p>Надпись на проезжей части перед пешеходным переходом гласит «пешеходы первые».</p>
 @endru
-IMG_2335.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2335.jpg'])
 
 @ru
   <p>Дворик между домами.</p>
 @endru
-IMG_2336.jpeg
-IMG_2337.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2336.jpg',
+  'IMG_2337.jpg',
+]])
 
 @ru
   <p>Уличная табличка подсказывает нумерацию домов на улице.</p>
 @endru
-IMG_2338.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2338.jpg'])
 
 @ru
-  <p>Автобусная остановка или вокзал?</p>
+  <p>Множество автобусных остановок.</p>
 @endru
-IMG_2339.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2339.jpg'])
 
 @ru
-  <p>Табло прибытия автобусов.</p>
+  <p>Табло прибытия автобусов десяти разных маршрутов.</p>
 @endru
-IMG_2340.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2340.jpg'])
 
 @ru
   <p>Скамейка с приятным видом.</p>
 @endru
-IMG_2341.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2341.jpg'])
 
 @ru
   <p>Дерево без листьев в феврале. Рядом продают булки.</p>
 @endru
-IMG_2342.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2342.jpg'])
 
 @ru
   <p>Все выделенные места для сидения заняты.</p>
 @endru
-IMG_2343.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2343.jpg'])
 
 @ru
   <p>Перевернутый указатель прохода к метро.</p>
 @endru
-IMG_2344.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2344.jpg'])
 
 @ru
   <p>Турникеты на паром. Проезд можно оплачивать транспортной картой.</p>
 @endru
-IMG_2345.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2345.jpg'])
 
 @ru
   <p>Чистка обуви на улице.</p>
 @endru
-IMG_2346.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2346.jpg'])
 
 @ru
   <p>Набережная.</p>
 @endru
-IMG_2347.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2347.jpg'])
 
 @ru
   <p>Чайки учуяли провиант.</p>
 @endru
-IMG_2349.jpeg?
-IMG_2350.jpeg?
+@include('tpl.pic-2x', ['pic' => 'IMG_2349.jpg'])
 
 @ru
   <p>Крышка урны отвернута.</p>
 @endru
-IMG_2351.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2351.jpg'])
 
 @ru
   <p>Котик гоняет черепаху на территории полицейского участка.</p>
 @endru
-IMG_2352.jpeg
-IMG_2353.jpeg
-IMG_2354.jpeg
-IMG_2355.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2352.jpg',
+  'IMG_2353.jpg',
+  'IMG_2354.jpg',
+  'IMG_2355.jpg',
+]])
 
 @ru
   <p>Котик вылизывается на набережной.</p>
 @endru
-IMG_2356.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2356.jpg'])
 
 @ru
   <p>Котик загорает на набережной.</p>
 @endru
-IMG_2357.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2357.jpg'])
 
 @ru
   <p>Каменистая набережная.</p>
 @endru
-IMG_2358.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2358.jpg'])
 
 @ru
   <p>Маяк.</p>
 @en
   <p>Lighthouse.</p>
 @endru
-IMG_2359.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2359.jpg'])
 
 @ru
   <p>Волны.</p>
 @endru
-IMG_2360.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2360.jpg'])
 
 @ru
   <p>Набережная с тротуаром, велодорожкой и скамейками.</p>
 @endru
-IMG_2361.jpeg
-IMG_2367.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2361.jpg',
+  'IMG_2367.jpg',
+]])
 
 @ru
   <p>И тренажерами.</p>
 @endru
-IMG_2362.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2362.jpg'])
 
 @ru
   <p>Возможность крутить педали на открытом воздухе с видом на море.</p>
 @endru
-IMG_2363.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2363.jpg'])
 
 @ru
   <p>Жилые дома и детская площадка.</p>
 @endru
-IMG_2364.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2364.jpg'])
 
 @ru
   <p>Возможность укрыться в тени деревьев у склона.</p>
 @endru
-IMG_2365.jpeg
-IMG_2366.jpeg
-IMG_2369.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2365.jpg',
+  'IMG_2366.jpg',
+  'IMG_2369.jpg',
+]])
 
 @ru
-  <p>Котик отдыхает на солнечной скамейке.</p>
+  <p>Котик греется на солнечной скамейке.</p>
 @endru
-IMG_2368.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2368.jpg'])
 
 @ru
   <p>Длинная новая скамейка. На такой и поспать можно.</p>
 @endru
-IMG_2370.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2370.jpg'])
 
 @ru
   <p>Скамейка с видом на море.</p>
 @endru
-IMG_2371.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2371.jpg'])
 
 @ru
   <p>В жилом доме большие балконы.</p>
 @endru
-IMG_2372.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2372.jpg'])
 
 @ru
   <p>Смена баннеров щита наружной рекламы.</p>
 @endru
-IMG_2373.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2373.jpg'])
 
 @ru
   <p>Еще набережная.</p>
 @endru
-IMG_2374.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2374.jpg'])
 
 @ru
   <p>Прокат велосипедов.</p>
 @endru
-IMG_2375.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2375.jpg'])
 
 @ru
   <p>Каменистая набережная.</p>
 @endru
-IMG_2376.jpeg
-IMG_2380.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2376.jpg',
+  'IMG_2380.jpg',
+]])
 
 @ru
   <p>Жилые дома с видом на море.</p>
 @endru
-IMG_2377.jpeg
-IMG_2382.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2377.jpg',
+  'IMG_2382.jpg',
+]])
 
 @ru
   <p>Пикники в парке.</p>
 @endru
-IMG_2378.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2378.jpg'])
 
 @ru
   <p>Два человека и чайка засмотрелись вдаль.</p>
 @endru
-IMG_2379.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2379.jpg'])
 
 @ru
   <p>Велодорожка на набережной.</p>
 @endru
-IMG_2381.jpeg
-IMG_2383.jpeg
-IMG_2384.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2381.jpg',
+  'IMG_2383.jpg',
+  'IMG_2384.jpg',
+]])
 
 @ru
   <p>Катера пришвартованы.</p>
 @endru
-IMG_2385.jpeg
-IMG_2389.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2385.jpg',
+  'IMG_2389.jpg',
+]])
 
 @ru
   <p>В парке покрытие для бегунов и пешеходов.</p>
 @endru
-IMG_2386.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2386.jpg'])
 
 @ru
   <p>И есть площадка для собак.</p>
 @endru
-IMG_2387.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2387.jpg'])
 
 @ru
   <p>Полукруглая скамейка.</p>
 @endru
-IMG_2388.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2388.jpg'])
 
 @ru
   <p>Медузы в воде.</p>
 @endru
-IMG_2390.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2390.jpg'])
 
 @ru
   <p>Междугородний поезд напомнил, что можно им воспользоваться для перемещений внутри страны.</p>
 @endru
-IMG_2391.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2391.jpg'])
 
 @ru
   <p>Поезд проходит над стройкой.</p>
 @endru
-IMG_2392.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2392.jpg'])
 
 @ru
   <p>Турникеты перед автобусной остановкой. Рядом терминал для пополнения транспортной карты, принимающие только наличные.</p>
 @endru
-IMG_2393.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2393.jpg'])
 
 @ru
   <p>Виды с железнодорожной платформы метро.</p>
 @endru
-IMG_2394.jpeg
-IMG_2395.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2394.jpg',
+  'IMG_2395.jpg',
+]])
 
 @ru
   <p>Поезд метро на конечной станции Еникапы.</p>
 @endru
-IMG_2396.jpeg
-IMG_2397.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2396.jpg',
+  'IMG_2397.jpg',
+]])
 
 @ru
   <p>Станция метро Еникапы из поезда.</p>
 @endru
-IMG_2398.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2398.jpg'])
 
 @ru
-  <p>Состав произведен корейцами 14 лет назад.</p>
+  <p>Состав произведен корейцами 14 лет назад — в 2009 году.</p>
 @endru
-IMG_2400.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2400.jpg'])
 
 @ru
   <p>Трамвай в солнечный день.</p>
 @endru
-IMG_2401.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2401.jpg'])
 
 @ru
   <p>Чемоданы припаркованы на тротуаре.</p>
 @endru
-IMG_2402.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2402.jpg'])
 
 @ru
   <p>Трамвайные пути в середине дороги. Современный трамвай на остановке.</p>
 @endru
-IMG_2403.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2403.jpg'])
 
 @ru
   <p>Движение автотранспорта перекрыто столбиками.</p>
 @endru
-IMG_2404.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2404.jpg'])
 
 @ru
   <p>Мечеть.</p>
 @endru
-IMG_2405.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2405.jpg'])
 
 @ru
   <p>На рекламе на столбе месяц март написан на русском. Дюжина манекенов на третьем этаже здания.</p>
 @endru
-IMG_2406.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2406.jpg'])
 
 @ru
-  <p>Уличная торговля с навесами.</p>
+  <p>Уличная торговля с навесами от дождя.</p>
 @endru
-IMG_2407.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2407.jpg'])
 
 @ru
   <p>Детская площадка в пустынном парке.</p>
 @endru
-IMG_2408.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2408.jpg'])
 
 @ru
-  <p>Урна.</p>
+  <p>Крытая урна.</p>
 @endru
-IMG_2409.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2409.jpg'])
 
 @ru
   <p>Баскетбольные кольца в парке.</p>
 @endru
-IMG_2410.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2410.jpg'])
 
 @ru
   <p>Огорожденное пространство.</p>
 @endru
-IMG_2411.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2411.jpg'])
 
 @ru
-  <p>Строительный забор.</p>
+  <p>Длинный строительный забор.</p>
 @endru
-IMG_2412.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2412.jpg'])
 
 @ru
   <p>Строят железнодорожную станцию.</p>
 @endru
-IMG_2413.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2413.jpg'])
 
 @ru
   <p>Дороги с надземного перехода.</p>
 @endru
-IMG_2414.jpeg
-IMG_2415.jpeg
-IMG_2416.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2414.jpg',
+  'IMG_2415.jpg',
+  'IMG_2416.jpg',
+]])
 
 @ru
   <p>Бетонная набережная.</p>
 @endru
-IMG_2417.jpeg
-IMG_2418.jpeg
-IMG_2419.jpeg
-IMG_2420.jpeg
-IMG_2421.jpeg
-IMG_2424.jpeg
-IMG_2427.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2417.jpg',
+  'IMG_2418.jpg',
+  'IMG_2419.jpg',
+  'IMG_2420.jpg',
+  'IMG_2421.jpg',
+  'IMG_2424.jpg',
+  'IMG_2427.jpg',
+]])
 
 @ru
-  <p>Сороки.</p>
+  <p>Сороки на траве.</p>
 @endru
-IMG_2422.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2422.jpg'])
 
 @ru
   <p>Узкий огражденный проход в парке.</p>
 @endru
-IMG_2423.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2423.jpg'])
 
 @ru
   <p>Отель-ресторан на той стороне дороги.</p>
 @endru
-IMG_2425.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2425.jpg'])
 
 @ru
   <p>Паром везет пассажиров.</p>
 @endru
-IMG_2426.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2426.jpg'])
 
 @ru
-  <p>Маяк?</p>
+  <p>Маяк.</p>
 @endru
-IMG_2428.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2428.jpg'])
 
 @ru
-  <p>Столбы уличного освещения.</p>
+  <p>Столбы уличного освещения на этой стороне дороги соединены проводом, а на противоположной стороне — нет.</p>
 @endru
-IMG_2429.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2429.jpg'])
 
 @ru
   <p>Набережная.</p>
 @endru
-IMG_2430.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2430.jpg'])
 
 @ru
   <p>Молодые деревья подперты. Все скамейки заняты в солнечный зимний день.</p>
 @endru
-IMG_2431.jpeg
-IMG_2432.jpeg
-IMG_2433.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2431.jpg',
+  'IMG_2432.jpg',
+  'IMG_2433.jpg',
+]])
 
 @ru
-  <p>Ночная подсветка башни.</p>
+  <p>Ночная подсветка галатской башни.</p>
 @endru
-IMG_2435.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2435.jpg'])
 
 @ru
   <p>Котики на лестнице.</p>
 @endru
-IMG_2441.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2441.jpg'])
 
 @ru
   <p>На длинной лестнице.</p>
 @endru
-IMG_2442.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2442.jpg'])
 
 @ru
   <p>Мечеть сверху.</p>
 @endru
-IMG_2443.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2443.jpg'])
 
 @ru
   <p>Тень в зелени.</p>
 @endru
-IMG_2444.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2444.jpg'])
 
 @ru
   <p>Панорама.</p>
 @endru
-IMG_2445.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2445.jpg'])
 
 @ru
   <p>Смотровая вышка снизу.</p>
 @endru
-IMG_2446.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2446.jpg'])
 
 @ru
   <p>Торговая галерея.</p>
 @endru
-IMG_2449.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2449.jpg'])
 
 @ru
-  <p>Трамвай на остановке.</p>
+  <p>Два трамвая на остановке.</p>
 @endru
-IMG_2450.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2450.jpg'])
 
 @ru
-  <p>Приклеили пересадку на ветку метро M11.</p>
+  <p>Приклеили пересадку на ветку новую метро M11 до аэропорта.</p>
 @endru
-IMG_2455.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2455.jpg'])
 
 @ru
   <p>Вид со станции метро.</p>
 @endru
-IMG_2456.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2456.jpg'])
 
 @ru
   <p>Эскалатор на открытом воздухе.</p>
 @endru
-IMG_2457.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2457.jpg'])
 
 @ru
   <p>Сквер у станции метро.</p>
 @endru
-IMG_2458.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2458.jpg'])
 
 @ru
   <p>Под мостом.</p>
 @endru
-IMG_2459.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2459.jpg'])
 
 @ru
   <p>Длинные скамейки.</p>
 @endru
-IMG_2460.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2460.jpg'])
 
 @ru
-  <p>Что-то про забег или открытие дорожки?</p>
+  <p>Прогулочная дорожка для пешеходов и велосипедистов под названием «зеленая аллея».</p>
 @endru
-IMG_2461.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2461.jpg'])
 
 @ru
   <p>Пальмы.</p>
 @endru
-IMG_2462.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2462.jpg'])
 
 @ru
-  <p>На той стороне ветка метро до аэропорта. Здесь пересадка с выходом на улицу. Вообще, смену аэропорта очень накладно делать по железной дороге из-за трех пересадок.</p>
+  <p>На той стороне ветка метро до аэропорта. Здесь пересадка с выходом на улицу. Вообще, смену аэропорта очень накладно делать по железной дороге из-за трех пересадок — лучше брать прямой автобус Хаваист.</p>
 @endru
-IMG_2463.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2463.jpg'])
 
 @ru
   <p>Набережная.</p>
 @endru
-IMG_2464.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2464.jpg'])
 
 @ru
   <p>Открыли в прошлом (2022) году.</p>
 @endru
-IMG_2465.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2465.jpg'])
 
 @ru
   <p>Ухоженные деревья.</p>
 @endru
-IMG_2466.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2466.jpg'])
 
 @ru
   <p>Клумбы и фонарики на мосту.</p>
 @endru
-IMG_2467.jpeg
-IMG_2469.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2467.jpg',
+  'IMG_2469.jpg',
+]])
 
 @ru
   <p>Фонарик перед каналом.</p>
 @endru
-IMG_2468.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2468.jpg'])
 
 @ru
   <p>Пандус у моста.</p>
 @endru
-IMG_2470.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2470.jpg'])
 
 @ru
   <p>Беседка.</p>
 @endru
-IMG_2471.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2471.jpg'])
 
 @ru
   <p>Зеленая полоса разделяет тротуар и велодорожку.</p>
 @endru
-IMG_2472.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2472.jpg'])
 
 @ru
   <p>Дорожка для прогулок и бега.</p>
 @endru
-IMG_2473.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2473.jpg'])
 
 @ru
   <p>Скамейка у озера.</p>
 @endru
-IMG_2474.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2474.jpg'])
 
 @ru
   <p>Беседка для основательного застолья.</p>
 @endru
-IMG_2475.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2475.jpg'])
 
 @ru
   <p>Озеро.</p>
 @endru
-IMG_2476.jpeg
-IMG_2478.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2476.jpg',
+  'IMG_2478.jpg',
+]])
 
 @ru
   <p>Группа скамеек.</p>
 @endru
-IMG_2477.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2477.jpg'])
 
 @ru
   <p>Котик.</p>
 @endru
-IMG_2479.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2479.jpg'])
 
 @ru
   <p>Крохотные трамвайные пути.</p>
 @endru
-IMG_2480.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2480.jpg'])
 
 @ru
   <p>Широкие скамейки, окруженные травой.</p>
 @endru
-IMG_2481.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2481.jpg'])
 
 @ru
   <p>Высокий автомобильный мост.</p>
 @endru
-IMG_2482.jpeg
-IMG_2484.jpeg
-IMG_2485.jpeg
-IMG_2486.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2482.jpg',
+  'IMG_2484.jpg',
+  'IMG_2486.jpg',
+]])
+
+@ru
+  <p>Под мостом.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_2485.jpg'])
 
 @ru
   <p>Дома по ту сторону канала.</p>
 @endru
-IMG_2483.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2483.jpg'])
 
 @ru
   <p>Пешеходный мост.</p>
 @endru
-IMG_2487.jpeg
-IMG_2488.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2487.jpg',
+  'IMG_2488.jpg',
+]])
 
 @ru
   <p>Подпиленное дерево продолжает расти.</p>
 @endru
-IMG_2489.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2489.jpg'])
 
 @ru
   <p>Канал.</p>
 @endru
-IMG_2490.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2490.jpg'])
 
 @ru
-  <p>Цветы.</p>
+  <p>Цветы возле дорожной развязки.</p>
 @endru
-IMG_2491.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2491.jpg'])
 
 @ru
-  <p>Фонтаны.</p>
+  <p>Фонтаны в парке.</p>
 @endru
-IMG_2492.jpeg
-IMG_2493.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2492.jpg',
+  'IMG_2493.jpg',
+]])
 
 @ru
-  <p>Набережная.</p>
+  <p>Набережная в парке.</p>
 @endru
-IMG_2494.jpeg
-IMG_2495.jpeg
-IMG_2496.jpeg
-IMG_2498.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2494.jpg',
+  'IMG_2495.jpg',
+  'IMG_2496.jpg',
+  'IMG_2498.jpg',
+]])
 
 @ru
   <p>Подкармливание чаек.</p>
 @endru
-IMG_2497.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2497.jpg'])
 
 @ru
   <p>Пальмы у дома.</p>
 @endru
-IMG_2499.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2499.jpg'])
 
 @ru
   <p>В городском автобусе.</p>
 @endru
-IMG_2500.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2500.jpg'])
 
 @ru
-  <p>С одной стороны, в арендованном жилье было мало света. С другой стороны, лампочка бьет прямо в глаз, когда лежишь на кровати. Решением стал красный сербский пакет, который приглушил свет.</p>
+  <p>С одной стороны, в арендованном жилье было мало света. С другой стороны, лампочка бьет прямо в глаз, когда лежишь на кровати. Решением стал красный сербский пакет из супермаркета, который приглушил свет. А вообще, есть смысл с собой персональный свет возить, потому что в половине случаев в жилье отсутствует настольная лампа.</p>
 @endru
-IMG_2505.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2505.jpg'])
 
 @ru
   <p>Горшки защищают пространство для посетителей общепита.</p>
 @endru
-IMG_2527.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2527.jpg'])
 
 @ru
   <p>Морские плиточные рисунки на станции метро.</p>
 @endru
-IMG_2532.jpeg
-IMG_2534.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_2532.jpg',
+  'IMG_2534.jpg',
+]])
 
 @ru
   <p>Аэропорт Сабиха.</p>
 @endru
-IMG_2535.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2535.jpg'])
 
 @ru
-  <p>Самостоятельная регистрация и оформление багажа.</p>
+  <p>Самостоятельная регистрация и оформление багажа на рейс местной авиакомпании Пегасус. Терминал выдает бирку для багажа.</p>
 @endru
-IMG_2538.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2538.jpg'])
 
 @ru
   <p>Далее багаж с биркой отправляем на ленту.</p>
 @endru
-IMG_2536.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2536.jpg'])
 
 @ru
-  <p>Опознан рейс, на который будет отправлен багаж.</p>
+  <p>Верно распознан рейс, на который будет отправлен багаж.</p>
 @endru
-IMG_2537.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2537.jpg'])
 
 @ru
   <p>Пустой рукав. Сгущаются тучи.</p>
 @endru
-IMG_2539.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2539.jpg'])
 
 @ru
-  <p>Посадка в самолет в дождь.</p>
+  <p>Посадка в самолет Эйрбас А320 под дождем.</p>
 @endru
-IMG_2540.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2540.jpg'])
 
 @ru
-  <p>Двигатель на крыле самолета.</p>
+  <p>Крыло самолета с двигателем.</p>
 @endru
-IMG_2541.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_2541.jpg'])
 @endsection
