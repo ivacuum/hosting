@@ -17,7 +17,7 @@ class AcpTest extends TestCase
 
     public function testPageDev()
     {
-        $this->get('acp/dev')->assertOk();
+        $this->get('acp/dev')->assertRedirect('/acp/dev/templates');
     }
 
     public function testPageDevSvg()
