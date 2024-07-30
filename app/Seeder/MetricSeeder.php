@@ -10,7 +10,7 @@ class MetricSeeder extends Seeder
 {
     public function run()
     {
-        $metric = new Metric();
+        $metric = new Metric;
         $metric->date = now();
         $metric->count = 4;
         $metric->event = class_basename(IssueAdded::class);

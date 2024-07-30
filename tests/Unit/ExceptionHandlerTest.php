@@ -17,7 +17,7 @@ class ExceptionHandlerTest extends TestCase
 
     public function testReportSqlError()
     {
-        $e = new QueryException('default', 'SELECT 1', [], new \Exception());
+        $e = new QueryException('default', 'SELECT 1', [], new \Exception);
 
         $this->assertTrue(app(SkipDatabaseOffline::class)->__invoke($e));
     }
