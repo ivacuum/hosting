@@ -17,11 +17,15 @@ class OnCommandPhotoAction
     {
         event(new \App\Events\Stats\TelegramPhotoCommand);
 
-        /** @var Photo $photo */
-        $photo = Photo::query()
+        $randomId = Photo::query()
             ->tap(new PhotoPublishedScope)
             ->tap(new PhotoOnMapScope)
             ->inRandomOrder()
+            ->first(['id'])
+            ->id;
+
+        $photo = Photo::query()
+            ->where('id', '>=', $randomId)
             ->first();
 
         $url = url($photo->rel->www('#' . basename($photo->slug)));
