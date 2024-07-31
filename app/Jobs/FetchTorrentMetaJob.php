@@ -21,7 +21,23 @@ class FetchTorrentMetaJob extends AbstractJob
     {
         $magnets = Magnet::query()
             ->whereIn('rto_id', $this->rtoIds)
-            ->get();
+            ->get([
+                'id',
+                'user_id',
+                'category_id',
+                'rto_id',
+                'title',
+                'related_query',
+                'size',
+                'info_hash',
+                'announcer',
+                'status',
+                'clicks',
+                'views',
+                'registered_at',
+                'created_at',
+                'updated_at',
+            ]);
 
         foreach ($rto->topicDataByIds($this->rtoIds)->topics as $id => $response) {
             /** @var Magnet $magnet */
