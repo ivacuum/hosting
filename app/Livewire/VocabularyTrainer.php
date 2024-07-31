@@ -132,9 +132,14 @@ class VocabularyTrainer extends Component
 
     private function pickRandomVocab()
     {
-        $this->vocab = Vocabulary::query()
+        $id = Vocabulary::query()
             ->whereIn('level', range($this->startLevel(), $this->endLevel()))
             ->inRandomOrder()
+            ->first(['id'])
+            ->id;
+
+        $this->vocab = Vocabulary::query()
+            ->where('id', '>=', $id)
             ->first();
     }
 
