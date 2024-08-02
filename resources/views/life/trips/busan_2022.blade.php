@@ -325,6 +325,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_9973.jpg'])
 
+<a id="construction"></a>
 @ru
   <p>Целый район высоток застраивается.</p>
 @endru
