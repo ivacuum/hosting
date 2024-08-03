@@ -81,6 +81,8 @@ Route::middleware('nav:Галерея,gallery')->group(function () {
     Route::view('gallery/upload', 'gallery.upload')->middleware('auth')->middleware('nav:Загрузка изображений');
 });
 
+Route::view('health-up', 'health-up');
+
 Route::middleware('nav:Японский язык,japanese')->group(function () {
     Route::view('japanese', 'japanese.index');
     Route::view('japanese/hiragana-katakana', 'japanese.hiragana-katakana')->middleware('nav:Хирагана и катакана');
