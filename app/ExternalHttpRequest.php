@@ -45,8 +45,15 @@ class ExternalHttpRequest extends Model
 
     public function prunable()
     {
+        $thresholdId = self::query()
+            ->where('created_at', '<', now()->subWeeks(2))
+            ->orderByDesc('id')
+            ->first(['id'])
+            ->id;
+
         return self::query()
-            ->where('created_at', '<', now()->subWeeks(2));
+            ->where('id', '<=', $thresholdId)
+            ->limit(1_000_000);
     }
 
     #[\Override]
