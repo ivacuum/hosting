@@ -21,6 +21,7 @@
     "livewire/livewire": "^3.0",
     "meilisearch/meilisearch-php": "^1.0",
     "predis/predis": "^2.0",
+    "sentry/sentry-laravel": "^4.7",
     "symfony/css-selector": "^7.0",
     "symfony/dom-crawler": "^7.0"
   },

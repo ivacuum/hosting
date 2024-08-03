@@ -28,6 +28,8 @@ class Handler extends ExceptionHandler
                     ->with('message', __('Пожалуйста, повторите отправку формы. За два часа мы вас подзабыли'));
             }
         });
+
+        $this->reportable(app(SendToSentry::class));
     }
 
     #[\Override]
