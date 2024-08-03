@@ -451,7 +451,7 @@
 @ru
   <p>Пульт кондиционера.</p>
 @endru
-@include('tpl.pic-arbitrary', ['pic' => 'IMG_0006.jpg', 'w' => 563, 'h' => 750])
+@include('tpl.pic-arbitrary-2x', ['pic' => 'IMG_0006.jpg', 'w' => 563, 'h' => 750])
 
 @ru
   <p>Колоритная узкая улица.</p>
