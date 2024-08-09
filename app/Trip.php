@@ -244,9 +244,11 @@ class Trip extends Model
 
     public function www(string|null $anchor = null): string
     {
-        return $this->user_id === 1
-            ? path([Http\Controllers\LifeController::class, 'page'], $this->slug) . $anchor
-            : path([Http\Controllers\UserTravelTripController::class, 'show'], [$this->user->login, $this->slug]) . $anchor;
+        if ($this->user_id === 1) {
+            return to('life/{slug}', $this->slug) . $anchor;
+        }
+
+        return to('@{traveler:login}/travel/{slug}', [$this->user->login, $this->slug]) . $anchor;
     }
 
     public function wwwLocale(string|null $anchor = null, string $locale = ''): string
