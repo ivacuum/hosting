@@ -57,7 +57,7 @@ class TripSeeder extends Seeder
 
         TripFactory::new()
             ->withComment(CommentFactory::new()->withText('С первой публикацией!')->withUserId(1))
-            ->withCityId($randomCity->id)
+            ->withCity($randomCity)
             ->withUserId($user->id)
             ->create();
     }
