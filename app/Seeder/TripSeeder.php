@@ -31,6 +31,8 @@ class TripSeeder extends Seeder
             $trip->title_en = $city->title_en;
             $trip->title_ru = $city->title_ru;
             $trip->meta_image = $this->metaImage($slug);
+            $trip->meta_description_en = $this->metaDescriptionInEnglish($slug);
+            $trip->meta_description_ru = $this->metaDescriptionInRussian($slug);
             $trip->save();
         }
 
@@ -60,6 +62,22 @@ class TripSeeder extends Seeder
             ->withCity($randomCity)
             ->withUserId($user->id)
             ->create();
+    }
+
+    private function metaDescriptionInEnglish(string $slug): string
+    {
+        return match ($slug) {
+            'berlin.2017.05' => 'It is a forest!',
+            default => '',
+        };
+    }
+
+    private function metaDescriptionInRussian(string $slug): string
+    {
+        return match ($slug) {
+            'berlin.2017.05' => 'Это лес!',
+            default => '',
+        };
     }
 
     private function metaImage(string $slug): string
