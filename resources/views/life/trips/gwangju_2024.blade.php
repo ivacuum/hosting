@@ -809,7 +809,7 @@ IMG_9820.jpeg
 IMG_9821.jpeg
 
 @ru
-  <p>Цветы поближе.</p>
+  <p>Лотос.</p>
 @endru
 IMG_9824.jpeg
 IMG_9825.jpeg
