@@ -22,6 +22,7 @@ return [
 
     'comments.edit' => 'Редактирование',
     'comments.show' => 'Комментарий',
+    'comments.user' => 'Автор',
     'comments.index' => 'Комментарии',
 
     'countries.add' => 'Добавить страну',
@@ -76,6 +77,14 @@ return [
     'kanjis.show' => 'Кандзи',
     'kanjis.index' => 'Кандзи',
 
+    'magnets.add' => 'Добавить магнет',
+    'magnets.edit' => 'Редактирование',
+    'magnets.show' => 'Магнет',
+    'magnets.user' => 'Автор',
+    'magnets.index' => 'Магнеты',
+    'magnets.create' => 'Новый магнет',
+    'magnets.update_rto' => 'Обновить с рутрекера',
+
     'metrics.index' => 'Метрики',
 
     'news.add' => 'Добавить новость',
@@ -103,14 +112,6 @@ return [
     'tags.show' => 'Тэг',
     'tags.index' => 'Тэги',
     'tags.create' => 'Новый тэг',
-
-    'magnets.add' => 'Добавить магнет',
-    'magnets.edit' => 'Редактирование',
-    'magnets.show' => 'Магнет',
-    'magnets.user' => 'Автор',
-    'magnets.index' => 'Магнеты',
-    'magnets.create' => 'Новый магнет',
-    'magnets.update_rto' => 'Обновить с рутрекера',
 
     'trips.add' => 'Добавить поездку',
     'trips.edit' => 'Редактирование',

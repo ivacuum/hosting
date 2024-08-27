@@ -22,6 +22,7 @@ return [
 
     'comments.edit' => 'Edit',
     'comments.show' => 'Comment',
+    'comments.user' => 'Author',
     'comments.index' => 'Comments',
 
     'countries.add' => 'Create country',
