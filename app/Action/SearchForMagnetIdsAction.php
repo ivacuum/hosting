@@ -5,13 +5,19 @@ namespace App\Action;
 use App\Magnet;
 use App\SearchSynonym;
 use Foolz\SphinxQL\SphinxQL;
+use Illuminate\Container\Attributes\Config;
 use Laravel\Scout\Builder;
 
 class SearchForMagnetIdsAction
 {
+    public function __construct(
+        #[Config('scout.driver')]
+        private string $scoutDriver,
+    ) {}
+
     public function execute(string $q, int|null $categoryId, bool $fulltext): mixed
     {
-        return match (config('scout.driver')) {
+        return match ($this->scoutDriver) {
             'sphinx' => $this->sphinx($q, $categoryId, $fulltext),
             default => $this->meilisearch($q, $categoryId, $fulltext),
         };
