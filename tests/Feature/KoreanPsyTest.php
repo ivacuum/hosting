@@ -15,4 +15,11 @@ class KoreanPsyTest extends TestCase
             ->assertOk()
             ->assertHasCustomTitle();
     }
+
+    public function testShow()
+    {
+        $this->get('korean/psy/champion')
+            ->assertOk()
+            ->assertHasCustomTitle();
+    }
 }
