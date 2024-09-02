@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MyPasswordUpdateForm;
+use App\User;
+use Illuminate\Container\Attributes\CurrentUser;
 use Illuminate\Contracts\Hashing\Hasher;
-use Illuminate\Http\Request;
 
 class MyPasswordController
 {
-    public function edit(Request $request)
+    public function edit(#[CurrentUser] User $user)
     {
         return view('my.password', [
-            'hasPassword' => !empty($request->user()->password),
+            'hasPassword' => !empty($user->password),
         ]);
     }
 
