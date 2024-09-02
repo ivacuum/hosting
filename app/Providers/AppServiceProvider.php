@@ -6,6 +6,7 @@ use App;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
@@ -20,8 +21,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->scoped(App\Utilities\CountryHelper::class);
         $this->app->scoped(App\Utilities\UrlHelper::class);
 
-        \Blade::withoutDoubleEncoding();
-        \Blade::directive('lng', fn () => '<?php echo $localeUri ?>');
+        Blade::withoutDoubleEncoding();
+        Blade::directive('lng', fn () => '<?php echo $localeUri ?>');
         Date::use(CarbonImmutable::class);
         Vite::useBuildDirectory('assets');
 
