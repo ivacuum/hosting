@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers as Ctrl;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', Ctrl\HomeController::class);
 

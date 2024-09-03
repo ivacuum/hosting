@@ -74,42 +74,42 @@ class User extends Authenticatable implements HasLocalePreference
     // Relations
     public function chatMessages()
     {
-        return $this->hasMany(ChatMessage::class);
+        return $this->hasMany(ChatMessage::class)->chaperone();
     }
 
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class)->chaperone();
     }
 
     public function emails()
     {
-        return $this->morphMany(Email::class, 'rel');
+        return $this->morphMany(Email::class, 'rel')->chaperone();
     }
 
     public function externalIdentities()
     {
-        return $this->hasMany(ExternalIdentity::class);
+        return $this->hasMany(ExternalIdentity::class)->chaperone();
     }
 
     public function images()
     {
-        return $this->hasMany(Image::class);
+        return $this->hasMany(Image::class)->chaperone();
     }
 
     public function issues()
     {
-        return $this->hasMany(Issue::class);
+        return $this->hasMany(Issue::class)->chaperone();
     }
 
     public function magnets()
     {
-        return $this->hasMany(Magnet::class);
+        return $this->hasMany(Magnet::class)->chaperone();
     }
 
     public function news()
     {
-        return $this->hasMany(News::class);
+        return $this->hasMany(News::class)->chaperone();
     }
 
     public function notifications()
@@ -120,7 +120,7 @@ class User extends Authenticatable implements HasLocalePreference
 
     public function trips()
     {
-        return $this->hasMany(Trip::class);
+        return $this->hasMany(Trip::class)->chaperone();
     }
 
     // Methods
