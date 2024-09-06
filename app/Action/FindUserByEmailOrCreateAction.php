@@ -19,7 +19,7 @@ class FindUserByEmailOrCreateAction
             return $user;
         }
 
-        if (str($email)->contains(config('cfg.autoregister_suffixes_blacklist'))) {
+        if (str($email)->contains(config()->array('cfg.autoregister_suffixes_blacklist'))) {
             throw EmailHostUnavailableForAutoRegistration::make();
         }
 
