@@ -27,7 +27,7 @@ class MagnetForm extends Component
     public string|null $relatedQuery = '';
 
     #[\Livewire\Attributes\Rule('required')]
-    public MagnetStatus|string|null $status = MagnetStatus::Published;
+    public MagnetStatus $status = MagnetStatus::Published;
 
     #[\Livewire\Attributes\Rule('required')]
     public MagnetCategory|int|null $categoryId = null;

@@ -22,7 +22,7 @@ class CommentForm extends Component
     public string|null $html = '';
 
     #[Validate('required')]
-    public CommentStatus|string|null $status = CommentStatus::Published;
+    public CommentStatus $status = CommentStatus::Published;
 
     public function mount()
     {

@@ -22,7 +22,7 @@ class ChatMessageForm extends Component
     public string|null $text = '';
 
     #[Validate('required')]
-    public ChatMessageStatus|string|null $status = ChatMessageStatus::Published;
+    public ChatMessageStatus $status = ChatMessageStatus::Published;
 
     public function mount()
     {

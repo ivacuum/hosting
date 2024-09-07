@@ -33,7 +33,7 @@ class TripForm extends Component
     public string|null $metaTitleRu = '';
     public string|null $metaDescriptionEn = '';
     public string|null $metaDescriptionRu = '';
-    public TripStatus|string|null $status = TripStatus::Published;
+    public TripStatus $status = TripStatus::Published;
     public CarbonImmutable|string|null $dateEnd = '';
     public CarbonImmutable|string|null $dateStart = '';
 

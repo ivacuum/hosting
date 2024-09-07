@@ -30,7 +30,7 @@ class FileForm extends Component
     public string|null $folder = '';
 
     #[\Livewire\Attributes\Rule('required')]
-    public FileStatus|string|null $status = FileStatus::Published;
+    public FileStatus $status = FileStatus::Published;
 
     public TemporaryUploadedFile|string|null $upload = null;
 

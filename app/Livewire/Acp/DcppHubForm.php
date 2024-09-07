@@ -28,7 +28,7 @@ class DcppHubForm extends Component
     public string|null $address = '';
 
     #[Validate('required')]
-    public DcppHubStatus|string|null $status = DcppHubStatus::Published;
+    public DcppHubStatus $status = DcppHubStatus::Published;
 
     public function mount()
     {

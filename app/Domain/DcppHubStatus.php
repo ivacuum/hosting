@@ -17,6 +17,11 @@ enum DcppHubStatus: int
         };
     }
 
+    public function isHidden(): bool
+    {
+        return $this === self::Hidden;
+    }
+
     public static function labels(): array
     {
         return collect(self::cases())

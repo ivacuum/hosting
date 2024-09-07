@@ -25,7 +25,7 @@ class NewsForm extends Component
     public string|null $markdown = '';
 
     #[Validate('required')]
-    public NewsStatus|string|null $status = NewsStatus::Published;
+    public NewsStatus $status = NewsStatus::Published;
 
     public function mount()
     {

@@ -38,7 +38,7 @@ class GigForm extends Component
     public string|null $metaImage = '';
     public string|null $metaDescriptionEn = '';
     public string|null $metaDescriptionRu = '';
-    public GigStatus|string|null $status = GigStatus::Published;
+    public GigStatus $status = GigStatus::Published;
     public CarbonImmutable|string|null $date = '';
 
     public function mount()
