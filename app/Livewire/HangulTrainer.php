@@ -22,7 +22,7 @@ class HangulTrainer extends Component
     public string $jamo;
     public string $answer = '';
     public string $exclude = '';
-    public HangulWhatToTrain|int $whatToTrain = HangulWhatToTrain::AllTogether;
+    public HangulWhatToTrain $whatToTrain = HangulWhatToTrain::AllTogether;
 
     public function check()
     {
@@ -78,10 +78,6 @@ class HangulTrainer extends Component
 
     public function updatedWhatToTrain()
     {
-        $this->whatToTrain = is_int($this->whatToTrain)
-            ? HangulWhatToTrain::from($this->whatToTrain)
-            : $this->whatToTrain;
-
         match ($this->whatToTrain) {
             HangulWhatToTrain::AllTogether => event(new \App\Events\Stats\HangulTrainAllTogether),
             HangulWhatToTrain::Consonants => event(new \App\Events\Stats\HangulTrainConsonants),
