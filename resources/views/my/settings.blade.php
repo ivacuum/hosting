@@ -32,14 +32,14 @@
 
     <div class="mb-4">
       <div class="font-bold">@lang('Язык уведомлений')</div>
-      @foreach (Arr::sort(array_keys(config('cfg.locales'))) as $loc)
+      @foreach (Arr::sort(array_keys(App\Domain\Config::Locales->get())) as $loc)
         <label class="flex gap-2 items-center">
           <input
             class="border-gray-300"
             type="radio"
             name="locale"
             value="{{ $loc }}"
-            {{ old('locale', $user->locale ?: config('app.locale')) === $loc ? 'checked' : '' }}
+            {{ old('locale', $user->locale ?: App\Domain\Config::Locale->get()) === $loc ? 'checked' : '' }}
           >
           @lang("locale.{$loc}")
         </label>

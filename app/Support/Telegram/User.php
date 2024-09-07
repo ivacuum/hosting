@@ -2,6 +2,8 @@
 
 namespace App\Support\Telegram;
 
+use App\Domain\Config;
+
 readonly class User
 {
     public function __construct(
@@ -25,6 +27,6 @@ readonly class User
 
     public function isAdmin(): bool
     {
-        return $this->id === (int) config('services.telegram.admin_id');
+        return $this->id === Config::TelegramAdminId->get();
     }
 }

@@ -4,6 +4,7 @@ namespace App\Console;
 
 use App\Console\Commands\ProcessMetrics;
 use App\Console\Commands\TrimMetricsStream;
+use App\Domain\Config;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -24,7 +25,7 @@ class Kernel extends ConsoleKernel
     #[\Override]
     protected function schedule(Schedule $schedule)
     {
-        $cronOutput = config('cfg.cron_output');
+        $cronOutput = Config::CronOutput->get();
 
         $schedule
             ->command(ProcessMetrics::class)

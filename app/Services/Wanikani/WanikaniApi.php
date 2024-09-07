@@ -3,16 +3,16 @@
 namespace App\Services\Wanikani;
 
 use App\Http\HttpRequest;
+use Illuminate\Container\Attributes\Config;
 use Illuminate\Http\Client\Factory;
 
 class WanikaniApi
 {
-    private readonly string $apiKey;
-
-    public function __construct(private Factory $http)
-    {
-        $this->apiKey = config('services.wanikani.api_key');
-    }
+    public function __construct(
+        private Factory $http,
+        #[Config('services.wanikani.api_key')]
+        private readonly string $apiKey,
+    ) {}
 
     public function subject(int $id)
     {

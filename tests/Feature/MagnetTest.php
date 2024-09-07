@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Action\FindRelatedMagnetsAction;
+use App\Domain\Config;
 use App\Domain\MagnetCategory;
 use App\Domain\RtoTopicStatus;
 use App\Factory\CommentFactory;
@@ -184,8 +185,8 @@ class MagnetTest extends TestCase
             ->call('submit')
             ->assertHasNoErrors();
 
-        $user = User::query()->find(config('cfg.magnet_anonymous_releaser'))
-            ?? UserFactory::new()->withId(config('cfg.magnet_anonymous_releaser'))->create();
+        $user = User::query()->find(Config::MagnetAnonymousReleaser->get())
+            ?? UserFactory::new()->withId(Config::MagnetAnonymousReleaser->get())->create();
 
         /** @var Magnet $magnet */
         $magnet = $user->magnets()->latest('id')->first();

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Acp\Dev;
 
 use App\Action\FindTripTemplatesAction;
+use App\Domain\Config;
 use App\Trip;
 
 class TemplatesController
@@ -14,9 +15,9 @@ class TemplatesController
 
         $templates = collect();
         $total = (object) ['pics' => 0];
-        $langs = config('cfg.locales');
+        $languages = Config::Locales->get();
 
-        foreach ($langs as $lang => $ary) {
+        foreach ($languages as $lang => $ary) {
             $total->{$lang} = 0;
         }
 
@@ -27,7 +28,7 @@ class TemplatesController
 
             $contents = $template->getContents();
 
-            $i18n = collect($langs)
+            $i18n = collect($languages)
                 ->keys()
                 ->flip()
                 ->map(fn ($value, $key) => substr_count($contents, "@{$key}\n"))
@@ -41,7 +42,7 @@ class TemplatesController
                 continue;
             }
 
-            foreach ($langs as $lang => $ary) {
+            foreach ($languages as $lang => $ary) {
                 $total->{$lang} += $i18n[$lang];
             }
 

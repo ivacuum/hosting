@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Action\ParseRouteDataAction;
+use App\Domain\Config;
 use Illuminate\Http\Request;
 use Ivacuum\Generic\Utilities\EnvironmentForCss;
 
@@ -19,13 +20,13 @@ class AppendViewSharedVars
         $locale = $request->server->get('LARAVEL_LOCALE');
         $routeData = $this->parseRouteData->execute();
         $browserEnv = new EnvironmentForCss($request->userAgent());
-        $preferredLocale = $request->getPreferredLanguage(array_keys(config('cfg.locales')));
+        $preferredLocale = $request->getPreferredLanguage(array_keys(Config::Locales->get()));
 
         view()->share([
             'tpl' => $routeData->tpl,
             'view' => $routeData->view,
 
-            'locale' => $locale ?: config('app.locale'),
+            'locale' => $locale ?: Config::Locale->get(),
             'localeUri' => $locale ? "/{$locale}" : '',
             'localePreferred' => $preferredLocale,
 

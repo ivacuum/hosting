@@ -60,7 +60,7 @@ class AppServiceProvider extends ServiceProvider
     {
         TestResponse::macro('assertHasCustomTitle', function () {
             /** @var TestResponse $this */
-            Assert::assertStringNotContainsString('<title>' . config('cfg.sitename') . '</title>', $this->getContent());
+            Assert::assertStringNotContainsString('<title>' . App\Domain\Config::SiteName->get() . '</title>', $this->getContent());
 
             return $this;
         });

@@ -3,7 +3,7 @@
 namespace App\RateLimit;
 
 use App\Action\LimitRateAction;
-use Illuminate\Cache\RateLimiting\Limit;
+use App\Domain\RateLimit;
 
 class MagnetRateLimiter
 {
@@ -16,7 +16,8 @@ class MagnetRateLimiter
 
     private function globalLimitExceeded(): bool
     {
-        $limit = Limit::perDay(config('cfg.limits.magnet.per_day'))
+        $limit = RateLimit::MagnetGlobal
+            ->get()
             ->by('magnet.per_day');
 
         return $this->limitRate->execute($limit);

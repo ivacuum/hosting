@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Domain\CacheKey;
+use App\Domain\Config;
 use App\Services\Vk;
 use Carbon\CarbonImmutable;
 use Carbon\CarbonInterval;
@@ -26,11 +27,11 @@ class ParserVkController
     public function index(string $vkPage = 'pikabu', $date = false)
     {
         $this->vkPage = $vkPage;
-        $this->token = $token = request('token', config('services.vk.access_token'));
+        $this->token = $token = request('token', Config::VkAccessToken->get());
         $own = request('own');
         $date = $date === false ? '-1 day' : $date;
         $date = CarbonImmutable::parse($date);
-        $token = $token === config('services.vk.access_token') ? null : $token;
+        $token = $token === Config::VkAccessToken->get() ? null : $token;
 
         $count = 100;
         $offset = $total = 0;

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Domain\Config;
 use GuzzleHttp\RequestOptions;
 use Illuminate\Http\Client\Factory;
 
@@ -111,7 +112,7 @@ class Rto
             ->baseUrl(self::API_ENDPOINT)
             ->timeout(\App::runningInConsole() ? 60 : 15)
             ->withOptions([
-                RequestOptions::PROXY => config('services.rto.proxy'),
+                RequestOptions::PROXY => Config::RtoProxy->get(),
             ]);
     }
 
@@ -122,7 +123,7 @@ class Rto
             ->timeout(\App::runningInConsole() ? 60 : 15)
             ->retry(5, 5000)
             ->withOptions([
-                RequestOptions::PROXY => config('services.rto.proxy'),
+                RequestOptions::PROXY => Config::RtoProxy->get(),
             ]);
     }
 }

@@ -3,8 +3,9 @@
 namespace App\RateLimit;
 
 use App\Action\LimitRateAction;
+use App\Domain\Config;
+use App\Domain\RateLimit;
 use App\Issue;
-use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Ivacuum\Generic\Events\LimitExceeded;
 
@@ -14,7 +15,7 @@ class IssueRateLimiter
 
     public function flooded(int $userId): bool
     {
-        $interval = config('cfg.limits.issue.flood_interval');
+        $interval = Config::IssueFloodInterval->get();
 
         if ($interval <= 0) {
             return false;
@@ -49,7 +50,8 @@ class IssueRateLimiter
 
     private function ipExceeded(): bool
     {
-        $limit = Limit::perDay(config('cfg.limits.issue.ip'))
+        $limit = RateLimit::IssueByIp
+            ->get()
             ->by("issue.ip:{$this->request->ip()}");
 
         return $this->limitRate->execute($limit);
@@ -57,7 +59,8 @@ class IssueRateLimiter
 
     private function userExceeded(int $userId): bool
     {
-        $limit = Limit::perDay(config('cfg.limits.issue.user'))
+        $limit = RateLimit::IssueByUser
+            ->get()
             ->by("issue.user:{$userId}");
 
         return $this->limitRate->execute($limit);

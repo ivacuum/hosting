@@ -6,6 +6,7 @@ use App\Action\FindRelatedMagnetsAction;
 use App\Action\FindTagsInMagnetTitleAction;
 use App\Action\FormatMagnetDateAction;
 use App\Domain\CommentStatus;
+use App\Domain\Config;
 use App\Domain\MagnetCategory;
 use App\Domain\MagnetStatus;
 use App\Observers\MagnetObserver;
@@ -114,7 +115,7 @@ class Magnet extends Model
 
     public function isAnonymous(): bool
     {
-        return $this->user_id === config('cfg.magnet_anonymous_releaser');
+        return $this->user_id === Config::MagnetAnonymousReleaser->get();
     }
 
     public function magnet(): string

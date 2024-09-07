@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Domain\Config;
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
@@ -14,7 +15,7 @@ class SetLocale
             $request->server->set('LARAVEL_LOCALE', $request->server->get('HTTP_SITE_LOCALE'));
         }
 
-        $defaultLocale = config('app.locale');
+        $defaultLocale = Config::Locale->get();
         $locale = $request->server->get('LARAVEL_LOCALE') ?? $defaultLocale;
 
         setlocale(LC_ALL, config("cfg.locales.{$locale}.posix"));

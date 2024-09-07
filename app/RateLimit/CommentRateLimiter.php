@@ -4,7 +4,8 @@ namespace App\RateLimit;
 
 use App\Action\LimitRateAction;
 use App\Comment;
-use Illuminate\Cache\RateLimiting\Limit;
+use App\Domain\Config;
+use App\Domain\RateLimit;
 use Illuminate\Http\Request;
 
 class CommentRateLimiter
@@ -13,7 +14,7 @@ class CommentRateLimiter
 
     public function flooded(int $userId): bool
     {
-        $interval = config('cfg.limits.comment.flood_interval');
+        $interval = Config::CommentFloodInterval->get();
 
         if ($interval <= 0) {
             return false;
@@ -46,7 +47,8 @@ class CommentRateLimiter
 
     private function ipExceeded(): bool
     {
-        $limit = Limit::perDay(config('cfg.limits.comment.ip'))
+        $limit = RateLimit::CommentByIp
+            ->get()
             ->by("comment.ip:{$this->request->ip()}");
 
         return $this->limitRate->execute($limit);
@@ -54,7 +56,8 @@ class CommentRateLimiter
 
     private function userExceeded(int $userId): bool
     {
-        $limit = Limit::perDay(config('cfg.limits.comment.user'))
+        $limit = RateLimit::CommentByUser
+            ->get()
             ->by("comment.user:{$userId}");
 
         return $this->limitRate->execute($limit);

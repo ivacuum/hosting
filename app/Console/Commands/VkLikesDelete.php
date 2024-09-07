@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Domain\Config;
 use App\Jobs\UnlikeVkPost;
 use App\Services\Vk;
 use Carbon\CarbonInterval;
@@ -17,7 +18,7 @@ class VkLikesDelete extends Command
     {
         $page = $this->argument('page');
 
-        $vk->accessToken(config('services.vk.access_token'));
+        $vk->accessToken(Config::VkAccessToken->get());
 
         // $response = $vk->wallSearch($page, ['query' => '#ЛайкТайм', 'count' => 6])->response;
         $response = $vk->wallGet($page, ['count' => 20])->response;

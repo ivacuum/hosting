@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Domain\Config;
 use App\Domain\Locale;
 use App\Domain\NotificationDeliveryMethod;
 use App\User;
@@ -21,7 +22,7 @@ class MySettingsUpdateForm extends FormRequest
     public function rules(): array
     {
         return [
-            'locale' => Rule::in(array_keys(config('cfg.locales'))),
+            'locale' => Rule::in(array_keys(Config::Locales->get())),
             'notify_gigs' => new Enum(NotificationDeliveryMethod::class),
             'notify_news' => new Enum(NotificationDeliveryMethod::class),
             'notify_trips' => new Enum(NotificationDeliveryMethod::class),

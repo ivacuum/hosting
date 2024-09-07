@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Domain\Config;
 use App\Jobs\LikeVkPost;
 use App\Services\Vk;
 use Carbon\CarbonInterval;
@@ -17,7 +18,7 @@ class VkLikesAdd extends Command
     {
         $page = $this->argument('page');
 
-        $vk->accessToken(config('services.vk.access_token'));
+        $vk->accessToken(Config::VkAccessToken->get());
 
         // $response = $vk->wallSearch($page, ['query' => '#ЛайкТайм', 'count' => 5])->response;
         $response = $vk->wallGet($page, ['count' => 10])->response;

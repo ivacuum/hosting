@@ -39,7 +39,7 @@
 
     <h2 class="font-medium tracking-tight text-3xl mt-8 mb-2">Как получить бесплатные месяцы хостинга</h2>
     <ol>
-      <li><a class="link" href="{{ config('cfg.digitalocean_link') }}">Зарегистрируйтесь на сайте DigitalOcean</a>.</li>
+      <li><a class="link" href="{{ App\Domain\Config::DigitalOceanLink }}">Зарегистрируйтесь на сайте DigitalOcean</a>.</li>
       <li>Подтвердите адрес вашей электронной почты.</li>
       <li>Перейдите в «Billing» и примените промокод из списка выше.</li>
       <li>Привяжите банковскую карту или заплатите $5 через PayPal для завершения процесса регистрации на DigitalOcean.</li>
@@ -49,7 +49,7 @@
 
     <h2 class="font-medium tracking-tight text-3xl mb-2">How to get free months of VPS</h2>
     <ol>
-      <li><a class="link" href="{{ config('cfg.digitalocean_link') }}">Sign up at DigitalOcean</a>.</li>
+      <li><a class="link" href="{{ App\Domain\Config::DigitalOceanLink }}">Sign up at DigitalOcean</a>.</li>
       <li>Verify your e-mail.</li>
       <li>Move on to Billing and apply any promo code from the above.</li>
       <li>Link your credit card or pay $5 via PayPal to complete the process.</li>

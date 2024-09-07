@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Domain\Config;
 use App\Services\Vk;
 
 class UnlikeVkPost extends AbstractJob
@@ -10,7 +11,7 @@ class UnlikeVkPost extends AbstractJob
 
     public function handle(Vk $vk)
     {
-        $vk->accessToken(config('services.vk.access_token'))
+        $vk->accessToken(Config::VkAccessToken->get())
             ->unlikePost($this->post);
     }
 }

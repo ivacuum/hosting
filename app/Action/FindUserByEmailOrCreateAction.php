@@ -2,6 +2,7 @@
 
 namespace App\Action;
 
+use App\Domain\Config;
 use App\Domain\UserStatus;
 use App\Events\Event;
 use App\Exceptions\EmailHostUnavailableForAutoRegistration;
@@ -19,7 +20,7 @@ class FindUserByEmailOrCreateAction
             return $user;
         }
 
-        if (str($email)->contains(config()->array('cfg.autoregister_suffixes_blacklist'))) {
+        if (str($email)->contains(Config::AutoregisterSuffixesBlacklist->get())) {
             throw EmailHostUnavailableForAutoRegistration::make();
         }
 

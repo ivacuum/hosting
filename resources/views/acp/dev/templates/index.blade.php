@@ -13,7 +13,7 @@
     <tr>
       <th>Шаблон</th>
       <th class="md:text-right">@svg (picture-o)</th>
-      @foreach (config('cfg.locales') as $key => $value)
+      @foreach (App\Domain\Config::Locales->get() as $key => $value)
         <th class="md:text-right uppercase">{{ $key }}</th>
       @endforeach
     </tr>
@@ -22,7 +22,7 @@
     <tr>
       <td><strong>Итого: {{ count($templates) }}</strong></td>
       <td class="md:text-right whitespace-nowrap">{{ ViewHelper::number($total->pics) }}</td>
-      @foreach (config('cfg.locales') as $key => $value)
+      @foreach (App\Domain\Config::Locales->get() as $key => $value)
         <td class="md:text-right whitespace-nowrap">{{ ViewHelper::number($total->{$key}) }}</td>
       @endforeach
     </tr>
@@ -36,7 +36,7 @@
           </a>
         </td>
         <td class="md:text-right">{{ $template->pics ?: '—' }}</td>
-        @foreach (config('cfg.locales') as $key => $value)
+        @foreach (App\Domain\Config::Locales->get() as $key => $value)
           <td class="md:text-right">{{ $template->i18n->{$key} ?: '—' }}</td>
         @endforeach
       </tr>

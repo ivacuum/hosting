@@ -8,7 +8,7 @@
 <div class="max-w-[600px]">
   @ru
     <p>Если вы только собираетесь заказать симку, то по ссылке ниже можно получить дополнительные 7&nbsp;евро на счет при первом пополнении баланса.</p>
-    <a class="btn btn-primary" href="{{ config('cfg.drimsim_link') }}">Заказать симку с бонусом в 7&nbsp;евро</a>
+    <a class="btn btn-primary" href="{{ App\Domain\Config::DrimsimLink }}">Заказать симку с бонусом в 7&nbsp;евро</a>
     <div class="form-help">После клика вы будете перемещены на сайт drimsim.com</div>
 
     <p class="mt-6"><strong>Как это работает без перехода по ссылке</strong>. Вы заказываете симку за 10&nbsp;евро (доставка включена), затем пополняете баланс на минимальную сумму 25&nbsp;евро. В итоге у вас на счету 25&nbsp;евро.</p>
@@ -22,7 +22,7 @@
     <h2 class="font-medium text-3xl tracking-tight mb-2 mt-12">Чем хорош Дримсим?</h2>
     <div>Этому вопросу посвящена <a class="link" href="/news/271">отдельная страница</a>.</div>
   @en
-    <a class="btn btn-primary" href="{{ config('cfg.drimsim_link') }}">Get SIM card with extra €7</a>
+    <a class="btn btn-primary" href="{{ App\Domain\Config::DrimsimLink }}">Get SIM card with extra €7</a>
     <div class="form-help">After a click you will be redirected to drimsim.com</div>
   @endru
 

@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use App\Comment;
+use App\Domain\Config;
 use App\Issue;
 use App\Mail\IssueCommentedMail;
 use Illuminate\Bus\Queueable;
@@ -24,6 +25,6 @@ class IssueCommentedNotification extends Notification implements ShouldQueue
     {
         return (new IssueCommentedMail($this->issue, $this->comment, $notifiable))
             ->to($notifiable)
-            ->replyTo(config('email.support'));
+            ->replyTo(Config::SupportEmail->get());
     }
 }
