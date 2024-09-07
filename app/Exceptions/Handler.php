@@ -6,30 +6,16 @@ use App\Http\Controllers\Auth\SignIn;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Session\TokenMismatchException;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class Handler extends ExceptionHandler
 {
     #[\Override]
     public function register()
     {
-        $this->reportable(app(SkipDatabaseOffline::class));
+        $this->renderable($this->container->make(RenderTokenMismatch::class));
 
-        if (app()->isProduction()) {
-            $this->reportable(app(TelegramValidationException::class));
-            $this->reportable(app(TelegramAnyException::class));
-        }
-
-        $this->renderable(function (HttpException $e) {
-            if ($e->getPrevious() instanceof TokenMismatchException) {
-                return back()
-                    ->withInput()
-                    ->with('message', __('Пожалуйста, повторите отправку формы. За два часа мы вас подзабыли'));
-            }
-        });
-
-        $this->reportable(app(SendToSentry::class));
+        $this->reportable($this->container->make(SkipDatabaseOffline::class));
+        $this->reportable($this->container->make(SendToSentry::class));
     }
 
     #[\Override]
