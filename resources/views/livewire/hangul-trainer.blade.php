@@ -308,22 +308,22 @@
       </div>
 
       <div class="text-base flex gap-4 items-center justify-center mt-4">
-          <label class="flex gap-2 items-center">
-            <input class="border-gray-300" type="radio" wire:model.live="shiftPressed" value="0">
-            @ru
-              ⇧ Shift отпущен
-            @en
-              ⇧ Shift released
-            @endru
-          </label>
-          <label class="flex gap-2 items-center">
-            <input class="border-gray-300" type="radio" wire:model.live="shiftPressed" value="1">
-            @ru
-              ⇧ Shift нажат
-            @en
-              ⇧ Shift pressed
-            @endru
-          </label>
+        <label class="flex gap-2 items-center">
+          <input class="border-gray-300" type="radio" wire:model.live="shiftPressed" value="0">
+          @ru
+            ⇧ Shift отпущен
+          @en
+            ⇧ Shift released
+          @endru
+        </label>
+        <label class="flex gap-2 items-center">
+          <input class="border-gray-300" type="radio" wire:model.live="shiftPressed" value="1">
+          @ru
+            ⇧ Shift нажат
+          @en
+            ⇧ Shift pressed
+          @endru
+        </label>
       </div>
     </div>
 
