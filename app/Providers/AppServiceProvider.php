@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
 
         Blade::withoutDoubleEncoding();
         Blade::directive('lng', fn () => '<?php echo $localeUri ?>');
+        Blade::stringable(fn (\BackedEnum $enum) => $enum->value);
         Date::use(CarbonImmutable::class);
         Vite::useBuildDirectory('assets');
 

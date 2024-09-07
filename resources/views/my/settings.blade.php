@@ -48,38 +48,38 @@
     </div>
 
     <div class="font-bold">@lang('Уведомления на почту о новых публикациях')</div>
-    <input type="hidden" name="notify_gigs" value="{{ App\Domain\NotificationDeliveryMethod::Disabled->value }}">
+    <input type="hidden" name="notify_gigs" value="{{ App\Domain\NotificationDeliveryMethod::Disabled }}">
     <label class="flex gap-2 items-center">
       <input
         class="border-gray-300 rounded"
         type="checkbox"
         name="notify_gigs"
-        value="{{ App\Domain\NotificationDeliveryMethod::Mail->value }}"
+        value="{{ App\Domain\NotificationDeliveryMethod::Mail }}"
         {{ old('notify_gigs', $user->notify_gigs->isEnabled()) ? 'checked' : '' }}
       >
       @lang('Концерты')
     </label>
 
-    <input type="hidden" name="notify_news" value="{{ App\Domain\NotificationDeliveryMethod::Disabled->value }}">
+    <input type="hidden" name="notify_news" value="{{ App\Domain\NotificationDeliveryMethod::Disabled }}">
     <label class="flex gap-2 items-center">
       <input
         class="border-gray-300 rounded"
         type="checkbox"
         name="notify_news"
-        value="{{ App\Domain\NotificationDeliveryMethod::Mail->value }}"
+        value="{{ App\Domain\NotificationDeliveryMethod::Mail }}"
         {{ old('notify_news', $user->notify_news->isEnabled()) ? 'checked' : '' }}
       >
       @lang('Новости сайта')
     </label>
 
     <div class="mb-4">
-      <input type="hidden" name="notify_trips" value="{{ App\Domain\NotificationDeliveryMethod::Disabled->value }}">
+      <input type="hidden" name="notify_trips" value="{{ App\Domain\NotificationDeliveryMethod::Disabled }}">
       <label class="flex gap-2 items-center">
         <input
           class="border-gray-300 rounded"
           type="checkbox"
           name="notify_trips"
-          value="{{ App\Domain\NotificationDeliveryMethod::Mail->value }}"
+          value="{{ App\Domain\NotificationDeliveryMethod::Mail }}"
           {{ old('notify_trips', $user->notify_trips->isEnabled()) ? 'checked' : '' }}
         >
         @lang('Путешествия')

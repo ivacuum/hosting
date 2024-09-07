@@ -71,15 +71,15 @@
         <div class="font-medium text-lg">@ru Что будем тренировать? @en What to train? @endru</div>
         <div>
           <label class="flex gap-2 items-center">
-            <input class="border-gray-300" type="radio" wire:model.live="whatToTrain" value="{{ App\Domain\Korean\HangulWhatToTrain::Consonants->value }}">
+            <input class="border-gray-300" type="radio" wire:model.live="whatToTrain" value="{{ App\Domain\Korean\HangulWhatToTrain::Consonants }}">
             @lang('согласные')
           </label>
           <label class="flex gap-2 items-center">
-            <input class="border-gray-300" type="radio" wire:model.live="whatToTrain" value="{{ App\Domain\Korean\HangulWhatToTrain::Vowels->value }}">
+            <input class="border-gray-300" type="radio" wire:model.live="whatToTrain" value="{{ App\Domain\Korean\HangulWhatToTrain::Vowels }}">
             @lang('гласные')
           </label>
           <label class="flex gap-2 items-center">
-            <input class="border-gray-300" type="radio" wire:model.live="whatToTrain" value="{{ App\Domain\Korean\HangulWhatToTrain::AllTogether->value }}">
+            <input class="border-gray-300" type="radio" wire:model.live="whatToTrain" value="{{ App\Domain\Korean\HangulWhatToTrain::AllTogether }}">
             @lang('все вместе')
           </label>
         </div>
