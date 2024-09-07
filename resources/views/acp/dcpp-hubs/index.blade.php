@@ -7,6 +7,7 @@
   <thead>
   <tr>
     <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'title') }}</th>
+    <th></th>
     <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'address') }}</th>
     <th class="md:text-right whitespace-nowrap">{{ ViewHelper::modelFieldTrans($modelTpl, 'clicks') }}</th>
     <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'is_online') }}</th>
@@ -19,6 +20,13 @@
         <a href="{{ Acp::show($model) }}">
           {{ $model->title }}
         </a>
+      </td>
+      <td>
+        @if ($model->status->isHidden())
+          <span class="text-muted tooltipped tooltipped-n" aria-label="Хаб скрыт">
+            @svg (eye-slash)
+          </span>
+        @endif
       </td>
       <td>{{ $model->externalLink() }}</td>
       <td class="md:text-right whitespace-nowrap">{{ ViewHelper::number($model->clicks) }}</td>
