@@ -49,7 +49,7 @@ enum Config implements Htmlable
             self::TelegramAdminId => config()->integer('services.telegram.admin_id'),
             self::TelegramWebhookSecretToken => config('services.telegram.webhook_secret_token'),
             self::TimewebLink => config()->string('cfg.timeweb_link'),
-            self::VkAccessToken => config()->string('services.vk.access_token'),
+            self::VkAccessToken => config('services.vk.access_token'),
         };
     }
 
