@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Action;
+namespace App\Domain\Korean\Action;
 
 class GetJamoVowelsAction
 {

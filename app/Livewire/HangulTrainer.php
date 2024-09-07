@@ -2,10 +2,10 @@
 
 namespace App\Livewire;
 
-use App\Action\CyrillicizeJamoAction;
-use App\Action\GetJamoConsonantsAction;
-use App\Action\GetJamoVowelsAction;
-use App\Domain\HangulWhatToTrain;
+use App\Domain\Korean\Action\CyrillicizeJamoAction;
+use App\Domain\Korean\Action\GetJamoConsonantsAction;
+use App\Domain\Korean\Action\GetJamoVowelsAction;
+use App\Domain\Korean\HangulWhatToTrain;
 use App\Domain\Locale;
 use Illuminate\Support\Collection;
 use Livewire\Component;
