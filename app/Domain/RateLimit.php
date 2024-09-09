@@ -12,7 +12,7 @@ enum RateLimit
     case IssueByUser;
     case MagnetGlobal;
 
-    public function get()
+    public function get(): Limit
     {
         return match ($this) {
             self::CommentByIp => Limit::perDay(config()->integer('cfg.limits.comment.ip')),
