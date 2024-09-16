@@ -3,12 +3,14 @@
 namespace App\Livewire;
 
 use App\Action\ListCitiesForInputSelectAction;
+use Livewire\Attributes\Computed;
 
 /** @property \Illuminate\Support\Collection $cityIds */
 trait WithCityIds
 {
-    public function getCityIdsProperty(ListCitiesForInputSelectAction $listCitiesForInputSelect)
+    #[Computed]
+    public function cityIds()
     {
-        return $listCitiesForInputSelect->execute();
+        return app(ListCitiesForInputSelectAction::class)->execute();
     }
 }

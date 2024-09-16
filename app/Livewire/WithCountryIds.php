@@ -3,12 +3,15 @@
 namespace App\Livewire;
 
 use App\Action\ListCountriesForInputSelectAction;
+use Illuminate\Support\Collection;
+use Livewire\Attributes\Computed;
 
 /** @property \Illuminate\Support\Collection $countryIds */
 trait WithCountryIds
 {
-    public function getCountryIdsProperty(ListCountriesForInputSelectAction $listCountriesForInputSelect)
+    #[Computed]
+    public function countryIds(): Collection
     {
-        return $listCountriesForInputSelect->execute();
+        return app(ListCountriesForInputSelectAction::class)->execute();
     }
 }

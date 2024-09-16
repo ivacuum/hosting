@@ -11,15 +11,17 @@ use App\Photo;
 use App\Spatial\Point;
 use App\Trip;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Collection;
 use Ivacuum\Generic\Services\ImageConverter;
 use Ivacuum\Generic\Utilities\ExifHelper;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 
 /**
- * @property $gigIds
- * @property $tripIds
+ * @property \Illuminate\Support\Collection $gigIds
+ * @property \Illuminate\Support\Collection $tripIds
  */
 class PhotoUploadForm extends Component
 {
@@ -33,14 +35,10 @@ class PhotoUploadForm extends Component
     public array $thumbnails = [];
     public TemporaryUploadedFile|string|null $file = null;
 
-    public function getGigIdsProperty(ListGigsForInputSelectAction $listGigsForInputSelect)
+    #[Computed]
+    public function gigIds(): Collection
     {
-        return $listGigsForInputSelect->execute();
-    }
-
-    public function getTripIdsProperty(ListTripsForInputSelectAction $listTripsForInputSelect)
-    {
-        return $listTripsForInputSelect->execute();
+        return app(ListGigsForInputSelectAction::class)->execute();
     }
 
     public function rules()
@@ -55,6 +53,12 @@ class PhotoUploadForm extends Component
             'gigId' => 'required_without:tripId',
             'tripId' => 'required_without:gigId',
         ];
+    }
+
+    #[Computed]
+    public function tripIds(): Collection
+    {
+        return app(ListTripsForInputSelectAction::class)->execute();
     }
 
     public function updatedFile(FindUploadedPhotoAction $findUploadedPhoto)

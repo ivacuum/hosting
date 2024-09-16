@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Action\GetNumberLocalesAction;
 use App\Action\HiraganizeJapaneseNumberAction;
 use Illuminate\Http\Request;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
 
 /**
@@ -21,7 +22,20 @@ class NumberSynopsis extends Component
         'lang' => ['except' => 'en'],
     ];
 
-    public function getNumbersProperty(): array
+    public function mount(Request $request, GetNumberLocalesAction $getNumberLocales)
+    {
+        $this->locales = collect($getNumberLocales->execute())
+            ->mapWithKeys(fn (string $locale) => [$locale => \Locale::getDisplayName($locale, \App::getLocale())])
+            ->sort()
+            ->all();
+
+        $this->lang = in_array($request->input('lang'), array_keys($this->locales))
+            ? $request->input('lang')
+            : 'en';
+    }
+
+    #[Computed]
+    public function numbers(): array
     {
         return [
             $this->number,
@@ -77,18 +91,6 @@ class NumberSynopsis extends Component
             123_456,
             1_000_000,
         ];
-    }
-
-    public function mount(Request $request, GetNumberLocalesAction $getNumberLocales)
-    {
-        $this->locales = collect($getNumberLocales->execute())
-            ->mapWithKeys(fn (string $locale) => [$locale => \Locale::getDisplayName($locale, \App::getLocale())])
-            ->sort()
-            ->all();
-
-        $this->lang = in_array($request->input('lang'), array_keys($this->locales))
-            ? $request->input('lang')
-            : 'en';
     }
 
     public function spellOuts(int $number)

@@ -6,6 +6,7 @@ use App\Action\GetNumberLocalesAction;
 use App\Action\HiraganizeJapaneseNumberAction;
 use App\Domain\LivewireEvent;
 use Illuminate\Http\Request;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
 
 /**
@@ -73,13 +74,6 @@ class NumberTrainer extends Component
         event(new \App\Events\Stats\NumberDecreaseMaximum);
     }
 
-    public function getSpellOutProperty(): string
-    {
-        $formatter = new \NumberFormatter($this->lang, \NumberFormatter::SPELLOUT);
-
-        return $formatter->format($this->number);
-    }
-
     public function increaseLevel()
     {
         $this->validate(['maximum' => 'integer|min:10|max:100000000']);
@@ -129,6 +123,14 @@ class NumberTrainer extends Component
 
         $this->next();
         $this->dispatch(LivewireEvent::FocusOnAnswer->name);
+    }
+
+    #[Computed]
+    public function spellOut(): string
+    {
+        $formatter = new \NumberFormatter($this->lang, \NumberFormatter::SPELLOUT);
+
+        return $formatter->format($this->number);
     }
 
     public function updatedGuessingSpellOut()

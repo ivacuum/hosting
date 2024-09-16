@@ -3,12 +3,15 @@
 namespace App\Livewire;
 
 use App\Action\ListArtistsForInputSelectAction;
+use Illuminate\Support\Collection;
+use Livewire\Attributes\Computed;
 
 /** @property \Illuminate\Support\Collection $artistIds */
 trait WithArtistIds
 {
-    public function getArtistIdsProperty(ListArtistsForInputSelectAction $listArtistsForInputSelect)
+    #[Computed]
+    public function artistIds(): Collection
     {
-        return $listArtistsForInputSelect->execute();
+        return app(ListArtistsForInputSelectAction::class)->execute();
     }
 }
