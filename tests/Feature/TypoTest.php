@@ -4,10 +4,13 @@ namespace Tests\Feature;
 
 use App\Factory\UserFactory;
 use App\Notifications\TypoReportedNotification;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class TypoTest extends TestCase
 {
+    use DatabaseTransactions;
+
     public function testTypoPost()
     {
         \Notification::fake();

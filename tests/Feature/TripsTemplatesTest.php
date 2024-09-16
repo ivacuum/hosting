@@ -5,10 +5,13 @@ namespace Tests\Feature;
 use App\Action\FindTripTemplatesAction;
 use App\Factory\TripFactory;
 use App\Factory\UserFactory;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class TripsTemplatesTest extends TestCase
 {
+    use DatabaseTransactions;
+
     /** @slowThreshold 10000 */
     public function testTripsTemplates()
     {

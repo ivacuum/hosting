@@ -5,10 +5,13 @@ namespace Tests\Feature;
 use App\Action\FindGigTemplatesAction;
 use App\Factory\GigFactory;
 use App\Factory\UserFactory;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class GigTemplatesTest extends TestCase
 {
+    use DatabaseTransactions;
+
     public function testGigsTemplates()
     {
         $this->be(UserFactory::new()->admin()->make());
