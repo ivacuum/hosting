@@ -10,7 +10,7 @@ class PrintIpController
     {
         return [
             'ip' => $request->ip(),
-            'country' => $request->server->get('HTTP_CF_COUNTRY'),
+            'country' => $request->server->get('HTTP_CF_IPCOUNTRY'),
         ];
     }
 }
