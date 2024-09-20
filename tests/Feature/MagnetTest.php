@@ -248,6 +248,32 @@ class MagnetTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\TorrentDuplicateFound::class);
     }
 
+    public function testStoreUnescapedTitle()
+    {
+        $stub = MagnetFactory::new()->withTitle('Chlo&#233; Ragnar&#246;k &quot;M&amp;M\'s&quot;')->make();
+        $user = UserFactory::new()->create();
+
+        $this->fakeHttpRequests($stub);
+
+        \Event::fake(\App\Events\Stats\TorrentAdded::class);
+
+        $this->be($user);
+
+        $livewire = \Livewire::test(MagnetAddForm::class)
+            ->set('input', $stub->rto_id)
+            ->set('categoryId', $stub->category_id->value)
+            ->call('submit')
+            ->assertHasNoErrors();
+
+        $magnet = $user->magnets->first();
+
+        $livewire->assertRedirect($magnet->www());
+
+        $this->assertSame('Chloé Ragnarök "M&M\'s"', $magnet->title);
+
+        \Event::assertDispatched(\App\Events\Stats\TorrentAdded::class);
+    }
+
     private function fakeHttpRequests(Magnet $stub)
     {
         \Http::fake([

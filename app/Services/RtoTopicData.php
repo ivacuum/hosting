@@ -28,7 +28,7 @@ class RtoTopicData
     {
         return new self(
             $id,
-            str_replace(self::TITLE_REPLACE_FROM, self::TITLE_REPLACE_TO, $payload['topic_title']),
+            html_entity_decode(str_replace(self::TITLE_REPLACE_FROM, self::TITLE_REPLACE_TO, $payload['topic_title'])),
             $payload['info_hash'],
             CarbonImmutable::parse($payload['reg_time'], 'Europe/Moscow'),
             RtoTopicStatus::from($payload['tor_status']),
