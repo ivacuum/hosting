@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Domain\Telegram\Action\EscapeMarkdownCharactersAction;
 use Illuminate\Notifications\Notification;
 
 class TypoReportedNotification extends Notification
@@ -10,8 +11,10 @@ class TypoReportedNotification extends Notification
 
     public function toTelegram(): string
     {
-        $page = $this->page;
-        $selection = htmlspecialchars_decode($this->selection, ENT_QUOTES);
+        $escape = app(EscapeMarkdownCharactersAction::class);
+
+        $page = $escape->execute($this->page);
+        $selection = $escape->execute(htmlspecialchars_decode($this->selection, ENT_QUOTES));
 
         return "📝️ Опечатка на странице\n{$page}\n\n{$selection}";
     }
