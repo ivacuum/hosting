@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Action\Telegram;
+namespace App\Domain\Telegram\Action;
 
 use Ivacuum\Generic\Telegram\TelegramClient;
 
@@ -8,7 +8,7 @@ class OnCommandStartAction
 {
     public function __construct(private TelegramClient $telegram) {}
 
-    public function execute(int $chatId): array
+    public function execute(int $chatId, string|null $startParameter): array
     {
         event(new \App\Events\Stats\TelegramStartCommand);
 

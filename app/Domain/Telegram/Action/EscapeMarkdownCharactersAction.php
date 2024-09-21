@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Action\Telegram;
+namespace App\Domain\Telegram\Action;
 
 class EscapeMarkdownCharactersAction
 {
