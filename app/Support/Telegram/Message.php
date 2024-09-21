@@ -23,8 +23,17 @@ readonly class Message
         );
     }
 
-    public function isCommand(): bool
+    public function hasStartParameter(): bool
     {
-        return str_starts_with($this->text, '/');
+        return str_starts_with($this->text, '/start ');
+    }
+
+    public function startParameter(): string|null
+    {
+        if (!$this->hasStartParameter()) {
+            return null;
+        }
+
+        return mb_substr($this->text, 7);
     }
 }
