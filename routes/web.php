@@ -178,8 +178,6 @@ Route::get('news/{year}/{month}', Ctrl\NewsBcController::class);
 Route::get('news/{year}/{month}/{day}', Ctrl\NewsBcController::class);
 Route::get('news/{year}/{month}/{day}/{slug}', Ctrl\NewsBcController::class);
 
-Route::get('notifications', [Ctrl\NotificationController::class, 'index'])->middleware('auth');
-
 // Route::get('parser/vk/{page?}/{date?}', [Ctrl\ParserVk::class, 'index'])->where('date', '\d{4}-\d{2}-\d{2}');
 // Route::post('parser/vk', [Ctrl\ParserVk::class, 'indexPost']);
 

@@ -39,12 +39,6 @@
         @lang('Поездки')
       @endcomponent
       @component('tpl.list-group-item', [
-        'href' => to('notifications'),
-        'classes' => 'md:hidden',
-      ])
-        @lang('Уведомления')
-      @endcomponent
-      @component('tpl.list-group-item', [
         'href' => to('auth/logout'),
         'classes' => 'md:hidden',
       ])

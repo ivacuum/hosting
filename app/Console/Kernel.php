@@ -40,7 +40,6 @@ class Kernel extends ConsoleKernel
             ->command('model:prune', [
                 '--model' => [
                     \App\ExternalHttpRequest::class,
-                    \App\Notification::class,
                     \App\PasswordReset::class,
                 ],
             ])

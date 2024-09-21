@@ -66,7 +66,6 @@
     'acp/emails*',
     'acp/users*',
     'acp/external-identities*',
-    'acp/notifications*',
   ]),
 ])
   @slot('title')
@@ -78,7 +77,6 @@
   <x-dropdown-item href="/acp/emails">@lang('acp.emails.index')</x-dropdown-item>
   <x-dropdown-item href="/acp/users">@lang('acp.users.index')</x-dropdown-item>
   <x-dropdown-item href="/acp/external-identities">@lang('acp.external-identities.index')</x-dropdown-item>
-  <x-dropdown-item href="/acp/notifications">@lang('acp.notifications.index')</x-dropdown-item>
 @endcomponent
 @component('tpl.menu-item', [
   'href' => to('acp/dev/templates'),

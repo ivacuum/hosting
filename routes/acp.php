@@ -55,8 +55,6 @@ Route::get('metrics/{event}', [Acp\MetricsController::class, 'show'])->can('view
 Route::resource('news', Acp\NewsController::class)->except(['store', 'update']);
 Route::post('news/{news}/notify', [Acp\NewsController::class, 'notify']);
 
-Route::resource('notifications', Acp\NotificationsController::class)->except(['create', 'edit', 'store', 'update']);
-
 Route::resource('photos', Acp\PhotosController::class)->except(['store', 'update']);
 
 Route::resource('tags', Acp\TagsController::class)->except(['store', 'update']);

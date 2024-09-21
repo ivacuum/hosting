@@ -93,9 +93,6 @@ return [
     'news.create' => 'Compose news',
     'news.notify' => 'Notify about publication',
 
-    'notifications.show' => 'Notification',
-    'notifications.index' => 'Notifications',
-
     'photos.add' => 'Create photo',
     'photos.edit' => 'Edit photo',
     'photos.show' => 'Photo',

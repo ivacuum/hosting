@@ -40,7 +40,6 @@ use Illuminate\Notifications\Notifiable;
  * @property \Illuminate\Database\Eloquent\Collection<int, Image> $images
  * @property \Illuminate\Database\Eloquent\Collection<int, Magnet> $magnets
  * @property \Illuminate\Database\Eloquent\Collection<int, News> $news
- * @property \Illuminate\Database\Eloquent\Collection<int, Notification> $notifications
  * @property \Illuminate\Database\Eloquent\Collection<int, Trip> $trips
  * @property-read int $chat_messages_count
  * @property-read int $comments_count
@@ -110,12 +109,6 @@ class User extends Authenticatable implements HasLocalePreference
     public function news()
     {
         return $this->hasMany(News::class)->chaperone();
-    }
-
-    public function notifications()
-    {
-        return $this->morphMany(Notification::class, 'notifiable')
-            ->orderByDesc('created_at');
     }
 
     public function trips()
@@ -188,28 +181,6 @@ class User extends Authenticatable implements HasLocalePreference
     public function isRoot(): bool
     {
         return $this->id === 1;
-    }
-
-    public function markNotificationsAsRead(): bool
-    {
-        $hasUnread = false;
-
-        foreach ($this->notifications as $notification) {
-            if ($notification->unread()) {
-                $hasUnread = true;
-                break;
-            }
-        }
-
-        if ($hasUnread) {
-            $affectedRows = $this->unreadNotifications()->update(['read_at' => now()]);
-
-            for ($i = 0; $i < $affectedRows; $i++) {
-                event(new \App\Events\Stats\NotificationRead);
-            }
-        }
-
-        return $hasUnread;
     }
 
     #[\Override]

@@ -20,7 +20,6 @@ use App\Kanji;
 use App\Magnet;
 use App\Metric;
 use App\News;
-use App\Notification;
 use App\Photo;
 use App\Radical;
 use App\Tag;
@@ -52,7 +51,6 @@ class GetModelBreadcrumbAction
             $model instanceof Magnet => $model->shortTitle(),
             $model instanceof Metric => $model->event,
             $model instanceof News => $model->title,
-            $model instanceof Notification => $model->id,
             $model instanceof Photo => str_replace('/', ' / ', $model->slug),
             $model instanceof Radical => $model->character,
             $model instanceof Tag => "#{$model->title}",

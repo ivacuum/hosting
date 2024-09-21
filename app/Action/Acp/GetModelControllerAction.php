@@ -17,7 +17,6 @@ use App\Image;
 use App\Issue;
 use App\Magnet;
 use App\News;
-use App\Notification;
 use App\Photo;
 use App\Tag;
 use App\Trip;
@@ -43,7 +42,6 @@ class GetModelControllerAction
             $model instanceof Issue => Controllers\Acp\IssuesController::class,
             $model instanceof Magnet => Controllers\Acp\MagnetsController::class,
             $model instanceof News => Controllers\Acp\NewsController::class,
-            $model instanceof Notification => Controllers\Acp\NotificationsController::class,
             $model instanceof Photo => Controllers\Acp\PhotosController::class,
             $model instanceof Tag => Controllers\Acp\TagsController::class,
             $model instanceof Trip => Controllers\Acp\TripsController::class,

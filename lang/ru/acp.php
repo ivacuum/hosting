@@ -94,9 +94,6 @@ return [
     'news.create' => 'Написать новость',
     'news.notify' => 'Уведомить о публикации',
 
-    'notifications.show' => 'Уведомление',
-    'notifications.index' => 'Уведомления',
-
     'photos.add' => 'Добавить фотку',
     'photos.edit' => 'Редактирование',
     'photos.show' => 'Фотка',

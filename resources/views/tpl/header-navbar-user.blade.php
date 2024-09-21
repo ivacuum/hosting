@@ -1,13 +1,3 @@
-<a
-  class="border-b-2 border-transparent px-2 py-3 text-2xl hover:text-grey-900 hover:dark:text-slate-200 leading-none relative tooltipped tooltipped-s {{ $routeUri === 'notifications' ? 'border-blueish-600 text-grey-900 dark:text-slate-200' : 'text-grey-600 dark:text-slate-400' }}"
-  href="@lng/notifications"
-  aria-label="@lang('Уведомления')"
->
-  <span class="{{ Auth::user()->unreadNotifications()->first() ? 'has-unread-label' : '' }}">
-    @svg (bell)
-  </span>
-</a>
-
 <details class="self-center relative details-reset details-overlay text-grey-600 hover:text-grey-900 hover:dark:text-slate-200">
   <summary class="p-2">
     <div class="flex items-center">

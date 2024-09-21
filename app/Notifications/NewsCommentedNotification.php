@@ -3,33 +3,37 @@
 namespace App\Notifications;
 
 use App\Comment;
+use App\Domain\Telegram\Action\EscapeMarkdownCharactersAction;
 use App\News;
+use App\User;
 use Illuminate\Notifications\Notification;
 
 class NewsCommentedNotification extends Notification
 {
     public function __construct(public News $news, public Comment $comment) {}
 
-    public function via($notifiable)
+    public function toTelegram()
     {
-        return $notifiable->id !== $this->comment->user_id
-            ? ['database']
-            : [];
+        $escape = app(EscapeMarkdownCharactersAction::class);
+
+        $url = $escape->execute(url($this->news->www("#comment-{$this->comment->id}")));
+        $text = $escape->execute(html_entity_decode($this->comment->html));
+        $user = $escape->execute($this->comment->user->publicName());
+        $title = $escape->execute($this->news->title);
+
+        return "💬 *{$user}* комментирует новость *{$title}*\n{$url}\n\n{$text}";
     }
 
-    public function toArray()
+    public function via(User $notifiable)
     {
-        return [
-            'id' => $this->news->id,
-            'title' => $this->news->title,
-            'comment' => [
-                'id' => $this->comment->id,
-                'html' => $this->comment->html,
-                'user' => [
-                    'id' => $this->comment->user_id,
-                    'name' => $this->comment->user->publicName(),
-                ],
-            ],
-        ];
+        if ($notifiable->id === $this->comment->user_id) {
+            return [];
+        }
+
+        if ($notifiable->telegram_id) {
+            return [TelegramChannel::class];
+        }
+
+        return [];
     }
 }

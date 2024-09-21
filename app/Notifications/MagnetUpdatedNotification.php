@@ -2,7 +2,7 @@
 
 namespace App\Notifications;
 
-use App\Action\Telegram\EscapeMarkdownCharactersAction;
+use App\Domain\Telegram\Action\EscapeMarkdownCharactersAction;
 use App\Magnet;
 use App\User;
 use Illuminate\Bus\Queueable;
@@ -14,16 +14,6 @@ class MagnetUpdatedNotification extends Notification implements ShouldQueue
     use Queueable;
 
     public function __construct(public Magnet $magnet) {}
-
-    public function toArray()
-    {
-        return [
-            'id' => $this->magnet->id,
-            'title' => $this->magnet->title,
-            'info_hash' => $this->magnet->info_hash,
-            'announcer' => $this->magnet->announcer,
-        ];
-    }
 
     public function toTelegram()
     {
@@ -39,6 +29,6 @@ class MagnetUpdatedNotification extends Notification implements ShouldQueue
     {
         return $notifiable->telegram_id
             ? [TelegramChannel::class]
-            : ['database'];
+            : [];
     }
 }
