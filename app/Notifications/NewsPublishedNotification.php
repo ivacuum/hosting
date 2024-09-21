@@ -14,14 +14,14 @@ class NewsPublishedNotification extends Notification implements ShouldQueue
 
     public function __construct(public News $news) {}
 
-    public function via()
-    {
-        return ['mail'];
-    }
-
     public function toMail($notifiable)
     {
         return (new NewsPublishedMail($this->news, $notifiable))
             ->to($notifiable);
+    }
+
+    public function via()
+    {
+        return ['mail'];
     }
 }

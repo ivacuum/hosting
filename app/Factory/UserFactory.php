@@ -43,20 +43,21 @@ class UserFactory
 
     public function make()
     {
-        $model = new User;
-        $model->id = $this->id;
-        $model->email = $this->email ?? fake()->safeEmail();
-        $model->login = $this->login;
-        $model->locale = $this->locale->value;
-        $model->status = $this->status->value;
-        $model->last_login_at = $this->lastLoginAt;
-        $model->magnet_short_title = $this->magnetShortTitle;
+        $user = new User;
+        $user->id = $this->id;
+        $user->email = $this->email ?? fake()->safeEmail();
+        $user->login = $this->login;
+        $user->locale = $this->locale->value;
+        $user->status = $this->status->value;
+        $user->last_login_at = $this->lastLoginAt;
+        $user->telegram_id = $this->telegramUserId;
+        $user->magnet_short_title = $this->magnetShortTitle;
 
         if ($this->password) {
-            $model->password = $this->password;
+            $user->password = $this->password;
         }
 
-        return $model;
+        return $user;
     }
 
     public static function new(): self

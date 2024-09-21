@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MySettingsUpdateForm;
+use App\User;
+use Illuminate\Container\Attributes\CurrentUser;
 
 class MySettingsController
 {
-    public function edit()
+    public function edit(#[CurrentUser] User $user)
     {
-        return view('my.settings', ['user' => auth()->user()]);
+        return view('my.settings', ['user' => $user]);
     }
 
     public function update(MySettingsUpdateForm $request)
