@@ -216,6 +216,24 @@ return new class extends Migration {
             $table->timestamps();
         });
 
+        Schema::create('magnets', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('user_id')->default(0);
+            $table->unsignedInteger('category_id')->default(0);
+            $table->unsignedInteger('rto_id')->default(0)->unique();
+            $table->string('title', 300);
+            $table->mediumText('html');
+            $table->string('related_query');
+            $table->unsignedBigInteger('size')->default(0);
+            $table->char('info_hash', 40);
+            $table->string('announcer');
+            $table->unsignedTinyInteger('status')->default(1);
+            $table->unsignedInteger('clicks')->default(0);
+            $table->unsignedInteger('views')->default(0);
+            $table->timestamp('registered_at')->nullable();
+            $table->timestamps();
+        });
+
         Schema::create('metrics', function (Blueprint $table) {
             $table->date('date');
             $table->string('event');
@@ -297,24 +315,6 @@ return new class extends Migration {
             $table->string('title_ru');
             $table->string('title_en');
             $table->unsignedInteger('views')->default(0);
-            $table->timestamps();
-        });
-
-        Schema::create('magnets', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('user_id')->default(0);
-            $table->unsignedInteger('category_id')->default(0);
-            $table->unsignedInteger('rto_id')->default(0)->unique();
-            $table->string('title', 300);
-            $table->mediumText('html');
-            $table->string('related_query');
-            $table->unsignedBigInteger('size')->default(0);
-            $table->char('info_hash', 40);
-            $table->string('announcer');
-            $table->unsignedTinyInteger('status')->default(1);
-            $table->unsignedInteger('clicks')->default(0);
-            $table->unsignedInteger('views')->default(0);
-            $table->timestamp('registered_at')->nullable();
             $table->timestamps();
         });
 
