@@ -10,6 +10,7 @@ use Carbon\CarbonInterface;
 class UserFactory
 {
     private int|null $id = null;
+    private int|null $telegramUserId = null;
     private int|null $magnetShortTitle = 0;
     private string $login = '';
     private string|null $email = null;
@@ -117,6 +118,14 @@ class UserFactory
     {
         $factory = clone $this;
         $factory->status = $status;
+
+        return $factory;
+    }
+
+    public function withTelegramUserId(int $telegramUserId)
+    {
+        $factory = clone $this;
+        $factory->telegramUserId = $telegramUserId;
 
         return $factory;
     }
