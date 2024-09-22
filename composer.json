@@ -67,7 +67,10 @@
     ],
     "queue": "@php artisan queue:work --stop-when-empty --ansi",
     "rector": "vendor/bin/rector process --dry-run",
-    "share": "expose",
+    "share": [
+      "Composer\\Config::disableProcessTimeout",
+      "expose"
+    ],
     "test": "@php artisan test --parallel",
     "test-fresh": "@php artisan test --parallel --recreate-databases",
     "test-linear": "vendor/bin/phpunit --colors=always",
