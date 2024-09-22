@@ -10,7 +10,6 @@ use Ivacuum\Generic\Utilities\ExifHelper;
   <div wire:loading.remove.delay wire:target="image">
     <input
       class="block text-muted w-full file:px-4 file:py-1 file:rounded file:border-0 file:bg-blueish-700 file:text-white hover:file:bg-blueish-800"
-      accept="image/jpeg"
       type="file"
       wire:model.live="image"
     >
