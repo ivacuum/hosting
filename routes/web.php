@@ -59,6 +59,7 @@ Route::middleware('nav:О DC++,dc')->group(function () {
 
 Route::view('dev/base64-decoder', 'dev.base64-decoder');
 Route::view('dev/base64-encoder', 'dev.base64-encoder');
+Route::view('dev/exif-reader', 'dev.exif-reader');
 Route::view('dev/hash-generator', 'dev.hash-generator');
 Route::view('dev/json-formatter', 'dev.json-formatter');
 Route::get('dev/map-polygon', Ctrl\DevMapPolygonController::class);
