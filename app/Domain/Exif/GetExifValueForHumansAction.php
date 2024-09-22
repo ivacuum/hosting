@@ -49,7 +49,7 @@ class GetExifValueForHumansAction
                 chr(1) => 'Ниже уровня моря',
                 default => '',
             },
-            'GPSAltitude' => "{$this->calculateAltitude($value)} метров",
+            'GPSAltitude' => "{$this->divide($value)} метров",
             'GPSSpeedRef' => match ($value) {
                 'K' => 'Километры в час',
                 'M' => 'Мили в час',
@@ -78,16 +78,13 @@ class GetExifValueForHumansAction
         };
     }
 
-    private function calculateAltitude(string $value)
-    {
-        $parts = explode('/', $value);
-
-        return round($parts[0] / $parts[1], 2);
-    }
-
     private function divide(string $value, int $precision = 2)
     {
         $parts = explode('/', $value);
+
+        if ($parts[0] === '0') {
+            return 0;
+        }
 
         return round($parts[0] / $parts[1], $precision);
     }
