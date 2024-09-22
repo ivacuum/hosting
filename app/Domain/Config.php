@@ -23,6 +23,7 @@ enum Config implements Htmlable
     case SiteName;
     case SupportEmail;
     case TelegramAdminId;
+    case TelegramBotUsername;
     case TelegramWebhookSecretToken;
     case TimewebLink;
     case VkAccessToken;
@@ -47,6 +48,7 @@ enum Config implements Htmlable
             self::SiteName => config()->string('cfg.sitename'),
             self::SupportEmail => config()->string('email.support'),
             self::TelegramAdminId => config()->integer('services.telegram.admin_id'),
+            self::TelegramBotUsername => config()->string('services.telegram.bot_username'),
             self::TelegramWebhookSecretToken => config('services.telegram.webhook_secret_token'),
             self::TimewebLink => config()->string('cfg.timeweb_link'),
             self::VkAccessToken => config('services.vk.access_token'),

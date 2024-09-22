@@ -20,6 +20,7 @@ return [
     'telegram' => [
         'admin_id' => (int) env('TELEGRAM_ADMIN_ID', 0),
         'bot_token' => env('TELEGRAM_BOT_TOKEN', 'YOUR-BOT-TOKEN'),
+        'bot_username' => env('TELEGRAM_BOT_USERNAME'),
         'webhook_secret_token' => env('TELEGRAM_WEBHOOK_SECRET_TOKEN'),
     ],
 
