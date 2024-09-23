@@ -6,6 +6,7 @@ use Ivacuum\Generic\Utilities\ExifHelper;
 
 <form wire:submit="submit">
   <p>На этой странице можно загрузить изображение в формате JPEG, чтобы посмотреть какие метаданные в него записал производитель камеры или программа, с помощью которой обрабатывали снимок.</p>
+  <p>Выберите JPEG-файл:</p>
   @include('tpl.form_errors')
   <div wire:loading.remove.delay wire:target="image">
     <input
@@ -17,11 +18,13 @@ use Ivacuum\Generic\Utilities\ExifHelper;
   <div wire:loading.delay wire:target="image">
     @lang('Идет загрузка...')
   </div>
-  @if($this->image)
+  @if($this->image && $errors->isEmpty())
     <div class="my-4">
+      @if(!$errors->has('image'))
       <button type="submit" class="btn btn-default">
         @lang('Прочитать EXIF-данные')
       </button>
+      @endif
     </div>
 
     <div>
@@ -31,8 +34,8 @@ use Ivacuum\Generic\Utilities\ExifHelper;
       @if($this->size && $this->width && $this->height)
           Изображение занимает <span class="font-bold">{{ ViewHelper::size($this->size) }}</span> постоянной памяти при размере <span class="font-bold">{{ $this->width }}×{{ $this->height }}</span> точек.
       @endif
-      @if($this->data['DateTime'] ?? '')
-        Оно сделано <span class="font-bold">{{ CarbonImmutable::parse($this->data['DateTime'])->isoFormat('LLL') }}</span>.
+      @if($this->date)
+        Оно сделано <span class="font-bold">{{ $this->date->isoFormat('LLL') }}</span>.
       @endif
       @if($this->data['UndefinedTag:0x9010'] ?? '')
         Часовой пояс <span class="font-bold">{{ $this->data['UndefinedTag:0x9010'] }}</span>.

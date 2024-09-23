@@ -3,6 +3,9 @@
 namespace App\Domain\Exif\Livewire;
 
 use App\Domain\Exif\GetExifValueForHumansAction;
+use App\Domain\Exif\ReadExifDataAction;
+use Carbon\CarbonImmutable;
+use Carbon\Exceptions\InvalidFormatException;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
@@ -25,27 +28,16 @@ class ExifReader extends Component
     public int $height = 0;
     public bool $read = false;
     public array $data = [];
+    public CarbonImmutable|null $date = null;
 
-    public function submit(): void
+    public function submit(ReadExifDataAction $readExifData): void
     {
         $this->validate();
 
         try {
-            $this->data = exif_read_data($this->image->getRealPath());
-
-            foreach ($this->data as $key => $value) {
-                if (mb_check_encoding($value, 'UTF-8')) {
-                    continue;
-                }
-
-                if (!str_starts_with($key, 'UndefinedTag:')) {
-                    continue;
-                }
-
-                unset($this->data[$key]);
-            }
-
+            $this->data = $readExifData->execute($this->image->getRealPath());
             $this->read = true;
+            $this->date = $this->parseDate();
 
             unset(
                 $this->data['COMPUTED'],
@@ -59,6 +51,7 @@ class ExifReader extends Component
         } catch (\Throwable $e) {
             $this->addError('image', $e->getMessage());
             $this->data = [];
+            $this->date = null;
             $this->size = $this->width = $this->height = 0;
         }
 
@@ -69,5 +62,18 @@ class ExifReader extends Component
     public function valueForHumans(string $key, int|array|string|null $value): string
     {
         return app(GetExifValueForHumansAction::class)->execute($key, $value);
+    }
+
+    private function parseDate(): CarbonImmutable|null
+    {
+        if (!isset($this->data['DateTime'])) {
+            return null;
+        }
+
+        try {
+            return CarbonImmutable::createFromFormat('Y:m:d H:i:s', $this->data['DateTime']);
+        } catch (InvalidFormatException) {
+            return CarbonImmutable::parse($this->data['DateTime']);
+        }
     }
 }
