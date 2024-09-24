@@ -50,6 +50,14 @@
       >
     </div>
 
+    <div wire:offline class="text-red-600 text-sm mt-1">
+      @ru
+        Утеряно соединение с интернетом. Продолжить вводить ответы можно будет, когда снова появится связь.
+      @en
+        This device has lost internet connection.
+      @endru
+    </div>
+
     <div class="grid grid-cols-3 gap-2 mt-4">
       @if($this->answered > 0)
         <div>
