@@ -49,7 +49,7 @@ class GetExifValueForHumansAction
                 chr(1) => 'Ниже уровня моря',
                 default => '',
             },
-            'GPSAltitude' => "{$this->divide($value)} метров",
+            'GPSAltitude' => \ViewHelper::plural('meters', $this->divide($value, 0)),
             'GPSSpeedRef' => match ($value) {
                 'K' => 'Километры в час',
                 'M' => 'Мили в час',

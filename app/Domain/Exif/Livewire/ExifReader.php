@@ -6,6 +6,7 @@ use App\Domain\Exif\GetExifValueForHumansAction;
 use App\Domain\Exif\ReadExifDataAction;
 use Carbon\CarbonImmutable;
 use Carbon\Exceptions\InvalidFormatException;
+use Ivacuum\Generic\Utilities\ExifHelper;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
@@ -27,6 +28,8 @@ class ExifReader extends Component
     public int $height = 0;
     public bool $read = false;
     public array $data = [];
+    public string|null $lat = null;
+    public string|null $lon = null;
     public CarbonImmutable|null $date = null;
 
     public function submit(ReadExifDataAction $readExifData): void
@@ -37,6 +40,10 @@ class ExifReader extends Component
             $this->data = $readExifData->execute($this->image->getRealPath());
             $this->read = true;
             $this->date = $this->parseDate();
+            [
+                'lat' => $this->lat,
+                'lon' => $this->lon
+            ] = ExifHelper::latLon($this->data);
 
             unset(
                 $this->data['COMPUTED'],
@@ -49,6 +56,7 @@ class ExifReader extends Component
             );
         } catch (\Throwable $e) {
             $this->addError('image', $e->getMessage());
+            $this->lat = $this->lon = null;
             $this->data = [];
             $this->date = null;
             $this->size = $this->width = $this->height = 0;
@@ -60,6 +68,7 @@ class ExifReader extends Component
 
     public function updatedImage()
     {
+        $this->lat = $this->lon = null;
         $this->data = [];
         $this->date = null;
         $this->read = false;

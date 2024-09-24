@@ -1,6 +1,4 @@
 <?php
-use Carbon\CarbonImmutable;
-use Ivacuum\Generic\Utilities\ExifHelper;
 /** @var \App\Livewire\ExifReader $this */
 ?>
 
@@ -50,8 +48,8 @@ use Ivacuum\Generic\Utilities\ExifHelper;
       @if($this->data['FocalLengthIn35mmFilm'] ?? '')
         Фокусное расстояние <span class="font-bold">{{ $this->data['FocalLengthIn35mmFilm'] }}мм</span>, если сравнивать с камерой.
       @endif
-      @if($this->data['GPSLatitude'] ?? '')
-        <a href="https://www.google.com/maps/search/?api=1&query={{ ExifHelper::latLon($this->data)['lat'] }}%2C{{ ExifHelper::latLon($this->data)['lon'] }}">Место снимка на карте</a>.
+      @if($this->lat && $this->lon)
+        <a href="https://www.google.com/maps/search/?api=1&query={{ $this->lat }}%2C{{ $this->lon }}">Место снимка на карте</a>.
       @endif
       @if($this->data['GPSAltitude'] ?? '' && $this->data['GPSAltitudeRef'])
           Фотография сделана на высоте <span class="font-bold lowercase">{{ $this->valueForHumans('GPSAltitude', $this->data['GPSAltitude']) }} {{ $this->valueForHumans('GPSAltitudeRef', $this->data['GPSAltitudeRef']) }}</span>.
@@ -94,10 +92,10 @@ use Ivacuum\Generic\Utilities\ExifHelper;
         @endif
         @switch($key)
           @case('GPSLatitude')
-            <div class="text-muted">({{ ExifHelper::latLon($this->data)['lat'] }})</div>
+            <div class="text-muted">({{ $this->lat }})</div>
           @break
           @case('GPSLongitude')
-            <div class="text-muted">({{ ExifHelper::latLon($this->data)['lon'] }})</div>
+            <div class="text-muted">({{ $this->lon }})</div>
           @break
         @endswitch
       @else
