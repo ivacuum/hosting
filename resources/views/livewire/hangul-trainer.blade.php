@@ -117,9 +117,15 @@
   </div>
   <div>
     <h1 class="font-medium text-3xl tracking-tight mb-2" id="help">@lang('Тренажер хангыля')</h1>
-    <p>Данный тренажер помогает быстро запомнить корейский алфавит. Ответы принимаются кириллицей по <a class="link" href="https://ru.wikipedia.org/wiki/Система_Концевича">системе Концевича</a> и латиницей по <a class="link" href="https://en.wikipedia.org/wiki/Revised_Romanization_of_Korean">новой романизации</a>.</p>
+    @ru
+      <p>Данный тренажер помогает быстро запомнить корейский алфавит. Ответы принимаются кириллицей по <a class="link" href="https://ru.wikipedia.org/wiki/Система_Концевича">системе Концевича</a> и латиницей по <a class="link" href="https://en.wikipedia.org/wiki/Revised_Romanization_of_Korean">новой романизации</a>.</p>
+    @endru
 
-    <p>Ниже представлена корейская раскладка клавиатуры.</p>
+    @ru
+      <p>Ниже представлена корейская раскладка клавиатуры.</p>
+    @en
+      <p>Below is the Korean keyboard layout.</p>
+    @endru
 
     <div class="grid gap-px text-center mb-6 text-2xl">
       <div class="grid grid-cols-[repeat(10,minmax(25px,35px))] gap-px justify-center leading-none dark:text-gray-800">
@@ -335,8 +341,10 @@
       </div>
     </div>
 
-    <p>Как можно заметить, раскладка поделена на две части. В левой половине согласные, а в правой — гласные. Еще можно заметить, что у некоторых букв несколько возможных произношений. Действительно, в зависимости от положения в слове звучание может быть разным. Тренажер не преследует цель объяснить произношение, а лишь помогает выработать связи со знакомым вам языком.</p>
-    <p>Курсивный шрифт — <a class="link" href="https://fonts.google.com/specimen/Nanum+Pen+Script?subset=korean">Nanum Pen Script</a>.</p>
-    <p>После освоения алфавита можно попробовать свои силы в <a class="link" href="{{ to('trainers/numbers', ['lang' => 'ko']) }}">тренажере корейских чисел</a>.</p>
+    @ru
+      <p>Как можно заметить, раскладка поделена на две части. В левой половине согласные, а в правой — гласные. Еще можно заметить, что у некоторых букв несколько возможных произношений. Действительно, в зависимости от положения в слове звучание может быть разным. Тренажер не преследует цель объяснить произношение, а лишь помогает выработать связи со знакомым вам языком.</p>
+      <p>Курсивный шрифт — <a class="link" href="https://fonts.google.com/specimen/Nanum+Pen+Script?subset=korean">Nanum Pen Script</a>.</p>
+      <p>После освоения алфавита можно попробовать свои силы в <a class="link" href="{{ to('trainers/numbers', ['lang' => 'ko']) }}">тренажере корейских чисел</a>.</p>
+    @endru
   </div>
 </div>

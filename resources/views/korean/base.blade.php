@@ -1,3 +1,1 @@
-@extends('life.base', [
-  'noLanguageSelector' => true,
-])
+@extends('life.base')
