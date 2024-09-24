@@ -45,8 +45,10 @@ class GetExifValueForHumansAction
                 default => '',
             },
             'GPSAltitudeRef' => match ($value) {
-                chr(0) => 'Выше уровня моря',
-                chr(1) => 'Ниже уровня моря',
+                chr(0),
+                0 => 'Выше уровня моря',
+                chr(1),
+                1 => 'Ниже уровня моря',
                 default => '',
             },
             'GPSAltitude' => \ViewHelper::plural('meters', $this->divide($value, 0)),
