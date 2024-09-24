@@ -17,10 +17,9 @@ class ExifReader extends Component
 
     #[Validate([
         'required',
-        'image',
-        'mimetypes:image/jpeg',
         'max:20480',
     ])]
+    #[Validate('mimetypes:image/jpeg', message: 'Не сможем прочитать этот файл. Пожалуйста, выберите изображение в формате JPEG.')]
     public TemporaryUploadedFile|string|null $image = null;
 
     public int $size = 0;
@@ -56,7 +55,15 @@ class ExifReader extends Component
         }
 
         $this->size = $this->image->getSize();
-        [$this->width, $this->height] = getimagesize($this->image->getRealPath());
+        [$this->width, $this->height] = getimagesize($this->image->getRealPath()) ?: [0, 0];
+    }
+
+    public function updatedImage()
+    {
+        $this->data = [];
+        $this->date = null;
+        $this->read = false;
+        $this->size = $this->width = $this->height = 0;
     }
 
     public function valueForHumans(string $key, int|array|string|null $value): string

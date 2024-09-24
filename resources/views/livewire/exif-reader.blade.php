@@ -5,10 +5,10 @@ use Ivacuum\Generic\Utilities\ExifHelper;
 ?>
 
 <form wire:submit="submit">
-  <p>На этой странице можно загрузить изображение в формате JPEG, чтобы посмотреть какие метаданные в него записал производитель камеры или программа, с помощью которой обрабатывали снимок.</p>
+  <p>На этой странице можно загрузить изображение в формате JPEG, чтобы посмотреть какие метаданные в него записал производитель камеры или программа, с помощью которой обрабатывали снимок. Если изображение сохранено из социальных сетей, то они скорее всего вырезали все метаданные в угоду уменьшения размера файла.</p>
   <p>Выберите JPEG-файл:</p>
   @include('tpl.form_errors')
-  <div wire:loading.remove.delay wire:target="image">
+  <div wire:target="image">
     <input
       class="block text-muted w-full file:px-4 file:py-1 file:rounded file:border-0 file:bg-blueish-700 file:text-white hover:file:bg-blueish-800"
       type="file"
