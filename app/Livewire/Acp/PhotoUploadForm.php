@@ -41,20 +41,6 @@ class PhotoUploadForm extends Component
         return app(ListGigsForInputSelectAction::class)->execute();
     }
 
-    public function rules()
-    {
-        return [
-            'file' => [
-                'required',
-                'image',
-                'mimetypes:image/jpeg,image/png',
-                'max:12288',
-            ],
-            'gigId' => 'required_without:tripId',
-            'tripId' => 'required_without:gigId',
-        ];
-    }
-
     #[Computed]
     public function tripIds(): Collection
     {
@@ -119,5 +105,19 @@ class PhotoUploadForm extends Component
         $this->thumbnails[] = $photo->slug;
 
         $this->uploaded++;
+    }
+
+    protected function rules()
+    {
+        return [
+            'file' => [
+                'required',
+                'image',
+                'mimetypes:image/jpeg,image/png',
+                'max:12288',
+            ],
+            'gigId' => 'required_without:tripId',
+            'tripId' => 'required_without:gigId',
+        ];
     }
 }

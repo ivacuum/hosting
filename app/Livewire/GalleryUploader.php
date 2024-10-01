@@ -34,18 +34,6 @@ class GalleryUploader extends Component
         $this->resetChosenFile();
     }
 
-    public function rules()
-    {
-        return [
-            'files.*' => [
-                'required',
-                'image',
-                'mimetypes:image/gif,image/jpeg,image/png',
-                'max:6144',
-            ],
-        ];
-    }
-
     public function updatedFiles()
     {
         $this->validate();
@@ -65,6 +53,18 @@ class GalleryUploader extends Component
         }
 
         $this->resetChosenFile();
+    }
+
+    protected function rules()
+    {
+        return [
+            'files.*' => [
+                'required',
+                'image',
+                'mimetypes:image/gif,image/jpeg,image/png',
+                'max:6144',
+            ],
+        ];
     }
 
     private function resetChosenFile()

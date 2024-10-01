@@ -44,17 +44,6 @@ class MagnetForm extends Component
         }
     }
 
-    public function rules()
-    {
-        return [
-            'rtoId' => [
-                'required',
-                Rule::unique(Magnet::class, 'rto_id')
-                    ->ignore(Magnet::query()->find($this->id)),
-            ],
-        ];
-    }
-
     public function submit()
     {
         $magnet = Magnet::query()->findOrFail($this->id);
@@ -64,6 +53,17 @@ class MagnetForm extends Component
         $this->store($magnet);
 
         return redirect()->to($this->goto ?? to('acp/magnets'));
+    }
+
+    protected function rules()
+    {
+        return [
+            'rtoId' => [
+                'required',
+                Rule::unique(Magnet::class, 'rto_id')
+                    ->ignore(Magnet::query()->find($this->id)),
+            ],
+        ];
     }
 
     private function store(Magnet $magnet)

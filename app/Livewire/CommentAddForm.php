@@ -21,14 +21,6 @@ class CommentAddForm extends Component
     public string $email = '';
     public Issue|Magnet|News|Trip $model;
 
-    public function rules()
-    {
-        return [
-            'text' => 'required|max:1000',
-            'email' => Rule::when(auth()->guest(), Email::rules()),
-        ];
-    }
-
     public function submit(FindUserByEmailOrCreateAction $findUserByEmailOrCreate, CommentRateLimiter $limiter)
     {
         $this->validate();
@@ -76,6 +68,14 @@ class CommentAddForm extends Component
         if ($isGuest) {
             session()->flash('message', __('Комментарий ожидает активации. Мы отправили вам ссылку на электронную почту.'));
         }
+    }
+
+    protected function rules()
+    {
+        return [
+            'text' => 'required|max:1000',
+            'email' => Rule::when(auth()->guest(), Email::rules()),
+        ];
     }
 
     private function escapeText()

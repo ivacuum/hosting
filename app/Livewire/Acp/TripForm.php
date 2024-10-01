@@ -70,7 +70,27 @@ class TripForm extends Component
         }
     }
 
-    public function rules()
+    public function submit()
+    {
+        $this->authorize('create', Trip::class);
+        $this->validate();
+        $this->store();
+
+        return redirect()->to($this->goto ?? to('acp/trips'));
+        }
+
+        public function updatedCityId()
+        {
+            $city = City::query()->find($this->cityId);
+
+            if ($city) {
+                $this->slug = "{$city->slug}." . now()->year;
+                $this->titleEn = $city->title_en;
+                $this->titleRu = $city->title_ru;
+            }
+        }
+
+    protected function rules()
     {
         return [
             'slug' => LifeSlug::rules(Trip::query()->find($this->id) ?? new Trip),
@@ -86,26 +106,6 @@ class TripForm extends Component
             'metaDescriptionEn' => 'string',
             'metaDescriptionRu' => 'string',
         ];
-    }
-
-    public function submit()
-    {
-        $this->authorize('create', Trip::class);
-        $this->validate();
-        $this->store();
-
-        return redirect()->to($this->goto ?? to('acp/trips'));
-    }
-
-    public function updatedCityId()
-    {
-        $city = City::query()->find($this->cityId);
-
-        if ($city) {
-            $this->slug = "{$city->slug}." . now()->year;
-            $this->titleEn = $city->title_en;
-            $this->titleRu = $city->title_ru;
-        }
     }
 
     private function store()

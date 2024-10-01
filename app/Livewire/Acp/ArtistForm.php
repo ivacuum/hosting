@@ -33,13 +33,6 @@ class ArtistForm extends Component
         }
     }
 
-    public function rules()
-    {
-        return [
-            'slug' => LifeSlug::rules(Artist::query()->find($this->id) ?? new Artist),
-        ];
-    }
-
     public function submit()
     {
         $this->authorize('create', Artist::class);
@@ -47,6 +40,13 @@ class ArtistForm extends Component
         $this->store();
 
         return redirect()->to($this->goto ?? to('acp/artists'));
+    }
+
+    protected function rules()
+    {
+        return [
+            'slug' => LifeSlug::rules(Artist::query()->find($this->id) ?? new Artist),
+        ];
     }
 
     private function store()

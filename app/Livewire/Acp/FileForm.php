@@ -46,22 +46,6 @@ class FileForm extends Component
         }
     }
 
-    public function rules()
-    {
-        return [
-            'upload' => [
-                Rule::requiredIf(!$this->id),
-                'file',
-                'nullable',
-            ],
-            'slug' => [
-                'required',
-                Rule::unique(File::class, 'slug')
-                    ->ignore(File::query()->find($this->id)),
-            ],
-        ];
-    }
-
     public function submit()
     {
         $file = $this->id
@@ -91,5 +75,21 @@ class FileForm extends Component
         }
 
         return redirect()->to($this->goto ?? to('acp/files'));
+    }
+
+    protected function rules()
+    {
+        return [
+            'upload' => [
+                Rule::requiredIf(!$this->id),
+                'file',
+                'nullable',
+            ],
+            'slug' => [
+                'required',
+                Rule::unique(File::class, 'slug')
+                    ->ignore(File::query()->find($this->id)),
+            ],
+        ];
     }
 }

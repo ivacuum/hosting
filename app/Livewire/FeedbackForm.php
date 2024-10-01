@@ -33,16 +33,6 @@ class FeedbackForm extends Component
         }
     }
 
-    public function rules()
-    {
-        return [
-            'name' => Rule::requiredIf(!$this->hideName),
-            'text' => ['required', 'string', 'max:1000'],
-            'email' => Email::rules(),
-            'title' => Rule::requiredIf(!$this->hideTitle),
-        ];
-    }
-
     public function submit(FindUserByEmailOrCreateAction $findUserByEmailOrCreate, IssueRateLimiter $limiter)
     {
         $this->validate();
@@ -83,6 +73,16 @@ class FeedbackForm extends Component
         $this->reset('text');
 
         session()->flash('message', __('Ваше сообщение принято. Мы постараемся отреагировать на него как можно скорее.'));
+    }
+
+    protected function rules()
+    {
+        return [
+            'name' => Rule::requiredIf(!$this->hideName),
+            'text' => ['required', 'string', 'max:1000'],
+            'email' => Email::rules(),
+            'title' => Rule::requiredIf(!$this->hideTitle),
+        ];
     }
 
     private function pathFromUrl(): string

@@ -56,13 +56,6 @@ class CityForm extends Component
         }
     }
 
-    public function rules()
-    {
-        return [
-            'slug' => LifeSlug::rules(City::query()->find($this->id) ?? new City),
-        ];
-    }
-
     public function submit()
     {
         $this->authorize('create', City::class);
@@ -90,5 +83,12 @@ class CityForm extends Component
         if (str_contains($this->lat, ', ')) {
             [$this->lat, $this->lon] = explode(', ', $this->lat);
         }
+    }
+
+    protected function rules()
+    {
+        return [
+            'slug' => LifeSlug::rules(City::query()->find($this->id) ?? new City),
+        ];
     }
 }

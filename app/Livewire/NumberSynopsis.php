@@ -104,13 +104,6 @@ class NumberSynopsis extends Component
         ]);
     }
 
-    public function rules()
-    {
-        return [
-            'input' => 'integer|min:0|max:10000000000',
-        ];
-    }
-
     public function transliteration(string $spellOut): string
     {
         if ($this->lang === 'ja') {
@@ -126,5 +119,12 @@ class NumberSynopsis extends Component
         $this->validate();
 
         $this->number = $this->input;
+    }
+
+    protected function rules()
+    {
+        return [
+            'input' => 'integer|min:0|max:10000000000',
+        ];
     }
 }

@@ -12,11 +12,6 @@ class MagnetReplaceForm extends Component
     public Magnet $magnet;
     public string|null $input = null;
 
-    public function rules()
-    {
-        return ['input' => 'required'];
-    }
-
     public function submit(UpdateMagnetAction $updateMagnet)
     {
         $this->validate();
@@ -47,5 +42,10 @@ class MagnetReplaceForm extends Component
     public function updatedInput(Rto $rto)
     {
         $this->input = $rto->findTopicId($this->input);
+    }
+
+    protected function rules()
+    {
+        return ['input' => 'required'];
     }
 }

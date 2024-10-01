@@ -40,7 +40,16 @@ class CountryForm extends Component
         }
     }
 
-    public function rules()
+    public function submit()
+    {
+        $this->authorize('create', Country::class);
+        $this->validate();
+        $this->store();
+
+        return redirect()->to($this->goto ?? to('acp/countries'));
+    }
+
+    protected function rules()
     {
         return [
             'slug' => [
@@ -49,15 +58,6 @@ class CountryForm extends Component
                     ->ignore(Country::query()->find($this->id)),
             ],
         ];
-    }
-
-    public function submit()
-    {
-        $this->authorize('create', Country::class);
-        $this->validate();
-        $this->store();
-
-        return redirect()->to($this->goto ?? to('acp/countries'));
     }
 
     private function store()

@@ -34,18 +34,6 @@ class UserForm extends Component
         }
     }
 
-    public function rules()
-    {
-        return [
-            'email' => [
-                'required',
-                'email',
-                Rule::unique(User::class, 'email')
-                    ->ignore(User::query()->find($this->id)),
-            ],
-        ];
-    }
-
     public function submit()
     {
         $user = User::query()->findOrFail($this->id);
@@ -55,6 +43,18 @@ class UserForm extends Component
         $this->store($user);
 
         return redirect()->to($this->goto ?? to('acp/users'));
+    }
+
+    protected function rules()
+    {
+        return [
+            'email' => [
+                'required',
+                'email',
+                Rule::unique(User::class, 'email')
+                    ->ignore(User::query()->find($this->id)),
+            ],
+        ];
     }
 
     private function store(User $user)

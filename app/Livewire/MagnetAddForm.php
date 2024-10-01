@@ -23,14 +23,6 @@ class MagnetAddForm extends Component
     public string $input = '';
     public string $title = '';
 
-    public function rules()
-    {
-        return [
-            'input' => 'required',
-            'categoryId' => MagnetCategoryId::rules(),
-        ];
-    }
-
     public function submit(Rto $rto, MagnetRateLimiter $limiter)
     {
         $this->validate();
@@ -145,6 +137,14 @@ class MagnetAddForm extends Component
         $this->size = $topicData->size;
         $this->title = $topicData->title;
         $this->topicId = $topicData->id;
+    }
+
+    protected function rules()
+    {
+        return [
+            'input' => 'required',
+            'categoryId' => MagnetCategoryId::rules(),
+        ];
     }
 
     private function resetTopicInfo(): void

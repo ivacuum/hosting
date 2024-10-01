@@ -62,20 +62,6 @@ class GigForm extends Component
         }
     }
 
-    public function rules()
-    {
-        return [
-            'date' => 'required|date',
-            'slug' => LifeSlug::rules(Gig::query()->find($this->id) ?? new Gig),
-            'cityId' => 'required|integer|min:1',
-            'status' => 'required',
-            'artistId' => 'required|integer|min:1',
-            'metaImage' => 'string',
-            'metaDescriptionEn' => 'string',
-            'metaDescriptionRu' => 'string',
-        ];
-    }
-
     public function submit()
     {
         $this->authorize('create', Gig::class);
@@ -94,6 +80,20 @@ class GigForm extends Component
             $this->titleEn = $artist->title;
             $this->titleRu = $artist->title;
         }
+    }
+
+    protected function rules()
+    {
+        return [
+            'date' => 'required|date',
+            'slug' => LifeSlug::rules(Gig::query()->find($this->id) ?? new Gig),
+            'cityId' => 'required|integer|min:1',
+            'status' => 'required',
+            'artistId' => 'required|integer|min:1',
+            'metaImage' => 'string',
+            'metaDescriptionEn' => 'string',
+            'metaDescriptionRu' => 'string',
+        ];
     }
 
     private function store()

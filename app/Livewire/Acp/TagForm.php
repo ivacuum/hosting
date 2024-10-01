@@ -30,7 +30,16 @@ class TagForm extends Component
         }
     }
 
-    public function rules()
+    public function submit()
+    {
+        $this->authorize('create', Tag::class);
+        $this->validate();
+        $this->store();
+
+        return redirect()->to($this->goto ?? to('acp/tags'));
+    }
+
+    protected function rules()
     {
         $tag = Tag::query()->find($this->id);
 
@@ -44,15 +53,6 @@ class TagForm extends Component
                 Rule::unique(Tag::class, 'title_en')->ignore($tag),
             ],
         ];
-    }
-
-    public function submit()
-    {
-        $this->authorize('create', Tag::class);
-        $this->validate();
-        $this->store();
-
-        return redirect()->to($this->goto ?? to('acp/tags'));
     }
 
     private function store()

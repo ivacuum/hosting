@@ -22,13 +22,6 @@ class PhotoEditForm extends Component
         $this->tags = $this->photo->tags->modelKeys();
     }
 
-    public function rules()
-    {
-        return [
-            'tags' => 'array',
-        ];
-    }
-
     public function submit()
     {
         $this->authorize('update', $this->photo);
@@ -37,5 +30,12 @@ class PhotoEditForm extends Component
         $this->photo->tags()->sync($this->tags);
 
         return redirect()->to($this->goto ?? to('acp/photos'));
+    }
+
+    protected function rules()
+    {
+        return [
+            'tags' => 'array',
+        ];
     }
 }
