@@ -77,18 +77,18 @@ class TripForm extends Component
         $this->store();
 
         return redirect()->to($this->goto ?? to('acp/trips'));
-        }
+    }
 
-        public function updatedCityId()
-        {
-            $city = City::query()->find($this->cityId);
+    public function updatedCityId()
+    {
+        $city = City::query()->find($this->cityId);
 
-            if ($city) {
-                $this->slug = "{$city->slug}." . now()->year;
-                $this->titleEn = $city->title_en;
-                $this->titleRu = $city->title_ru;
-            }
+        if ($city) {
+            $this->slug = "{$city->slug}." . now()->year;
+            $this->titleEn = $city->title_en;
+            $this->titleRu = $city->title_ru;
         }
+    }
 
     protected function rules()
     {
