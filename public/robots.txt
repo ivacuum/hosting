@@ -3,6 +3,7 @@ Allow: /
 Disallow: /api
 Disallow: /auth
 Disallow: /build
+Disallow: /cdn-cgi/
 Disallow: /cv
 Disallow: /files
 Disallow: /gallery
