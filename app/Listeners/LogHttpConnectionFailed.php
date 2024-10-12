@@ -7,6 +7,8 @@ use App\Domain\ExternalService;
 use App\ExternalHttpRequest;
 use Illuminate\Http\Client\Events\ConnectionFailed;
 
+use function Illuminate\Support\defer;
+
 class LogHttpConnectionFailed
 {
     public function __construct(private FilterOutCredentialsAction $filterOutCredentials) {}
@@ -19,9 +21,7 @@ class LogHttpConnectionFailed
             return;
         }
 
-        register_shutdown_function(function () use ($event) {
-            $this->saveRequest($event);
-        });
+        defer(fn () => $this->saveRequest($event))->always();
     }
 
     protected function saveRequest(ConnectionFailed $event)

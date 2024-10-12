@@ -2,6 +2,8 @@
 
 namespace App\Domain\Metrics\Action;
 
+use function Illuminate\Support\defer;
+
 class PushMetricAction
 {
     private bool $shouldExportImmediately;
@@ -50,8 +52,6 @@ class PushMetricAction
             return;
         }
 
-        register_shutdown_function(function () {
-            $this->export();
-        });
+        defer(fn () => $this->export())->always();
     }
 }

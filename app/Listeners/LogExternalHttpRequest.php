@@ -8,19 +8,21 @@ use App\ExternalHttpRequest;
 use Illuminate\Http\Client\Events\ResponseReceived;
 use Illuminate\Http\Client\Response;
 
+use function Illuminate\Support\defer;
+
 class LogExternalHttpRequest
 {
     public function __construct(private FilterOutCredentialsAction $filterOutCredentials) {}
 
-    public function handle(ResponseReceived $event)
+    public function handle(ResponseReceived $event): void
     {
         if (\App::runningInConsole()) {
             $this->saveRequest($event);
-        } else {
-            register_shutdown_function(function () use ($event) {
-                $this->saveRequest($event);
-            });
+
+            return;
         }
+
+        defer(fn () => $this->saveRequest($event))->always();
     }
 
     protected function saveRequest(ResponseReceived $event)
