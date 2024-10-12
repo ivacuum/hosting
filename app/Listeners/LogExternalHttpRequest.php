@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Action\FilterOutCredentialsAction;
-use App\Domain\ExternalService;
+use App\Action\GetExternalServiceByHostAction;
 use App\ExternalHttpRequest;
 use Illuminate\Http\Client\Events\ResponseReceived;
 use Illuminate\Http\Client\Response;
@@ -12,7 +12,10 @@ use function Illuminate\Support\defer;
 
 class LogExternalHttpRequest
 {
-    public function __construct(private FilterOutCredentialsAction $filterOutCredentials) {}
+    public function __construct(
+        private FilterOutCredentialsAction $filterOutCredentials,
+        private GetExternalServiceByHostAction $getExternalServiceByHost,
+    ) {}
 
     public function handle(ResponseReceived $event): void
     {
@@ -44,7 +47,7 @@ class LogExternalHttpRequest
         $model->http_version = $stats['http_version'] ?? '';
         $model->redirect_url = $stats['redirect_url'] ?? '';
         $model->request_body = $request->body();
-        $model->service_name = $this->serviceName($uri->getHost());
+        $model->service_name = $this->getExternalServiceByHost->execute($uri->getHost());
         $model->response_body = $this->responseBodyInUtf8($response->body());
         $model->response_size = $this->responseSize($response);
         $model->total_time_us = $totalTimeUs;
@@ -81,23 +84,5 @@ class LogExternalHttpRequest
         }
 
         return mb_strlen($response->body());
-    }
-
-    private function serviceName(string $host): ExternalService
-    {
-        return match ($host) {
-            'api.vk.com' => ExternalService::Vk,
-            'api.telegram.org' => ExternalService::Telegram,
-            'api.wanikani.com' => ExternalService::Wanikani,
-
-            'api.rutracker.cc',
-            'rutracker.org' => ExternalService::Rutracker,
-
-            'example.com' => ExternalService::Example,
-
-            'life.ivacuum.org' => ExternalService::Life,
-
-            default => ExternalService::Unknown,
-        };
     }
 }

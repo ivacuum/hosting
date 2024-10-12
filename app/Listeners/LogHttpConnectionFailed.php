@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Action\FilterOutCredentialsAction;
-use App\Domain\ExternalService;
+use App\Action\GetExternalServiceByHostAction;
 use App\ExternalHttpRequest;
 use Illuminate\Http\Client\Events\ConnectionFailed;
 
@@ -11,9 +11,12 @@ use function Illuminate\Support\defer;
 
 class LogHttpConnectionFailed
 {
-    public function __construct(private FilterOutCredentialsAction $filterOutCredentials) {}
+    public function __construct(
+        private FilterOutCredentialsAction $filterOutCredentials,
+        private GetExternalServiceByHostAction $getExternalServiceByHost,
+    ) {}
 
-    public function handle(ConnectionFailed $event)
+    public function handle(ConnectionFailed $event): void
     {
         if (\App::runningInConsole()) {
             $this->saveRequest($event);
@@ -39,7 +42,7 @@ class LogHttpConnectionFailed
         $model->http_version = '';
         $model->redirect_url = '';
         $model->request_body = $request->body();
-        $model->service_name = $this->serviceName($uri->getHost());
+        $model->service_name = $this->getExternalServiceByHost->execute($uri->getHost());
         $model->response_body = '';
         $model->response_size = 0;
         $model->total_time_us = 0;
@@ -51,16 +54,5 @@ class LogHttpConnectionFailed
         $this->filterOutCredentials->execute($model);
 
         $model->save();
-    }
-
-    private function serviceName(string $host): ExternalService
-    {
-        return match ($host) {
-            'api.vk.com' => ExternalService::Vk,
-            'api.telegram.org' => ExternalService::Telegram,
-            'api.wanikani.com' => ExternalService::Wanikani,
-            'api.rutracker.cc',
-            'rutracker.org' => ExternalService::Rutracker,
-        };
     }
 }
