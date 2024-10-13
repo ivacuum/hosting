@@ -10,6 +10,7 @@ use App\Livewire\Acp\PhotoUploadForm;
 use App\Photo;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
+use Livewire\Features\SupportFileUploads\FileUploadConfiguration;
 use Tests\TestCase;
 
 class PhotoUploadFormTest extends TestCase
@@ -19,7 +20,7 @@ class PhotoUploadFormTest extends TestCase
     public function testGigPhoto()
     {
         \Storage::fake('photos');
-        \Storage::fake('tmp-for-tests');
+        \Storage::fake(FileUploadConfiguration::disk());
 
         $gig = GigFactory::new()->create();
         $file = UploadedFile::fake()->image('IMG_0025.jpeg');
@@ -43,7 +44,7 @@ class PhotoUploadFormTest extends TestCase
     public function testReplaceTripPhoto()
     {
         \Storage::fake('photos');
-        \Storage::fake('tmp-for-tests');
+        \Storage::fake(FileUploadConfiguration::disk());
 
         $file = UploadedFile::fake()->image('IMG_0013.jpeg');
 
@@ -78,7 +79,7 @@ class PhotoUploadFormTest extends TestCase
     public function testTripPhoto()
     {
         \Storage::fake('photos');
-        \Storage::fake('tmp-for-tests');
+        \Storage::fake(FileUploadConfiguration::disk());
 
         $file = UploadedFile::fake()->image('IMG_0011.jpeg');
         $trip = TripFactory::new()->create();

@@ -7,6 +7,7 @@ use App\Image;
 use App\Livewire\GalleryUploader;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
+use Livewire\Features\SupportFileUploads\FileUploadConfiguration;
 use Tests\TestCase;
 
 class GalleryUploaderTest extends TestCase
@@ -16,7 +17,7 @@ class GalleryUploaderTest extends TestCase
     public function testStore()
     {
         \Storage::fake('gallery');
-        \Storage::fake('tmp-for-tests');
+        \Storage::fake(FileUploadConfiguration::disk());
 
         $file = UploadedFile::fake()->image('screenshot.png');
         $user = UserFactory::new()->create();

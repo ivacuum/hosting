@@ -19,7 +19,7 @@ class ExifReaderTest extends TestCase
     public function testBinaryDataInUndefinedTagIsStriped()
     {
         \Queue::fake([DeleteTempLivewireFileJob::class]);
-        \Storage::fake('tmp-for-tests');
+        \Storage::fake(FileUploadConfiguration::disk());
 
         $this->mock(ReadRawExifDataAction::class)
             ->expects('execute')
@@ -61,7 +61,7 @@ class ExifReaderTest extends TestCase
     public function testDivisionByZeroPreventedForNullifiedGpsData()
     {
         \Queue::fake([DeleteTempLivewireFileJob::class]);
-        \Storage::fake('tmp-for-tests');
+        \Storage::fake(FileUploadConfiguration::disk());
 
         $this->mock(ReadRawExifDataAction::class)
             ->expects('execute')
@@ -84,7 +84,7 @@ class ExifReaderTest extends TestCase
     public function testImageDeleteJobQueued()
     {
         \Queue::fake();
-        \Storage::fake('tmp-for-tests');
+        \Storage::fake(FileUploadConfiguration::disk());
 
         $image = UploadedFile::fake()->image('IMG_0025.jpeg');
 
@@ -99,7 +99,7 @@ class ExifReaderTest extends TestCase
     public function testInvalidDateTime()
     {
         \Queue::fake([DeleteTempLivewireFileJob::class]);
-        \Storage::fake('tmp-for-tests');
+        \Storage::fake(FileUploadConfiguration::disk());
 
         $this->mock(ReadRawExifDataAction::class)
             ->expects('execute')

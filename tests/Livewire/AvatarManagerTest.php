@@ -6,6 +6,7 @@ use App\Factory\UserFactory;
 use App\Livewire\AvatarManager;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
+use Livewire\Features\SupportFileUploads\FileUploadConfiguration;
 use Tests\TestCase;
 
 class AvatarManagerTest extends TestCase
@@ -15,7 +16,7 @@ class AvatarManagerTest extends TestCase
     public function testUserUploadsFirstAvatarAndThenReplacesIt()
     {
         \Storage::fake('avatars');
-        \Storage::fake('tmp-for-tests');
+        \Storage::fake(FileUploadConfiguration::disk());
 
         $file = UploadedFile::fake()->image('avatar.jpg');
         $user = UserFactory::new()->create();
@@ -51,7 +52,7 @@ class AvatarManagerTest extends TestCase
     public function testUserDeletesHisAvatar()
     {
         \Storage::fake('avatars');
-        \Storage::fake('tmp-for-tests');
+        \Storage::fake(FileUploadConfiguration::disk());
 
         $file = UploadedFile::fake()->image('avatar.jpg');
         $user = UserFactory::new()->create();

@@ -7,6 +7,7 @@ use App\Factory\FileFactory;
 use App\Livewire\Acp\FileForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
+use Livewire\Features\SupportFileUploads\FileUploadConfiguration;
 use Tests\TestCase;
 
 class AcpFilesTest extends TestCase
@@ -49,7 +50,7 @@ class AcpFilesTest extends TestCase
     public function testStore()
     {
         \Storage::fake('files');
-        \Storage::fake('tmp-for-tests');
+        \Storage::fake(FileUploadConfiguration::disk());
 
         $file = FileFactory::new()->make();
         $uploadedFile = UploadedFile::fake()->image('IMG_0025.jpg');
