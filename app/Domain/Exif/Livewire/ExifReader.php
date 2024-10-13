@@ -5,11 +5,13 @@ namespace App\Domain\Exif\Livewire;
 use App\Domain\Exif\GetExifValueForHumansAction;
 use App\Domain\Exif\Jobs\DeleteTempLivewireFileJob;
 use App\Domain\Exif\ReadExifDataAction;
+use App\Domain\Exif\ShouldDeleteImageForTestAction;
 use Carbon\CarbonImmutable;
 use Carbon\Exceptions\InvalidFormatException;
 use Ivacuum\Generic\Utilities\ExifHelper;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Livewire\Features\SupportFileUploads\FileUploadConfiguration;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 
@@ -33,8 +35,27 @@ class ExifReader extends Component
     public string|null $lon = null;
     public CarbonImmutable|null $date = null;
 
-    public function submit(ReadExifDataAction $readExifData): void
+    public function submit(ReadExifDataAction $readExifData, ShouldDeleteImageForTestAction $shouldDeleteImageForTest): void
     {
+        if ($shouldDeleteImageForTest->execute()) {
+            // Не найден другой способ протестировать попытку чтения удаленного файла
+            \Storage::disk(FileUploadConfiguration::disk())
+                ->delete(FileUploadConfiguration::directory() . '/' . $this->image->getFilename());
+        }
+
+        if (!$this->image->exists()) {
+            $this->addError('image', 'Файл уже удален с сервера. Загрузите его, пожалуйста, еще раз.');
+
+            $this->lat = $this->lon = null;
+            $this->data = [];
+            $this->date = null;
+            $this->read = false;
+            $this->size = $this->width = $this->height = 0;
+            $this->image = null;
+
+            return;
+        }
+
         $this->validate();
 
         try {

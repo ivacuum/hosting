@@ -4,10 +4,12 @@ namespace Tests\Livewire;
 
 use App\Domain\Exif\Jobs\DeleteTempLivewireFileJob;
 use App\Domain\Exif\ReadRawExifDataAction;
+use App\Domain\Exif\ShouldDeleteImageForTestAction;
 use App\Livewire\ExifReader;
 use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
+use Livewire\Features\SupportFileUploads\FileUploadConfiguration;
 use Tests\TestCase;
 
 class ExifReaderTest extends TestCase
@@ -31,6 +33,29 @@ class ExifReaderTest extends TestCase
             ->set('image', $image)
             ->call('submit')
             ->assertSet('data', []);
+    }
+
+    public function testDeletedImageHandled()
+    {
+        \Storage::fake(FileUploadConfiguration::disk());
+
+        $this->mock(ShouldDeleteImageForTestAction::class)
+            ->expects('execute')
+            ->andReturnTrue();
+
+        $image = UploadedFile::fake()->image('exif.jpg');
+
+        \Livewire::test(ExifReader::class)
+            ->set('image', $image)
+            ->call('submit')
+            ->assertSet('size', 0)
+            ->assertSet('width', 0)
+            ->assertSet('height', 0)
+            ->assertSet('image', null)
+            ->assertSet('date', null)
+            ->assertSet('read', false)
+            ->assertSet('data', [])
+            ->assertHasErrors(['image' => 'Файл уже удален с сервера. Загрузите его, пожалуйста, еще раз.']);
     }
 
     public function testDivisionByZeroPreventedForNullifiedGpsData()
