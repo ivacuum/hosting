@@ -3,6 +3,7 @@
 namespace App\Domain\Exif\Livewire;
 
 use App\Domain\Exif\GetExifValueForHumansAction;
+use App\Domain\Exif\Jobs\DeleteTempLivewireFileJob;
 use App\Domain\Exif\ReadExifDataAction;
 use Carbon\CarbonImmutable;
 use Carbon\Exceptions\InvalidFormatException;
@@ -73,6 +74,8 @@ class ExifReader extends Component
         $this->date = null;
         $this->read = false;
         $this->size = $this->width = $this->height = 0;
+
+        dispatch(new DeleteTempLivewireFileJob($this->image->getFilename()));
     }
 
     public function valueForHumans(string $key, int|array|string|null $value): string
