@@ -73,8 +73,7 @@ class PhotoUploadForm extends Component
             ->convert($this->file->getRealPath());
 
         $pathInfo = pathinfo($this->file->getClientOriginalName());
-        $extension = str_replace('jpeg', 'jpg', strtolower($pathInfo['extension']));
-        $filename = "{$pathInfo['filename']}.{$extension}";
+        $filename = "{$pathInfo['filename']}.{$image->getExtension()}";
 
         $folder = $model instanceof Gig
             ? "gigs/{$model->slug}"
@@ -112,8 +111,7 @@ class PhotoUploadForm extends Component
         return [
             'file' => [
                 'required',
-                'image',
-                'mimetypes:image/jpeg,image/png',
+                'mimetypes:image/heic,image/jpeg,image/png,image/webp',
                 'max:12288',
             ],
             'gigId' => 'required_without:tripId',

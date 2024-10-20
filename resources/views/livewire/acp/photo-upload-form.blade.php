@@ -19,7 +19,7 @@
         @if ($this->uploaded === $this->total)
           <input
             class="block text-muted w-full file:px-4 file:py-1 file:rounded file:border-0 file:bg-blueish-700 file:text-white hover:file:bg-blueish-800"
-            accept="image/jpeg,image/png"
+            accept="image/heic,image/jpeg,image/png,image/webp"
             type="file"
             multiple
             wire:change="$dispatch('upload-files', $event.currentTarget.files)"
