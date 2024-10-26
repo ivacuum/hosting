@@ -5,15 +5,15 @@ namespace App\Livewire\Acp;
 use App\Action\FindUploadedPhotoAction;
 use App\Action\ListGigsForInputSelectAction;
 use App\Action\ListTripsForInputSelectAction;
+use App\Domain\Exif\GetPointFromGpsDataAction;
+use App\Domain\Exif\ReadRawExifDataAction;
 use App\Domain\PhotoStatus;
 use App\Gig;
+use App\Jobs\StorePhotoJob;
 use App\Photo;
-use App\Spatial\Point;
 use App\Trip;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Collection;
-use Ivacuum\Generic\Services\ImageConverter;
-use Ivacuum\Generic\Utilities\ExifHelper;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
@@ -47,62 +47,46 @@ class PhotoUploadForm extends Component
         return app(ListTripsForInputSelectAction::class)->execute();
     }
 
-    public function updatedFile(FindUploadedPhotoAction $findUploadedPhoto)
-    {
+    public function updatedFile(
+        FindUploadedPhotoAction $findUploadedPhoto,
+        GetPointFromGpsDataAction $getPointFromGpsData,
+        ReadRawExifDataAction $readRawExifData,
+    ) {
         $this->authorize('create', Photo::class);
         $this->validate();
 
         if ($this->gigId) {
-            $model = Gig::query()->findOrFail($this->gigId);
+            $relation = Gig::query()->findOrFail($this->gigId);
         } elseif ($this->tripId) {
-            $model = Trip::query()->findOrFail($this->tripId);
+            $relation = Trip::query()->findOrFail($this->tripId);
         } else {
             throw new \DomainException('Нужно выбрать концерт или поездку.');
         }
 
-        try {
-            $coords = ExifHelper::latLon(exif_read_data($this->file->getRealPath()));
-        } catch (\Throwable) {
-            $coords = ['lat' => null, 'lon' => null];
-        }
+        $filename = pathinfo($this->file->getClientOriginalName(), PATHINFO_FILENAME);
+        $basename = "{$filename}.jpg";
+        $photoSlug = "{$relation->slug}/{$basename}";
 
-        $image = (new ImageConverter)
-            ->autoOrient()
-            ->resize(2000, 2000)
-            ->quality(75)
-            ->convert($this->file->getRealPath());
-
-        $pathInfo = pathinfo($this->file->getClientOriginalName());
-        $filename = "{$pathInfo['filename']}.{$image->getExtension()}";
-
-        $folder = $model instanceof Gig
-            ? "gigs/{$model->slug}"
-            : $model->slug;
-
-        \Storage::disk('photos')->putFileAs($folder, $image, $filename);
-
-        $photoSlug = "{$model->slug}/{$filename}";
-
-        $photo = $findUploadedPhoto->execute(\Auth::user()->id, $model, $photoSlug);
+        $photo = $findUploadedPhoto->execute(\Auth::user()->id, $relation, $basename);
 
         if ($photo === null) {
-            $lat = $coords['lat'] ?? null;
-            $lon = $coords['lon'] ?? null;
-
             /** @var \App\Photo $photo */
-            $photo = $model->photos()->make();
+            $photo = $relation->photos()->make();
             $photo->slug = $photoSlug;
-            $photo->point = $lat && $lon
-                ? new Point($lat, $lon)
-                : null;
+            $photo->point = $getPointFromGpsData->execute($readRawExifData->execute($this->file->getRealPath()));
             $photo->views = 0;
             $photo->status = PhotoStatus::Hidden;
             $photo->user_id = \Auth::user()->id;
             $photo->save();
         }
 
-        $this->thumbnails[] = $photo->slug;
+        $destinationFilePath = $relation instanceof Gig
+            ? "gigs/{$relation->slug}/{$basename}"
+            : "{$relation->slug}/{$basename}";
 
+        dispatch(new StorePhotoJob($this->file->getRealPath(), $destinationFilePath));
+
+        $this->thumbnails[] = $photo->slug;
         $this->uploaded++;
     }
 

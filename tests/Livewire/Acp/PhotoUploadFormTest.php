@@ -22,7 +22,7 @@ class PhotoUploadFormTest extends TestCase
         \Storage::fake('photos');
         \Storage::fake(FileUploadConfiguration::disk());
 
-        $gig = GigFactory::new()->create();
+        $gig = GigFactory::new()->withSlug('phpunit-gig')->create();
         $file = UploadedFile::fake()->image('IMG_0025.jpeg');
         $user = UserFactory::new()->admin()->make();
 
@@ -38,7 +38,33 @@ class PhotoUploadFormTest extends TestCase
 
         $this->assertNotNull($photo);
 
-        \Storage::disk('photos')->assertExists("gigs/{$photo->slug}");
+        \Storage::disk('photos')->assertExists('gigs/phpunit-gig/IMG_0025.jpg');
+    }
+
+    public function testPngToJpeg()
+    {
+        \Storage::fake('photos');
+        \Storage::fake(FileUploadConfiguration::disk());
+
+        $gig = GigFactory::new()->withSlug('phpunit-gig')->create();
+        $file = UploadedFile::fake()->image('IMG_1234.png');
+        $user = UserFactory::new()->admin()->make();
+
+        \Livewire::actingAs($user)
+            ->test(PhotoUploadForm::class)
+            ->set('gigId', $gig->id)
+            ->set('file', $file);
+
+        $photo = Photo::query()->firstWhere([
+            'rel_type' => $gig->getMorphClass(),
+            'rel_id' => $gig->id,
+        ]);
+
+        $this->assertNotNull($photo);
+        $this->assertSame('phpunit-gig/IMG_1234.jpg', $photo->slug);
+        $this->assertNull($photo->point);
+
+        \Storage::disk('photos')->assertExists('gigs/phpunit-gig/IMG_1234.jpg');
     }
 
     public function testReplaceTripPhoto()
@@ -71,9 +97,9 @@ class PhotoUploadFormTest extends TestCase
 
         $this->assertNotNull($uploadedPhoto);
         $this->assertTrue($uploadedPhoto->is($photo));
-        $this->assertStringEndsWith('.jpg', $uploadedPhoto->slug);
+        $this->assertSame('our-phpunit-trip/IMG_0013.jpg', $uploadedPhoto->slug);
 
-        \Storage::disk('photos')->assertExists($uploadedPhoto->slug);
+        \Storage::disk('photos')->assertExists('our-phpunit-trip/IMG_0013.jpg');
     }
 
     public function testTripPhoto()
@@ -82,7 +108,7 @@ class PhotoUploadFormTest extends TestCase
         \Storage::fake(FileUploadConfiguration::disk());
 
         $file = UploadedFile::fake()->image('IMG_0011.jpeg');
-        $trip = TripFactory::new()->create();
+        $trip = TripFactory::new()->withSlug('phpunit-trip')->create();
         $user = UserFactory::new()->admin()->make();
 
         \Livewire::actingAs($user)
@@ -96,8 +122,8 @@ class PhotoUploadFormTest extends TestCase
         ]);
 
         $this->assertNotNull($photo);
-        $this->assertStringEndsWith('.jpg', $photo->slug);
+        $this->assertSame('phpunit-trip/IMG_0011.jpg', $photo->slug);
 
-        \Storage::disk('photos')->assertExists($photo->slug);
+        \Storage::disk('photos')->assertExists('phpunit-trip/IMG_0011.jpg');
     }
 }

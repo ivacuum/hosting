@@ -8,14 +8,14 @@ use App\Trip;
 
 class FindUploadedPhotoAction
 {
-    public function execute(int $userId, Gig|Trip $relation, string $slug): Photo|null
+    public function execute(int $userId, Gig|Trip $relation, string $basename): Photo|null
     {
         return Photo::query()
             ->firstWhere([
                 'user_id' => $userId,
                 'rel_type' => $relation->getMorphClass(),
                 'rel_id' => $relation->id,
-                'slug' => $slug,
+                'slug' => "{$relation->slug}/{$basename}",
             ]);
     }
 }
