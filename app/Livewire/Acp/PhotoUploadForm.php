@@ -95,7 +95,7 @@ class PhotoUploadForm extends Component
         return [
             'file' => [
                 'required',
-                'mimetypes:image/heic,image/jpeg,image/png,image/webp',
+                'mimetypes:image/jpeg,image/png',
                 'max:12288',
             ],
             'gigId' => 'required_without:tripId',
