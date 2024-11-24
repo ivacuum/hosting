@@ -44,6 +44,9 @@
       "sort_algorithm": "none",
       "null_adjustment": "always_last"
     },
+    "php_unit_method_casing": {
+      "case": "camel_case"
+    },
     "trailing_comma_in_multiline": {
       "elements": [
         "arrays",
