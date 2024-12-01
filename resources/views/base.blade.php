@@ -115,7 +115,7 @@
       </x-alert-info>
     @endif
   </div>
-  <main class="{{ $contentContainerClasses ?? 'container mt-4' }} {{ $contentContainerExtraClasses ?? '' }}" id="{{ $contentContainerId ?? 'pjax_container' }}">
+  <main class="{{ $contentContainerClasses ?? 'container mt-4' }}" id="{{ $contentContainerId ?? 'pjax_container' }}">
 
 @yield('content_header')
 @yield('content')
