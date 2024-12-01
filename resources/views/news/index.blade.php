@@ -7,7 +7,7 @@
 @endpush
 
 @section('content')
-<div class="flex flex-wrap gap-4 items-center antialiased mb-6">
+<div class="flex flex-wrap gap-4 items-center mb-6">
   <h1 class="font-medium text-3xl tracking-tight mb-1">@lang('Новости')</h1>
   @if (Auth::check())
     <form action="@lng/subscriptions" method="post">
@@ -70,7 +70,7 @@
             </div>
           </header>
           <div class="{{ !$loop->last ? 'mb-12' : '' }}">
-            <div class="hidden sm:block antialiased hanging-punctuation-first lg:text-lg markdown-body break-words js-news-views-observer" itemprop="articleBody" data-id="{{ $model->id }}">{!! $model->html !!}</div>
+            <div class="hidden sm:block hanging-punctuation-first lg:text-lg markdown-body break-words js-news-views-observer" itemprop="articleBody" data-id="{{ $model->id }}">{!! $model->html !!}</div>
           </div>
         </article>
       @endforeach

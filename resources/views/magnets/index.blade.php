@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="flex">
-  <aside class="hidden lg:block flex-shrink-0 antialiased w-56">
+  <aside class="hidden lg:block flex-shrink-0 w-56">
     <div class="lg:sticky lg:top-4">
       <nav>
         @foreach ($tree as $id => $category)
@@ -79,7 +79,7 @@
           <div class="font-medium mb-2 {{ $loop->first ? 'mt-0' : 'mt-6' }}">{{ $magnet->fullDate() }}</div>
           <?php $lastDate = $magnet->registered_at ?>
         @endif
-        <div class="flex flex-wrap md:flex-nowrap justify-center md:justify-start magnets-list-container antialiased hover:dark:bg-slate-800 js-magnets-views-observer" data-id="{{ $magnet->id }}">
+        <div class="flex flex-wrap md:flex-nowrap justify-center md:justify-start magnets-list-container hover:dark:bg-slate-800 js-magnets-views-observer" data-id="{{ $magnet->id }}">
           <div class="flex-shrink-0 w-8 magnet-icon order-1 md:order-none mr-1 md:text-2xl" title="{{ $magnet->category_id->title() }}">
             <?php $icon = $magnet->category_id->icon() ?>
             @svg ($icon)

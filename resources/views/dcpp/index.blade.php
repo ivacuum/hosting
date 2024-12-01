@@ -1,7 +1,7 @@
 @extends('dcpp.base')
 
 @section('content')
-<div class="antialiased hanging-punctuation-first lg:text-lg grid md:grid-cols-4 gap-8">
+<div class="hanging-punctuation-first lg:text-lg grid md:grid-cols-4 gap-8">
   <div>
     <h1 class="font-medium text-4xl tracking-tight mb-2">@lang('О DC++')</h1>
     <div class="font-medium text-2xl text-grey-500 mb-2">@lang('Клиенты')</div>

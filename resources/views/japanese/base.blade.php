@@ -1,3 +1,1 @@
-@extends('base', [
-  'contentContainerExtraClasses' => 'antialiased',
-])
+@extends('base')

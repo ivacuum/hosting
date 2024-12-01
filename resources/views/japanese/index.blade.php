@@ -1,7 +1,7 @@
 @extends('japanese.base')
 
 @section('content_header')
-<div class="antialiased hanging-punctuation-first lg:text-lg">
+<div class="hanging-punctuation-first lg:text-lg">
 @endsection
 
 @section('content_footer')

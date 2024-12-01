@@ -59,11 +59,11 @@
   <div class="border dark:border-slate-700 border-l-0 sm:border-l border-r-0 sm:border-r rounded-none sm:rounded mb-4 -mx-4 sm:mx-0 js-shortcuts-item">
     <div class="px-5 pt-4 pb-0 break-words">
       @if ($post['text'])
-        <div class="antialiased hanging-punctuation-first lg:text-lg mb-0 whitespace-pre-line">{{ $post['text'] }}</div>
+        <div class="hanging-punctuation-first lg:text-lg mb-0 whitespace-pre-line">{{ $post['text'] }}</div>
       @endif
       @if (!empty($post['copy_history']))
-        <div class="antialiased hanging-punctuation-first lg:text-lg {{ $post['text'] ? 'mt-4' : '' }} mb-0"><strong>Репост</strong></div>
-        <div class="antialiased hanging-punctuation-first lg:text-lg mb-0 whitespace-pre-line">{{ $post['copy_history'][0]->text }}</div>
+        <div class="hanging-punctuation-first lg:text-lg {{ $post['text'] ? 'mt-4' : '' }} mb-0"><strong>Репост</strong></div>
+        <div class="hanging-punctuation-first lg:text-lg mb-0 whitespace-pre-line">{{ $post['copy_history'][0]->text }}</div>
       @endif
       @if ($post['attachments'])
         <div class="mt-2">

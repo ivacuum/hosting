@@ -5,7 +5,7 @@
 @include('livewire')
 
 @section('content')
-<div class="antialiased hanging-punctuation-first lg:text-lg">
+<div class="hanging-punctuation-first lg:text-lg">
   <section class="my-0 pt-6">
     <div class="container">
       <h1 class="font-medium text-4xl tracking-tight mb-6">@lang('Скачать') {{ $softwareTitle }} {{ $software[0]['version'] }}</h1>

@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content_header')
-<div class="antialiased hanging-punctuation-first">
+<div class="hanging-punctuation-first">
 @endsection
 
 @section('content_footer')

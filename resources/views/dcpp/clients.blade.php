@@ -1,7 +1,7 @@
 @extends('dcpp.base')
 
 @section('content')
-<div class="antialiased lg:text-lg">
+<div class="lg:text-lg">
   <h1 class="font-medium text-4xl tracking-tight mb-2">@lang('Клиенты DC++')</h1>
   <div class="flex flex-col w-full">
     <a class="font-medium py-1" href="@lng/dc/airdc">@lang('dcpp.airdc')</a>
