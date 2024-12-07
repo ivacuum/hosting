@@ -2,6 +2,7 @@
 
 namespace App\Domain\Exif\Livewire;
 
+use App\Domain\Exif\DivideExifValueAction;
 use App\Domain\Exif\GetExifValueForHumansAction;
 use App\Domain\Exif\Jobs\DeleteTempLivewireFileJob;
 use App\Domain\Exif\ReadExifDataAction;
@@ -29,6 +30,7 @@ class ExifReader extends Component
     public int $size = 0;
     public int $width = 0;
     public int $height = 0;
+    public int|null $gpsImageDirection = null;
     public bool $read = false;
     public array $data = [];
     public string|null $lat = null;
@@ -52,6 +54,7 @@ class ExifReader extends Component
             $this->read = false;
             $this->size = $this->width = $this->height = 0;
             $this->image = null;
+            $this->gpsImageDirection = null;
 
             return;
         }
@@ -66,6 +69,9 @@ class ExifReader extends Component
                 'lat' => $this->lat,
                 'lon' => $this->lon
             ] = ExifHelper::latLon($this->data);
+            $this->gpsImageDirection = ($this->data['GPSImgDirection'] ?? null)
+                ? app(DivideExifValueAction::class)->execute($this->data['GPSImgDirection'])
+                : null;
 
             unset(
                 $this->data['COMPUTED'],
@@ -82,6 +88,7 @@ class ExifReader extends Component
             $this->data = [];
             $this->date = null;
             $this->size = $this->width = $this->height = 0;
+            $this->gpsImageDirection = null;
         }
 
         $this->size = $this->image->getSize();
@@ -95,6 +102,7 @@ class ExifReader extends Component
         $this->date = null;
         $this->read = false;
         $this->size = $this->width = $this->height = 0;
+        $this->gpsImageDirection = null;
 
         dispatch(new DeleteTempLivewireFileJob($this->image->getFilename()));
     }

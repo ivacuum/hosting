@@ -66,10 +66,10 @@
         <a href="https://www.google.com/maps/search/?api=1&query={{ $this->lat }}%2C{{ $this->lon }}">Место снимка на карте</a>.
       @endif
       @if($this->data['GPSAltitude'] ?? '' && $this->data['GPSAltitudeRef'])
-          Фотография сделана на высоте <span class="font-bold lowercase">{{ $this->valueForHumans('GPSAltitude', $this->data['GPSAltitude']) }} {{ $this->valueForHumans('GPSAltitudeRef', $this->data['GPSAltitudeRef']) }}</span>.
+        Фотография сделана на высоте <span class="font-bold lowercase">{{ $this->valueForHumans('GPSAltitude', $this->data['GPSAltitude']) }} {{ $this->valueForHumans('GPSAltitudeRef', $this->data['GPSAltitudeRef']) }}</span>.
       @endif
-      @if($this->data['GPSImgDirection'] ?? '')
-        При этом камера смотрела на <span class="font-bold">{{ $this->valueForHumans('GPSImgDirection', $this->data['GPSImgDirection']) }}</span>, если свериться с компасом <span class="text-muted">(0º — север, 90º — восток, 180º — юг, 270º — запад)</span>.
+      @if($this->gpsImageDirection)
+        При этом камера смотрела на <span class="font-bold">{{ $this->valueForHumans('GPSImgDirection', $this->data['GPSImgDirection']) }}</span><svg class="svg-icon" viewBox="0 0 1792 1792" width="16" height="16" style="transform: rotate({{ $this->gpsImageDirection - 45 }}deg);"><path d="M103,703.4L1683,125L1104.6,1705L867.9,940.1L103,703.4z"/></svg>, если свериться с компасом <span class="text-muted">(0º — север, 90º — восток, 180º — юг, 270º — запад)</span>.
       @endif
       @if(($this->data['GPSSpeed'] ?? '') && !str_starts_with($this->data['GPSSpeed'] ?? '', '0'))
         Скорость движения во время съемки составила <span class="whitespace-nowrap"><span class="font-bold">{{ $this->valueForHumans('GPSSpeed', $this->data['GPSSpeed']) }}</span>

@@ -6,6 +6,8 @@ use Carbon\CarbonImmutable;
 
 class GetExifValueForHumansAction
 {
+    public function __construct(private DivideExifValueAction $divideExifValue) {}
+
     public function execute(string $key, int|string|array|null $value): string
     {
         return match ($key) {
@@ -28,8 +30,8 @@ class GetExifValueForHumansAction
                 2 => 'Автоматическая экспозиция с брекетингом',
                 default => '',
             },
-            'ExposureTime' => "{$this->divide($value, 5)}сек",
-            'FocalLength' => "{$this->divide($value)}мм",
+            'ExposureTime' => "{$this->divideExifValue->execute($value, 5)}сек",
+            'FocalLength' => "{$this->divideExifValue->execute($value)}мм",
             'FocalLengthIn35mmFilm' => match ($value) {
                 24 => 'Основная камера, приближение 1x',
                 default => '',
@@ -51,16 +53,16 @@ class GetExifValueForHumansAction
                 1 => 'Ниже уровня моря',
                 default => '',
             },
-            'GPSAltitude' => \ViewHelper::plural('meters', $this->divide($value, 0)),
+            'GPSAltitude' => \ViewHelper::plural('meters', $this->divideExifValue->execute($value, 0)),
             'GPSSpeedRef' => match ($value) {
                 'K' => 'Километры в час',
                 'M' => 'Мили в час',
                 'N' => 'Узлы',
                 default => '',
             },
-            'GPSSpeed' => $this->divide($value),
+            'GPSSpeed' => $this->divideExifValue->execute($value),
             'GPSImgDirection',
-            'GPSDestBearing' => "{$this->divide($value)}º",
+            'GPSDestBearing' => "{$this->divideExifValue->execute($value)}º",
             'SensingMethod' => match ($value) {
                 1 => 'Not defined',
                 2 => 'One-chip colour area sensor',
@@ -78,16 +80,5 @@ class GetExifValueForHumansAction
             },
             default => '',
         };
-    }
-
-    private function divide(string $value, int $precision = 2)
-    {
-        $parts = explode('/', $value);
-
-        if ($parts[0] === '0') {
-            return 0;
-        }
-
-        return round($parts[0] / $parts[1], $precision);
     }
 }
