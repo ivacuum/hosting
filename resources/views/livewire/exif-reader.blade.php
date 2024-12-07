@@ -13,8 +13,18 @@
       wire:model.live="image"
     >
   </div>
-  <div wire:loading.delay wire:target="image">
+  <div
+    wire:loading.delay
+    wire:target="image"
+    x-data="{ progress: 0 }"
+    x-on:livewire-upload-progress="progress = $event.detail.progress"
+  >
     @lang('Идет загрузка...')
+    <progress
+      class="[&::-webkit-progress-bar]:bg-gray-300 [&::-webkit-progress-value]:bg-green-600 [&::-moz-progress-bar]:bg-green-600 w-40 h-4"
+      max="100"
+      x-bind:value="progress"
+    ></progress>
   </div>
   @if($this->image && $errors->isEmpty())
     <div class="my-4">
