@@ -2,7 +2,11 @@
 /** @var \App\Livewire\ExifReader $this */
 ?>
 
-<form wire:submit="submit">
+<form
+  wire:submit="submit"
+  x-data="{ progress: 0 }"
+  x-on:livewire-upload-progress="progress = $event.detail.progress"
+>
   <p>На этой странице можно загрузить изображение в формате JPEG, чтобы посмотреть какие метаданные в него записал производитель камеры или программа, с помощью которой обрабатывали снимок. Если изображение сохранено из социальных сетей, то они скорее всего вырезали все метаданные в угоду уменьшения размера файла.</p>
   <p>Выберите JPEG-файл:</p>
   @include('tpl.form_errors')
@@ -14,10 +18,9 @@
     >
   </div>
   <div
+    class="mt-4"
     wire:loading.delay
     wire:target="image"
-    x-data="{ progress: 0 }"
-    x-on:livewire-upload-progress="progress = $event.detail.progress"
   >
     @lang('Идет загрузка...')
     <progress
@@ -25,6 +28,7 @@
       max="100"
       x-bind:value="progress"
     ></progress>
+    <span x-text="progress"></span>%
   </div>
   @if($this->image && $errors->isEmpty())
     <div class="my-4">
