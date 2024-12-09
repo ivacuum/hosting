@@ -5,19 +5,19 @@ namespace App\Http\Requests;
 use App\Domain\TripStatus;
 use App\Rules\TripSlug;
 use App\Trip;
+use App\User;
+use Illuminate\Container\Attributes\CurrentUser;
+use Illuminate\Container\Attributes\RouteParameter;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Enum;
 
 class TripUpdateForm extends FormRequest
 {
-    public function rules(): array
-    {
-        /** @var \App\User $user */
-        /** @var \App\Trip $trip */
-        $trip = $this->route('trip');
-        $user = $this->user();
-
+    public function rules(
+        #[RouteParameter('trip')] Trip|null $trip,
+        #[CurrentUser] User $user,
+    ): array {
         return [
             'slug' => [
                 'bail',
