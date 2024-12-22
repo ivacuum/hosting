@@ -3,10 +3,17 @@
 <div class="grid grid-cols-1 gap-4">
   <div>Для загрузки фотографий необходимо выбрать поездку или концерт.</div>
 
-  <?php LivewireForm::model(new App\Photo); ?>
+  <?php $form = LivewireForm::model(new App\Photo); ?>
 
-  {{ LivewireForm::select('tripId')->live()->values($this->tripIds) }}
-  {{ LivewireForm::select('gigId')->live()->values($this->gigIds) }}
+  {{ $form->select('tripId')->live()->values($this->tripIds) }}
+  {{ $form->select('gigId')->live()->values($this->gigIds) }}
+  {{ $form->radio('shouldOverwriteImage')
+        ->label('Перезаписать изображение, если такое уже есть на сервере')
+        ->values([
+          0 => 'Нет',
+          1 => 'Да',
+        ])
+  }}
 
   @include('tpl.form_errors')
 

@@ -63,6 +63,11 @@ class GetExifValueForHumansAction
             'GPSSpeed' => $this->divideExifValue->execute($value),
             'GPSImgDirection',
             'GPSDestBearing' => "{$this->divideExifValue->execute($value)}º",
+            'GPSImgDirectionRef' => match ($value) {
+                'T' => 'Географический Северный полюс',
+                'M' => 'Магнитный Северный полюс',
+                default => '',
+            },
             'SensingMethod' => match ($value) {
                 1 => 'Not defined',
                 2 => 'One-chip colour area sensor',

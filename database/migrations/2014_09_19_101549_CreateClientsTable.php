@@ -281,6 +281,10 @@ return new class extends Migration {
             $table->geography('point', 'point')->nullable();
             $table->unsignedTinyInteger('status')->default(1);
             $table->unsignedInteger('views')->default(0);
+            $table->integer('altitude')->nullable()->comment('In centimeters');
+            $table->unsignedSmallInteger('direction')->nullable()->comment('In degrees');
+            $table->mediumInteger('speed')->nullable()->comment('In meters per hour');
+            $table->dateTime('taken_at')->nullable();
             $table->timestamps();
         });
 

@@ -17,6 +17,41 @@ class PhotoUploadFormTest extends TestCase
 {
     use DatabaseTransactions;
 
+    public function testDoesNotOverwriteImage()
+    {
+        \Storage::fake('photos');
+        \Storage::fake(FileUploadConfiguration::disk());
+
+        $file = UploadedFile::fake()->image('IMG_0013.jpeg');
+
+        $trip = TripFactory::new()
+            ->withSlug('our-phpunit-trip')
+            ->create();
+
+        $photo = PhotoFactory::new()
+            ->withTripId($trip->id)
+            ->withSlug('our-phpunit-trip/IMG_0013.jpg')
+            ->create();
+
+        $user = UserFactory::new()->admin()->make();
+
+        \Livewire::actingAs($user)
+            ->test(PhotoUploadForm::class)
+            ->set('tripId', $trip->id)
+            ->set('file', $file);
+
+        $uploadedPhoto = Photo::query()->firstWhere([
+            'rel_type' => $trip->getMorphClass(),
+            'rel_id' => $trip->id,
+        ]);
+
+        $this->assertNotNull($uploadedPhoto);
+        $this->assertTrue($uploadedPhoto->is($photo));
+        $this->assertSame('our-phpunit-trip/IMG_0013.jpg', $uploadedPhoto->slug);
+
+        \Storage::disk('photos')->assertMissing('our-phpunit-trip/IMG_0013.jpg');
+    }
+
     public function testGigPhoto()
     {
         \Storage::fake('photos');
@@ -88,6 +123,7 @@ class PhotoUploadFormTest extends TestCase
         \Livewire::actingAs($user)
             ->test(PhotoUploadForm::class)
             ->set('tripId', $trip->id)
+            ->set('shouldOverwriteImage', true)
             ->set('file', $file);
 
         $uploadedPhoto = Photo::query()->firstWhere([

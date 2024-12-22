@@ -5,7 +5,12 @@ namespace App\Livewire\Acp;
 use App\Action\FindUploadedPhotoAction;
 use App\Action\ListGigsForInputSelectAction;
 use App\Action\ListTripsForInputSelectAction;
+use App\Domain\Exif\GetAltitudeInCentimetersFromGpsDataAction;
+use App\Domain\Exif\GetDirectionInDegreesFromGpsDataAction;
 use App\Domain\Exif\GetPointFromGpsDataAction;
+use App\Domain\Exif\GetSpeedInMetersPerHourFromGpsDataAction;
+use App\Domain\Exif\GetTakenAtFromExifDataAction;
+use App\Domain\Exif\Jobs\DeleteTempLivewireFileJob;
 use App\Domain\Exif\ReadRawExifDataAction;
 use App\Domain\PhotoStatus;
 use App\Gig;
@@ -32,6 +37,7 @@ class PhotoUploadForm extends Component
     public $tripId;
     public int $total = 0;
     public int $uploaded = 0;
+    public bool $shouldOverwriteImage = false;
     public array $thumbnails = [];
     public TemporaryUploadedFile|string|null $file = null;
 
@@ -49,7 +55,11 @@ class PhotoUploadForm extends Component
 
     public function updatedFile(
         FindUploadedPhotoAction $findUploadedPhoto,
+        GetAltitudeInCentimetersFromGpsDataAction $getAltitudeInCentimetersFromGpsData,
+        GetDirectionInDegreesFromGpsDataAction $getDirectionInDegreesFromGpsData,
         GetPointFromGpsDataAction $getPointFromGpsData,
+        GetSpeedInMetersPerHourFromGpsDataAction $getSpeedInMetersFromGpsData,
+        GetTakenAtFromExifDataAction $getTakenAtFromExifData,
         ReadRawExifDataAction $readRawExifData,
     ) {
         $this->authorize('create', Photo::class);
@@ -70,13 +80,28 @@ class PhotoUploadForm extends Component
         $photo = $findUploadedPhoto->execute(\Auth::user()->id, $relation, $basename);
 
         if ($photo === null) {
+            $rawExifData = $readRawExifData->execute($this->file->getRealPath());
+
             /** @var \App\Photo $photo */
             $photo = $relation->photos()->make();
             $photo->slug = $photoSlug;
-            $photo->point = $getPointFromGpsData->execute($readRawExifData->execute($this->file->getRealPath()));
+            $photo->point = $getPointFromGpsData->execute($rawExifData);
+            $photo->speed = $getSpeedInMetersFromGpsData->execute($rawExifData);
             $photo->views = 0;
             $photo->status = PhotoStatus::Hidden;
             $photo->user_id = \Auth::user()->id;
+            $photo->altitude = $getAltitudeInCentimetersFromGpsData->execute($rawExifData);
+            $photo->taken_at = $getTakenAtFromExifData->execute($rawExifData);
+            $photo->direction = $getDirectionInDegreesFromGpsData->execute($rawExifData);
+            $photo->save();
+        } else {
+            $rawExifData = $readRawExifData->execute($this->file->getRealPath());
+
+            $photo->point ??= $getPointFromGpsData->execute($rawExifData);
+            $photo->speed = $getSpeedInMetersFromGpsData->execute($rawExifData);
+            $photo->altitude = $getAltitudeInCentimetersFromGpsData->execute($rawExifData);
+            $photo->taken_at = $getTakenAtFromExifData->execute($rawExifData);
+            $photo->direction = $getDirectionInDegreesFromGpsData->execute($rawExifData);
             $photo->save();
         }
 
@@ -84,7 +109,11 @@ class PhotoUploadForm extends Component
             ? "gigs/{$relation->slug}/{$basename}"
             : "{$relation->slug}/{$basename}";
 
-        dispatch(new StorePhotoJob($this->file->getRealPath(), $destinationFilePath));
+        if ($photo->wasRecentlyCreated || $this->shouldOverwriteImage) {
+            dispatch(new StorePhotoJob($this->file->getRealPath(), $destinationFilePath));
+        } else {
+            dispatch(new DeleteTempLivewireFileJob($this->file->getFilename()));
+        }
 
         $this->thumbnails[] = $photo->slug;
         $this->uploaded++;

@@ -17,6 +17,10 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * @property Spatial\Point $point
  * @property PhotoStatus $status
  * @property int $views
+ * @property int $altitude
+ * @property int $direction
+ * @property int $speed
+ * @property \Carbon\CarbonImmutable $taken_at
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  * @property Trip $rel
