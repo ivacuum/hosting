@@ -61,7 +61,7 @@ return [
             'hints' => false,    // Show hints for common mistakes
         ],
         'mail' => ['full_log' => false],
-        'views' => ['data' => false],    //Note: Can slow down the application, because the data can be quite large..
+        'views' => ['data' => false],    // Note: Can slow down the application, because the data can be quite large...
         'route' => ['label' => true],  // show complete route on bar
         'logs' => ['file' => null],
         'cache' => ['values' => true], // collect cache values
