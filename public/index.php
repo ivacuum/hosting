@@ -10,8 +10,6 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $app = require_once __DIR__ . '/../bootstrap/app.php';
 
-$kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
-
 $request = Illuminate\Http\Request::capture();
 
 $appConfig = require __DIR__ . '/../config/app.php';
@@ -38,8 +36,4 @@ if (is_array($locales) && in_array($locale, array_keys($locales)) && $locale !==
     $_SERVER['REQUEST_URI'] = $requestUri;
 }
 
-$response = $kernel->handle(
-    $request = Illuminate\Http\Request::capture()
-)->send();
-
-$kernel->terminate($request, $response);
+$app->handleRequest(Illuminate\Http\Request::capture());

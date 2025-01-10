@@ -281,8 +281,8 @@ class Trip extends Model
                 ]);
 
                 return [
-                    'markdown' => $value,
-                    'html' => $converter->convert((new TextImagesParser)->parse($value))->getContent(),
+                    'markdown' => $value ?? '',
+                    'html' => $converter->convert((new TextImagesParser)->parse($value ?? ''))->getContent(),
                 ];
             },
         );
