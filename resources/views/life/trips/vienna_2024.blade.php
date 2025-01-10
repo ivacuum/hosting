@@ -201,35 +201,121 @@ IMG_6856.jpeg
 @endru
 IMG_6858.jpeg
 
+@ru
+  <p>На столбе информация о городском вай-фае.</p>
+@endru
 IMG_6859.jpeg
+
+@ru
+  <p>Дома напротив центрального вокзала.</p>
+@endru
 IMG_6860.jpeg
+
+@ru
+  <p>Кодовые замки, в одном из которых лежал ключ от арендованной квартиры.</p>
+@endru
 IMG_6861.jpeg
+
+@ru
+  <p>Разметка на детской площадке у дома.</p>
+@endru
 IMG_6862.jpeg
 IMG_6863.jpeg
+
+@ru
+  <p>Что за здание?</p>
+@endru
 IMG_6864.jpeg
+
+@ru
+  <p>У входа в гостиницу упростили тушение бычков.</p>
+@endru
 IMG_6865.jpeg
+
+@ru
+  <p>Дорожка сквозь парк.</p>
+@endru
 IMG_6866.jpeg
+
+@ru
+  <p>Остановка трамвая.</p>
+@endru
 IMG_6867.jpeg
+
+@ru
+  <p>Аллея.</p>
+@endru
 IMG_6868.jpeg
+
+@ru
+  <p>Ворота перед замком Бельведер.</p>
+@endru
 IMG_6869.jpeg
+
+@ru
+  <p>Территория перед замком.</p>
+@endru
 IMG_6870.jpeg
+
+@ru
+  <p>Территория за замком.</p>
+@endru
 IMG_6871.jpeg
-IMG_6872.jpeg
-IMG_6873.jpeg
+
+@ru
+  <p>Фонтаны?</p>
+@endru
 IMG_6874.jpeg
+
+@ru
+  <p>Круглые кусты.</p>
+@endru
 IMG_6879.jpeg
+
+@ru
+  <p>Слегка неухоженные елки.</p>
+@endru
 IMG_6880.jpeg
+
+@ru
+  <p>Сразу три фигуры в одном дереве.</p>
+@endru
 IMG_6881.jpeg
+
+@ru
+  <p>Фонтан.</p>
+@endru
 IMG_6882.jpeg
-IMG_6883.jpeg
-IMG_6901
+
+@ru
+  <p>Радуга в фонтане.</p>
+@endru
+IMG_6901.jpeg
+
+@ru
+  <p>Ствол дерева обрастает плющем.</p>
+@endru
 IMG_6911.jpeg
+
+@ru
+  <p>Деревянная ограда молодых деревьев. Чистое и ровное дорожное покрытие.</p>
+@endru
 IMG_6912.jpeg
+
+@ru
+  <p>Улица.</p>
+@endru
 IMG_6913.jpeg
-IMG_6914.jpeg
-IMG_6915.jpeg
-IMG_6916.jpeg
+
+@ru
+  <p>Что за здание? Правая башня на реконструкции.</p>
+@endru
 IMG_6917.jpeg
+
+@ru
+  <p>Много людей возле него отдыхает.</p>
+@endru
+IMG_6915.jpeg
 IMG_6918.jpeg
 IMG_6919.jpeg
 IMG_6920.jpeg
