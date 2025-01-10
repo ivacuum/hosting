@@ -40,21 +40,20 @@ class MyProfileTest extends TestCase
 
     public function testUpdateLogin()
     {
-        $user = UserFactory::new()->create();
-        $login = $user->login . $user->login;
+        $user = UserFactory::new()->withLogin('phpunit')->create();
 
         \Event::fake(\App\Events\Stats\MyProfileChanged::class);
 
         $this->be($user)
             ->put('my/profile', [
                 'email' => $user->email,
-                'username' => $login,
+                'username' => 'phpunit-phpunit',
             ])
             ->assertFound();
 
         $user->refresh();
 
-        $this->assertSame($login, $user->login);
+        $this->assertSame('phpunit-phpunit', $user->login);
 
         \Event::assertDispatched(\App\Events\Stats\MyProfileChanged::class);
     }
