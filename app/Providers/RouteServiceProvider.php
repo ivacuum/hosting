@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Http\Middleware\AcpNavigation;
-use App\Http\Middleware\Admin;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -27,20 +25,6 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         parent::boot();
-    }
-
-    public function map()
-    {
-        \Route::prefix('')
-            ->group(base_path('routes/simple.php'));
-
-        \Route::middleware(['web', 'auth', Admin::class, AcpNavigation::class])
-            ->prefix('acp')
-            ->name('acp.')
-            ->group(base_path('routes/acp.php'));
-
-        \Route::middleware('web')
-            ->group(base_path('routes/web.php'));
     }
 
     private function configureRateLimiting()
