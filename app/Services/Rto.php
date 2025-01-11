@@ -8,8 +8,8 @@ use Illuminate\Http\Client\Factory;
 
 class Rto
 {
-    private const string API_ENDPOINT = 'https://api.rutracker.cc/v1/';
-    private const string SITE_ENDPOINT = 'https://rutracker.org/forum/';
+    private const string API_ENDPOINT = 'https://api-rto.vacuum.name/v1/';
+    private const string SITE_ENDPOINT = 'https://rto.vacuum.name/forum/';
 
     public function __construct(private Factory $http) {}
 
@@ -113,9 +113,6 @@ class Rto
             ->timeout(\App::runningInConsole() ? 60 : 15)
             ->withOptions([
                 RequestOptions::PROXY => Config::RtoProxy->get(),
-                RequestOptions::FORCE_IP_RESOLVE => \App::isProduction()
-                    ? 'v6'
-                    : null,
             ]);
     }
 
@@ -127,9 +124,6 @@ class Rto
             ->retry(5, 5000)
             ->withOptions([
                 RequestOptions::PROXY => Config::RtoProxy->get(),
-                RequestOptions::FORCE_IP_RESOLVE => \App::isProduction()
-                    ? 'v6'
-                    : null,
             ]);
     }
 }

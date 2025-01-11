@@ -14,6 +14,8 @@ class GetExternalServiceByHostAction
             'api.wanikani.com' => ExternalService::Wanikani,
 
             'api.rutracker.cc',
+            'api-rto.vacuum.name',
+            'rto.vacuum.name',
             'rutracker.org' => ExternalService::Rutracker,
 
             'example.com' => ExternalService::Example,

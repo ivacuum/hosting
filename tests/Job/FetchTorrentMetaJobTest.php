@@ -114,7 +114,7 @@ class FetchTorrentMetaJobTest extends TestCase
         $magnet = MagnetFactory::new()->withRtoId(911)->create();
 
         \Http::fake([
-            'api.rutracker.cc/v1/get_tor_topic_data?by=topic_id&val=911' => \Http::response([
+            'api-rto.vacuum.name/v1/get_tor_topic_data?by=topic_id&val=911' => \Http::response([
                 'result' => [
                     911 => null,
                 ],
@@ -168,7 +168,7 @@ class FetchTorrentMetaJobTest extends TestCase
     private function fakeHttpClient(RtoTopicData $topicData)
     {
         \Http::fake([
-            "api.rutracker.cc/v1/get_tor_topic_data?by=topic_id&val={$topicData->id}" => \Http::response([
+            "api-rto.vacuum.name/v1/get_tor_topic_data?by=topic_id&val={$topicData->id}" => \Http::response([
                 'result' => [
                     $topicData->id => $topicData->toJson(),
                 ],
