@@ -29,7 +29,6 @@ Schedule::command('model:prune', [
     ->appendOutputTo($cronOutput);
 
 Schedule::command(Commands\TrimMetricsStream::class)
-    ->cron('38 2,14 * * *')
     ->twiceDailyAt(first: 2, second: 14, offset: 38)
     ->appendOutputTo($cronOutput);
 
