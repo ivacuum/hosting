@@ -22,7 +22,7 @@ Schedule::command(Commands\SitemapBuild::class)
 Schedule::command('model:prune', [
     '--model' => [
         App\ExternalHttpRequest::class,
-        App\PasswordReset::class,
+        App\PasswordResetToken::class,
     ],
 ])
     ->twiceDailyAt(first: 2, second: 14, offset: 35)
