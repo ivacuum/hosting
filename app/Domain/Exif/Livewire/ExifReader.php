@@ -4,11 +4,11 @@ namespace App\Domain\Exif\Livewire;
 
 use App\Domain\Exif\DivideExifValueAction;
 use App\Domain\Exif\GetExifValueForHumansAction;
+use App\Domain\Exif\GetTakenAtFromExifDataAction;
 use App\Domain\Exif\Jobs\DeleteTempLivewireFileJob;
 use App\Domain\Exif\ReadExifDataAction;
 use App\Domain\Exif\ShouldDeleteImageForTestAction;
 use Carbon\CarbonImmutable;
-use Carbon\Exceptions\InvalidFormatException;
 use Ivacuum\Generic\Utilities\ExifHelper;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -37,8 +37,11 @@ class ExifReader extends Component
     public string|null $lon = null;
     public CarbonImmutable|null $date = null;
 
-    public function submit(ReadExifDataAction $readExifData, ShouldDeleteImageForTestAction $shouldDeleteImageForTest): void
-    {
+    public function submit(
+        GetTakenAtFromExifDataAction $getTakenAtFromExifData,
+        ReadExifDataAction $readExifData,
+        ShouldDeleteImageForTestAction $shouldDeleteImageForTest,
+    ): void {
         if ($shouldDeleteImageForTest->execute()) {
             // Не найден другой способ протестировать попытку чтения удаленного файла
             \Storage::disk(FileUploadConfiguration::disk())
@@ -64,7 +67,7 @@ class ExifReader extends Component
         try {
             $this->data = $readExifData->execute($this->image->getRealPath());
             $this->read = true;
-            $this->date = $this->parseDate();
+            $this->date = $getTakenAtFromExifData->execute($this->data);
             [
                 'lat' => $this->lat,
                 'lon' => $this->lon
@@ -110,18 +113,5 @@ class ExifReader extends Component
     public function valueForHumans(string $key, int|array|string|null $value): string
     {
         return app(GetExifValueForHumansAction::class)->execute($key, $value);
-    }
-
-    private function parseDate(): CarbonImmutable|null
-    {
-        if (!isset($this->data['DateTime'])) {
-            return null;
-        }
-
-        try {
-            return CarbonImmutable::createFromFormat('Y:m:d H:i:s', $this->data['DateTime']);
-        } catch (InvalidFormatException) {
-            return CarbonImmutable::parse($this->data['DateTime']);
-        }
     }
 }
