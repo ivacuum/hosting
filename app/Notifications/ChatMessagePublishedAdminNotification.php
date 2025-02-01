@@ -3,10 +3,14 @@
 namespace App\Notifications;
 
 use App\ChatMessage;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
 
-class ChatMessagePublishedAdminNotification extends Notification
+class ChatMessagePublishedAdminNotification extends Notification implements ShouldQueue
 {
+    use Queueable;
+
     public function __construct(private ChatMessage $chatMessage) {}
 
     public function toTelegram(): string

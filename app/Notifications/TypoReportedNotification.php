@@ -3,10 +3,14 @@
 namespace App\Notifications;
 
 use App\Domain\Telegram\Action\EscapeMarkdownCharactersAction;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
 
-class TypoReportedNotification extends Notification
+class TypoReportedNotification extends Notification implements ShouldQueue
 {
+    use Queueable;
+
     public function __construct(private string $selection, private string $page) {}
 
     public function toTelegram(): string

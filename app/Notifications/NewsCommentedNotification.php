@@ -6,10 +6,14 @@ use App\Comment;
 use App\Domain\Telegram\Action\EscapeMarkdownCharactersAction;
 use App\News;
 use App\User;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
 
-class NewsCommentedNotification extends Notification
+class NewsCommentedNotification extends Notification implements ShouldQueue
 {
+    use Queueable;
+
     public function __construct(public News $news, public Comment $comment) {}
 
     public function toTelegram()
