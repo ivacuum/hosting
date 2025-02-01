@@ -6,6 +6,7 @@ use App\Http\Requests\MyPasswordUpdateForm;
 use App\User;
 use Illuminate\Container\Attributes\CurrentUser;
 use Illuminate\Contracts\Hashing\Hasher;
+use Illuminate\Support\Facades\Auth;
 
 class MyPasswordController
 {
@@ -26,6 +27,11 @@ class MyPasswordController
 
         $user->password = $request->newPassword;
         $user->save();
+
+        // Можно будет включить, когда хэш пароля будет сохранен в сессии
+        // Auth::logoutOtherDevices($request->newPassword);
+
+        $request->session()->regenerate();
 
         event(new \App\Events\Stats\MyPasswordChanged);
 
