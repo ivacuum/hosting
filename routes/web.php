@@ -152,6 +152,7 @@ Route::get('mail/view/{timestamp}/{id}', [Ctrl\MailController::class, 'view']);
 
 Route::middleware('auth')->group(function () {
     Route::view('my', 'my.index');
+    Route::get('my/link-telegram', Ctrl\MyLinkTelegramController::class);
     // Route::post('my/2fa', []);
     // Route::delete('my/2fa', []);
     // Route::get('my/2fa-qr', []);

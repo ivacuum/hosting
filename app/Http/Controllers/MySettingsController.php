@@ -21,6 +21,7 @@ class MySettingsController
         $user->notify_news = $request->notifyNews;
         $user->notify_trips = $request->notifyTrips;
         $user->magnet_short_title = $request->magnetShortTitle;
+        $user->notification_delivery_method = $request->notificationDeliveryMethod;
         $user->save();
 
         event(new \App\Events\Stats\MySettingsChanged);

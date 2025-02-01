@@ -230,6 +230,12 @@ return new class extends Migration {
             $table->timestamps();
         });
 
+        Schema::create('link_requests', function (Blueprint $table) {
+            $table->unsignedInteger('user_id')->primary();
+            $table->string('token');
+            $table->timestamp('created_at');
+        });
+
         Schema::create('magnets', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id')->default(0);
@@ -362,6 +368,7 @@ return new class extends Migration {
             $table->unsignedTinyInteger('notify_gigs')->default(App\Domain\NotificationDeliveryMethod::Disabled->value);
             $table->unsignedTinyInteger('notify_news')->default(App\Domain\NotificationDeliveryMethod::Disabled->value);
             $table->unsignedTinyInteger('notify_trips')->default(App\Domain\NotificationDeliveryMethod::Disabled->value);
+            $table->unsignedTinyInteger('notification_delivery_method')->default(App\Domain\NotificationDeliveryMethod::Disabled->value);
             $table->string('avatar')->default('');
             $table->unsignedBigInteger('telegram_id')->nullable();
             $table->ipAddress('ip')->default('');
@@ -370,6 +377,8 @@ return new class extends Migration {
             $table->timestamps();
             $table->timestamp('last_login_at')->nullable();
             $table->timestamp('password_changed_at')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('telegram_linked_at')->nullable();
         });
 
         Schema::create('vocabularies', function (Blueprint $table) {

@@ -24,6 +24,7 @@ use Illuminate\Notifications\Notifiable;
  * @property NotificationDeliveryMethod $notify_gigs
  * @property NotificationDeliveryMethod $notify_news
  * @property NotificationDeliveryMethod $notify_trips
+ * @property NotificationDeliveryMethod $notification_delivery_method
  * @property string $avatar
  * @property int $telegram_id
  * @property string $ip
@@ -33,6 +34,8 @@ use Illuminate\Notifications\Notifiable;
  * @property \Carbon\CarbonImmutable $updated_at
  * @property \Carbon\CarbonImmutable $last_login_at
  * @property \Carbon\CarbonImmutable $password_changed_at
+ * @property \Carbon\CarbonImmutable $email_verified_at
+ * @property \Carbon\CarbonImmutable $telegram_linked_at
  * @property \Illuminate\Database\Eloquent\Collection<int, ChatMessage> $chatMessages
  * @property \Illuminate\Database\Eloquent\Collection<int, Comment> $comments
  * @property \Illuminate\Database\Eloquent\Collection<int, Email> $emails
@@ -68,6 +71,7 @@ class User extends Authenticatable implements HasLocalePreference
         'notify_gigs' => NotificationDeliveryMethod::Disabled,
         'notify_news' => NotificationDeliveryMethod::Disabled,
         'notify_trips' => NotificationDeliveryMethod::Disabled,
+        'notification_delivery_method' => NotificationDeliveryMethod::Disabled,
     ];
 
     // Relations
@@ -226,8 +230,11 @@ class User extends Authenticatable implements HasLocalePreference
             'notify_news' => NotificationDeliveryMethod::class,
             'notify_trips' => NotificationDeliveryMethod::class,
             'last_login_at' => 'datetime',
+            'email_verified_at' => 'datetime',
             'magnet_short_title' => 'int',
+            'telegram_linked_at' => 'datetime',
             'password_changed_at' => 'datetime',
+            'notification_delivery_method' => NotificationDeliveryMethod::class,
         ];
     }
 

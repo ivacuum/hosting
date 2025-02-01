@@ -18,6 +18,7 @@ class MySettingsUpdateForm extends FormRequest
     public readonly NotificationDeliveryMethod $notifyGigs;
     public readonly NotificationDeliveryMethod $notifyNews;
     public readonly NotificationDeliveryMethod $notifyTrips;
+    public readonly NotificationDeliveryMethod $notificationDeliveryMethod;
 
     public function rules(): array
     {
@@ -26,6 +27,7 @@ class MySettingsUpdateForm extends FormRequest
             'notify_gigs' => new Enum(NotificationDeliveryMethod::class),
             'notify_news' => new Enum(NotificationDeliveryMethod::class),
             'notify_trips' => new Enum(NotificationDeliveryMethod::class),
+            'notification_delivery_method' => new Enum(NotificationDeliveryMethod::class),
             'magnet_short_title' => 'in:0,1',
         ];
     }
@@ -42,5 +44,7 @@ class MySettingsUpdateForm extends FormRequest
         $this->notifyNews = $this->enum('notify_news', NotificationDeliveryMethod::class) ?? NotificationDeliveryMethod::Disabled;
 
         $this->notifyTrips = $this->enum('notify_trips', NotificationDeliveryMethod::class) ?? NotificationDeliveryMethod::Disabled;
+
+        $this->notificationDeliveryMethod = $this->enum('notification_delivery_method', NotificationDeliveryMethod::class) ?? NotificationDeliveryMethod::Disabled;
     }
 }
