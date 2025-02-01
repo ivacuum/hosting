@@ -10,7 +10,9 @@ use App\Services\Rto;
 
 class FetchTorrentMetaJob extends AbstractJob
 {
-    private array $rtoIds;
+    public $tries = 1;
+
+    public array $rtoIds;
 
     public function __construct(int ...$rtoIds)
     {
