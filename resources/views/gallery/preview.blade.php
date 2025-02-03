@@ -11,9 +11,9 @@
   </div>
   <div class="lg:col-span-7 xl:col-span-3">
     <div>Ссылка:</div>
-    <input class="form-input select-all" type="text" value="{{ $image->originalUrl() }}">
+    <input class="the-input select-all" type="text" value="{{ $image->originalUrl() }}">
     <div class="mt-2">Полная картинка:</div>
-    <input class="form-input select-all" type="text" value="[img]{{ $image->originalUrl() }}[/img]">
+    <input class="the-input select-all" type="text" value="[img]{{ $image->originalUrl() }}[/img]">
   </div>
 </div>
 @endsection

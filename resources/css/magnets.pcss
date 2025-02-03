@@ -36,7 +36,7 @@
   .rutracker-post .sp-wrap,
   .rutracker-post .sp-head,
   .rutracker-post .sp-body {
-    border-color: theme('colors.slate[600]');
+    border-color: var(--color-slate-600);
   }
 }
 
@@ -201,8 +201,8 @@
 
 @media (prefers-color-scheme: dark) {
   .rutracker-post .sp-wrap {
-    background-color: theme('colors.slate[800]');
-    border-color: theme('colors.slate[600]');
+    background-color: var(--color-slate-800);
+    border-color: var(--color-slate-600);
   }
 }
 
@@ -270,13 +270,9 @@
   margin-top: 2rem;
 }
 
-@screen md {
+@media (min-width: theme(--breakpoint-md)) {
   .magnets-list-container + .magnets-list-container {
     margin-top: 1rem;
-  }
-
-  .magnets-list-container:hover {
-    background-color: #f6f6f6;
   }
 }
 

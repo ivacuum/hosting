@@ -12,7 +12,7 @@
     <div class="mb-4">
       <input
         required
-        class="form-input"
+        class="the-input"
         type="email"
         name="email"
         value="{{ old('email') }}"
@@ -24,7 +24,7 @@
     <input type="hidden" name="gigs" value="{{ App\Domain\NotificationDeliveryMethod::Disabled }}">
     <label class="flex gap-2 items-center">
       <input
-        class="border-gray-300 rounded"
+        class="not-checked:border-gray-300 text-sky-600 rounded-sm"
         type="checkbox"
         name="gigs"
         value="{{ App\Domain\NotificationDeliveryMethod::Mail }}"
@@ -36,7 +36,7 @@
     <input type="hidden" name="news" value="{{ App\Domain\NotificationDeliveryMethod::Disabled }}">
     <label class="flex gap-2 items-center">
       <input
-        class="border-gray-300 rounded"
+        class="not-checked:border-gray-300 text-sky-600 rounded-sm"
         type="checkbox"
         name="news"
         value="{{ App\Domain\NotificationDeliveryMethod::Mail }}"
@@ -49,7 +49,7 @@
       <input type="hidden" name="trips" value="{{ App\Domain\NotificationDeliveryMethod::Disabled }}">
       <label class="flex gap-2 items-center">
         <input
-          class="border-gray-300 rounded"
+          class="not-checked:border-gray-300 text-sky-600 rounded-sm"
           type="checkbox"
           name="trips"
           value="{{ App\Domain\NotificationDeliveryMethod::Mail }}"

@@ -33,7 +33,7 @@
               <label class="block cursor-pointer py-2">
                 <input
                   :id="`column_${i - 1}`"
-                  class="border-gray-300 cursor-pointer"
+                  class="not-checked:border-gray-300 text-sky-600 cursor-pointer"
                   type="checkbox"
                   :value="i - 1"
                   v-model="checkedColumns"
@@ -76,7 +76,7 @@
           </div>
           <div>
             <input
-              class="form-input text-center"
+              class="the-input text-center"
               type="text"
               autocapitalize="none"
               autocomplete="off"
@@ -111,7 +111,7 @@
 </div>
 
 <div class="mt-12 max-w-[600px]">
-  <div class="font-medium text-2xl mb-2">@ru Что дальше? @en What next? @endru</div>
+  <div class="font-medium text-2xl mb-2 dark:text-white">@ru Что дальше? @en What next? @endru</div>
   @ru
     <p>Рады, что у вас стало хорошо получаться набирать слоги! Теперь можно закрепить навык в <a class="link" href="/japanese/words-trainer">следующем тренажере</a>, который посвящен набору настоящих японских слов. Так между делом и получится запомнить как они звучат.</p>
     <p>Еще можно <a class="link" href="{{ to('trainers/numbers', ['lang' => 'ja']) }}">потренировать японские числа</a>. Самое удивительное открытие будет в том, что <a class="link" href="{{ to('trainers/numbers', ['lang' => 'zh']) }}">китайские числа</a> вы тоже автоматически сможете распознавать, ведь в японском используются китайские иероглифы.</p>
@@ -122,7 +122,7 @@
 
 @ru
   <div class="mt-12 max-w-[600px]">
-    <div class="font-medium text-2xl mb-2">Почему набор латиницей, а не кириллицей?</div>
+    <div class="font-medium text-2xl mb-2 dark:text-white">Почему набор латиницей, а не кириллицей?</div>
     <p>Взгляните на <a class="link" href="/life/countries/japan">заметки и фотографии</a> из неоднократных поездок в Японию. Попробуйте на них найти кириллизированные японские надписи. Не получилось? Или получилось найти только названия городов? Что ж. Латиница поможет в поездке, а кириллица — едва ли.</p>
   </div>
 @en
@@ -133,7 +133,7 @@
 @endru
 
 <div class="mt-12 max-w-[600px]">
-  <div class="font-medium text-2xl mb-2 mt-12">@lang('Обратная связь')</div>
+  <div class="font-medium text-2xl mb-2 mt-12 dark:text-white">@lang('Обратная связь')</div>
   @ru
     <p>Поделитесь своим опытом использования тренажера или задайте вопрос. Мы постараемся обработать информацию и сделать тренажер еще лучше. <span class="whitespace-nowrap" lang="ja">ありがとうございます。</span></p>
   @en

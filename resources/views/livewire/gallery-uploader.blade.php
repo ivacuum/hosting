@@ -4,7 +4,7 @@
   @include('tpl.form_errors')
   <div wire:loading.remove.delay wire:target="files">
     <input
-      class="block w-full"
+      class="block text-gray-500 w-full file:px-4 file:py-1 file:rounded-sm file:border-0 file:bg-sky-700 file:text-white hover:file:bg-sky-800"
       accept="image/gif,image/jpeg,image/png"
       type="file"
       multiple
@@ -24,9 +24,9 @@
         <div class="lg:w-4/6">
           <div>
             <div>Ссылка:</div>
-            <textarea class="form-input select-all" rows="{{ count($this->files) }}">{{ $this->linksWithoutTags() }}</textarea>
+            <textarea class="the-input select-all" rows="{{ count($this->files) }}">{{ $this->linksWithoutTags() }}</textarea>
             <div class="mt-2">Полная картинка:</div>
-            <input class="form-input select-all" type="text" value="{{ $this->linksWithTags() }}">
+            <input class="the-input select-all" type="text" value="{{ $this->linksWithTags() }}">
           </div>
         </div>
         <h3 class="font-medium text-2xl mb-2 mt-12">Индивидуальные ссылки</h3>
@@ -38,9 +38,9 @@
           </div>
           <div class="lg:col-span-3">
             <div>Ссылка:</div>
-            <input class="form-input select-all" type="text" value="{{ url($link['original']) }}">
+            <input class="the-input select-all" type="text" value="{{ url($link['original']) }}">
             <div class="mt-2">Полная картинка:</div>
-            <input class="form-input select-all" type="text" value="[img]{{ url($link['thumbnail']) }}[/img]">
+            <input class="the-input select-all" type="text" value="[img]{{ url($link['thumbnail']) }}[/img]">
           </div>
           <div class="lg:col-span-2"></div>
         @endforeach

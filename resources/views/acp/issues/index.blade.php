@@ -18,7 +18,7 @@
 <table class="table-stats table-stats-align-top table-adaptive">
   <thead>
     <tr>
-      <th><input class="border-gray-300 js-select-all" type="checkbox" data-selector=".models-checkbox"></th>
+      <th><input class="not-checked:border-gray-300 text-sky-600 js-select-all" type="checkbox" data-selector=".models-checkbox"></th>
       <x-th-numeric-sortable key="id"/>
       <x-th key="title"/>
       <th></th>
@@ -30,7 +30,7 @@
   <tbody>
     @foreach ($models as $model)
       <tr>
-        <td><input class="border-gray-300 models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
+        <td><input class="not-checked:border-gray-300 text-sky-600 models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
         <td class="md:text-right">{{ $model->id }}</td>
         <td>
           <a href="{{ Acp::show($model) }}">

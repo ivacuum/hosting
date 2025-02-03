@@ -5,7 +5,7 @@
   <form class="flex mb-2 lg:mb-0" action="@lng/magnets">
     <div class="flex w-full">
       <input
-        class="form-input rounded-r-none js-search-input"
+        class="the-input rounded-r-none js-search-input"
         type="search"
         name="q"
         value="{{ request('q') }}"

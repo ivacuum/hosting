@@ -12,8 +12,8 @@
 <h1 class="font-medium text-3xl tracking-tight mb-2">@lang('Японский язык')</h1>
 <div class="grid md:grid-cols-2 gap-8 mt-6">
   <div class="flex">
-    <div class="border dark:border-slate-700 overflow-hidden rounded">
-      <div class="bg-greenish-600 px-5 py-3 text-white">
+    <div class="border border-gray-200 dark:border-slate-700 overflow-hidden rounded-sm">
+      <div class="bg-green-600 px-5 py-3 text-white">
         <h2 class="font-medium text-xl">@ru Собственные ресурсы @en Own services @endru</h2>
       </div>
       <div class="px-5 py-4">
@@ -58,7 +58,7 @@
     </div>
   </div>
   <div class="flex">
-    <div class="border dark:border-slate-700 overflow-hidden rounded">
+    <div class="border border-gray-200 dark:border-slate-700 overflow-hidden rounded-sm">
       <div class="bg-gray-600 px-5 py-3 text-white">
         <h2 class="font-medium text-xl">@ru Внешние полезные ресурсы @en External resources @endru</h2>
       </div>

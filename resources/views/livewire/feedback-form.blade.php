@@ -14,7 +14,7 @@
     @if(!$this->hideName)
       <div class="mb-4">
         <div class="form-label-group">
-          <input required class="form-input" type="text" wire:model="name" placeholder="@lang('Ваше имя')">
+          <input required class="the-input" type="text" wire:model="name" placeholder="@lang('Ваше имя')">
           <label>@lang('Ваше имя')</label>
         </div>
         <x-invalid-feedback field="name"/>
@@ -23,7 +23,7 @@
 
     <div class="mb-4">
       <div class="form-label-group">
-        <input required class="form-input" type="email" wire:model="email" placeholder="@lang('Электронная почта')">
+        <input required class="the-input" type="email" wire:model="email" placeholder="@lang('Электронная почта')">
         <label>@lang('Электронная почта')</label>
       </div>
       <x-invalid-feedback field="email"/>
@@ -32,7 +32,7 @@
     @if(!$this->hideTitle)
       <div class="mb-4">
         <div class="form-label-group">
-          <input required class="form-input" type="text" wire:model="title" placeholder="@lang('Тема')">
+          <input required class="the-input" type="text" wire:model="title" placeholder="@lang('Тема')">
           <label>@lang('Тема')</label>
         </div>
         <x-invalid-feedback field="title"/>
@@ -43,7 +43,7 @@
       <label class="font-bold">@lang('Текст сообщения')</label>
       <textarea
         required
-        class="form-input"
+        class="the-input field-sizing-content"
         name="text"
         rows="4"
         maxlength="1000"

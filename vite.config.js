@@ -1,12 +1,14 @@
-import {defineConfig} from 'vite'
+import { defineConfig } from 'vite'
 import laravel from 'laravel-vite-plugin'
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   build: {
     outDir: 'public/assets',
-    assetsDir: './'
+    assetsDir: './',
   },
   plugins: [
+    tailwindcss(),
     laravel({
       buildDirectory: 'assets',
       input: [
@@ -16,7 +18,7 @@ export default defineConfig({
         'resources/js/view-magnet-post.js',
         'node_modules/mousetrap/mousetrap.min.js',
         'node_modules/@github/details-menu-element/dist/index.js',
-      ]
+      ],
     }),
   ],
   resolve: {

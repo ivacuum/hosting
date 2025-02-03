@@ -17,7 +17,7 @@
   @endcan
   @if (!empty($searchForm))
     <form class="my-1 mr-2">
-      <input class="form-input" type="search" name="q" enterkeyhint="search" placeholder="{{ ViewHelper::modelFieldTrans($modelTpl, 'q_placeholder') }}" value="{{ $q ?? '' }}" autocapitalize="none">
+      <input class="the-input" type="search" name="q" enterkeyhint="search" placeholder="{{ ViewHelper::modelFieldTrans($modelTpl, 'q_placeholder') }}" value="{{ $q ?? '' }}" autocapitalize="none">
     </form>
   @endif
   @yield('heading-after-search')

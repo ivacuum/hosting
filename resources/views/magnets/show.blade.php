@@ -58,7 +58,7 @@
   <div class="mt-4">
     @foreach ($tags as $tag)
       <a
-        class="border border-blueish-700 rounded mb-1 px-2 py-1 text-sm text-blueish-700 lowercase hover:bg-blueish-700 hover:text-white"
+        class="border border-sky-700 rounded-sm mb-1 px-2 py-1 text-sm text-sky-700 lowercase hover:bg-sky-700 hover:text-white"
         href="{{ to('magnets', ['q' => mb_strtolower($tag)]) }}"
       >#{{ $tag }}</a>
     @endforeach
@@ -73,7 +73,7 @@
   <?php /** @var \App\Magnet $row */ ?>
   @foreach ($relatedTorrents as $row)
     <div class="flex flex-wrap md:flex-nowrap justify-center md:justify-start magnets-list-container js-magnets-views-observer" data-id="{{ $row->id }}">
-      <div class="flex-shrink-0 w-8 magnet-icon order-1 md:order-none mr-1 md:text-2xl" title="{{ $row->category_id->title() }}">
+      <div class="shrink-0 w-8 magnet-icon order-1 md:order-none mr-1 md:text-2xl" title="{{ $row->category_id->title() }}">
         <?php $icon = $row->category_id->icon() ?>
         @svg ($icon)
       </div>
@@ -87,7 +87,7 @@
         @endif
       </a>
       <a
-        class="flex-shrink-0 pr-2 magnets-list-magnet text-center md:text-left whitespace-nowrap js-magnet"
+        class="shrink-0 pr-2 magnets-list-magnet text-center md:text-left whitespace-nowrap js-magnet"
         href="{{ $row->magnet() }}"
         title="@lang('Магнет')"
         data-action="{{ to('magnets/{magnet}/magnet', $row) }}"
@@ -95,7 +95,7 @@
         @svg (magnet)
         <span class="js-magnet-counter">{{ $row->clicks ?: '' }}</span>
       </a>
-      <div class="flex-shrink-0 text-center md:text-left whitespace-nowrap magnets-list-size">{{ ViewHelper::size($row->size) }}</div>
+      <div class="shrink-0 text-center md:text-left whitespace-nowrap magnets-list-size">{{ ViewHelper::size($row->size) }}</div>
     </div>
   @endforeach
 @endif

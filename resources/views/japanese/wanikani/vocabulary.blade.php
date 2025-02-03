@@ -5,10 +5,10 @@
 @section('content')
 <div class="items-center flex flex-wrap font-medium text-4xl">
   <a
-    class="bg-gray-600 hover:bg-gray-700 ja-shadow-light mr-2 px-4 py-1 rounded text-white hover:text-white"
+    class="bg-gray-600 hover:bg-gray-700 ja-shadow-light mr-2 px-4 py-1 rounded-sm text-white hover:text-white"
     href="{{ to('japanese/wanikani/level/{level}', $vocab->level) }}"
   >{{ $vocab->level }}</a>
-  <div class="bg-vocab ja-shadow-light mr-4 px-2 py-1 rounded text-white">{{ $vocab->character }}</div>
+  <div class="bg-vocab ja-shadow-light mr-4 px-2 py-1 rounded-sm text-white">{{ $vocab->character }}</div>
   <div class="text-2xl capitalize tracking-tight">{{ $vocab->meaning }}</div>
 </div>
 
@@ -20,7 +20,7 @@
   @if ($vocab->male_audio)
     <div>
       <button
-        class="btn leading-none bg-blue-200 hover:bg-blue-300"
+        class="btn leading-none bg-sky-200 dark:bg-sky-600 dark:hover:bg-sky-500 hover:bg-sky-300 dark:text-sky-50"
         onclick="document.querySelector('#male_audio').play()"
       >
         @svg (volume-up-full)
@@ -31,7 +31,7 @@
   @if ($vocab->female_audio)
     <div>
       <button
-        class="btn leading-none bg-red-200 hover:bg-red-300"
+        class="btn leading-none bg-red-200 dark:bg-red-500 dark:hover:bg-red-400 hover:bg-red-300 dark:text-red-50"
         onclick="document.querySelector('#female_audio').play()"
       >
         @svg (volume-up-full)

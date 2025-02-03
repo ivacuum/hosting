@@ -12,7 +12,7 @@
   <div class="relative">
     <a class="block" href="{{ $trip->www() }}">
       <img
-        class="block aspect-[4/3] w-full object-cover bg-gray-700 brightness-3/4"
+        class="block aspect-4/3 w-full object-cover bg-gray-700 brightness-3/4"
         src="{{ ViewHelper::pic2x($trip->slug, $trip->meta_image) }}"
         alt=""
       >

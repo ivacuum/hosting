@@ -5,6 +5,7 @@ namespace Tests\Livewire;
 use App\Action\SplitVocabToKanjiAction;
 use App\Collection\ShowKanjiInTheSameOrderAsInVocab;
 use App\Factory\KanjiFactory;
+use App\Factory\UserFactory;
 use App\Factory\VocabularyFactory;
 use App\Livewire\KanjiList;
 use Illuminate\Database\Eloquent\Collection;
@@ -22,6 +23,32 @@ class KanjiListTest extends TestCase
         $kanji = KanjiFactory::new()->withLevel(99)->create();
 
         \Livewire::test(KanjiList::class, ['level' => 99])
+            ->assertSee($kanji->character);
+    }
+
+    public function testShowLabels()
+    {
+        KanjiFactory::new()->withLevel(99)->create();
+
+        $kanji = KanjiFactory::new()->withLevel(99)->create();
+
+        $this->be(UserFactory::new()->create());
+
+        \Livewire::test(KanjiList::class, ['level' => 99])
+            ->toggle('showLabels')
+            ->assertSee($kanji->character);
+    }
+
+    public function testShuffle()
+    {
+        KanjiFactory::new()->withLevel(99)->create();
+
+        $kanji = KanjiFactory::new()->withLevel(99)->create();
+
+        $this->be(UserFactory::new()->create());
+
+        \Livewire::test(KanjiList::class, ['level' => 99])
+            ->call('shuffle')
             ->assertSee($kanji->character);
     }
 

@@ -16,6 +16,10 @@
 ])
 @endsection
 
+{{-- Для компиляции tailwindcss }}
+{{-- bg-yandex-600 bg-yandex-700 --}}
+{{-- bg-github-600 bg-github-700 --}}
+
 @section('content-list')
 <table class="table-stats table-adaptive">
   <thead>

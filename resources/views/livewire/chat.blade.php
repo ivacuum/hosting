@@ -2,16 +2,16 @@
 
 <div>
   <div wire:poll.60s>
-    <div class="chat-container h-[25vh] bg-[#efefef] dark:bg-slate-800 rounded overflow-y-auto py-1 pr-3 pl-2 text-sm border border-gray-300 dark:border-slate-700">
+    <div class="chat-container h-[25vh] bg-[#efefef] dark:bg-slate-800 rounded-sm overflow-y-auto py-1 pr-3 pl-2 text-sm border border-gray-300 dark:border-slate-700">
       @foreach ($this->rows->groupBy(fn (App\ChatMessage $chatMessage) => $chatMessage->created_at->toDateString()) as $date => $messages)
         <div>
           <div class="sticky top-0 text-grey-500 text-xs my-1 text-center">
-            <div class="bg-[#efefef] dark:bg-slate-800 inline-block mx-auto p-1 rounded">{{ Carbon\CarbonImmutable::parse($date)->isoFormat('LL') }}</div>
+            <div class="bg-[#efefef] dark:bg-slate-800 inline-block mx-auto p-1 rounded-sm">{{ Carbon\CarbonImmutable::parse($date)->isoFormat('LL') }}</div>
           </div>
           <?php $lastUserId = null ?>
           @foreach ($messages as $message)
             <div class="flex {{ $lastUserId !== $message->user_id ? 'mt-2' : '' }}" wire:key="{{ $message->id }}">
-              <div class="flex-shrink-0 w-10">
+              <div class="shrink-0 w-10">
                 @if ($lastUserId !== $message->user_id)
                   <div>
                     @include('tpl.avatar', ['user' => $message->user, 'classes' => 'w-8 h-8'])
@@ -28,7 +28,7 @@
                 <div class="break-words chat-message">{!! $message->html !!}</div>
               </div>
               <div
-                class="flex-shrink-0 text-xs text-grey-500 text-right w-12"
+                class="shrink-0 text-xs text-grey-500 text-right w-12"
                 title="{{ $message->created_at->toDateString() }}"
               >
                 {{ $message->created_at->format('H:i') }}
@@ -42,7 +42,7 @@
     <form class="mt-1 mb-4" wire:submit="post">
       <div class="flex w-full">
         <input
-          class="form-input rounded-r-none"
+          class="the-input rounded-r-none"
           type="text"
           enterkeyhint="send"
           placeholder="Сообщение в чат..."

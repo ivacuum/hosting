@@ -17,7 +17,7 @@
 <table class="table-stats table-stats-align-top table-adaptive">
   <thead>
   <tr>
-    <th><input class="border-gray-300 js-select-all" type="checkbox" data-selector=".models-checkbox"></th>
+    <th><input class="not-checked:border-gray-300 text-sky-600 js-select-all" type="checkbox" data-selector=".models-checkbox"></th>
     <th class="md:text-right">ID</th>
     <th>Автор</th>
     <th>Текст</th>
@@ -28,7 +28,7 @@
   <tbody>
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ Acp::edit($model) }}">
-      <td><input class="border-gray-300 models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
+      <td><input class="not-checked:border-gray-300 text-sky-600 models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
       <td class="md:text-right">
         <a href="{{ Acp::show($model) }}">
           {{ $model->id }}

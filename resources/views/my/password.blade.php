@@ -14,7 +14,7 @@
         <label class="font-bold">@lang('Текущий пароль')</label>
         <input
           required
-          class="form-input"
+          class="the-input"
           type="password"
           name="password"
           autocomplete="current-password"
@@ -27,7 +27,7 @@
       <label class="font-bold">@lang('Новый пароль')</label>
       <input
         required
-        class="form-input"
+        class="the-input"
         type="password"
         name="new_password"
         minlength="8"

@@ -9,7 +9,7 @@
 
 <div>
   <label class="block mb-1 font-semibold">WKT</label>
-  <input id="polygon_wkt" class="form-input select-all" type="text" value="{{ Request::input('wkt') }}">
+  <input id="polygon_wkt" class="the-input select-all" type="text" value="{{ Request::input('wkt') }}">
 </div>
 
 <script>

@@ -2,7 +2,7 @@
   <div class="max-w-[1000px] mx-auto text-center" style="max-width: {{ $w }}px;">
     <div class="pb-[75%] relative" style="padding-bottom: {{ round($h / $w, 2) * 100 }}%;">
       <img
-        class="absolute left-0 w-full h-full object-cover sm:rounded"
+        class="absolute left-0 w-full h-full object-cover sm:rounded-sm"
         src="{{ ViewHelper::pic($slug ?? $trip->slug, $pic) }}"
         alt=""
         loading="lazy"

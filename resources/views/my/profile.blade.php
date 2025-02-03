@@ -13,7 +13,7 @@
     <div class="mb-4">
       <label class="font-bold">@lang('Логин')</label>
       <input
-        class="form-input"
+        class="the-input"
         type="text"
         name="username"
         value="{{ old('username', Auth::user()->login) }}"
@@ -32,7 +32,7 @@
       <label class="font-bold">@lang('auth.email')</label>
       <input
         required
-        class="form-input"
+        class="the-input"
         type="email"
         name="email"
         value="{{ old('email', Auth::user()->email) }}"

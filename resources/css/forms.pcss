@@ -1,75 +1,79 @@
-.form-input {
-  @apply border-gray-300 dark:border-slate-600 rounded block text-gray-700 dark:text-slate-100 py-1.5 w-full focus:border-blue-400 focus:ring-blue-400 dark:bg-slate-700;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+@layer base {
+  input::placeholder, textarea::placeholder, .the-input::placeholder {
+    color: color-mix(in oklab, currentColor 50%, transparent);
+  }
 }
 
-.form-input-feedback-password {
-  pointer-events: auto;
-  cursor: pointer;
-  color: #aaa;
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 2;
-  display: block;
-  width: 38px;
-  height: 38px;
-  line-height: 38px;
-  text-align: center;
-}
+@layer components {
+  .the-input {
+    @apply block border-none outline-1 -outline-offset-1 outline-black/10 dark:outline-white/10 rounded-sm text-gray-700 dark:text-slate-100 py-1.5 w-full focus:outline-2 focus:outline-sky-500 dark:bg-slate-700 inset-shadow-[0_2px_1px] inset-shadow-black/7.5 ring-sky-500;
+  }
 
-.form-input-feedback-password:hover {
-  color: #888;
-}
+  .form-input-feedback-password {
+    pointer-events: auto;
+    cursor: pointer;
+    color: #aaa;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    display: block;
+    width: 38px;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+  }
 
-.form-help {
-  @apply text-xs text-muted mt-1;
-}
+  .form-input-feedback-password:hover {
+    color: #888;
+  }
 
-.input-required:after {
-  content: '*';
-  color: #9f1006;
-  padding-left: .3125rem;
-}
+  .form-help {
+    @apply text-xs text-gray-500 mt-1;
+  }
 
-.form-label-group {
-  position: relative;
-}
+  .input-required:after {
+    content: '*';
+    color: #9f1006;
+    padding-left: .3125rem;
+  }
 
-.form-label-group .form-input:not(:placeholder-shown):not(.placeholder-shown) {
-  padding-top: 1.25rem;
-  padding-bottom: .25rem;
-}
+  .form-label-group {
+    position: relative;
+  }
 
-.form-label-group .form-input:not(:placeholder-shown):not(.placeholder-shown) ~ label {
-  padding-top: .25rem;
-  padding-bottom: .25rem;
-  font-size: .75rem;
-  color: var(--form-input-label-color-without-placeholder);
-}
+  .form-label-group .the-input:not(:placeholder-shown):not(.placeholder-shown) {
+    padding-block: --spacing(5) --spacing(1.25);
+  }
 
-.form-label-group > input,
-.form-label-group > label {
-  padding: .75rem;
-}
+  .form-label-group .the-input:not(:placeholder-shown):not(.placeholder-shown) ~ label {
+    padding-block: --spacing(1);
+    font-size: .75rem;
+    color: var(--form-input-label-color-without-placeholder);
+  }
 
-.form-label-group > label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
-  width: 100%;
-  margin-bottom: 0;
-  line-height: 1.5;
-  text-align: left;
-  color: #a9acb0;
-  border: 1px solid transparent;
-  border-radius: .25rem;
-  font-weight: normal;
-  transition: all .1s ease-in-out;
-  pointer-events: none;
-}
+  .form-label-group > input,
+  .form-label-group > label {
+    padding: .75rem;
+  }
 
-.form-label-group input::placeholder {
-  color: transparent;
+  .form-label-group > label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    margin-bottom: 0;
+    line-height: 1.5;
+    text-align: left;
+    color: #a9acb0;
+    border-radius: .25rem;
+    font-weight: normal;
+    transition: all .1s ease-in-out;
+    pointer-events: none;
+  }
+
+  .form-label-group input::placeholder {
+    color: transparent;
+  }
 }

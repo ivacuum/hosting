@@ -18,7 +18,7 @@
   </ol>
 @endif
 
-<div class="border dark:border-slate-600 sm:rounded-lg">
+<div class="border border-gray-200 dark:border-slate-600 rounded-lg">
   <div class="px-4 py-5 sm:p-6">
     <div class="font-medium text-xl mb-2">
       Заменить раздачу после удаления

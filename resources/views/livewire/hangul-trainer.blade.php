@@ -9,7 +9,7 @@
 <div class="grid gap-8 max-w-xl mx-auto">
   <div>
     <div class="text-center">
-      <div class="inline-block bg-gray-50 dark:bg-slate-800 border border-gray-100 dark:border-slate-700 text-5xl px-3 py-2 rounded {{ $this->italic ? 'font-["Nanum_Pen_Script"]' : '' }}">{{ $this->jamo }}</div>
+      <div class="inline-block bg-gray-50 dark:bg-slate-800 border border-gray-100 dark:border-slate-700 text-5xl px-3 py-2 rounded-sm {{ $this->italic ? 'font-["Nanum_Pen_Script"]' : '' }}">{{ $this->jamo }}</div>
       <div class="text-2xl">
         @if($this->reveal)
           <span class="text-green-600 flex justify-center gap-4">
@@ -42,7 +42,7 @@
         placeholder="@lang('Ваш ответ')"
         writingsuggestions="false"
         enterkeyhint="enter"
-        class="form-input text-center {{ $this->reveal ? 'animate-incorrect-answer' : '' }}"
+        class="the-input text-center {{ $this->reveal ? 'animate-incorrect-answer' : '' }}"
         {{ $this->reveal ? 'wire:dirty.class.remove="animate-incorrect-answer"' : '' }}
         wire:model="answer"
         wire:keydown.enter="check"
@@ -79,15 +79,15 @@
         <div class="font-medium text-lg">@ru Что будем тренировать? @en What to train? @endru</div>
         <div>
           <label class="flex gap-2 items-center">
-            <input class="border-gray-300" type="radio" wire:model.live="whatToTrain" value="{{ App\Domain\Korean\HangulWhatToTrain::Consonants }}">
+            <input class="not-checked:border-gray-300 text-sky-600" type="radio" wire:model.live="whatToTrain" value="{{ App\Domain\Korean\HangulWhatToTrain::Consonants }}">
             @lang('согласные')
           </label>
           <label class="flex gap-2 items-center">
-            <input class="border-gray-300" type="radio" wire:model.live="whatToTrain" value="{{ App\Domain\Korean\HangulWhatToTrain::Vowels }}">
+            <input class="not-checked:border-gray-300 text-sky-600" type="radio" wire:model.live="whatToTrain" value="{{ App\Domain\Korean\HangulWhatToTrain::Vowels }}">
             @lang('гласные')
           </label>
           <label class="flex gap-2 items-center">
-            <input class="border-gray-300" type="radio" wire:model.live="whatToTrain" value="{{ App\Domain\Korean\HangulWhatToTrain::AllTogether }}">
+            <input class="not-checked:border-gray-300 text-sky-600" type="radio" wire:model.live="whatToTrain" value="{{ App\Domain\Korean\HangulWhatToTrain::AllTogether }}">
             @lang('все вместе')
           </label>
         </div>
@@ -96,7 +96,7 @@
         <div class="font-medium text-lg">@ru Стиль шрифта @en Font style @endru</div>
         <div>
           <label class="flex gap-2 items-center">
-            <input class="border-gray-300" type="radio" wire:model.live="italic" value="0">
+            <input class="not-checked:border-gray-300 text-sky-600" type="radio" wire:model.live="italic" value="0">
             @ru
               обычный
             @en
@@ -104,7 +104,7 @@
             @endru
           </label>
           <label class="flex gap-2 items-center">
-            <input class="border-gray-300" type="radio" wire:model.live="italic" value="1">
+            <input class="not-checked:border-gray-300 text-sky-600" type="radio" wire:model.live="italic" value="1">
             @ru
               курсив
             @en
@@ -323,7 +323,7 @@
 
       <div class="text-base flex gap-4 items-center justify-center mt-4">
         <label class="flex gap-2 items-center">
-          <input class="border-gray-300" type="radio" wire:model.live="shiftPressed" value="0">
+          <input class="not-checked:border-gray-300 text-sky-600" type="radio" wire:model.live="shiftPressed" value="0">
           @ru
             ⇧ Shift отпущен
           @en
@@ -331,7 +331,7 @@
           @endru
         </label>
         <label class="flex gap-2 items-center">
-          <input class="border-gray-300" type="radio" wire:model.live="shiftPressed" value="1">
+          <input class="not-checked:border-gray-300 text-sky-600" type="radio" wire:model.live="shiftPressed" value="1">
           @ru
             ⇧ Shift нажат
           @en

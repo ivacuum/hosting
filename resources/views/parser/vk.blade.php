@@ -31,7 +31,7 @@
   </div>
   <div class="hidden sm:flex items-center">
     <span class="hidden md:block">Топ 10</span>
-    <input class="form-input mx-2 w-32" type="text" name="slug" value="{{ $vkpage }}" autocapitalize="none">
+    <input class="the-input mx-2 w-32" type="text" name="slug" value="{{ $vkpage }}" autocapitalize="none">
     за {{ $date->isoFormat('D MMMM') }}
     @if ($date->year !== now()->year)
       {{ $date->year }}
@@ -48,7 +48,7 @@
 </form>
 
 @if (!count($posts))
-  <div class="mb-4 py-3 px-5 text-yellow-800/75 bg-yellow-300/25 border border-yellow-200 rounded">
+  <div class="mb-4 py-3 px-5 text-yellow-800/75 bg-yellow-300/25 border border-yellow-200 rounded-sm">
     Нет записей за {{ $date->isoFormat('D MMMM YYYY') }}.
   </div>
 @endif
@@ -56,7 +56,7 @@
 <div>
 <?php /** @var array[] $posts */ ?>
 @foreach ($posts as $post)
-  <div class="border dark:border-slate-700 border-l-0 sm:border-l border-r-0 sm:border-r rounded-none sm:rounded mb-4 -mx-4 sm:mx-0 js-shortcuts-item">
+  <div class="border border-gray-200 dark:border-slate-700 border-l-0 sm:border-l border-r-0 sm:border-r rounded-none sm:rounded-sm mb-4 -mx-4 sm:mx-0 js-shortcuts-item">
     <div class="px-5 pt-4 pb-0 break-words">
       @if ($post['text'])
         <div class="hanging-punctuation-first lg:text-lg mb-0 whitespace-pre-line">{{ $post['text'] }}</div>
@@ -74,7 +74,7 @@
         @endif
         @foreach ($post['attachments'] as $attach)
           @if ($attach->type == 'photo' && isset($attach->photo->photo_604))
-            <img class="block markdown-responsive-image {{ $post['photos'] === 1 ? 'rounded' : '' }} {{ !$loop->first ? 'js-shortcuts-item' : '' }}" src="{{ @$attach->photo->photo_1280 ?: @$attach->photo->photo_807 ?: $attach->photo->photo_604 }}" alt="">
+            <img class="block markdown-responsive-image {{ $post['photos'] === 1 ? 'rounded-sm' : '' }} {{ !$loop->first ? 'js-shortcuts-item' : '' }}" src="{{ @$attach->photo->photo_1280 ?: @$attach->photo->photo_807 ?: $attach->photo->photo_604 }}" alt="">
           @endif
         @endforeach
         @if ($post['photos'] > 0)
@@ -91,7 +91,7 @@
               <div class="flex mt-1">
                 <video
                   controls
-                  class="block markdown-responsive-image rounded"
+                  class="block markdown-responsive-image rounded-sm"
                   width="{{ $attach->doc->preview->video->width }}"
                   height="{{ $attach->doc->preview->video->height }}"
                   poster="{{ Arr::last($attach->doc->preview->photo->sizes)->src }}"

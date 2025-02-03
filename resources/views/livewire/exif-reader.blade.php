@@ -12,7 +12,7 @@
   @include('tpl.form_errors')
   <div wire:target="image">
     <input
-      class="block text-muted w-full file:px-4 file:py-1 file:rounded file:border-0 file:bg-blueish-700 file:text-white hover:file:bg-blueish-800"
+      class="block text-gray-500 w-full file:px-4 file:py-1 file:rounded-sm file:border-0 file:bg-sky-700 file:text-white hover:file:bg-sky-800"
       type="file"
       wire:model.live="image"
     >
@@ -69,7 +69,7 @@
         Фотография сделана на высоте <span class="font-bold lowercase">{{ $this->valueForHumans('GPSAltitude', $this->data['GPSAltitude']) }} {{ $this->valueForHumans('GPSAltitudeRef', $this->data['GPSAltitudeRef']) }}</span>.
       @endif
       @if($this->gpsImageDirection)
-        При этом камера смотрела на <span class="font-bold">{{ $this->valueForHumans('GPSImgDirection', $this->data['GPSImgDirection']) }}</span><svg class="svg-icon" viewBox="0 0 1792 1792" width="16" height="16" style="transform: rotate({{ $this->gpsImageDirection - 45 }}deg);"><path d="M103,703.4L1683,125L1104.6,1705L867.9,940.1L103,703.4z"/></svg>, если свериться с компасом <span class="text-muted">(0º — север, 90º — восток, 180º — юг, 270º — запад)</span>.
+        При этом камера смотрела на <span class="font-bold">{{ $this->valueForHumans('GPSImgDirection', $this->data['GPSImgDirection']) }}</span><svg class="svg-icon" viewBox="0 0 1792 1792" width="16" height="16" style="transform: rotate({{ $this->gpsImageDirection - 45 }}deg);"><path d="M103,703.4L1683,125L1104.6,1705L867.9,940.1L103,703.4z"/></svg>, если свериться с компасом <span class="text-gray-500">(0º — север, 90º — восток, 180º — юг, 270º — запад)</span>.
       @endif
       @if(($this->data['GPSSpeed'] ?? '') && !str_starts_with($this->data['GPSSpeed'] ?? '', '0'))
         Скорость движения во время съемки составила <span class="whitespace-nowrap"><span class="font-bold">{{ $this->valueForHumans('GPSSpeed', $this->data['GPSSpeed']) }}</span>
@@ -102,21 +102,21 @@
           @endforeach
         </ul>
         @if($valueForHumans)
-          <div class="text-muted">({{ $this->valueForHumans($key, $value) }})</div>
+          <div class="text-gray-500">({{ $this->valueForHumans($key, $value) }})</div>
         @endif
         @switch($key)
           @case('GPSLatitude')
-            <div class="text-muted">({{ $this->lat }})</div>
+            <div class="text-gray-500">({{ $this->lat }})</div>
           @break
           @case('GPSLongitude')
-            <div class="text-muted">({{ $this->lon }})</div>
+            <div class="text-gray-500">({{ $this->lon }})</div>
           @break
         @endswitch
       @else
         <div>
           {{ $value }}
           @if($valueForHumans)
-            <span class="text-muted">({{ $this->valueForHumans($key, $value) }})</span>
+            <span class="text-gray-500">({{ $this->valueForHumans($key, $value) }})</span>
           @endif
         </div>
       @endif

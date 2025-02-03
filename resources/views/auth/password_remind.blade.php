@@ -11,7 +11,7 @@
       <input
         autofocus
         required
-        class="form-input"
+        class="the-input"
         type="email"
         name="email"
         value="{{ old('email') }}"

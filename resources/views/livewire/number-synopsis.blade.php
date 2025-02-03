@@ -5,7 +5,7 @@
     <div class="grid gap-6 mb-6">
       <div>
         <div class="font-medium text-lg">@lang('Язык')</div>
-        <select class="form-input max-w-xs" wire:model.live="lang">
+        <select class="the-input max-w-xs" wire:model.live="lang">
           @foreach($this->locales as $lang => $name)
             <option value="{{ $lang }}">{{ $name }}</option>
           @endforeach
@@ -14,7 +14,7 @@
 
       <div>
         <div class="font-medium text-lg">@lang('Число')</div>
-        <input class="form-input max-w-xs" wire:model.live="input">
+        <input class="the-input max-w-xs" wire:model.live="input">
         @error('input')
           <div class="text-sm text-red-600">
             {{ $message }}

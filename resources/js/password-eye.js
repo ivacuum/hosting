@@ -9,7 +9,7 @@ document.addEventListener('click', (e) => {
   e.preventDefault()
 
   const state = target.dataset.state || 'password'
-  const input = target.parentNode.querySelector('.form-input')
+  const input = target.parentNode.querySelector('.the-input')
 
   if (state === 'password') {
     input.setAttribute('type', 'text')

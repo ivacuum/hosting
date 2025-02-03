@@ -23,7 +23,7 @@
   @include('tpl.form_errors')
   <div wire:loading.remove.delay wire:target="image">
     <input
-      class="block text-muted w-full file:px-4 file:py-1 file:rounded file:border-0 file:bg-blueish-700 file:text-white hover:file:bg-blueish-800"
+      class="block text-gray-500 w-full file:px-4 file:py-1 file:rounded-sm file:border-0 file:bg-sky-700 file:text-white hover:file:bg-sky-800"
       accept="image/jpeg,image/png"
       type="file"
       id="{{ $this->randomId }}"

@@ -17,7 +17,7 @@
       <div class="flex w-full">
         <input
           required
-          class="form-input rounded-r-none"
+          class="the-input rounded-r-none"
           type="email"
           name="email"
           autocomplete="email"

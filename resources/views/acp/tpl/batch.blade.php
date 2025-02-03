@@ -4,7 +4,7 @@
   data-selector=".models-checkbox"
 >
   <div class="mr-1">
-    <select class="form-input" name="action">
+    <select class="the-input" name="action">
       <option value="">Выберите действие...</option>
       @foreach ($actions as $value => $title)
         <option value="{{ $value }}">{{ $title }}</option>

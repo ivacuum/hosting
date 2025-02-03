@@ -21,7 +21,6 @@ class JapaneseWanikaniVocabularyController
 
     public function show(string $characters)
     {
-        /** @var Vocabulary $vocab */
         $vocab = Vocabulary::query()
             ->where('character', $characters)
             ->tap(new UserBurnableScope(auth()->id()))

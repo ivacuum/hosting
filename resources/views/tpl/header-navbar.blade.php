@@ -2,9 +2,9 @@
   <div class="container">
     <div class="flex flex-wrap justify-between items-stretch w-full">
       @section('brand')
-        <a class="site-brand font-bold text-lg text-blueish-700 flex items-center leading-none hover:text-orangeish-600 md:mr-3 text-center pb-[2px] single-story-a" href="{{ to('/') }}">vacuum<br>kaluga</a>
+        <a class="site-brand font-bold text-lg text-sky-700 flex items-center leading-none hover:text-(--link-hover-color) md:mr-3 text-center pb-[2px] single-story-a" href="{{ to('/') }}">vacuum<br>kaluga</a>
       @show
-      <button class="md:hidden px-4 py-3 text-2xl text-grey-600 hover:text-grey-900 leading-none js-collapse" data-target="#header_menu">
+      <button class="md:hidden px-4 py-3 text-2xl text-gray-500 hover:text-gray-900 dark:hover:text-gray-300 leading-none js-collapse" data-target="#header_menu">
         @svg (three-bars)
       </button>
       <nav id="header_menu" class="flex md:flex flex-col md:flex-row order-4 md:order-3 md:mr-auto md:items-center whitespace-nowrap md:whitespace-normal w-full md:w-auto hidden">
@@ -45,7 +45,7 @@
             @include('tpl.header-navbar-user')
           @else
             <a
-              class="px-2 py-3 text-grey-600 dark:text-slate-400 hover:text-grey-900 hover:dark:text-slate-200"
+              class="px-2 py-3 text-grey-600 dark:text-slate-400 hover:text-grey-900 dark:hover:text-slate-200"
               href="@lng/auth/login"
             >@lang('auth.signin')</a>
           @endif

@@ -6,7 +6,7 @@
       <input
         required
         type="text"
-        class="form-input pr-10"
+        class="the-input pr-10"
         wire:model.live="input"
         placeholder="Ссылка или инфо-хэш"
       >
@@ -42,7 +42,7 @@
     </div>
 
     <div>
-      <select required class="form-input" wire:model.live="categoryId">
+      <select required class="the-input" wire:model.live="categoryId">
         <option value="">Выберите рубрику...</option>
         @foreach (TorrentCategoryHelper::tree() as $id => $category)
           <option value="{{ $id }}" {{ !empty($category['children']) ? 'disabled' : '' }}>

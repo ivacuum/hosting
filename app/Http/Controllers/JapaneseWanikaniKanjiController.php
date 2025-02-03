@@ -21,7 +21,6 @@ class JapaneseWanikaniKanjiController
 
     public function show(string $character)
     {
-        /** @var Kanji $kanji */
         $kanji = Kanji::query()
             ->where('character', $character)
             ->tap(new UserBurnableScope(auth()->id()))

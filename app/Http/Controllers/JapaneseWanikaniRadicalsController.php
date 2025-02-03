@@ -21,7 +21,6 @@ class JapaneseWanikaniRadicalsController
 
     public function show(string $meaning)
     {
-        /** @var Radical $radical */
         $radical = Radical::query()
             ->where('meaning', $meaning)
             ->tap(new UserBurnableScope(auth()->id()))

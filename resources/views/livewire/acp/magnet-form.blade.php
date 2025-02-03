@@ -5,21 +5,23 @@
 
   <div class="mb-4">
     <label class="font-bold input-required">Рубрика</label>
-    <select required class="form-input" wire:model.live="categoryId">
-      <option value="">Выберите рубрику...</option>
-      @foreach (TorrentCategoryHelper::tree() as $id => $category)
-        <option value="{{ $id }}" {{ !empty($category['children']) ? 'disabled' : '' }}>
-          {{ $category['title'] }}
-        </option>
-        @if (!empty($category['children']))
-          @foreach ($category['children'] as $id => $category)
-            <option value="{{ $id }}">
-              &nbsp;&nbsp;&nbsp;&nbsp;{{ $category['title'] }}
-            </option>
-          @endforeach
-        @endif
-      @endforeach
-    </select>
+    <div class="mt-1">
+      <select required class="the-input" wire:model.live="categoryId">
+        <option value="">Выберите рубрику...</option>
+        @foreach (TorrentCategoryHelper::tree() as $id => $category)
+          <option value="{{ $id }}" {{ !empty($category['children']) ? 'disabled' : '' }}>
+            {{ $category['title'] }}
+          </option>
+          @if (!empty($category['children']))
+            @foreach ($category['children'] as $id => $category)
+              <option value="{{ $id }}">
+                &nbsp;&nbsp;&nbsp;&nbsp;{{ $category['title'] }}
+              </option>
+            @endforeach
+          @endif
+        @endforeach
+      </select>
+    </div>
     <x-invalid-feedback field="categoryId"/>
   </div>
 

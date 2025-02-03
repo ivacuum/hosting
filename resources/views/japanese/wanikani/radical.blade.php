@@ -5,10 +5,10 @@
 @section('content')
 <div class="items-center flex flex-wrap font-medium text-4xl">
   <a
-    class="bg-gray-600 hover:bg-gray-700 ja-shadow-light mr-2 px-4 py-1 rounded text-white hover:text-white"
+    class="bg-gray-600 hover:bg-gray-700 ja-shadow-light mr-2 px-4 py-1 rounded-sm text-white hover:text-white"
     href="{{ to('japanese/wanikani/level/{level}', $radical->level) }}"
   >{{ $radical->level }}</a>
-  <div class="bg-radical text-white mr-4 px-2 py-1 rounded">
+  <div class="bg-radical text-white mr-4 px-2 py-1 rounded-sm">
     @if ($radical->character)
       <span class="ja-shadow-light">{{ $radical->character }}</span>
     @else

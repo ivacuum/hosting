@@ -27,7 +27,7 @@
   </div>
   <div class="grid items-center text-xl text-center md:text-left vocab-grid gap-x-2 gap-y-1">
     @foreach ($this->vocabularies as $vocab)
-      @if(auth()->id() && !$this->showBurned && $vocab->burnable)
+      @if(auth()->id() && !$this->showBurned && isset($this->burned[$vocab->id]))
         <div hidden></div>
         <div hidden></div>
         <div hidden></div>
@@ -36,7 +36,7 @@
       @else
         <div>
           <a
-            class="inline-block text-4xl leading-tight ja-shadow-light px-2 rounded whitespace-nowrap text-white hover:text-grey-200 {{ auth()->id() && $vocab->burnable ? 'bg-burned' : 'bg-vocab' }}"
+            class="inline-block text-4xl leading-tight ja-shadow-light px-2 rounded-sm whitespace-nowrap text-white hover:text-grey-200 {{ auth()->id() && isset($this->burned[$vocab->id]) ? 'bg-burned' : 'bg-vocab' }}"
             href="{{ $vocab->www() }}"
           >{{ $vocab->character }}</a>
         </div>
@@ -61,7 +61,7 @@
             href="#"
             wire:click.prevent="burn({{ $vocab->id }})"
           >
-            <span class="{{ auth()->id() && $vocab->burnable ? 'text-gray-600 hover:text-gray-800' : 'text-red-600 hover:text-red-800' }}">
+            <span class="{{ auth()->id() && isset($this->burned[$vocab->id]) ? 'text-gray-600 hover:text-gray-800' : 'text-red-600 hover:text-red-800' }}">
               @svg (flame)
             </span>
           </a>

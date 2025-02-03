@@ -4,7 +4,7 @@
 <h1 class="font-medium text-3xl tracking-tight mb-2">@lang('WaniKani V')</h1>
 <div class="grid md:grid-cols-3 gap-2 md:gap-4 text-center mb-4">
   <div>
-    <div class="bg-radical rounded">
+    <div class="bg-radical rounded-sm">
       <a
         class="block ja-shadow-light py-6 text-white hover:text-grey-200"
         href="@lng/japanese/wanikani/radicals"
@@ -15,7 +15,7 @@
     </div>
   </div>
   <div>
-    <div class="bg-kanji rounded">
+    <div class="bg-kanji rounded-sm">
       <a
         class="block ja-shadow-light py-6 text-white hover:text-grey-200"
         href="@lng/japanese/wanikani/kanji"
@@ -26,7 +26,7 @@
     </div>
   </div>
   <div>
-    <div class="bg-vocab rounded">
+    <div class="bg-vocab rounded-sm">
       <a
         class="block ja-shadow-light py-6 text-white hover:text-grey-200"
         href="@lng/japanese/wanikani/vocabulary"
@@ -47,7 +47,7 @@
 <div class="flex flex-wrap items-center">
   @foreach (range(1, 60) as $level)
     <a
-      class="flex bg-grey-600 hover:bg-grey-700 text-white hover:text-grey-100 px-2 text-lg font-bold rounded ja-shadow-light mr-2 mb-2"
+      class="flex bg-grey-600 hover:bg-grey-700 text-white hover:text-grey-100 px-2 text-lg font-bold rounded-sm ja-shadow-light mr-2 mb-2"
       href="{{ to('japanese/wanikani/level/{level}', $level) }}"
     >
       {{ $level }}

@@ -28,7 +28,7 @@
 <div class="font-medium text-xl mt-6 mb-2">@ru Поделиться ссылкой @en Share @endru</div>
 @include('tpl.social-buttons', ['title' => $trip->metaTitle(), 'url' => Request::url()])
 
-<div class="mt-6 py-3 px-5 text-teal-800 dark:text-teal-400 bg-teal-200/50 dark:bg-teal-400/25 border border-teal-200/50 rounded">
+<div class="mt-6 py-3 px-5 text-teal-800 dark:text-teal-400 bg-teal-200/50 dark:bg-teal-400/25 border border-teal-200/50 rounded-sm">
   <div class="mb-2">@lang('life.newsletter.description')</div>
   @if (Auth::check())
     @if (Auth::user()->notify_trips?->isDisabled())

@@ -17,7 +17,7 @@
           <input type="hidden" name="magnet_short_title" value="0">
           <label class="flex gap-2 items-center">
             <input
-              class="border-gray-300 rounded"
+              class="not-checked:border-gray-300 text-sky-600 rounded-sm"
               type="checkbox"
               name="magnet_short_title"
               value="1"
@@ -36,7 +36,7 @@
         @foreach (Arr::sort(array_keys(App\Domain\Config::Locales->get())) as $loc)
           <label class="flex gap-2 items-center">
             <input
-              class="border-gray-300"
+              class="not-checked:border-gray-300 text-sky-600"
               type="radio"
               name="locale"
               value="{{ $loc }}"
@@ -53,7 +53,7 @@
           <div class="font-bold">@lang('Способ доставки уведомлений')</div>
           <label class="flex gap-2 items-center">
             <input
-              class="border-gray-300"
+              class="not-checked:border-gray-300 text-sky-600"
               type="radio"
               name="notification_delivery_method"
               value="0"
@@ -63,7 +63,7 @@
           </label>
           <label class="flex gap-2 items-center">
             <input
-              class="border-gray-300"
+              class="not-checked:border-gray-300 text-sky-600"
               type="radio"
               name="notification_delivery_method"
               value="1"
@@ -74,7 +74,7 @@
             <label class="flex gap-2 items-center">
               <input
                 disabled
-                class="border-gray-300"
+                class="not-checked:border-gray-300 text-sky-600"
                 type="radio"
                 name="notification_delivery_method"
                 value="2"
@@ -95,7 +95,7 @@
         <input type="hidden" name="notify_gigs" value="{{ App\Domain\NotificationDeliveryMethod::Disabled }}">
         <label class="flex gap-2 items-center">
           <input
-            class="border-gray-300 rounded"
+            class="not-checked:border-gray-300 text-sky-600 rounded-sm"
             type="checkbox"
             name="notify_gigs"
             value="{{ App\Domain\NotificationDeliveryMethod::Mail }}"
@@ -107,7 +107,7 @@
         <input type="hidden" name="notify_news" value="{{ App\Domain\NotificationDeliveryMethod::Disabled }}">
         <label class="flex gap-2 items-center">
           <input
-            class="border-gray-300 rounded"
+            class="not-checked:border-gray-300 text-sky-600 rounded-sm"
             type="checkbox"
             name="notify_news"
             value="{{ App\Domain\NotificationDeliveryMethod::Mail }}"
@@ -120,7 +120,7 @@
           <input type="hidden" name="notify_trips" value="{{ App\Domain\NotificationDeliveryMethod::Disabled }}">
           <label class="flex gap-2 items-center">
             <input
-              class="border-gray-300 rounded"
+              class="not-checked:border-gray-300 text-sky-600 rounded-sm"
               type="checkbox"
               name="notify_trips"
               value="{{ App\Domain\NotificationDeliveryMethod::Mail }}"

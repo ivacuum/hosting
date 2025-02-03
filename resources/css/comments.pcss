@@ -3,11 +3,13 @@
   height: 40px;
 }
 
-@screen md {
+@media (min-width: theme(--breakpoint-md)) {
   .comment-avatar-size {
     width: 64px;
     height: 64px;
   }
 }
 
-.comment-body { padding: .0625rem 0 .1875rem 0; }
+.comment-body {
+  padding: .0625rem 0 .1875rem 0;
+}

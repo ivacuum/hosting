@@ -8,7 +8,7 @@
     <div class="flex flex-col w-full">
       @can('view', $model)
         <a
-          class="border-l-2 border-transparent px-3 py-2 {{ $view === "$tpl.show" ? 'border-orangeish-600 text-black dark:text-slate-200 hover:text-black hover:dark:text-slate-200' : '' }}"
+          class="border-l-2 px-3 py-2 {{ $view === "$tpl.show" ? 'border-amber-600 text-black dark:text-slate-200 hover:text-black dark:hover:text-slate-200' : 'border-transparent' }}"
           href="{{ Acp::show($model) }}"
         >
           @lang("$tpl.show")
@@ -16,7 +16,7 @@
       @endcan
       @can('update', $model)
         <a
-          class="border-l-2 border-transparent px-3 py-2 {{ $view === "$tpl.edit" ? 'border-orangeish-600 text-black dark:text-slate-200 hover:text-black hover:dark:text-slate-200' : '' }}"
+          class="border-l-2 px-3 py-2 {{ $view === "$tpl.edit" ? 'border-amber-600 text-black dark:text-slate-200 hover:text-black dark:hover:text-slate-200' : 'border-transparent' }}"
           href="{{ Acp::edit($model) }}"
         >
           @lang("$tpl.edit")

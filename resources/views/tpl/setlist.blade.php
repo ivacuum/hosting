@@ -10,6 +10,6 @@
     {{ $slot }}
   </div>
   <div class="-mx-4 sm:mx-0">
-    <img class="mx-auto sm:rounded" src="{{ $cover }}" alt="">
+    <img class="mx-auto sm:rounded-sm" src="{{ $cover }}" alt="">
   </div>
 </div>

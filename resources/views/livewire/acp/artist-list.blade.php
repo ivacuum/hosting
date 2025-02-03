@@ -9,7 +9,7 @@
     </tr>
     </thead>
     <tbody>
-    @foreach ($models as $model)
+    @foreach ($this->models as $model)
       <tr class="js-dblclick-edit" data-dblclick-url="{{ Acp::edit($model) }}">
         <td>
           <a href="{{ Acp::show($model) }}">
@@ -22,5 +22,5 @@
     </tbody>
   </table>
 
-  {{ $models->links() }}
+  {{ $this->models->links() }}
 </div>

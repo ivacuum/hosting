@@ -6,10 +6,10 @@
 @section('content')
 <h1 class="font-medium text-4xl tracking-tight mb-2">Решение проблем с DC++</h1>
 
-<x-accordion>
-  <x-slot name="title">
-    Если при входе на хаб вам пишется: Turn On your tags!!
-  </x-slot>
+@component('accordion')
+@slot('title')
+  Если при входе на хаб вам пишется: Turn On your tags!!
+@endslot
 
   <p>Вам нужно включить Эмуляцию DC++ для данного хаба.</p>
   <div class="mb-1">Для этого:</div>
@@ -18,7 +18,7 @@
     <li>Выберите свойства хаба</li>
     <li>Поставьте там галочку напротив пункта «<strong>Эмуляция DC++</strong>» (Emulate DC++)</li>
   </ol>
-</x-accordion>
+@endcomponent
 
 @component('accordion')
 @slot('title')
@@ -267,7 +267,7 @@
 @endcomponent
 
 <div class="max-w-[600px]">
-  <div class="font-medium text-2xl mb-2 mt-12">@lang('Обратная связь')</div>
+  <div class="font-medium text-2xl mb-2 mt-12 dark:text-white">@lang('Обратная связь')</div>
   @ru
     <p>Поделитесь своими знаниями или задайте вопрос. Мы постараемся обработать информацию и дополнить эту страницу новыми материалами.</p>
   @en

@@ -28,7 +28,7 @@
           <div class="flex gap-2 mt-2">
             <div class="text-center">
               <a
-                class="btn bg-vk-600 inline-flex justify-center items-center w-12 h-12 text-xl rounded-full text-white hover:bg-vk-700 hover:text-white"
+                class="bg-vk-600 inline-flex justify-center items-center size-12 text-xl rounded-full text-white hover:bg-vk-700 hover:text-white"
                 href="{{ path([App\Http\Controllers\Auth\Vk::class, 'index'], ['goto' => to(request()->path() . "#comment-add")]) }}"
               >
                 @svg (vk)
@@ -37,7 +37,7 @@
             </div>
             <div class="text-center">
               <a
-                class="btn bg-google-600 inline-flex justify-center items-center w-12 h-12 text-xl rounded-full text-white hover:bg-google-700 hover:text-white"
+                class="bg-google-600 inline-flex justify-center items-center size-12 text-xl rounded-full text-white hover:bg-google-700 hover:text-white"
                 href="{{ path([App\Http\Controllers\Auth\Google::class, 'index'], ['goto' => to(request()->path() . "#comment-add")]) }}"
               >
                 @svg (google)
@@ -54,7 +54,7 @@
           <div class="mb-2">
             <input
               required
-              class="form-input"
+              class="the-input"
               type="email"
               wire:model="email"
               placeholder="@lang('model.email')"
@@ -64,7 +64,7 @@
         @endif
         <textarea
           required
-          class="form-input"
+          class="the-input field-sizing-content"
           placeholder="@lang('Оставьте комментарий...')"
           rows="4"
           maxlength="1000"

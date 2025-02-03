@@ -25,14 +25,18 @@
   filter: brightness(1);
 }
 
-.column-width-48 { column-width: 12rem; }
+.column-width-48 {
+  column-width: 12rem;
+}
 
 .city-entry {
   page-break-inside: avoid;
   break-inside: avoid;
 }
 
-.photo-map-container { height: 50vh; }
+.photo-map-container {
+  height: 50vh;
+}
 
 .photo-show-img {
   border: 0;
@@ -40,11 +44,13 @@
   background-clip: padding-box;
 }
 
-@screen sm {
+@media (min-width: theme(--breakpoint-sm)) {
   .photo-show-img {
     border: 1px solid rgba(0, 0, 0, .15);
     max-height: 80vh;
   }
 }
 
-.trip-cover-info { text-shadow: 1px 1px 0 rgba(0, 0, 0, .8); }
+.trip-cover-info {
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, .8);
+}

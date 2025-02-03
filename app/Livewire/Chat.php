@@ -7,15 +7,17 @@ use App\Domain\ChatMessageStatus;
 use App\Domain\LivewireEvent;
 use App\Events\ChatMessagePublished;
 use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Livewire\Attributes\Computed;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
+/**
+ * @property Collection<string, ChatMessage> $rows
+ */
 class Chat extends Component
 {
-    /** @var \Illuminate\Database\Eloquent\Collection|array<string, ChatMessage[]> */
-    public $rows;
-
     #[Validate(['required', 'string', 'min:1'])]
     public string $text = '';
 
@@ -44,9 +46,10 @@ class Chat extends Component
         $this->reset();
     }
 
-    public function render()
+    #[Computed]
+    public function rows(): Collection
     {
-        $this->rows = ChatMessage::query()
+        return ChatMessage::query()
             ->with('user')
             ->where('status', ChatMessageStatus::Published)
             ->orderByDesc('id')
@@ -54,7 +57,5 @@ class Chat extends Component
             ->get()
             ->reverse()
             ->values();
-
-        return view('livewire.chat');
     }
 }

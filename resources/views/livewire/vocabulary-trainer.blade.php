@@ -5,7 +5,7 @@
     <div class="text-center">
       <div>
         <a
-          class="bg-vocab inline-block text-5xl leading-tight ja-shadow-light px-2 rounded whitespace-nowrap text-white hover:text-grey-200"
+          class="bg-vocab inline-block text-5xl leading-tight ja-shadow-light px-2 rounded-sm whitespace-nowrap text-white hover:text-grey-200"
           href="{{ $this->vocab->www() }}"
         >{{ $this->vocab->character }}</a>
       </div>
@@ -37,7 +37,7 @@
         placeholder="@lang('Ваш ответ')"
         writingsuggestions="false"
         enterkeyhint="send"
-        class="form-input text-center {{ $this->reveal ? 'animate-incorrect-answer focus:border-red-300 focus:ring-red-300' : '' }}"
+        class="the-input text-center {{ $this->reveal ? 'animate-incorrect-answer focus:border-red-300 focus:ring-red-300' : '' }}"
         {{ $this->reveal ? 'wire:dirty.class.remove="animate-incorrect-answer"' : '' }}
         wire:model="answer"
         wire:keydown.enter="check"
@@ -53,7 +53,7 @@
       @if ($this->vocab->male_audio)
         <div>
           <button
-            class="btn text-blue-800 dark:text-blue-700 border border-blue-300 hover:border-blue-400 bg-blue-200 dark:bg-blue-300 hover:bg-blue-300 hover:dark:bg-blue-400 w-full"
+            class="btn text-blue-800 dark:text-blue-700 border border-blue-300 hover:border-blue-400 bg-blue-200 dark:bg-blue-300 hover:bg-blue-300 dark:hover:bg-blue-400 w-full"
             type="button"
             onclick="document.querySelector('#male_audio').play()"
           >
@@ -102,7 +102,7 @@
       @foreach ($this->history as $entry)
         <div class="inline-flex items-center">
           <a
-            class="bg-vocab inline-block text-2xl leading-tight ja-shadow-light px-2 rounded whitespace-nowrap text-white hover:text-grey-200 mr-2"
+            class="bg-vocab inline-block text-2xl leading-tight ja-shadow-light px-2 rounded-sm whitespace-nowrap text-white hover:text-grey-200 mr-2"
             href="{{ $entry['www'] }}"
           >{{ $entry['character'] }}</a>
           <span class="leading-tight">{{ $entry['meaning'] }}</span>
@@ -111,18 +111,18 @@
     </div>
   </div>
   <div>
-    <details class="border dark:border-slate-700 text-sm rounded overflow-hidden" {{ $this->openSettings ? 'open' : '' }}>
-      <summary class="border-b dark:border-slate-700 bg-gray-100 dark:bg-slate-800 text-gray-500 dark:text-slate-400 hover:text-gray-700 hover:dark:text-slate-200 px-5 py-2" itemprop="name">@lang('Настройки'): <span class="lowercase">{{ $this->hiragana ? __('Хирагана') : __('Катакана') }}, @lang('Уровни') {{ $this->level * 10 - 9 }}–{{ $this->level * 10 }}</span></summary>
+    <details class="border border-gray-200 dark:border-slate-700 text-sm rounded-sm overflow-hidden" {{ $this->openSettings ? 'open' : '' }}>
+      <summary class="border-b border-gray-200 dark:border-slate-700 bg-gray-100 dark:bg-slate-800 text-gray-500 dark:text-slate-400 hover:text-gray-700 dark:hover:text-slate-200 px-5 py-2" itemprop="name">@lang('Настройки'): <span class="lowercase">{{ $this->hiragana ? __('Хирагана') : __('Катакана') }}, @lang('Уровни') {{ $this->level * 10 - 9 }}–{{ $this->level * 10 }}</span></summary>
       <div class="px-5 py-3 text-sm">
         <div class="font-medium text-lg">@lang('Азбука')</div>
         <div class="text-gray-500 mb-2">@lang('japanese.settings.syllabary_help')</div>
         <div class="flex gap-4 items-center">
           <label class="flex gap-2 items-center">
-            <input class="border-gray-300" type="radio" wire:model.live="hiragana" value="1">
+            <input class="not-checked:border-gray-300 text-sky-600" type="radio" wire:model.live="hiragana" value="1">
             @lang('Хирагана')
           </label>
           <label class="flex gap-2 items-center">
-            <input class="border-gray-300" type="radio" wire:model.live="hiragana" value="0">
+            <input class="not-checked:border-gray-300 text-sky-600" type="radio" wire:model.live="hiragana" value="0">
             @lang('Катакана')
           </label>
         </div>

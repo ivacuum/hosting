@@ -11,7 +11,7 @@
       <input
         autofocus
         required
-        class="form-input"
+        class="the-input"
         type="email"
         name="email"
         value="{{ old('email') }}"
@@ -24,7 +24,7 @@
     <div class="mb-4">
       <input
         required
-        class="form-input"
+        class="the-input"
         type="password"
         name="password"
         minlength="8"

@@ -20,7 +20,7 @@
 
   @if ($this->metaImage)
     <div class="mb-4">
-      <img class="max-w-full h-auto rounded" src="{{ $this->metaImage }}" alt="">
+      <img class="max-w-full h-auto rounded-sm" src="{{ $this->metaImage }}" alt="">
     </div>
   @endif
 

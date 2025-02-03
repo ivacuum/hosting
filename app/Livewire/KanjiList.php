@@ -3,12 +3,14 @@
 namespace App\Livewire;
 
 use App\Action\SplitVocabToKanjiAction;
+use App\Burnable;
 use App\Collection\ShowKanjiInTheSameOrderAsInVocab;
 use App\Kanji;
 use App\Scope\KanjiLevelScope;
 use App\Scope\KanjiRadicalsScope;
 use App\Scope\KanjiSimilarToScope;
-use App\Scope\UserBurnableScope;
+use App\User;
+use Illuminate\Container\Attributes\CurrentUser;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 
@@ -23,15 +25,15 @@ class KanjiList extends Component
     public bool $range = false;
     public bool $showBurned = false;
     public bool $showLabels = false;
+    public array $burned = [];
 
-    public function mount(SplitVocabToKanjiAction $splitVocabToKanji, int|null $radicalId = null, string|null $vocabularyWord = null)
+    public function mount(SplitVocabToKanjiAction $splitVocabToKanji, #[CurrentUser] User|null $user = null, int|null $radicalId = null, string|null $vocabularyWord = null)
     {
         $this->flat = $this->similarId !== null || $vocabularyWord !== null;
 
         $characters = $splitVocabToKanji->execute($vocabularyWord ?? '');
 
         $this->kanjis = Kanji::query()
-            ->tap(new UserBurnableScope(auth()->id()))
             ->tap(new KanjiRadicalsScope($radicalId))
             ->tap(new KanjiSimilarToScope($this->similarId))
             ->tap(new KanjiLevelScope($this->level))
@@ -40,6 +42,16 @@ class KanjiList extends Component
             ->orderBy('meaning')
             ->get(['id', 'level', 'character', 'meaning', 'onyomi', 'kunyomi', 'important_reading'])
             ->pipe(new ShowKanjiInTheSameOrderAsInVocab($characters));
+
+        if ($user) {
+            $this->burned = Burnable::query()
+                ->where('user_id', $user->id)
+                ->where('rel_type', (new Kanji)->getMorphClass())
+                ->whereIn('rel_id', $this->kanjis->pluck('id'))
+                ->pluck('rel_id')
+                ->flip()
+                ->all();
+        }
     }
 
     public function shuffle()

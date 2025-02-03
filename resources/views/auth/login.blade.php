@@ -8,7 +8,7 @@
     <div class="flex gap-2 justify-center my-4">
       <div>
         <a
-          class="btn bg-vk-600 inline-flex justify-center items-center w-12 h-12 text-xl rounded-full text-white hover:bg-vk-700 hover:text-white"
+          class="bg-vk-600 inline-flex justify-center items-center size-12 text-xl rounded-full text-white hover:bg-vk-700 hover:text-white"
           href="@lng/auth/vk"
         >
           @svg (vk)
@@ -17,7 +17,7 @@
       </div>
       <div>
         <a
-          class="btn bg-google-600 inline-flex justify-center items-center w-12 h-12 text-xl rounded-full text-white hover:bg-google-700 hover:text-white"
+          class="bg-google-600 inline-flex justify-center items-center size-12 text-xl rounded-full text-white hover:bg-google-700 hover:text-white"
           href="@lng/auth/google"
         >
           @svg (google)
@@ -44,7 +44,7 @@
     <div class="mb-4">
       <input
         required
-        class="form-input"
+        class="the-input"
         type="text"
         tabindex="1"
         name="email"
@@ -58,7 +58,7 @@
     <div class="mb-4 relative">
       <input
         required
-        class="form-input"
+        class="the-input"
         tabindex="2"
         type="password"
         name="password"
@@ -79,7 +79,7 @@
     <div class="flex items-center justify-between">
       <div>
         <label class="flex gap-2 items-center">
-          <input class="border-gray-300" tabindex="3" type="checkbox" name="foreign" {{ old('foreign') ? 'checked' : '' }}>
+          <input class="not-checked:border-gray-300 text-sky-600" type="checkbox" name="foreign" {{ old('foreign') ? 'checked' : '' }}>
           @lang('auth.dont_remember')
         </label>
       </div>

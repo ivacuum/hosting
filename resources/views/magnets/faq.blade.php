@@ -65,9 +65,9 @@
 
     <div class="mb-1">Для добавления предусмотрена <a class="link" href="@lng/magnets/add">отдельная страница</a>, доступная только зарегистрированным пользователям. В качестве ввода принимается три типа значений:</div>
     <ol>
-      <li>Ссылка на раздачу на рутрекере вида <span class="font-mono text-greenish-600 text-sm">https://rutracker.org/forum/<wbr>viewtopic.php?t=4031882</span>. Также поддерживаются адреса rutracker.cr, rutracker.net, rutracker.nl и maintracker.org</li>
-      <li>Инфо-хэш раздачи вида <span class="font-mono text-greenish-600 text-sm">9B5D85FFC234737E7D7C<wbr>246FECB6BB1EC5E8F0B9</span></li>
-      <li>Номер темы на рутрекере вида <span class="font-mono text-greenish-600 text-sm">4031882</span></li>
+      <li>Ссылка на раздачу на рутрекере вида <span class="font-mono text-green-600 text-sm">https://rutracker.org/forum/<wbr>viewtopic.php?t=4031882</span>. Также поддерживаются адреса rutracker.cr, rutracker.net, rutracker.nl и maintracker.org</li>
+      <li>Инфо-хэш раздачи вида <span class="font-mono text-green-600 text-sm">9B5D85FFC234737E7D7C<wbr>246FECB6BB1EC5E8F0B9</span></li>
+      <li>Номер темы на рутрекере вида <span class="font-mono text-green-600 text-sm">4031882</span></li>
     </ol>
   @endcomponent
 
@@ -121,7 +121,7 @@
     <div>Для участия в дискуссии нужно быть зарегистрированным пользователем сайта. На странице раздачи под ее описанием и комментариями других пользователей располагается форма написания комментария.</div>
   @endcomponent
 
-  <div class="font-medium text-2xl mb-2 mt-12">@lang('Обратная связь')</div>
+  <div class="font-medium text-2xl mb-2 mt-12 dark:text-white">@lang('Обратная связь')</div>
   @ru
     <p>Поделитесь своими знаниями или задайте вопрос. Мы постараемся обработать информацию и дополнить эту страницу новыми материалами.</p>
   @en

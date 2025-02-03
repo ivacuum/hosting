@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="flex">
-  <aside class="hidden lg:block flex-shrink-0 w-56">
+  <aside class="hidden lg:block shrink-0 w-56">
     <div class="lg:sticky lg:top-4">
       <nav>
         @foreach ($tree as $id => $category)
@@ -34,7 +34,7 @@
       </nav>
       @guest
         @ru
-          <div class="mt-6 mr-6 p-2 text-xs text-teal-800 dark:text-teal-400/75 bg-teal-200/50 dark:bg-teal-400/25 border border-teal-200/50 rounded">
+          <div class="mt-6 mr-6 p-2 text-xs text-teal-800 dark:text-teal-400/75 bg-teal-200/50 dark:bg-teal-400/25 border border-teal-200/50 dark:border-teal-200/15 rounded-sm">
             <a class="link" href="{{ path([App\Http\Controllers\Auth\SignIn::class, 'index'], ['goto' => path([App\Http\Controllers\MagnetsController::class, 'index'])]) }}">Пользователям</a> доступен чат
           </div>
         @endru
@@ -79,8 +79,8 @@
           <div class="font-medium mb-2 {{ $loop->first ? 'mt-0' : 'mt-6' }}">{{ $magnet->fullDate() }}</div>
           <?php $lastDate = $magnet->registered_at ?>
         @endif
-        <div class="flex flex-wrap md:flex-nowrap justify-center md:justify-start magnets-list-container hover:dark:bg-slate-800 js-magnets-views-observer" data-id="{{ $magnet->id }}">
-          <div class="flex-shrink-0 w-8 magnet-icon order-1 md:order-none mr-1 md:text-2xl" title="{{ $magnet->category_id->title() }}">
+        <div class="flex flex-wrap md:flex-nowrap justify-center md:justify-start magnets-list-container hover:bg-[#f6f6f6] dark:hover:bg-slate-800 js-magnets-views-observer" data-id="{{ $magnet->id }}">
+          <div class="shrink-0 w-8 magnet-icon order-1 md:order-none mr-1 md:text-2xl" title="{{ $magnet->category_id->title() }}">
             <?php $icon = $magnet->category_id->icon() ?>
             @svg ($icon)
           </div>
@@ -94,7 +94,7 @@
             @endif
           </a>
           <a
-            class="flex-shrink-0 pr-2 magnets-list-magnet text-center md:text-left whitespace-nowrap js-magnet"
+            class="shrink-0 pr-2 magnets-list-magnet text-center md:text-left whitespace-nowrap js-magnet"
             href="{{ $magnet->magnet() }}"
             title="@lang('Магнет')"
             data-action="{{ to('magnets/{magnet}/magnet', $magnet) }}"
@@ -102,13 +102,13 @@
             @svg (magnet)
             <span class="js-magnet-counter">{{ $magnet->clicks ?: '' }}</span>
           </a>
-          <div class="flex-shrink-0 text-center md:text-left whitespace-nowrap magnets-list-size">{{ ViewHelper::size($magnet->size) }}</div>
+          <div class="shrink-0 text-center md:text-left whitespace-nowrap magnets-list-size">{{ ViewHelper::size($magnet->size) }}</div>
         </div>
       @endforeach
 
       @include('tpl.paginator', ['paginator' => $magnets, 'cloak' => true])
     @else
-      <div class="mb-4 py-3 px-5 text-yellow-800/75 dark:text-yellow-400/75 bg-yellow-300/25 dark:bg-yellow-400/25 border border-yellow-200 dark:border-yellow-300/25 rounded">
+      <div class="mb-4 py-3 px-5 text-yellow-800/75 dark:text-yellow-400/75 bg-yellow-300/25 dark:bg-yellow-400/25 border border-yellow-200 dark:border-yellow-300/25 rounded-sm">
         Подходящих раздач не найдено.
         @if (!$fulltext)
           Можно расширить область поиска с помощью кнопки выше.
@@ -184,7 +184,7 @@
             <label class="font-bold">Поисковый запрос</label>
             <input
               required
-              class="form-input"
+              class="the-input"
               type="text"
               name="query"
               value="{{ old('query', $q) }}"
@@ -195,7 +195,7 @@
           <div class="mb-4">
             <label class="font-bold">Комментарий</label>
             <textarea
-              class="form-input"
+              class="the-input"
               rows="4"
               name="comment"
             ></textarea>

@@ -1,26 +1,161 @@
-@import "fonts.pcss";
-@import "tailwindcss/base.css";
-@import "variables.pcss";
-@import "base.pcss";
-@import "tailwindcss/components.css";
-@import "anchors.pcss";
-@import "animations.pcss";
-@import "bottom-tabbar.pcss";
-@import "buttons.pcss";
-@import "chat.pcss";
-/*@import "counters.pcss";*/
-@import "comments.pcss";
-@import "details.pcss";
-@import "forms.pcss";
-@import "images.pcss";
-@import "japanese.pcss";
-@import "life.pcss";
-@import "links.pcss";
-@import "lists.pcss";
-@import "magnets.pcss";
-@import "markdown.pcss";
-@import "svg.pcss";
-@import "tables.pcss";
-@import "tooltips.pcss";
-@import "tailwindcss/utilities.css";
-@import "utilities.pcss";
+@import "tailwindcss";
+
+@plugin '@tailwindcss/forms';
+
+@source "../js";
+@source "../svg";
+@source "../views";
+
+@import "./fonts.pcss";
+@import "./base.pcss";
+@import "./anchors.pcss";
+@import "./animations.pcss";
+@import "./bottom-tabbar.pcss";
+@import "./buttons.pcss";
+@import "./chat.pcss";
+/*@import "./counters.pcss";*/
+@import "./comments.pcss";
+@import "./details.pcss";
+@import "./forms.pcss";
+@import "./images.pcss";
+@import "./japanese.pcss";
+@import "./life.pcss";
+@import "./links.pcss";
+@import "./lists.pcss";
+@import "./magnets.pcss";
+@import "./markdown.pcss";
+@import "./svg.pcss";
+@import "./tables.pcss";
+@import "./tooltips.pcss";
+@import "./utilities.pcss";
+
+:root {
+  color-scheme: light;
+
+  /* Для шрифта Inter */
+  font-feature-settings: "calt", "cv02", "cv03", "cv04";
+  font-optical-sizing: auto;
+
+  --bottom-tabbar-bg: #f8f8f8 linear-gradient(to bottom, white 0%, #f8f8f8 100%) repeat-x;
+  --bottom-tabbar-height: 48px;
+  --bottom-tabbar-sm-height: 44px;
+
+  --form-input-label-color-without-placeholder: #686f76;
+
+  --link-color: var(--color-sky-700);
+  --link-border-color: --alpha(var(--color-sky-700) / 25%);
+  --link-decoration: none;
+  --link-hover-color: var(--color-orange-700);
+  --link-hover-decoration: none;
+  --link-hover-border-color: --alpha(var(--color-orange-700) / 25%);
+  --link-underline-offset: .1em;
+  --link-visited-color: var(--color-purple-900);
+  --link-visited-border-color: --alpha(var(--color-purple-900) / 25%);
+
+  --logo-shadow: #ddd 2px 2px 2px;
+
+  --mark-bg: --alpha(var(--color-yellow-500) / 10%);
+
+  --sticky-bottom-buttons-bg: rgba(255, 255, 255, .9);
+
+  --table-border-color: var(--color-gray-200);
+  --table-even-bg-color: var(--color-gray-100);
+  --table-header-bg: var(--color-gray-200) linear-gradient(var(--color-gray-50), var(--color-gray-200)) repeat-x;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --bottom-tabbar-bg: var(--color-slate-800) repeat-x;
+
+    --form-input-label-color-without-placeholder: var(--color-slate-400);
+
+    --link-color: var(--color-sky-500);
+    --link-border-color: var(--color-sky-700);
+    --link-hover-color: var(--color-sky-300);
+    --link-hover-border-color: var(--color-sky-500);
+    --link-visited-color: var(--color-sky-700);
+    --link-visited-border-color: var(--color-sky-900);
+
+    --logo-shadow: var(--color-slate-900) 2px 2px 2px;
+
+    --mark-bg: var(--color-yellow-100);
+
+    --sticky-bottom-buttons-bg: var(--color-slate-900);
+
+    --table-border-color: var(--color-slate-700);
+    --table-even-bg-color: var(--color-slate-800);
+    --table-header-bg: var(--color-slate-800) linear-gradient(var(--color-slate-700), var(--color-slate-800)) repeat-x;
+  }
+}
+
+@theme {
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1200px;
+
+  --color-aa-100: hsla(0, 100%, 0%, 0.03);
+
+  --color-facebook-600: hsla(227, 50%, 38%);
+  --color-facebook-700: hsla(227, 50%, 28%);
+
+  --color-github-600: hsla(0, 0%, 20%);
+  --color-github-700: hsla(0, 0%, 10%);
+
+  --color-google-600: hsla(5, 68%, 53%);
+  --color-google-700: hsla(5, 68%, 43%);
+
+  --color-grey-100: hsla(208, 10%, 95%);
+  --color-grey-200: hsla(208, 10%, 90%);
+  --color-grey-300: hsla(208, 10%, 80%);
+  --color-grey-400: hsla(208, 10%, 70%);
+  --color-grey-500: hsla(208, 10%, 60%);
+  --color-grey-600: hsla(208, 10%, 50%);
+  --color-grey-700: hsla(208, 14%, 40%);
+  --color-grey-800: hsla(208, 18%, 28%);
+  --color-grey-900: hsla(208, 22%, 16%);
+
+  --color-light: hsla(210, 16.7%, 97.6%);
+
+  --color-muted: #6c757d;
+
+  --color-odnoklassniki-600: hsla(25, 88%, 56%);
+  --color-odnoklassniki-700: hsla(25, 88%, 46%);
+
+  --color-telegram-600: hsla(200, 66%, 48%);
+  --color-telegram-700: hsla(200, 66%, 38%);
+
+  --color-twitter-600: hsla(202, 90%, 57%);
+  --color-twitter-700: hsla(202, 90%, 47%);
+
+  --color-viber-600: hsla(274, 48%, 46%);
+  --color-viber-700: hsla(274, 48%, 36%);
+
+  --color-vk-600: hsla(211, 30%, 46%);
+  --color-vk-700: hsla(211, 30%, 36%);
+
+  --color-whatsapp-600: hsla(114, 44%, 50%);
+  --color-whatsapp-700: hsla(114, 44%, 40%);
+
+  --color-yandex-600: hsla(0, 100%, 50%);
+  --color-yandex-700: hsla(0, 100%, 40%);
+
+  --font-sans: InterVariable, ui-rounded, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --text-2xs: 0.6875rem;
+  --text-2sm: 0.8125rem;
+
+  --shadow-box-b: inset 0 -2px 0 var(--tw-shadow-color);
+  --tooltip-max-width: 250px;
+  --tooltip-background-color: rgba(27, 31, 35, .9);
+  --tooltip-text-color: #fff;
+  --tooltip-delay: .4s;
+  --tooltip-duration: .1s;
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+}

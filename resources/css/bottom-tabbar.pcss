@@ -2,13 +2,13 @@
   padding-bottom: calc(var(--bottom-tabbar-height) + env(safe-area-inset-bottom));
 }
 
-@screen sm {
+@media (min-width: theme(--breakpoint-sm)) {
   .body-with-bottom-tabbar {
     padding-bottom: calc(var(--bottom-tabbar-sm-height) + env(safe-area-inset-bottom));
   }
 }
 
-@screen md {
+@media (min-width: theme(--breakpoint-md)) {
   .body-with-bottom-tabbar {
     padding-bottom: env(safe-area-inset-bottom);
   }
@@ -28,7 +28,7 @@
 }
 
 .bottom-tab {
-  color: var(--gray-light);
+  color: var(--color-gray-500);
   text-shadow: 0 1px 0 rgba(255, 255, 255, .25);
 }
 

@@ -23,7 +23,7 @@
 
   @if ($this->metaImageSrc())
     <div>
-      <img class="max-w-full h-auto rounded" src="{{ $this->metaImageSrc() }}" alt="">
+      <img class="max-w-full h-auto rounded-sm" src="{{ $this->metaImageSrc() }}" alt="">
     </div>
   @endif
 

@@ -90,7 +90,7 @@
 </header>
 @show
 
-<div class="flex-h-full">
+<div class="flex-[1_0_auto]">
   @section('breadcrumbs')
     @include('tpl.breadcrumbs', ['breadcrumbs' => $breadcrumbs ?? Breadcrumbs::get()])
   @show

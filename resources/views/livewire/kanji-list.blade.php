@@ -32,7 +32,7 @@
     </div>
     <div class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 gap-px text-center text-white">
       @foreach ($this->kanjis as $kanji)
-        <div class="group rounded {{ auth()->id() && $kanji->burnable ? 'bg-burned' : 'bg-kanji' }} {{ auth()->id() && !$this->showBurned && $kanji->burnable ? 'hidden' : '' }}">
+        <div class="group rounded-sm {{ auth()->id() && isset($this->burned[$kanji->id]) ? 'bg-burned' : 'bg-kanji' }} {{ auth()->id() && !$this->showBurned && isset($this->burned[$kanji->id]) ? 'hidden' : '' }}">
           <a
             class="block text-6xl leading-none ja-shadow py-2 text-white hover:text-grey-200"
             href="{{ $kanji->www() }}"

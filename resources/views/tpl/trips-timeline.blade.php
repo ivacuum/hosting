@@ -1,4 +1,4 @@
-<nav class="bg-light dark:bg-slate-800 border dark:border-slate-700 flex flex-wrap flex-col-reverse md:flex-row justify-between text-sm mt-6 p-2 rounded">
+<nav class="bg-slate-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 flex flex-wrap flex-col-reverse md:flex-row justify-between text-sm mt-6 p-2 rounded-sm">
   @if (isset($previousTrips) && count($previousTrips))
     @foreach ($previousTrips as $previous)
       <div class="{{ !$loop->first ? 'mb-4 md:mb-0' : '' }}">

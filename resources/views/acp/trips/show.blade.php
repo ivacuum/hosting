@@ -9,7 +9,7 @@
 </div>
 @if ($model->meta_image)
   <div class="mt-4">
-    <img class="max-w-full h-auto rounded" src="{{ $model->metaImage() }}" alt="">
+    <img class="max-w-full h-auto rounded-sm" src="{{ $model->metaImage() }}" alt="">
   </div>
 @endif
 <form class="mt-4" action="{{ to('acp/trips/{trip}/notify', $model) }}" method="post">

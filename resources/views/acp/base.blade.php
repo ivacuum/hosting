@@ -7,7 +7,7 @@
 @endsection
 
 @section('brand')
-<div class="md:hidden">
+<div class="flex md:hidden">
   @parent
 </div>
 @endsection

@@ -117,7 +117,7 @@
     <div class="container">
       <div class="grid md:grid-cols-2 gap-8">
         <div>
-          <div class="font-medium text-2xl mb-2">@lang('Обратная связь')</div>
+          <div class="font-medium text-2xl mb-2 dark:text-white">@lang('Обратная связь')</div>
           @ru
             <p>Поделитесь своими знаниями или задайте вопрос. Мы постараемся обработать информацию и дополнить эту страницу новыми материалами.</p>
           @en
