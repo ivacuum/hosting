@@ -9,7 +9,7 @@
   <x-terminal>
     <div class="grid gap-6">
       <div>
-        <div class="text-muted dark:text-white"># Обновление ОС</div>
+        <div class="text-gray-500 dark:text-white"># Обновление ОС</div>
         <div class="prepend-dollar"><a class="link" href="https://www.freebsd.org/cgi/man.cgi?query=freebsd-update">freebsd-update</a> fetch install</div>
         <div class="prepend-dollar">freebsd-update upgrade -r {{ $freebsdVersion }}-RELEASE</div>
         <div class="prepend-dollar">freebsd-update install</div>
