@@ -25,65 +25,65 @@ class ParseWanikani extends Command
 
             $response = $wanikani->subjects($level);
 
-            foreach ($response->getRadicals() as $radical) {
-                $model = Radical::query()->firstWhere('wk_id', $radical->id)
-                    ?? Radical::query()->firstWhere('meaning', $radical->meaning)
+            foreach ($response->getRadicals() as $radicalEntity) {
+                $radical = Radical::query()->firstWhere('wk_id', $radicalEntity->id)
+                    ?? Radical::query()->firstWhere('meaning', $radicalEntity->meaning)
                     ?? new Radical;
 
-                $model->image = '';
-                $model->wk_id = $radical->id;
-                $model->level = $radical->level;
-                $model->meaning = mb_strtolower($radical->meaning);
-                $model->character = $radical->character;
-                $model->save();
+                $radical->image = '';
+                $radical->wk_id = $radicalEntity->id;
+                $radical->level = $radicalEntity->level;
+                $radical->meaning = mb_strtolower($radicalEntity->meaning);
+                $radical->character = $radicalEntity->character;
+                $radical->save();
 
-                if ($radical->foundInKanji->isNotEmpty()) {
+                if ($radicalEntity->foundInKanji->isNotEmpty()) {
                     $ids = Kanji::query()
-                        ->whereIn('wk_id', $radical->foundInKanji)
+                        ->whereIn('wk_id', $radicalEntity->foundInKanji)
                         ->pluck('id');
 
-                    $model->kanjis()->sync($ids);
+                    $radical->kanjis()->sync($ids);
                 }
             }
 
-            foreach ($response->getKanjis() as $kanji) {
-                $model = Kanji::query()->firstWhere('wk_id', $kanji->id)
-                    ?? Kanji::query()->firstWhere('character', $kanji->character)
+            foreach ($response->getKanjis() as $kanjiEntity) {
+                $kanji = Kanji::query()->firstWhere('wk_id', $kanjiEntity->id)
+                    ?? Kanji::query()->firstWhere('character', $kanjiEntity->character)
                     ?? new Kanji;
 
-                $model->level = $kanji->level;
-                $model->wk_id = $kanji->id;
-                $model->nanori = $kanji->getNanori()->implode(', ');
-                $model->onyomi = $kanji->getOnyomi()->implode(', ');
-                $model->kunyomi = $kanji->getKunyomi()->implode(', ');
-                $model->meaning = mb_strtolower($kanji->meanings->implode(', '));
-                $model->character = $kanji->character;
-                $model->important_reading = $kanji->getImportantReading();
-                $model->save();
+                $kanji->level = $kanjiEntity->level;
+                $kanji->wk_id = $kanjiEntity->id;
+                $kanji->nanori = $kanjiEntity->getNanori()->implode(', ');
+                $kanji->onyomi = $kanjiEntity->getOnyomi()->implode(', ');
+                $kanji->kunyomi = $kanjiEntity->getKunyomi()->implode(', ');
+                $kanji->meaning = mb_strtolower($kanjiEntity->meanings->implode(', '));
+                $kanji->character = $kanjiEntity->character;
+                $kanji->important_reading = $kanjiEntity->getImportantReading();
+                $kanji->save();
 
-                if ($kanji->similarKanji->isNotEmpty()) {
+                if ($kanjiEntity->similarKanji->isNotEmpty()) {
                     $ids = Kanji::query()
-                        ->whereIn('wk_id', $kanji->similarKanji)
+                        ->whereIn('wk_id', $kanjiEntity->similarKanji)
                         ->pluck('id');
 
-                    $model->similar()->sync($ids);
+                    $kanji->similar()->sync($ids);
                 }
             }
 
-            foreach ($response->getVocabularies() as $vocab) {
-                $model = Vocabulary::query()->firstWhere('wk_id', $vocab->id)
-                    ?? Vocabulary::query()->firstWhere('character', $vocab->characters)
+            foreach ($response->getVocabularies() as $vocabEntity) {
+                $vocab = Vocabulary::query()->firstWhere('wk_id', $vocabEntity->id)
+                    ?? Vocabulary::query()->firstWhere('character', $vocabEntity->characters)
                     ?? new Vocabulary;
 
-                $model->kana = mb_strtolower($vocab->readings->implode(', '));
-                $model->level = $vocab->level;
-                $model->wk_id = $vocab->id;
-                $model->meaning = mb_strtolower($vocab->meanings->implode(', '));
-                $model->character = $vocab->characters;
-                $model->sentences = $vocab->getSentences()->implode("\n\n");
-                $model->male_audio = $vocab->maleAudio;
-                $model->female_audio = $vocab->femaleAudio;
-                $model->save();
+                $vocab->kana = mb_strtolower($vocabEntity->readings->implode(', '));
+                $vocab->level = $vocabEntity->level;
+                $vocab->wk_id = $vocabEntity->id;
+                $vocab->meaning = mb_strtolower($vocabEntity->meanings->implode(', '));
+                $vocab->character = $vocabEntity->characters;
+                $vocab->sentences = $vocabEntity->getSentences()->implode("\n\n");
+                $vocab->male_audio = $vocabEntity->maleAudio;
+                $vocab->female_audio = $vocabEntity->femaleAudio;
+                $vocab->save();
             }
 
             if ($level > $minLevel && $level < $maxLevel) {
