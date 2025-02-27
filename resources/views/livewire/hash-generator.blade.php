@@ -25,4 +25,9 @@
     <label class="block mb-1 font-semibold">@lang('SHA512')</label>
     <input class="the-input select-all" type="text" value="{{ $this->sha512() }}" readonly>
   </div>
+
+  <div>
+    <label class="block mb-1 font-semibold">@lang('XXH128')</label>
+    <input class="the-input select-all" type="text" value="{{ $this->xxh128() }}" readonly>
+  </div>
 </div>

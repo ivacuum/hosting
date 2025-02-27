@@ -27,4 +27,9 @@ class HashGenerator extends Component
     {
         return hash('sha512', $this->input);
     }
+
+    public function xxh128(): string
+    {
+        return hash('xxh128', $this->input);
+    }
 }
