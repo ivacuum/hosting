@@ -1,0 +1,47 @@
+services:
+  meilisearch:
+    image: getmeili/meilisearch
+    restart: unless-stopped
+    container_name: hosting-meilisearch
+
+  php-fpm:
+    build: ./
+    restart: unless-stopped
+    container_name: hosting-php-fpm
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      DB_HOST: ${HOST_DB_HOST:-$DB_HOST}
+      DB_SOCKET: ""
+      GM_BIN: /usr/bin/gm convert
+      LOG_CHANNEL: stdout
+      REDIS_URL: ${HOST_REDIS_URL:-$REDIS_URL}
+
+  php-queue:
+    image: hosting-php-fpm
+    command: [ "php", "artisan", "queue:work", "--tries=3" ]
+    restart: unless-stopped
+    container_name: hosting-php-queue
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      DB_HOST: ${HOST_DB_HOST:-$DB_HOST}
+      DB_SOCKET: ""
+      LOG_CHANNEL: stdout
+      REDIS_URL: ${HOST_REDIS_URL:-$REDIS_URL}
+
+  php-scheduler:
+    image: hosting-php-fpm
+    command: [ "php", "artisan", "schedule:work" ]
+    restart: unless-stopped
+    container_name: hosting-php-scheduler
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      DB_HOST: ${HOST_DB_HOST:-$DB_HOST}
+      DB_SOCKET: ""
+      LOG_CHANNEL: stdout
+      REDIS_URL: ${HOST_REDIS_URL:-$REDIS_URL}

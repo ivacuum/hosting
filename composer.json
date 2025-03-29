@@ -48,6 +48,10 @@
     }
   },
   "scripts": {
+    "bash": [
+      "Composer\\Config::disableProcessTimeout",
+      "docker exec -it hosting-php-fpm bash"
+    ],
     "fresh": "@php artisan migrate:fresh --seed --seeder='App\\Seeder\\DatabaseSeeder' --ansi",
     "outdated-direct": "composer outdated --direct",
     "pint": "vendor/bin/pint --test -v",
@@ -67,6 +71,11 @@
       "@php artisan ide-helper:meta"
     ],
     "queue": "@php artisan queue:work --stop-when-empty --ansi",
+    "rebuild-env": [
+      "docker-compose down",
+      "docker-compose build",
+      "docker-compose up -d"
+    ],
     "rector": "vendor/bin/rector process --dry-run",
     "share": [
       "Composer\\Config::disableProcessTimeout",
