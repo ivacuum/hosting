@@ -13,15 +13,15 @@ trait HasTripsMetaDescription
             return '';
         }
 
-        $tripsNext = \ViewHelper::plural('trips', $totalTrips);
+        $tripsText = \ViewHelper::plural('visits', $totalTrips);
         $totalPhotos = $trips->flatten()->sum->photos_count;
 
         if (!$totalPhotos) {
-            return $tripsNext;
+            return $tripsText;
         }
 
         $photosText = \ViewHelper::plural('photos', $totalPhotos);
 
-        return "{$tripsNext} · {$photosText}";
+        return "{$tripsText} · {$photosText}";
     }
 }
