@@ -54,6 +54,15 @@ return [
             ],
         ],
 
+        'stdout' => [
+            'driver' => 'monolog',
+            'handler' => \Monolog\Handler\StreamHandler::class,
+            'level' => env('LOG_LEVEL', 'debug'),
+            'with' => [
+                'stream' => 'php://stdout',
+            ],
+        ],
+
         'syslog' => [
             'driver' => 'syslog',
             'level' => 'debug',
