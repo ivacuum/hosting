@@ -36,30 +36,32 @@
     @include('tpl.trips_by_years')
   </section>
   <section class="md:pt-0">
-    <h2 class="font-medium text-3xl tracking-tight mb-2">@lang('Избранное')</h2>
-    <nav class="space-y-2">
-      @ru
-        <div><a class="link" href="@lng/life/chillout">Chillout</a></div>
-        <div><a class="link" href="@lng/life/books">Книги</a></div>
-      @endru
-      <div><a class="link" href="@lng/life/gigs">@lang('Концерты')</a></div>
-      @ru
-        <div><a class="link" href="@lng/life/favorite-posts">Любимые посты</a></div>
-        <div><a class="link" href="@lng/life/podcasts">Подкасты</a></div>
-        <div><a class="link" href="@lng/life/laundry">Условные обозначения стирки</a></div>
-        <div><a class="link" href="@lng/life/movies">Фильмы и сериалы</a></div>
-        <div><a class="link" href="@lng/life/using-in-travels">Чем пользуюсь в путешествиях</a></div>
-      @endru
-    </nav>
+    <div class="sticky top-2">
+      <h2 class="font-medium text-3xl tracking-tight mb-2">@lang('Избранное')</h2>
+      <nav class="space-y-2">
+        @ru
+          <div><a class="link" href="@lng/life/chillout">Chillout</a></div>
+          <div><a class="link" href="@lng/life/books">Книги</a></div>
+        @endru
+        <div><a class="link" href="@lng/life/gigs">@lang('Концерты')</a></div>
+        @ru
+          <div><a class="link" href="@lng/life/favorite-posts">Любимые посты</a></div>
+          <div><a class="link" href="@lng/life/podcasts">Подкасты</a></div>
+          <div><a class="link" href="@lng/life/laundry">Условные обозначения стирки</a></div>
+          <div><a class="link" href="@lng/life/movies">Фильмы и сериалы</a></div>
+          <div><a class="link" href="@lng/life/using-in-travels">Чем пользуюсь в путешествиях</a></div>
+        @endru
+      </nav>
 
-    <h2 class="font-medium text-3xl tracking-tight mb-2 mt-12">@lang('Языки')</h2>
-    <nav class="space-y-2">
-      <div><a class="link" href="@lng/life/english">@lang('Английский')</a></div>
-      @ru
-        <div><a class="link" href="@lng/life/german">@lang('Немецкий')</a></div>
-      @endru
-      <div><a class="link" href="@lng/japanese">@lang('Японский')</a></div>
-    </nav>
+      <h2 class="font-medium text-3xl tracking-tight mb-2 mt-12">@lang('Языки')</h2>
+      <nav class="space-y-2">
+        <div><a class="link" href="@lng/life/english">@lang('Английский')</a></div>
+        @ru
+          <div><a class="link" href="@lng/life/german">@lang('Немецкий')</a></div>
+        @endru
+        <div><a class="link" href="@lng/japanese">@lang('Японский')</a></div>
+      </nav>
+    </div>
   </section>
 </div>
 @endsection
