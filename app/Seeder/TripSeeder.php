@@ -53,6 +53,7 @@ class TripSeeder extends Seeder
         $user = UserFactory::new()
             ->withEmail('trip@example.com')
             ->withLogin('trip')
+            ->withPassword('top-secret')
             ->create();
 
         $randomCity = City::query()->inRandomOrder()->first();
