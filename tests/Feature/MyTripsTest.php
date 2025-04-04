@@ -61,7 +61,9 @@ class MyTripsTest extends TestCase
 
     public function testIndex()
     {
-        $trip = TripFactory::new()->withUser()->create();
+        $trip = TripFactory::new()
+            ->withUser(UserFactory::new()->withLogin('phpunit'))
+            ->create();
 
         $this->be($trip->user)
             ->get('my/trips')
