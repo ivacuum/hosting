@@ -2,49 +2,193 @@
 
 @section('content')
 @ru
-  <p></p>
+  <p>Самолет авиакомпании Визз Эйр.</p>
+@endru
+IMG_6147.jpeg
+
+@ru
+  <p>Между лентами выдачи багажа в аэропорту Милана.</p>
+@endru
+IMG_6148.jpeg
+
+@ru
+  <p>Для проката тележки нужен депозит в размере двух евро.</p>
+@endru
+IMG_6149.jpeg
+
+@ru
+  <p>Табло отправления поездов на станции аэропорта.</p>
+@endru
+IMG_6150.jpeg
+
+@ru
+  <p>Поезд из аэропорта.</p>
+@endru
+IMG_6151.jpeg
+
+@ru
+  <p>На станции терминалы для чек-ина и чек-аута с поезда.</p>
+@endru
+IMG_6152.jpeg
+
+@ru
+  <p>Терминал для самостоятельной покупки билета на поезд.</p>
+@endru
+IMG_6153.jpeg
+
+@ru
+  <p>Выход погулять и поесть в ближайшем к аэропорту городе — Бусто-Арсицио.</p>
+@endru
+IMG_6154.jpeg
+
+@ru
+  <p>Скамейка напротив дома с зеленым фасадом.</p>
+@endru
+IMG_6156.jpeg
+
+@ru
+  <p>Скамейка возле автобусной остановки.</p>
+@endru
+IMG_6157.jpeg
+
+@ru
+  <p>Деревья растут на крыше здания.</p>
+@endru
+IMG_6158.jpeg
+
+@ru
+  <p>Парковка.</p>
+@endru
+IMG_6159.jpeg
+
+@ru
+  <p>Обед в ресторане. Неожиданно, что заведения после обеда закрываются до ужина.</p>
+@endru
+IMG_6160.jpeg
+
+@ru
+  <p>Улица.</p>
+@endru
+IMG_6162.jpeg
+
+@ru
+  <p>Площадь.</p>
+@endru
+IMG_6163.jpeg
+
+@ru
+  <p>«Кирпич» подвесили прямо к дому.</p>
+@endru
+IMG_6164.jpeg
+
+@ru
+  <p>Что за дом?</p>
+@endru
+IMG_6165.jpeg
+
+@ru
+  <p>Удивительно встретить красную листву в апреле. До этого она попадалась в Японии в сезон красных кленов в декабре.</p>
+@endru
+IMG_6166.jpeg
+
+@ru
+  <p>Дом за каменно-кирпичным забором.</p>
+@endru
+IMG_6167.jpeg
+
+@ru
+  <p>Улица.</p>
+@endru
+IMG_6168.jpeg
+
+@ru
+  <p>Парк.</p>
+@endru
+IMG_6169.jpeg
+
+@ru
+  <p>Закругленная скамейка в тени деревьев.</p>
+@endru
+IMG_6174.jpeg
+
+@ru
+  <p>Собор?</p>
+@endru
+IMG_6175.jpeg
+
+@ru
+  <p>Зеленая стена перед заведением общепита.</p>
+@endru
+IMG_6176.jpeg
+
+@ru
+  <p>Еще красная листва.</p>
+@endru
+IMG_6177.jpeg
+
+@ru
+  <p>Лавандерия — прачечная?</p>
+@endru
+IMG_6178.jpeg
+
+@ru
+  <p>Собор?</p>
+@endru
+IMG_6179.jpeg
+
+@ru
+  <p>Улица.</p>
+@endru
+IMG_6180.jpeg
+
+@ru
+  <p>Современный дом за углом.</p>
+@endru
+IMG_6181.jpeg
+
+@ru
+  <p>Часы на башне показывают правильное время.</p>
+@endru
+IMG_6182.jpeg
+
+@ru
+  <p>Снова деревья растут на верхних открытых этажах.</p>
+@endru
+IMG_6183.jpeg
+IMG_6186.jpeg
+
+@ru
+  <p>Домофон и почтовые ящики.</p>
+@endru
+IMG_6184.jpeg
+
+@ru
+  <p>Площадь.</p>
+@endru
+IMG_6188.jpeg
+
+@ru
+  <p>Вход на вокзал.</p>
+@endru
+IMG_6190.jpeg
+
+@ru
+  <p>Запись билета на многоразовую карту.</p>
+@endru
+IMG_6191.jpeg
+
+@ru
+  <p>Поезда часто отстают от расписания.</p>
 @endru
 IMG_6192.jpeg
-IMG_6147.jpeg
-IMG_6148.jpeg
-IMG_6149.jpeg
-IMG_6150.jpeg
-IMG_6151.jpeg
-IMG_6152.jpeg
-IMG_6153.jpeg
-IMG_6154.jpeg
-IMG_6155.jpeg
-IMG_6156.jpeg
-IMG_6157.jpeg
-IMG_6158.jpeg
-IMG_6159.jpeg
-IMG_6160.jpeg
-IMG_6162.jpeg
-IMG_6163.jpeg
-IMG_6164.jpeg
-IMG_6165.jpeg
-IMG_6166.jpeg
-IMG_6167.jpeg
-IMG_6168.jpeg
-IMG_6169.jpeg
-IMG_6173.jpeg
-IMG_6174.jpeg
-IMG_6175.jpeg
-IMG_6176.jpeg
-IMG_6177.jpeg
-IMG_6178.jpeg
-IMG_6179.jpeg
-IMG_6180.jpeg
-IMG_6181.jpeg
-IMG_6182.jpeg
-IMG_6183.jpeg
-IMG_6184.jpeg
-IMG_6185.jpeg
-IMG_6186.jpeg
-IMG_6188.jpeg
-IMG_6189.jpeg
-IMG_6190.jpeg
-IMG_6191.jpeg
+
+@ru
+  <p>В поезде в аэропорт узкий проход и много полок для багажа.</p>
+@endru
 IMG_6193.jpeg
+
+@ru
+  <p>Вылет лоукостером из маленького терминала для внутриевропейских рейсов.</p>
+@endru
 IMG_6194.jpeg
 @endsection
