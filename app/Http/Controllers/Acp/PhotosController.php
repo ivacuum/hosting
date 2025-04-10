@@ -31,7 +31,6 @@ class PhotosController extends Controller
         $onPage = request('on_page');
 
         $models = Photo::query()
-            ->with('tags')
             ->tap(new PhotoForTripScope(request('trip_id')))
             ->tap(new PhotoApplyFilterScope($filter))
             ->tap(new PhotoForTagScope(request('tag_id')))

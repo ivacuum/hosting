@@ -37,7 +37,6 @@ class CommentsController extends Controller
         $magnetId = request('magnet_id');
 
         $models = Comment::query()
-            ->with('user')
             ->when($status !== null, fn (Builder $query) => $query->where('status', $status))
             ->when($issueId, new CommentRelationScope(new Issue, $issueId))
             ->when($newsId, new CommentRelationScope(new News, $newsId))

@@ -16,7 +16,6 @@ class UserTravelTripController extends UserTravelController
     public function index(User $traveler, LifeIndexForm $request)
     {
         $trips = Trip::query()
-            ->with('user')
             ->withCount('photos')
             ->whereBelongsTo($traveler)
             ->tap(new TripVisibleScope)

@@ -30,7 +30,6 @@ class GetMyVisibleGigsAction
     private function findModels(string|null $from, string|null $to)
     {
         return Gig::query()
-            ->with('artist')
             ->when($from, fn (Builder $query) => $query->where('date', '>=', $from))
             ->when($to, fn (Builder $query) => $query->where('date', '<=', $to))
             ->get();

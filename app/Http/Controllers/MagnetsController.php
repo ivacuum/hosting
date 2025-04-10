@@ -51,7 +51,6 @@ class MagnetsController
     public function comments()
     {
         $comments = Comment::query()
-            ->with('rel', 'user')
             ->tap(new CommentRelationScope(new Magnet))
             ->tap(new CommentPublishedScope)
             ->orderByDesc('created_at')

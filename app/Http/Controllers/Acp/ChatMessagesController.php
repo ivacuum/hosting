@@ -29,7 +29,6 @@ class ChatMessagesController extends Controller
         $userId = request('user_id');
 
         $models = ChatMessage::query()
-            ->with('user')
             ->unless($status === null, fn (Builder $query) => $query->where('status', $status))
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
             ->orderBy('id', $sort->direction->value)

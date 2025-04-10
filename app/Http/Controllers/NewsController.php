@@ -13,7 +13,6 @@ class NewsController
     public function index($year = null, $month = null, $day = null)
     {
         $news = News::query()
-            ->with('user')
             ->withCount('commentsPublished AS comments_count')
             ->tap(new NewsPublishedScope)
             ->tap(new NewsCurrentLocaleScope)

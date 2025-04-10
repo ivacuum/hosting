@@ -33,7 +33,6 @@ class TripsController extends Controller
         $countryId = request('country_id');
 
         $models = Trip::query()
-            ->with('user')
             ->withCount('comments', 'photos')
             ->when($cityId, fn (Builder $query) => $query->where('city_id', $cityId))
             ->when($countryId, fn (Builder $query) => $query->whereRelation('city.country', 'country_id', $countryId))

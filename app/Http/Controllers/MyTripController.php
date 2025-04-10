@@ -13,7 +13,6 @@ class MyTripController
     public function index()
     {
         $models = Trip::query()
-            ->with('user')
             ->withCount('comments', 'photos')
             ->whereBelongsTo(request()->user())
             ->orderByDesc('date_start')

@@ -29,7 +29,6 @@ class MagnetsController extends Controller
         $userId = request('user_id');
 
         $models = Magnet::query()
-            ->with('user')
             ->withCount('comments')
             ->when($status !== null, fn (Builder $query) => $query->where('status', $status))
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
