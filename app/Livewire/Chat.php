@@ -50,6 +50,7 @@ class Chat extends Component
     public function rows(): Collection
     {
         return ChatMessage::query()
+            ->with('user')
             ->where('status', ChatMessageStatus::Published)
             ->orderByDesc('id')
             ->take(20)

@@ -30,6 +30,7 @@ class CitiesController extends Controller
         $countryId = request('country_id');
 
         $models = City::query()
+            ->with('country')
             ->withCount('trips')
             ->when($countryId, fn (Builder $query) => $query->where('country_id', $countryId))
             ->when($q, fn (Builder $query) => $query->whereAny(['title_ru', 'title_en'], 'LIKE', "%{$q}%"))

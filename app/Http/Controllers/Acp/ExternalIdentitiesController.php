@@ -27,6 +27,7 @@ class ExternalIdentitiesController extends Controller
         $provider = request('provider');
 
         $models = ExternalIdentity::query()
+            ->with('user')
             ->unless($userId === null, fn (Builder $query) => $query->where('user_id', $userId))
             ->when($userId === null, fn (Builder $query) => $query->where('user_id', '<>', 0))
             ->when($provider, fn (Builder $query) => $query->where('provider', $provider))

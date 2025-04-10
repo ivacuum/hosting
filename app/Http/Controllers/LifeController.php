@@ -140,6 +140,7 @@ class LifeController
     public function gigs()
     {
         $gigs = Gig::query()
+            ->with('artist')
             ->orderByDesc('date')
             ->get()
             ->groupBy(fn (Gig $model) => $model->date->year);

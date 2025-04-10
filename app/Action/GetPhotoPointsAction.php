@@ -22,6 +22,7 @@ class GetPhotoPointsAction
 
         return $this->cache->remember($key->value, $key->ttl(), function () use ($tripId) {
             $photos = Photo::query()
+                ->with('rel')
                 ->tap(new PhotoForTripScope($tripId))
                 ->tap(new PhotoPublishedScope)
                 ->tap(new PhotoOnMapScope)

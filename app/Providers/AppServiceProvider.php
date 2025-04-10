@@ -27,7 +27,6 @@ class AppServiceProvider extends ServiceProvider
         Date::use(CarbonImmutable::class);
         Vite::useBuildDirectory('assets');
 
-        Model::automaticallyEagerLoadRelationships();
         Model::preventLazyLoading(!app()->isProduction());
         Model::preventAccessingMissingAttributes();
         Model::preventSilentlyDiscardingAttributes();

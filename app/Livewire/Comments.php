@@ -21,6 +21,7 @@ class Comments extends Component
     {
         $this->comments = $this->model
             ->commentsPublished()
+            ->with('user')
             ->orderBy('created_at')
             ->get();
     }
