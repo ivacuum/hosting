@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "39912aceefc518ce4dde5e43c9583011",
+    "content-hash": "f0812efd8c304c54cd17a57ec1469b38",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -62,16 +62,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.342.24",
+            "version": "3.342.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "cd7e1cbed4cb52c3aad31a647d1645594ff208eb"
+                "reference": "ae0f7d2b0abbdab1ba91fc2a3ba86aa4a50f89f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/cd7e1cbed4cb52c3aad31a647d1645594ff208eb",
-                "reference": "cd7e1cbed4cb52c3aad31a647d1645594ff208eb",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/ae0f7d2b0abbdab1ba91fc2a3ba86aa4a50f89f5",
+                "reference": "ae0f7d2b0abbdab1ba91fc2a3ba86aa4a50f89f5",
                 "shasum": ""
             },
             "require": {
@@ -153,9 +153,9 @@
             "support": {
                 "forum": "https://github.com/aws/aws-sdk-php/discussions",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.342.24"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.342.25"
             },
-            "time": "2025-04-09T18:22:32+00:00"
+            "time": "2025-04-10T18:11:44+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
@@ -1585,16 +1585,16 @@
         },
         {
             "name": "ivacuum/generic",
-            "version": "28.0.0",
+            "version": "28.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivacuum/generic.git",
-                "reference": "99fe817affa8077580122f82962d463e7308a24c"
+                "reference": "2395cc2ba1bf19312563c590e6a2d61657f6b931"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivacuum/generic/zipball/99fe817affa8077580122f82962d463e7308a24c",
-                "reference": "99fe817affa8077580122f82962d463e7308a24c",
+                "url": "https://api.github.com/repos/ivacuum/generic/zipball/2395cc2ba1bf19312563c590e6a2d61657f6b931",
+                "reference": "2395cc2ba1bf19312563c590e6a2d61657f6b931",
                 "shasum": ""
             },
             "require": {
@@ -1644,9 +1644,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ivacuum/generic/issues",
-                "source": "https://github.com/ivacuum/generic/tree/28.0.0"
+                "source": "https://github.com/ivacuum/generic/tree/28.0.1"
             },
-            "time": "2025-04-03T19:16:43+00:00"
+            "time": "2025-04-11T10:08:15+00:00"
         },
         {
             "name": "jean85/pretty-package-versions",
@@ -10834,7 +10834,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.3",
+        "php": ">=8.4",
         "ext-intl": "*",
         "ext-swoole": "*"
     },
