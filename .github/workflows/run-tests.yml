@@ -2,6 +2,10 @@ name: phpunit
 
 on: push
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   phpunit:
     runs-on: ubuntu-20.04
