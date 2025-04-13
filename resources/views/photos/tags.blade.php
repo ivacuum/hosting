@@ -11,7 +11,7 @@
         <span class="absolute font-bold uppercase -ml-6">{{ $currentInitial }}</span>
       @endif
       <a class="link" href="{{ $tag->www() }}">#{{ $tag->title }}</a>
-      <span class="text-xs text-muted">{{ $tag->photos_published_count }}</span>
+      <span class="text-xs text-gray-500">{{ $tag->photos_published_count }}</span>
     </div>
     <?php $initial = $currentInitial ?>
   @endforeach

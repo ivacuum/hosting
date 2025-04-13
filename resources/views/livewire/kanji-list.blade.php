@@ -9,7 +9,7 @@
         @else
           <span>{{ $this->similarId ? __('japanese.similar-kanji') : __('japanese.kanji') }}</span>
         @endif
-        <span class="text-base text-muted">{{ $this->kanjis->count() }}</span>
+        <span class="text-base text-gray-500">{{ $this->kanjis->count() }}</span>
       </h3>
       <div>
         <button

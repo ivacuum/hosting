@@ -23,7 +23,7 @@
             {{ $file->title }}
           </a>
         </td>
-        <td class="md:text-right text-muted whitespace-nowrap">{{ ViewHelper::size($file->size) }}</td>
+        <td class="md:text-right text-gray-500 whitespace-nowrap">{{ ViewHelper::size($file->size) }}</td>
         <td class="md:text-right whitespace-nowrap">{{ ViewHelper::number($file->downloads) }}</td>
         <td>{{ ViewHelper::dateShort($file->created_at) }}</td>
       </tr>

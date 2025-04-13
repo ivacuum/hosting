@@ -45,7 +45,7 @@
       </td>
       <td>
         <div>{{ $model->filename() }}</div>
-        <div class="text-xs text-muted">{{ $model->folder() }}</div>
+        <div class="text-xs text-gray-500">{{ $model->folder() }}</div>
       </td>
       <td>
         @foreach ($model->tags as $tag)

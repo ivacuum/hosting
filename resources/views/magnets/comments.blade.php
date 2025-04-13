@@ -30,15 +30,15 @@
         @else
           <em>deleted user</em>
         @endif
-        <span class="mx-2 text-muted">&middot;</span>
+        <span class="mx-2 text-gray-500">&middot;</span>
         @if ($comment->rel?->status === App\Domain\MagnetStatus::Published)
           <a href="{{ $comment->rel->www() }}#comment-{{ $comment->id }}">{{ Str::limit($comment->rel->title, 50) }}</a>
         @else
-          <em class="text-muted">раздача удалена</em>
+          <em class="text-gray-500">раздача удалена</em>
         @endif
       </div>
       <div class="comment-body whitespace-pre-line">{!! $comment->html !!}</div>
-      <div class="text-xs text-muted">{{ $comment->fullDate() }}</div>
+      <div class="text-xs text-gray-500">{{ $comment->fullDate() }}</div>
     </div>
   </div>
 @endforeach

@@ -56,7 +56,7 @@
         <td>
           <a href="{{ Acp::show(new App\User, $model->user_id) }}">
             <div>{{ $model->email }}</div>
-            <div class="text-xs text-muted">{{ $model->name }}</div>
+            <div class="text-xs text-gray-500">{{ $model->name }}</div>
           </a>
         </td>
         <td class="md:text-right whitespace-nowrap">

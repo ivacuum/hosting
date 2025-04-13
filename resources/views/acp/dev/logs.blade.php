@@ -53,7 +53,7 @@
     </tr>
     <tr>
       <td></td>
-      <td colspan="5" class="text-muted">
+      <td colspan="5" class="text-gray-500">
         <a href="{{ UrlHelper::filter(['q' => "ip={$line->ip}"]) }}">{{ $line->ip }}</a>
         <a href="https://ipinfo.io/{{ $line->ip }}">{{ $line->country }}</a>
         &middot;

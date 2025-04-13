@@ -24,7 +24,7 @@
                 @click="clickOnColumn(j)"
               >
                 <div class="text-2xl font-bold leading-none">@{{ cell[syllabaryIndex] ? cell[syllabaryIndex] : '&nbsp;' }}</div>
-                <div class="text-muted">@{{ cell[answerIndex] ? cell[answerIndex] : '&nbsp;' }}</div>
+                <div class="text-gray-500">@{{ cell[answerIndex] ? cell[answerIndex] : '&nbsp;' }}</div>
               </div>
             </template>
           </template>
@@ -72,7 +72,7 @@
         <div class="mx-auto max-w-[400px]">
           <div class="text-center py-2 md:py-12">
             <div class="text-5xl font-bold" @click="revealAnswer">@{{ question }}</div>
-            <div class="text-muted dark:text-slate-400" :class="{ invisible: !answerVisible }">@{{ answer }}</div>
+            <div class="text-gray-500 dark:text-slate-400" :class="{ invisible: !answerVisible }">@{{ answer }}</div>
           </div>
           <div>
             <input
@@ -96,7 +96,7 @@
             <div>
               <button class="btn btn-default" @click="pick">@ru Назад к выбору @en Back to picker @endru</button>
             </div>
-            <div class="text-muted" v-if="answered > 0">
+            <div class="text-gray-500" v-if="answered > 0">
               @ru
                 Отвечено: @{{ answered }}
               @en

@@ -55,7 +55,7 @@
           {{ $model->email }}
         </a>
         @if ($model->login)
-          <div class="text-xs text-muted">{{ $model->login }}</div>
+          <div class="text-xs text-gray-500">{{ $model->login }}</div>
         @endif
       </td>
       @if ($avatar)

@@ -27,7 +27,7 @@
       </td>
       <td><a href="{{ Acp::show($model) }}">{{ $model->title }}</a></td>
       <td><a href="{{ $model->www() }}">{{ $model->slug }}</a></td>
-      <td class="text-muted">{{ $model->iata }}</td>
+      <td class="text-gray-500">{{ $model->iata }}</td>
       <td class="md:text-right whitespace-nowrap">
         <a href="{{ Acp::index(new App\Trip, $model) }}">
           {{ ViewHelper::number($model->trips_count) ?: '' }}

@@ -25,19 +25,19 @@ Highlights
   <p>Расписание было заранее вывешено на сайте площадки и транслировалось на экране внутри клуба. Даже собственная запись выступления Опет на диктофон показала, что ее длительность ровно два часа.</p>
   <table class="table-stats mb-4">
     <tr>
-      <td class="text-muted">19:00</td>
+      <td class="text-gray-500">19:00</td>
       <td>Открытие дверей</td>
     </tr>
     <tr>
-      <td class="text-muted">19:30</td>
+      <td class="text-gray-500">19:30</td>
       <td>Sahg (разогрев)</td>
     </tr>
     <tr>
-      <td class="text-muted">20:30</td>
+      <td class="text-gray-500">20:30</td>
       <td>Opeth</td>
     </tr>
     <tr>
-      <td class="text-muted">22:30</td>
+      <td class="text-gray-500">22:30</td>
       <td>Окончание шоу</td>
     </tr>
   </table>

@@ -23,7 +23,7 @@
       </td>
       <td>
         @if ($model->status->isHidden())
-          <span class="text-muted tooltipped tooltipped-n" aria-label="Хаб скрыт">
+          <span class="text-gray-500 tooltipped tooltipped-n" aria-label="Хаб скрыт">
             @svg (eye-slash)
           </span>
         @endif

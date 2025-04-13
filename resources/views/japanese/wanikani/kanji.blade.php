@@ -15,11 +15,11 @@
 <h3 class="font-medium text-2xl mt-6 mb-2">@lang('Варианты чтения')</h3>
 <div class="mb-6">
   @if ($kanji->onyomi)
-    <span class="text-muted">On'yomi</span>
+    <span class="text-gray-500">On'yomi</span>
     <span class="text-xl mr-4">【{{ $kanji->onyomi }}】</span>
   @endif
   @if ($kanji->kunyomi)
-    <span class="text-muted">Kun'yomi</span>
+    <span class="text-gray-500">Kun'yomi</span>
     <span class="text-xl">【{{ $kanji->kunyomi }}】</span>
   @endif
 </div>

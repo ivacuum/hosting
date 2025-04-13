@@ -40,7 +40,7 @@
                 @if($loop->first)
                   <span>{{ $spellOut }}</span>
                 @else
-                  <span class="text-muted">{{ $spellOut }}</span>
+                  <span class="text-gray-500">{{ $spellOut }}</span>
                 @endif
               @endforeach
             </div>

@@ -11,62 +11,62 @@
 @ru
   <h3 class="font-medium text-2xl tracking-tight mb-2">Алфавит и произношение</h3>
   <div class="column-width-48">
-    <div class="city-entry pb-2">A <span class="text-muted">[a:]</span></div>
-    <div class="city-entry pb-2">B <span class="text-muted">[be:]</span></div>
-    <div class="city-entry pb-2">C <span class="text-muted">[tse:]</span> ц, к, ч</div>
-    <div class="city-entry pb-2">D <span class="text-muted">[de:]</span></div>
-    <div class="city-entry pb-2">E <span class="text-muted">[e:]</span></div>
-    <div class="city-entry pb-2">F <span class="text-muted">[ef]</span></div>
-    <div class="city-entry pb-2">G <span class="text-muted">[ge:]</span></div>
-    <div class="city-entry pb-2">H <span class="text-muted">[ha:]</span></div>
-    <div class="city-entry pb-2">I <span class="text-muted">[i:]</span></div>
-    <div class="city-entry pb-2">J <span class="text-muted">[jot:]</span> й</div>
-    <div class="city-entry pb-2">K <span class="text-muted">[ka:]</span></div>
-    <div class="city-entry pb-2">L <span class="text-muted">[el]</span> ль</div>
-    <div class="city-entry pb-2">M <span class="text-muted">[em]</span></div>
-    <div class="city-entry pb-2">N <span class="text-muted">[en]</span></div>
-    <div class="city-entry pb-2">O <span class="text-muted">[o:]</span></div>
-    <div class="city-entry pb-2">P <span class="text-muted">[pe:]</span></div>
-    <div class="city-entry pb-2">Q <span class="text-muted">[ku:]</span></div>
-    <div class="city-entry pb-2">R <span class="text-muted">[e:a]</span></div>
-    <div class="city-entry pb-2">S <span class="text-muted">[es]</span> з,ш</div>
-    <div class="city-entry pb-2">T <span class="text-muted">[te]</span></div>
-    <div class="city-entry pb-2">U <span class="text-muted">[u:]</span></div>
-    <div class="city-entry pb-2">V <span class="text-muted">[fau]</span> ф</div>
-    <div class="city-entry pb-2">W <span class="text-muted">[ve:]</span></div>
-    <div class="city-entry pb-2">X <span class="text-muted">[iks]</span> кс</div>
-    <div class="city-entry pb-2">Y <span class="text-muted">['ypsilon]</span> й</div>
-    <div class="city-entry pb-2">Z <span class="text-muted">[tset]</span> ц</div>
-    <div class="city-entry pb-2">Ä <span class="text-muted">[e:]</span> ё</div>
-    <div class="city-entry pb-2">Ö <span class="text-muted">[ø:]</span> ё</div>
-    <div class="city-entry pb-2">Ü <span class="text-muted">[y:]</span> ю</div>
-    <div class="city-entry pb-2">ß <span class="text-muted">[es'tset]</span> с</div>
+    <div class="city-entry pb-2">A <span class="text-gray-500">[a:]</span></div>
+    <div class="city-entry pb-2">B <span class="text-gray-500">[be:]</span></div>
+    <div class="city-entry pb-2">C <span class="text-gray-500">[tse:]</span> ц, к, ч</div>
+    <div class="city-entry pb-2">D <span class="text-gray-500">[de:]</span></div>
+    <div class="city-entry pb-2">E <span class="text-gray-500">[e:]</span></div>
+    <div class="city-entry pb-2">F <span class="text-gray-500">[ef]</span></div>
+    <div class="city-entry pb-2">G <span class="text-gray-500">[ge:]</span></div>
+    <div class="city-entry pb-2">H <span class="text-gray-500">[ha:]</span></div>
+    <div class="city-entry pb-2">I <span class="text-gray-500">[i:]</span></div>
+    <div class="city-entry pb-2">J <span class="text-gray-500">[jot:]</span> й</div>
+    <div class="city-entry pb-2">K <span class="text-gray-500">[ka:]</span></div>
+    <div class="city-entry pb-2">L <span class="text-gray-500">[el]</span> ль</div>
+    <div class="city-entry pb-2">M <span class="text-gray-500">[em]</span></div>
+    <div class="city-entry pb-2">N <span class="text-gray-500">[en]</span></div>
+    <div class="city-entry pb-2">O <span class="text-gray-500">[o:]</span></div>
+    <div class="city-entry pb-2">P <span class="text-gray-500">[pe:]</span></div>
+    <div class="city-entry pb-2">Q <span class="text-gray-500">[ku:]</span></div>
+    <div class="city-entry pb-2">R <span class="text-gray-500">[e:a]</span></div>
+    <div class="city-entry pb-2">S <span class="text-gray-500">[es]</span> з,ш</div>
+    <div class="city-entry pb-2">T <span class="text-gray-500">[te]</span></div>
+    <div class="city-entry pb-2">U <span class="text-gray-500">[u:]</span></div>
+    <div class="city-entry pb-2">V <span class="text-gray-500">[fau]</span> ф</div>
+    <div class="city-entry pb-2">W <span class="text-gray-500">[ve:]</span></div>
+    <div class="city-entry pb-2">X <span class="text-gray-500">[iks]</span> кс</div>
+    <div class="city-entry pb-2">Y <span class="text-gray-500">['ypsilon]</span> й</div>
+    <div class="city-entry pb-2">Z <span class="text-gray-500">[tset]</span> ц</div>
+    <div class="city-entry pb-2">Ä <span class="text-gray-500">[e:]</span> ё</div>
+    <div class="city-entry pb-2">Ö <span class="text-gray-500">[ø:]</span> ё</div>
+    <div class="city-entry pb-2">Ü <span class="text-gray-500">[y:]</span> ю</div>
+    <div class="city-entry pb-2">ß <span class="text-gray-500">[es'tset]</span> с</div>
   </div>
 
   <h3 class="font-medium text-2xl tracking-tight mt-6 mb-2">Дифтонги</h3>
   <div class="column-width-48">
-    <div class="city-entry pb-2">ai, ei <span class="text-muted">[ай]</span></div>
-    <div class="city-entry pb-2">ie <span class="text-muted">[и:]</span></div>
-    <div class="city-entry pb-2">ig <span class="text-muted">[ихь]</span></div>
-    <div class="city-entry pb-2">eu, äu <span class="text-muted">[ой]</span></div>
-    <div class="city-entry pb-2">au <span class="text-muted">[ао]</span></div>
-    <div class="city-entry pb-2">sch <span class="text-muted">[ш]</span></div>
-    <div class="city-entry pb-2">tsch <span class="text-muted">[ч]</span></div>
-    <div class="city-entry pb-2">st <span class="text-muted">[шт]</span></div>
-    <div class="city-entry pb-2">sp <span class="text-muted">[шп]</span></div>
-    <div class="city-entry pb-2">ph <span class="text-muted">[ф]</span></div>
-    <div class="city-entry pb-2">rh <span class="text-muted">[р]</span></div>
-    <div class="city-entry pb-2">th, dt <span class="text-muted">[т]</span></div>
-    <div class="city-entry pb-2">tz, ts <span class="text-muted">[ц]</span></div>
-    <div class="city-entry pb-2">ng <span class="text-muted">[η]</span></div>
-    <div class="city-entry pb-2">nk <span class="text-muted">[ηк]</span></div>
-    <div class="city-entry pb-2">ck <span class="text-muted">[к]</span></div>
-    <div class="city-entry pb-2">qu <span class="text-muted">[кв]</span></div>
-    <div class="city-entry pb-2">ch <span class="text-muted">[х]</span> Buch</div>
-    <div class="city-entry pb-2">ch <span class="text-muted">[хь]</span> ich</div>
-    <div class="city-entry pb-2">ch <span class="text-muted">[к]</span> sechs</div>
-    <div class="city-entry pb-2">ch <span class="text-muted">[ш]</span> Chef</div>
-    <div class="city-entry pb-2">ch <span class="text-muted">[ч]</span> checken</div>
+    <div class="city-entry pb-2">ai, ei <span class="text-gray-500">[ай]</span></div>
+    <div class="city-entry pb-2">ie <span class="text-gray-500">[и:]</span></div>
+    <div class="city-entry pb-2">ig <span class="text-gray-500">[ихь]</span></div>
+    <div class="city-entry pb-2">eu, äu <span class="text-gray-500">[ой]</span></div>
+    <div class="city-entry pb-2">au <span class="text-gray-500">[ао]</span></div>
+    <div class="city-entry pb-2">sch <span class="text-gray-500">[ш]</span></div>
+    <div class="city-entry pb-2">tsch <span class="text-gray-500">[ч]</span></div>
+    <div class="city-entry pb-2">st <span class="text-gray-500">[шт]</span></div>
+    <div class="city-entry pb-2">sp <span class="text-gray-500">[шп]</span></div>
+    <div class="city-entry pb-2">ph <span class="text-gray-500">[ф]</span></div>
+    <div class="city-entry pb-2">rh <span class="text-gray-500">[р]</span></div>
+    <div class="city-entry pb-2">th, dt <span class="text-gray-500">[т]</span></div>
+    <div class="city-entry pb-2">tz, ts <span class="text-gray-500">[ц]</span></div>
+    <div class="city-entry pb-2">ng <span class="text-gray-500">[η]</span></div>
+    <div class="city-entry pb-2">nk <span class="text-gray-500">[ηк]</span></div>
+    <div class="city-entry pb-2">ck <span class="text-gray-500">[к]</span></div>
+    <div class="city-entry pb-2">qu <span class="text-gray-500">[кв]</span></div>
+    <div class="city-entry pb-2">ch <span class="text-gray-500">[х]</span> Buch</div>
+    <div class="city-entry pb-2">ch <span class="text-gray-500">[хь]</span> ich</div>
+    <div class="city-entry pb-2">ch <span class="text-gray-500">[к]</span> sechs</div>
+    <div class="city-entry pb-2">ch <span class="text-gray-500">[ш]</span> Chef</div>
+    <div class="city-entry pb-2">ch <span class="text-gray-500">[ч]</span> checken</div>
   </div>
 
   <h3 class="font-medium text-2xl tracking-tight mt-6 mb-2">Спряжение глаголов</h3>

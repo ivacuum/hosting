@@ -77,17 +77,17 @@ body {
           <div class="font-bold">@ru Высшее, МГТУ им. Баумана @en Bauman Moscow State Technical University @endru</div>
           <div>
             @ru Инженер-программист @en IT Engineer's degree @endru
-            <span class="text-xs text-muted">2006–2012</span>
+            <span class="text-xs text-gray-500">2006–2012</span>
           </div>
           <h3 class="my-caption font-medium text-lg mb-2 mt-6 sm:mt-12 uppercase">@ru Курсы и тренинги @en Courses & Trainings @endru</h3>
           <div class="font-bold">@ru Английский язык @en English @endru</div>
           <div>
             @ru Грамматика @en Grammar @endru
-            <span class="text-xs text-muted">2006</span>
+            <span class="text-xs text-gray-500">2006</span>
           </div>
           <div>
             @ru Разговорный @en Spoken @endru
-            <span class="text-xs text-muted">2011</span>
+            <span class="text-xs text-gray-500">2011</span>
           </div>
         </div>
         <div>
@@ -370,7 +370,7 @@ body {
     @ru проект жив и здоров @en project is up and running @endru
   </div>
   <div class="mb-1">
-    <span class="text-muted">@svg (primitive-dot)</span>
+    <span class="text-gray-500">@svg (primitive-dot)</span>
     @ru проект более недоступен, например, его переделали или выключили, но могли остаться исходники @en project is no longer available—it was rebuilt or shut down—still there might be source code available @endru
   </div>
   <div>
@@ -382,10 +382,10 @@ body {
   <div>
     <div class="font-medium text-lg mb-2">
       <span class="text-orange-300">@svg (star)</span>
-      <span class="text-muted">@svg (primitive-dot)</span>
+      <span class="text-gray-500">@svg (primitive-dot)</span>
       <a href="https://kupislona.ru/" rel="nofollow">kupislona.ru</a>
     </div>
-    <div class="my-2 svg-muted text-muted">
+    <div class="my-2 svg-muted text-gray-500">
       @svg (calendar)
       @ru с декабря 2014 года @en December 2014 — Present @endru
     </div>
@@ -516,7 +516,7 @@ body {
       <a href="/">vacuum.name</a>
       <a href="https://github.com/ivacuum/hosting" rel="nofollow">@svg (github)</a>
     </div>
-    <div class="my-2 svg-muted text-muted">
+    <div class="my-2 svg-muted text-gray-500">
       @svg (calendar)
       @ru с февраля 2015 года @en Since February 2015 — Present @endru
     </div>

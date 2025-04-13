@@ -5,7 +5,7 @@
 @section('content')
 <h1 class="font-semibold text-lg md:hidden mb-6">
   @ru Сергей Панков @en Sergei Pankov @endru
-  <span class="text-muted single-story-a">
+  <span class="text-gray-500 single-story-a">
     &middot;
     vacuum kaluga
   </span>
@@ -19,7 +19,7 @@
         <h2 class="font-semibold text-2xl"><span class="link">@lang('Магнеты')</span></h2>
       </a>
       <div>Сервис для скачивания файлов у многочисленных пользователей сети интернет без регистрации и рейтинга.</div>
-      {{--<div class="text-muted">Дата запуска: 5 января 2017 г.</div>--}}
+      {{--<div class="text-gray-500">Дата запуска: 5 января 2017 г.</div>--}}
     </div>
   @endru
   <div>
@@ -29,7 +29,7 @@
     </a>
     @ru
       <div>Мои заметки о жизни: поездки по городам России и мира, посещенные концерты, понравившиеся фильмы и книги.</div>
-      {{--<div class="text-muted hidden md:block">Дата запуска: 29 сентября 2014 г.</div>--}}
+      {{--<div class="text-gray-500 hidden md:block">Дата запуска: 29 сентября 2014 г.</div>--}}
     @en
       <div>Notes about my life. Trips around Russia and the whole world. Attended gigs. Favorite movies and books.</div>
     @endru
@@ -47,14 +47,14 @@
         <h2 class="font-semibold text-2xl"><span class="link">KupiSlona.ru</span></h2>
       </a>
       <div>Доска бесплатных объявлений России. Место встречи продавцов и покупателей.</div>
-      {{--<div class="text-muted">Дата запуска: 7 декабря 2015 г.</div>--}}
+      {{--<div class="text-gray-500">Дата запуска: 7 декабря 2015 г.</div>--}}
     {{--</div>--}}
     <div class="hidden md:block">
       <a class="flex items-center mb-2 link-parent" href="@lng/gallery">
         <h2 class="font-semibold text-2xl"><span class="link">@lang('Галерея')</span></h2>
       </a>
       <div>Хранилище изображений для последующей публикации в интернете.</div>
-      {{--<p class="text-muted">Дата запуска: 8 февраля 2009 г.</p>--}}
+      {{--<p class="text-gray-500">Дата запуска: 8 февраля 2009 г.</p>--}}
     </div>
   @endru
   <div class="hidden md:block">
@@ -63,7 +63,7 @@
     </a>
     @ru
       <div>Большая коллекция русских DC++ клиентов. Ответы на вопросы. Популярные хабы.</div>
-      {{--<p class="text-muted">Дата запуска: 17 марта 2008 г.</p>--}}
+      {{--<p class="text-gray-500">Дата запуска: 17 марта 2008 г.</p>--}}
     @en
       <p>Large collection of DC++ client software. Popular hubs to connect.</p>
     @endru
@@ -74,7 +74,7 @@
         <h2 class="font-semibold text-2xl"><span class="link">@lang('Торренты')</span></h2>
       </a>
       <div>Исторический форум сервиса для обмена файлами внутри локальной сети Билайн.</div>
-      {{--<p class="text-muted">Дата запуска: 5 июля 2010 г.</p>--}}
+      {{--<p class="text-gray-500">Дата запуска: 5 июля 2010 г.</p>--}}
     </div>
     <?php /*
     <div>
@@ -82,7 +82,7 @@
         <h2 class="font-semibold text-2xl"><span class="link">@lang('Парсер ВК')</span></h2>
       </a>
       <div>Ежедневная подборка десяти лучших постов выбранных страниц и групп ВК.</div>
-      {{--<div class="text-muted">Дата запуска: 2 октября 2014 г.</div>--}}
+      {{--<div class="text-gray-500">Дата запуска: 2 октября 2014 г.</div>--}}
     </div>
     */ ?>
   @endru
@@ -99,7 +99,7 @@
     </a>
     @ru
       <div>Коллекция способов сэкономить на услугах известных сервисов.</div>
-      {{--<div class="text-muted">Дата запуска: 25 февраля 2017 г.</div>--}}
+      {{--<div class="text-gray-500">Дата запуска: 25 февраля 2017 г.</div>--}}
     @en
       <div>Easy ways to get discounts for well known services.</div>
     @endru

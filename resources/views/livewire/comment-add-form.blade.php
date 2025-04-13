@@ -33,7 +33,7 @@
               >
                 @svg (vk)
               </a>
-              <div class="mt-1 text-xs text-muted">@lang('auth.vk')</div>
+              <div class="mt-1 text-xs text-gray-500">@lang('auth.vk')</div>
             </div>
             <div class="text-center">
               <a
@@ -42,7 +42,7 @@
               >
                 @svg (google)
               </a>
-              <div class="mt-1 text-xs text-muted">@lang('auth.google')</div>
+              <div class="mt-1 text-xs text-gray-500">@lang('auth.google')</div>
             </div>
           </div>
         </div>

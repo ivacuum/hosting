@@ -31,7 +31,7 @@
 </div>
 <div class="flex">
   <div class="bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 mt-2 p-2 rounded-sm">
-    <div class="text-muted dark:text-slate-300">{{ $model->email }}</div>
+    <div class="text-gray-500 dark:text-slate-300">{{ $model->email }}</div>
     <div><a href="{{ $model->page }}">{{ $model->page }}</a></div>
   </div>
 </div>

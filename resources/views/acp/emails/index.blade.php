@@ -24,7 +24,7 @@
       </td>
       <td>
         {{ $model->template }}
-        <div class="text-xs text-muted">{{ $model->rel_type }} #{{ $model->rel_id }}</div>
+        <div class="text-xs text-gray-500">{{ $model->rel_type }} #{{ $model->rel_id }}</div>
       </td>
       <td>{{ $model->locale }}</td>
       <td><a href="{{ Acp::show($model->user) }}">{{ $model->to }}</a></td>

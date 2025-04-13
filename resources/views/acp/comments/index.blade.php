@@ -43,7 +43,7 @@
       </td>
       <td>
         <div class="whitespace-pre-line">{{ $model->html }}</div>
-        <div class="text-xs text-muted">{{ $model->rel_type }} #{{ $model->rel_id }}</div>
+        <div class="text-xs text-gray-500">{{ $model->rel_type }} #{{ $model->rel_id }}</div>
       </td>
       <td class="whitespace-nowrap">{{ ViewHelper::dateShort($model->created_at) }}</td>
       <td>
@@ -52,11 +52,11 @@
             @svg (external-link)
           </a>
         @elseif ($model->status->isHidden())
-          <span class="text-muted tooltipped tooltipped-n" aria-label="Комментарий скрыт">
+          <span class="text-gray-500 tooltipped tooltipped-n" aria-label="Комментарий скрыт">
             @svg (eye-slash)
           </span>
         @elseif ($model->status->isPending())
-          <span class="text-muted tooltipped tooltipped-n" aria-label="Ожидает активации">
+          <span class="text-gray-500 tooltipped tooltipped-n" aria-label="Ожидает активации">
             @svg (unverified)
           </span>
         @endif

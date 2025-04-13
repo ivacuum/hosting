@@ -16,9 +16,9 @@
             @else
               <span class="mr-1">{{ $model->title }}</span>
             @endif
-            <span class="text-xs text-muted mr-2 whitespace-nowrap">{{ $model->localizedDateWithoutYear() }}</span>
+            <span class="text-xs text-gray-500 mr-2 whitespace-nowrap">{{ $model->localizedDateWithoutYear() }}</span>
             @if ($model->status->isPublished() && $model->photos_count)
-              <span class="text-xs text-muted whitespace-nowrap">
+              <span class="text-xs text-gray-500 whitespace-nowrap">
                 @svg (picture-o)
                 {{ $model->photos_count }}
               </span>
@@ -29,7 +29,7 @@
             @else
               <span class="mr-1">{{ $model->artist->title }}</span>
             @endif
-            <span class="text-xs text-muted">{{ $model->shortDate() }}</span>
+            <span class="text-xs text-gray-500">{{ $model->shortDate() }}</span>
           @endif
         </div>
       @endforeach

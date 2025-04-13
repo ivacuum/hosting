@@ -384,39 +384,39 @@
   <h5 class="font-medium text-lg mb-1">@ru Сет @en Set @endru 1</h5>
   <ol class="list-inside pl-0">
     <li>I LUV IT</li>
-    <li><a class="link" href="https://www.youtube.com/watch?v=OrCDjz1YNJI">오늘밤 새</a> <span class="text-sm text-muted">All Night Long</span></li>
-    <li><a class="link" href="https://www.youtube.com/watch?v=z9uM7u2QUbE">끝</a> <span class="text-sm text-muted">The End</span></li>
-    <li>내 눈에는 <span class="text-sm text-muted">In My Eyes</span></li>
+    <li><a class="link" href="https://www.youtube.com/watch?v=OrCDjz1YNJI">오늘밤 새</a> <span class="text-sm text-gray-500">All Night Long</span></li>
+    <li><a class="link" href="https://www.youtube.com/watch?v=z9uM7u2QUbE">끝</a> <span class="text-sm text-gray-500">The End</span></li>
+    <li>내 눈에는 <span class="text-sm text-gray-500">In My Eyes</span></li>
     <li>New Face</li>
-    <li>새 <span class="text-sm text-muted">Bird</span></li>
+    <li>새 <span class="text-sm text-gray-500">Bird</span></li>
     <li><a class="link" href="https://www.youtube.com/watch?v=AyKogyLA2WE">GENTLEMAN</a></li>
   </ol>
 
   <h5 class="font-medium text-lg mt-4 mb-1">@ru Сет @en Set @endru 2</h5>
   <ol class="list-inside pl-0" start="8">
-    <li><a class="link" href="https://www.youtube.com/watch?v=PIxgQmd2K_w">챔피언</a> <span class="text-sm text-muted">Champion</span></li>
-    <li>나팔바지 <span class="text-sm text-muted">Napal Baji</span></li>
-    <li><a class="link" href="https://www.youtube.com/watch?v=Kt-vVQqhkOk">어땠을까</a> <span class="text-sm text-muted">What Would Have Been</span></li>
+    <li><a class="link" href="https://www.youtube.com/watch?v=PIxgQmd2K_w">챔피언</a> <span class="text-sm text-gray-500">Champion</span></li>
+    <li>나팔바지 <span class="text-sm text-gray-500">Napal Baji</span></li>
+    <li><a class="link" href="https://www.youtube.com/watch?v=Kt-vVQqhkOk">어땠을까</a> <span class="text-sm text-gray-500">What Would Have Been</span></li>
     <li><a class="link" href="https://www.youtube.com/watch?v=g_w7GDR9XrM">DADDY</a></li>
-    <li>나 이런 사람이야 <span class="text-sm text-muted">I'm a Guy Like This</span></li>
+    <li>나 이런 사람이야 <span class="text-sm text-gray-500">I'm a Guy Like This</span></li>
     <li>White Night</li>
   </ol>
 
   <h5 class="font-medium text-lg mt-4 mb-1">@ru Сет @en Set @endru 3</h5>
   <ol class="list-inside pl-0" start="14">
     <li>Right Now</li>
-    <li>아버지 <span class="text-sm text-muted">Father</span></li>
-    <li><a class="link" href="https://www.youtube.com/watch?v=WqeqVO2Lf-g">흔들어</a> <a class="link" href="https://www.youtube.com/watch?v=t7_tMuIObBk">주세요</a> <span class="text-sm text-muted">Shake It</span></li>
-    <li>낙원 <span class="text-sm text-muted">Paradise</span></li>
-    <li>강남스타일 <span class="text-sm text-muted">Gangnam Style</span></li>
+    <li>아버지 <span class="text-sm text-gray-500">Father</span></li>
+    <li><a class="link" href="https://www.youtube.com/watch?v=WqeqVO2Lf-g">흔들어</a> <a class="link" href="https://www.youtube.com/watch?v=t7_tMuIObBk">주세요</a> <span class="text-sm text-gray-500">Shake It</span></li>
+    <li>낙원 <span class="text-sm text-gray-500">Paradise</span></li>
+    <li>강남스타일 <span class="text-sm text-gray-500">Gangnam Style</span></li>
   </ol>
 
   <h5 class="font-medium text-lg mt-4 mb-1">@ru Сет @en Set @endru 4</h5>
   <ol class="list-inside pl-0" start="19">
     <li>We are the One</li>
-    <li><a class="link" href="https://www.youtube.com/watch?v=dQUNhQ0d02c">연예인</a> <span class="text-sm text-muted">Entertainer</span></li>
+    <li><a class="link" href="https://www.youtube.com/watch?v=dQUNhQ0d02c">연예인</a> <span class="text-sm text-gray-500">Entertainer</span></li>
     <li><a class="link" href="https://www.youtube.com/watch?v=rEfWtitMDRg">Sigh</a></li>
-    <li><a class="link" href="https://www.youtube.com/watch?v=Dyjtby7j-JA">에술이야</a> <span class="text-sm text-muted">It's Art</span></li>
+    <li><a class="link" href="https://www.youtube.com/watch?v=Dyjtby7j-JA">에술이야</a> <span class="text-sm text-gray-500">It's Art</span></li>
   </ol>
 
   <h5 class="font-medium text-lg mt-4 mb-1">Encore 1</h5>
@@ -427,7 +427,7 @@
     <li>맨발의 청춘</li>
     <li>와</li>
     <li>Run to you</li>
-    <li><a class="link" href="https://www.youtube.com/watch?v=76PdBqO-KBQ">기댈곳</a> <span class="text-sm text-muted">Refuge</span></li>
+    <li><a class="link" href="https://www.youtube.com/watch?v=76PdBqO-KBQ">기댈곳</a> <span class="text-sm text-gray-500">Refuge</span></li>
     <li>왼손잡이</li>
     <li><a class="link" href="https://www.youtube.com/watch?v=KxtruC6NKv8">붉은 노을</a></li>
     <li>나는 나비</li>
@@ -435,17 +435,17 @@
     <li>말달리자</li>
     <li>그대에게</li>
     <li>여행을 떠나요</li>
-    <li><a class="link" href="https://www.youtube.com/watch?v=DMP3nPT8v6E">마지막 장면</a> <span class="text-sm text-muted">Last Scene</span></li>
+    <li><a class="link" href="https://www.youtube.com/watch?v=DMP3nPT8v6E">마지막 장면</a> <span class="text-sm text-gray-500">Last Scene</span></li>
   </ol>
 
   <h5 class="font-medium text-lg mt-4 mb-1"><a class="link" href="https://www.youtube.com/watch?v=R8CWLYfMnUE">Encore 2</a></h5>
   <ol class="list-inside pl-0" start="38">
-    <li>챔피언 <span class="text-sm text-muted">Champion</span></li>
-    <li>연예인 <span class="text-sm text-muted">Entertainer</span></li>
-    <li>강남스타일 <span class="text-sm text-muted">Gangnam Style</span></li>
-    <li>언젠가는 <span class="text-sm text-muted">Someday</span></li>
-    <li>에술이야 <span class="text-sm text-muted">It's Art</span></li>
-    <li><a class="link" href="https://www.youtube.com/watch?v=SFs1aNnjZIc">세월이 가면</a> <span class="text-sm text-muted">As Time Goes By</span></li>
+    <li>챔피언 <span class="text-sm text-gray-500">Champion</span></li>
+    <li>연예인 <span class="text-sm text-gray-500">Entertainer</span></li>
+    <li>강남스타일 <span class="text-sm text-gray-500">Gangnam Style</span></li>
+    <li>언젠가는 <span class="text-sm text-gray-500">Someday</span></li>
+    <li>에술이야 <span class="text-sm text-gray-500">It's Art</span></li>
+    <li><a class="link" href="https://www.youtube.com/watch?v=SFs1aNnjZIc">세월이 가면</a> <span class="text-sm text-gray-500">As Time Goes By</span></li>
   </ol>
 @endcomponent
 

@@ -6,7 +6,7 @@
 <div class="flex flex-wrap items-center">
   <h3 class="font-medium text-2xl my-1 mr-3">
     @lang('Поездки')
-    <span class="text-base text-muted whitespace-nowrap">{{ ViewHelper::number($models->total()) }}</span>
+    <span class="text-base text-gray-500 whitespace-nowrap">{{ ViewHelper::number($models->total()) }}</span>
   </h3>
   <a class="btn btn-success my-1 mr-1" href="@lng/my/trips/create">
     @lang('acp.trips.create')

@@ -4,7 +4,7 @@
 <div class="flex items-center flex-wrap mb-2 -mt-2">
   <h3 class="font-medium text-2xl mb-1 mr-4">
     @lang("$tpl.index")
-    <span class="text-base text-muted whitespace-nowrap">
+    <span class="text-base text-gray-500 whitespace-nowrap">
       {{ $models instanceof Illuminate\Support\Collection
           ? ViewHelper::number(count($models))
           : ViewHelper::number($models->total())
@@ -32,7 +32,7 @@
     </a>
     @foreach ($filters as $key => $value)
       <a class="btn btn-default my-1" href="{{ fullUrl(array_merge($filters, ['page' => null, $key => null])) }}">
-        <span class="text-muted">{{ $key }}:</span>
+        <span class="text-gray-500">{{ $key }}:</span>
         <span class="font-medium">{{ $value }}</span>
         <span class="text-red-600">
           @svg (times)

@@ -5,7 +5,7 @@
   @component('tpl.list-group-item', ['href' => Acp::show($model->user)])
     @lang("$tpl.user")
     @if ($model->user)
-      <div class="text-xs text-muted">{{ $model->user->email }}</div>
+      <div class="text-xs text-gray-500">{{ $model->user->email }}</div>
     @endif
   @endcomponent
 @endif

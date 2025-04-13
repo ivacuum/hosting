@@ -83,7 +83,7 @@
               @if($user->telegram_id)
                 @lang("Телеграм")
               @else
-                <span class="line-through text-muted">@lang('Телеграм')</span>
+                <span class="line-through text-gray-500">@lang('Телеграм')</span>
               @endif
             </label>
           <x-invalid-feedback field="notification_delivery_method"/>

@@ -15,23 +15,23 @@
     <li>Unsere Rettung</li>
     <li>
       Seemannsrose
-      <span class="text-sm text-muted">(A Capella)</span>
+      <span class="text-sm text-gray-500">(A Capella)</span>
     </li>
     <li>Fieber</li>
     <li>Wer schön sein will muss leiden</li>
     <li>Das weisse Licht</li>
     <li>
       Augen auf!
-      <span class="text-sm text-muted">(A Capella with girl from crowd)</span>
+      <span class="text-sm text-gray-500">(A Capella with girl from crowd)</span>
     </li>
     <li>Mitten ins Herz</li>
     <li>Zwei Schritte Vor</li>
     <li>
       Sex hat keine Macht
-      <span class="text-sm text-muted">(Acoustic)</span>
+      <span class="text-sm text-gray-500">(Acoustic)</span>
     </li>
     <li>Auf Kurs
-      <span class="text-sm text-muted">(Acoustic)</span>
+      <span class="text-sm text-gray-500">(Acoustic)</span>
     </li>
     <li>Bis der Spiegel zerbricht</li>
     <li>Revolution</li>
@@ -44,7 +44,7 @@
     <li>Sandmann</li>
     <li>
       The Power of Love
-      <span class="text-sm text-muted">(Frankie Goes to Hollywood cover) (A Capella)</span>
+      <span class="text-sm text-gray-500">(Frankie Goes to Hollywood cover) (A Capella)</span>
     </li>
   </ol>
 @endcomponent

@@ -8,9 +8,9 @@
 @if ($relatedTorrents?->count())
   <div class="font-medium text-xl">
     @lang('Связанные раздачи')
-    <span class="text-base text-muted">{{ $relatedTorrents->count() }}</span>
+    <span class="text-base text-gray-500">{{ $relatedTorrents->count() }}</span>
   </div>
-  <div><span class="text-muted">Запрос:</span> {{ $model->related_query }}</div>
+  <div><span class="text-gray-500">Запрос:</span> {{ $model->related_query }}</div>
   <ol class="mb-4">
     @foreach ($relatedTorrents as $row)
       <li><a href="{{ Acp::show($row) }}">{{ $row->shortTitle() }}</a></li>

@@ -125,7 +125,7 @@
 </div>
 
 @section('footer_container')
-<footer class="footer bg-[#fafafa] dark:bg-slate-900 border-t border-[#dee2e6] dark:border-slate-800 mt-6 py-3 text-2sm">
+<footer class="text-gray-500 bg-[#fafafa] dark:bg-slate-900 border-t border-[#dee2e6] dark:border-slate-800 mt-6 py-3 text-2sm min-h-[44px]">
   <div class="container">
     @section('footer')
       <nav class="flex flex-wrap gap-3">

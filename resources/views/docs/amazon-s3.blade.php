@@ -5,7 +5,7 @@
 <p><a class="link" href="https://awspolicygen.s3.amazonaws.com/policygen.html">Официальный генератор политик доступа</a>.</p>
 
 <x-terminal-pre>
-<span class="text-muted dark:text-white"># Политика свободного чтения</span>
+<span class="text-gray-500 dark:text-white"># Политика свободного чтения</span>
 {
   "Version": "2012-10-17",
   "Id": "<span class="bg-green-300 dark:bg-green-400/25 font-bold dark:text-green-400">Readable Policy Name</span>",

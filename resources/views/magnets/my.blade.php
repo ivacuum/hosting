@@ -6,7 +6,7 @@
     <thead>
       <tr>
         <th>{{ ViewHelper::modelFieldTrans('magnet', 'title') }}</th>
-        <th class="text-muted md:text-right" title="{{ ViewHelper::modelFieldTrans('magnet', 'views') }}">@svg (eye)</th>
+        <th class="text-gray-500 md:text-right" title="{{ ViewHelper::modelFieldTrans('magnet', 'views') }}">@svg (eye)</th>
         <th class="md:text-right" title="{{ ViewHelper::modelFieldTrans('magnet', 'comments') }}">@svg (comment-o)</th>
         <th class="md:text-right" title="{{ ViewHelper::modelFieldTrans('magnet', 'clicks') }}">@svg (magnet)</th>
         <th>{{ ViewHelper::modelFieldTrans('magnet', 'size') }}</th>
@@ -19,10 +19,10 @@
       @foreach ($magnets as $magnet)
         <tr>
           <td><a class="visited" href="{{ $magnet->www() }}">{{ $magnet->shortTitle() }}</a></td>
-          <td class="text-muted md:text-right whitespace-nowrap">{{ $magnet->views ? ViewHelper::number($magnet->views) : '' }}</td>
+          <td class="text-gray-500 md:text-right whitespace-nowrap">{{ $magnet->views ? ViewHelper::number($magnet->views) : '' }}</td>
           <td class="md:text-right whitespace-nowrap">{{ $magnet->comments_count ? ViewHelper::number($magnet->comments_count) : '' }}</td>
           <td class="md:text-right whitespace-nowrap">{{ $magnet->clicks ? ViewHelper::number($magnet->clicks) : '' }}</td>
-          <td class="text-muted whitespace-nowrap">{{ ViewHelper::size($magnet->size) }}</td>
+          <td class="text-gray-500 whitespace-nowrap">{{ ViewHelper::size($magnet->size) }}</td>
           <td>{{ ViewHelper::dateShort($magnet->registered_at) }}</td>
           <td>
             <a class="visited" href="{{ $magnet->externalLink() }}">

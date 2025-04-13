@@ -12,7 +12,7 @@
   <header>
     <h1 class="font-medium text-3xl tracking-tight mb-2" itemprop="headline">{{ $news->title }}</h1>
     <link href="{{ $news->www() }}" itemprop="url">
-    <div class="svg-labels svg-muted text-muted text-sm mb-4">
+    <div class="svg-labels svg-muted text-gray-500 text-sm mb-4">
       <span class="svg-flex svg-label">
         @svg (calendar-o)
         <time itemprop="datePublished" datetime="{{ $news->created_at->toDateString() }}">

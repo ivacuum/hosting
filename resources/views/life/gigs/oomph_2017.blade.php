@@ -30,7 +30,7 @@
     <li>Jetzt oder nie</li>
     <li>
       Sex hat keine Macht
-      <span class="text-sm text-muted">(Acoustic)</span>
+      <span class="text-sm text-gray-500">(Acoustic)</span>
     </li>
     <li>Jede Reise hat ein Ende</li>
     <li>Mein Herz</li>
@@ -40,11 +40,11 @@
     <li>Kleinstadtboy</li>
     <li>
       Fieber
-      <span class="text-sm text-muted">(Acoustic)</span>
+      <span class="text-sm text-gray-500">(Acoustic)</span>
     </li>
     <li>
       Das letzte Streichholz
-      <span class="text-sm text-muted">(Acoustic)</span>
+      <span class="text-sm text-gray-500">(Acoustic)</span>
     </li>
     <li>Давай, давай работай</li>
     <li>Labyrinth</li>

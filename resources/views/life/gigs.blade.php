@@ -52,7 +52,7 @@
         @else
           <span class="mr-1">{{ $gig->artist->title }}</span>
         @endif
-        <span class="text-xs text-muted">{{ $gig->shortDate() }}</span>
+        <span class="text-xs text-gray-500">{{ $gig->shortDate() }}</span>
       </div>
     @endforeach
     </div>

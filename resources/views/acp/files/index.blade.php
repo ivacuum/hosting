@@ -29,7 +29,7 @@
           </span>
         @endif
       </td>
-      <td class="md:text-right text-muted whitespace-nowrap">{{ ViewHelper::size($model->size) }}</td>
+      <td class="md:text-right text-gray-500 whitespace-nowrap">{{ ViewHelper::size($model->size) }}</td>
       <td class="md:text-right whitespace-nowrap">{{ ViewHelper::number($model->downloads) }}</td>
     </tr>
   @endforeach

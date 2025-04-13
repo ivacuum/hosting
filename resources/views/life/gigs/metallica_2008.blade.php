@@ -19,8 +19,8 @@
     </li>
     <li>For Whom the Bell Tolls</li>
     <li>Ride the Lightning</li>
-    <li>Harvester of Sorrow <span class="text-sm text-muted">(followed by Kirk's solo incl. The Sails of Charon)</span></li>
-    <li>The Unforgiven <span class="text-sm text-muted">(w/ acoustic The Call of Ktulu intro)</span></li>
+    <li>Harvester of Sorrow <span class="text-sm text-gray-500">(followed by Kirk's solo incl. The Sails of Charon)</span></li>
+    <li>The Unforgiven <span class="text-sm text-gray-500">(w/ acoustic The Call of Ktulu intro)</span></li>
     <li>Leper Messiah</li>
     <li>...And Justice for All</li>
     <li>No Remorse</li>
@@ -31,9 +31,9 @@
     <li>Sad But True</li>
     <li>One</li>
     <li>Enter Sandman</li>
-    <li>Last Caress <span class="text-sm text-muted">(Misfits cover)</span></li>
+    <li>Last Caress <span class="text-sm text-gray-500">(Misfits cover)</span></li>
     <li>Motorbreath</li>
-    <li>Seek &amp; Destroy <span class="text-sm text-muted">(w/ Let There Be Rock outro)</span></li>
+    <li>Seek &amp; Destroy <span class="text-sm text-gray-500">(w/ Let There Be Rock outro)</span></li>
   </ol>
 @endcomponent
 

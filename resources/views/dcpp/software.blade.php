@@ -101,7 +101,7 @@
               <ul>
                 <li>
                   <a class="link" href="{{ $developerSite }}">@lang('dcpp.developer_site')</a>
-                  <span class="text-muted">
+                  <span class="text-gray-500">
                     @svg (external-link)
                   </span>
                 </li>

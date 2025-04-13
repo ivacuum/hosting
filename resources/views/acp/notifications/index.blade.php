@@ -17,7 +17,7 @@
         <a href="{{ Acp::show($model) }}">
           {{ str_replace('App\Notifications\\', '', $model->type) }}
         </a>
-        <div class="text-xs text-muted">
+        <div class="text-xs text-gray-500">
           {{ $model->notifiable_type }} #{{ $model->notifiable_id }}
         </div>
       </td>
@@ -25,12 +25,12 @@
         @foreach ($model->data as $index => $data)
           @if (is_string($data) || is_integer($data))
             <div>
-              <span class="text-muted">{{ $index }}:</span>
+              <span class="text-gray-500">{{ $index }}:</span>
               {{ $data }}
             </div>
           @elseif (is_array($data))
             <div>
-              <span class="text-muted">{{ $index }}:</span>
+              <span class="text-gray-500">{{ $index }}:</span>
               <span class="text-orange-300">[Array]</span>
             </div>
           @endif

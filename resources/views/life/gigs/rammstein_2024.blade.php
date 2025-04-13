@@ -149,13 +149,13 @@ IMG_9387.jpeg
     <li>Puppe</li>
     <li>Wiener Blut</li>
     <li>Zeit</li>
-    <li>Deutschland <span class="text-sm text-muted">Remix by Richard Z. Kruspe</span></li>
+    <li>Deutschland <span class="text-sm text-gray-500">Remix by Richard Z. Kruspe</span></li>
     <li>Deutschland</li>
     <li>Radio</li>
     <li>Mein Teil</li>
     <li>Du hast</li>
     <li>Sonne</li>
-    <li>Engel <span class="text-sm text-muted">Piano version with Abélard performed on B-Stage</span></li>
+    <li>Engel <span class="text-sm text-gray-500">Piano version with Abélard performed on B-Stage</span></li>
     <li>Ausländer</li>
     <li>Du riechst so gut</li>
     <li>Pussy</li>

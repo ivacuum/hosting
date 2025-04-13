@@ -20,7 +20,7 @@
     <li>Peruvian Skies</li>
     <li>The Great Debate</li>
     <li>On the Backs of Angels</li>
-    <li>Happy Birthday <span class="text-sm text-muted">(Mildred J. Hill cover) (to John Petrucci)</span></li>
+    <li>Happy Birthday <span class="text-sm text-gray-500">(Mildred J. Hill cover) (to John Petrucci)</span></li>
     <li>Caught in a Web</li>
     <li>Through My Words</li>
     <li>Fatal Tragedy</li>

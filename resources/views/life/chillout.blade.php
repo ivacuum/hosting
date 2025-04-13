@@ -7,7 +7,7 @@
 <ul>
   <li>
     <a class="link" href="https://www.mixcloud.com/chilloutcafe/">Chillout Breeze by M.SOUND</a>
-    <span class="text-sm text-muted">более 50 часовых сетов</span>
+    <span class="text-sm text-gray-500">более 50 часовых сетов</span>
   </li>
 </ul>
 @endsection

@@ -3,7 +3,7 @@
 @section('content')
 <h1 class="text-3xl mb-2">
   <span class="font-medium tracking-tight">@lang('Посещенные города')</span>
-  <span class="text-base text-muted">{{ count($cities) }}</span>
+  <span class="text-base text-gray-500">{{ count($cities) }}</span>
 </h1>
 <x-trips-subnav/>
 
@@ -22,7 +22,7 @@
         {{ $city->title }}
       @endif
       @if ($city->trips_count > 1)
-        <span class="text-xs text-muted">{{ $city->trips_count }}</span>
+        <span class="text-xs text-gray-500">{{ $city->trips_count }}</span>
       @endif
     </div>
     <?php $initial = $currentInitial ?>

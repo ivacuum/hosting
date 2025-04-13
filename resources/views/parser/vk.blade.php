@@ -106,7 +106,7 @@
                 @svg (music)
                 {{ $attach->audio->artist }} — {{ $attach->audio->title }}
               </a>
-              <span class="text-muted">
+              <span class="text-gray-500">
                 {{ sprintf('%02d', $attach->audio->duration / 60) }}:{{ sprintf('%02d', $attach->audio->duration % 60) }}
               </span>
             </p>
@@ -116,7 +116,7 @@
                 @svg (film)
                 {{ $attach->video->title }}
               </a>
-              <span class="text-sm text-muted">
+              <span class="text-sm text-gray-500">
                 {{ sprintf('%02d', $attach->video->duration / 60) }}:{{ sprintf('%02d', $attach->video->duration % 60) }}
               </span>
             </p>
@@ -138,7 +138,7 @@
                 @svg (link)
                 {{ $attach->link->title }}
               </a>
-              <div class="text-sm text-muted">
+              <div class="text-sm text-gray-500">
                 {{ $attach->link->url }}
               </div>
             </div>
@@ -146,7 +146,7 @@
         @endforeach
         </div>
       @endif
-      <div class="mt-2 mb-1 text-muted">
+      <div class="mt-2 mb-1 text-gray-500">
         <samp class="text-xs svg-labels justify-end">
           <a class="svg-flex svg-label" href="{{ $post['url'] }}">
             @svg (link)

@@ -3,7 +3,7 @@
 <div>
   <div class="font-medium text-2xl mb-2 mt-12">
     @lang('Обсуждение')
-    <span class="text-base text-muted">{{ count($this->comments) }}</span>
+    <span class="text-base text-gray-500">{{ count($this->comments) }}</span>
   </div>
   <a id="comments"></a>
   @foreach ($this->comments as $comment)
@@ -36,7 +36,7 @@
           @endif
         </div>
         <div class="comment-body whitespace-pre-line">{!! $comment->html !!}</div>
-        <div class="text-xs text-muted">{{ $comment->fullDate() }}</div>
+        <div class="text-xs text-gray-500">{{ $comment->fullDate() }}</div>
       </div>
     </div>
   @endforeach

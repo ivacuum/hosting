@@ -10,7 +10,7 @@
 @section('content')
 <h1 class="font-medium text-3xl tracking-tight mb-2">
   @lang('Посещенные страны')
-  <span class="text-base text-muted">{{ count($countries) }}</span>
+  <span class="text-base text-gray-500">{{ count($countries) }}</span>
 </h1>
 <x-user-trips-subnav/>
 

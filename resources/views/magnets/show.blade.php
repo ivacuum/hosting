@@ -30,7 +30,7 @@
   {!! $magnet->html !!}
 </div>
 
-<div class="svg-labels text-muted">
+<div class="svg-labels text-gray-500">
   <span class="svg-flex svg-label svg-muted tooltipped tooltipped-n" aria-label="@lang('model.magnet.updated_at')">
     @svg (calendar-o)
     {{ ViewHelper::dateShort($magnet->registered_at) }}
@@ -68,7 +68,7 @@
 @if (($relatedTorrents = $magnet->relatedTorrents())?->count())
   <div class="font-medium text-2xl mb-2 mt-12">
     @lang('Связанные раздачи')
-    <span class="text-base text-muted">{{ $relatedTorrents->count() }}</span>
+    <span class="text-base text-gray-500">{{ $relatedTorrents->count() }}</span>
   </div>
   <?php /** @var \App\Magnet $row */ ?>
   @foreach ($relatedTorrents as $row)

@@ -6,11 +6,11 @@ $current = array_keys($values, request($field))[0] ?? request($field);
 <details class="relative details-reset details-overlay my-1 mr-2 {{ $class ?? '' }}">
   <summary class="btn btn-default">
     <div class="flex items-center">
-      <span class="text-muted mr-1">
+      <span class="text-gray-500 mr-1">
         @svg (filter)
       </span>
       <span>
-        <span class="text-muted">{{ $title ?? ViewHelper::modelFieldTrans($modelTpl, $field) }}:</span>
+        <span class="text-gray-500">{{ $title ?? ViewHelper::modelFieldTrans($modelTpl, $field) }}:</span>
         <span class="font-medium">{{ $current }}</span>
       </span>
       @svg (angle-down)

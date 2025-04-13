@@ -54,7 +54,7 @@
             <img class="inline-block screenshot" src="{{ $model->thumbnailSecretUrl() }}" alt="">
           </a>
         </td>
-        <td class="md:text-right text-muted whitespace-nowrap">{{ ViewHelper::size($model->size) }}</td>
+        <td class="md:text-right text-gray-500 whitespace-nowrap">{{ ViewHelper::size($model->size) }}</td>
         <td class="md:text-right whitespace-nowrap">
           @if ($model->views > 3000)
             <span class="flex bg-green-600 text-white px-2 text-xs font-bold rounded-sm">{{ ViewHelper::number($model->views) }}</span>

@@ -26,7 +26,7 @@
                     href="{{ to('magnets', ['category_id' => $childId, 'q' => $q]) }}"
                   >{{ $child['title'] }}</a>
                 @endif
-                <span class="text-muted text-xs">{{ $stats[$childId] }}</span>
+                <span class="text-gray-500 text-xs">{{ $stats[$childId] }}</span>
               </div>
             @endforeach
           @endif
@@ -119,7 +119,7 @@
       <details class="mt-4">
         <summary>Как пользоваться поиском?</summary>
         <div class="mt-2 mb-1">Поиск по раздачам учитывает морфологию русского языка, поэтому «комедия» найдется даже при запросе «комедии». Ниже приведены примеры запросов для понимания особенностей поиска:</div>
-        <ul class="text-muted mb-4">
+        <ul class="text-gray-500 mb-4">
           <li>
             <a href="{{ UrlHelper::filter(['q' => 'драма']) }}">драма</a>
             — кинематограф соответствующей тематики
@@ -154,7 +154,7 @@
           </li>
         </ul>
         <div class="mb-1">Изначально поиск выполняется только по заголовкам раздач. Но его область можно расширить и до их описаний с помощью клика по соответствующей кнопке перед результатами поиска. Это позволяет находить фильмы по актерам, отдельные игры в раздачах антологий и т.п. Примеры:</div>
-        <ul class="text-muted mb-4">
+        <ul class="text-gray-500 mb-4">
           <li>
             <a href="{{ UrlHelper::filter(['q' => 'мэтт дэймон', 'fulltext' => 1]) }}">мэтт дэймон</a>
             — кино с актером
