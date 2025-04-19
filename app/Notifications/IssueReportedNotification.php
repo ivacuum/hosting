@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Domain\Telegram\Action\EscapeMarkdownCharactersAction;
 use App\Issue;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -15,11 +16,13 @@ class IssueReportedNotification extends Notification implements ShouldQueue
 
     public function toTelegram(): string
     {
-        $id = $this->issue->id;
-        $page = url($this->issue->page);
-        $text = htmlspecialchars_decode($this->issue->text, ENT_QUOTES);
-        $email = $this->issue->email;
-        $title = $this->issue->title;
+        $escape = app(EscapeMarkdownCharactersAction::class);
+
+        $id = $escape->execute($this->issue->id);
+        $page = $escape->execute(url($this->issue->page));
+        $text = $escape->execute(htmlspecialchars_decode($this->issue->text, ENT_QUOTES));
+        $email = $escape->execute($this->issue->email);
+        $title = $escape->execute($this->issue->title);
 
         return "💡 Обратная связь {$id} от {$email}\n{$title}\n{$page}\n\n{$text}";
     }
