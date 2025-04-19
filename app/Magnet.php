@@ -153,8 +153,7 @@ class Magnet extends Model
 
     public function shouldBeSearchable()
     {
-        return $this->status->isPublished()
-            && !app()->runningUnitTests();
+        return $this->status->isPublished();
     }
 
     public function titleTags(): array

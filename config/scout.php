@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'driver' => env('SCOUT_DRIVER', 'sphinx'),
+    'driver' => env('SCOUT_DRIVER', 'collection'),
     'prefix' => env('SCOUT_PREFIX', 'vac_'),
     'after_commit' => true,
 

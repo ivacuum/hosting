@@ -18,9 +18,17 @@ class SearchForMagnetIdsAction
     public function execute(string $q, int|null $categoryId, bool $fulltext): mixed
     {
         return match ($this->scoutDriver) {
+            'collection' => $this->collection($q, $categoryId, $fulltext),
             'sphinx' => $this->sphinx($q, $categoryId, $fulltext),
             default => $this->meilisearch($q, $categoryId, $fulltext),
         };
+    }
+
+    private function collection(string $q, int|null $categoryId, bool $fulltext)
+    {
+        return Magnet::search($q)
+            ->when($categoryId, fn (Builder $query) => $query->whereIn('category_id', \TorrentCategoryHelper::selfAndDescendantsIds($categoryId)))
+            ->raw()['results'];
     }
 
     private function meilisearch(string $q, int|null $categoryId, bool $fulltext)
