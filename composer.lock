@@ -1585,16 +1585,16 @@
         },
         {
             "name": "ivacuum/generic",
-            "version": "28.0.1",
+            "version": "28.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivacuum/generic.git",
-                "reference": "2395cc2ba1bf19312563c590e6a2d61657f6b931"
+                "reference": "998144f05fe943a52216719b5c4a9cffd8f80a09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivacuum/generic/zipball/2395cc2ba1bf19312563c590e6a2d61657f6b931",
-                "reference": "2395cc2ba1bf19312563c590e6a2d61657f6b931",
+                "url": "https://api.github.com/repos/ivacuum/generic/zipball/998144f05fe943a52216719b5c4a9cffd8f80a09",
+                "reference": "998144f05fe943a52216719b5c4a9cffd8f80a09",
                 "shasum": ""
             },
             "require": {
@@ -1644,9 +1644,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ivacuum/generic/issues",
-                "source": "https://github.com/ivacuum/generic/tree/28.0.1"
+                "source": "https://github.com/ivacuum/generic/tree/28.0.2"
             },
-            "time": "2025-04-11T10:08:15+00:00"
+            "time": "2025-04-19T12:53:21+00:00"
         },
         {
             "name": "jean85/pretty-package-versions",

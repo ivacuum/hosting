@@ -8,12 +8,29 @@ use Illuminate\Http\Client\Request;
 use Ivacuum\Generic\Telegram\InlineKeyboardButton;
 use Ivacuum\Generic\Telegram\InlineKeyboardMarkup;
 use Ivacuum\Generic\Telegram\TelegramClient;
+use Ivacuum\Generic\Telegram\TelegramException;
 use Ivacuum\Generic\Telegram\TelegramResponse;
 use Tests\TestCase;
 
 class TelegramClientTest extends TestCase
 {
     use DatabaseTransactions;
+
+    public function testBadMarkdown()
+    {
+        \Http::fake([
+            ...TelegramResponse::fakeBadMarkdown(),
+        ]);
+
+        config(['services.telegram.bot_token' => '1234:token']);
+
+        $this->expectException(TelegramException::class);
+        $this->expectExceptionMessage('400 - Bad Request: can\'t parse entities');
+
+        app(TelegramClient::class)
+            ->chat(12345)
+            ->sendMessage('New message from mail@example.com');
+    }
 
     public function testNoCredentialsLogged()
     {
