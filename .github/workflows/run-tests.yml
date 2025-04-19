@@ -45,10 +45,10 @@ jobs:
       - name: Start sphinxsearch
         run: sudo /etc/init.d/sphinxsearch start
 
-      - name: Create database
+      - name: Start mysql
         run: |
           sudo systemctl start mysql.service
-          mysql -u root -proot -e 'CREATE DATABASE IF NOT EXISTS tests;'
+          # mysql -u root -proot -e 'CREATE DATABASE IF NOT EXISTS tests;'
 
       - name: Cache composer dependencies
         uses: actions/cache@v4
