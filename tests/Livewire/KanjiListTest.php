@@ -63,7 +63,7 @@ class KanjiListTest extends TestCase
 
         $this->assertSame(['2', '1', '3'], $characters);
 
-        $collect = (new Collection([$kanji1, $kanji2, $kanji3]))
+        $collect = new Collection([$kanji1, $kanji2, $kanji3])
             ->pipe(new ShowKanjiInTheSameOrderAsInVocab($characters));
 
         $this->assertSame([$kanji2->id, $kanji1->id, $kanji3->id], $collect->pluck('id')->all());

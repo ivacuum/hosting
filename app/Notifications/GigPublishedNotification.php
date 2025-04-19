@@ -21,7 +21,7 @@ class GigPublishedNotification extends Notification implements ShouldQueue
 
     public function toMail($notifiable)
     {
-        return (new GigPublishedMail($this->gig, $notifiable))
+        return new GigPublishedMail($this->gig, $notifiable)
             ->to($notifiable);
     }
 }

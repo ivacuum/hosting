@@ -16,7 +16,7 @@ class NewsPublishedNotification extends Notification implements ShouldQueue
 
     public function toMail($notifiable)
     {
-        return (new NewsPublishedMail($this->news, $notifiable))
+        return new NewsPublishedMail($this->news, $notifiable)
             ->to($notifiable);
     }
 

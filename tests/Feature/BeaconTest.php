@@ -89,13 +89,13 @@ class BeaconTest extends TestCase
     public static function viewCounters()
     {
         yield [
-            'event' => Stats\NewsViewed::class,
-            'ids' => [5, 15],
+            Stats\NewsViewed::class,
+            [5, 15],
         ];
 
         yield [
-            'event' => Stats\TorrentViewed::class,
-            'ids' => [1],
+            Stats\TorrentViewed::class,
+            [1],
         ];
     }
 

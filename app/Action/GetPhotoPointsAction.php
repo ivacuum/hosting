@@ -29,7 +29,7 @@ class GetPhotoPointsAction
                 ->orderBy('id')
                 ->get();
 
-            return (new PhotoPointCollectionResponse($photos))
+            return new PhotoPointCollectionResponse($photos)
                 ->jsonSerialize();
         });
     }

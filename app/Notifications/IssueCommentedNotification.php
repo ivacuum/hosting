@@ -19,7 +19,7 @@ class IssueCommentedNotification extends Notification implements ShouldQueue
 
     public function toMail(User $notifiable)
     {
-        return (new IssueCommentedMail($this->issue, $this->comment, $notifiable))
+        return new IssueCommentedMail($this->issue, $this->comment, $notifiable)
             ->to($notifiable)
             ->replyTo(Config::SupportEmail->get());
     }

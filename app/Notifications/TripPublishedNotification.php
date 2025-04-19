@@ -21,7 +21,7 @@ class TripPublishedNotification extends Notification implements ShouldQueue
 
     public function toMail($notifiable)
     {
-        return (new TripPublishedMail($this->trip, $notifiable))
+        return new TripPublishedMail($this->trip, $notifiable)
             ->to($notifiable);
     }
 }

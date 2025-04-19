@@ -17,6 +17,8 @@ return RectorConfig::configure()
         __DIR__ . '/tests',
     ])
     ->withSkip([
+        Rector\PHPUnit\CodeQuality\Rector\ClassMethod\AddInstanceofAssertForNullableInstanceRector::class,
+        Rector\PHPUnit\CodeQuality\Rector\MethodCall\AssertEmptyNullableObjectToAssertInstanceofRector::class,
         Rector\Php55\Rector\String_\StringClassNameToClassConstantRector::class,
         Rector\Php74\Rector\Closure\ClosureToArrowFunctionRector::class,
         Rector\Php81\Rector\Property\ReadOnlyPropertyRector::class,
