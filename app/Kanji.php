@@ -47,7 +47,7 @@ class Kanji extends Model
 
     public function similar()
     {
-        return $this->belongsToMany(static::class, 'kanji_similar', null, 'similar_id');
+        return $this->belongsToMany(static::class, 'kanji_similar', relatedPivotKey: 'similar_id');
     }
 
     // Methods
