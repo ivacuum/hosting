@@ -181,19 +181,23 @@ class Trip extends Model
 
     public function metaImage(int|null $width = null, int|null $height = null): string
     {
-        if (!$this->meta_image) {
+        $metaImage = $this->meta_image;
+
+        if (!$metaImage) {
             return '';
         }
 
-        if (str_starts_with($this->meta_image, 'http')) {
-            return $this->meta_image;
+        if (str_starts_with($metaImage, 'http')) {
+            return $metaImage;
         }
+
+        $slug = $this->slug;
 
         if ($width && $height) {
-            return \ViewHelper::picArbitrary($width, $height, $this->slug, $this->meta_image);
+            return \ViewHelper::picArbitrary($width, $height, $slug, $metaImage);
         }
 
-        return \ViewHelper::pic($this->slug, $this->meta_image);
+        return \ViewHelper::pic($slug, $metaImage);
     }
 
     public function metaTitle(): string
