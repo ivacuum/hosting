@@ -8,6 +8,7 @@ use App\Action\GetTripsPublishedByCityAction;
 use App\Action\GetTripsPublishedByCountryAction;
 use App\Action\GetTripsPublishedWithCoverAction;
 use App\City;
+use App\Collection\LoadTripCityAndCountry;
 use App\Country;
 use App\Http\Requests\PhotoShowForm;
 use App\Http\Requests\PhotosMapForm;
@@ -238,7 +239,9 @@ class PhotoController
     public function trips(GetTripsPublishedWithCoverAction $getTripsPublishedWithCover)
     {
         return view('photos.trips', [
-            'trips' => $getTripsPublishedWithCover->execute(),
+            'trips' => $getTripsPublishedWithCover
+                ->execute()
+                ->transform(new LoadTripCityAndCountry),
         ]);
     }
 }

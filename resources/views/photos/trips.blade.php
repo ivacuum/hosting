@@ -7,7 +7,6 @@
 @section('content')
 <div class="grid md:grid-cols-2 lg:grid-cols-3 -mx-4 sm:mx-0">
   @foreach ($trips as $trip)
-    <?php $trip->loadCityAndCountry(); ?>
     <div class="relative">
       <a class="block group" href="{{ $trip->www() }}">
         <div class="relative pb-[75%]">
