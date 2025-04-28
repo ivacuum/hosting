@@ -15,6 +15,7 @@
         <div class="prepend-dollar">freebsd-update install</div>
         <div class="prepend-dollar">shutdown -r now</div>
         <div class="prepend-dollar">freebsd-update install</div>
+        <div class="prepend-dollar">find /var/db/freebsd-update/files -type f -delete</div>
       </div>
 
       <div>
