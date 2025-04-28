@@ -1,7 +1,6 @@
 #!/bin/sh
 
-# exits in case of any error
-set -e
+set -o errexit
 
 cd "$(dirname "$0")/../.."
 
