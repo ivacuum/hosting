@@ -23,9 +23,6 @@ class FileController
 
         $file->incrementDownloads();
 
-        return redirect($file->downloadPath())
-            ->header('Content-Type', 'application/octet-stream')
-            ->header('Content-Disposition', "attachment; {$file->headerBasename()}")
-            ->header('Content-Length', $file->size);
+        return redirect($file->downloadPath());
     }
 }
