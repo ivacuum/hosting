@@ -54,9 +54,7 @@ class File extends Model
 
     public function incrementDownloads(): void
     {
-        $this->timestamps = false;
-        $this->increment('downloads');
-        $this->timestamps = true;
+        Model::withoutTimestamps(fn () => $this->increment('downloads'));
 
         event(new \App\Events\Stats\FileDownloadClicked);
     }

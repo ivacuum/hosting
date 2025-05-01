@@ -38,9 +38,7 @@ class DcppHub extends Model
 
     public function incrementClicks(): void
     {
-        $this->timestamps = false;
-        $this->increment('clicks');
-        $this->timestamps = true;
+        Model::withoutTimestamps(fn () => $this->increment('clicks'));
 
         event(new Events\Stats\DcppHubClicked);
     }
