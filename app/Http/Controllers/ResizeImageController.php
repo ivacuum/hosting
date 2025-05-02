@@ -10,8 +10,11 @@ use Ivacuum\Generic\Services\ImageConverter;
 
 class ResizeImageController
 {
-    public function __invoke(ResizeImageForm $request, Factory $http, ImageConverter $imageConverter)
-    {
+    public function __invoke(
+        ResizeImageForm $request,
+        Factory $http,
+        ImageConverter $imageConverter,
+    ) {
         $tempFile = tmpfile();
         $tempFilepath = stream_get_meta_data($tempFile)['uri'];
 
