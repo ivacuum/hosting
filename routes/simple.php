@@ -11,5 +11,6 @@ Route::view('503', 'errors.503', status: 503);
 Route::view('cv', 'cv');
 Route::get('ip', Controllers\PrintIpController::class);
 Route::post('js/beacon', Controllers\BeaconController::class);
+Route::get('resize/{width}x{height}/{domain}/{path}', Controllers\ResizeImageController::class)->where('path', '.+');
 Route::get('resize/{width}x{height}', Controllers\ResizeImageController::class);
 Route::post('telegram/webhook', Controllers\TelegramWebhookController::class);

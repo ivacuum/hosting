@@ -35,6 +35,29 @@ class ResizeImageTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\ImageResizedOnDemand::class);
     }
 
+    public function testConvertJpgWithoutQueryString()
+    {
+        \Event::fake(\App\Events\Stats\ImageResizedOnDemand::class);
+        \Http::fake([
+            'https://example.com/gigs/image.jpg' => \Http::response(),
+        ]);
+
+        $this->mock(GetResizeImageWhitelistAction::class)
+            ->expects('execute')
+            ->andReturn(['https://example.com/']);
+
+        $imageConverter = $this->mock(ImageConverter::class);
+        $imageConverter->expects('resize')->withArgs([400, 300])->andReturnSelf();
+        $imageConverter->expects('quality')->andReturnSelf();
+        $imageConverter->expects('convert')->andReturn(UploadedFile::fake()->image('image.jpg'));
+
+        $this->get('resize/400x300/example.com/gigs/image.jpg')
+            ->assertOk()
+            ->assertHeader('Content-Type', 'image/jpeg');
+
+        \Event::assertDispatched(\App\Events\Stats\ImageResizedOnDemand::class);
+    }
+
     public function testHostNotWhitelisted()
     {
         $this->get('resize/400x300?image=https://example.com/image.jpg')

@@ -70,9 +70,24 @@ class ResizeImageForm extends FormRequest
     #[\Override]
     protected function prepareForValidation()
     {
-        abort_unless($this->input('image'), 404);
+        $image = $this->input('image');
 
-        $info = pathinfo($this->input('image'));
+        if ($image === null) {
+            $path = $this->route('path');
+            $domain = $this->route('domain');
+
+            if ($domain && $path) {
+                $image = "https://{$domain}/{$path}";
+
+                $this->merge([
+                    'image' => $image,
+                ]);
+            }
+        }
+
+        abort_unless($image, 404);
+
+        $info = pathinfo($image);
 
         $this->merge([
             'dirname' => $info['dirname'] ?? null,
@@ -89,12 +104,6 @@ class ResizeImageForm extends FormRequest
         // Слэш для корневой папки
         $uri = rtrim($uri, '/') . '/';
 
-        foreach ($whitelist as $site) {
-            if (str_starts_with($uri, $site)) {
-                return true;
-            }
-        }
-
-        return false;
+        return array_any($whitelist, fn ($site) => str_starts_with($uri, $site));
     }
 }
