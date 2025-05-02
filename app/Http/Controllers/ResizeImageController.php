@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ResizeImageForm;
 use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\RequestOptions;
 use Illuminate\Http\Client\Factory;
 use Ivacuum\Generic\Services\ImageConverter;
 
@@ -22,7 +21,6 @@ class ResizeImageController
             $response = $http
                 ->timeout(10)
                 ->sink($tempFile)
-                ->withOptions([RequestOptions::FORCE_IP_RESOLVE => 'v4'])
                 ->get($request->image);
         } catch (ClientException $e) {
             abort($e->getCode());
