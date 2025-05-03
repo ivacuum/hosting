@@ -19,7 +19,7 @@ class ResizeImageForm extends FormRequest
     {
         return $this->isWhitelisted(
             $getResizeImageWhitelist->execute(),
-            $this->input('dirname')
+            $this->route('domain')
         );
     }
 
@@ -35,7 +35,6 @@ class ResizeImageForm extends FormRequest
     public function rules(): array
     {
         return [
-            'dirname' => 'required',
             'extension' => [
                 'required',
                 Rule::in(['jpg', 'png']),
@@ -56,54 +55,29 @@ class ResizeImageForm extends FormRequest
     #[\Override]
     protected function passedValidation()
     {
-        $this->image = $this->input('image');
+        $this->image = "https://{$this->route('domain')}/{$this->route('path')}";
 
         // От 50 до 2000px
         $this->width = min(2000, max(50, $this->route('width')));
         $this->height = min(2000, max(50, $this->route('height')));
 
         $this->extension = pathinfo($this->image)['extension'] ?? null;
-
-        abort_unless($this->extension, 422);
     }
 
     #[\Override]
     protected function prepareForValidation()
     {
-        $image = $this->input('image');
-
-        if ($image === null) {
-            $path = $this->route('path');
-            $domain = $this->route('domain');
-
-            if ($domain && $path) {
-                $image = "https://{$domain}/{$path}";
-
-                $this->merge([
-                    'image' => $image,
-                ]);
-            }
-        }
-
-        abort_unless($image, 404);
-
-        $info = pathinfo($image);
-
         $this->merge([
-            'dirname' => $info['dirname'] ?? null,
-            'extension' => $info['extension'] ?? null,
+            'extension' => pathinfo($this->route('path'), PATHINFO_EXTENSION),
         ]);
     }
 
-    private function isWhitelisted(array $whitelist, string|null $uri): bool
+    private function isWhitelisted(array $whitelist, string|null $domain): bool
     {
-        if ($uri === null) {
+        if ($domain === null) {
             return false;
         }
 
-        // Слэш для корневой папки
-        $uri = rtrim($uri, '/') . '/';
-
-        return array_any($whitelist, fn ($site) => str_starts_with($uri, $site));
+        return array_any($whitelist, fn ($site) => $domain === $site);
     }
 }
