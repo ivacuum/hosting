@@ -150,7 +150,7 @@
         </div>
         <div class="absolute bottom-0 text-white trip-cover-info p-4 w-full">
           <div class="flex flex-wrap gap-1 items-center text-lg">
-            <img class="flag-24 svg-shadow" src="{{ $trip->city->country->flagUrl() }}" alt="">
+            <img class="flag-24 svg-shadow" src="{{ $trip->city->country->flagUrl() }}" alt="" loading="lazy">
             <span class="leading-none">{{ $trip->title }}</span>
             <span class="leading-tight self-end text-gray-300 text-xs">{{ $trip->timelinePeriodWithYear() }}</span>
           </div>

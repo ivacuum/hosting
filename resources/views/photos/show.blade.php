@@ -57,7 +57,7 @@ Mousetrap.bind('right', () => {
     <div class="flex flex-wrap gap-2 md:gap-0 md:flex-col">
       <div class="text-gray-500">@lang('История')</div>
       <a class="flex flex-wrap gap-1 items-center link-parent" href="{{ $photo->rel->www() }}#{{ basename($photo->slug) }}">
-        <img class="flag-16 svg-shadow" src="{{ $photo->rel->city->country->flagUrl() }}" alt="">
+        <img class="flag-16 svg-shadow" src="{{ $photo->rel->city->country->flagUrl() }}" alt="" loading="lazy">
         <span class="link">{{ $photo->rel->title }}</span>
       </a>
     </div>
