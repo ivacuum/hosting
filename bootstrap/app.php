@@ -35,6 +35,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->redirectUsersTo(fn () => to('/'));
 
         $middleware->append(\App\Http\Middleware\SetLocale::class);
+        $middleware->append(\App\Http\Middleware\EarlyHints::class);
 
         $middleware->web(append: [
             \Ivacuum\Generic\Middleware\SpammerTrap::class,
