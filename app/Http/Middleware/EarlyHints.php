@@ -14,6 +14,8 @@ class EarlyHints
 
         $response = $next($request);
 
+        // Еще middleware AddLinkHeadersForPreloadedAssets полезен,
+        // но он не сделает preconnect к доменам
         $manifest = json_decode(file_get_contents(public_path('assets/manifest.json')), associative: true);
 
         $links = [
