@@ -9,7 +9,7 @@
   </summary>
   <details-menu
     role="menu"
-    class="absolute top-full left-0 z-50 py-2 bg-white dark:bg-slate-800 mt-1 border border-gray-300 dark:border-slate-700 rounded-sm shadow-md min-w-[10rem]"
+    class="absolute top-full left-0 z-50 py-2 bg-white dark:bg-slate-800 mt-1 border border-gray-300 dark:border-slate-700 rounded-sm shadow-md min-w-40"
   >
     {{ $slot }}
   </details-menu>
