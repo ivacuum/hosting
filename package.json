@@ -2,8 +2,9 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build": "vite build",
     "dev": "vite",
-    "build": "vite build"
+    "tw-upgrade": "npx @tailwindcss/upgrade@latest"
   },
   "dependencies": {
     "@github/details-menu-element": "1.0.13",
