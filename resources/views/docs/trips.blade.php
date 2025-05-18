@@ -1,104 +1,78 @@
 @extends('docs.base')
 
+@section('table_of_contents')
+<x-toc-item href="what-is-this-service">Что это за ресурс?</x-toc-item>
+<x-toc-item href="who-is-it-for">Для кого он?</x-toc-item>
+<x-toc-item href="how-to-add-trip">Как добавить поездку в хронологию?</x-toc-item>
+<x-toc-item href="how-to-add-city">Нужного мне города нет в списке. Что делать?</x-toc-item>
+<x-toc-item href="trip-statuses">Что означают состояния поездок?</x-toc-item>
+<x-toc-item href="trip-status-hidden" level="2">Поездка скрыта</x-toc-item>
+<x-toc-item href="trip-status-inactive" level="2">Неактивна</x-toc-item>
+<x-toc-item href="trip-status-published" level="2">Опубликована</x-toc-item>
+<x-toc-item href="how-to-add-photo">Как вставить фотографию в заметку?</x-toc-item>
+<x-toc-item href="best-photo-size">Какого размера фотографии лучше использовать?</x-toc-item>
+<x-toc-item href="how-to-share">Как показать друзьям где я был?</x-toc-item>
+<x-toc-item href="feedback">Есть пожелания по улучшению сервиса. Кому писать?</x-toc-item>
+@endsection
+
 @section('content')
-<h2 class="font-medium text-3xl tracking-tight mb-4">@lang('Поездки')</h2>
-
-@component('accordion')
+@component('documentation-article')
 @slot('title')
-Что это за ресурс?
+  @lang('Поездки')
 @endslot
 
-<div>Это сервис, позволяющий вести хронологию собственных поездок и писать заметки к ним. Лучше всего истории фиксировать по горячим следам, пока ярки воспоминания. С годами детали вылетят из памяти, а в письменном варианте останутся доступны.</div>
-@endcomponent
+<h2 id="what-is-this-service">Что это за ресурс?</h2>
+<p>Это сервис, позволяющий вести хронологию собственных поездок и писать заметки к ним. Лучше всего истории фиксировать по горячим следам, пока ярки воспоминания. С годами детали вылетят из памяти, а в письменном варианте останутся доступны.</p>
 
-@component('accordion')
-@slot('title')
-Для кого он?
-@endslot
+<h2 id="who-is-it-for">Для кого он?</h2>
+<p>Для всех, кто хочет запечатлеть памятные события жизни, а также поведать о них друзьям. Один раз пишешь — много раз пересылаешь.</p>
 
-<div>Для всех, кто хочет запечатлеть памятные события жизни, а также поведать о них друзьям. Один раз пишешь — много раз пересылаешь.</div>
-@endcomponent
+<h2 id="how-to-add-trip">Как добавить поездку в хронологию?</h2>
+<p>В личном кабинете есть <a class="link" href="@lng/my/trips">специальный раздел</a> для управления поездками. Непосредственно <a class="link" href="@lng/my/trips/create">страница добавления поездки</a>.</p>
 
-@component('accordion')
-@slot('title')
-Как добавить поездку в хронологию?
-@endslot
-
-<div>В личном кабинете есть <a class="link" href="@lng/my/trips">специальный раздел</a> для управления поездками. Непосредственно <a class="link" href="@lng/my/trips/create">страница добавления поездки</a>.</div>
-@endcomponent
-
-@component('accordion')
-@slot('title')
-Нужного мне города нет в списке. Что делать?
-@endslot
-
+<h2 id="how-to-add-city">Нужного мне города нет в списке. Что делать?</h2>
 <p>Обращайтесь в <a class="link" href="https://t.me/vacuum">Телеграме</a> или <a class="link" href="https://vk.com/ivacuum">ВК</a> — добавим по запросу.</p>
-<div>Для работоспособности сайта важно, чтобы города и страны были заполнены особым образом (с английским переводом, указанием координат для карты и пр.), поэтому возможность добавления городов есть только у администрации.</div>
-@endcomponent
+<p>Для работоспособности сайта важно, чтобы города и страны были заполнены особым образом (с английским переводом, указанием координат для карты и пр.), поэтому возможность добавления городов есть только у администрации.</p>
 
-@component('accordion')
-@slot('title')
-Что означают состояния поездок?
-@endslot
-
-<div class="font-medium text-2xl mb-2">Поездка скрыта</div>
+<h2 id="trip-statuses">Что означают состояния поездок?</h2>
+<h3 id="trip-status-hidden">Поездка скрыта</h3>
 <p>Никто не видит, кроме вас в личном кабинете. Полезно использовать в качестве наброска для планов, так как даты и последовательность перемещений будут у вас перед глазами.</p>
 
-<div class="font-medium text-2xl mb-2 mt-6">Неактивна</div>
+<h3 id="trip-status-inactive">Неактивна</h3>
 <p>Поездка видна пользователям в хронологии, но нельзя нажать на нее и посмотреть текст заметки.</p>
-<div class="mb-1">Подходит для следующих ситуаций.</div>
-<ul class="mb-4">
-  <li>Нечего написать про давнюю поездку — в будущем мысли могут появиться, а пока поездка будет в хронологии и статистике посещений городов и стран.</li>
-  <li>Поездка только-только состоялась — некое подобие анонса для постоянных читателей.</li>
+<p>Подходит для ситуаций, когда:</p>
+<ul>
+  <li>нечего написать про давнюю поездку — в будущем мысли могут появиться, а пока поездка будет в хронологии и статистике посещений городов и стран;</li>
+  <li>поездка только-только состоялась — некое подобие анонса для постоянных читателей.</li>
 </ul>
 
-<div class="font-medium text-2xl mb-2 mt-6">Опубликована</div>
+<h3 id="trip-status-published">Опубликована</h3>
 <div>На заметку все могут нажать и почитать. Разумеется, участвует в хронологии посещения городов и стран.</div>
-@endcomponent
 
-@component('accordion')
-@slot('title')
-Как вставить фотографию в заметку?
-@endslot
-
+<h2 id="how-to-add-photo">Как вставить фотографию в заметку?</h2>
 <p>Достаточно вставить ссылку на фото отдельной строкой. Если друг за другом вставить несколько ссылок каждую с новой строки, то при сохранении они преобразятся в горизонтальный слайдер.</p>
 <p>В настоящее время физическое хранение фотографий на данном сайте не предусмотрено, поэтому они должны быть загружены куда-то еще, например, ВК.</p>
 <p>В общем случае оформление текста заметки подобно следующему:</p>
-<div class="font-mono bg-grey-100 border rounded-sm px-4 py-2">
+<div class="font-mono dark:text-slate-300 bg-gray-100 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-sm px-4 py-2">
   <div>Текст</div>
   <div>Ссылка на фото</div>
   <div class="mt-6">Текст</div>
   <div>Ссылка на фото 1</div>
   <div>Ссылка на фото 2</div>
 </div>
-@endcomponent
 
-@component('accordion')
-@slot('title')
-Какого размера фотографии лучше использовать?
-@endslot
+<h2 id="best-photo-size">Какого размера фотографии лучше использовать?</h2>
+<p>Для мобильных устройств рекомендуемая ширина фотографии не более 1000px, для компьютеров — 2000px.</p>
 
-<div>Для мобильных устройств рекомендуемая ширина фотографии не более 1000px, для компьютеров — 2000px.</div>
-@endcomponent
-
-@component('accordion')
-@slot('title')
-Как показать друзьям где я был?
-@endslot
-
+<h2 id="how-to-share">Как показать друзьям где я был?</h2>
 @if (Auth::user()?->login)
-  <div>Ссылка на вашу хронологию поездок: <a class="link" href="{{ action([App\Http\Controllers\UserTravelTripController::class, 'index'], Auth::user()->login) }}"></a></div>
+  <p>Ссылка на вашу хронологию поездок: <a class="link" href="{{ action([App\Http\Controllers\UserTravelTripController::class, 'index'], Auth::user()->login) }}"></a></p>
 @else
   <p>Сначала укажите свой логин <a class="link" href="@lng/my/profile">в профиле</a>.</p>
   <div>После этого на сайте у вас будет целый раздел вида <span class="font-bold">vacuum.name/@login/travel</span>. На него будет вести кнопка «Просмотреть» на странице <a class="link" href="@lng/my/trips">управления поездками</a>.</div>
 @endif
-@endcomponent
 
-@component('accordion')
-@slot('title')
-Есть пожелания по улучшению сервиса. Кому писать?
-@endslot
-
-<div>Для обратной связи есть <a class="link" href="@lng/contact">специальная форма</a>.</div>
+<h2 id="feedback">Есть пожелания по улучшению сервиса. Кому писать?</h2>
+<p>Для обратной связи есть <a class="link" href="@lng/contact">специальная форма</a>.</p>
 @endcomponent
 @endsection

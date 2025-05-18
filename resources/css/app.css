@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @plugin '@tailwindcss/forms';
-@plugin '@tailwindcss/typography';
+/*@plugin '@tailwindcss/typography';*/
 
 @source "../js";
 @source "../svg";
@@ -25,6 +25,7 @@
 @import "./lists.pcss";
 @import "./magnets.pcss";
 @import "./markdown.pcss";
+@import "./prose.pcss";
 @import "./svg.pcss";
 @import "./tables.pcss";
 @import "./tooltips.pcss";

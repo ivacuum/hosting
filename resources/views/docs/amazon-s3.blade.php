@@ -1,11 +1,16 @@
 @extends('docs.base')
 
 @section('content')
-<h2 class="font-medium text-3xl tracking-tight mb-2">@lang('Amazon S3')</h2>
+@component('documentation-article')
+@slot('title')
+  @lang('Amazon S3')
+@endslot
+
+<h2>Политика свободного чтения</h2>
+<p>Она позволяет читать файлы без API-ключа. Это открывает возможность ставить nginx в качестве прокси перед S3.</p>
 <p><a class="link" href="https://awspolicygen.s3.amazonaws.com/policygen.html">Официальный генератор политик доступа</a>.</p>
 
 <x-terminal-pre>
-<span class="text-gray-500 dark:text-white"># Политика свободного чтения</span>
 {
   "Version": "2012-10-17",
   "Id": "<span class="bg-green-300 dark:bg-green-400/25 font-bold dark:text-green-400">Readable Policy Name</span>",
@@ -20,4 +25,5 @@
   ]
 }
 </x-terminal-pre>
+@endcomponent
 @endsection

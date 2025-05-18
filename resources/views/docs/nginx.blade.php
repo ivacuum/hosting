@@ -1,11 +1,15 @@
 @extends('docs.base')
 
 @section('content')
-<h2 class="font-medium text-3xl tracking-tight mb-2">@lang('Nginx')</h2>
+@component('documentation-article')
+@slot('title')
+  @lang('Nginx')
+@endslot
 
+<h2>Проксирование файлов с S3</h2>
+<p>Свой прокси перед Амазоном позволяет использовать собственный домен и снизить расходы на S3.</p>
 <x-terminal-pre>
 @verbatim
-<span class="text-gray-500 dark:text-white"># Проксирование файлов с S3</span>
 proxy_cache_path /tmp/nginx-s3-cache levels=1:2 keys_zone=s3_cache:10m inactive=168h max_size=250m;
 
 location / {
@@ -34,4 +38,5 @@ location @s3 {
 }
 @endverbatim
 </x-terminal-pre>
+@endcomponent
 @endsection
