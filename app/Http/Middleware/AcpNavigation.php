@@ -16,8 +16,8 @@ class AcpNavigation
             return $next($request);
         }
 
-        str($request->route()->uri)
-            ->explode('/')
+        $request->uri()
+            ->pathSegments()
             ->reduce(function ($carry, $part) use ($request) {
                 $carry = trim("{$carry}/{$part}", '/');
 
