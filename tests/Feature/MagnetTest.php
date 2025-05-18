@@ -14,6 +14,9 @@ use App\Magnet;
 use App\Notifications\AnonymousMagnetNotification;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Support\Facades\Exceptions;
+use Illuminate\Support\Sleep;
 use Ivacuum\Generic\Jobs\SendTelegramMessageJob;
 use Tests\TestCase;
 
@@ -257,6 +260,44 @@ class MagnetTest extends TestCase
         $this->assertCount(0, $user->magnets);
 
         \Event::assertDispatched(\App\Events\Stats\TorrentDuplicateFound::class);
+    }
+
+    public function testStoreWithCurlError()
+    {
+        $stub = MagnetFactory::new()->make();
+        $user = UserFactory::new()->create();
+
+        Exceptions::fake();
+        Sleep::fake();
+
+        \Http::fake([
+            "api-rto.vacuum.name/v1/get_tor_topic_data?by=topic_id&val={$stub->rto_id}" => \Http::response([
+                'result' => [
+                    $stub->rto_id => [
+                        'size' => $stub->size,
+                        'seeders' => 5,
+                        'forum_id' => 3,
+                        'reg_time' => $stub->registered_at->getTimestamp(),
+                        'info_hash' => $stub->info_hash,
+                        'poster_id' => 4,
+                        'tor_status' => RtoTopicStatus::Approved->value,
+                        'topic_title' => $stub->title,
+                        'seeder_last_seen' => now()->getTimestamp(),
+                    ],
+                ],
+            ]),
+            "rto.vacuum.name/forum/viewtopic.php?t={$stub->rto_id}" => \Http::failedConnection(),
+        ]);
+
+        $this->be($user);
+
+        \Livewire::test(MagnetAddForm::class)
+            ->set('input', $stub->rto_id)
+            ->set('categoryId', $stub->category_id->value)
+            ->call('submit')
+            ->assertHasErrors(['input' => ['Возникли сложности с подключением к рутрекеру. Пожалуйста, повторите попытку']]);
+
+        Exceptions::assertReported(ConnectionException::class);
     }
 
     public function testStoreUnescapedTitle()
