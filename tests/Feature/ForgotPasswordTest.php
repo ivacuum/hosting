@@ -35,11 +35,10 @@ class ForgotPasswordTest extends TestCase
 
         $user = UserFactory::new()->create();
 
-        $this->from('auth/password/remind')
-            ->post('auth/password/remind', ['email' => $user->email])
+        $this->post('auth/password/remind', ['email' => $user->email])
             ->assertSessionHasNoErrors()
             ->assertSessionHas('message')
-            ->assertRedirect('auth/password/remind');
+            ->assertRedirectBack();
 
         $this->assertGuest();
 
