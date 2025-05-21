@@ -159,3 +159,7 @@
   margin-inline: auto;
   padding-inline: 1rem;
 }
+
+@view-transition {
+  navigation: auto;
+}
