@@ -24,13 +24,13 @@ $alt = $isCrawler && isset($trip) ? $trip->imgAltText() : '';
           >
           <div class="absolute top-0 right-0">
             <a
-              class="flex items-center justify-center p-2 text-white svg-shadow"
+              class="flex items-center justify-center p-2 text-white hover:text-gray-200 drop-shadow-xs/90 hover:drop-shadow-sm/90"
               href="{{ to('photos/map', ['photo' => $slug ?? "{$trip->slug}/{$pic}"]) }}"
             >
               @svg (map-marker)
             </a>
             <a
-              class="flex items-center justify-center p-2 text-white svg-shadow"
+              class="flex items-center justify-center p-2 text-white hover:text-gray-200 drop-shadow-xs/90 hover:drop-shadow-sm/90"
               href="{{ ViewHelper::pic2x($slug ?? $trip->slug, $pic) }}"
             >
               @svg (link)

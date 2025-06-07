@@ -40,12 +40,12 @@ Mousetrap.bind('right', () => {
       @endif
       <div class="inline-block relative">
         @if ($next)
-          <div class="absolute top-1/2 left-0 text-base md:text-2xl leading-none text-white svg-shadow -mt-2 md:-mt-3 pl-1">
+          <div class="absolute top-1/2 left-0 text-base md:text-2xl leading-none text-white drop-shadow-xs/90 -mt-2 md:-mt-3 pl-1">
             @svg (chevron-left)
           </div>
         @endif
         @if ($prev)
-          <div class="absolute top-1/2 right-0 text-base md:text-2xl leading-none text-white photo-overlay-arrowt -mt-2 md:-mt-3 pr-1">
+          <div class="absolute top-1/2 right-0 text-base md:text-2xl leading-none text-white drop-shadow-xs/90 -mt-2 md:-mt-3 pr-1">
             @svg (chevron-right)
           </div>
         @endif
