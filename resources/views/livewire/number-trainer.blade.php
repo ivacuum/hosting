@@ -137,9 +137,9 @@
           @if($this->customInterval)
             <div class="flex items-center gap-x-2 mb-2">
               @ru От @en From @endru
-              <input type="number" class="the-input" wire:model.live.debounce.1000ms="minimum">
+              <input type="number" class="the-input" inputmode="number" wire:model.live.debounce.1000ms="minimum">
               @ru до @en to @endru
-              <input type="number" class="the-input" wire:model.live.debounce.1000ms="maximum">
+              <input type="number" class="the-input" inputmode="number" wire:model.live.debounce.1000ms="maximum">
             </div>
             <x-invalid-feedback field="minimum"/>
             <x-invalid-feedback field="maximum"/>
