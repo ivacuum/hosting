@@ -75,15 +75,21 @@ class BeaconTest extends TestCase
 
     public static function simpleEvents()
     {
-        yield [Stats\NumberSpoken::class];
         yield [Stats\HiraganaAnswered::class];
         yield [Stats\HiraganaSelected::class];
+        yield [Stats\HiraganaAnswerRevealed::class];
+
         yield [Stats\KatakanaAnswered::class];
         yield [Stats\KatakanaSelected::class];
+        yield [Stats\KatakanaAnswerRevealed::class];
+
+        yield [Stats\KanaAnswered::class];
+        yield [Stats\KanaSelected::class];
+        yield [Stats\KanaAnswerRevealed::class];
+
+        yield [Stats\NumberSpoken::class];
         yield [Stats\NumberSpeakPressed::class];
         yield [Stats\NumberVoiceSelected::class];
-        yield [Stats\HiraganaAnswerRevealed::class];
-        yield [Stats\KatakanaAnswerRevealed::class];
     }
 
     public static function viewCounters()

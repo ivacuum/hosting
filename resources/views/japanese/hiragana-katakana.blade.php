@@ -43,24 +43,33 @@
             </div>
           </template>
         </div>
-        <div class="grid grid-cols-2 lg:flex gap-2 mt-2">
+        <div class="flex gap-1 mt-2 mb-4">
+          <button class="btn btn-default" @click="checkAll">@ru Выбрать все @en Check all @endru</button>
+          <button class="btn btn-default" @click="uncheckAll">@ru Снять выделение @en Uncheck all @endru</button>
+        </div>
+        <div class="my-4">
+          <div class="font-medium text-lg">@ru Выберите азбуку для практики @en Choose a syllabary to practice @endru</div>
+          <div>
+            <label class="flex gap-2 items-center">
+              <input class="not-checked:border-gray-300 text-sky-600" type="radio" v-model.number="whatToTrain" value="0">
+              @ru хирагана @en hiragana @endru
+            </label>
+            <label class="flex gap-2 items-center">
+              <input class="not-checked:border-gray-300 text-sky-600" type="radio" v-model.number="whatToTrain" value="1">
+              @ru катакана @en katakana @endru
+            </label>
+            <label class="flex gap-2 items-center">
+              <input class="not-checked:border-gray-300 text-sky-600" type="radio" v-model.number="whatToTrain" value="2">
+              @ru обе азбуки сразу @en both syllabaries @endru
+            </label>
+          </div>
+        </div>
+        <div class="flex gap-1">
           <button
             class="btn btn-primary disabled:opacity-50"
             :disabled="this.picked.length < 2"
             @click="practice"
           >@ru Практиковаться @en Practice @endru</button>
-          <Transition name="fade-fast" mode="out-in">
-            <button
-              class="btn btn-default"
-              @click="switchSyllabary"
-              :key="syllabaryName"
-            >
-              <span v-show="syllabaryName === 'Hiragana'">@ru Переключиться на катакану @en Switch to katakana @endru</span>
-              <span v-show="syllabaryName === 'Katakana'">@ru Переключиться на хирагану @en Switch to hiragana @endru</span>
-            </button>
-          </Transition>
-          <button class="btn btn-default" @click="checkAll">@ru Выбрать все @en Check all @endru</button>
-          <button class="btn btn-default" @click="uncheckAll">@ru Снять выделение @en Uncheck all @endru</button>
         </div>
       </div>
       <div class="max-w-[600px]" v-show="stage === 'practice'">
@@ -252,6 +261,7 @@
           ],
         ],
         answerIndex: 2,
+        whatToTrain: 0, // 0: hiragana, 1: katakana, 2: both
         answerVisible: false,
         checkedColumns: [],
         syllabaryIndex: 0, // 0: hiragana, 1: katakana
@@ -260,7 +270,13 @@
 
     computed: {
       syllabaryName() {
-        return this.syllabaryIndex === 0 ? 'Hiragana' : 'Katakana'
+        if (this.whatToTrain == 1) {
+          return 'Katakana'
+        } else if (this.whatToTrain == 2) {
+          return 'Kana'
+        }
+
+        return 'Hiragana'
       }
     },
 
@@ -313,7 +329,9 @@
 
         const el = this.pickRandom()
 
-        this.question = el[this.syllabaryIndex]
+        this.question = this.whatToTrain == 2
+          ? el[this.randomInt(2)]
+          : el[this.whatToTrain]
         this.answer = el[this.answerIndex]
       },
 
@@ -337,7 +355,7 @@
       pickRandom() {
         const el = this.picked[this.randomInt(this.picked.length)]
 
-        if (this.picked.length > 1 && el[this.syllabaryIndex] === this.question) {
+        if (this.picked.length > 1 && (el[0] === this.question || el[1] === this.question)) {
           return this.pickRandom()
         }
 
@@ -370,16 +388,22 @@
         })
       },
 
-      switchSyllabary() {
-        this.syllabaryIndex = this.syllabaryIndex === 0 ? 1 : 0
-        this.beacon('Selected')
-      },
-
       uncheckAll() {
         this.checkedColumns = []
         this.pickElements()
       }
-    }
+    },
+    watch: {
+      whatToTrain(newValue) {
+        if (newValue == 1) {
+          this.syllabaryIndex = 1
+        } else if (newValue == 0) {
+          this.syllabaryIndex = 0
+        }
+
+        this.beacon('Selected')
+      }
+    },
   })
 
   app.mount('#hiragana_katakana')

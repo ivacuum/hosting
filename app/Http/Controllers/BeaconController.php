@@ -9,15 +9,21 @@ use App\Http\Requests\BeaconStoreForm;
 class BeaconController
 {
     private const array METRICS = [
-        Stats\NumberSpoken::class,
         Stats\HiraganaAnswered::class,
         Stats\HiraganaSelected::class,
+        Stats\HiraganaAnswerRevealed::class,
+
         Stats\KatakanaAnswered::class,
         Stats\KatakanaSelected::class,
+        Stats\KatakanaAnswerRevealed::class,
+
+        Stats\KanaAnswered::class,
+        Stats\KanaSelected::class,
+        Stats\KanaAnswerRevealed::class,
+
+        Stats\NumberSpoken::class,
         Stats\NumberSpeakPressed::class,
         Stats\NumberVoiceSelected::class,
-        Stats\HiraganaAnswerRevealed::class,
-        Stats\KatakanaAnswerRevealed::class,
     ];
 
     public function __invoke(BeaconStoreForm $request)
