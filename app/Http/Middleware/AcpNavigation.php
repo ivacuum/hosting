@@ -16,8 +16,9 @@ class AcpNavigation
             return $next($request);
         }
 
-        $request->uri()
-            ->pathSegments()
+        // $request->uri() не подходит, потому что там нет переменных вроде `acp/news/{news}`
+        str($request->route()->uri)
+            ->explode('/')
             ->reduce(function ($carry, $part) use ($request) {
                 $carry = trim("{$carry}/{$part}", '/');
 
