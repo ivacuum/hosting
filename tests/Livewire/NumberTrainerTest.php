@@ -12,6 +12,51 @@ class NumberTrainerTest extends TestCase
     use DatabaseTransactions;
     use MockGetNumberLocales;
 
+    public function testCustomInterval()
+    {
+        \Livewire::test(NumberTrainer::class)
+            ->set('lang', 'en')
+            ->set('customInterval', true)
+            ->assertSet('minimum', 0)
+            ->assertSet('maximum', 10)
+            ->set('minimum', 11)
+            ->set('maximum', 19)
+            ->call('skip')
+            ->assertSet('number', fn (int $value) => $value >= 11 && $value <= 19);
+    }
+
+    public function testCustomIntervalBoundariesForced()
+    {
+        \Livewire::test(NumberTrainer::class)
+            ->set('lang', 'en')
+            ->set('customInterval', true)
+            ->set('minimum', -5)
+            ->assertSet('minimum', 0)
+            ->assertHasErrors('minimum')
+            ->set('maximum', 100)
+            ->assertHasNoErrors('minimum')
+            ->set('maximum', 1234567890)
+            ->assertSet('maximum', 100000000)
+            ->assertHasErrors('maximum')
+            ->set('maximum', 3)
+            ->assertSet('minimum', 0)
+            ->assertSet('maximum', 10)
+            ->assertHasErrors('maximum');
+    }
+
+    public function testMinimumIntervalForced()
+    {
+        \Livewire::test(NumberTrainer::class)
+            ->set('lang', 'en')
+            ->set('customInterval', true)
+            ->set('minimum', 11)
+            ->assertSet('maximum', 16)
+            ->assertHasNoErrors()
+            ->set('maximum', 11)
+            ->assertSet('minimum', 6)
+            ->assertHasNoErrors();
+    }
+
     public function testDetermineLocale()
     {
         \Livewire::withQueryParams(['lang' => 'de'])
@@ -51,6 +96,18 @@ class NumberTrainerTest extends TestCase
             ->assertSet('answered', 1);
     }
 
+    public function testKeepPredefinedMaximumWhenTogglingCustomIntervalSetting()
+    {
+        \Livewire::test(NumberTrainer::class)
+            ->set('lang', 'en')
+            ->set('maximum', 10_000)
+            ->set('customInterval', true)
+            ->assertSet('maximum', 10_000)
+            ->set('maximum', 100)
+            ->set('customInterval', false)
+            ->assertSet('maximum', 100);
+    }
+
     public function testKoreanAsTranslit()
     {
         \Livewire::test(NumberTrainer::class)
@@ -63,15 +120,17 @@ class NumberTrainerTest extends TestCase
             ->assertSet('answered', 1);
     }
 
-    public function testMaximumIsNotLowerThan10()
+    public function testResetCustomMinimumAndMaximumWhenValuesAreNotPredefined()
     {
         \Livewire::test(NumberTrainer::class)
             ->set('lang', 'en')
-            ->call('decreaseLevel')
-            ->set('number', 2)
-            ->set('answer', 2)
-            ->call('check')
-            ->assertSet('answered', 1)
+            ->set('customInterval', true)
+            ->set('minimum', 11)
+            ->set('maximum', 19)
+            ->assertSet('minimum', 11)
+            ->assertSet('maximum', 19)
+            ->set('customInterval', false)
+            ->assertSet('minimum', 0)
             ->assertSet('maximum', 10);
     }
 

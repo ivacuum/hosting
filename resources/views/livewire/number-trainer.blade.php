@@ -127,20 +127,55 @@
         </div>
         <div>
           <div class="font-medium text-lg">@lang('Интервал возможных чисел')</div>
-          <div class="text-gray-500 text-sm mb-2">@lang('От :min до :max.', ['min' => 0, 'max' => ViewHelper::number($this->maximum)])</div>
-          <div class="flex gap-1">
-            <button
-              class="btn btn-default disabled:opacity-50"
-              type="button"
-              wire:click="decreaseLevel"
-              {{ $this->maximum < 100 ? 'disabled' : '' }}
-            >@lang('Уменьшить')</button>
-            <button
-              class="btn btn-default disabled:opacity-50"
-              type="button"
-              wire:click="increaseLevel"
-              {{ $this->maximum > 10_000_000 ? 'disabled' : '' }}
-            >@lang('Увеличить')</button>
+          <div class="text-gray-500 text-sm mb-2">
+            @ru
+              Выберите предопределенный интервал или задайте свой.
+            @en
+              Select a predefined interval or set your own.
+            @endru
+          </div>
+          @if($this->customInterval)
+            <div class="flex items-center gap-x-2 mb-2">
+              @ru От @en From @endru
+              <input type="number" class="the-input" wire:model.live.debounce.1000ms="minimum">
+              @ru до @en to @endru
+              <input type="number" class="the-input" wire:model.live.debounce.1000ms="maximum">
+            </div>
+            <x-invalid-feedback field="minimum"/>
+            <x-invalid-feedback field="maximum"/>
+            <div class="text-gray-500 text-sm mb-2">
+              @ru
+                Интервал будет автоматически расширен до 5 чисел, если при настройке получилось меньше.
+              @en
+                The interval will be automatically increased to 5 numbers if customizing results in less than that.
+              @endru
+            </div>
+          @else
+            <select class="the-input mb-2" wire:model.live="maximum">
+              @foreach(range(1, 8) as $orderOfMagnitude)
+                <option value="{{ 10 ** $orderOfMagnitude  }}">@lang('От :min до :max', ['min' => 0, 'max' => ViewHelper::number(10 ** $orderOfMagnitude)])</option>
+              @endforeach
+            </select>
+          @endif
+          <div class="flex gap-ч1">
+            <div class="flex gap-4 items-center">
+              <label class="flex gap-2 items-center">
+                <input class="not-checked:border-gray-300 text-sky-600" type="radio" wire:model.live="customInterval" value="0">
+                @ru
+                  Предопределенный
+                @en
+                  Predefined
+                @endru
+              </label>
+              <label class="flex gap-2 items-center">
+                <input class="not-checked:border-gray-300 text-sky-600" type="radio" wire:model.live="customInterval" value="1">
+                @ru
+                  Задать свой
+                @en
+                  Customize
+                @endru
+              </label>
+            </div>
           </div>
         </div>
         <div>
