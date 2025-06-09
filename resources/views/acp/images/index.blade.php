@@ -2,6 +2,16 @@
 
 @extends('acp.list')
 
+@section('heading-after-search')
+@include('acp.tpl.dropdown-filter', [
+  'field' => 'image_size',
+  'values' => [
+    'Миниатюра' => null,
+    'Оригинал' => 'original',
+  ]
+])
+@endsection
+
 @section('toolbar')
 <div class="flex flex-wrap gap-2 mb-2">
   <div class="flex">
@@ -54,13 +64,17 @@
         </td>
         <td class="text-center">
           <a class="screenshot-link" href="{{ Acp::show($model) }}">
-            <img class="inline-block screenshot" src="{{ $model->thumbnailSecretUrl() }}" alt="">
+            @if($imageSize === 'original')
+              <img class="inline-block screenshot max-w-[500px] max-h-[500px]" src="{{ $model->originalSecretUrl() }}" alt="">
+            @else
+              <img class="inline-block screenshot" src="{{ $model->thumbnailSecretUrl() }}" alt="">
+            @endif
           </a>
         </td>
         <td class="md:text-right text-gray-500 whitespace-nowrap">{{ ViewHelper::size($model->size) }}</td>
         <td class="md:text-right whitespace-nowrap">
           @if ($model->views > 3000)
-            <span class="flex bg-green-600 text-white px-2 text-xs font-bold rounded-sm">{{ ViewHelper::number($model->views) }}</span>
+            <span class="flex bg-green-600 text-white px-2 font-bold rounded-sm">{{ ViewHelper::number($model->views) }}</span>
           @else
             {{ ViewHelper::number($model->views) }}
           @endif

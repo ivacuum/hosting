@@ -68,6 +68,7 @@ return [
 
     'image.slug' => 'Изображение',
     'image.user_id' => 'Автор',
+    'image.image_size' => 'Размер изображения',
 
     'issue.title' => 'Тема',
     'issue.created_at' => 'Создано',

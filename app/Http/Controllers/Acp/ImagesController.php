@@ -26,6 +26,7 @@ class ImagesController extends Controller
         $year = request('year');
         $touch = request('touch');
         $userId = request('user_id');
+        $imageSize = request('image_size');
 
         $models = Image::query()
             ->when($year, fn (Builder $query) => $query->whereYear('created_at', $year))
@@ -46,6 +47,7 @@ class ImagesController extends Controller
             'touch' => $touch,
             'models' => $models,
             'user_id' => $userId,
+            'imageSize' => $imageSize,
         ]);
     }
 

@@ -58,6 +58,8 @@ return [
     'file.downloads' => 'Downloads',
     'file.created_at' => 'Added on',
 
+    'image.image_size' => 'Image size',
+
     'gig.date' => 'Date',
     'gig.status' => 'Status',
     'gig.meta_image' => 'Cover image',
