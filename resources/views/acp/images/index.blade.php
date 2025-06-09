@@ -65,9 +65,9 @@
         <td class="text-center">
           <a class="screenshot-link" href="{{ Acp::show($model) }}">
             @if($imageSize === 'original')
-              <img class="inline-block screenshot max-w-[500px] max-h-[500px]" src="{{ $model->originalSecretUrl() }}" alt="">
+              <img class="inline-block screenshot max-w-[500px] max-h-[500px]" loading="lazy" src="{{ $model->originalSecretUrl() }}" alt="">
             @else
-              <img class="inline-block screenshot" src="{{ $model->thumbnailSecretUrl() }}" alt="">
+              <img class="inline-block screenshot" loading="lazy" src="{{ $model->thumbnailSecretUrl() }}" alt="">
             @endif
           </a>
         </td>
