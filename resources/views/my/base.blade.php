@@ -3,7 +3,25 @@
 @section('content_header')
 <div class="grid lg:grid-cols-6 gap-8">
   <div>
-    <div class="flex flex-col w-full">
+    <div class="lg:hidden">
+      <select
+        class="the-input"
+        onchange="window.location = this.value"
+      >
+        @if(Auth::user()->isAdmin())
+          <option value="{{ App::isLocal()
+            ? to('acp/dev/templates')
+            : to('acp/trips', ['user_id' => 1]) }}"
+          >@lang('acp.index')</option>
+        @endif
+        <option value="{{ to('my/profile') }}" {{ $routeUri === 'my/profile' ? 'selected' : '' }}>@lang('Профиль')</option>
+        <option value="{{ to('my/password') }}" {{ $routeUri === 'my/password' ? 'selected' : '' }}>@lang('Пароль')</option>
+        <option value="{{ to('my/settings') }}" {{ $routeUri === 'my/settings' ? 'selected' : '' }}>@lang('Настройки')</option>
+        <option value="{{ to('my/trips') }}" {{ Str::of($routeUri)->is(['my/trips', 'my/trips/*']) ? 'selected' : '' }}>@lang('Поездки')</option>
+        <option value="{{ to('auth/logout') }}">@lang('auth.logout')</option>
+      </select>
+    </div>
+    <div class="hidden lg:flex flex-col w-full">
       @if (Auth::user()->isAdmin())
         @component('tpl.list-group-item', [
           'href' => App::isLocal()
