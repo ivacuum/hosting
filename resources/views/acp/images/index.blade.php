@@ -73,7 +73,7 @@
         </td>
         <td class="md:text-right text-gray-500 whitespace-nowrap">{{ ViewHelper::size($model->size) }}</td>
         <td class="md:text-right whitespace-nowrap">
-          @if ($model->views > 3000)
+          @if ($model->views > 10000)
             <span class="flex bg-green-600 text-white px-2 font-bold rounded-sm">{{ ViewHelper::number($model->views) }}</span>
           @else
             {{ ViewHelper::number($model->views) }}
