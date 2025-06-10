@@ -91,7 +91,7 @@
             </a>
             <a
               class="btn btn-default rounded-l-none -ml-px js-image-delete"
-              data-confirm="{{ $model->views >= 3000 ? 'Запись будет удалена. Продолжить?' : '' }}"
+              data-confirm="{{ $model->views >= 10000 ? 'Запись будет удалена. Продолжить?' : '' }}"
               data-selector="#image_{{ $model->id }}"
               href="{{ Acp::destroy($model) }}"
             >

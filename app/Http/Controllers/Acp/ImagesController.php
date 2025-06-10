@@ -32,7 +32,7 @@ class ImagesController extends Controller
             ->when($year, fn (Builder $query) => $query->whereYear('created_at', $year))
             ->when($touch, fn (Builder $query) => $query->whereYear('updated_at', '<=', now()->subYears($touch)->year))
             ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
-            ->when(\App::isProduction(), fn (Builder $query) => $query->where('views', '<', 3000)->where('user_id', '<>', 1))
+            ->when(\App::isProduction(), fn (Builder $query) => $query->where('views', '<', 10000)->where('user_id', '<>', 1))
             ->orderBy(match ($sort->key) {
                 'size',
                 'views',
