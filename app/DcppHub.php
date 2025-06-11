@@ -43,29 +43,6 @@ class DcppHub extends Model
         event(new Events\Stats\DcppHubClicked);
     }
 
-    public function isConnectionOnline(): bool
-    {
-        try {
-            $handle = fsockopen($this->address, $this->port, $errno, $errstr, 5);
-        } catch (\Throwable) {
-            return false;
-        }
-
-        $online = false;
-
-        stream_set_timeout($handle, 5);
-
-        if ($handle) {
-            if (fgets($handle, 6) === '$Lock') {
-                $online = true;
-            }
-        }
-
-        fclose($handle);
-
-        return $online;
-    }
-
     #[\Override]
     protected function casts(): array
     {

@@ -10,16 +10,6 @@ class DcppTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testHublist()
-    {
-        $hub = DcppHubFactory::new()->create();
-
-        $this->get('dc/hubs')
-            ->assertOk()
-            ->assertSee($hub->externalLink())
-            ->assertHasCustomTitle();
-    }
-
     public function testHubClick()
     {
         $hub = DcppHubFactory::new()->create();
@@ -31,6 +21,16 @@ class DcppTest extends TestCase
         $hub->refresh();
 
         $this->assertSame($clicks + 1, $hub->clicks);
+    }
+
+    public function testHubList()
+    {
+        $hub = DcppHubFactory::new()->create();
+
+        $this->get('dc/hubs')
+            ->assertOk()
+            ->assertSee($hub->externalLink())
+            ->assertHasCustomTitle();
     }
 
     #[\PHPUnit\Framework\Attributes\DataProvider('pages')]
