@@ -4,6 +4,8 @@ namespace App\Domain\Dcpp;
 
 class DcppClient
 {
+    private mixed $socket;
+
     public function __construct(private string $host, private int $port = 411, int $timeout = 3)
     {
         \Context::add([
