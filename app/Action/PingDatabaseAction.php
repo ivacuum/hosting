@@ -3,6 +3,7 @@
 namespace App\Action;
 
 use Illuminate\Database\Connection;
+use Illuminate\Support\Sleep;
 
 class PingDatabaseAction
 {
@@ -17,7 +18,7 @@ class PingDatabaseAction
             try {
                 $this->db->reconnect();
             } catch (\PDOException) {
-                sleep(5);
+                Sleep::for(5)->second();
                 goto reconnect;
             }
         }

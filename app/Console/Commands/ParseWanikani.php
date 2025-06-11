@@ -6,6 +6,7 @@ use App\Kanji;
 use App\Radical;
 use App\Services\Wanikani\WanikaniApi;
 use App\Vocabulary;
+use Illuminate\Support\Sleep;
 use Ivacuum\Generic\Commands\Command;
 use Symfony\Component\Console\Attribute\AsCommand;
 
@@ -87,7 +88,7 @@ class ParseWanikani extends Command
             }
 
             if ($level > $minLevel && $level < $maxLevel) {
-                sleep($sleep);
+                Sleep::for($sleep)->seconds();
             }
         }
     }

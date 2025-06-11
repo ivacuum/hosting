@@ -9,6 +9,7 @@ use Carbon\CarbonImmutable;
 use Carbon\CarbonInterval;
 use Illuminate\Http\Client\Factory;
 use Illuminate\Http\Client\PendingRequest;
+use Illuminate\Support\Sleep;
 
 class ParserVkController
 {
@@ -164,7 +165,7 @@ class ParserVkController
 
         return \Cache::remember($cacheEntry, CarbonInterval::minutes(15 + intval($offset / 100)), function () use ($params) {
             if ($params['access_token'] && $params['offset']) {
-                sleep(1);
+                Sleep::for(1)->second();
             }
 
             $response = $this->http->get('wall.get', $params);
