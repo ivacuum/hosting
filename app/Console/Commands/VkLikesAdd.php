@@ -9,10 +9,11 @@ use Carbon\CarbonInterval;
 use Ivacuum\Generic\Commands\Command;
 use Symfony\Component\Console\Attribute\AsCommand;
 
-#[AsCommand('app:vk-likes-add', 'Add VK likes')]
+#[AsCommand('app:vk-likes-add')]
 class VkLikesAdd extends Command
 {
     protected $signature = 'app:vk-likes-add {page}';
+    protected $description = 'Add VK likes';
 
     public function handle(Vk $vk)
     {

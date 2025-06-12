@@ -6,10 +6,11 @@ use App\Services\Rto;
 use Ivacuum\Generic\Commands\Command;
 use Symfony\Component\Console\Attribute\AsCommand;
 
-#[AsCommand('app:parse-topic-body', 'Get html of the rto topic')]
+#[AsCommand('app:parse-topic-body')]
 class RtoParseTopicBody extends Command
 {
     protected $signature = 'app:parse-topic-body {topicId}';
+    protected $description = 'Get html of the rto topic';
 
     public function handle(Rto $rto)
     {

@@ -8,10 +8,11 @@ use App\Jobs\PingDcppHubJob;
 use Ivacuum\Generic\Commands\Command;
 use Symfony\Component\Console\Attribute\AsCommand;
 
-#[AsCommand('app:ping-dcpp-hubs', 'Check if dc++ hubs are online')]
+#[AsCommand('app:ping-dcpp-hubs')]
 class PingDcppHubs extends Command
 {
     protected $signature = 'app:ping-dcpp-hubs';
+    protected $description = 'Check if dc++ hubs are online';
 
     public function handle()
     {

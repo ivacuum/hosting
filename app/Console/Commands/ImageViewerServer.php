@@ -10,10 +10,11 @@ use Swoole\Http\Server;
 use Swoole\Process;
 use Symfony\Component\Console\Attribute\AsCommand;
 
-#[AsCommand('app:image-viewer-server', 'Image viewer daemon')]
+#[AsCommand('app:image-viewer-server')]
 class ImageViewerServer extends Command
 {
     protected $signature = 'app:image-viewer-server {host=127.0.0.1} {port=2730}';
+    protected $description = 'Image viewer daemon';
 
     private int $acceptedConnections = 0;
     private bool $started = false;

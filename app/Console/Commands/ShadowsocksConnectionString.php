@@ -10,10 +10,11 @@ use function Laravel\Prompts\password;
 use function Laravel\Prompts\suggest;
 use function Laravel\Prompts\text;
 
-#[AsCommand('app:shadowsocks-connection-string', 'Print a connection string for clients')]
+#[AsCommand('app:shadowsocks-connection-string')]
 class ShadowsocksConnectionString extends Command
 {
     protected $signature = 'app:shadowsocks-connection-string';
+    protected $description = 'Print a connection string for clients';
 
     public function handle()
     {

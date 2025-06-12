@@ -14,10 +14,11 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\Console\Attribute\AsCommand;
 
-#[AsCommand('app:metrics:process', 'Process metrics from redis stream and push them to database')]
+#[AsCommand('app:metrics:process')]
 class ProcessMetrics extends Command
 {
     protected $signature = 'app:metrics:process';
+    protected $description = 'Process metrics from redis stream and push them to database';
 
     public function handle(
         FetchMetricsAction $fetchMetrics,

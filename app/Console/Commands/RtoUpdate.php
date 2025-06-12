@@ -9,10 +9,11 @@ use Illuminate\Support\Collection;
 use Ivacuum\Generic\Commands\Command;
 use Symfony\Component\Console\Attribute\AsCommand;
 
-#[AsCommand('app:rto-update', 'Update magnet releases info from rto')]
+#[AsCommand('app:rto-update')]
 class RtoUpdate extends Command
 {
     protected $signature = 'app:rto-update';
+    protected $description = 'Update magnet releases info from rto';
 
     public function handle()
     {
