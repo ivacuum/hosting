@@ -7,28 +7,32 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single'],
+            'channels' => explode(',', (string) env('LOG_STACK', 'single')),
+            'ignore_exceptions' => false,
         ],
 
         'single' => [
             'driver' => 'single',
             'path' => storage_path('logs/laravel.log'),
-            'level' => 'debug',
+            'level' => env('LOG_LEVEL', 'debug'),
+            'replace_placeholders' => true,
         ],
 
         'daily' => [
             'driver' => 'daily',
             'path' => storage_path('logs/laravel.log'),
-            'level' => 'debug',
-            'days' => 7,
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => env('LOG_DAILY_DAYS', 14),
+            'replace_placeholders' => true,
         ],
 
         'slack' => [
             'driver' => 'slack',
             'url' => env('LOG_SLACK_WEBHOOK_URL'),
-            'username' => 'Laravel Log',
-            'emoji' => ':boom:',
-            'level' => 'critical',
+            'username' => env('LOG_SLACK_USERNAME', 'Laravel Log'),
+            'emoji' => env('LOG_SLACK_EMOJI', ':boom:'),
+            'level' => env('LOG_LEVEL', 'critical'),
+            'replace_placeholders' => true,
         ],
 
         'telegram' => [
@@ -48,29 +52,37 @@ return [
 
         'stderr' => [
             'driver' => 'monolog',
+            'level' => env('LOG_LEVEL', 'debug'),
             'handler' => \Monolog\Handler\StreamHandler::class,
-            'with' => [
+            'handler_with' => [
                 'stream' => 'php://stderr',
             ],
+            'formatter' => env('LOG_STDERR_FORMATTER'),
+            'processors' => [\Monolog\Processor\PsrLogMessageProcessor::class],
         ],
 
         'stdout' => [
             'driver' => 'monolog',
-            'handler' => \Monolog\Handler\StreamHandler::class,
             'level' => env('LOG_LEVEL', 'debug'),
+            'handler' => \Monolog\Handler\StreamHandler::class,
             'with' => [
                 'stream' => 'php://stdout',
             ],
+            'formatter' => env('LOG_STDOUT_FORMATTER'),
+            'processors' => [\Monolog\Processor\PsrLogMessageProcessor::class],
         ],
 
         'syslog' => [
             'driver' => 'syslog',
-            'level' => 'debug',
+            'level' => env('LOG_LEVEL', 'debug'),
+            'facility' => env('LOG_SYSLOG_FACILITY', LOG_USER),
+            'replace_placeholders' => true,
         ],
 
         'errorlog' => [
             'driver' => 'errorlog',
-            'level' => 'debug',
+            'level' => env('LOG_LEVEL', 'debug'),
+            'replace_placeholders' => true,
         ],
 
         'null' => [
