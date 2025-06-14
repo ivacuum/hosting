@@ -25,6 +25,7 @@ return [
     'title_ru' => 'Название',
     'artist_id' => 'Артист',
     'country_id' => 'Страна',
+    'created_at' => 'Дата',
     'q_placeholder' => 'Поиск...',
 
     'chat-message.text' => 'Текст',
@@ -36,6 +37,7 @@ return [
     'city.title' => 'Город',
     'city.trips_count' => 'Поездки',
 
+    'comment.text' => 'Текст',
     'comment.status' => 'Состояние',
 
     'country.emoji' => 'Флаг эмодзи',
@@ -116,6 +118,7 @@ return [
     'trip.meta_description_ru' => 'Meta description',
 
     'user.avatar' => 'Аватар',
+    'user.created_at' => 'Дата реги',
     'user.last_login_at' => 'Последний вход',
 
     'vocabulary.level' => 'Уровень',

@@ -36,6 +36,7 @@ return [
     'city.trips_count' => 'Trips',
 
     'comment.html' => 'HTML',
+    'comment.text' => 'Text',
     'comment.status' => 'Status',
 
     'country.emoji' => 'Flag emoji',

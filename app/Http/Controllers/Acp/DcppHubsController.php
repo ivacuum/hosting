@@ -26,7 +26,10 @@ class DcppHubsController extends Controller
         $sort = $applyIndexGoods->execute(new DcppHub, Sort::asc('title'));
 
         $models = DcppHub::query()
-            ->orderBy('title', $sort->direction->value)
+            ->orderBy(match ($sort->key) {
+                'clicks' => $sort->key,
+                default => 'title',
+            }, $sort->direction->value)
             ->get();
 
         return view('acp.dcpp-hubs.index', ['models' => $models]);

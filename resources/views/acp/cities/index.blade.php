@@ -21,8 +21,8 @@
   @foreach ($models as $model)
     <tr class="js-dblclick-edit" data-dblclick-url="{{ Acp::edit($model) }}">
       <td class="tooltipped tooltipped-n" aria-label="{{ $model->country->title }}">
-        <a href="{{ Acp::show($model->country) }}">
-          <img class="block flag-16 svg-shadow" src="{{ $model->country->flagUrl() }}" alt="">
+        <a class="flex justify-center" href="{{ Acp::show($model->country) }}">
+          <img class="flag-16 svg-shadow" src="{{ $model->country->flagUrl() }}" alt="">
         </a>
       </td>
       <td><a href="{{ Acp::show($model) }}">{{ $model->title }}</a></td>

@@ -5,9 +5,9 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th>Событие</th>
+    <x-th>Событие</x-th>
     @foreach ($dates as $date => $true)
-      <th class="md:text-right whitespace-nowrap">{{ substr($date, 5) }}</th>
+      <x-th-numeric>{{ substr($date, 5) }}</x-th-numeric>
     @endforeach
   </tr>
   </thead>

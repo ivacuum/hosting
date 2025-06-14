@@ -30,9 +30,9 @@
   <thead>
   <tr>
     <x-th-numeric-sortable key="id"/>
-    <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'email') }}</th>
-    @if ($avatar)
-      <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'avatar') }}</th>
+    <x-th key="email"></x-th>
+    @if($avatar)
+      <x-th key="avatar"></x-th>
     @endif
     <th>Активен</th>
     <x-th-numeric-sortable key="chat_messages_count">@svg(paper-airplane-16)</x-th-numeric-sortable>
@@ -42,7 +42,7 @@
     <x-th-numeric-sortable key="trips_count">@svg(plane)</x-th-numeric-sortable>
     <x-th-numeric-sortable key="issues_count">@svg(question-circle)</x-th-numeric-sortable>
     <x-th-numeric-sortable key="emails_count">@svg(envelope-o)</x-th-numeric-sortable>
-    <th>Дата реги</th>
+    <x-th key="created_at"></x-th>
     <x-th-sortable key="last_login_at"/>
   </tr>
   </thead>

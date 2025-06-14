@@ -19,12 +19,12 @@
   <thead>
   <tr>
     <x-th-numeric-sortable key="id"/>
-    <th>@lang('model.author')</th>
+    <x-th key="author"></x-th>
     <x-th-numeric-sortable key="views">@svg(eye)</x-th-numeric-sortable>
     <x-th-numeric-sortable key="comments_count">@svg(comment-o)</x-th-numeric-sortable>
     <x-th-numeric-sortable key="clicks">@svg(magnet)</x-th-numeric-sortable>
     <th></th>
-    <th>@lang('model.title')</th>
+    <x-th key="title"></x-th>
     <th></th>
   </tr>
   </thead>

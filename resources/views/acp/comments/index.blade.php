@@ -19,10 +19,10 @@
 <table class="table-stats table-stats-align-top table-adaptive">
   <thead>
   <tr>
-    <th class="md:text-right">ID</th>
-    <th>Автор</th>
-    <th>Текст</th>
-    <th>Дата</th>
+    <x-th-numeric-sortable key="id"></x-th-numeric-sortable>
+    <x-th key="author"></x-th>
+    <x-th key="text"></x-th>
+    <x-th key="created_at"></x-th>
     <th></th>
   </tr>
   </thead>

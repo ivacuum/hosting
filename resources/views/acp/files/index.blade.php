@@ -7,7 +7,7 @@
   <thead>
   <tr>
     <x-th-numeric-sortable key="id"/>
-    <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'title') }}</th>
+    <x-th key="title"></x-th>
     <th></th>
     <x-th-numeric-sortable key="size"/>
     <x-th-numeric-sortable key="downloads"/>

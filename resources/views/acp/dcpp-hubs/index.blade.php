@@ -6,11 +6,11 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'title') }}</th>
+    <x-th-sortable key="title"></x-th-sortable>
     <th></th>
-    <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'address') }}</th>
-    <th class="md:text-right whitespace-nowrap">{{ ViewHelper::modelFieldTrans($modelTpl, 'clicks') }}</th>
-    <th>{{ ViewHelper::modelFieldTrans($modelTpl, 'is_online') }}</th>
+    <x-th key="address"></x-th>
+    <x-th-numeric-sortable key="clicks"></x-th-numeric-sortable>
+    <x-th key="is_online"></x-th>
   </tr>
   </thead>
   <tbody>

@@ -18,11 +18,11 @@
   <thead>
   <tr>
     <th><input class="not-checked:border-gray-300 text-sky-600 js-select-all" type="checkbox" data-selector=".models-checkbox"></th>
-    <th class="md:text-right">ID</th>
-    <th>Автор</th>
-    <th>Текст</th>
+    <x-th-numeric-sortable key="id"/>
+    <x-th key="author"/>
     <th></th>
-    <th>Дата</th>
+    <x-th key="text"/>
+    <x-th key="created_at"></x-th>
   </tr>
   </thead>
   <tbody>
@@ -41,7 +41,6 @@
           </a>
         @endif
       </td>
-      <td>{{ $model->text }}</td>
       <td>
         @if ($model->status->isHidden())
           <span class="tooltipped tooltipped-n" aria-label="Сообщение скрыто">
@@ -49,6 +48,7 @@
           </span>
         @endif
       </td>
+      <td>{{ $model->text }}</td>
       <td class="whitespace-nowrap">{{ ViewHelper::dateShort($model->created_at) }}</td>
     </tr>
   @endforeach
