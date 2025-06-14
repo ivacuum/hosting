@@ -71,8 +71,9 @@ class TemplatesController
 
         \Breadcrumbs::push($slug);
 
-        $trip = Trip::query()->inRandomOrder()->first();
+        $trip = Trip::query()->first();
         $trip->slug = $slug;
+        $trip->loadCityAndCountry();
 
         if (request('images')) {
             $path = resource_path("views/{$trip->templatePath()}.blade.php");

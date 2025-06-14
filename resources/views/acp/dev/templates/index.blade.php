@@ -11,10 +11,10 @@
 <table class="table-stats table-adaptive">
   <thead>
     <tr>
-      <th>Шаблон</th>
-      <th class="md:text-right">@svg (picture-o)</th>
+      <x-th>Шаблон</x-th>
+      <x-th-numeric>@svg(picture-o)</x-th-numeric>
       @foreach (App\Domain\Config::Locales->get() as $key => $value)
-        <th class="md:text-right uppercase">{{ $key }}</th>
+        <x-th-numeric>{{ mb_strtoupper($key) }}</x-th-numeric>
       @endforeach
     </tr>
   </thead>

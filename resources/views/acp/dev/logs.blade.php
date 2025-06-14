@@ -10,18 +10,18 @@
 <table class="text-xs table-stats table-adaptive">
   <thead>
   <tr>
-    <th>#</th>
-    <th>Запрос</th>
-    <th>Статус</th>
+    <x-th-numeric>#</x-th-numeric>
+    <x-th>Запрос</x-th>
+    <x-th>Статус</x-th>
     <th></th>
     <th></th>
-    <th>Источник</th>
+    <x-th>Источник</x-th>
   </tr>
   </thead>
   <tbody>
   @foreach ($lines->reverse() as $line)
     <tr>
-      <td>
+      <td class="md:text-right">
         <a href="{{ UrlHelper::filter(['q' => "connection={$line->connection}"]) }}" title="{{ $line->time }}">{{ $line->connection }}</a>
       </td>
       <td>
