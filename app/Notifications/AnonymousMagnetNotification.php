@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Domain\Telegram\Action\EscapeMarkdownCharactersAction;
 use App\Magnet;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -15,8 +16,10 @@ class AnonymousMagnetNotification extends Notification implements ShouldQueue
 
     public function toTelegram(): string
     {
-        $url = url($this->magnet->www());
-        $title = $this->magnet->title;
+        $escape = app(EscapeMarkdownCharactersAction::class);
+
+        $url = $escape->execute(url($this->magnet->www()));
+        $title = $escape->execute($this->magnet->title);
 
         return "🧲️ Раздача добавлена анонимно\n\n{$title}\n{$url}";
     }
