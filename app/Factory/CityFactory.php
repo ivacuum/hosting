@@ -15,26 +15,26 @@ class CityFactory
 
     public function create()
     {
-        $model = $this->make();
-        $model->save();
+        $city = $this->make();
+        $city->save();
 
-        return $model;
+        return $city;
     }
 
     public function make()
     {
         $title = fake()->city() . ' ' . fake()->randomDigit();
 
-        $model = new City;
-        $model->iata = '';
-        $model->slug = $this->slug ?? \Str::slug($title);
-        $model->point = $this->point ?? new Point(fake()->latitude(), fake()->longitude());
-        $model->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
-        $model->title_en = $title;
-        $model->title_ru = $title;
-        $model->country_id = $this->countryId ?? ($this->countryFactory ?? CountryFactory::new())->create()->id;
+        $city = new City;
+        $city->iata = '';
+        $city->slug = $this->slug ?? \Str::slug($title);
+        $city->point = $this->point ?? new Point(fake()->latitude(), fake()->longitude());
+        $city->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
+        $city->title_en = $title;
+        $city->title_ru = $title;
+        $city->country_id = $this->countryId ?? ($this->countryFactory ?? CountryFactory::new())->create()->id;
 
-        return $model;
+        return $city;
     }
 
     public static function new(): self
