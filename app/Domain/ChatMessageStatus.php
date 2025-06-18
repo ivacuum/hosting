@@ -10,8 +10,8 @@ enum ChatMessageStatus: int
     public function i18n(): string
     {
         return match ($this) {
-            self::Hidden => __('Скрыт'),
-            self::Published => __('Опубликован'),
+            self::Hidden => __('Скрыто'),
+            self::Published => __('Опубликовано'),
         };
     }
 
