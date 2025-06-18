@@ -55,6 +55,9 @@ class CitySeeder extends Seeder
             ['slug' => 'hamburg', 'title_ru' => 'Гамбург', 'title_en' => 'Hamburg'],
             ['slug' => 'wiesbaden', 'title_ru' => 'Висбаден', 'title_en' => 'Wiesbaden'],
         ],
+        'hong-kong' => [
+            ['slug' => 'hong-kong', 'title_ru' => 'Гонконг', 'title_en' => 'Hong Kong'],
+        ],
         'hungary' => [
             ['slug' => 'budapest', 'title_ru' => 'Будапешт', 'title_en' => 'Budapest'],
         ],
@@ -86,9 +89,13 @@ class CitySeeder extends Seeder
             ['slug' => 'belgrade', 'title_ru' => 'Белград', 'title_en' => 'Belgrade'],
             ['slug' => 'novi-sad', 'title_ru' => 'Нови Сад', 'title_en' => 'Novi Sad'],
         ],
+        'singapore' => [
+            ['slug' => 'singapore', 'title_ru' => 'Сингапур', 'title_en' => 'Singapore'],
+        ],
         'south-korea' => [
             ['slug' => 'busan', 'title_ru' => 'Пусан', 'title_en' => 'Busan'],
             ['slug' => 'daejeon', 'title_ru' => 'Тэджон', 'title_en' => 'Daejeon'],
+            ['slug' => 'incheon', 'title_ru' => 'Инчхон', 'title_en' => 'Incheon'],
             ['slug' => 'seoul', 'title_ru' => 'Сеул', 'title_en' => 'Seoul'],
             ['slug' => 'suwon', 'title_ru' => 'Сувон', 'title_en' => 'Suwon'],
         ],
