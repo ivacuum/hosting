@@ -1,5 +1,5 @@
 <div>
-  <label class="font-semibold @error($name) text-red-700 @enderror {{ $required ? 'input-required' : '' }}">{{ $label ?? ViewHelper::modelFieldTrans($entity, $name) }}</label>
+  <label class="font-semibold field-sizing-content @error($name) text-red-700 @enderror {{ $required ? 'input-required' : '' }}">{{ $label ?? ViewHelper::modelFieldTrans($entity, $name) }}</label>
   <textarea
     {{ $required ? 'required' : '' }}
     class="the-input {{ implode(' ', $classes) }}"

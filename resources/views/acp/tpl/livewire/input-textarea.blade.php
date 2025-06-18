@@ -1,6 +1,6 @@
 <textarea
   {{ $required ? 'required' : '' }}
-  class="the-input {{ implode(' ', $classes) }}"
+  class="the-input field-sizing-content {{ implode(' ', $classes) }}"
   @if($live)
     wire:model.live="{{ $name }}"
   @elseif($blur)
