@@ -1,6 +1,6 @@
 <?php /** @var \App\Livewire\Acp\PhotoEditForm $this */ ?>
 
-<form class="grid grid-cols-1 gap-4" wire:submit="submit">
+<form class="grid grid-cols-1 gap-6 md:gap-4" wire:submit="submit">
   <?php LivewireForm::model($this->photo); ?>
 
   @include('tpl.form_errors')

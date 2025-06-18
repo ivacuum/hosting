@@ -1,6 +1,6 @@
 <?php /** @var \App\Livewire\Acp\UserForm $this */ ?>
 
-<form class="grid grid-cols-1 gap-4" wire:submit="submit">
+<form class="grid grid-cols-1 gap-6 md:gap-4" wire:submit="submit">
   <?php $form = LivewireForm::model(App\User::class); ?>
 
   {{ $form->text('email')->required() }}

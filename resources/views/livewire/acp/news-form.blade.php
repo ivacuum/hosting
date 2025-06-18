@@ -1,11 +1,11 @@
 <?php /** @var \App\Livewire\Acp\NewsForm $this */ ?>
 
-<form class="grid grid-cols-1 gap-4" wire:submit="submit">
+<form class="grid grid-cols-1 gap-6 md:gap-4" wire:submit="submit">
   <?php $form = LivewireForm::model(App\News::class); ?>
 
   {{ $form->text('title')->required() }}
   {{ $form->radio('status')->required()->values(App\Domain\NewsStatus::labels()) }}
-  {{ $form->textarea('markdown')->wide()->required() }}
+  {{ $form->textarea('markdown')->required() }}
 
   <div class="sticky-bottom-buttons">
     <button type="submit" class="btn btn-primary">

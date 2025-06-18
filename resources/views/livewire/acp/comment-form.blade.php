@@ -1,10 +1,10 @@
 <?php /** @var \App\Livewire\Acp\CommentForm $this */ ?>
 
-<form class="grid grid-cols-1 gap-4" wire:submit="submit">
+<form class="grid grid-cols-1 gap-6 md:gap-4" wire:submit="submit">
   <?php $form = LivewireForm::model(App\Comment::class); ?>
 
   {{ $form->radio('status')->required()->values(App\Domain\CommentStatus::labels()) }}
-  {{ $form->textarea('html')->required()->wide() }}
+  {{ $form->textarea('html')->required() }}
 
   <div class="sticky-bottom-buttons">
     <button type="submit" class="btn btn-primary">

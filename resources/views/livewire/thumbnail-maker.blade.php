@@ -6,7 +6,7 @@
     <label class="font-semibold @error('file') text-red-700 @enderror">
       @lang('Фотографии')
     </label>
-    <div class="mt-1">
+    <div class="mt-1.5">
       @if ($this->uploaded === $this->total)
         <input
           class="block text-gray-500 w-full file:px-4 file:py-1 file:rounded-sm file:border-0 file:bg-sky-700 file:text-white hover:file:bg-sky-800"
