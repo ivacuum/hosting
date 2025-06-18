@@ -9,6 +9,7 @@ use App\Magnet;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Locked;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class MagnetForm extends Component
@@ -23,13 +24,13 @@ class MagnetForm extends Component
 
     public int|null $rtoId = null;
 
-    #[\Livewire\Attributes\Rule('string')]
+    #[Validate('string')]
     public string|null $relatedQuery = '';
 
-    #[\Livewire\Attributes\Rule('required')]
+    #[Validate('required')]
     public MagnetStatus $status = MagnetStatus::Published;
 
-    #[\Livewire\Attributes\Rule('required')]
+    #[Validate('required')]
     public MagnetCategory|int|null $categoryId = null;
 
     public function mount()

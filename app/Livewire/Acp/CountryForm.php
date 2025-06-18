@@ -7,6 +7,7 @@ use App\Livewire\WithGoto;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Locked;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class CountryForm extends Component
@@ -19,13 +20,13 @@ class CountryForm extends Component
 
     public string|null $slug = '';
 
-    #[\Livewire\Attributes\Rule('string')]
+    #[Validate('string')]
     public string|null $emoji = '';
 
-    #[\Livewire\Attributes\Rule('required')]
+    #[Validate('required')]
     public string|null $titleEn = '';
 
-    #[\Livewire\Attributes\Rule('required')]
+    #[Validate('required')]
     public string|null $titleRu = '';
 
     public function mount()

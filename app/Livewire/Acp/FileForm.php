@@ -8,6 +8,7 @@ use App\Livewire\WithGoto;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Locked;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
@@ -23,13 +24,13 @@ class FileForm extends Component
 
     public string|null $slug = '';
 
-    #[\Livewire\Attributes\Rule('required')]
+    #[Validate('required')]
     public string|null $title = '';
 
-    #[\Livewire\Attributes\Rule('string')]
+    #[Validate('string')]
     public string|null $folder = '';
 
-    #[\Livewire\Attributes\Rule('required')]
+    #[Validate('required')]
     public FileStatus $status = FileStatus::Published;
 
     public TemporaryUploadedFile|string|null $upload = null;

@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Locked;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class UserForm extends Component
@@ -20,7 +21,7 @@ class UserForm extends Component
     #[Locked]
     public int $id;
 
-    #[\Livewire\Attributes\Rule('integer')]
+    #[Validate('integer')]
     public int|null $status = UserStatus::Active->value;
     public string|null $email = '';
 
