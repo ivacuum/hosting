@@ -43,6 +43,7 @@
   --bottom-tabbar-sm-height: 44px;
 
   --form-input-label-color-without-placeholder: #686f76;
+  --form-two-columns: minmax(min-content, 15rem) 1fr;
 
   --link-color: var(--color-sky-700);
   --link-border-color: --alpha(var(--color-sky-700) / 25%);

@@ -18,7 +18,7 @@
   @include('tpl.form_errors')
 
   @if ($this->gigId || $this->tripId)
-    <div class="md:grid md:grid-cols-[minmax(min-content,15rem)_1fr] md:gap-4">
+    <div class="md:grid md:grid-cols-(--form-two-columns) md:gap-4">
       <label class="font-semibold md:leading-6 md:pt-1 @error('file') text-red-700 @enderror">
         @lang('Фотографии')
       </label>

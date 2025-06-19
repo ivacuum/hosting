@@ -13,7 +13,7 @@
   {{ $form->radio('status')->required()->values(App\Domain\FileStatus::labels()) }}
 
   @if(!$this->id)
-    <div class="md:grid md:grid-cols-[minmax(min-content,15rem)_1fr] md:gap-4 mb-4">
+    <div class="md:grid md:grid-cols-(--form-two-columns) md:gap-4 mb-4">
       <label class="font-bold">{{ ViewHelper::modelFieldTrans('file', 'file') }}</label>
       <div>
         <input class="block text-gray-500 w-full file:px-4 file:py-1 file:rounded-sm file:border-0 file:bg-sky-700 file:text-white hover:file:bg-sky-800" type="file" wire:model.live="upload">

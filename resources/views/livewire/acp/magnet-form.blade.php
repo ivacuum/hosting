@@ -3,7 +3,7 @@
 <form class="grid grid-cols-1 gap-6 md:gap-4" wire:submit="submit">
   <?php $form = LivewireForm::model(App\Magnet::class); ?>
 
-  <div class="md:grid md:grid-cols-[minmax(min-content,15rem)_1fr] md:gap-4">
+  <div class="md:grid md:grid-cols-(--form-two-columns) md:gap-4">
     <label class="font-bold md:leading-6 md:pt-1.5 input-required">Рубрика</label>
     <div class="max-md:mt-1.5">
       <select required class="the-input" wire:model.live="categoryId">

@@ -10,7 +10,7 @@ $alignTop = match ($type) {
   default => '',
 }
 ?>
-<div class="md:grid md:grid-cols-[minmax(min-content,15rem)_1fr] md:gap-4">
+<div class="md:grid md:grid-cols-(--form-two-columns) md:gap-4">
   <label class="font-semibold {{ $alignTop }} @error($name) text-red-700 @enderror {{ $required ? 'input-required' : '' }}">{{ $label }}</label>
   <div class="max-md:mt-1.5">
     @include("acp.tpl.livewire.input-{$type}")
