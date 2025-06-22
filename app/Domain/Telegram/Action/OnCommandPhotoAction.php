@@ -40,6 +40,6 @@ class OnCommandPhotoAction
                         new InlineKeyboardButton('📍 Карта', callbackData: "photoOnMap:{$photo->id}")
                     )
             )
-            ->sendPhoto($photo->mobileUrl());
+            ->sendPhoto($photo->originalUrl());
     }
 }
