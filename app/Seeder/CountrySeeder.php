@@ -40,6 +40,13 @@ class CountrySeeder extends Seeder
             $country = CountryFactory::new()->make();
             $country->slug = $attributes['slug'];
             $country->emoji = $attributes['emoji'];
+            $country->hashtags = match ($attributes['slug']) {
+                'hongkong',
+                'singapore' => '',
+                'russia' => '#russia #россия',
+                'south-korea' => '#korea #корея',
+                default => str_replace('-', '', "#{$attributes['slug']}"),
+            };
             $country->title_en = $attributes['title_en'];
             $country->title_ru = $attributes['title_ru'];
             $country->save();

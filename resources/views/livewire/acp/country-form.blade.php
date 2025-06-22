@@ -7,6 +7,7 @@
   {{ $form->text('titleEn')->required() }}
   {{ $form->text('slug')->required() }}
   {{ $form->text('emoji') }}
+  {{ $form->text('hashtags') }}
 
   <div class="sticky-bottom-buttons">
     <button type="submit" class="btn btn-primary">

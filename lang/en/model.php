@@ -18,6 +18,7 @@ return [
     'trip_id' => 'Trip',
     'user_id' => 'User',
     'alias_id' => 'Alias',
+    'hashtags' => 'Hashtags',
     'markdown' => 'Markdown',
     'title_en' => 'Title',
     'title_ru' => 'Title RU',

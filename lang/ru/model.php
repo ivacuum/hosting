@@ -20,6 +20,7 @@ return [
     'trip_id' => 'Поездка',
     'user_id' => 'Пользователь',
     'alias_id' => 'Алиас',
+    'hashtags' => 'Хэштэги',
     'markdown' => 'Markdown',
     'title_en' => 'Название EN',
     'title_ru' => 'Название',

@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $title_en
  * @property string $slug
  * @property string $emoji
+ * @property string $hashtags
  * @property int $views
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at

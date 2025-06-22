@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $title_en
  * @property string $slug
  * @property string $iata
+ * @property string $hashtags
  * @property Spatial\Point $point
  * @property int $views
  * @property \Carbon\CarbonImmutable $created_at

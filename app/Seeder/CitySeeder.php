@@ -115,6 +115,11 @@ class CitySeeder extends Seeder
             array_map(function (array $data) use ($country) {
                 $city = CityFactory::new()->withCountryId($country->id)->make();
                 $city->slug = $data['slug'];
+                $city->hashtags = match ($data['slug']) {
+                    'msk' => '#moscow #москва',
+                    'spb' => '#saintpetersburg #санктпетербург',
+                    default => str_replace('-', '', "#{$data['slug']}"),
+                };
                 $city->title_en = $data['title_en'];
                 $city->title_ru = $data['title_ru'];
                 $city->save();

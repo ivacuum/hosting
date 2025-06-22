@@ -30,6 +30,7 @@ class CityFactory
         $city->slug = $this->slug ?? \Str::slug($title);
         $city->point = $this->point ?? new Point(fake()->latitude(), fake()->longitude());
         $city->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
+        $city->hashtags = mb_strtolower(str_replace(' ', '', $title));
         $city->title_en = $title;
         $city->title_ru = $title;
         $city->country_id = $this->countryId ?? ($this->countryFactory ?? CountryFactory::new())->create()->id;

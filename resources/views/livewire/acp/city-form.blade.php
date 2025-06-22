@@ -8,6 +8,7 @@
   {{ $form->text('titleRu')->required() }}
   {{ $form->text('titleEn')->required() }}
   {{ $form->text('slug')->required() }}
+  {{ $form->text('hashtags') }}
   {{ $form->text('iata') }}
   {{ $form->text('lat')->live() }}
   {{ $form->text('lon') }}

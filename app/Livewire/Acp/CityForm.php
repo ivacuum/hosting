@@ -35,6 +35,8 @@ class CityForm extends Component
 
     public string|null $slug = '';
 
+    public string|null $hashtags = '';
+
     #[Validate('required')]
     public string|null $titleEn = '';
 
@@ -52,6 +54,7 @@ class CityForm extends Component
             $this->slug = $city->slug;
             $this->titleEn = $city->title_en;
             $this->titleRu = $city->title_ru;
+            $this->hashtags = $city->hashtags;
             $this->countryId = $city->country_id;
         }
     }
@@ -70,6 +73,7 @@ class CityForm extends Component
         $city->point = $this->lat && $this->lon
             ? new Point($this->lat, $this->lon)
             : null;
+        $city->hashtags = $this->hashtags;
         $city->title_en = $this->titleEn;
         $city->title_ru = $this->titleRu;
         $city->country_id = $this->countryId;

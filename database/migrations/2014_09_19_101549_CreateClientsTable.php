@@ -38,6 +38,7 @@ return new class extends Migration {
             $table->string('title_en')->default('');
             $table->string('slug');
             $table->char('iata', 3);
+            $table->string('hashtags')->default('');
             $table->geography('point', 'point')->nullable();
             $table->unsignedInteger('views')->default(0);
             $table->timestamps();
@@ -58,6 +59,7 @@ return new class extends Migration {
             $table->string('title_en')->default('');
             $table->string('slug');
             $table->string('emoji', 20)->charset('utf8mb4')->collation('utf8mb4_unicode_ci')->collate('utf8mb4_unicode_ci');
+            $table->string('hashtags')->default('');
             $table->unsignedInteger('views')->default(0);
             $table->timestamps();
         });

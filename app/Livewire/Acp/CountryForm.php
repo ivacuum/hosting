@@ -19,6 +19,7 @@ class CountryForm extends Component
     public int|null $id = null;
 
     public string|null $slug = '';
+    public string|null $hashtags = '';
 
     #[Validate('string')]
     public string|null $emoji = '';
@@ -38,6 +39,7 @@ class CountryForm extends Component
             $this->emoji = $country->emoji;
             $this->titleEn = $country->title_en;
             $this->titleRu = $country->title_ru;
+            $this->hashtags = $country->hashtags;
         }
     }
 
@@ -71,6 +73,7 @@ class CountryForm extends Component
         $country->emoji = $this->emoji;
         $country->title_en = $this->titleEn;
         $country->title_ru = $this->titleRu;
+        $country->hashtags = $this->hashtags;
         $country->save();
     }
 }
