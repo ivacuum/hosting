@@ -7,6 +7,10 @@ return [
         'redirect' => env('FACEBOOK_REDIRECT'),
     ],
 
+    'instagram' => [
+        'webhook_verify_token' => env('INSTAGRAM_WEBHOOK_VERIFY_TOKEN', 'example'),
+    ],
+
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),

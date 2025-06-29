@@ -9,6 +9,8 @@ Route::view('500', 'errors.500', status: 500);
 Route::view('503', 'errors.503', status: 503);
 
 Route::view('cv', 'cv');
+Route::get('instagram/webhook', Controllers\ValidateInstagramWebhookController::class);
+Route::post('instagram/webhook', Controllers\InstagramWebhookController::class);
 Route::get('ip', Controllers\PrintIpController::class);
 Route::post('js/beacon', Controllers\BeaconController::class);
 Route::get('resize/{width}x{height}/{domain}/{path}', Controllers\ResizeImageController::class)->where('path', '.+');
