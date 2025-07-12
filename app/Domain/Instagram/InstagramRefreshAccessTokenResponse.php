@@ -21,7 +21,7 @@ readonly class InstagramRefreshAccessTokenResponse
     public static function fakeError()
     {
         return [
-            'https://graph.instagram.com/v23.0/refresh_access_token*' => Factory::response([
+            'https://graph.vacuum.name/v23.0/refresh_access_token*' => Factory::response([
                 'error' => [
                     'message' => 'Invalid OAuth access token - Cannot parse access token',
                     'type' => 'OAuthException',
@@ -35,7 +35,7 @@ readonly class InstagramRefreshAccessTokenResponse
     public static function fakeSuccess(string $accessToken = 'xxx')
     {
         return [
-            'https://graph.instagram.com/v23.0/refresh_access_token*' => Factory::response([
+            'https://graph.vacuum.name/v23.0/refresh_access_token*' => Factory::response([
                 'access_token' => $accessToken,
                 'token_type' => 'bearer',
                 'expires_in' => 5183944,

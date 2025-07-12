@@ -19,7 +19,7 @@ readonly class InstagramPublishMediaResponse
     public static function fakeMediaNotFound()
     {
         return [
-            'https://graph.instagram.com/v23.0/me/media_publish*' => Factory::response([
+            'https://graph.vacuum.name/v23.0/me/media_publish*' => Factory::response([
                 'error' => [
                     'message' => 'The requested resource does not exist',
                     'type' => 'OAuthException',
@@ -37,7 +37,7 @@ readonly class InstagramPublishMediaResponse
     public static function fakeSuccess(string $id = '1234567890')
     {
         return [
-            'https://graph.instagram.com/v23.0/me/media_publish*' => Factory::response([
+            'https://graph.vacuum.name/v23.0/me/media_publish*' => Factory::response([
                 'id' => $id,
             ]),
         ];

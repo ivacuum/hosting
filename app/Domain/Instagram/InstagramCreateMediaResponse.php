@@ -19,7 +19,7 @@ readonly class InstagramCreateMediaResponse
     public static function fakeNotFound()
     {
         return [
-            'graph.instagram.com/v23.0/me/media*' => Factory::response([
+            'graph.vacuum.name/v23.0/me/media*' => Factory::response([
                 'error' => [
                     'message' => 'Only photo or video can be accepted as media type.',
                     'type' => 'OAuthException',
@@ -37,7 +37,7 @@ readonly class InstagramCreateMediaResponse
     public static function fakeSuccess(string $id = '1234567890')
     {
         return [
-            'graph.instagram.com/v23.0/me/media*' => Factory::response([
+            'graph.vacuum.name/v23.0/me/media*' => Factory::response([
                 'id' => $id,
             ]),
         ];

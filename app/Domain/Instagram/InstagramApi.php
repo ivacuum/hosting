@@ -43,7 +43,7 @@ class InstagramApi
     private function configureClient(string $accessToken)
     {
         return $this->http
-            ->baseUrl('https://graph.instagram.com/v23.0/')
+            ->baseUrl('https://graph.vacuum.name/v23.0/')
             ->timeout(10)
             ->withQueryParameters(['access_token' => $accessToken]);
     }
