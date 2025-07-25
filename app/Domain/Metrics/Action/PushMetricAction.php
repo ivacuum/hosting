@@ -2,8 +2,11 @@
 
 namespace App\Domain\Metrics\Action;
 
+use Illuminate\Container\Attributes\Scoped;
+
 use function Illuminate\Support\defer;
 
+#[Scoped]
 class PushMetricAction
 {
     private bool $shouldExportImmediately;

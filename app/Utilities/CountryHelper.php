@@ -5,9 +5,11 @@ namespace App\Utilities;
 use App\Country;
 use App\Domain\CacheKey;
 use Illuminate\Cache\Repository;
+use Illuminate\Container\Attributes\Scoped;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
+#[Scoped]
 class CountryHelper
 {
     private const array CACHED_FIELDS = [

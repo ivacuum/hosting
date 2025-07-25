@@ -2,7 +2,6 @@
 
 namespace App\Domain\Metrics\Provider;
 
-use App\Domain\Metrics\Action\PushMetricAction;
 use App\Domain\Metrics\Listener\WildcardMetricsListener;
 use Illuminate\Mail\Events\MessageSent;
 use Illuminate\Notifications\Events\NotificationSent;
@@ -14,8 +13,6 @@ class MetricsServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->app->scoped(PushMetricAction::class);
-
         if ($this->app->isLocal() || $this->app->isProduction()) {
             $this->listenForEvents();
             $this->triggerStatsOnEvents();

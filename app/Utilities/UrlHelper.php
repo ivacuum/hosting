@@ -4,7 +4,9 @@ namespace App\Utilities;
 
 use App\Action\Acp\GetSortDirAction;
 use App\Domain\Sort;
+use Illuminate\Container\Attributes\Scoped;
 
+#[Scoped]
 class UrlHelper
 {
     private Sort|null $sort = null;
