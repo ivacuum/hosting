@@ -7,7 +7,6 @@ use App\Domain\SocialMedia\Models\SocialMediaPost;
 use App\Domain\SocialMedia\SocialMediaPostStatus;
 use App\Livewire\WithGoto;
 use App\Photo;
-use App\Scope\PhotoPublishedScope;
 use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;
@@ -41,7 +40,6 @@ class SocialMediaPostForm extends Component
         } else {
             $this->photo = Photo::query()
                 ->whereBelongsTo(auth()->user())
-                ->tap(new PhotoPublishedScope)
                 ->inRandomOrder()
                 ->firstOrFail();
 
@@ -66,16 +64,17 @@ class SocialMediaPostForm extends Component
 
     protected function rules()
     {
-        // $tag = SocialMediaPost::query()->find($this->id);
-
         return [
             'caption' => [
                 'required',
-                // Rule::unique(SocialMediaPost::class, 'title_ru')->ignore($tag),
             ],
             'publishedAt' => [
                 'required',
                 Rule::unique(SocialMediaPost::class, 'published_at')->ignore($this->id),
+            ],
+            'status' => [
+                'required',
+                Rule::enum(SocialMediaPostStatus::class),
             ],
         ];
     }
