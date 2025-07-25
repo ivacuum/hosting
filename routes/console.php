@@ -41,5 +41,5 @@ Schedule::command(Commands\PingDcppHubs::class)
     ->appendOutputTo($cronOutput);
 
 Schedule::command(Commands\PublishSocialMediaPosts::class)
-    ->hourly()
+    ->dailyAt('15:00')
     ->appendOutputTo($cronOutput);
