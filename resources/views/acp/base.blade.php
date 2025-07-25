@@ -22,6 +22,7 @@
     'acp/artists*',
     'acp/tags*',
     'acp/photos*',
+    'acp/social-media-posts*',
   ]),
 ])
   @slot('title')
@@ -35,6 +36,7 @@
   <x-dropdown-item href="/acp/artists">@lang('acp.artists.index')</x-dropdown-item>
   <x-dropdown-item href="/acp/tags">@lang('acp.tags.index')</x-dropdown-item>
   <x-dropdown-item href="/acp/photos">@lang('acp.photos.index')</x-dropdown-item>
+  <x-dropdown-item href="/acp/social-media-posts">@lang('acp.social-media-posts.index')</x-dropdown-item>
 @endcomponent
 @component('tpl.menu-dropdown', [
   'isActive' => Str::of($routeUri)->is([

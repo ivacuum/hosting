@@ -8,6 +8,7 @@ use App\City;
 use App\Comment;
 use App\Country;
 use App\DcppHub;
+use App\Domain\SocialMedia\Models\SocialMediaPost;
 use App\Email;
 use App\ExternalIdentity;
 use App\File;
@@ -43,6 +44,7 @@ class GetModelControllerAction
             $model instanceof Magnet => Controllers\Acp\MagnetsController::class,
             $model instanceof News => Controllers\Acp\NewsController::class,
             $model instanceof Photo => Controllers\Acp\PhotosController::class,
+            $model instanceof SocialMediaPost => Controllers\Acp\SocialMediaPostsController::class,
             $model instanceof Tag => Controllers\Acp\TagsController::class,
             $model instanceof Trip => Controllers\Acp\TripsController::class,
             $model instanceof User => Controllers\Acp\UsersController::class,

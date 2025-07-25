@@ -103,6 +103,12 @@ return [
     'radicals.show' => 'Radical',
     'radicals.index' => 'Radicals',
 
+    'social-media-posts.add' => 'Create post',
+    'social-media-posts.edit' => 'Edit',
+    'social-media-posts.show' => 'Post',
+    'social-media-posts.index' => 'Posts',
+    'social-media-posts.create' => 'New post',
+
     'tags.add' => 'Create tag',
     'tags.edit' => 'Edit',
     'tags.show' => 'Tag',

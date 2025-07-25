@@ -10,6 +10,9 @@ class ResponseToEditAction
     {
         return view('acp.livewire-edit', [
             'model' => $model,
+            'modelTpl' => str($model::class)
+                ->afterLast('\\')
+                ->snake('-'),
         ]);
     }
 }

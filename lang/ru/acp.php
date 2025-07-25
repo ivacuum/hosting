@@ -104,6 +104,12 @@ return [
     'radicals.show' => 'Ключ',
     'radicals.index' => 'Ключи',
 
+    'social-media-posts.add' => 'Добавить пост',
+    'social-media-posts.edit' => 'Редактирование',
+    'social-media-posts.show' => 'Пост',
+    'social-media-posts.index' => 'Посты',
+    'social-media-posts.create' => 'Новый пост',
+
     'tags.add' => 'Добавить тэг',
     'tags.edit' => 'Редактирование',
     'tags.show' => 'Тэг',

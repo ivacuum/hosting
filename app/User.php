@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Domain\NotificationDeliveryMethod;
+use App\Domain\SocialMedia\Models\SocialMediaToken;
 use App\Domain\UserStatus;
 use App\Observers\UserObserver;
 use Illuminate\Contracts\Translation\HasLocalePreference;
@@ -43,6 +44,7 @@ use Illuminate\Notifications\Notifiable;
  * @property \Illuminate\Database\Eloquent\Collection<int, Image> $images
  * @property \Illuminate\Database\Eloquent\Collection<int, Magnet> $magnets
  * @property \Illuminate\Database\Eloquent\Collection<int, News> $news
+ * @property \Illuminate\Database\Eloquent\Collection<int, SocialMediaToken> $socialMediaTokens
  * @property \Illuminate\Database\Eloquent\Collection<int, Trip> $trips
  * @property-read int $chat_messages_count
  * @property-read int $comments_count
@@ -113,6 +115,11 @@ class User extends Authenticatable implements HasLocalePreference
     public function news()
     {
         return $this->hasMany(News::class)->chaperone();
+    }
+
+    public function socialMediaTokens()
+    {
+        return $this->hasMany(SocialMediaToken::class)->chaperone();
     }
 
     public function trips()

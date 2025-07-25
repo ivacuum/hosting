@@ -319,6 +319,25 @@ return new class extends Migration {
             $table->timestamps();
         });
 
+        Schema::create('social_media_posts', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('photo_id');
+            $table->string('caption', 2000);
+            $table->unsignedTinyInteger('status');
+            $table->datetimes();
+            $table->dateTime('published_at')->nullable();
+            $table->dateTime('excluded_at')->nullable();
+        });
+
+        Schema::create('social_media_tokens', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('user_id');
+            $table->string('token', 2000);
+            $table->datetimes();
+            $table->dateTime('expired_at');
+        });
+
         Schema::create('taggable', function (Blueprint $table) {
             $table->unsignedInteger('tag_id');
             $table->unsignedInteger('rel_id');

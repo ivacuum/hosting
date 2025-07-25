@@ -18,6 +18,7 @@ class CountryHelper
         'title_en',
         'slug',
         'emoji',
+        'hashtags',
     ];
 
     private Collection|null $cachedById = null;

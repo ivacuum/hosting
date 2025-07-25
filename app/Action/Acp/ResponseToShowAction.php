@@ -16,6 +16,9 @@ class ResponseToShowAction
     {
         return \View::first([$this->parseRouteData->execute()->view, 'acp.show'], [
             'model' => $model,
+            'modelTpl' => str($model::class)
+                ->afterLast('\\')
+                ->snake('-'),
             'modelRelations' => $this->getModelAccessibleRelations->execute($model, $showWithCount),
         ]);
     }

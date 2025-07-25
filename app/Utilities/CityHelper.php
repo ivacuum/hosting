@@ -19,6 +19,7 @@ class CityHelper
         'title_en',
         'slug',
         'iata',
+        'hashtags',
         'point',
     ];
 

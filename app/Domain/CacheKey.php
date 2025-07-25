@@ -6,11 +6,11 @@ use Carbon\CarbonInterval;
 
 enum CacheKey: string
 {
-    case CitiesById = 'cities.id.v3';
-    case CitiesBySlug = 'cities.slug.v3';
+    case CitiesById = 'cities.id.v4';
+    case CitiesBySlug = 'cities.slug.v4';
 
-    case CountriesById = 'countries.id';
-    case CountriesBySlug = 'countries.slug';
+    case CountriesById = 'countries.id.v1';
+    case CountriesBySlug = 'countries.slug.v1';
 
     case IcuLocales = 'icu.locales';
 

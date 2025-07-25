@@ -57,6 +57,8 @@ Route::post('news/{news}/notify', [Acp\NewsController::class, 'notify']);
 
 Route::resource('photos', Acp\PhotosController::class)->except(['store', 'update']);
 
+Route::resource('social-media-posts', Acp\SocialMediaPostsController::class)->except(['store', 'update']);
+
 Route::resource('tags', Acp\TagsController::class)->except(['store', 'update']);
 
 Route::resource('trips', Acp\TripsController::class)->except(['store', 'update']);

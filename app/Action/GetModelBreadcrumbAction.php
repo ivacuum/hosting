@@ -8,6 +8,7 @@ use App\City;
 use App\Comment;
 use App\Country;
 use App\DcppHub;
+use App\Domain\SocialMedia\Models\SocialMediaPost;
 use App\Email;
 use App\ExternalHttpRequest;
 use App\ExternalIdentity;
@@ -53,6 +54,7 @@ class GetModelBreadcrumbAction
             $model instanceof News => $model->title,
             $model instanceof Photo => str_replace('/', ' / ', $model->slug),
             $model instanceof Radical => $model->character,
+            $model instanceof SocialMediaPost => "#{$model->id}",
             $model instanceof Tag => "#{$model->title}",
             $model instanceof Trip => $model->title,
             $model instanceof User => $model->email ?? '',

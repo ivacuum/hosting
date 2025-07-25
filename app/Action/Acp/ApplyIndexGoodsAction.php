@@ -21,12 +21,6 @@ class ApplyIndexGoodsAction
         Model $model,
         Sort $defaultSort = new Sort('id', SortDirection::Desc),
     ): Sort {
-        $modelTpl = str($model::class)
-            ->replace('App\\', '')
-            ->explode('\\')
-            ->map(fn ($string) => \Str::snake($string, '-'))
-            ->implode('.');
-
         $sortDir = $this->getSortDir->execute($defaultSort->toString());
         $sortKey = $this->getSortKey->execute($defaultSort->toString());
 
@@ -39,7 +33,9 @@ class ApplyIndexGoodsAction
             'model' => $model,
             'sortDir' => $sort->direction->value,
             'sortKey' => $sort->key,
-            'modelTpl' => $modelTpl,
+            'modelTpl' => str($model::class)
+                ->afterLast('\\')
+                ->snake('-'),
         ]);
 
         return $sort;

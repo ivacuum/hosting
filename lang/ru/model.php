@@ -8,6 +8,7 @@ return [
     'size' => 'Размер',
     'slug' => 'URL',
     'tags' => 'Тэги',
+    'user' => 'Пользователь',
     'email' => 'Электронная почта',
     'photo' => 'Фото',
     'title' => 'Название',
@@ -106,6 +107,10 @@ return [
 
     'server.host' => 'Хост',
     'server.text' => 'Заметки',
+
+    'social-media-post.caption' => 'Подпись',
+    'social-media-post.photo_id' => 'Фотография',
+    'social-media-post.published_at' => 'Дата публикации',
 
     'tag.title' => 'Тэг',
 

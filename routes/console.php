@@ -39,3 +39,7 @@ Schedule::command(Commands\RtoUpdate::class)
 Schedule::command(Commands\PingDcppHubs::class)
     ->dailyAt('15:25')
     ->appendOutputTo($cronOutput);
+
+Schedule::command(Commands\PublishSocialMediaPosts::class)
+    ->hourly()
+    ->appendOutputTo($cronOutput);

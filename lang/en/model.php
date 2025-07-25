@@ -6,6 +6,7 @@ return [
     'size' => 'Size',
     'slug' => 'URL',
     'tags' => 'Tags',
+    'user' => 'User',
     'email' => 'Email',
     'photo' => 'Photo',
     'title' => 'Title',
@@ -95,6 +96,10 @@ return [
 
     'server.host' => 'Host',
     'server.text' => 'Notes',
+
+    'social-media-post.caption' => 'Caption',
+    'social-media-post.photo_id' => 'Photo',
+    'social-media-post.published_at' => 'Publication date',
 
     'tag.title' => 'Tag',
 
