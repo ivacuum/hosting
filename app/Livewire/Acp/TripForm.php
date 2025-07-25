@@ -65,8 +65,8 @@ class TripForm extends Component
             $this->metaDescriptionRu = $trip->meta_description_ru;
         } else {
             $this->slug = 'city.' . now()->year;
-            $this->dateEnd = now()->startOfDay()->toDateTimeLocalString();
-            $this->dateStart = now()->startOfDay()->toDateTimeLocalString();
+            $this->dateEnd = today()->toDateTimeLocalString();
+            $this->dateStart = today()->toDateTimeLocalString();
         }
     }
 

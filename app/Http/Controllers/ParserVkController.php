@@ -42,7 +42,7 @@ class ParserVkController
         $dateStart = CarbonImmutable::parse($date)->startOfDay()->timestamp;
         $dateEnd = CarbonImmutable::parse($date)->endOfDay()->timestamp;
         $previous = CarbonImmutable::parse($date)->subDay();
-        $next = now()->startOfDay()->gt($date) ? CarbonImmutable::parse($date)->addDay() : null;
+        $next = today()->gt($date) ? CarbonImmutable::parse($date)->addDay() : null;
 
         while ($parsed === false) {
             $json = $this->getPosts($count, $offset);

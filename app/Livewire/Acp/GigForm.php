@@ -57,7 +57,7 @@ class GigForm extends Component
             $this->metaDescriptionEn = $gig->meta_description_en;
             $this->metaDescriptionRu = $gig->meta_description_ru;
         } else {
-            $this->date = now()->startOfDay()->toDateTimeLocalString();
+            $this->date = today()->toDateTimeLocalString();
             $this->slug = 'artist.' . now()->year;
         }
     }
