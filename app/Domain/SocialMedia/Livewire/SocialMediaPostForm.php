@@ -38,19 +38,25 @@ class SocialMediaPostForm extends Component
             $this->caption = $post->caption;
             $this->publishedAt = $post->published_at->toDateTimeLocalString();
         } else {
-            $this->photo = Photo::query()
-                ->whereBelongsTo(auth()->user())
-                ->inRandomOrder()
-                ->firstOrFail();
+            $this->pickRandomPhoto();
 
-            $this->photo->load('rel');
-            $this->photo->rel->loadCityAndCountry();
-
-            $this->caption = "{$this->photo->rel->city->hashtags} {$this->photo->rel->city->country->hashtags}";
             $this->publishedAt = $calculateNextPostDate
                 ->execute(request()->user())
                 ->toDateTimeLocalString();
         }
+    }
+
+    public function pickRandomPhoto()
+    {
+        $this->photo = Photo::query()
+            ->whereBelongsTo(auth()->user())
+            ->inRandomOrder()
+            ->firstOrFail();
+
+        $this->photo->load('rel');
+        $this->photo->rel->loadCityAndCountry();
+
+        $this->caption = "{$this->photo->rel->city->hashtags} {$this->photo->rel->city->country->hashtags}";
     }
 
     public function submit()
