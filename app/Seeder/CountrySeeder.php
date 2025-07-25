@@ -44,7 +44,7 @@ class CountrySeeder extends Seeder
                 'hongkong',
                 'singapore' => '',
                 'russia' => '#russia #россия',
-                'south-korea' => '#korea #корея',
+                'south-korea' => '#korea',
                 default => str_replace('-', '', "#{$attributes['slug']}"),
             };
             $country->title_en = $attributes['title_en'];
