@@ -29,7 +29,7 @@ export default class Shortcuts {
           'Content-Type': 'application/json',
           'X-CSRF-TOKEN': window['AppOptions'].csrfToken,
         },
-        body: JSON.stringify({ selection })
+        body: JSON.stringify({ selection }),
       })
         .then(response => response.json())
         .then(json => alert(json.message))
@@ -41,6 +41,14 @@ export default class Shortcuts {
       1076: 'j', // о
       1086: 'k', // л
       1083: 'l', // д
+    })
+
+    Mousetrap.bind('alt+e', () => {
+      document.dispatchEvent(new Event('shortcuts.english'))
+    })
+
+    Mousetrap.bind('alt+r', () => {
+      document.dispatchEvent(new Event('shortcuts.russian'))
     })
 
     Mousetrap.bind('h', () => {
@@ -67,6 +75,14 @@ export default class Shortcuts {
       }
     }, 'keyup')
 
+    document.addEventListener('shortcuts.english', () => {
+      document.querySelector('.js-english')?.click()
+    })
+
+    document.addEventListener('shortcuts.russian', () => {
+      document.querySelector('.js-russian')?.click()
+    })
+
     document.addEventListener('shortcuts.redirect', (e) => {
       const link = document.querySelector(e.detail.selector)
 
@@ -83,13 +99,13 @@ export default class Shortcuts {
 
     document.addEventListener('shortcuts.to_next_page', () => {
       document.dispatchEvent(new CustomEvent('shortcuts.redirect', {
-        detail: { selector: NEXT_PAGE_SELECTOR }
+        detail: { selector: NEXT_PAGE_SELECTOR },
       }))
     })
 
     document.addEventListener('shortcuts.to_prev_page', () => {
       document.dispatchEvent(new CustomEvent('shortcuts.redirect', {
-        detail: { selector: PREV_PAGE_SELECTOR }
+        detail: { selector: PREV_PAGE_SELECTOR },
       }))
     })
 
