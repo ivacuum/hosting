@@ -34,7 +34,7 @@ class SignInTest extends TestCase
     public function testFacebookRedirect()
     {
         $this->get('auth/facebook')
-            ->assertRedirectContains('https://www.facebook.com/v3.3/dialog/oauth');
+            ->assertRedirectContains('https://www.facebook.com/v23.0/dialog/oauth');
 
         $this->assertGuest();
     }
