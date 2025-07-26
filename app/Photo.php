@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Domain\PhotoStatus;
+use App\Domain\SocialMedia\Models\SocialMediaPost;
 use App\Observers\PhotoObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
@@ -24,6 +25,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  * @property Trip $rel
+ * @property SocialMediaPost $socialMediaPost
  * @property \Illuminate\Database\Eloquent\Collection<int, Tag> $tags
  * @property User $user
  *
@@ -36,6 +38,11 @@ class Photo extends Model
     public function rel()
     {
         return $this->morphTo();
+    }
+
+    public function socialMediaPost()
+    {
+        return $this->hasOne(SocialMediaPost::class);
     }
 
     public function tags(): MorphToMany

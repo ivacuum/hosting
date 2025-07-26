@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Domain\SocialMedia\Action\PickRandomPhotoAction;
 use App\Domain\SocialMedia\Factory\SocialMediaPostFactory;
 use App\Domain\SocialMedia\Models\SocialMediaPost;
 use App\Domain\SocialMedia\SocialMediaPostStatus;
@@ -52,23 +53,26 @@ class AcpSocialMediaPostsTest extends TestCase
 
     public function testStoreExcluded()
     {
-        PhotoFactory::new()->withTrip()->create();
+        $photo = PhotoFactory::new()->withTrip()->create();
+
+        $this->mock(PickRandomPhotoAction::class)
+            ->expects('execute')
+            ->andReturn($photo);
 
         \Livewire::test(SocialMediaPostForm::class)
             ->set('caption', 'phpunit caption')
             ->set('status', SocialMediaPostStatus::Excluded)
             ->call('submit')
             ->assertHasNoErrors()
-            ->assertRedirect('/acp/social-media-posts');
-
-        $this->get('acp/social-media-posts')
-            ->assertDontSee('phpunit caption');
+            ->assertRedirect('/acp/social-media-posts/create');
 
         $post = SocialMediaPost::query()
-            ->firstWhere(['caption' => 'phpunit caption']);
+            ->firstWhere(['photo_id' => $photo->id]);
 
+        $this->assertSame('', $post->caption);
         $this->assertSame(SocialMediaPostStatus::Excluded, $post->status);
         $this->assertNull($post->published_at);
+        $this->assertNotNull($post->excluded_at);
     }
 
     public function testStoreQueued()
@@ -81,7 +85,7 @@ class AcpSocialMediaPostsTest extends TestCase
             ->set('publishedAt', '2099-12-31T00:00')
             ->call('submit')
             ->assertHasNoErrors()
-            ->assertRedirect('/acp/social-media-posts');
+            ->assertRedirect('/acp/social-media-posts/create');
 
         $this->get('acp/social-media-posts')
             ->assertSee('phpunit caption');
@@ -91,6 +95,7 @@ class AcpSocialMediaPostsTest extends TestCase
 
         $this->assertSame(SocialMediaPostStatus::Queued, $post->status);
         $this->assertSame('2099-12-31T00:00:00', $post->published_at->toDateTimeLocalString());
+        $this->assertNull($post->excluded_at);
     }
 
     public function testUpdate()
@@ -108,7 +113,9 @@ class AcpSocialMediaPostsTest extends TestCase
 
         $post->refresh();
 
-        $this->assertSame('phpunit after', $post->caption);
+        $this->assertSame('', $post->caption);
         $this->assertSame(SocialMediaPostStatus::Excluded, $post->status);
+        $this->assertNotNull($post->excluded_at);
+        $this->assertNull($post->published_at);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Domain\SocialMedia\Livewire;
 
 use App\Domain\SocialMedia\Action\CalculateNextPostDateAction;
+use App\Domain\SocialMedia\Action\PickRandomPhotoAction;
 use App\Domain\SocialMedia\Models\SocialMediaPost;
 use App\Domain\SocialMedia\SocialMediaPostStatus;
 use App\Livewire\WithGoto;
@@ -48,10 +49,8 @@ class SocialMediaPostForm extends Component
 
     public function pickRandomPhoto()
     {
-        $this->photo = Photo::query()
-            ->whereBelongsTo(auth()->user())
-            ->inRandomOrder()
-            ->firstOrFail();
+        $this->photo = app(PickRandomPhotoAction::class)
+            ->execute(auth()->user(), $this->photo?->id);
 
         $this->photo->load('rel');
         $this->photo->rel->loadCityAndCountry();
@@ -65,7 +64,15 @@ class SocialMediaPostForm extends Component
         $this->validate();
         $this->store();
 
-        return redirect()->to($this->goto ?? to('acp/social-media-posts'));
+        if ($this->goto) {
+            return redirect()->to($this->goto);
+        }
+
+        if ($this->id) {
+            return redirect()->to(to('acp/social-media-posts'));
+        }
+
+        return redirect()->to(to('acp/social-media-posts/create'));
     }
 
     protected function rules()

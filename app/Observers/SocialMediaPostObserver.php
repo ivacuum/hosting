@@ -24,6 +24,7 @@ class SocialMediaPostObserver
         }
 
         if ($post->status->isExcluded()) {
+            $post->caption = '';
             $post->excluded_at ??= now();
             $post->published_at = null;
         }
