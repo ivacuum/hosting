@@ -7,6 +7,7 @@ use App\Action\HiraganizeJapaneseNumberAction;
 use App\Domain\LivewireEvent;
 use Illuminate\Http\Request;
 use Livewire\Attributes\Computed;
+use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -24,6 +25,8 @@ class NumberTrainer extends Component
     private const int MINIMAL_INTERVAL = 5;
 
     public int $number = 1;
+
+    #[Locked]
     public int $exclude = 0;
 
     #[Validate(['integer', 'min:' . self::MAXIMUM_AT_LEAST, 'max:' . self::MAXIMUM_AT_MOST])]
@@ -32,15 +35,24 @@ class NumberTrainer extends Component
     #[Validate(['integer', 'min:' . self::MINIMUM_AT_LEAST, 'max:' . self::MAXIMUM_AT_MOST - self::MINIMAL_INTERVAL])]
     public int|null $minimum = 0;
 
+    #[Locked]
     public int $skipped = 0;
+
+    #[Locked]
     public int $answered = 0;
+
+    #[Locked]
     public int $revealed = 0;
+
     public bool $sayOutLoud = false;
     public bool $shouldReveal = false;
     public bool $customInterval = false;
     public bool $incorrectAnswer = false;
     public bool $guessingSpellOut = false;
+
+    #[Locked]
     public array $locales = [];
+
     public string $lang = 'en';
     public string $answer = '';
 
