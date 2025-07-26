@@ -152,16 +152,6 @@ return new class extends Migration {
             $table->timestamps();
         });
 
-        Schema::create('images', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('user_id')->default(0);
-            $table->string('slug');
-            $table->char('date', 6);
-            $table->unsignedBigInteger('size')->default(0);
-            $table->unsignedInteger('views')->default(0);
-            $table->timestamps();
-        });
-
         Schema::create('gigs', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('city_id')->default(0);
@@ -176,6 +166,16 @@ return new class extends Migration {
             $table->string('meta_description_ru')->default('');
             $table->string('meta_description_en')->default('');
             $table->string('meta_image')->default('');
+            $table->unsignedInteger('views')->default(0);
+            $table->timestamps();
+        });
+
+        Schema::create('images', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('user_id')->default(0);
+            $table->string('slug');
+            $table->char('date', 6);
+            $table->unsignedBigInteger('size')->default(0);
             $table->unsignedInteger('views')->default(0);
             $table->timestamps();
         });
