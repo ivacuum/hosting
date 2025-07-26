@@ -43,7 +43,7 @@
         </td>
         <td>{{ $model->caption }}</td>
         <td>{{ $model->status->i18n() }}</td>
-        <td>{{ $model->published_at->isoFormat('LLL') }}</td>
+        <td>{{ $model->published_at?->isoFormat('LLL') }}</td>
       </tr>
     @endforeach
     </tbody>
