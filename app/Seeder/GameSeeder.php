@@ -16,6 +16,7 @@ class GameSeeder extends Seeder
             ->withShortDescriptionEn('We fused card games and roguelikes together to make the best single player deckbuilder we could. Craft a unique deck, encounter bizarre creatures, discover relics of immense power, and Slay the Spire!')
             ->withShortDescriptionRu('Мы смешали жанры ККИ и «рогалик» в попытке предоставить вам нашу лучшую одиночную карточную стратегию. Вам предстоит собрать уникальную колоду, встретить множество причудливых монстров, найти разнообразные могущественные реликвии и повергнуть Шпиль!')
             ->withReleasedAt('2019-01-23')
+            ->withFinishedAt('2022-10-22')
             ->create();
 
         GameFactory::new()
