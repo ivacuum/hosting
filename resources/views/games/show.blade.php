@@ -6,6 +6,14 @@
 
 @extends('base')
 
+@push('head')
+<meta content="article" property="og:type">
+<meta content="{{ $metaTitle ?? '' }}" property="og:title">
+<meta content="{{ canonical() }}" property="og:url">
+<meta content="{{ $metaImage ?? '' }}" property="og:image">
+<meta content="{{ $metaDescription ?? ViewHelper::metaDescription($routeUri, $metaReplace ?? []) }}" property="og:description">
+@endpush
+
 @section('content')
 <article>
   <header>

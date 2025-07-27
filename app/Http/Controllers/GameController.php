@@ -26,6 +26,7 @@ class GameController
         return view('games.show', [
             'game' => $game,
             'slug' => "games/{$game->slug}", // Базовый путь для скриншотов
+            'metaImage' => $game->libraryImage(),
             'metaTitle' => $game->title,
             'reviewTpl' => view()->exists($reviewTpl)
                 ? $reviewTpl
