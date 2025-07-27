@@ -29,6 +29,8 @@ return [
     'gallery/upload' => __('Загрузка изображений'),
     'gallery/view' => __('Просмотр изображения'),
 
+    'games' => __('Игры'),
+
     'japanese' => __('Японский язык'),
     'japanese/hiragana-katakana' => 'Hiragana & Katakana Trainer. Practice Japanese Syllabaries Online',
     'japanese/wanikani' => 'WaniKani V · Japanese',

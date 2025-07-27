@@ -152,6 +152,18 @@ return new class extends Migration {
             $table->timestamps();
         });
 
+        Schema::create('games', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('steam_id')->nullable()->unique();
+            $table->string('title');
+            $table->string('slug')->unique();
+            $table->string('short_description_en', 2000);
+            $table->string('short_description_ru', 2000);
+            $table->date('released_at');
+            $table->date('finished_at')->nullable();
+            $table->timestamps();
+        });
+
         Schema::create('gigs', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('city_id')->default(0);

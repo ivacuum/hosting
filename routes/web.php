@@ -83,6 +83,11 @@ Route::middleware('nav:Галерея,gallery')->group(function () {
     Route::view('gallery/upload', 'gallery.upload')->middleware('auth')->middleware('nav:Загрузка изображений');
 });
 
+Route::middleware('nav:Игры,games')->group(function () {
+    Route::get('games', [Ctrl\GameController::class, 'index']);
+    Route::get('games/{game:slug}', [Ctrl\GameController::class, 'show']);
+});
+
 Route::view('health-up', 'health-up');
 
 Route::middleware('nav:Японский язык,japanese')->group(function () {

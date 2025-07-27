@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
             ImageSeeder::class,
             FavoriteMovieSeeder::class,
             MetricSeeder::class,
+            GameSeeder::class,
 
             RadicalSeeder::class,
             KanjiSeeder::class,
