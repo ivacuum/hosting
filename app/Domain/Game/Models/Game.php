@@ -2,6 +2,8 @@
 
 namespace App\Domain\Game\Models;
 
+use App\Domain\Steam\SteamCountryCode;
+use App\Domain\Steam\SteamLanguage;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 
@@ -41,6 +43,15 @@ class Game extends Model
     public static function shortDescriptionField(): string
     {
         return 'short_description_' . \App::getLocale();
+    }
+
+    public function steamLink(SteamLanguage $language): string
+    {
+        if ($language === SteamLanguage::Russian) {
+            return "https://store.steampowered.com/app/{$this->steam_id}?cc=" . SteamCountryCode::Kyrgyzstan->value . '&l=' . $language->value;
+        }
+
+        return "https://store.steampowered.com/app/{$this->steam_id}";
     }
 
     #[\Override]

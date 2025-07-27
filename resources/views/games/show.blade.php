@@ -2,6 +2,7 @@
 /**
  * @var \App\Domain\Game\Models\Game $game
  */
+use App\Domain\Steam\SteamLanguage;
 ?>
 
 @extends('base')
@@ -44,9 +45,9 @@
   <div class="hanging-punctuation-first lg:text-lg markdown-body break-words border-l-4 border-l-gray-200 pl-4">{{ $game->short_description }}</div>
   <div class="text-right text-gray-500">
     @ru
-      — из описания игры в Steam.
+      — из описания игры <a class="link" href="{{ $game->steamLink(SteamLanguage::Russian) }}">в Steam</a>.
     @en
-      — from the game description on Steam.
+      — from the game description <a class="link" href="{{ $game->steamLink(SteamLanguage::English) }}">on Steam</a>.
     @endru
   </div>
   <div class="my-4 -mx-4 sm:mx-0">
