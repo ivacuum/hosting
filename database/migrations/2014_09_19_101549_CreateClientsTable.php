@@ -334,7 +334,7 @@ return new class extends Migration {
         Schema::create('social_media_posts', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('photo_id');
+            $table->unsignedInteger('photo_id')->unique();
             $table->string('caption', 2000);
             $table->unsignedTinyInteger('status');
             $table->datetimes();
