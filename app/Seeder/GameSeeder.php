@@ -54,6 +54,7 @@ class GameSeeder extends Seeder
             ->withShortDescriptionEn('Explore the vibrant open world landscapes of Mexico with limitless, fun driving action in the world’s greatest cars.')
             ->withShortDescriptionRu('Исследуйте яркие пейзажи Мексики в открытом мире с безграничным, захватывающим движением на лучших в мире автомобилях.')
             ->withReleasedAt('2021-11-08')
+            ->withFinishedAt('2023-05-25')
             ->create();
 
         GameFactory::new()
