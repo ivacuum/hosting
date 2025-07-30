@@ -387,7 +387,7 @@
 @include('tpl.game-screenshot', ['pic' => 'Hunt  Showdown Screenshot 2021.12.11 - 23.26.47.07.webp'])
 
 @ru
-  <p>Топоры у коней в голове.</p>
+  <p>Топоры у коней в голове. Метательные предметы остаются там, куда упали или куда воткнулись. Затем их можно забрать. Есть навык, который подсвечивает их в темном зрении.</p>
 @endru
 @include('tpl.game-screenshot', ['pic' => 'Hunt  Showdown Screenshot 2021.12.17 - 22.42.38.11.webp'])
 
