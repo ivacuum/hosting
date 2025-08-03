@@ -19,7 +19,7 @@
     @foreach ($games as $game)
       <div>
         <a class="screenshot-link link-parent" href="@lng/games/{{ $game->slug }}">
-          <img class="block screenshot" src="{{ $game->libraryImage() }}" alt="" loading="lazy">
+          <img class="block screenshot aspect-2/3" src="{{ $game->libraryImage() }}" alt="" loading="lazy">
           <div class="mt-1 link">
             {{ $game->title }}
           </div>
