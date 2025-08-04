@@ -26,6 +26,7 @@ class GameSeeder extends Seeder
             ->withShortDescriptionEn('Baldur’s Gate 3 is a story-rich, party-based RPG set in the universe of Dungeons &amp; Dragons, where your choices shape a tale of fellowship and betrayal, survival and sacrifice, and the lure of absolute power.')
             ->withShortDescriptionRu('Соберите отряд и вернитесь в Забытые Королевства. Вас ждет история о дружбе и предательстве, выживании и самопожертвовании, о сладком зове абсолютной власти.')
             ->withReleasedAt('2023-08-03')
+            ->withFinishedAt('2025-02-26')
             ->create();
 
         GameFactory::new()
@@ -64,6 +65,7 @@ class GameSeeder extends Seeder
             ->withShortDescriptionEn('Dynamic seasons change everything at the world’s greatest automotive festival. Go it alone or team up with others to explore beautiful and historic Britain in a shared open world.')
             ->withShortDescriptionRu('Времена года полностью меняют облик главного автомобильного фестиваля планеты. Исследуйте чудесные пейзажи и исторические достопримечательности Великобритании, путешествуя по открытому миру в одиночку или вместе с другими игроками.')
             ->withReleasedAt('2021-03-09')
+            ->withReleasedAt('2022-02-09')
             ->create();
 
         GameFactory::new()
@@ -73,6 +75,7 @@ class GameSeeder extends Seeder
             ->withShortDescriptionEn('Become Ichiban Kasuga, a low-ranking yakuza grunt left on the brink of death by the man he trusted most. Take up your legendary bat and get ready to crack some underworld skulls in dynamic RPG combat set against the backdrop of modern-day Japan.')
             ->withShortDescriptionRu('Become Ichiban Kasuga, a low-ranking yakuza grunt left on the brink of death by the man he trusted most. Take up your legendary bat and get ready to crack some underworld skulls in dynamic RPG combat set against the backdrop of modern-day Japan.')
             ->withReleasedAt('2020-11-10')
+            ->withFinishedAt('2021-06-03')
             ->create();
 
         GameFactory::new()
@@ -91,6 +94,7 @@ class GameSeeder extends Seeder
             ->withShortDescriptionEn('Embark on the craziest journey of your life in It Takes Two. Invite a friend to join for free with Friend’s Pass and work together across a huge variety of gleefully disruptive gameplay challenges. Winner of GAME OF THE YEAR at the Game Awards 2021.')
             ->withShortDescriptionRu('Отправьтесь в самое безумное путешествие в жизни в игре It Takes Two. Пригласите друга присоединиться бесплатно благодаря версии для друга*, радостно преодолевая многочисленные испытания.')
             ->withReleasedAt('2021-03-25')
+            ->withFinishedAt('2021-06-01')
             ->create();
 
         GameFactory::new()
@@ -100,6 +104,7 @@ class GameSeeder extends Seeder
             ->withShortDescriptionEn("You play as Adam Jensen, an experienced covert operative operating in a world that despises his kind: augmented humans. Choose from an arsenal of state-of-the-art weapons and augmentations to build your playstyle, and decide who you'll trust, to unravel a vast worldwide conspiracy.")
             ->withShortDescriptionRu('На дворе 2029 год. Общество отвергло людей, установивших механические аугментации, и превратило их в совершенных изгоев.')
             ->withReleasedAt('2016-08-23')
+            ->withFinishedAt('2016-08-30')
             ->create();
 
         GameFactory::new()
@@ -109,6 +114,7 @@ class GameSeeder extends Seeder
             ->withShortDescriptionEn('Disco Elysium - The Final Cut is a groundbreaking role playing game. You’re a detective with a unique skill system at your disposal and a whole city to carve your path across. Interrogate unforgettable characters, crack murders or take bribes. Become a hero or an absolute disaster of a human being.')
             ->withShortDescriptionRu('Disco Elysium - The Final Cut — революция в жанре РПГ. Ваш персонаж — детектив с уникальными навыками, которому предстоит исследовать целый район. Допрашивайте персонажей, расследуйте убийства или берите взятки. Кем вы станете: героем или неудачником?')
             ->withReleasedAt('2019-10-15')
+            ->withFinishedAt('2021-08-17')
             ->create();
 
         GameFactory::new()
@@ -118,6 +124,7 @@ class GameSeeder extends Seeder
             ->withShortDescriptionEn('You are Geralt of Rivia, mercenary monster slayer. Before you stands a war-torn, monster-infested continent you can explore at will. Your current contract? Tracking down Ciri — the Child of Prophecy, a living weapon that can alter the shape of the world.')
             ->withShortDescriptionRu('Вы — Геральт из Ривии, наемный убийца чудовищ. Вы путешествуете по миру, в котором бушует война и на каждом шагу подстерегают чудовища. Вам предстоит выполнить заказ и найти Цири — Дитя Предназначения, живое оружие, способное изменить облик этого мира.')
             ->withReleasedAt('2015-05-18')
+            ->withFinishedAt('2021-03-21')
             ->create();
 
         GameFactory::new()
@@ -127,6 +134,7 @@ class GameSeeder extends Seeder
             ->withShortDescriptionEn('Defy the god of the dead as you hack and slash out of the Underworld in this rogue-like dungeon crawler from the creators of Bastion, Transistor, and Pyre.')
             ->withShortDescriptionRu('Бросьте вызов богу мёртвых и прорубите себе путь из Подземного мира в игре в жанрах «рогалик» и «данжен-кроулер» от создателей Bastion, Transistor и Pyre.')
             ->withReleasedAt('2020-09-17')
+            ->withFinishedAt('2021-04-26')
             ->create();
 
         GameFactory::new()
@@ -136,6 +144,7 @@ class GameSeeder extends Seeder
             ->withShortDescriptionEn('Cyberpunk 2077 is an open-world, action-adventure RPG set in the dark future of Night City — a dangerous megalopolis obsessed with power, glamor, and ceaseless body modification.')
             ->withShortDescriptionRu('Cyberpunk 2077 — приключенческая ролевая игра с открытым миром, действие которой происходит в футуристическом мегаполисе Найт-Сити, где выше всего ценятся власть, роскошь и модификации тела.')
             ->withReleasedAt('2020-12-09')
+            ->withFinishedAt('2021-01-06')
             ->create();
 
         GameFactory::new()
@@ -145,6 +154,7 @@ class GameSeeder extends Seeder
             ->withShortDescriptionEn('From legendary game creator Hideo Kojima comes a genre-defying experience, now expanded in this definitive DIRECTOR’S CUT. As Sam Bridges, your mission is to deliver hope to humanity by connecting the last survivors of a decimated America. Can you reunite the shattered world, one step at a time?')
             ->withShortDescriptionRu('Легендарный творец Хидэо Кодзима представляет окончательную версию DIRECTOR’S CUT знаковой для жанра игры. Действуя от лица Сэма Бриджеса и объединяя последних выживших на территории Америки, вам предстоит возродить надежду человечества. Удастся ли вам шаг за шагом воссоединить разрушенный мир?')
             ->withReleasedAt('2022-03-30')
+            ->withFinishedAt('2023-09-27')
             ->create();
 
         GameFactory::new()
@@ -163,6 +173,7 @@ class GameSeeder extends Seeder
             ->withShortDescriptionEn("Reprise your role as a supernatural assassin in Dishonored 2. Declared a “masterpiece” by Eurogamer and hailed “a must-play revenge tale” by Game Informer, Dishonored 2 is the follow up to Arkane’s 1st-person action blockbuster &amp; winner of 100+ 'Game of the Year' awards, Dishonored.")
             ->withShortDescriptionRu('В игре Dishonored 2, вы снова окажетесь в роли ассасина со сверхъестественными способностями. Сайт IGN назвал эту игру «удивительной» и «идеальным продолжением», Eurogamer признал ее «шедевром», а Game Informer считает, что «эта история о мести – одна из лучших в своем жанре и проходить мимо нее ни в коем случае нельзя»; Dishonored 2 –...')
             ->withReleasedAt('2016-11-11')
+            ->withFinishedAt('2023-06-25')
             ->create();
 
         GameFactory::new()
@@ -172,6 +183,7 @@ class GameSeeder extends Seeder
             ->withShortDescriptionEn("The critically acclaimed RPG that raised the bar, from the creators of Baldur's Gate 3. Gather your party. Master deep, tactical combat. Venture as a party of up to four - but know that only one of you will have the chance to become a God.")
             ->withShortDescriptionRu("Знаменитая ролевая игра от разработчиков Baldur's Gate 3. Соберите отряд. Освойте мощную боевую систему. Пригласите с собой до трех друзей, но помните, что только один из вас сможет стать богом.")
             ->withReleasedAt('2017-09-14')
+            ->withFinishedAt('2020-05-30')
             ->create();
 
         GameFactory::new()
@@ -181,6 +193,7 @@ class GameSeeder extends Seeder
             ->withShortDescriptionEn('Kratos and Atreus embark on a mythic journey for answers before Ragnarök arrives – now on PC.')
             ->withShortDescriptionRu('Кратос и Атрей отправляются на поиски ответов в преддверии неотвратимо надвигающегося Рагнарёка. Теперь игра доступна и на PC.')
             ->withReleasedAt('2024-09-19')
+            ->withFinishedAt('2024-10-16')
             ->create();
 
         GameFactory::new()
@@ -190,6 +203,7 @@ class GameSeeder extends Seeder
             ->withShortDescriptionEn('Two larger-than-life heroes, Ichiban Kasuga and Kazuma Kiryu are brought together by the hand of fate, or perhaps something more sinister… Live it up in Japan and explore all that Hawaii has to offer in an RPG adventure so big it spans the Pacific.')
             ->withShortDescriptionRu('Два легендарных героя, которых свела вместе судьба — или нечто куда более зловещее… Гуляйте по Японии и развлекайтесь на Гавайях в этом масштабном приключении размером с Тихий океан.')
             ->withReleasedAt('2024-01-25')
+            ->withFinishedAt('2024-06-20')
             ->create();
 
         GameFactory::new()
@@ -208,6 +222,7 @@ class GameSeeder extends Seeder
             ->withShortDescriptionEn('Discover the open world of Hope County, Montana, besieged by a fanatical doomsday cult. Dive into the action solo or two-player co-op in the story campaign, use a vast arsenal of weapons and allies, and free Hope County from Joseph Seed and his cult.')
             ->withShortDescriptionRu('Округ Хоуп в штате Монтана захвачен фанатиками культа Врата Эдема. Дайте отпор Иосифу Сиду и его братьям. Разожгите огонь сопротивления.')
             ->withReleasedAt('2018-03-26')
+            ->withFinishedAt('2018-04-24')
             ->create();
 
         GameFactory::new()
@@ -217,6 +232,7 @@ class GameSeeder extends Seeder
             ->withShortDescriptionEn('Return to the Mass Effect universe &amp; lead the first humans in Andromeda on a desperate search for our new home.')
             ->withShortDescriptionRu('В Mass Effect™: Andromeda игроки окажутся в галактике Андромеды, далеко за пределами Млечного Пути.')
             ->withReleasedAt('2020-06-11')
+            ->withFinishedAt('2021-11-04')
             ->create();
 
         GameFactory::new()
@@ -226,6 +242,7 @@ class GameSeeder extends Seeder
             ->withShortDescriptionEn('Respawn Entertainment gives you the most advanced titan technology in its new, single player campaign &amp; multiplayer experience. Combine &amp; conquer with new titans &amp; pilots, deadlier weapons, &amp; customization and progression systems that help you and your titan flow as one unstoppable killing force.')
             ->withShortDescriptionRu('Включает весь контент Эксклюзивного цифрового издания, набор «Ключ на старт» для ускоренного развития и разблокировки предметов, а также особую боевую раскраску Underground для карабина R-201.')
             ->withReleasedAt('2020-06-18')
+            ->withFinishedAt('2020-12-04')
             ->create();
     }
 }

@@ -54,6 +54,11 @@ class Game extends Model
         return "https://store.steampowered.com/app/{$this->steam_id}";
     }
 
+    protected static function booted()
+    {
+        self::saving(self::maintainConsistency(...));
+    }
+
     #[\Override]
     protected function casts(): array
     {
@@ -68,5 +73,12 @@ class Game extends Model
         return Attribute::make(
             get: fn () => $this->{static::shortDescriptionField()},
         );
+    }
+
+    private static function maintainConsistency(self $game): void
+    {
+        if ($game->finished_at?->isBefore($game->released_at)) {
+            throw new \DomainException('Game can only be finished after the release date.');
+        }
     }
 }
