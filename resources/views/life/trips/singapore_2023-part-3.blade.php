@@ -209,6 +209,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4054.jpg'])
 
+<a id="yellow-car"></a>
 @ru
   <p>Красивый и яркий желтый цвет у автомобиля.</p>
 @endru
