@@ -9,7 +9,7 @@
     <label class="font-semibold md:leading-6 md:pt-1.5">{{ \ViewHelper::modelFieldTrans('social-media-post', 'photo_id') }}</label>
     <div class="max-md:mt-1.5">
       <img
-        class="rounded-sm pointer"
+        class="rounded-sm pointer aspect-4/3"
         src="{{ $this->photo->originalUrl() }}"
         alt=""
         wire:click.prevent="pickRandomPhoto"
