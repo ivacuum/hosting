@@ -14,8 +14,8 @@ class PublishSocialMediaPosts extends Command implements Isolatable
 {
     protected $signature = 'app:publish-social-media-posts';
 
-    public function handle(
-    ) {
+    public function handle()
+    {
         $query = SocialMediaPost::query()
             ->where('status', SocialMediaPostStatus::Queued)
             ->whereNowOrPast('published_at');
