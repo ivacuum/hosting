@@ -104,7 +104,6 @@ IMG_8560.jpeg
 IMG_8561.jpeg
 IMG_8562.jpeg
 IMG_8564.jpeg
-IMG_8565.jpeg
 IMG_8567.jpeg
 IMG_8568.jpeg
 IMG_8569.jpeg
