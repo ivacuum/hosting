@@ -36,10 +36,14 @@ Schedule::command(Commands\RtoUpdate::class)
     ->everyThreeHours(offset: 20)
     ->appendOutputTo($cronOutput);
 
-Schedule::command(Commands\PingDcppHubs::class)
-    ->dailyAt('15:25')
+Schedule::command(Commands\RefreshSocialMediaTokens::class)
+    ->dailyAt('14:40')
     ->appendOutputTo($cronOutput);
 
 Schedule::command(Commands\PublishSocialMediaPosts::class)
     ->dailyAt('15:00')
+    ->appendOutputTo($cronOutput);
+
+Schedule::command(Commands\PingDcppHubs::class)
+    ->dailyAt('15:25')
     ->appendOutputTo($cronOutput);
