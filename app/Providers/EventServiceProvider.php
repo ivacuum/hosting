@@ -16,9 +16,11 @@ class EventServiceProvider extends ServiceProvider
         ],
     ];
 
-    #[\Override]
-    public function shouldDiscoverEvents()
+    public function boot()
     {
-        return true;
+        self::addEventDiscoveryPaths([
+            $this->app->path('Listeners'),
+            $this->app->path('Domain/*/Listener'),
+        ]);
     }
 }

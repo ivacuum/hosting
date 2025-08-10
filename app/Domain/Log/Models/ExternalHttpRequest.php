@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Domain\Log\Models;
 
 use App\Domain\ExternalService;
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;

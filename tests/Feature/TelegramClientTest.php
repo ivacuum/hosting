@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\ExternalHttpRequest;
+use App\Domain\Log\Models\ExternalHttpRequest;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\Client\Request;
 use Ivacuum\Generic\Telegram\InlineKeyboardButton;

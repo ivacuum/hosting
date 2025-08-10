@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\ExternalHttpRequest;
+use App\Domain\Log\Models\ExternalHttpRequest;
 use App\Services\Wanikani\KanjiEntity;
 use App\Services\Wanikani\SubjectResponse;
 use App\Services\Wanikani\WanikaniApi;

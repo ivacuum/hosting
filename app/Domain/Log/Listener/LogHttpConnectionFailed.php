@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Listeners;
+namespace App\Domain\Log\Listener;
 
-use App\Action\FilterOutCredentialsAction;
 use App\Action\GetExternalServiceByHostAction;
-use App\ExternalHttpRequest;
+use App\Domain\Log\Action\FilterOutCredentialsAction;
+use App\Domain\Log\Models\ExternalHttpRequest;
 use Illuminate\Http\Client\Events\ConnectionFailed;
 
 use function Illuminate\Support\defer;

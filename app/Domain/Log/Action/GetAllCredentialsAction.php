@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Action;
+namespace App\Domain\Log\Action;
 
 use Illuminate\Support\Collection;
 

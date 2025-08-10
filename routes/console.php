@@ -21,7 +21,7 @@ Schedule::command(Commands\SitemapBuild::class)
 
 Schedule::command('model:prune', [
     '--model' => [
-        App\ExternalHttpRequest::class,
+        App\Domain\Log\Models\ExternalHttpRequest::class,
         App\PasswordResetToken::class,
     ],
 ])
