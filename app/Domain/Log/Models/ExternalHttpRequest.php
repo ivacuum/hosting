@@ -6,6 +6,7 @@ use App\Domain\ExternalService;
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\MassPrunable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Uri;
 
 /**
  * @property int $id
@@ -54,6 +55,11 @@ class ExternalHttpRequest extends Model
         return self::query()
             ->where('id', '<=', $thresholdId)
             ->limit(1_000_000);
+    }
+
+    public function toUri(): Uri
+    {
+        return Uri::of("{$this->scheme}://{$this->host}{$this->path}?{$this->query}");
     }
 
     #[\Override]

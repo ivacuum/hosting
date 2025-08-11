@@ -20,6 +20,8 @@ class GetExternalServiceByHostAction
 
             'example.com' => ExternalService::Example,
 
+            'graph.vacuum.name' => ExternalService::Instagram,
+
             'life.ivacuum.org' => ExternalService::Life,
 
             default => ExternalService::Unknown,

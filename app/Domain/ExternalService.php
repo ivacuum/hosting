@@ -5,6 +5,7 @@ namespace App\Domain;
 enum ExternalService: string
 {
     case Example = 'example';
+    case Instagram = 'instagram';
     case Life = 'life';
     case Rutracker = 'rto';
     case Telegram = 'telegram';
