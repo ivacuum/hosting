@@ -7,6 +7,7 @@ use App\Domain\Instagram\InstagramCreateMediaResponse;
 use App\Domain\Instagram\InstagramMeResponse;
 use App\Domain\Instagram\InstagramPublishMediaResponse;
 use App\Domain\Instagram\InstagramRefreshAccessTokenResponse;
+use App\Domain\Log\Models\ExternalHttpRequest;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -39,6 +40,26 @@ class InstagramApiTest extends TestCase
             ->me('token');
 
         $this->assertTrue($response->successful);
+    }
+
+    public function testNoCredentialsLogged()
+    {
+        \Http::fake([
+            ...InstagramRefreshAccessTokenResponse::fakeSuccess('new-secret-token'),
+        ]);
+
+        $this->app
+            ->make(InstagramApi::class)
+            ->refreshAccessToken('current-secret-token');
+
+        $request = ExternalHttpRequest::query()
+            ->latest('id')
+            ->first();
+
+        $json = $request->toJson();
+
+        $this->assertStringNotContainsString('current-secret-token', $json);
+        $this->assertStringNotContainsString('new-secret-token', $json);
     }
 
     public function testPublishMedia()
