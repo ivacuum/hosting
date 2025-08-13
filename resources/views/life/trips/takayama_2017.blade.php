@@ -279,6 +279,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_7613.jpg'])
 
+<a id="jaws"></a>
 @ru
   <p>Новинки проката.</p>
 @en

@@ -169,6 +169,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0350.jpg'])
 
+<a id="park"></a>
 @ru
   <p>Водонапорная башня.</p>
 @en
