@@ -5,6 +5,7 @@ namespace App\Observers;
 use App\Avatar;
 use App\Events\Stats;
 use App\User;
+use Illuminate\Support\Str;
 
 class UserObserver
 {
@@ -44,6 +45,8 @@ class UserObserver
         if ($user->isDirty('password')) {
             $user->password_changed_at = now();
         }
+
+        $this->maintainConsistency($user);
     }
 
     public function saved(User $user)
@@ -79,5 +82,15 @@ class UserObserver
                 event(new Stats\TripsUnsubscribed);
             }
         }
+    }
+
+    private function maintainConsistency(User $user): void
+    {
+        $user->ip = Str::trim($user->ip);
+        $user->salt = Str::trim($user->salt);
+        $user->email = Str::trim($user->email);
+        $user->login = Str::trim($user->login);
+        $user->avatar = Str::trim($user->avatar);
+        $user->locale = Str::trim($user->locale);
     }
 }
