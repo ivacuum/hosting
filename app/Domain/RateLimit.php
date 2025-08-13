@@ -8,6 +8,7 @@ enum RateLimit
 {
     case CommentByIp;
     case CommentByUser;
+    case ExifReader;
     case IssueByIp;
     case IssueByUser;
     case MagnetGlobal;
@@ -17,6 +18,7 @@ enum RateLimit
         return match ($this) {
             self::CommentByIp => Limit::perDay(config()->integer('cfg.limits.comment.ip')),
             self::CommentByUser => Limit::perDay(config()->integer('cfg.limits.comment.user')),
+            self::ExifReader => Limit::perHour(config()->integer('cfg.limits.exif-reader.per_hour')),
             self::IssueByIp => Limit::perDay(config()->integer('cfg.limits.issue.ip')),
             self::IssueByUser => Limit::perDay(config()->integer('cfg.limits.issue.user')),
             self::MagnetGlobal => Limit::perDay(config()->integer('cfg.limits.magnet.per_day')),

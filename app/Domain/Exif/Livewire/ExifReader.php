@@ -6,6 +6,7 @@ use App\Domain\Exif\DivideExifValueAction;
 use App\Domain\Exif\GetExifValueForHumansAction;
 use App\Domain\Exif\GetTakenAtFromExifDataAction;
 use App\Domain\Exif\Jobs\DeleteTempLivewireFileJob;
+use App\Domain\Exif\RateLimit\ExifReaderRateLimiter;
 use App\Domain\Exif\ReadExifDataAction;
 use App\Domain\Exif\ShouldDeleteImageForTestAction;
 use Carbon\CarbonImmutable;
@@ -41,6 +42,7 @@ class ExifReader extends Component
         GetTakenAtFromExifDataAction $getTakenAtFromExifData,
         ReadExifDataAction $readExifData,
         ShouldDeleteImageForTestAction $shouldDeleteImageForTest,
+        ExifReaderRateLimiter $rateLimiter,
     ): void {
         if ($shouldDeleteImageForTest->execute()) {
             // Не найден другой способ протестировать попытку чтения удаленного файла
@@ -51,18 +53,22 @@ class ExifReader extends Component
         if (!$this->image->exists()) {
             $this->addError('image', 'Файл уже удален с сервера. Загрузите его, пожалуйста, еще раз.');
 
-            $this->lat = $this->lon = null;
-            $this->data = [];
-            $this->date = null;
-            $this->read = false;
-            $this->size = $this->width = $this->height = 0;
+            $this->resetData();
             $this->image = null;
-            $this->gpsImageDirection = null;
 
             return;
         }
 
         $this->validate();
+
+        if ($rateLimiter->tooManyAttempts()) {
+            $this->resetData();
+            $this->image = null;
+
+            $this->addError('image', __('Достигнут ежечасный лимит чтения файлов. Видимо, большой наплыв желающих воспользоваться сервисом. Продолжить читать файлы можно будет через час.'));
+
+            return;
+        }
 
         try {
             $this->data = $readExifData->execute($this->image->getRealPath());
@@ -100,12 +106,7 @@ class ExifReader extends Component
 
     public function updatedImage()
     {
-        $this->lat = $this->lon = null;
-        $this->data = [];
-        $this->date = null;
-        $this->read = false;
-        $this->size = $this->width = $this->height = 0;
-        $this->gpsImageDirection = null;
+        $this->resetData();
 
         dispatch(new DeleteTempLivewireFileJob($this->image->getFilename()));
     }
@@ -113,5 +114,15 @@ class ExifReader extends Component
     public function valueForHumans(string $key, int|array|string|null $value): string
     {
         return app(GetExifValueForHumansAction::class)->execute($key, $value);
+    }
+
+    private function resetData(): void
+    {
+        $this->lat = $this->lon = null;
+        $this->data = [];
+        $this->date = null;
+        $this->read = false;
+        $this->size = $this->width = $this->height = 0;
+        $this->gpsImageDirection = null;
     }
 }

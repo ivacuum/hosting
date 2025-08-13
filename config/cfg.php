@@ -22,6 +22,9 @@ return [
     'cron_output' => env('CRON_OUTPUT', '/dev/null'),
     'gm_bin' => env('GM_BIN', '/usr/bin/env gm convert'),
     'limits' => [
+        'exif-reader' => [
+            'per_hour' => 100,
+        ],
         'issue' => [
             'ip' => 100,
             'user' => 50,
