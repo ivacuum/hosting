@@ -3,6 +3,8 @@
 namespace App;
 
 use App\Domain\DcppHubStatus;
+use App\Observers\DcppHubObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -19,6 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @mixin \Eloquent
  */
+#[ObservedBy(DcppHubObserver::class)]
 class DcppHub extends Model
 {
     protected $attributes = [
