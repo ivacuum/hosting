@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Domain\SocialMedia\Models\SocialMediaPost;
 use App\Domain\SocialMedia\SocialMediaPostStatus;
+use Illuminate\Support\Str;
 
 class SocialMediaPostObserver
 {
@@ -11,6 +12,7 @@ class SocialMediaPostObserver
     {
         $this->ensureStatusTransitionIsCorrect($post);
         $this->ensureDatesAreSet($post);
+        $this->maintainConsistency($post);
     }
 
     private function ensureDatesAreSet(SocialMediaPost $post): void
@@ -47,5 +49,10 @@ class SocialMediaPostObserver
             SocialMediaPostStatus::Published => throw new \DomainException('`published` is the final state of the post.'),
             SocialMediaPostStatus::Excluded => throw new \DomainException('`excluded` is the final state of the post.'),
         };
+    }
+
+    private function maintainConsistency(SocialMediaPost $post): void
+    {
+        $post->caption = Str::trim($post->caption);
     }
 }
