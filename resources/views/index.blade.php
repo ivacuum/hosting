@@ -1,4 +1,9 @@
-<?php /** @var App\Trip $trip */ ?>
+<?php
+/**
+ * @var App\Trip $trip
+ * @var \App\Domain\Game\Models\Game $game
+ */
+?>
 
 @extends('base')
 
@@ -158,6 +163,28 @@
             <div class="leading-tight mt-1 text-xs md:text-2sm">{{ $trip->metaDescription() }}</div>
           @endif
         </div>
+      </a>
+    </div>
+  @endforeach
+</div>
+
+<h3 class="font-semibold text-2xl mb-2 mt-12">
+  <a class="link" href="@lng/games">
+    @ru Игры @en Games @endru
+  </a>
+</h3>
+@ru
+  <p>Мысли и скриншоты о попробованных и пройденных играх.</p>
+@en
+  <p>Thoughts and screenshots about games I've tried or beaten.</p>
+@endru
+
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 mb-8">
+  @foreach($games as $game)
+    <div>
+      <a class="screenshot-link link-parent" href="@lng/games/{{ $game->slug }}">
+        <img class="block screenshot aspect-2/3" src="{{ $game->libraryImage() }}" alt="" loading="lazy">
+        <div class="mt-1 link">{{ $game->title }}</div>
       </a>
     </div>
   @endforeach
