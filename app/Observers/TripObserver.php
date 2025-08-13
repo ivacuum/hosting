@@ -5,6 +5,7 @@ namespace App\Observers;
 use App\Domain\PhotoStatus;
 use App\Trip;
 use App\Utilities\CacheHelper;
+use Illuminate\Support\Str;
 
 class TripObserver
 {
@@ -27,6 +28,11 @@ class TripObserver
         $this->toggleTripPhotosStatus($trip);
 
         $this->cache->forgetTrips();
+    }
+
+    public function saving(Trip $trip)
+    {
+        $this->maintainConsistency($trip);
     }
 
     public function updated(Trip $trip)
@@ -61,5 +67,18 @@ class TripObserver
             $photo->newSlugPrefix($trip->slug);
             $photo->save();
         }
+    }
+
+    private function maintainConsistency(Trip $trip)
+    {
+        $trip->slug = Str::trim($trip->slug);
+        $trip->markdown = Str::trim($trip->markdown);
+        $trip->title_en = Str::trim($trip->title_en);
+        $trip->title_ru = Str::trim($trip->title_ru);
+        $trip->meta_image = Str::trim($trip->meta_image);
+        $trip->meta_title_en = Str::trim($trip->meta_title_en);
+        $trip->meta_title_ru = Str::trim($trip->meta_title_ru);
+        $trip->meta_description_en = Str::trim($trip->meta_description_en);
+        $trip->meta_description_ru = Str::trim($trip->meta_description_ru);
     }
 }
