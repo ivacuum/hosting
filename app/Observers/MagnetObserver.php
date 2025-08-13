@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Magnet;
+use Illuminate\Support\Str;
 
 class MagnetObserver
 {
@@ -23,5 +24,16 @@ class MagnetObserver
         if ($magnet->isDirty('title') && str_starts_with($magnet->title, '[ATV')) {
             $magnet->title = preg_replace('/^\[ATV ?3\] /', '', $magnet->title);
         }
+
+        $this->maintainConsistency($magnet);
+    }
+
+    private function maintainConsistency(Magnet $magnet): void
+    {
+        $magnet->html = Str::trim($magnet->html);
+        $magnet->title = Str::trim($magnet->title);
+        $magnet->announcer = Str::trim($magnet->announcer);
+        $magnet->info_hash = Str::trim($magnet->info_hash);
+        $magnet->related_query = Str::trim($magnet->related_query);
     }
 }
