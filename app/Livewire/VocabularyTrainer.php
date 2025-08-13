@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Vocabulary;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class VocabularyTrainer extends Component
@@ -27,7 +28,7 @@ class VocabularyTrainer extends Component
     {
         $this->openSettings = false;
 
-        $answer = trim(mb_strtolower($this->answer));
+        $answer = Str::trim(mb_strtolower($this->answer));
 
         if (in_array($answer, $this->acceptedAnswers())) {
             match ($answer) {

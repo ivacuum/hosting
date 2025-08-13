@@ -9,6 +9,7 @@ use App\Domain\Korean\HangulWhatToTrain;
 use App\Domain\Locale;
 use App\Livewire\WithLocale;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class HangulTrainer extends Component
@@ -27,7 +28,7 @@ class HangulTrainer extends Component
 
     public function check()
     {
-        $answer = trim(mb_strtolower($this->answer));
+        $answer = Str::trim(mb_strtolower($this->answer));
 
         if (in_array($answer, $this->acceptedAnswers())) {
             if ($answer === $this->romanizeJamo()) {

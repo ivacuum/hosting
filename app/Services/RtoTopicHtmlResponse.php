@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Str;
 use Symfony\Component\DomCrawler\Crawler;
 
 class RtoTopicHtmlResponse
@@ -28,7 +29,7 @@ class RtoTopicHtmlResponse
 
         $crawler = new Crawler($body);
 
-        return trim($crawler->filter('.post_body')->html());
+        return Str::trim($crawler->filter('.post_body')->html());
     }
 
     private function parseMagnetLink(string $html): string

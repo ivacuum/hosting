@@ -6,6 +6,7 @@ use App\Action\GetNumberLocalesAction;
 use App\Action\HiraganizeJapaneseNumberAction;
 use App\Domain\LivewireEvent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
@@ -74,7 +75,7 @@ class NumberTrainer extends Component
 
     public function check()
     {
-        $answer = trim(mb_strtolower($this->answer));
+        $answer = Str::trim(mb_strtolower($this->answer));
 
         if (in_array($answer, $this->acceptedAnswers())) {
             match ($this->guessingSpellOut) {
