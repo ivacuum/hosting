@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services;
+namespace App\Domain\Japanese\Action;
 
-class HiraganaRomanizer
+class RomanizeHiraganaAction
 {
-    public const array DICTIONARY = [
+    private const array DICTIONARY = [
         'あ' => 'a',
         'か' => 'ka',
         'さ' => 'sa',
@@ -139,7 +139,7 @@ class HiraganaRomanizer
         'っ' => 't', // xtsu
     ];
 
-    public function romanize(string $hiragana): string
+    public function execute(string $hiragana): string
     {
         $length = mb_strlen($hiragana);
         $result = '';

@@ -3,9 +3,9 @@
 namespace App;
 
 use App\Cast\VocabularyAudioCast;
+use App\Domain\Japanese\Action\RomanizeHiraganaAction;
 use App\Domain\VocabularyAudio;
 use App\Observers\VocabularyObserver;
-use App\Services\HiraganaRomanizer;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 
@@ -62,7 +62,8 @@ class Vocabulary extends Model
 
     public function toRomaji(): string
     {
-        return (new HiraganaRomanizer)->romanize($this->firstKana());
+        return app(RomanizeHiraganaAction::class)
+            ->execute($this->firstKana());
     }
 
     public function www(): string
