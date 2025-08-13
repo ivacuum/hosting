@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Tag;
+use Illuminate\Support\Str;
 
 class TagObserver
 {
@@ -13,5 +14,16 @@ class TagObserver
                 $photo->tags()->detach($tag->id);
             }
         });
+    }
+
+    public function saving(Tag $tag)
+    {
+        $this->maintainConsistency($tag);
+    }
+
+    private function maintainConsistency(Tag $tag): void
+    {
+        $tag->title_en = Str::trim($tag->title_en);
+        $tag->title_ru = Str::trim($tag->title_ru);
     }
 }
