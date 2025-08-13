@@ -12,6 +12,8 @@ enum CacheKey: string
     case CountriesById = 'countries.id.v1';
     case CountriesBySlug = 'countries.slug.v1';
 
+    case GamesFinishedById = 'games.finished.id';
+
     case IcuLocales = 'icu.locales';
 
     case MagnetStatsByCategories = 'magnets.stats.by-categories';
@@ -48,6 +50,7 @@ enum CacheKey: string
 
             self::IcuLocales => CarbonInterval::day(),
 
+            self::GamesFinishedById,
             self::MyVisibleGigs,
             self::MyVisibleTrips,
             self::TripsPublishedWithCover => CarbonInterval::week(),

@@ -3,10 +3,23 @@
 namespace App\Observers;
 
 use App\Domain\Game\Models\Game;
+use App\Utilities\CacheHelper;
 use Illuminate\Support\Str;
 
 class GameObserver
 {
+    public function __construct(private CacheHelper $cache) {}
+
+    public function deleted()
+    {
+        $this->cache->forgetGames();
+    }
+
+    public function saved()
+    {
+        $this->cache->forgetGames();
+    }
+
     public function saving(Game $game)
     {
         $this->maintainConsistency($game);

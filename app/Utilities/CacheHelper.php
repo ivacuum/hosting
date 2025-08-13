@@ -25,6 +25,13 @@ class CacheHelper
         ]);
     }
 
+    public function forgetGames()
+    {
+        $this->cache->deleteMultiple([
+            CacheKey::GamesFinishedById->value,
+        ]);
+    }
+
     public function forgetGigs()
     {
         $this->cache->deleteMultiple([
