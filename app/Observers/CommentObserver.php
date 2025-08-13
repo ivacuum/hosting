@@ -6,6 +6,7 @@ use App\Comment;
 use App\Domain\CommentStatus;
 use App\Events\CommentPublished;
 use App\Mail\CommentConfirmMail;
+use Illuminate\Support\Str;
 
 class CommentObserver
 {
@@ -19,6 +20,15 @@ class CommentObserver
         event(new \App\Events\Stats\CommentAdded);
     }
 
+    public function saved(Comment $comment)
+    {
+        if ($comment->isDirty('status')) {
+            if ($this->wasPending($comment) && $comment->status->isPublished()) {
+                event(new CommentPublished($comment));
+            }
+        }
+    }
+
     public function saving(Comment $comment)
     {
         if ($comment->isDirty('status')) {
@@ -29,15 +39,13 @@ class CommentObserver
                 $comment->created_at = now();
             }
         }
+
+        $this->maintainConsistency($comment);
     }
 
-    public function saved(Comment $comment)
+    private function maintainConsistency(Comment $comment): void
     {
-        if ($comment->isDirty('status')) {
-            if ($this->wasPending($comment) && $comment->status->isPublished()) {
-                event(new CommentPublished($comment));
-            }
-        }
+        $comment->html = Str::trim($comment->html);
     }
 
     private function wasPending(Comment $comment): bool
