@@ -4,6 +4,8 @@ namespace App\Domain\Game\Models;
 
 use App\Domain\Steam\SteamCountryCode;
 use App\Domain\Steam\SteamLanguage;
+use App\Observers\GameObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,6 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @mixin \Eloquent
  */
+#[ObservedBy(GameObserver::class)]
 class Game extends Model
 {
     // Methods
@@ -54,11 +57,6 @@ class Game extends Model
         return "https://store.steampowered.com/app/{$this->steam_id}";
     }
 
-    protected static function booted()
-    {
-        self::saving(self::maintainConsistency(...));
-    }
-
     #[\Override]
     protected function casts(): array
     {
@@ -73,12 +71,5 @@ class Game extends Model
         return Attribute::make(
             get: fn () => $this->{static::shortDescriptionField()},
         );
-    }
-
-    private static function maintainConsistency(self $game): void
-    {
-        if ($game->finished_at?->isBefore($game->released_at)) {
-            throw new \DomainException('Game can only be finished after the release date.');
-        }
     }
 }
