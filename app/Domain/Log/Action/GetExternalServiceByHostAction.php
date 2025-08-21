@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Action;
+namespace App\Domain\Log\Action;
 
-use App\Domain\ExternalService;
+use App\Domain\Log\ExternalService;
 
 class GetExternalServiceByHostAction
 {

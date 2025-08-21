@@ -2,7 +2,7 @@
 
 namespace App\Domain\Log\Models;
 
-use App\Domain\ExternalService;
+use App\Domain\Log\ExternalService;
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\MassPrunable;
 use Illuminate\Database\Eloquent\Model;

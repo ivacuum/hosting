@@ -2,7 +2,7 @@
 
 namespace App\Domain\Log\Action;
 
-use App\Domain\ExternalService;
+use App\Domain\Log\ExternalService;
 use App\Domain\Log\Models\ExternalHttpRequest;
 
 class FilterOutCredentialsAction

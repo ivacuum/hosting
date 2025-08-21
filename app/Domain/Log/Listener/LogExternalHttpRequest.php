@@ -2,8 +2,8 @@
 
 namespace App\Domain\Log\Listener;
 
-use App\Action\GetExternalServiceByHostAction;
 use App\Domain\Log\Action\FilterOutCredentialsAction;
+use App\Domain\Log\Action\GetExternalServiceByHostAction;
 use App\Domain\Log\Models\ExternalHttpRequest;
 use Illuminate\Http\Client\Events\ResponseReceived;
 use Illuminate\Http\Client\Response;
