@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Jobs\FetchTorrentMetaJob;
-use App\Magnet;
-use App\Scope\MagnetPublishedScope;
+use App\Domain\Magnet\Job\FetchTorrentMetaJob;
+use App\Domain\Magnet\Models\Magnet;
+use App\Domain\Magnet\Scope\MagnetPublishedScope;
 use Illuminate\Support\Collection;
 use Ivacuum\Generic\Commands\Command;
 use Symfony\Component\Console\Attribute\AsCommand;

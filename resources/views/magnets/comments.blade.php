@@ -8,20 +8,20 @@
   <a id="comment-{{ $comment->id }}"></a>
   <div class="flex py-4 w-full border-b border-grey-200 dark:border-slate-700">
     <aside class="mr-4 md:mr-6">
-        @if ($comment->user)
-          <div class="comment-avatar-size mt-1">
-            <a href="{{ $comment->user->www() }}">
-              @if ($comment->user->avatar)
-                <img class="comment-avatar-size rounded-full" src="{{ $comment->user->avatarUrl() }}" alt="">
-              @else
-                @include('tpl.svg-avatar', [
-                  'bg' => ViewHelper::avatarBg($comment->user_id),
-                  'text' => $comment->user->avatarName(),
-                ])
-              @endif
-            </a>
-          </div>
-        @endif
+      @if ($comment->user)
+        <div class="comment-avatar-size mt-1">
+          <a href="{{ $comment->user->www() }}">
+            @if ($comment->user->avatar)
+              <img class="comment-avatar-size rounded-full" src="{{ $comment->user->avatarUrl() }}" alt="">
+            @else
+              @include('tpl.svg-avatar', [
+                'bg' => ViewHelper::avatarBg($comment->user_id),
+                'text' => $comment->user->avatarName(),
+              ])
+            @endif
+          </a>
+        </div>
+      @endif
     </aside>
     <div class="break-words max-w-[700px] w-full">
       <div>
@@ -31,7 +31,7 @@
           <em>deleted user</em>
         @endif
         <span class="mx-2 text-gray-500">&middot;</span>
-        @if ($comment->rel?->status === App\Domain\MagnetStatus::Published)
+        @if ($comment->rel?->status === App\Domain\Magnet\MagnetStatus::Published)
           <a href="{{ $comment->rel->www() }}#comment-{{ $comment->id }}">{{ Str::limit($comment->rel->title, 50) }}</a>
         @else
           <em class="text-gray-500">раздача удалена</em>

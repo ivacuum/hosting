@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Domain\Magnet\Models\Magnet;
 use App\Domain\NotificationDeliveryMethod;
 use App\Domain\SocialMedia\Models\SocialMediaToken;
 use App\Domain\UserStatus;

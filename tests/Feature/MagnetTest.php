@@ -2,16 +2,16 @@
 
 namespace Tests\Feature;
 
-use App\Action\FindRelatedMagnetsAction;
 use App\Domain\Config;
-use App\Domain\MagnetCategory;
-use App\Domain\RtoTopicStatus;
+use App\Domain\Magnet\Action\FindRelatedMagnetsAction;
+use App\Domain\Magnet\Factory\MagnetFactory;
+use App\Domain\Magnet\MagnetCategory;
+use App\Domain\Magnet\Models\Magnet;
+use App\Domain\Magnet\Notification\AnonymousMagnetNotification;
+use App\Domain\Rto\RtoTopicStatus;
 use App\Factory\CommentFactory;
-use App\Factory\MagnetFactory;
 use App\Factory\UserFactory;
 use App\Livewire\MagnetAddForm;
-use App\Magnet;
-use App\Notifications\AnonymousMagnetNotification;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\Client\ConnectionException;

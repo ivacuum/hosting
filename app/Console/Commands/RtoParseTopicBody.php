@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Services\Rto;
+use App\Domain\Rto\Rto;
 use Ivacuum\Generic\Commands\Command;
 use Symfony\Component\Console\Attribute\AsCommand;
 

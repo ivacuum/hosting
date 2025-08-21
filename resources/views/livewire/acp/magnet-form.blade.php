@@ -1,7 +1,7 @@
 <?php /** @var \App\Livewire\Acp\MagnetForm $this */ ?>
 
 <form class="grid grid-cols-1 gap-6 md:gap-4" wire:submit="submit">
-  <?php $form = LivewireForm::model(App\Magnet::class); ?>
+  <?php $form = LivewireForm::model(App\Domain\Magnet\Models\Magnet::class); ?>
 
   <div class="md:grid md:grid-cols-(--form-two-columns) md:gap-4">
     <label class="font-bold md:leading-6 md:pt-1.5 input-required">Рубрика</label>
@@ -26,7 +26,7 @@
   </div>
 
   {{ $form->text('rtoId')->required() }}
-  {{ $form->radio('status')->required()->values(App\Domain\MagnetStatus::labels()) }}
+  {{ $form->radio('status')->required()->values(App\Domain\Magnet\MagnetStatus::labels()) }}
   {{ $form->text('relatedQuery') }}
 
   <div class="sticky-bottom-buttons">

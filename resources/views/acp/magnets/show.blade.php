@@ -1,4 +1,4 @@
-<?php /** @var \App\Magnet $model */ ?>
+<?php /** @var \App\Domain\Magnet\Models\Magnet $model */ ?>
 
 @extends('acp.show')
 @include('livewire')

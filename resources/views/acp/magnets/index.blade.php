@@ -8,8 +8,8 @@
   'values' => [
     'Все' => null,
     '---' => null,
-    'Скрытые' => App\Domain\MagnetStatus::Hidden->value,
-    'Удаленные' => App\Domain\MagnetStatus::Deleted->value,
+    'Скрытые' => App\Domain\Magnet\MagnetStatus::Hidden->value,
+    'Удаленные' => App\Domain\Magnet\MagnetStatus::Deleted->value,
   ]
 ])
 @endsection
@@ -49,11 +49,11 @@
         {{ ViewHelper::number($model->clicks) ?: '' }}
       </td>
       <td>
-        @if ($model->status === App\Domain\MagnetStatus::Hidden)
+        @if ($model->status === App\Domain\Magnet\MagnetStatus::Hidden)
           <span class="tooltipped tooltipped-n" aria-label="Раздача скрыта">
             @svg (eye-slash)
           </span>
-        @elseif ($model->status === App\Domain\MagnetStatus::Deleted)
+        @elseif ($model->status === App\Domain\Magnet\MagnetStatus::Deleted)
           <span class="tooltipped tooltipped-n" aria-label="Раздача удалена">
             @svg (trash-o)
           </span>

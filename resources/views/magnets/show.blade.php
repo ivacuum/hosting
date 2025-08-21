@@ -1,6 +1,6 @@
 <?php
 /**
- * @var \App\Magnet $magnet
+ * @var \App\Domain\Magnet\Models\Magnet $magnet
  */
 ?>
 
@@ -70,7 +70,7 @@
     @lang('Связанные раздачи')
     <span class="text-base text-gray-500">{{ $relatedTorrents->count() }}</span>
   </div>
-  <?php /** @var \App\Magnet $row */ ?>
+  <?php /** @var \App\Domain\Magnet\Models\Magnet $row */ ?>
   @foreach ($relatedTorrents as $row)
     <div class="flex flex-wrap md:flex-nowrap justify-center md:justify-start magnets-list-container js-magnets-views-observer" data-id="{{ $row->id }}">
       <div class="shrink-0 w-8 magnet-icon order-1 md:order-none mr-1 md:text-2xl" title="{{ $row->category_id->title() }}">

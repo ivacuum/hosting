@@ -2,10 +2,10 @@
 
 namespace App\Livewire\Acp;
 
-use App\Domain\MagnetCategory;
-use App\Domain\MagnetStatus;
+use App\Domain\Magnet\MagnetCategory;
+use App\Domain\Magnet\MagnetStatus;
+use App\Domain\Magnet\Models\Magnet;
 use App\Livewire\WithGoto;
-use App\Magnet;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Locked;

@@ -2,8 +2,8 @@
 
 namespace App\Scope;
 
+use App\Domain\Magnet\Models\Magnet;
 use App\Issue;
-use App\Magnet;
 use App\News;
 use App\Trip;
 use Illuminate\Database\Eloquent\Builder;

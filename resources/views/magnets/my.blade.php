@@ -15,7 +15,7 @@
       </tr>
     </thead>
     <tbody>
-      <?php /** @var \App\Magnet $magnet */ ?>
+      <?php /** @var \App\Domain\Magnet\Models\Magnet $magnet */ ?>
       @foreach ($magnets as $magnet)
         <tr>
           <td><a class="visited" href="{{ $magnet->www() }}">{{ $magnet->shortTitle() }}</a></td>

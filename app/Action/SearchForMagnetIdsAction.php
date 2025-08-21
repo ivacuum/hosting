@@ -2,8 +2,8 @@
 
 namespace App\Action;
 
-use App\Magnet;
-use App\SearchSynonym;
+use App\Domain\Magnet\Models\Magnet;
+use App\Domain\Magnet\SearchSynonym;
 use Foolz\SphinxQL\SphinxQL;
 use Illuminate\Container\Attributes\Config;
 use Laravel\Scout\Builder;

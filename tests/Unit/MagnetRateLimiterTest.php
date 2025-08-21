@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use App\RateLimit\MagnetRateLimiter;
+use App\Domain\Magnet\RateLimit\MagnetRateLimiter;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 

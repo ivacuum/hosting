@@ -4,10 +4,10 @@ namespace Tests\Livewire;
 
 use App\Domain\CommentStatus;
 use App\Domain\LivewireEvent;
+use App\Domain\Magnet\Factory\MagnetFactory;
 use App\Events\CommentPublished;
 use App\Events\Stats\UserRegisteredAuto;
 use App\Factory\IssueFactory;
-use App\Factory\MagnetFactory;
 use App\Factory\NewsFactory;
 use App\Factory\TripFactory;
 use App\Factory\UserFactory;

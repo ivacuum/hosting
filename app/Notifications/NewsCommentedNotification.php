@@ -4,6 +4,7 @@ namespace App\Notifications;
 
 use App\Comment;
 use App\Domain\Telegram\Action\EscapeMarkdownCharactersAction;
+use App\Domain\Telegram\Channel\TelegramChannel;
 use App\News;
 use App\User;
 use Illuminate\Bus\Queueable;

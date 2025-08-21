@@ -2,12 +2,12 @@
 
 namespace Tests\Job;
 
-use App\Domain\MagnetStatus;
-use App\Domain\RtoTopicStatus;
-use App\Factory\MagnetFactory;
-use App\Jobs\FetchTorrentBodyJob;
-use App\Jobs\FetchTorrentMetaJob;
-use App\Services\RtoTopicData;
+use App\Domain\Magnet\Factory\MagnetFactory;
+use App\Domain\Magnet\Job\FetchTorrentBodyJob;
+use App\Domain\Magnet\Job\FetchTorrentMetaJob;
+use App\Domain\Magnet\MagnetStatus;
+use App\Domain\Rto\RtoTopicData;
+use App\Domain\Rto\RtoTopicStatus;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Ivacuum\Generic\Telegram\TelegramResponse;
 use Tests\TestCase;

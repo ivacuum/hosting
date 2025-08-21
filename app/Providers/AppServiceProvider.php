@@ -40,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
             'Kanji' => App\Domain\Wanikani\Models\Kanji::class,
             'Photo' => App\Photo::class,
             'Artist' => App\Artist::class,
-            'Magnet' => App\Magnet::class,
+            'Magnet' => App\Domain\Magnet\Models\Magnet::class,
             'Comment' => App\Comment::class,
             'Country' => App\Country::class,
             'Radical' => App\Domain\Wanikani\Models\Radical::class,

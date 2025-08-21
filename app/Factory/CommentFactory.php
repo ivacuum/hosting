@@ -4,8 +4,9 @@ namespace App\Factory;
 
 use App\Comment;
 use App\Domain\CommentStatus;
+use App\Domain\Magnet\Factory\MagnetFactory;
+use App\Domain\Magnet\Models\Magnet;
 use App\Issue;
-use App\Magnet;
 use App\News;
 use App\Trip;
 

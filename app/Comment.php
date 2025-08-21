@@ -4,6 +4,7 @@ namespace App;
 
 use App\Action\FormatCommentDateAction;
 use App\Domain\CommentStatus;
+use App\Domain\Magnet\Models\Magnet;
 use App\Observers\CommentObserver;
 use App\Scope\CommentRelationScope;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;

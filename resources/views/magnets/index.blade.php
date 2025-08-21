@@ -65,7 +65,7 @@
             Искать в описаниях раздач
           </a>
         @endif
-        <a class="btn btn-primary" href="{{ App\Magnet::externalSearchLink($q) }}">
+        <a class="btn btn-primary" href="{{ App\Domain\Magnet\Models\Magnet::externalSearchLink($q) }}">
           Искать на рутрекере
           @svg (external-link)
         </a>
@@ -73,7 +73,7 @@
     @endif
     <?php $lastDate = null ?>
     @if (count($magnets))
-      <?php /** @var App\Magnet $magnet */ ?>
+      <?php /** @var App\Domain\Magnet\Models\Magnet $magnet */ ?>
       @foreach ($magnets as $magnet)
         @if (null === $lastDate || !$magnet->registered_at->isSameDay($lastDate))
           <div class="font-medium mb-2 {{ $loop->first ? 'mt-0' : 'mt-6' }}">{{ $magnet->fullDate() }}</div>
@@ -174,7 +174,7 @@
 
       <details class="mt-4">
         <summary>Не нашли искомую раздачу? Оставьте нам запрос</summary>
-        <div class="mt-2 mb-6">Мы можем помочь с поиском. Расскажите как можно подробнее что вы ищете. Мы постараемся добавить раздачу в течение суток, однако вы можете самостоятельно продолжить поиск по <a class="link" href="{{ App\Magnet::externalSearchLink($q) }}">рутрекеру</a> и затем <a class="link" href="/magnets/add">поделиться находкой</a> с остальными пользователями.</div>
+        <div class="mt-2 mb-6">Мы можем помочь с поиском. Расскажите как можно подробнее что вы ищете. Мы постараемся добавить раздачу в течение суток, однако вы можете самостоятельно продолжить поиск по <a class="link" href="{{ App\Domain\Magnet\Models\Magnet::externalSearchLink($q) }}">рутрекеру</a> и затем <a class="link" href="/magnets/add">поделиться находкой</a> с остальными пользователями.</div>
 
         <form action="@lng/magnets/request" method="post">
           {{ ViewHelper::inputHiddenMail() }}

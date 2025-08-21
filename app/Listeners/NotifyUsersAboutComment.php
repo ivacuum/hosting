@@ -2,12 +2,12 @@
 
 namespace App\Listeners;
 
+use App\Domain\Magnet\Models\Magnet;
+use App\Domain\Magnet\Notification\MagnetCommentedNotification;
 use App\Events\CommentPublished;
 use App\Issue;
-use App\Magnet;
 use App\News;
 use App\Notifications\IssueCommentedNotification;
-use App\Notifications\MagnetCommentedNotification;
 use App\Notifications\NewsCommentedNotification;
 use App\Notifications\TripCommentedNotification;
 use App\Trip;

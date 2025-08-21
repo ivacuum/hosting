@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Domain\MagnetStatus;
-use App\Factory\MagnetFactory;
+use App\Domain\Magnet\Factory\MagnetFactory;
+use App\Domain\Magnet\MagnetStatus;
 use App\Livewire\Acp\MagnetForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;

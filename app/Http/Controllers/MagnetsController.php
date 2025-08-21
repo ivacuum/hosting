@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Action\CountMagnetsByCategoriesAction;
 use App\Action\SearchForMagnetIdsAction;
 use App\Comment;
 use App\Domain\Locale;
-use App\Domain\MagnetStatus;
+use App\Domain\Magnet\Action\CountMagnetsByCategoriesAction;
+use App\Domain\Magnet\MagnetStatus;
+use App\Domain\Magnet\Models\Magnet;
+use App\Domain\Magnet\Scope\MagnetFilterByCategoryScope;
+use App\Domain\Magnet\Scope\MagnetPublishedScope;
 use App\Http\Requests\MagnetsIndexForm;
-use App\Magnet;
 use App\Scope\CommentPublishedScope;
 use App\Scope\CommentRelationScope;
-use App\Scope\MagnetFilterByCategoryScope;
-use App\Scope\MagnetPublishedScope;
 use Illuminate\Database\Eloquent\Builder;
 
 class MagnetsController

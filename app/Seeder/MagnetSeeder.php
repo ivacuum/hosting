@@ -2,9 +2,9 @@
 
 namespace App\Seeder;
 
-use App\Domain\MagnetCategory;
+use App\Domain\Magnet\Factory\MagnetFactory;
+use App\Domain\Magnet\MagnetCategory;
 use App\Factory\CommentFactory;
-use App\Factory\MagnetFactory;
 use App\Factory\UserFactory;
 use Illuminate\Database\Seeder;
 

@@ -2,8 +2,8 @@
 
 namespace Tests\Job;
 
-use App\Factory\MagnetFactory;
-use App\Jobs\FetchTorrentBodyJob;
+use App\Domain\Magnet\Factory\MagnetFactory;
+use App\Domain\Magnet\Job\FetchTorrentBodyJob;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 

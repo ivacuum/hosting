@@ -2,8 +2,8 @@
 
 namespace Tests\Unit;
 
-use App\Action\FormatMagnetDateAction;
 use App\Domain\Locale;
+use App\Domain\Magnet\Action\FormatMagnetDateAction;
 use Carbon\Carbon;
 use Tests\TestCase;
 

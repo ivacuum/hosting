@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Domain\Magnet\Models\Magnet;
 use App\Http\Requests\MagnetRequestReleaseForm;
-use App\Magnet;
 use Ivacuum\Generic\Services\Telegram;
 
 class MagnetRequestReleaseController

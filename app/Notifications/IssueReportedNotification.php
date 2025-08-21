@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use App\Domain\Telegram\Action\EscapeMarkdownCharactersAction;
+use App\Domain\Telegram\Channel\TelegramAdminChannel;
 use App\Issue;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;

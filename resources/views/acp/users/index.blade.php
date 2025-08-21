@@ -84,7 +84,7 @@
         </a>
       </td>
       <td class="md:text-right whitespace-nowrap">
-        <a href="{{ Acp::index(new App\Magnet, $model) }}">
+        <a href="{{ Acp::index(new App\Domain\Magnet\Models\Magnet, $model) }}">
           {{ ViewHelper::number($model->magnets_count) ?: '' }}
         </a>
       </td>
