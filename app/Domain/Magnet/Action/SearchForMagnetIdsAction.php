@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Action;
+namespace App\Domain\Magnet\Action;
 
 use App\Domain\Magnet\Models\Magnet;
 use App\Domain\Magnet\SearchSynonym;

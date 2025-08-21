@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use App\Action\GetNumberLocalesAction;
-use App\Action\HiraganizeJapaneseNumberAction;
+use App\Domain\Japanese\Action\HiraganizeJapaneseNumberAction;
 use App\Domain\LivewireEvent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;

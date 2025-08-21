@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Action;
+namespace App\Domain\Japanese\Action;
 
 class HiraganizeJapaneseNumberAction
 {

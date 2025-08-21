@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use App\Action\HiraganizeJapaneseNumberAction;
+use App\Domain\Japanese\Action\HiraganizeJapaneseNumberAction;
 use Tests\TestCase;
 
 class HiraganizeJapaneseNumberActionTest extends TestCase

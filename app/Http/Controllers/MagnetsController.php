@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Action\SearchForMagnetIdsAction;
 use App\Comment;
 use App\Domain\Locale;
 use App\Domain\Magnet\Action\CountMagnetsByCategoriesAction;
+use App\Domain\Magnet\Action\SearchForMagnetIdsAction;
 use App\Domain\Magnet\MagnetStatus;
 use App\Domain\Magnet\Models\Magnet;
 use App\Domain\Magnet\Scope\MagnetFilterByCategoryScope;
