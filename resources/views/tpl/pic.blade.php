@@ -1,8 +1,9 @@
 <?php
 /**
  * @var bool $isCrawler
- * @var \App\Trip $trip
+ * @var \App\Domain\Life\Models\Trip $trip
  */
+
 ?>
 <div class="-mt-2 mb-6 -mx-4 sm:mx-0 js-shortcuts-item" id="{{ $pic }}">
   <div class="max-w-[1000px] mx-auto text-center">

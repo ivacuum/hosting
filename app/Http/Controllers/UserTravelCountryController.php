@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Country;
-use App\Scope\TripVisibleScope;
-use App\Trip;
+use App\Domain\Life\Models\Country;
+use App\Domain\Life\Models\Trip;
+use App\Domain\Life\Scope\TripVisibleScope;
 use App\User;
 
 class UserTravelCountryController extends UserTravelController

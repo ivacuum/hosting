@@ -4,8 +4,8 @@ namespace Tests\Unit;
 
 use App\Action\HandleMetricPayloadAction;
 use App\Domain\ImageViewsAggregator;
+use App\Domain\Life\PhotoViewsAggregator;
 use App\Domain\MetricsAggregator;
-use App\Domain\PhotoViewsAggregator;
 use App\Domain\ViewsAggregator;
 use App\Events\Stats\GalleryImageViewed;
 use App\Events\Stats\Photo1000Viewed;

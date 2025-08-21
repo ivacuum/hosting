@@ -2,9 +2,9 @@
 
 namespace App\Livewire\Acp;
 
-use App\Artist;
+use App\Domain\Life\Models\Artist;
+use App\Domain\Life\Rule\LifeSlug;
 use App\Livewire\WithGoto;
-use App\Rules\LifeSlug;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;

@@ -8,7 +8,7 @@ trait HasTripsMetaDescription
 {
     public function metaDescription(Collection $trips): string
     {
-        /** @var Collection|\App\Trip[] $trips */
+        /** @var Collection|\App\Domain\Life\Models\Trip[] $trips */
         if (!$totalTrips = $trips->flatten()->count()) {
             return '';
         }

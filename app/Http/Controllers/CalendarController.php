@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Domain\TripStatsCalculator;
+use App\Domain\Life\TripStatsCalculator;
 use App\Http\Requests\LifeCalendarForm;
 
 class CalendarController

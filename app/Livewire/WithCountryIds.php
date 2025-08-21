@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Action\ListCountriesForInputSelectAction;
+use App\Domain\Life\Action\ListCountriesForInputSelectAction;
 use Illuminate\Support\Collection;
 use Livewire\Attributes\Computed;
 

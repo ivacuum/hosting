@@ -1,4 +1,4 @@
-<?php /** @var App\City $city */ ?>
+<?php /** @var \App\Domain\Life\Models\City $city */ ?>
 
 @extends('user-travel.base', [
   'metaTitle' => $city->title,

@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Factory\PhotoFactory;
+use App\Domain\Life\Factory\PhotoFactory;
 use App\Livewire\Acp\PhotoEditForm;
 use App\Livewire\Acp\PhotoUploadForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;

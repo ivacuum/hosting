@@ -2,11 +2,11 @@
 
 namespace Tests\Unit;
 
-use App\Factory\ArtistFactory;
-use App\Factory\CityFactory;
-use App\Factory\GigFactory;
-use App\Factory\TripFactory;
-use App\Rules\LifeSlug;
+use App\Domain\Life\Factory\ArtistFactory;
+use App\Domain\Life\Factory\CityFactory;
+use App\Domain\Life\Factory\GigFactory;
+use App\Domain\Life\Factory\TripFactory;
+use App\Domain\Life\Rule\LifeSlug;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 

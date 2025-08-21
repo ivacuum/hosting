@@ -1,4 +1,4 @@
-<?php /** @var \App\City $model */ ?>
+<?php /** @var \App\Domain\Life\Models\City $model */ ?>
 
 @extends('acp.layout')
 

@@ -8,14 +8,14 @@
   {{ Form::text('title_en')->required() }}
 @endif
 
-{{ Form::select('city_id')->required()->values(resolve(App\Action\ListCitiesForInputSelectAction::class)->execute()) }}
+{{ Form::select('city_id')->required()->values(resolve(\App\Domain\Life\Action\ListCitiesForInputSelectAction::class)->execute()) }}
 
 {{ Form::text('slug')->required()->placeholder('kaliningrad.2015') }}
 
 {{ Form::text('date_start')->required()->default(date('Y-m-d')) }}
 {{ Form::text('date_end')->required()->default(date('Y-m-d')) }}
 
-{{ Form::radio('status')->required()->values(App\Domain\TripStatus::labels()) }}
+{{ Form::radio('status')->required()->values(\App\Domain\Life\TripStatus::labels()) }}
 
 {{ Form::textarea('markdown')->wide() }}
 

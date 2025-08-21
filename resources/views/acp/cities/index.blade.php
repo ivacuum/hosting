@@ -1,4 +1,4 @@
-<?php /** @var \App\City $model */ ?>
+<?php /** @var \App\Domain\Life\Models\City $model */ ?>
 
 @extends('acp.list', [
   'searchForm' => true,
@@ -29,7 +29,7 @@
       <td><a href="{{ $model->www() }}">{{ $model->slug }}</a></td>
       <td class="text-gray-500">{{ $model->iata }}</td>
       <td class="md:text-right whitespace-nowrap">
-        <a href="{{ Acp::index(new App\Trip, $model) }}">
+        <a href="{{ Acp::index(new App\Domain\Life\Models\Trip, $model) }}">
           {{ ViewHelper::number($model->trips_count) ?: '' }}
         </a>
       </td>

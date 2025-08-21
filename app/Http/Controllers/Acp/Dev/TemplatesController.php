@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Acp\Dev;
 
-use App\Action\FindTripTemplatesAction;
 use App\Domain\Config;
-use App\Trip;
+use App\Domain\Life\Action\FindTripTemplatesAction;
+use App\Domain\Life\Models\Trip;
 
 class TemplatesController
 {

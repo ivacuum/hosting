@@ -2,10 +2,10 @@
 
 namespace App\Livewire\Acp;
 
-use App\City;
+use App\Domain\Life\Models\City;
+use App\Domain\Life\Rule\LifeSlug;
 use App\Livewire\WithCountryIds;
 use App\Livewire\WithGoto;
-use App\Rules\LifeSlug;
 use App\Spatial\Point;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Locked;

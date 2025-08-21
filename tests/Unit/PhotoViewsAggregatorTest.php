@@ -2,8 +2,8 @@
 
 namespace Tests\Unit;
 
-use App\Domain\PhotoViewsAggregator;
-use App\Factory\PhotoFactory;
+use App\Domain\Life\Factory\PhotoFactory;
+use App\Domain\Life\PhotoViewsAggregator;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 

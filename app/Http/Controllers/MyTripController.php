@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Action\RedirectAfterUpdateAction;
+use App\Domain\Life\Models\Trip;
 use App\Http\Requests\TripStoreForm;
 use App\Http\Requests\TripUpdateForm;
-use App\Trip;
 use App\Utilities\CityHelper;
 
 class MyTripController

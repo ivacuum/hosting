@@ -1,7 +1,7 @@
 <?php
 /**
- * @var \App\Tag $tag
- * @var \App\Photo[] $photos
+ * @var \App\Domain\Life\Models\Tag $tag
+ * @var \App\Domain\Life\Models\Photo[] $photos
  */
 ?>
 

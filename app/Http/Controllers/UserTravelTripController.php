@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Domain\TripStatus;
+use App\Domain\Life\Models\Trip;
+use App\Domain\Life\Scope\TripNextScope;
+use App\Domain\Life\Scope\TripPreviousScope;
+use App\Domain\Life\Scope\TripVisibleScope;
+use App\Domain\Life\TripStatus;
 use App\Http\Requests\LifeIndexForm;
-use App\Scope\TripNextScope;
-use App\Scope\TripPreviousScope;
-use App\Scope\TripVisibleScope;
-use App\Trip;
 use App\User;
 use Illuminate\Database\Eloquent\Builder;
 

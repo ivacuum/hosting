@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Action\ListCitiesForInputSelectAction;
+use App\Domain\Life\Action\ListCitiesForInputSelectAction;
 use Livewire\Attributes\Computed;
 
 /** @property \Illuminate\Support\Collection $cityIds */

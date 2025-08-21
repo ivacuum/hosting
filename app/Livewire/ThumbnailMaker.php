@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Photo;
+use App\Domain\Life\Models\Photo;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Ivacuum\Generic\Services\ImageConverter;
 use Livewire\Attributes\Validate;

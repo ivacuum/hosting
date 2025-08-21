@@ -3,10 +3,11 @@
 namespace App\Factory;
 
 use App\Comment;
+use App\Domain\Life\Factory\TripFactory;
+use App\Domain\Life\Mail\TripPublishedMail;
+use App\Domain\Life\Models\Trip;
 use App\Domain\Locale;
 use App\Email;
-use App\Mail\TripPublishedMail;
-use App\Trip;
 
 class EmailFactory
 {

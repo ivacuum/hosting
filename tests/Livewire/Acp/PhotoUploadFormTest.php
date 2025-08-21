@@ -2,12 +2,12 @@
 
 namespace Tests\Livewire\Acp;
 
-use App\Factory\GigFactory;
-use App\Factory\PhotoFactory;
-use App\Factory\TripFactory;
+use App\Domain\Life\Factory\GigFactory;
+use App\Domain\Life\Factory\PhotoFactory;
+use App\Domain\Life\Factory\TripFactory;
+use App\Domain\Life\Models\Photo;
 use App\Factory\UserFactory;
 use App\Livewire\Acp\PhotoUploadForm;
-use App\Photo;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
 use Livewire\Features\SupportFileUploads\FileUploadConfiguration;

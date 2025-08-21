@@ -2,10 +2,10 @@
 
 namespace Tests\Feature;
 
+use App\Domain\Life\Factory\PhotoFactory;
 use App\Domain\Telegram\TelegramUpdateCallbackQueryFactory;
 use App\Domain\Telegram\TelegramUpdateFactory;
 use App\Factory\LinkRequestFactory;
-use App\Factory\PhotoFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 

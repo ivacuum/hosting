@@ -2,15 +2,15 @@
 
 namespace App\Console\Commands;
 
-use App\City;
-use App\Country;
-use App\Domain\GigStatus;
-use App\Gig;
+use App\Domain\Life\GigStatus;
+use App\Domain\Life\Models\City;
+use App\Domain\Life\Models\Country;
+use App\Domain\Life\Models\Gig;
+use App\Domain\Life\Models\Trip;
+use App\Domain\Life\Scope\TripOfAdminScope;
+use App\Domain\Life\Scope\TripPublishedScope;
 use App\News;
 use App\Scope\NewsPublishedScope;
-use App\Scope\TripOfAdminScope;
-use App\Scope\TripPublishedScope;
-use App\Trip;
 use Ivacuum\Generic\Commands\SitemapBuild as BaseSitemapBuild;
 
 class SitemapBuild extends BaseSitemapBuild

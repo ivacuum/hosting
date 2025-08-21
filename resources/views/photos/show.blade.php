@@ -1,8 +1,8 @@
 <?php
 /**
- * @var \App\Photo $photo
- * @var \App\Photo $next
- * @var \App\Photo $prev
+ * @var \App\Domain\Life\Models\Photo $photo
+ * @var \App\Domain\Life\Models\Photo $next
+ * @var \App\Domain\Life\Models\Photo $prev
  */
 ?>
 

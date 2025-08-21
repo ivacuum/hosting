@@ -1,0 +1,321 @@
+<?php
+
+namespace App\Domain\Life\Models;
+
+use App\Comment;
+use App\Domain\CommentStatus;
+use App\Domain\Life\Action\FormatTripPeriodAction;
+use App\Domain\Life\Action\FormatTripPeriodWithYearAction;
+use App\Domain\Life\Observer\TripObserver;
+use App\Domain\Life\Policy\TripPolicy;
+use App\Domain\Life\TripStatus;
+use App\Email;
+use App\Traits;
+use App\User;
+use Carbon\CarbonInterface;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use Illuminate\Database\Eloquent\Attributes\UsePolicy;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Model;
+use Ivacuum\Generic\Utilities\TextImagesParser;
+use League\CommonMark\CommonMarkConverter;
+
+/**
+ * @property int $id
+ * @property int $city_id
+ * @property int $user_id
+ * @property string $title_ru
+ * @property string $title_en
+ * @property string $slug
+ * @property \Carbon\CarbonImmutable $date_start
+ * @property \Carbon\CarbonImmutable $date_end
+ * @property TripStatus $status
+ * @property string $markdown
+ * @property string $html
+ * @property string $meta_title_ru
+ * @property string $meta_title_en
+ * @property string $meta_description_ru
+ * @property string $meta_description_en
+ * @property string $meta_image
+ * @property int $views
+ * @property \Carbon\CarbonImmutable $created_at
+ * @property \Carbon\CarbonImmutable $updated_at
+ * @property City $city
+ * @property \Illuminate\Support\Collection<int, Comment> $comments
+ * @property \Illuminate\Support\Collection<int, Comment> $commentsPublished
+ * @property Country $country
+ * @property \Illuminate\Database\Eloquent\Collection<int, Email> $emails
+ * @property \Illuminate\Database\Eloquent\Collection<int, Photo> $photos
+ * @property User $user
+ * @property-read int $comments_count
+ * @property int $photos_count
+ * @property-read string $title
+ * @property-read int $year
+ *
+ * @mixin \Eloquent
+ */
+#[ObservedBy(TripObserver::class)]
+#[UsePolicy(TripPolicy::class)]
+class Trip extends Model
+{
+    use Traits\HasLocalizedTitle;
+
+    public const array COLUMNS_LIST = [
+        'id',
+        'user_id',
+        'city_id',
+        'title_ru',
+        'title_en',
+        'slug',
+        'date_start',
+        'date_end',
+        'status',
+        'views',
+    ];
+
+    protected $attributes = [
+        'html' => '',
+        'status' => TripStatus::Inactive,
+        'markdown' => '',
+        'meta_image' => '',
+        'meta_title_en' => '',
+        'meta_title_ru' => '',
+        'meta_description_en' => '',
+        'meta_description_ru' => '',
+    ];
+
+    // Relations
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'rel');
+    }
+
+    public function commentsPublished()
+    {
+        return $this->comments()->where('status', CommentStatus::Published);
+    }
+
+    public function emails()
+    {
+        return $this->morphMany(Email::class, 'rel');
+    }
+
+    public function photos()
+    {
+        return $this->morphMany(Photo::class, 'rel');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    // Methods
+    public function breadcrumb(): string
+    {
+        return $this->title;
+    }
+
+    public function canBeCommented(): bool
+    {
+        return $this->status === TripStatus::Published;
+    }
+
+    public function cityTimeline()
+    {
+        return $this->where('user_id', $this->user_id)
+            ->where('city_id', $this->city_id)
+            ->where('status', '<>', TripStatus::Hidden)
+            ->orderBy('date_start')
+            ->get()
+            ->groupBy('year');
+    }
+
+    public function createStoryFile(): bool
+    {
+        return touch(resource_path("views/{$this->templatePath()}.blade.php"));
+    }
+
+    public function date(): CarbonInterface
+    {
+        return $this->date_start;
+    }
+
+    public function deleteStoryFile(): bool
+    {
+        return unlink(resource_path("views/{$this->templatePath()}.blade.php"));
+    }
+
+    public function imgAltText(): string
+    {
+        return "{$this->city->country->emoji} {$this->title}, {$this->city->country->title}, {$this->timelinePeriodWithYear()}.";
+    }
+
+    public function loadCity(): void
+    {
+        if (!$this->relationLoaded('city')) {
+            $this->setRelation('city', \CityHelper::findById($this->city_id));
+        }
+    }
+
+    public function loadCityAndCountry(): void
+    {
+        $this->loadCity();
+        $this->city->loadCountry();
+    }
+
+    public function localizedDate(): string
+    {
+        return resolve(FormatTripPeriodWithYearAction::class)
+            ->execute($this->date_start, $this->date_end);
+    }
+
+    public function localizedDateWithoutYear(): string
+    {
+        return resolve(FormatTripPeriodAction::class)
+            ->execute($this->date_start, $this->date_end);
+    }
+
+    public function metaDescription(): string
+    {
+        return $this->{'meta_description_' . \App::getLocale()};
+    }
+
+    public function metaImage(int|null $width = null, int|null $height = null): string
+    {
+        $metaImage = $this->meta_image;
+
+        if (!$metaImage) {
+            return '';
+        }
+
+        if (str_starts_with($metaImage, 'http')) {
+            return $metaImage;
+        }
+
+        $slug = $this->slug;
+
+        if ($width && $height) {
+            return \ViewHelper::picArbitrary($width, $height, $slug, $metaImage);
+        }
+
+        return \ViewHelper::pic($slug, $metaImage);
+    }
+
+    public function metaTitle(): string
+    {
+        $metaTitle = $this->{'meta_title_' . \App::getLocale()};
+
+        if ($metaTitle) {
+            return $metaTitle;
+        }
+
+        $suffix = '';
+
+        if (isset($this->photos_count) && $this->photos_count > 0) {
+            $suffix = ' · ' . \ViewHelper::plural('photos', $this->photos_count);
+        }
+
+        return "{$this->title} · {$this->localizedDate()}{$suffix}";
+    }
+
+    public function period(): string
+    {
+        if ($this->date_start->isSameMonth($this->date_end)) {
+            return $this->date_start->isoFormat('MMMM');
+        }
+
+        return $this->date_start->isoFormat('MMMM') . '–' . $this->date_end->isoFormat('MMMM');
+    }
+
+    public function template(): string
+    {
+        return 'life.trips.' . str_replace('.', '_', $this->slug);
+    }
+
+    public function templatePath(): string
+    {
+        return str_replace('.', '/', $this->template());
+    }
+
+    public function timelinePeriod(): string
+    {
+        return $this->date_start->isoFormat('MMMM');
+    }
+
+    public function timelinePeriodWithYear(): string
+    {
+        return $this->date_start->isoFormat('MMMM YYYY');
+    }
+
+    public function www(string|null $anchor = null): string
+    {
+        if ($this->user_id === 1) {
+            return to('life/{slug}', $this->slug) . $anchor;
+        }
+
+        return to('@{traveler:login}/travel/{slug}', [$this->user->login, $this->slug]) . $anchor;
+    }
+
+    public function wwwLocale(string|null $anchor = null, string $locale = ''): string
+    {
+        return $this->user_id === 1
+            ? path_locale([Http\Controllers\LifeController::class, 'page'], $this->slug, false, $locale) . $anchor
+            : path_locale([Http\Controllers\UserTravelTripController::class, 'show'], [$this->user->login, $this->slug], false, $locale) . $anchor;
+    }
+
+    #[\Override]
+    protected function casts(): array
+    {
+        return [
+            'views' => 'int',
+            'status' => TripStatus::class,
+            'city_id' => 'int',
+            'user_id' => 'int',
+            'date_end' => 'datetime',
+            'date_start' => 'datetime',
+        ];
+    }
+
+    protected function markdown(): Attribute
+    {
+        return Attribute::make(
+            set: function ($value) {
+                $converter = new CommonMarkConverter([
+                    'max_nesting_level' => 15,
+                    'allow_unsafe_links' => false,
+                ]);
+
+                return [
+                    'markdown' => $value ?? '',
+                    'html' => $converter->convert((new TextImagesParser)->parse($value ?? ''))->getContent(),
+                ];
+            },
+        );
+    }
+
+    #[\Override]
+    protected function serializeDate(\DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
+    }
+
+    protected function slug(): Attribute
+    {
+        return Attribute::make(
+            set: fn ($value) => mb_strtolower($value),
+        );
+    }
+
+    protected function year(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->date_start->year,
+        );
+    }
+}

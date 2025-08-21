@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Acp;
 
+use App\Domain\Life\Job\NotifyTripSubscribersJob;
+use App\Domain\Life\Models\Trip;
 use App\Http\Requests\Acp\TripPublishedNotifyRequest;
-use App\Jobs\NotifyTripSubscribers;
-use App\Trip;
 
 class TripPublishedNotifyController
 {
@@ -17,7 +17,7 @@ class TripPublishedNotifyController
             ];
         }
 
-        NotifyTripSubscribers::dispatch($trip)
+        NotifyTripSubscribersJob::dispatch($trip)
             ->delay($request->date);
 
         return [

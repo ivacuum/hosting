@@ -1,7 +1,7 @@
 <?php /** @var \App\Livewire\Acp\TripForm $this */ ?>
 
 <form class="grid grid-cols-1 gap-6 md:gap-4" wire:submit="submit">
-  <?php $form = LivewireForm::model(App\Trip::class); ?>
+  <?php $form = LivewireForm::model(\App\Domain\Life\Models\Trip::class); ?>
 
   @if($this->id)
     {{ $form->text('titleRu')->required() }}
@@ -15,7 +15,7 @@
   {{ $form->datetimeLocal('dateStart')->required() }}
   {{ $form->datetimeLocal('dateEnd')->required() }}
 
-  {{ $form->radio('status')->required()->values(App\Domain\TripStatus::labels()) }}
+  {{ $form->radio('status')->required()->values(\App\Domain\Life\TripStatus::labels()) }}
 
   {{ $form->text('metaDescriptionRu') }}
   {{ $form->text('metaDescriptionEn') }}

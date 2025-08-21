@@ -2,9 +2,9 @@
 
 namespace App\Domain\SocialMedia\Factory;
 
+use App\Domain\Life\Factory\PhotoFactory;
 use App\Domain\SocialMedia\Models\SocialMediaPost;
 use App\Domain\SocialMedia\SocialMediaPostStatus;
-use App\Factory\PhotoFactory;
 use App\Factory\UserFactory;
 use Carbon\CarbonInterface;
 

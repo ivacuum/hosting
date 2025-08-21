@@ -1,7 +1,7 @@
 <?php
 /**
- * @var \App\City $city
- * @var \App\Trip $trip
+ * @var \App\Domain\Life\Models\City $city
+ * @var \App\Domain\Life\Models\Trip $trip
  */
 ?>
 

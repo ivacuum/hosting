@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Acp\Dev;
 
-use App\Action\FindGigTemplatesAction;
 use App\Domain\Config;
-use App\Gig;
+use App\Domain\Life\Action\FindGigTemplatesAction;
+use App\Domain\Life\Models\Gig;
 
 class GigTemplatesController
 {

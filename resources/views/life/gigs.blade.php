@@ -1,5 +1,5 @@
 <?php
-/** @var \App\Gig $gig */
+/** @var \App\Domain\Life\Models\Gig $gig */
 ?>
 
 @extends('life.base')

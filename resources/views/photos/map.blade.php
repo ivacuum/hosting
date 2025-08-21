@@ -1,4 +1,4 @@
-<?php /** @var \App\Photo $photo */ ?>
+<?php /** @var \App\Domain\Life\Models\Photo $photo */ ?>
 
 @extends('photos.base')
 

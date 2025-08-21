@@ -2,8 +2,8 @@
 
 namespace App\Livewire\Acp;
 
+use App\Domain\Life\Models\Photo;
 use App\Livewire\WithGoto;
-use App\Photo;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 use Livewire\WithFileUploads;

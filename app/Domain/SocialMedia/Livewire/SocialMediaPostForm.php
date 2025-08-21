@@ -2,12 +2,12 @@
 
 namespace App\Domain\SocialMedia\Livewire;
 
+use App\Domain\Life\Models\Photo;
 use App\Domain\SocialMedia\Action\CalculateNextPostDateAction;
 use App\Domain\SocialMedia\Action\PickRandomPhotoAction;
 use App\Domain\SocialMedia\Models\SocialMediaPost;
 use App\Domain\SocialMedia\SocialMediaPostStatus;
 use App\Livewire\WithGoto;
-use App\Photo;
 use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;

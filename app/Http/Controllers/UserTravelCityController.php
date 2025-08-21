@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Action\GetTripCountByCitiesAction;
-use App\City;
-use App\Domain\TripStatus;
-use App\Scope\TripVisibleScope;
-use App\Trip;
+use App\Domain\Life\Action\GetTripCountByCitiesAction;
+use App\Domain\Life\Models\City;
+use App\Domain\Life\Models\Trip;
+use App\Domain\Life\Scope\TripVisibleScope;
+use App\Domain\Life\TripStatus;
 use App\User;
 
 class UserTravelCityController extends UserTravelController
@@ -43,7 +43,7 @@ class UserTravelCityController extends UserTravelController
         event(new \App\Events\Stats\CityViewed($city->id));
 
         if ($publishedTrips->containsOneItem()) {
-            /** @var \App\Trip $trip */
+            /** @var Trip $trip */
             $trip = $publishedTrips->first();
 
             return redirect($trip->www());

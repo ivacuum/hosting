@@ -89,7 +89,7 @@
         </a>
       </td>
       <td class="md:text-right whitespace-nowrap">
-        <a href="{{ Acp::index(new App\Trip, $model) }}">
+        <a href="{{ Acp::index(new App\Domain\Life\Models\Trip, $model) }}">
           {{ ViewHelper::number($model->trips_count) ?: '' }}
         </a>
       </td>

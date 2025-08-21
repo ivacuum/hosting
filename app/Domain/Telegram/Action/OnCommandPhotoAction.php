@@ -2,9 +2,9 @@
 
 namespace App\Domain\Telegram\Action;
 
-use App\Photo;
-use App\Scope\PhotoOnMapScope;
-use App\Scope\PhotoPublishedScope;
+use App\Domain\Life\Models\Photo;
+use App\Domain\Life\Scope\PhotoOnMapScope;
+use App\Domain\Life\Scope\PhotoPublishedScope;
 use Ivacuum\Generic\Telegram\InlineKeyboardButton;
 use Ivacuum\Generic\Telegram\InlineKeyboardMarkup;
 use Ivacuum\Generic\Telegram\TelegramClient;

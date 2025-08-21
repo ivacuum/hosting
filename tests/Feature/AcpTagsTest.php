@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Factory\TagFactory;
+use App\Domain\Life\Factory\TagFactory;
 use App\Livewire\Acp\TagForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;

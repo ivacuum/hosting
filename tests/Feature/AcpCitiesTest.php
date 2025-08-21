@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Factory\CityFactory;
-use App\Factory\CountryFactory;
+use App\Domain\Life\Factory\CityFactory;
+use App\Domain\Life\Factory\CountryFactory;
 use App\Livewire\Acp\CityForm;
 use App\Spatial\Point;
 use Illuminate\Foundation\Testing\DatabaseTransactions;

@@ -1,7 +1,7 @@
 <?php /** @var \App\Livewire\Acp\CityForm $this */ ?>
 
 <form class="grid grid-cols-1 gap-6 md:gap-4" wire:submit="submit">
-  <?php $form = LivewireForm::model(App\City::class); ?>
+  <?php $form = LivewireForm::model(\App\Domain\Life\Models\City::class); ?>
 
   {{ $form->select('countryId')->required()->values($this->countryIds) }}
 

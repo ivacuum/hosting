@@ -1,4 +1,4 @@
-<?php /** @var \App\Gig $model */ ?>
+<?php /** @var \App\Domain\Life\Models\Gig $model */ ?>
 
 @extends('acp.list')
 

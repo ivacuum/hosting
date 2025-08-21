@@ -2,8 +2,8 @@
 
 namespace App\Utilities;
 
-use App\Country;
 use App\Domain\CacheKey;
+use App\Domain\Life\Models\Country;
 use Illuminate\Cache\Repository;
 use Illuminate\Container\Attributes\Scoped;
 use Illuminate\Database\Eloquent\Collection;

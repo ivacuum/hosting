@@ -1,4 +1,4 @@
-<?php /** @var \App\Photo $model */ ?>
+<?php /** @var \App\Domain\Life\Models\Photo $model */ ?>
 
 @extends('acp.list')
 

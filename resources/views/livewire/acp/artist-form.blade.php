@@ -1,7 +1,7 @@
 <?php /** @var \App\Livewire\Acp\ArtistForm $this */ ?>
 
 <form class="grid grid-cols-1 gap-6 md:gap-4" wire:submit="submit">
-  <?php $form = LivewireForm::model(App\Artist::class); ?>
+  <?php $form = LivewireForm::model(\App\Domain\Life\Models\Artist::class); ?>
 
   {{ $form->text('title')->required() }}
   {{ $form->text('slug')->required() }}

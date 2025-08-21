@@ -3,9 +3,9 @@
 namespace App\Notifications;
 
 use App\Comment;
+use App\Domain\Life\Models\Trip;
 use App\Domain\Telegram\Action\EscapeMarkdownCharactersAction;
 use App\Domain\Telegram\Channel\TelegramChannel;
-use App\Trip;
 use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;

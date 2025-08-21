@@ -1,4 +1,4 @@
-<?php /** @var \App\Artist $model */ ?>
+<?php /** @var \App\Domain\Life\Models\Artist $model */ ?>
 
 @extends('acp.list')
 

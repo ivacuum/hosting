@@ -1,5 +1,5 @@
 <?php
-/** @var \Illuminate\Database\Eloquent\Collection|App\Trip[]|\App\Gig[] $models */
+/** @var \Illuminate\Database\Eloquent\Collection|\App\Domain\Life\Models\Trip[]|\App\Domain\Life\Models\Gig[] $models */
 ?>
 
 @foreach ($modelsByYears as $year => $models)
@@ -10,7 +10,7 @@
     <div class="w-full">
       @foreach ($models as $model)
         <div class="{{ !$loop->last ? 'mb-2' : '' }}">
-          @if ($model instanceof App\Trip)
+          @if ($model instanceof \App\Domain\Life\Models\Trip)
             @if ($model->status->isPublished())
               <a class="link mr-1" href="{{ $model->www() }}">{{ $model->title }}</a>
             @else
@@ -23,7 +23,7 @@
                 {{ $model->photos_count }}
               </span>
             @endif
-          @elseif ($model instanceof App\Gig)
+          @elseif ($model instanceof \App\Domain\Life\Models\Gig)
             @if ($model->status->isPublished())
               <a class="link mr-1" href="{{ $model->www() }}">{{ $model->artist->title }}</a>
             @else

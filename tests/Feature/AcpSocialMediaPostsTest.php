@@ -2,11 +2,11 @@
 
 namespace Tests\Feature;
 
+use App\Domain\Life\Factory\PhotoFactory;
 use App\Domain\SocialMedia\Action\PickRandomPhotoAction;
 use App\Domain\SocialMedia\Factory\SocialMediaPostFactory;
 use App\Domain\SocialMedia\Models\SocialMediaPost;
 use App\Domain\SocialMedia\SocialMediaPostStatus;
-use App\Factory\PhotoFactory;
 use App\Livewire\Acp\SocialMediaPostForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;

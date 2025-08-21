@@ -2,12 +2,12 @@
 
 namespace App\Livewire\Acp;
 
-use App\City;
-use App\Domain\TripStatus;
+use App\Domain\Life\Models\City;
+use App\Domain\Life\Models\Trip;
+use App\Domain\Life\Rule\LifeSlug;
+use App\Domain\Life\TripStatus;
 use App\Livewire\WithCityIds;
 use App\Livewire\WithGoto;
-use App\Rules\LifeSlug;
-use App\Trip;
 use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;

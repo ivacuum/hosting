@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Scope\TripNotToKalugaScope;
-use App\Scope\TripOfAdminScope;
-use App\Scope\TripVisibleScope;
-use App\Trip;
+use App\Domain\Life\Models\Trip;
+use App\Domain\Life\Scope\TripNotToKalugaScope;
+use App\Domain\Life\Scope\TripOfAdminScope;
+use App\Domain\Life\Scope\TripVisibleScope;
 use App\User;
 use Illuminate\Foundation\Http\FormRequest;
 

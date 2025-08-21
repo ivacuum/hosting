@@ -2,7 +2,7 @@
 
 namespace App\Http\Response;
 
-use App\Photo;
+use App\Domain\Life\Models\Photo;
 
 class PhotoPointResponse implements \JsonSerializable
 {

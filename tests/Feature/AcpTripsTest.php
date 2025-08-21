@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Domain\TripStatus;
-use App\Factory\TripFactory;
+use App\Domain\Life\Factory\TripFactory;
+use App\Domain\Life\TripStatus;
 use App\Livewire\Acp\TripForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;

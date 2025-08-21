@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use App\Action\FormatTripPeriodWithYearAction;
+use App\Domain\Life\Action\FormatTripPeriodWithYearAction;
 use App\Domain\Locale;
 use Carbon\Carbon;
 use Tests\TestCase;

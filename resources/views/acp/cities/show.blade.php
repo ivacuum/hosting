@@ -1,6 +1,6 @@
 <?php
 /**
- * @var \App\City $model
+ * @var \App\Domain\Life\Models\City $model
  */
 ?>
 @extends('acp.show')

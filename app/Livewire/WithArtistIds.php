@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Action\ListArtistsForInputSelectAction;
+use App\Domain\Life\Action\ListArtistsForInputSelectAction;
 use Illuminate\Support\Collection;
 use Livewire\Attributes\Computed;
 

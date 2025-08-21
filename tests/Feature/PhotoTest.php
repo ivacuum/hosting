@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
-use App\Factory\CityFactory;
-use App\Factory\PhotoFactory;
-use App\Factory\TripFactory;
+use App\Domain\Life\Factory\CityFactory;
+use App\Domain\Life\Factory\PhotoFactory;
+use App\Domain\Life\Factory\TripFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 

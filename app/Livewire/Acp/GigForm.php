@@ -2,13 +2,13 @@
 
 namespace App\Livewire\Acp;
 
-use App\Artist;
-use App\Domain\GigStatus;
-use App\Gig;
+use App\Domain\Life\GigStatus;
+use App\Domain\Life\Models\Artist;
+use App\Domain\Life\Models\Gig;
+use App\Domain\Life\Rule\LifeSlug;
 use App\Livewire\WithArtistIds;
 use App\Livewire\WithCityIds;
 use App\Livewire\WithGoto;
-use App\Rules\LifeSlug;
 use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Locked;

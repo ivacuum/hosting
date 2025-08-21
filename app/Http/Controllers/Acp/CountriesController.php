@@ -7,7 +7,7 @@ use App\Action\Acp\ResponseToCreateAction;
 use App\Action\Acp\ResponseToDestroyAction;
 use App\Action\Acp\ResponseToEditAction;
 use App\Action\Acp\ResponseToShowAction;
-use App\Country;
+use App\Domain\Life\Models\Country;
 use App\Domain\Sort;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;

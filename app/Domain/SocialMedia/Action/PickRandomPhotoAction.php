@@ -2,7 +2,7 @@
 
 namespace App\Domain\SocialMedia\Action;
 
-use App\Photo;
+use App\Domain\Life\Models\Photo;
 use App\User;
 use Illuminate\Database\Eloquent\Builder;
 

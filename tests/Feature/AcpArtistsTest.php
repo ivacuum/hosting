@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Factory\ArtistFactory;
+use App\Domain\Life\Factory\ArtistFactory;
 use App\Livewire\Acp\ArtistForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;

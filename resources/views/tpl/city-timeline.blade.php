@@ -1,4 +1,4 @@
-<?php /** @var \App\Trip $row */ ?>
+<?php /** @var \App\Domain\Life\Models\Trip $row */ ?>
 
 @if (isset($timeline) && count($timeline->flatten()) > 1)
   <div class="overflow-hidden mb-4">

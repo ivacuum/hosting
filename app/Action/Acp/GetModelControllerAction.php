@@ -2,25 +2,25 @@
 
 namespace App\Action\Acp;
 
-use App\Artist;
 use App\ChatMessage;
-use App\City;
 use App\Comment;
-use App\Country;
 use App\DcppHub;
+use App\Domain\Life\Models\Artist;
+use App\Domain\Life\Models\City;
+use App\Domain\Life\Models\Country;
+use App\Domain\Life\Models\Gig;
+use App\Domain\Life\Models\Photo;
+use App\Domain\Life\Models\Tag;
+use App\Domain\Life\Models\Trip;
 use App\Domain\Magnet\Models\Magnet;
 use App\Domain\SocialMedia\Models\SocialMediaPost;
 use App\Email;
 use App\ExternalIdentity;
 use App\File;
-use App\Gig;
 use App\Http\Controllers;
 use App\Image;
 use App\Issue;
 use App\News;
-use App\Photo;
-use App\Tag;
-use App\Trip;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 

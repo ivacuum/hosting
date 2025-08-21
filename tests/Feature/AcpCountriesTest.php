@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Factory\CountryFactory;
+use App\Domain\Life\Factory\CountryFactory;
 use App\Livewire\Acp\CountryForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;

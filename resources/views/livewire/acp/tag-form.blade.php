@@ -1,7 +1,7 @@
 <?php /** @var \App\Livewire\Acp\TagForm $this */ ?>
 
 <form class="grid grid-cols-1 gap-6 md:gap-4" wire:submit="submit">
-  <?php $form = LivewireForm::model(App\Tag::class); ?>
+  <?php $form = LivewireForm::model(\App\Domain\Life\Models\Tag::class); ?>
 
   {{ $form->text('titleRu')->required() }}
   {{ $form->text('titleEn')->required() }}

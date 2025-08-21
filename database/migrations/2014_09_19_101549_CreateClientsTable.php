@@ -172,7 +172,7 @@ return new class extends Migration {
             $table->string('title_en')->default('');
             $table->string('slug')->default('');
             $table->timestamp('date')->nullable();
-            $table->tinyInteger('status')->unsigned()->default(App\Domain\GigStatus::Hidden->value);
+            $table->tinyInteger('status')->unsigned()->default(App\Domain\Life\GigStatus::Hidden->value);
             $table->string('meta_title_ru')->default('');
             $table->string('meta_title_en')->default('');
             $table->string('meta_description_ru')->default('');
@@ -375,7 +375,7 @@ return new class extends Migration {
             $table->string('slug')->default('');
             $table->timestamp('date_start')->nullable();
             $table->timestamp('date_end')->nullable();
-            $table->unsignedTinyInteger('status')->default(App\Domain\TripStatus::Inactive->value);
+            $table->unsignedTinyInteger('status')->default(App\Domain\Life\TripStatus::Inactive->value);
             $table->text('markdown');
             $table->text('html');
             $table->string('meta_title_ru')->default('');

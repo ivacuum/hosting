@@ -1,6 +1,6 @@
 <?php
 /**
- * @var \App\Gig $gig
+ * @var \App\Domain\Life\Models\Gig $gig
  * @var string $gigLink
  * @var string $mySettingsLink
  */

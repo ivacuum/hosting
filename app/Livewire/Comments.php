@@ -2,11 +2,11 @@
 
 namespace App\Livewire;
 
+use App\Domain\Life\Models\Trip;
 use App\Domain\LivewireEvent;
 use App\Domain\Magnet\Models\Magnet;
 use App\Issue;
 use App\News;
-use App\Trip;
 use Livewire\Attributes\On;
 use Livewire\Component;
 

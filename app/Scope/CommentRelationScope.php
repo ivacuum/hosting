@@ -2,10 +2,10 @@
 
 namespace App\Scope;
 
+use App\Domain\Life\Models\Trip;
 use App\Domain\Magnet\Models\Magnet;
 use App\Issue;
 use App\News;
-use App\Trip;
 use Illuminate\Database\Eloquent\Builder;
 
 class CommentRelationScope

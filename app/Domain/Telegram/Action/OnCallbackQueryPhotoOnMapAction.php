@@ -2,7 +2,7 @@
 
 namespace App\Domain\Telegram\Action;
 
-use App\Photo;
+use App\Domain\Life\Models\Photo;
 use Ivacuum\Generic\Telegram\InlineKeyboardButton;
 use Ivacuum\Generic\Telegram\InlineKeyboardMarkup;
 use Ivacuum\Generic\Telegram\TelegramClient;

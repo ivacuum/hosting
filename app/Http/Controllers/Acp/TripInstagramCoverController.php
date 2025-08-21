@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Acp;
 
-use App\Trip;
+use App\Domain\Life\Models\Trip;
 
 class TripInstagramCoverController
 {

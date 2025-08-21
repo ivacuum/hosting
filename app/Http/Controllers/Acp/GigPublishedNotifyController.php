@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Acp;
 
+use App\Domain\Life\Models\Gig;
+use App\Domain\Life\Notification\GigPublishedNotification;
 use App\Domain\NotificationDeliveryMethod;
 use App\Domain\UserStatus;
-use App\Gig;
-use App\Notifications\GigPublishedNotification;
 use App\User;
 
 class GigPublishedNotifyController

@@ -3,7 +3,7 @@
 @section('content')
 <div class="column-width-48">
   <?php $initial = $currentInitial = false ?>
-  <?php /** @var App\Tag $tag */ ?>
+  <?php /** @var \App\Domain\Life\Models\Tag $tag */ ?>
   @foreach ($tags as $tag)
     <?php $currentInitial = $tag->initial() ?>
     <div class="city-entry relative ml-6 pb-2">

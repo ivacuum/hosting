@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Acp;
 
-use App\Artist;
+use App\Domain\Life\Models\Artist;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
 use Livewire\WithPagination;

@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Domain\Life\Models\Trip;
 use App\Domain\Magnet\Models\Magnet;
 use App\Domain\Magnet\Notification\MagnetCommentedNotification;
 use App\Events\CommentPublished;
@@ -10,7 +11,6 @@ use App\News;
 use App\Notifications\IssueCommentedNotification;
 use App\Notifications\NewsCommentedNotification;
 use App\Notifications\TripCommentedNotification;
-use App\Trip;
 
 class NotifyUsersAboutComment
 {

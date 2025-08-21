@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests;
 
-use App\Photo;
-use App\Scope\PhotoPublishedScope;
+use App\Domain\Life\Models\Photo;
+use App\Domain\Life\Scope\PhotoPublishedScope;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PhotosMapForm extends FormRequest

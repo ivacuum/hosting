@@ -3,7 +3,7 @@
 <div class="grid grid-cols-1 gap-6 md:gap-4">
   <div>Для загрузки фотографий необходимо выбрать поездку или концерт.</div>
 
-  <?php $form = LivewireForm::model(new App\Photo); ?>
+  <?php $form = LivewireForm::model(new \App\Domain\Life\Models\Photo); ?>
 
   {{ $form->select('tripId')->live()->values($this->tripIds) }}
   {{ $form->select('gigId')->live()->values($this->gigIds) }}

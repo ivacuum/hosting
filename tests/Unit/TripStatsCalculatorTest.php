@@ -2,8 +2,8 @@
 
 namespace Tests\Unit;
 
-use App\Domain\TripStatsCalculator;
-use App\Factory\TripFactory;
+use App\Domain\Life\Factory\TripFactory;
+use App\Domain\Life\TripStatsCalculator;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\DatabaseTransactions;

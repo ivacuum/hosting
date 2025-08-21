@@ -1,7 +1,7 @@
 <?php /** @var \App\Livewire\Acp\GigForm $this */ ?>
 
 <form class="grid grid-cols-1 gap-6 md:gap-4" wire:submit="submit">
-  <?php $form = LivewireForm::model(App\Gig::class); ?>
+  <?php $form = LivewireForm::model(\App\Domain\Life\Models\Gig::class); ?>
 
   {{ $form->select('artistId')->required()->values($this->artistIds)->live() }}
   {{ $form->select('cityId')->required()->values($this->cityIds) }}
@@ -11,7 +11,7 @@
   {{ $form->text('slug')->required() }}
   {{ $form->datetimeLocal('date')->required() }}
 
-  {{ $form->radio('status')->required()->values(App\Domain\GigStatus::labels()) }}
+  {{ $form->radio('status')->required()->values(\App\Domain\Life\GigStatus::labels()) }}
 
   {{ $form->text('metaDescriptionRu') }}
   {{ $form->text('metaDescriptionEn') }}

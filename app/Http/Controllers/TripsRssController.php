@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Scope\TripOfAdminScope;
-use App\Scope\TripPublishedScope;
-use App\Scope\TripWithCoverScope;
-use App\Trip;
+use App\Domain\Life\Models\Trip;
+use App\Domain\Life\Scope\TripOfAdminScope;
+use App\Domain\Life\Scope\TripPublishedScope;
+use App\Domain\Life\Scope\TripWithCoverScope;
 
 class TripsRssController
 {

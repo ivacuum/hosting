@@ -7,10 +7,10 @@ use App\Action\Acp\ResponseToCreateAction;
 use App\Action\Acp\ResponseToDestroyAction;
 use App\Action\Acp\ResponseToEditAction;
 use App\Action\Acp\ResponseToShowAction;
-use App\Photo;
-use App\Scope\PhotoApplyFilterScope;
-use App\Scope\PhotoForTagScope;
-use App\Scope\PhotoForTripScope;
+use App\Domain\Life\Models\Photo;
+use App\Domain\Life\Scope\PhotoApplyFilterScope;
+use App\Domain\Life\Scope\PhotoForTagScope;
+use App\Domain\Life\Scope\PhotoForTripScope;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
 

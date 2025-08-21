@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Factory\GigFactory;
-use App\Factory\TripFactory;
+use App\Domain\Life\Factory\GigFactory;
+use App\Domain\Life\Factory\TripFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 

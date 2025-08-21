@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Action\FindTripTemplatesAction;
-use App\Factory\TripFactory;
+use App\Domain\Life\Action\FindTripTemplatesAction;
+use App\Domain\Life\Factory\TripFactory;
 use App\Factory\UserFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;

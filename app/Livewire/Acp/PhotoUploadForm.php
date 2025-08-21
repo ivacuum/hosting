@@ -2,9 +2,6 @@
 
 namespace App\Livewire\Acp;
 
-use App\Action\FindUploadedPhotoAction;
-use App\Action\ListGigsForInputSelectAction;
-use App\Action\ListTripsForInputSelectAction;
 use App\Domain\Exif\GetAltitudeInCentimetersFromGpsDataAction;
 use App\Domain\Exif\GetDirectionInDegreesFromGpsDataAction;
 use App\Domain\Exif\GetPointFromGpsDataAction;
@@ -12,11 +9,14 @@ use App\Domain\Exif\GetSpeedInMetersPerHourFromGpsDataAction;
 use App\Domain\Exif\GetTakenAtFromExifDataAction;
 use App\Domain\Exif\Jobs\DeleteTempLivewireFileJob;
 use App\Domain\Exif\ReadRawExifDataAction;
-use App\Domain\PhotoStatus;
-use App\Gig;
-use App\Jobs\StorePhotoJob;
-use App\Photo;
-use App\Trip;
+use App\Domain\Life\Action\FindUploadedPhotoAction;
+use App\Domain\Life\Action\ListGigsForInputSelectAction;
+use App\Domain\Life\Action\ListTripsForInputSelectAction;
+use App\Domain\Life\Job\StorePhotoJob;
+use App\Domain\Life\Models\Gig;
+use App\Domain\Life\Models\Photo;
+use App\Domain\Life\Models\Trip;
+use App\Domain\Life\PhotoStatus;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Collection;
 use Livewire\Attributes\Computed;
@@ -82,7 +82,7 @@ class PhotoUploadForm extends Component
         if ($photo === null) {
             $rawExifData = $readRawExifData->execute($this->file->getRealPath());
 
-            /** @var \App\Photo $photo */
+            /** @var Photo $photo */
             $photo = $relation->photos()->make();
             $photo->slug = $photoSlug;
             $photo->point = $getPointFromGpsData->execute($rawExifData);

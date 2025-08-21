@@ -3,7 +3,7 @@
 @section('content')
 <div class="column-width-48">
   <?php $initial = $currentInitial = false ?>
-  <?php /** @var App\Country $country */ ?>
+  <?php /** @var \App\Domain\Life\Models\Country $country */ ?>
   @foreach ($countries as $country)
     <?php $currentInitial = $country->initial() ?>
     <div class="city-entry relative ml-6 pb-2">

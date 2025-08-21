@@ -1,4 +1,4 @@
-<?php /** @var \App\Country $model */ ?>
+<?php /** @var \App\Domain\Life\Models\Country $model */ ?>
 
 @extends('acp.list')
 
@@ -21,12 +21,12 @@
       <td><a href="{{ Acp::show($model) }}">{{ $model->title }}</a></td>
       <td><a href="{{ $model->www() }}">{{ $model->slug }}</a></td>
       <td class="md:text-right whitespace-nowrap">
-        <a href="{{ Acp::index(new App\City, $model) }}">
+        <a href="{{ Acp::index(new App\Domain\Life\Models\City, $model) }}">
           {{ ViewHelper::number($model->cities_count) ?: '' }}
         </a>
       </td>
       <td class="md:text-right whitespace-nowrap">
-        <a href="{{ Acp::index(new App\Trip, $model) }}">
+        <a href="{{ Acp::index(new App\Domain\Life\Models\Trip, $model) }}">
           {{ ViewHelper::number($model->trips_count) ?: '' }}
         </a>
       </td>

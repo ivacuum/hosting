@@ -1,5 +1,5 @@
 <?php
-/** @var \App\Photo $photo */
+/** @var \App\Domain\Life\Models\Photo $photo */
 ?>
 
 @extends('photos.base')

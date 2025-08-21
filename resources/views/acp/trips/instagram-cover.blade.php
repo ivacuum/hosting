@@ -1,4 +1,4 @@
-<?php /** @var App\Trip $trip */ ?>
+<?php /** @var \App\Domain\Life\Models\Trip $trip */ ?>
 <!DOCTYPE html>
 <html lang="{{ $locale }}">
 <head>

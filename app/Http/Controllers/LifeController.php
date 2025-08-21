@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Action\GetMyVisibleGigsAction;
-use App\Action\GetMyVisibleTripsAction;
-use App\Action\GetTripCountByCitiesAction;
-use App\City;
-use App\Country;
-use App\Domain\TripStatus;
-use App\Gig;
+use App\Domain\Life\Action\GetMyVisibleGigsAction;
+use App\Domain\Life\Action\GetMyVisibleTripsAction;
+use App\Domain\Life\Action\GetTripCountByCitiesAction;
+use App\Domain\Life\Models\City;
+use App\Domain\Life\Models\Country;
+use App\Domain\Life\Models\Gig;
+use App\Domain\Life\Models\Trip;
+use App\Domain\Life\Scope\TripNextScope;
+use App\Domain\Life\Scope\TripOfAdminScope;
+use App\Domain\Life\Scope\TripPreviousScope;
+use App\Domain\Life\Scope\TripPublishedScope;
+use App\Domain\Life\Scope\TripVisibleScope;
+use App\Domain\Life\TripStatus;
 use App\Http\Requests\LifeIndexForm;
-use App\Scope\TripNextScope;
-use App\Scope\TripOfAdminScope;
-use App\Scope\TripPreviousScope;
-use App\Scope\TripPublishedScope;
-use App\Scope\TripVisibleScope;
-use App\Trip;
 use App\Utilities\CityHelper;
 
 class LifeController

@@ -1,6 +1,6 @@
 <?php
 /**
- * @var \App\Trip $trip
+ * @var \App\Domain\Life\Models\Trip $trip
  */
 $pic1x = ViewHelper::pic($slug ?? $trip->slug, $pic);
 $pic2x = ViewHelper::pic2x($slug ?? $trip->slug, $pic);

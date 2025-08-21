@@ -1,4 +1,4 @@
-<?php /** @var \App\Tag $model */ ?>
+<?php /** @var \App\Domain\Life\Models\Tag $model */ ?>
 
 @extends('acp.list')
 
@@ -23,7 +23,7 @@
         {{ ViewHelper::number($model->views) ?: '' }}
       </td>
       <td class="md:text-right whitespace-nowrap">
-        <a href="{{ Acp::index(new App\Photo, $model) }}">
+        <a href="{{ Acp::index(new App\Domain\Life\Models\Photo, $model) }}">
           {{ ViewHelper::number($model->photos_count) ?: '' }}
         </a>
       </td>

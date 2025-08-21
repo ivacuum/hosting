@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Acp;
 
-use App\Country;
+use App\Domain\Life\Models\Country;
 use App\Livewire\WithGoto;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;

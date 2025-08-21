@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Domain\GigStatus;
-use App\Factory\GigFactory;
+use App\Domain\Life\Factory\GigFactory;
+use App\Domain\Life\GigStatus;
 use App\Livewire\Acp\GigForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;

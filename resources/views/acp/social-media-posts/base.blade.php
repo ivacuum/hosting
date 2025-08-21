@@ -13,7 +13,7 @@
     <div class="text-xs text-gray-500">{{ $model->user->email }}</div>
   @endif
 @endcomponent
-@component('tpl.list-group-item', ['href' => Acp::show(new App\Photo(), $model->photo_id)])
+@component('tpl.list-group-item', ['href' => Acp::show(new App\Domain\Life\Models\Photo, $model->photo_id)])
   {{ ViewHelper::modelFieldTrans($modelTpl, 'photo') }}
 @endcomponent
 @endsection

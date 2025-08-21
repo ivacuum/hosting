@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Domain\GigStatus;
-use App\Gig;
+use App\Domain\Life\GigStatus;
+use App\Domain\Life\Models\Gig;
 
 class GigsRssController
 {

@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Domain\TripStatus;
-use App\Rules\TripSlug;
-use App\Trip;
+use App\Domain\Life\Models\Trip;
+use App\Domain\Life\Rule\TripSlug;
+use App\Domain\Life\TripStatus;
 use App\User;
 use Illuminate\Container\Attributes\CurrentUser;
 use Illuminate\Container\Attributes\RouteParameter;

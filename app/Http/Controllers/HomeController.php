@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Action\GetFinishedGameIdsAction;
-use App\Action\GetTripsPublishedWithCoverAction;
-use App\Collection\LoadTripCityAndCountry;
+use App\Domain\Game\Action\GetFinishedGameIdsAction;
 use App\Domain\Game\Models\Game;
+use App\Domain\Life\Action\GetTripsPublishedWithCoverAction;
+use App\Domain\Life\Collection\LoadTripCityAndCountry;
 
 class HomeController
 {

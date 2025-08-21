@@ -1,4 +1,4 @@
-<?php /** @var App\Country $country */ ?>
+<?php /** @var \App\Domain\Life\Models\Country $country */ ?>
 
 @extends('user-travel.base', [
   'metaTitle' => $country->title,

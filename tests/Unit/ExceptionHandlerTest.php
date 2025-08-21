@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use App\Action\GetTripsPublishedWithCoverAction;
+use App\Domain\Life\Action\GetTripsPublishedWithCoverAction;
 use App\Exceptions\SkipDatabaseOffline;
 use App\Exceptions\TelegramAnyException;
 use Illuminate\Database\QueryException;

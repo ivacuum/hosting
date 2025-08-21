@@ -2,8 +2,8 @@
 
 namespace App\Utilities;
 
-use App\City;
 use App\Domain\CacheKey;
+use App\Domain\Life\Models\City;
 use Illuminate\Cache\Repository;
 use Illuminate\Container\Attributes\Scoped;
 use Illuminate\Database\Eloquent\Collection;

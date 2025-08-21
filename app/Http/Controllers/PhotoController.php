@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Action\GetPhotoPointsAction;
-use App\Action\GetTripCountByCitiesAction;
-use App\Action\GetTripsPublishedByCityAction;
-use App\Action\GetTripsPublishedByCountryAction;
-use App\Action\GetTripsPublishedWithCoverAction;
-use App\City;
-use App\Collection\LoadTripCityAndCountry;
-use App\Country;
+use App\Domain\Life\Action\GetPhotoPointsAction;
+use App\Domain\Life\Action\GetTripCountByCitiesAction;
+use App\Domain\Life\Action\GetTripsPublishedByCityAction;
+use App\Domain\Life\Action\GetTripsPublishedByCountryAction;
+use App\Domain\Life\Action\GetTripsPublishedWithCoverAction;
+use App\Domain\Life\Collection\LoadTripCityAndCountry;
+use App\Domain\Life\Models\City;
+use App\Domain\Life\Models\Country;
+use App\Domain\Life\Models\Photo;
+use App\Domain\Life\Models\Tag;
+use App\Domain\Life\Models\Trip;
+use App\Domain\Life\Scope\PhotoForTagScope;
+use App\Domain\Life\Scope\PhotoForTripScope;
+use App\Domain\Life\Scope\PhotoForTripsScope;
+use App\Domain\Life\Scope\PhotoPublishedScope;
 use App\Http\Requests\PhotoShowForm;
 use App\Http\Requests\PhotosMapForm;
-use App\Photo;
-use App\Scope\PhotoForTagScope;
-use App\Scope\PhotoForTripScope;
-use App\Scope\PhotoForTripsScope;
-use App\Scope\PhotoPublishedScope;
-use App\Tag;
-use App\Trip;
 use App\Utilities\CityHelper;
 
 class PhotoController

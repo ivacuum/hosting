@@ -1,5 +1,5 @@
 <?php
-/** @var \App\Gig $row */
+/** @var \App\Domain\Life\Models\Gig $row */
 ?>
 
 @if (count($timeline) > 1)

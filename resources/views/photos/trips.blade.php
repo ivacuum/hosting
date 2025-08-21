@@ -1,5 +1,5 @@
 <?php
-/** @var App\Trip $trip */
+/** @var \App\Domain\Life\Models\Trip $trip */
 ?>
 
 @extends('photos.base')

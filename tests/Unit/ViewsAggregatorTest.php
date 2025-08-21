@@ -2,8 +2,8 @@
 
 namespace Tests\Unit;
 
+use App\Domain\Life\Factory\TripFactory;
 use App\Domain\ViewsAggregator;
-use App\Factory\TripFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 

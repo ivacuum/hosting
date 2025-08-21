@@ -2,8 +2,8 @@
 
 namespace App\Livewire\Acp;
 
+use App\Domain\Life\Models\Tag;
 use App\Livewire\WithGoto;
-use App\Tag;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Locked;

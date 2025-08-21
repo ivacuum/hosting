@@ -1,4 +1,4 @@
-<?php /** @var \App\Trip $model */ ?>
+<?php /** @var \App\Domain\Life\Models\Trip $model */ ?>
 
 @extends('acp.list', [
   'searchForm' => true,
@@ -10,9 +10,9 @@
   'values' => [
     'Все' => null,
     '---' => null,
-    'Опубликованные' => App\Domain\TripStatus::Published->value,
-    'Пишутся' => App\Domain\TripStatus::Inactive->value,
-    'Скрытые' => App\Domain\TripStatus::Hidden->value,
+    'Опубликованные' => App\Domain\Life\TripStatus::Published->value,
+    'Пишутся' => App\Domain\Life\TripStatus::Inactive->value,
+    'Скрытые' => App\Domain\Life\TripStatus::Hidden->value,
   ]
 ])
 @endsection
@@ -83,7 +83,7 @@
             @svg(plus)
           </a>
         @else
-          <a href="{{ Acp::index(new App\Photo, $model) }}">
+          <a href="{{ Acp::index(new App\Domain\Life\Models\Photo, $model) }}">
             {{ ViewHelper::number($model->photos_count) ?: '' }}
           </a>
         @endif
