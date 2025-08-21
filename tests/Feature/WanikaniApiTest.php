@@ -3,9 +3,9 @@
 namespace Tests\Feature;
 
 use App\Domain\Log\Models\ExternalHttpRequest;
-use App\Services\Wanikani\KanjiEntity;
-use App\Services\Wanikani\SubjectResponse;
-use App\Services\Wanikani\WanikaniApi;
+use App\Domain\Wanikani\Api\KanjiEntity;
+use App\Domain\Wanikani\Api\SubjectResponse;
+use App\Domain\Wanikani\Api\WanikaniApi;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 

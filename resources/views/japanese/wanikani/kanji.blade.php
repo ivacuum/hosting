@@ -1,4 +1,4 @@
-<?php /** @var \App\Kanji $kanji */ ?>
+<?php /** @var \App\Domain\Wanikani\Models\Kanji $kanji */ ?>
 
 @extends('japanese.wanikani.base')
 

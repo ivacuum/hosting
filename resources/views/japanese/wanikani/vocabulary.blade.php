@@ -1,4 +1,4 @@
-<?php /** @var \App\Vocabulary $vocab */ ?>
+<?php /** @var \App\Domain\Wanikani\Models\Vocabulary $vocab */ ?>
 
 @extends('japanese.wanikani.base')
 

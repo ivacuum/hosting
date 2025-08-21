@@ -2,8 +2,8 @@
 
 namespace Tests\Livewire;
 
+use App\Domain\Wanikani\Factory\VocabularyFactory;
 use App\Factory\UserFactory;
-use App\Factory\VocabularyFactory;
 use App\Livewire\BurnVocabulary;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;

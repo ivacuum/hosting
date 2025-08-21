@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Factory\RadicalFactory;
+use App\Domain\Wanikani\Factory\RadicalFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 

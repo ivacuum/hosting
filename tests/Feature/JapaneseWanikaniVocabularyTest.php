@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Factory\VocabularyFactory;
+use App\Domain\Wanikani\Factory\VocabularyFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 

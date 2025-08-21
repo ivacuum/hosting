@@ -2,11 +2,11 @@
 
 namespace Tests\Livewire;
 
-use App\Action\SplitVocabToKanjiAction;
-use App\Collection\ShowKanjiInTheSameOrderAsInVocab;
-use App\Factory\KanjiFactory;
+use App\Domain\Wanikani\Action\SplitVocabToKanjiAction;
+use App\Domain\Wanikani\Collection\ShowKanjiInTheSameOrderAsInVocab;
+use App\Domain\Wanikani\Factory\KanjiFactory;
+use App\Domain\Wanikani\Factory\VocabularyFactory;
 use App\Factory\UserFactory;
-use App\Factory\VocabularyFactory;
 use App\Livewire\KanjiList;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\DatabaseTransactions;

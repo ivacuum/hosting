@@ -1,4 +1,4 @@
-<?php /** @var \App\Radical $radical */ ?>
+<?php /** @var \App\Domain\Wanikani\Models\Radical $radical */ ?>
 
 @extends('japanese.wanikani.base')
 

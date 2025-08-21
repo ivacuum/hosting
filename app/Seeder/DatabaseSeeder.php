@@ -2,6 +2,9 @@
 
 namespace App\Seeder;
 
+use App\Domain\Wanikani\Seeder\KanjiSeeder;
+use App\Domain\Wanikani\Seeder\RadicalSeeder;
+use App\Domain\Wanikani\Seeder\VocabularySeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder

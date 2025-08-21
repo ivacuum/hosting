@@ -2,10 +2,10 @@
 
 namespace App\Console\Commands;
 
-use App\Kanji;
-use App\Radical;
-use App\Services\Wanikani\WanikaniApi;
-use App\Vocabulary;
+use App\Domain\Wanikani\Api\WanikaniApi;
+use App\Domain\Wanikani\Models\Kanji;
+use App\Domain\Wanikani\Models\Radical;
+use App\Domain\Wanikani\Models\Vocabulary;
 use Illuminate\Support\Sleep;
 use Ivacuum\Generic\Commands\Command;
 use Symfony\Component\Console\Attribute\AsCommand;

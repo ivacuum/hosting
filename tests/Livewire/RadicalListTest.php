@@ -2,7 +2,7 @@
 
 namespace Tests\Livewire;
 
-use App\Factory\RadicalFactory;
+use App\Domain\Wanikani\Factory\RadicalFactory;
 use App\Factory\UserFactory;
 use App\Livewire\RadicalList;
 use Illuminate\Foundation\Testing\DatabaseTransactions;

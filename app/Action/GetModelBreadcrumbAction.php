@@ -10,6 +10,9 @@ use App\Country;
 use App\DcppHub;
 use App\Domain\Log\Models\ExternalHttpRequest;
 use App\Domain\SocialMedia\Models\SocialMediaPost;
+use App\Domain\Wanikani\Models\Kanji;
+use App\Domain\Wanikani\Models\Radical;
+use App\Domain\Wanikani\Models\Vocabulary;
 use App\Email;
 use App\ExternalIdentity;
 use App\FavoriteMovie;
@@ -17,16 +20,13 @@ use App\File;
 use App\Gig;
 use App\Image;
 use App\Issue;
-use App\Kanji;
 use App\Magnet;
 use App\Metric;
 use App\News;
 use App\Photo;
-use App\Radical;
 use App\Tag;
 use App\Trip;
 use App\User;
-use App\Vocabulary;
 use Illuminate\Database\Eloquent\Model;
 
 class GetModelBreadcrumbAction

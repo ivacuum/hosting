@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Kanji;
-use App\Scope\UserBurnableScope;
+use App\Domain\Wanikani\Models\Kanji;
+use App\Domain\Wanikani\Scope\UserBurnableScope;
 use Illuminate\Http\Request;
 
 class JapaneseWanikaniKanjiController

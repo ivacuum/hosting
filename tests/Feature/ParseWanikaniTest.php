@@ -3,9 +3,9 @@
 namespace Tests\Feature;
 
 use App\Console\Commands\ParseWanikani;
-use App\Kanji;
-use App\Radical;
-use App\Vocabulary;
+use App\Domain\Wanikani\Models\Kanji;
+use App\Domain\Wanikani\Models\Radical;
+use App\Domain\Wanikani\Models\Vocabulary;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 

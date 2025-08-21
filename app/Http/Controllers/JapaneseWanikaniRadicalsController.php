@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Radical;
-use App\Scope\UserBurnableScope;
+use App\Domain\Wanikani\Models\Radical;
+use App\Domain\Wanikani\Scope\UserBurnableScope;
 use Illuminate\Http\Request;
 
 class JapaneseWanikaniRadicalsController

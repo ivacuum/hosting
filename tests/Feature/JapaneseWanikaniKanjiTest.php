@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Factory\KanjiFactory;
+use App\Domain\Wanikani\Factory\KanjiFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 

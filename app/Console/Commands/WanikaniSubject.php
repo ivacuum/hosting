@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Services\Wanikani\WanikaniApi;
+use App\Domain\Wanikani\Api\WanikaniApi;
 use Ivacuum\Generic\Commands\Command;
 use Symfony\Component\Console\Attribute\AsCommand;
 
