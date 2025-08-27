@@ -2,8 +2,8 @@
 
 namespace App\Domain\Life\Job;
 
+use App\Domain\ImageConverter\ImageConverter;
 use App\Jobs\AbstractJob;
-use Ivacuum\Generic\Services\ImageConverter;
 
 class StorePhotoJob extends AbstractJob
 {

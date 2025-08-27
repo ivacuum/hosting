@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Domain\ImageConverter\ImageConverter;
 use App\Http\Requests\ResizeImageForm;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Http\Client\Factory;
-use Ivacuum\Generic\Services\ImageConverter;
 
 class ResizeImageController
 {

@@ -2,8 +2,8 @@
 
 namespace App;
 
+use App\Domain\ImageConverter\ImageConverter;
 use Illuminate\Http\UploadedFile;
-use Ivacuum\Generic\Services\ImageConverter;
 
 class Avatar
 {

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Acp\Dev;
 
-use Ivacuum\Generic\Services\ImageConverter;
+use App\Domain\ImageConverter\ImageConverter;
 
 class ThumbnailsController
 {

@@ -2,9 +2,9 @@
 
 namespace App\Livewire;
 
+use App\Domain\ImageConverter\ImageConverter;
 use App\Domain\Life\Models\Photo;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Ivacuum\Generic\Services\ImageConverter;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;

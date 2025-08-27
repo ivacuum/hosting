@@ -3,9 +3,9 @@
 namespace Tests\Feature;
 
 use App\Action\GetResizeImageWhitelistAction;
+use App\Domain\ImageConverter\ImageConverter;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
-use Ivacuum\Generic\Services\ImageConverter;
 use Tests\TestCase;
 
 class ResizeImageTest extends TestCase

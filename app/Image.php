@@ -2,11 +2,11 @@
 
 namespace App;
 
+use App\Domain\ImageConverter\ImageConverter;
 use App\Observers\ImageObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
-use Ivacuum\Generic\Services\ImageConverter;
 
 /**
  * @property int $id
