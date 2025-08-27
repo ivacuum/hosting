@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use Ivacuum\Generic\Commands\Command;
 use Ivacuum\Generic\Telegram\BotCommand;
 use Ivacuum\Generic\Telegram\LanguageCode;
 use Ivacuum\Generic\Telegram\TelegramClient;

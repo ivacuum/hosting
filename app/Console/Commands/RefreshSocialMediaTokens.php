@@ -6,7 +6,6 @@ use App\Domain\Instagram\InstagramApi;
 use App\Domain\SocialMedia\Models\SocialMediaToken;
 use Illuminate\Contracts\Console\Isolatable;
 use Illuminate\Database\Eloquent\Builder;
-use Ivacuum\Generic\Commands\Command;
 use Symfony\Component\Console\Attribute\AsCommand;
 
 #[AsCommand('app:refresh-social-media-tokens')]

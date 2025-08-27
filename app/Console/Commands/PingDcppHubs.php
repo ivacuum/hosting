@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use App\DcppHub;
 use App\Domain\DcppHubStatus;
 use App\Jobs\PingDcppHubJob;
-use Ivacuum\Generic\Commands\Command;
 use Symfony\Component\Console\Attribute\AsCommand;
 
 #[AsCommand('app:ping-dcpp-hubs')]

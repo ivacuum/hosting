@@ -7,7 +7,6 @@ use App\Domain\Wanikani\Models\Kanji;
 use App\Domain\Wanikani\Models\Radical;
 use App\Domain\Wanikani\Models\Vocabulary;
 use Illuminate\Support\Sleep;
-use Ivacuum\Generic\Commands\Command;
 use Symfony\Component\Console\Attribute\AsCommand;
 
 #[AsCommand('app:parse-wanikani')]

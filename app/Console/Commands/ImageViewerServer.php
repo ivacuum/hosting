@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use App\Events\Stats\GalleryImageViewed;
-use Ivacuum\Generic\Commands\Command;
 use Swoole\Http\Request;
 use Swoole\Http\Response;
 use Swoole\Http\Server;

@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use Ivacuum\Generic\Commands\Command;
 use Ivacuum\Generic\Services\Telegram;
 use Symfony\Component\Console\Attribute\AsCommand;
 

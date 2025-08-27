@@ -7,7 +7,6 @@ use App\Domain\Steam\SteamCountryCode;
 use App\Domain\Steam\SteamLanguage;
 use Illuminate\Contracts\Console\Isolatable;
 use Illuminate\Support\Str;
-use Ivacuum\Generic\Commands\Command;
 use Symfony\Component\Console\Attribute\AsCommand;
 
 use function Laravel\Prompts\search;

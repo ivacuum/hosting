@@ -6,7 +6,6 @@ use App\Domain\Config;
 use App\Jobs\LikeVkPost;
 use App\Services\Vk;
 use Carbon\CarbonInterval;
-use Ivacuum\Generic\Commands\Command;
 use Symfony\Component\Console\Attribute\AsCommand;
 
 #[AsCommand('app:vk-likes-add')]

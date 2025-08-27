@@ -6,7 +6,6 @@ use App\Domain\SocialMedia\Job\PublishSocialMediaPostJob;
 use App\Domain\SocialMedia\Models\SocialMediaPost;
 use App\Domain\SocialMedia\SocialMediaPostStatus;
 use Illuminate\Contracts\Console\Isolatable;
-use Ivacuum\Generic\Commands\Command;
 use Symfony\Component\Console\Attribute\AsCommand;
 
 #[AsCommand('app:publish-social-media-posts')]

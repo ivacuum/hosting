@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use Ivacuum\Generic\Commands\Command;
 use Symfony\Component\Console\Attribute\AsCommand;
 
 use function Laravel\Prompts\note;

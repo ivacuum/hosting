@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use App\Domain\Rto\Rto;
-use Ivacuum\Generic\Commands\Command;
 use Symfony\Component\Console\Attribute\AsCommand;
 
 #[AsCommand('app:parse-topic-body')]

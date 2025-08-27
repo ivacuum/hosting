@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use App\Http\Controllers\TelegramWebhookController;
-use Ivacuum\Generic\Commands\Command;
 use Ivacuum\Generic\Telegram\TelegramClient;
 use Symfony\Component\Console\Attribute\AsCommand;
 

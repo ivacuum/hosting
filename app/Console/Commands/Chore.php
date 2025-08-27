@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use Illuminate\Contracts\Console\Isolatable;
-use Ivacuum\Generic\Commands\Command;
 use Symfony\Component\Console\Attribute\AsCommand;
 
 #[AsCommand('app:chore')]

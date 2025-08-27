@@ -9,7 +9,6 @@ use App\Domain\Life\PhotoViewsAggregator;
 use App\Domain\MetricsAggregator;
 use App\Domain\ViewsAggregator;
 use Carbon\CarbonInterval;
-use Ivacuum\Generic\Commands\Command;
 use Swoole\Process;
 use Swoole\Server;
 use Swoole\Timer;
