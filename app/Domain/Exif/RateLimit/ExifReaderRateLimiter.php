@@ -2,8 +2,8 @@
 
 namespace App\Domain\Exif\RateLimit;
 
-use App\Action\LimitRateAction;
 use App\Domain\RateLimit;
+use App\Domain\RateLimit\Action\LimitRateAction;
 
 class ExifReaderRateLimiter
 {

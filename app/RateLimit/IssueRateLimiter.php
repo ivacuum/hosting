@@ -2,9 +2,9 @@
 
 namespace App\RateLimit;
 
-use App\Action\LimitRateAction;
 use App\Domain\Config;
 use App\Domain\RateLimit;
+use App\Domain\RateLimit\Action\LimitRateAction;
 use App\Issue;
 use Illuminate\Http\Request;
 use Ivacuum\Generic\Events\LimitExceeded;

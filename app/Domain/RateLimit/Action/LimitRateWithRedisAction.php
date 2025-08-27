@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Action;
+namespace App\Domain\RateLimit\Action;
 
-use App\Events\RateLimitExceeded;
+use App\Domain\RateLimit\Events\RateLimitExceeded;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Contracts\Redis\Factory;
 use Illuminate\Redis\Limiters\DurationLimiter;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace App\Domain\RateLimit\Events;
 
 readonly class RateLimitExceeded
 {

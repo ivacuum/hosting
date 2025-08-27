@@ -2,10 +2,10 @@
 
 namespace App\RateLimit;
 
-use App\Action\LimitRateAction;
 use App\Comment;
 use App\Domain\Config;
 use App\Domain\RateLimit;
+use App\Domain\RateLimit\Action\LimitRateAction;
 use Illuminate\Http\Request;
 
 class CommentRateLimiter

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Action;
+namespace App\Domain\RateLimit\Action;
 
 use Illuminate\Cache\RateLimiting\Limit;
 

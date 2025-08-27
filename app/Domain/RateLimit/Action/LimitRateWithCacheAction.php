@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Action;
+namespace App\Domain\RateLimit\Action;
 
-use App\Events\RateLimitExceeded;
+use App\Domain\RateLimit\Events\RateLimitExceeded;
 use Illuminate\Cache\RateLimiter;
 use Illuminate\Cache\RateLimiting\Limit;
 
