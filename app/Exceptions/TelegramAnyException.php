@@ -2,15 +2,15 @@
 
 namespace App\Exceptions;
 
-use Ivacuum\Generic\Services\Telegram;
+use App\Domain\Telegram\Action\NotifyAdminViaTelegramAction;
 
 class TelegramAnyException
 {
-    public function __construct(private Telegram $telegram) {}
+    public function __construct(private NotifyAdminViaTelegramAction $notifyAdminViaTelegram) {}
 
     public function __invoke(\Throwable $e): void
     {
-        $this->telegram->notifyAdmin($this->summary($e));
+        $this->notifyAdminViaTelegram->execute($this->summary($e));
 
         if ($previous = $e->getPrevious()) {
             $this->__invoke($previous);

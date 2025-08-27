@@ -2,14 +2,14 @@
 
 namespace App\Exceptions;
 
+use App\Domain\Telegram\Action\NotifyAdminViaTelegramAction;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
-use Ivacuum\Generic\Services\Telegram;
 use Ivacuum\Generic\Utilities\UserAgent;
 
 class TelegramValidationException
 {
-    public function __construct(private Telegram $telegram, private Request $request) {}
+    public function __construct(private NotifyAdminViaTelegramAction $notifyAdminViaTelegram, private Request $request) {}
 
     public function __invoke(ValidationException $e): bool
     {
@@ -37,7 +37,7 @@ class TelegramValidationException
             return;
         }
 
-        $this->telegram->notifyAdmin($this->validationSummary($e));
+        $this->notifyAdminViaTelegram->execute($this->validationSummary($e));
     }
 
     private function validationSummary(ValidationException $e): string

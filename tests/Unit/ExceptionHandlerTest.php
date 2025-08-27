@@ -3,12 +3,12 @@
 namespace Tests\Unit;
 
 use App\Domain\Life\Action\GetTripsPublishedWithCoverAction;
+use App\Domain\Telegram\Job\SendTelegramMessageJob;
 use App\Exceptions\SkipDatabaseOffline;
 use App\Exceptions\TelegramAnyException;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Session\TokenMismatchException;
-use Ivacuum\Generic\Jobs\SendTelegramMessageJob;
 use Tests\TestCase;
 
 class ExceptionHandlerTest extends TestCase

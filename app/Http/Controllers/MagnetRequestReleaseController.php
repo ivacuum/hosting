@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Domain\Magnet\Models\Magnet;
+use App\Domain\Telegram\Action\NotifyAdminViaTelegramAction;
 use App\Http\Requests\MagnetRequestReleaseForm;
-use Ivacuum\Generic\Services\Telegram;
 
 class MagnetRequestReleaseController
 {
-    public function __invoke(MagnetRequestReleaseForm $request, Telegram $telegram)
+    public function __invoke(MagnetRequestReleaseForm $request, NotifyAdminViaTelegramAction $notifyAdminViaTelegram)
     {
         $link = Magnet::externalSearchLink($request->q);
         $user = $request->user->email ?? 'anonymous';
@@ -18,7 +18,7 @@ class MagnetRequestReleaseController
 
         event(new \App\Events\Stats\TorrentReleaseRequested);
 
-        $telegram->notifyAdmin("🔎🧲 {$user} ищет раздачу\n\n{$request->q}\n{$link}{$comment}");
+        $notifyAdminViaTelegram->execute("🔎🧲 {$user} ищет раздачу\n\n{$request->q}\n{$link}{$comment}");
 
         return back()->with(['message' => 'Запрос принят. Уведомления пока присылать не умеем, поэтому просим вскоре вернуться на сайт.']);
     }

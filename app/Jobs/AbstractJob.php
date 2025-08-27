@@ -14,4 +14,9 @@ abstract class AbstractJob implements ShouldQueue
     use InteractsWithQueue;
     use Queueable;
     use SerializesModels;
+
+    public $tries;
+    public $backoff;
+    public $timeout;
+    public $maxExceptions;
 }

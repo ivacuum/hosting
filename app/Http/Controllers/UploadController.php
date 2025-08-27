@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Ivacuum\Generic\Services\Telegram;
+use App\Domain\Telegram\Action\NotifyAdminViaTelegramAction;
 
 class UploadController
 {
-    public function __invoke(Telegram $telegram)
+    public function __invoke(NotifyAdminViaTelegramAction $notifyAdminViaTelegram)
     {
         $files = request()->file('files');
 
@@ -15,7 +15,7 @@ class UploadController
 
             \Storage::disk('temp')->putFileAs('', $file, $filename);
 
-            $telegram->notifyAdmin("Загружен файл\n" . url("uploads/temp/{$filename}"));
+            $notifyAdminViaTelegram->execute("Загружен файл\n" . url("uploads/temp/{$filename}"));
         }
 
         session()->flash('message', 'Спасибо за загруженные файлы');

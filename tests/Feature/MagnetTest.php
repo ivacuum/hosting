@@ -9,6 +9,7 @@ use App\Domain\Magnet\MagnetCategory;
 use App\Domain\Magnet\Models\Magnet;
 use App\Domain\Magnet\Notification\AnonymousMagnetNotification;
 use App\Domain\Rto\RtoTopicStatus;
+use App\Domain\Telegram\Job\SendTelegramMessageJob;
 use App\Factory\CommentFactory;
 use App\Factory\UserFactory;
 use App\Livewire\MagnetAddForm;
@@ -17,7 +18,6 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Exceptions;
 use Illuminate\Support\Sleep;
-use Ivacuum\Generic\Jobs\SendTelegramMessageJob;
 use Tests\TestCase;
 
 class MagnetTest extends TestCase
