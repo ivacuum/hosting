@@ -2,9 +2,7 @@
 
 namespace App\Events\Stats;
 
-use App\Events\Event;
-
-class GigViewed extends Event
+class GigViewed
 {
     public $table = 'gigs';
 

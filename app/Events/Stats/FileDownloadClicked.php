@@ -2,6 +2,4 @@
 
 namespace App\Events\Stats;
 
-use App\Events\Event;
-
-class FileDownloadClicked extends Event {}
+class FileDownloadClicked {}

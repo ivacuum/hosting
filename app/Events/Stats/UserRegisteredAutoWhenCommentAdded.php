@@ -2,6 +2,4 @@
 
 namespace App\Events\Stats;
 
-use App\Events\Event;
-
-class UserRegisteredAutoWhenCommentAdded extends Event {}
+class UserRegisteredAutoWhenCommentAdded {}

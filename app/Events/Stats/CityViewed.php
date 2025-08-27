@@ -2,9 +2,7 @@
 
 namespace App\Events\Stats;
 
-use App\Events\Event;
-
-class CityViewed extends Event
+class CityViewed
 {
     public $table = 'cities';
 

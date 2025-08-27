@@ -2,9 +2,7 @@
 
 namespace App\Events\Stats;
 
-use App\Events\Event;
-
-class TagViewed extends Event
+class TagViewed
 {
     public $table = 'tags';
 

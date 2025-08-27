@@ -2,6 +2,4 @@
 
 namespace App\Events\Stats;
 
-use App\Events\Event;
-
-class TelegramWebhookReceived extends Event {}
+class TelegramWebhookReceived {}

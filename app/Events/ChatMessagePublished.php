@@ -4,7 +4,7 @@ namespace App\Events;
 
 use App\ChatMessage;
 
-class ChatMessagePublished extends Event
+class ChatMessagePublished
 {
     public function __construct(public ChatMessage $chatMessage) {}
 }

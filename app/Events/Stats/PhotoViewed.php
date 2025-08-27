@@ -2,9 +2,7 @@
 
 namespace App\Events\Stats;
 
-use App\Events\Event;
-
-class PhotoViewed extends Event
+class PhotoViewed
 {
     public $table = 'photos';
 

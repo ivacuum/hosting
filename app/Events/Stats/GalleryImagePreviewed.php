@@ -2,9 +2,7 @@
 
 namespace App\Events\Stats;
 
-use App\Events\Event;
-
-class GalleryImagePreviewed extends Event
+class GalleryImagePreviewed
 {
     public function __construct(public int $id) {}
 }

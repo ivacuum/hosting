@@ -2,6 +2,4 @@
 
 namespace App\Events\Stats;
 
-use App\Events\Event;
-
-class KatakanaSelected extends Event {}
+class KatakanaSelected {}
