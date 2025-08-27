@@ -3,9 +3,9 @@
 namespace App\Domain\Telegram\Action;
 
 use App\Domain\Life\Models\Photo;
-use Ivacuum\Generic\Telegram\InlineKeyboardButton;
-use Ivacuum\Generic\Telegram\InlineKeyboardMarkup;
-use Ivacuum\Generic\Telegram\TelegramClient;
+use App\Domain\Telegram\Api\InlineKeyboardButton;
+use App\Domain\Telegram\Api\InlineKeyboardMarkup;
+use App\Domain\Telegram\Api\TelegramClient;
 
 class OnCallbackQueryPhotoOnMapAction
 {

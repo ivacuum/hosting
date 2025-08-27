@@ -3,7 +3,7 @@
 namespace App\Domain\Telegram\Channel;
 
 use App\Domain\Config;
-use Ivacuum\Generic\Telegram\TelegramClient;
+use App\Domain\Telegram\Api\TelegramClient;
 
 class TelegramAdminChannel
 {

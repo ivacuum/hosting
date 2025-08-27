@@ -8,8 +8,8 @@ use App\Domain\Magnet\Job\FetchTorrentMetaJob;
 use App\Domain\Magnet\MagnetStatus;
 use App\Domain\Rto\RtoTopicData;
 use App\Domain\Rto\RtoTopicStatus;
+use App\Domain\Telegram\Api\TelegramResponse;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Ivacuum\Generic\Telegram\TelegramResponse;
 use Tests\TestCase;
 
 class FetchTorrentMetaJobTest extends TestCase

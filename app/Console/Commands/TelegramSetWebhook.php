@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Domain\Telegram\Api\TelegramClient;
 use App\Http\Controllers\TelegramWebhookController;
-use Ivacuum\Generic\Telegram\TelegramClient;
 use Symfony\Component\Console\Attribute\AsCommand;
 
 #[AsCommand('telegram:set-webhook')]

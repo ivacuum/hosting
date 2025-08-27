@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use Ivacuum\Generic\Telegram\LanguageCode;
-use Ivacuum\Generic\Telegram\TelegramClient;
+use App\Domain\Telegram\Api\LanguageCode;
+use App\Domain\Telegram\Api\TelegramClient;
 use Symfony\Component\Console\Attribute\AsCommand;
 
 #[AsCommand('telegram:delete-my-commands')]

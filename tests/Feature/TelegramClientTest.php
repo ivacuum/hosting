@@ -3,13 +3,13 @@
 namespace Tests\Feature;
 
 use App\Domain\Log\Models\ExternalHttpRequest;
+use App\Domain\Telegram\Api\InlineKeyboardButton;
+use App\Domain\Telegram\Api\InlineKeyboardMarkup;
+use App\Domain\Telegram\Api\TelegramClient;
+use App\Domain\Telegram\Api\TelegramException;
+use App\Domain\Telegram\Api\TelegramResponse;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\Client\Request;
-use Ivacuum\Generic\Telegram\InlineKeyboardButton;
-use Ivacuum\Generic\Telegram\InlineKeyboardMarkup;
-use Ivacuum\Generic\Telegram\TelegramClient;
-use Ivacuum\Generic\Telegram\TelegramException;
-use Ivacuum\Generic\Telegram\TelegramResponse;
 use Tests\TestCase;
 
 class TelegramClientTest extends TestCase
