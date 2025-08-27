@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Domain\ExternalIdentityProvider;
 use App\Factory\UserFactory;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -28,7 +29,7 @@ class SignInTest extends TestCase
         $externalIdentity = $user->externalIdentities->first();
 
         $this->assertSame('1', $externalIdentity->uid);
-        $this->assertSame('facebook', $externalIdentity->provider);
+        $this->assertSame(ExternalIdentityProvider::Facebook, $externalIdentity->provider);
     }
 
     public function testFacebookRedirect()
@@ -74,7 +75,7 @@ class SignInTest extends TestCase
         $externalIdentity = $user->externalIdentities->first();
 
         $this->assertSame('1', $externalIdentity->uid);
-        $this->assertSame('google', $externalIdentity->provider);
+        $this->assertSame(ExternalIdentityProvider::Google, $externalIdentity->provider);
     }
 
     public function testGoogleRedirect()
@@ -117,7 +118,7 @@ class SignInTest extends TestCase
         $externalIdentity = $user->externalIdentities->first();
 
         $this->assertSame('1', $externalIdentity->uid);
-        $this->assertSame('vk', $externalIdentity->provider);
+        $this->assertSame(ExternalIdentityProvider::Vk, $externalIdentity->provider);
     }
 
     public function testVkRedirect()

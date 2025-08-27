@@ -2,22 +2,14 @@
 
 namespace App\Factory;
 
+use App\Domain\ExternalIdentityProvider;
 use App\ExternalIdentity;
 
 class ExternalIdentityFactory
 {
-    private const array PROVIDERS = [
-        ExternalIdentity::VK,
-        ExternalIdentity::GITHUB,
-        ExternalIdentity::GOOGLE,
-        ExternalIdentity::YANDEX,
-        ExternalIdentity::TWITTER,
-        ExternalIdentity::FACEBOOK,
-    ];
-
     private int|null $userId = null;
     private string|null $email = null;
-    private string|null $provider = null;
+    private ExternalIdentityProvider|null $provider = null;
 
     private UserFactory|null $userFactory = null;
 
@@ -31,28 +23,28 @@ class ExternalIdentityFactory
 
     public function facebook()
     {
-        return $this->withProvider(ExternalIdentity::FACEBOOK);
+        return $this->withProvider(ExternalIdentityProvider::Facebook);
     }
 
     public function github()
     {
-        return $this->withProvider(ExternalIdentity::GITHUB);
+        return $this->withProvider(ExternalIdentityProvider::GitHub);
     }
 
     public function google()
     {
-        return $this->withProvider(ExternalIdentity::GOOGLE);
+        return $this->withProvider(ExternalIdentityProvider::Google);
     }
 
     public function make()
     {
-        $model = new ExternalIdentity;
-        $model->uid = fake()->numberBetween(10000, 999_999_999_999);
-        $model->email = $this->email ?? fake()->optional(0.6, '')->safeEmail();
-        $model->user_id = $this->userId ?? ($this->userFactory ?? UserFactory::new())->create()->id;
-        $model->provider = $this->provider ?? fake()->randomElement(self::PROVIDERS);
+        $externalIdentity = new ExternalIdentity;
+        $externalIdentity->uid = fake()->numberBetween(10000, 999_999_999_999);
+        $externalIdentity->email = $this->email ?? fake()->optional(0.6, '')->safeEmail();
+        $externalIdentity->user_id = $this->userId ?? ($this->userFactory ?? UserFactory::new())->create()->id;
+        $externalIdentity->provider = $this->provider ?? fake()->randomElement(ExternalIdentityProvider::class);
 
-        return $model;
+        return $externalIdentity;
     }
 
     public static function new(): self
@@ -62,12 +54,12 @@ class ExternalIdentityFactory
 
     public function twitter()
     {
-        return $this->withProvider(ExternalIdentity::TWITTER);
+        return $this->withProvider(ExternalIdentityProvider::Twitter);
     }
 
     public function vk()
     {
-        return $this->withProvider(ExternalIdentity::VK);
+        return $this->withProvider(ExternalIdentityProvider::Vk);
     }
 
     public function withEmail(string $email)
@@ -78,7 +70,7 @@ class ExternalIdentityFactory
         return $factory;
     }
 
-    public function withProvider(string $provider)
+    public function withProvider(ExternalIdentityProvider $provider)
     {
         $factory = clone $this;
         $factory->provider = $provider;
@@ -104,6 +96,6 @@ class ExternalIdentityFactory
 
     public function yandex()
     {
-        return $this->withProvider(ExternalIdentity::YANDEX);
+        return $this->withProvider(ExternalIdentityProvider::Yandex);
     }
 }

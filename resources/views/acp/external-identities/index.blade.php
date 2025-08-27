@@ -1,3 +1,5 @@
+<?php /** @var App\ExternalIdentity $model */ ?>
+
 @extends('acp.list')
 
 @section('heading-after-search')
@@ -6,12 +8,12 @@
   'values' => [
     'Все' => null,
     '---' => null,
-    'ВК' => Ivacuum\Generic\Models\ExternalIdentity::VK,
-    'Гитхаб' => Ivacuum\Generic\Models\ExternalIdentity::GITHUB,
-    'Гугл' => Ivacuum\Generic\Models\ExternalIdentity::GOOGLE,
-    'Твиттер' => Ivacuum\Generic\Models\ExternalIdentity::TWITTER,
-    'Фэйсбук' => Ivacuum\Generic\Models\ExternalIdentity::FACEBOOK,
-    'Яндекс' => Ivacuum\Generic\Models\ExternalIdentity::YANDEX,
+    'ВК' => App\Domain\ExternalIdentityProvider::Vk->value,
+    'Гитхаб' => App\Domain\ExternalIdentityProvider::GitHub->value,
+    'Гугл' => App\Domain\ExternalIdentityProvider::Google->value,
+    'Твиттер' => App\Domain\ExternalIdentityProvider::Twitter->value,
+    'Фэйсбук' => App\Domain\ExternalIdentityProvider::Facebook->value,
+    'Яндекс' => App\Domain\ExternalIdentityProvider::Yandex->value,
   ]
 ])
 @endsection
@@ -38,9 +40,10 @@
           {{ $model->id }}
         </a>
       </td>
-      <td class="leading-none text-2xl bg-{{ $model->provider }}-600 hover:bg-{{ $model->provider }}-700">
+      <td class="leading-none text-2xl bg-{{ $model->provider->value }}-600 hover:bg-{{ $model->provider->value }}-700">
+        <?php $icon = $model->provider->value ?>
         <a class="text-white hover:text-white" href="{{ $model->externalLink() }}">
-          @svg ($model->provider)
+          @svg ($icon)
         </a>
       </td>
       <td>
