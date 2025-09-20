@@ -44,7 +44,7 @@ class InstagramApi
     {
         return $this->http
             ->baseUrl('https://graph.vacuum.name/v23.0/')
-            ->timeout(10)
+            ->timeout(30)
             ->withQueryParameters(['access_token' => $accessToken]);
     }
 
