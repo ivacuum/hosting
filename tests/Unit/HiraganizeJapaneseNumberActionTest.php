@@ -3,11 +3,17 @@
 namespace Tests\Unit;
 
 use App\Domain\Japanese\Action\HiraganizeJapaneseNumberAction;
+use PHPUnit\Framework\Attributes\TestWith;
 use Tests\TestCase;
 
 class HiraganizeJapaneseNumberActionTest extends TestCase
 {
-    #[\PHPUnit\Framework\Attributes\DataProvider('numbers')]
+    #[TestWith([0, 'ぜろ'])]
+    #[TestWith([300, 'さんびゃく'])]
+    #[TestWith([600, 'ろっぴゃく'])]
+    #[TestWith([800, 'はっぴゃく'])]
+    #[TestWith([9999, 'きゅうせんきゅうひゃくきゅうじゅうきゅう'])]
+    #[TestWith([1234567890, 'じゅうにおくさんせんよんひゃくごじゅうろくまんななせんはっぴゃくきゅうじゅう'])]
     public function testEn(int $number, string $result)
     {
         $formatter = new \NumberFormatter('ja', \NumberFormatter::SPELLOUT);
@@ -18,15 +24,5 @@ class HiraganizeJapaneseNumberActionTest extends TestCase
                 ->make(HiraganizeJapaneseNumberAction::class)
                 ->execute($formatter->format($number))
         );
-    }
-
-    public static function numbers()
-    {
-        yield [0, 'ぜろ'];
-        yield [300, 'さんびゃく'];
-        yield [600, 'ろっぴゃく'];
-        yield [800, 'はっぴゃく'];
-        yield [9999, 'きゅうせんきゅうひゃくきゅうじゅうきゅう'];
-        yield [1234567890, 'じゅうにおくさんせんよんひゃくごじゅうろくまんななせんはっぴゃくきゅうじゅう'];
     }
 }

@@ -3,24 +3,20 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use PHPUnit\Framework\Attributes\TestWith;
 use Tests\TestCase;
 
 class RssTest extends TestCase
 {
     use DatabaseTransactions;
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('feeds')]
+    #[TestWith(['life/gigs/rss'])]
+    #[TestWith(['life/rss'])]
+    #[TestWith(['news/rss'])]
     public function testFeeds(string $url)
     {
         $this->get($url)
             ->assertOk()
             ->assertHeader('Content-Type', 'application/xml');
-    }
-
-    public static function feeds()
-    {
-        yield ['life/gigs/rss'];
-        yield ['life/rss'];
-        yield ['news/rss'];
     }
 }

@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Events\Stats;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use PHPUnit\Framework\Attributes\TestWith;
 use Tests\TestCase;
 
 class BeaconTest extends TestCase
@@ -34,7 +35,18 @@ class BeaconTest extends TestCase
             ->assertInvalid(['events' => 'обязательно для заполнения']);
     }
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('simpleEvents')]
+    #[TestWith([Stats\HiraganaAnswered::class])]
+    #[TestWith([Stats\HiraganaSelected::class])]
+    #[TestWith([Stats\HiraganaAnswerRevealed::class])]
+    #[TestWith([Stats\KatakanaAnswered::class])]
+    #[TestWith([Stats\KatakanaSelected::class])]
+    #[TestWith([Stats\KatakanaAnswerRevealed::class])]
+    #[TestWith([Stats\KanaAnswered::class])]
+    #[TestWith([Stats\KanaSelected::class])]
+    #[TestWith([Stats\KanaAnswerRevealed::class])]
+    #[TestWith([Stats\NumberSpoken::class])]
+    #[TestWith([Stats\NumberSpeakPressed::class])]
+    #[TestWith([Stats\NumberVoiceSelected::class])]
     public function testSimpleCounters(string $event)
     {
         \Event::fake($event);
@@ -51,7 +63,8 @@ class BeaconTest extends TestCase
         \Event::assertDispatched($event);
     }
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('viewCounters')]
+    #[TestWith([Stats\NewsViewed::class, [5, 15]])]
+    #[TestWith([Stats\TorrentViewed::class, [1]])]
     public function testViewCounters(string $event, array $ids)
     {
         $payload = $this->payload(collect($ids)->map(fn ($id) => [
@@ -71,38 +84,6 @@ class BeaconTest extends TestCase
     {
         $this->post('js/beacon', $this->payload([['event' => 'unknown thing']]))
             ->assertNoContent();
-    }
-
-    public static function simpleEvents()
-    {
-        yield [Stats\HiraganaAnswered::class];
-        yield [Stats\HiraganaSelected::class];
-        yield [Stats\HiraganaAnswerRevealed::class];
-
-        yield [Stats\KatakanaAnswered::class];
-        yield [Stats\KatakanaSelected::class];
-        yield [Stats\KatakanaAnswerRevealed::class];
-
-        yield [Stats\KanaAnswered::class];
-        yield [Stats\KanaSelected::class];
-        yield [Stats\KanaAnswerRevealed::class];
-
-        yield [Stats\NumberSpoken::class];
-        yield [Stats\NumberSpeakPressed::class];
-        yield [Stats\NumberVoiceSelected::class];
-    }
-
-    public static function viewCounters()
-    {
-        yield [
-            Stats\NewsViewed::class,
-            [5, 15],
-        ];
-
-        yield [
-            Stats\TorrentViewed::class,
-            [1],
-        ];
     }
 
     private function payload(array $data): array

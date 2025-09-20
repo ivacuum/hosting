@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Factory\NewsFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use PHPUnit\Framework\Attributes\TestWith;
 use Tests\TestCase;
 
 class NewsTest extends TestCase
@@ -30,7 +31,9 @@ class NewsTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\NewsViewed::class);
     }
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('oldUrls')]
+    #[TestWith(['news/2010/01'])]
+    #[TestWith(['news/2010/01/01'])]
+    #[TestWith(['news/2010/01/01/slug'])]
     public function testBackwardCompatibility(string $url)
     {
         $this->get($url)
@@ -60,12 +63,5 @@ class NewsTest extends TestCase
         $this->get("news/{$news->id}")
             ->assertMovedPermanently()
             ->assertRedirect("en/news/{$news->id}");
-    }
-
-    public static function oldUrls()
-    {
-        yield ['news/2010/01'];
-        yield ['news/2010/01/01'];
-        yield ['news/2010/01/01/slug'];
     }
 }

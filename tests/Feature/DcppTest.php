@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Factory\DcppHubFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use PHPUnit\Framework\Attributes\TestWith;
 use Tests\TestCase;
 
 class DcppTest extends TestCase
@@ -33,29 +34,24 @@ class DcppTest extends TestCase
             ->assertHasCustomTitle();
     }
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('pages')]
+    #[TestWith(['dc'])]
+    #[TestWith(['dc/airdc'])]
+    #[TestWith(['dc/apexdc'])]
+    #[TestWith(['dc/dcpp'])]
+    #[TestWith(['dc/faq'])]
+    #[TestWith(['dc/flylinkdc'])]
+    #[TestWith(['dc/greylinkdc'])]
+    #[TestWith(['dc/jucydc'])]
+    #[TestWith(['dc/kalugadc'])]
+    #[TestWith(['dc/pelinkdc'])]
+    #[TestWith(['dc/rus_setup'])]
+    #[TestWith(['dc/shakespeer'])]
+    #[TestWith(['dc/strongdc'])]
+    #[TestWith(['dc/strongdc_install'])]
     public function testPages(string $url)
     {
         $this->get($url)
             ->assertOk()
             ->assertHasCustomTitle();
-    }
-
-    public static function pages()
-    {
-        yield ['dc'];
-        yield ['dc/airdc'];
-        yield ['dc/apexdc'];
-        yield ['dc/dcpp'];
-        yield ['dc/faq'];
-        yield ['dc/flylinkdc'];
-        yield ['dc/greylinkdc'];
-        yield ['dc/jucydc'];
-        yield ['dc/kalugadc'];
-        yield ['dc/pelinkdc'];
-        yield ['dc/rus_setup'];
-        yield ['dc/shakespeer'];
-        yield ['dc/strongdc'];
-        yield ['dc/strongdc_install'];
     }
 }

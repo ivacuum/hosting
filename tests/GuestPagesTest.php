@@ -2,27 +2,24 @@
 
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\TestWith;
+
 class GuestPagesTest extends TestCase
 {
-    #[\PHPUnit\Framework\Attributes\DataProvider('guestPages200')]
+    #[TestWith(['/auth/login'])]
+    #[TestWith(['/auth/register'])]
+    #[TestWith(['/auth/password/remind'])]
+    #[TestWith(['/docs'])]
+    #[TestWith(['/docs/amazon-s3'])]
+    #[TestWith(['/docs/freebsd'])]
+    #[TestWith(['/docs/nginx'])]
+    #[TestWith(['/docs/trips'])]
+    #[TestWith(['/retracker'])]
+    #[TestWith(['/retracker/dev'])]
+    #[TestWith(['/retracker/usage'])]
+    #[TestWith(['/subscriptions'])]
     public function testGuestPages200(string $url)
     {
         $this->get($url)->assertOk();
-    }
-
-    public static function guestPages200()
-    {
-        yield ['/auth/login'];
-        yield ['/auth/register'];
-        yield ['/auth/password/remind'];
-        yield ['/docs'];
-        yield ['/docs/amazon-s3'];
-        yield ['/docs/freebsd'];
-        yield ['/docs/nginx'];
-        yield ['/docs/trips'];
-        yield ['/retracker'];
-        yield ['/retracker/dev'];
-        yield ['/retracker/usage'];
-        yield ['/subscriptions'];
     }
 }

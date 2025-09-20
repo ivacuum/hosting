@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Mail\FirstvdsPromocodeMail;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use PHPUnit\Framework\Attributes\TestWith;
 use Tests\TestCase;
 
 class CouponTest extends TestCase
@@ -23,21 +24,16 @@ class CouponTest extends TestCase
         \Mail::assertOutgoingCount(1);
     }
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('pages')]
+    #[TestWith(['promocodes-coupons'])]
+    #[TestWith(['promocodes-coupons/airbnb'])]
+    #[TestWith(['promocodes-coupons/booking'])]
+    #[TestWith(['promocodes-coupons/digitalocean'])]
+    #[TestWith(['promocodes-coupons/drimsim'])]
+    #[TestWith(['promocodes-coupons/firstvds'])]
+    #[TestWith(['promocodes-coupons/timeweb'])]
     public function testPages(string $url)
     {
         $this->get($url)
             ->assertOk();
-    }
-
-    public static function pages()
-    {
-        yield ['promocodes-coupons'];
-        yield ['promocodes-coupons/airbnb'];
-        yield ['promocodes-coupons/booking'];
-        yield ['promocodes-coupons/digitalocean'];
-        yield ['promocodes-coupons/drimsim'];
-        yield ['promocodes-coupons/firstvds'];
-        yield ['promocodes-coupons/timeweb'];
     }
 }

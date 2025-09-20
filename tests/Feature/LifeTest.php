@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Domain\Life\Factory\GigFactory;
 use App\Domain\Life\Factory\TripFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use PHPUnit\Framework\Attributes\TestWith;
 use Tests\TestCase;
 
 class LifeTest extends TestCase
@@ -96,7 +97,15 @@ class LifeTest extends TestCase
             ->assertHasCustomTitle();
     }
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('pages')]
+    #[TestWith(['life/books'])]
+    #[TestWith(['life/chillout'])]
+    #[TestWith(['life/favorite-posts'])]
+    #[TestWith(['life/english'])]
+    #[TestWith(['life/german'])]
+    #[TestWith(['life/laundry'])]
+    #[TestWith(['life/movies'])]
+    #[TestWith(['life/podcasts'])]
+    #[TestWith(['life/using-in-travels'])]
     public function testPages(string $url)
     {
         $this->get($url)
@@ -114,18 +123,5 @@ class LifeTest extends TestCase
             ->assertHasCustomTitle();
 
         $trip->deleteStoryFile();
-    }
-
-    public static function pages()
-    {
-        yield ['life/books'];
-        yield ['life/chillout'];
-        yield ['life/favorite-posts'];
-        yield ['life/english'];
-        yield ['life/german'];
-        yield ['life/laundry'];
-        yield ['life/movies'];
-        yield ['life/podcasts'];
-        yield ['life/using-in-travels'];
     }
 }
