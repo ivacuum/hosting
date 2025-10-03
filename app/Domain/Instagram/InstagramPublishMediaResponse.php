@@ -16,6 +16,24 @@ readonly class InstagramPublishMediaResponse
         $this->id = $response->json('id');
     }
 
+    public static function fakeMediaNotAvailable()
+    {
+        return [
+            'https://graph.vacuum.name/v23.0/me/media_publish?*' => Factory::response([
+                'error' => [
+                    'message' => 'Media ID is not available',
+                    'type' => 'OAuthException',
+                    'code' => 9007,
+                    'error_subcode' => 2207027,
+                    'is_transient' => false,
+                    'error_user_title' => 'Не удалось опубликовать',
+                    'error_user_msg' => 'Медиаданные не готовы к публикации. Немного подождите.',
+                    'fbtrace_id' => 'xxx',
+                ],
+            ], 400),
+        ];
+    }
+
     public static function fakeMediaNotFound()
     {
         return [

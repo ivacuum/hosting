@@ -4,6 +4,7 @@ namespace App\Domain\Instagram;
 
 use App\Http\HttpPost;
 use App\Http\HttpRequest;
+use Carbon\CarbonInterval;
 use Illuminate\Http\Client\Factory;
 
 class InstagramApi
@@ -44,7 +45,13 @@ class InstagramApi
     {
         return $this->http
             ->baseUrl('https://graph.vacuum.name/v23.0/')
+            ->retry([
+                CarbonInterval::seconds(2)->totalMilliseconds,
+                CarbonInterval::seconds(4)->totalMilliseconds,
+                CarbonInterval::seconds(8)->totalMilliseconds,
+            ])
             ->timeout(30)
+            ->throw()
             ->withQueryParameters(['access_token' => $accessToken]);
     }
 
