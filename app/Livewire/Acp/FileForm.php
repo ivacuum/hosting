@@ -82,7 +82,7 @@ class FileForm extends Component
     {
         return [
             'upload' => [
-                Rule::requiredIf(!$this->id),
+                Rule::requiredIf($this->id === null),
                 'file',
                 'nullable',
             ],
