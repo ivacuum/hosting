@@ -17,7 +17,7 @@ readonly class InstagramMeResponse
     public static function fakeSuccess()
     {
         return [
-            'https://graph.vacuum.name/v23.0/me*' => Factory::response([
+            'https://graph.vacuum.name/v23.0/me?*' => Factory::response([
                 'id' => '12345',
                 'user_id' => '1234567890',
                 'username' => 'example',
