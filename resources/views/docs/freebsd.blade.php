@@ -1,6 +1,6 @@
 @extends('docs.base')
 
-<?php $freebsdVersion = '14.2' ?>
+<?php $freebsdVersion = '14.3' ?>
 
 @section('table_of_contents')
 <x-toc-item href="freebsd-update">Обновление ОС</x-toc-item>
