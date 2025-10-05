@@ -22,10 +22,11 @@ class ExportMetricsAction
 
         if ($this->shouldLog) {
             foreach ($metrics as $metric) {
-                \Log::debug(json_encode($metric, JSON_THROW_ON_ERROR));
+                logs()->debug(json_encode($metric, JSON_THROW_ON_ERROR));
             }
         }
 
-        Redis::client()->executeRaw(['XADD', RedisKey::Metrics->value, '*', 'json', json_encode($metrics, JSON_THROW_ON_ERROR)]);
+        // XADD stream * key value
+        Redis::xadd(RedisKey::Metrics->value, ['json' => json_encode($metrics, JSON_THROW_ON_ERROR)]);
     }
 }
