@@ -7,8 +7,10 @@ use App\Domain\CommentStatus;
 use App\Domain\Life\Models\Trip;
 use App\Domain\Magnet\Models\Magnet;
 use App\Observers\CommentObserver;
+use App\Policies\CommentPolicy;
 use App\Scope\CommentRelationScope;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -26,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  */
 #[ObservedBy(CommentObserver::class)]
+#[UsePolicy(CommentPolicy::class)]
 class Comment extends Model
 {
     // Relations

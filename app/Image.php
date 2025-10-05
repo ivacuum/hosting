@@ -4,7 +4,9 @@ namespace App;
 
 use App\Domain\ImageConverter\ImageConverter;
 use App\Observers\ImageObserver;
+use App\Policies\ImagePolicy;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
 
@@ -22,6 +24,7 @@ use Illuminate\Http\UploadedFile;
  * @mixin \Eloquent
  */
 #[ObservedBy(ImageObserver::class)]
+#[UsePolicy(ImagePolicy::class)]
 class Image extends Model
 {
     // Relations

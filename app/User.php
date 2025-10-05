@@ -8,8 +8,10 @@ use App\Domain\NotificationDeliveryMethod;
 use App\Domain\SocialMedia\Models\SocialMediaToken;
 use App\Domain\UserStatus;
 use App\Observers\UserObserver;
+use App\Policies\UserPolicy;
 use Illuminate\Contracts\Translation\HasLocalePreference;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\UploadedFile;
@@ -59,6 +61,7 @@ use Illuminate\Notifications\Notifiable;
  * @mixin \Eloquent
  */
 #[ObservedBy(UserObserver::class)]
+#[UsePolicy(UserPolicy::class)]
 class User extends Authenticatable implements HasLocalePreference
 {
     use Notifiable;

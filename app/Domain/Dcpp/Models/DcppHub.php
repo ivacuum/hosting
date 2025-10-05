@@ -46,7 +46,7 @@ class DcppHub extends Model
     {
         Model::withoutTimestamps(fn () => $this->increment('clicks'));
 
-        event(new Events\Stats\DcppHubClicked);
+        event(new \App\Events\Stats\DcppHubClicked);
     }
 
     #[\Override]

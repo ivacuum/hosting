@@ -3,6 +3,8 @@
 namespace App\Domain\Log\Models;
 
 use App\Domain\Log\ExternalService;
+use App\Domain\Log\Policy\ExternalHttpRequestPolicy;
+use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\MassPrunable;
 use Illuminate\Database\Eloquent\Model;
@@ -32,6 +34,7 @@ use Illuminate\Support\Uri;
  *
  * @mixin \Eloquent
  */
+#[UsePolicy(ExternalHttpRequestPolicy::class)]
 class ExternalHttpRequest extends Model
 {
     use MassPrunable;

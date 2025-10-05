@@ -3,10 +3,12 @@
 namespace App\Domain\SocialMedia\Models;
 
 use App\Domain\Life\Models\Photo;
+use App\Domain\SocialMedia\Policy\SocialMediaPostPolicy;
 use App\Domain\SocialMedia\SocialMediaPostStatus;
 use App\Observers\SocialMediaPostObserver;
 use App\User;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -25,6 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  */
 #[ObservedBy(SocialMediaPostObserver::class)]
+#[UsePolicy(SocialMediaPostPolicy::class)]
 class SocialMediaPost extends Model
 {
     // Relations

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Policies;
+namespace App\Domain\Log\Policy;
 
 use App\User;
 

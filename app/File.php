@@ -4,7 +4,9 @@ namespace App;
 
 use App\Domain\FileStatus;
 use App\Observers\FileObserver;
+use App\Policies\FilePolicy;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -22,6 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  */
 #[ObservedBy(FileObserver::class)]
+#[UsePolicy(FilePolicy::class)]
 class File extends Model
 {
     protected $attributes = [

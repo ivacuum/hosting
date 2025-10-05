@@ -3,6 +3,8 @@
 namespace App;
 
 use App\Domain\ExternalIdentityProvider;
+use App\Policies\ExternalIdentityPolicy;
+use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -19,6 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @mixin \Eloquent
  */
+#[UsePolicy(ExternalIdentityPolicy::class)]
 class ExternalIdentity extends Model
 {
     protected $fillable = ['user_id'];
