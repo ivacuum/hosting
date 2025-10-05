@@ -1,4 +1,4 @@
-<?php /** @var \App\DcppHub $model */ ?>
+<?php /** @var \App\Domain\Dcpp\Models\DcppHub $model */ ?>
 
 @extends('acp.list')
 

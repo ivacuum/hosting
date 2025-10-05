@@ -2,8 +2,8 @@
 
 namespace App\Factory;
 
-use App\DcppHub;
-use App\Domain\DcppHubStatus;
+use App\Domain\Dcpp\DcppHubStatus;
+use App\Domain\Dcpp\Models\DcppHub;
 
 class DcppHubFactory
 {

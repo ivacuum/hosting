@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\DcppHub;
+use App\Domain\Dcpp\Models\DcppHub;
 
 class DcppHubClickController
 {

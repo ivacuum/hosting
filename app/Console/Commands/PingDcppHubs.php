@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\DcppHub;
-use App\Domain\DcppHubStatus;
+use App\Domain\Dcpp\DcppHubStatus;
+use App\Domain\Dcpp\Models\DcppHub;
 use App\Jobs\PingDcppHubJob;
 use Symfony\Component\Console\Attribute\AsCommand;
 

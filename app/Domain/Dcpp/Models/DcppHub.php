@@ -1,10 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Domain\Dcpp\Models;
 
-use App\Domain\DcppHubStatus;
-use App\Observers\DcppHubObserver;
+use App\Domain\Dcpp\DcppHubStatus;
+use App\Domain\Dcpp\Observer\DcppHubObserver;
+use App\Domain\Dcpp\Policy\DcppHubPolicy;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -22,6 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  */
 #[ObservedBy(DcppHubObserver::class)]
+#[UsePolicy(DcppHubPolicy::class)]
 class DcppHub extends Model
 {
     protected $attributes = [

@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Domain\DcppHubStatus;
+use App\Domain\Dcpp\DcppHubStatus;
 use App\Factory\DcppHubFactory;
 use App\Livewire\Acp\DcppHubForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;

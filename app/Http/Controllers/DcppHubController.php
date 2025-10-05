@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\DcppHub;
-use App\Domain\DcppHubStatus;
+use App\Domain\Dcpp\DcppHubStatus;
+use App\Domain\Dcpp\Models\DcppHub;
 use App\Utilities\ViewHelper;
 
 class DcppHubController

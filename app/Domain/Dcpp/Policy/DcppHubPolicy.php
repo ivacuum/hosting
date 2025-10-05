@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Policies;
+namespace App\Domain\Dcpp\Policy;
 
 use App\User;
 

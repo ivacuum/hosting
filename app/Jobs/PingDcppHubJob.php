@@ -2,8 +2,8 @@
 
 namespace App\Jobs;
 
-use App\DcppHub;
 use App\Domain\Dcpp\GetDcppHubInfoAction;
+use App\Domain\Dcpp\Models\DcppHub;
 use Carbon\CarbonInterval;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Queue\Attributes\WithoutRelations;

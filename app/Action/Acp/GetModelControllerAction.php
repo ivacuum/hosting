@@ -4,7 +4,7 @@ namespace App\Action\Acp;
 
 use App\ChatMessage;
 use App\Comment;
-use App\DcppHub;
+use App\Domain\Dcpp\Models\DcppHub;
 use App\Domain\Life\Models\Artist;
 use App\Domain\Life\Models\City;
 use App\Domain\Life\Models\Country;

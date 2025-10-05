@@ -2,8 +2,8 @@
 
 namespace App\Livewire\Acp;
 
-use App\DcppHub;
-use App\Domain\DcppHubStatus;
+use App\Domain\Dcpp\DcppHubStatus;
+use App\Domain\Dcpp\Models\DcppHub;
 use App\Livewire\WithGoto;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Locked;

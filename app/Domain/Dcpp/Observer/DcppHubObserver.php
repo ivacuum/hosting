@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Observers;
+namespace App\Domain\Dcpp\Observer;
 
-use App\DcppHub;
+use App\Domain\Dcpp\Models\DcppHub;
 use Illuminate\Support\Str;
 
 class DcppHubObserver

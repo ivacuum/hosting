@@ -12,7 +12,7 @@
     @endru
 
     <ol class="mb-4">
-      <?php /** @var \App\DcppHub $hub */ ?>
+      <?php /** @var \App\Domain\Dcpp\Models\DcppHub $hub */ ?>
       @foreach ($hubs as $hub)
         <li>
           <a
