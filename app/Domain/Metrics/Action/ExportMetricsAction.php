@@ -27,6 +27,7 @@ class ExportMetricsAction
         }
 
         // XADD stream * key value
-        Redis::xadd(RedisKey::Metrics->value, ['json' => json_encode($metrics, JSON_THROW_ON_ERROR)]);
+        // Redis::xadd(RedisKey::Metrics->value, ['json' => json_encode($metrics, JSON_THROW_ON_ERROR)]);
+        Redis::client()->executeRaw(['XADD', RedisKey::Metrics->value, '*', 'json', json_encode($metrics, JSON_THROW_ON_ERROR)]);
     }
 }

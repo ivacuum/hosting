@@ -13,10 +13,13 @@ class ExportMetricsActionTest extends TestCase
 
     public function testOk()
     {
-        Redis::expects('xadd')
-            ->with('vacuum:metrics', [
-                'json' => '[{"event":"TripViewed","data":{"table":"trips","id":1}}]',
-            ]);
+        Redis::expects('client->executeRaw')
+            ->with(['XADD', 'vacuum:metrics', '*', 'json', '[{"event":"TripViewed","data":{"table":"trips","id":1}}]']);
+
+        // Redis::expects('xadd')
+        //     ->with('vacuum:metrics', [
+        //         'json' => '[{"event":"TripViewed","data":{"table":"trips","id":1}}]',
+        //     ]);
 
         $event = new \App\Events\Stats\TripViewed(id: 1);
 
