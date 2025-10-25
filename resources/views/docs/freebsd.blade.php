@@ -133,8 +133,13 @@
 </x-terminal>
 
 <p>Активация файла подкачки без перезагрузки.</p>
-<x-terminal>
+<x-terminal class="mb-6">
   <div class="prepend-dollar">swapon -aL</div>
+</x-terminal>
+
+<p>Выключение всех файлов подкачки. Полезно, если нужно изменить размер файла.</p>
+<x-terminal>
+  <div class="prepend-dollar">swapoff -a</div>
 </x-terminal>
 
 <h2 id="update-jenkins-without-openjdk">Обновление jenkins без обновления openjdk</h2>
