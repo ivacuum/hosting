@@ -2,6 +2,7 @@
 
 namespace App\Domain\Magnet\Job;
 
+use App\Attributes\WithoutFailedJobLog;
 use App\Domain\Magnet\MagnetStatus;
 use App\Domain\Magnet\Models\Magnet;
 use App\Domain\Magnet\Notification\MagnetDuplicateDeletedAdminNotification;
@@ -9,6 +10,7 @@ use App\Domain\Magnet\Notification\MagnetNotFoundAndDeletedAdminNotification;
 use App\Domain\Rto\Rto;
 use App\Jobs\AbstractJob;
 
+#[WithoutFailedJobLog]
 class FetchTorrentMetaJob extends AbstractJob
 {
     public $tries = 1;
