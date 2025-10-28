@@ -9,13 +9,10 @@ use App\Domain\UserStatus;
 use App\Jobs\AbstractJob;
 use App\User;
 use Illuminate\Queue\Attributes\WithoutRelations;
-use Illuminate\Queue\SerializesModels;
 
 #[WithoutRelations]
 class NotifyTripSubscribersJob extends AbstractJob
 {
-    use SerializesModels;
-
     public function __construct(private Trip $trip) {}
 
     public function handle()

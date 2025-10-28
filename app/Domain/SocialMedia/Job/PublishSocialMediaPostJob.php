@@ -9,13 +9,10 @@ use App\Jobs\AbstractJob;
 use Carbon\CarbonInterval;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Queue\Attributes\WithoutRelations;
-use Illuminate\Queue\SerializesModels;
 
 #[WithoutRelations]
 class PublishSocialMediaPostJob extends AbstractJob implements ShouldBeUnique
 {
-    use SerializesModels;
-
     public function __construct(public SocialMediaPost $post) {}
 
     public function handle(InstagramApi $instagram)

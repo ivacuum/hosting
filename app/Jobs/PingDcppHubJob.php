@@ -7,13 +7,10 @@ use App\Domain\Dcpp\Models\DcppHub;
 use Carbon\CarbonInterval;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Queue\Attributes\WithoutRelations;
-use Illuminate\Queue\SerializesModels;
 
 #[WithoutRelations]
 class PingDcppHubJob extends AbstractJob implements ShouldBeUnique
 {
-    use SerializesModels;
-
     public function __construct(public DcppHub $hub) {}
 
     public function handle(GetDcppHubInfoAction $getDcppHubInfo)
