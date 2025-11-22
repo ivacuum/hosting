@@ -55,6 +55,8 @@ jobs:
       - name: Install graphicsmagick
         run: sudo apt-get install graphicsmagick
 
+      - run: /usr/bin/gm convert
+
       - name: Prepare Laravel Application
         run: |
           cp .env.ci .env
