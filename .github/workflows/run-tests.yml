@@ -53,12 +53,7 @@ jobs:
       - run: yarn build
 
       - name: Install graphicsmagick
-        run: sudo apt-get install graphicsmagick
-
-      - run: apt list --installed
-      #      - run: /usr/bin/env convert
-      #      - run: /usr/bin/env magick
-      #      - run: /usr/bin/env gm convert
+        run: sudo apt install graphicsmagick
 
       - name: Prepare Laravel Application
         run: |
