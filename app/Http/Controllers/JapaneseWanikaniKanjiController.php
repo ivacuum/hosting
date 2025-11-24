@@ -24,7 +24,7 @@ class JapaneseWanikaniKanjiController
         $kanji = Kanji::query()
             ->where('character', $character)
             ->tap(new UserBurnableScope(auth()->id()))
-            ->firstOrFail();
+            ->sole();
 
         \Breadcrumbs::push(__('Уровень :level', ['level' => $kanji->level]), "japanese/wanikani/level/{$kanji->level}");
         \Breadcrumbs::push($kanji->character);

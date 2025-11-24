@@ -24,7 +24,7 @@ class JapaneseWanikaniVocabularyController
         $vocab = Vocabulary::query()
             ->where('character', $characters)
             ->tap(new UserBurnableScope(auth()->id()))
-            ->firstOrFail();
+            ->sole();
 
         \Breadcrumbs::push(__('Уровень :level', ['level' => $vocab->level]), "japanese/wanikani/level/{$vocab->level}");
         \Breadcrumbs::push($vocab->character);

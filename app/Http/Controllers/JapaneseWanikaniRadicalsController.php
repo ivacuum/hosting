@@ -24,7 +24,7 @@ class JapaneseWanikaniRadicalsController
         $radical = Radical::query()
             ->where('meaning', $meaning)
             ->tap(new UserBurnableScope(auth()->id()))
-            ->firstOrFail();
+            ->sole();
 
         \Breadcrumbs::push(__('Уровень :level', ['level' => $radical->level]), "japanese/wanikani/level/{$radical->level}");
         \Breadcrumbs::push($radical->meaning);

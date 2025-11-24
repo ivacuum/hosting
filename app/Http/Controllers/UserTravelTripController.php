@@ -33,13 +33,12 @@ class UserTravelTripController extends UserTravelController
 
     public function show(User $traveler, string $slug)
     {
-        /** @var Trip $trip */
         $trip = Trip::query()
             ->withCount('photos')
             ->whereBelongsTo($traveler)
             ->where('slug', $slug)
             ->where('status', TripStatus::Published)
-            ->firstOrFail();
+            ->sole();
 
         $trip->loadCityAndCountry();
 
