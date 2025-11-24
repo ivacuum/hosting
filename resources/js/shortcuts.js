@@ -135,7 +135,7 @@ export default class Shortcuts {
 
       if (items.length === 0) return false
 
-      const lastItem = items[items.length - 1]
+      const lastItem = items.at(-1)
 
       if (lastItem.matches('.focus')) {
         document.dispatchEvent(new Event('shortcuts.to_next_page'))
@@ -193,7 +193,7 @@ export default class Shortcuts {
 
       if (items.length === 0) return false
 
-      const lastItem = items[items.length - 1]
+      const lastItem = items.at(-1)
       const focusedItem = document.querySelector('.js-shortcuts-item.focus')
 
       if (focusedItem === null) {
