@@ -10,7 +10,7 @@
     </thead>
     <tbody>
     @foreach ($this->models as $model)
-      <tr class="js-dblclick-edit" data-dblclick-url="{{ Acp::edit($model) }}">
+      <tr class="js-dblclick-edit" data-dblclick-url="{{ Acp::edit($model) }}" wire:key="{{ $model->id }}">
         <td>
           <a href="{{ Acp::show($model) }}">
             {{ $model->title }}

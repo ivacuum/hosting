@@ -9,7 +9,7 @@
       <select required class="the-input" wire:model.live="categoryId">
         <option value="">Выберите рубрику...</option>
         @foreach (TorrentCategoryHelper::tree() as $id => $category)
-          <option value="{{ $id }}" {{ !empty($category['children']) ? 'disabled' : '' }}>
+          <option value="{{ $id }}" {{ !empty($category['children']) ? 'disabled' : '' }} wire:key="{{ $id }}">
             {{ $category['title'] }}
           </option>
           @if (!empty($category['children']))

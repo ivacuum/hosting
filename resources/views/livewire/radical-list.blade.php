@@ -28,7 +28,7 @@
     </div>
     <div class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 gap-px text-center text-white">
       @foreach ($this->radicals as $radical)
-        <div class="group rounded-sm {{ auth()->id() && isset($this->burned[$radical->id]) ? 'bg-burned' : 'bg-radical' }} {{ auth()->id() && !$this->showBurned && isset($this->burned[$radical->id]) ? 'hidden' : '' }}">
+        <div class="group rounded-sm {{ auth()->id() && isset($this->burned[$radical->id]) ? 'bg-burned' : 'bg-radical' }} {{ auth()->id() && !$this->showBurned && isset($this->burned[$radical->id]) ? 'hidden' : '' }}" wire:key="radical-{{ $radical->id }}">
           <a class="block text-6xl leading-none py-2 text-white hover:text-grey-200" href="{{ $radical->www() }}">
             @if ($radical->character)
               <div class="ja-shadow">
