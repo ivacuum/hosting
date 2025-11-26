@@ -1,5 +1,6 @@
 {
   "name": "ivacuum/hosting",
+  "version": "1.0.0",
   "description": "",
   "license": "MIT",
   "require": {
@@ -74,6 +75,11 @@
     "rebuild-env": [
       "docker-compose down",
       "docker-compose build",
+      "docker-compose up -d"
+    ],
+    "rebuild-env-fresh": [
+      "docker-compose down",
+      "docker-compose build --no-cache --pull",
       "docker-compose up -d"
     ],
     "rector": "vendor/bin/rector process --dry-run",

@@ -1,3 +1,4 @@
+/.docker/mysql
 /.idea
 /node_modules
 /public/assets
