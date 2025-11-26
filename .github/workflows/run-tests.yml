@@ -12,6 +12,7 @@ jobs:
     strategy:
       matrix:
         php: [ '8.4' ]
+    continue-on-error: ${{ matrix.php == '8.5' }}
 
     name: PHP ${{ matrix.php }}
 
