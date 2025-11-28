@@ -14,8 +14,8 @@ apt install -y --no-install-recommends \
   zlib1g-dev
 docker-php-ext-configure gd --with-freetype --with-jpeg
 docker-php-ext-install -j$(nproc) exif gd intl opcache pcntl pdo_mysql zip
-yes '' | pecl install excimer
-docker-php-ext-enable excimer
+yes '' | pecl install excimer swoole
+docker-php-ext-enable excimer swoole
 # Удаляем то, что нужно было только для сборки расширений
 # $PHPIZE_DEPS родом из базового образа php
 apt purge -y $PHPIZE_DEPS
