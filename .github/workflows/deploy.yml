@@ -42,7 +42,7 @@ jobs:
             -cf deploy.tar .
 
       - name: ansible
-        uses: dawidd6/action-ansible-playbook@3363d6aa333ecb41ef01579bc5eb4412b3d6802f # v5
+        uses: dawidd6/action-ansible-playbook@e8303e5fa5b52015d59fd5bc8c968943bd5f349c # v6
         with:
           key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
           playbook: vacuum.name.yml
