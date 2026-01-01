@@ -67,7 +67,7 @@ class PhotoFactory
         return new self;
     }
 
-    public function withPoint(string $lat, string $lon)
+    public function withPoint(string|int $lat, string|int $lon)
     {
         $factory = clone $this;
         $factory->lat = $lat;
