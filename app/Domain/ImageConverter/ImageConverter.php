@@ -60,12 +60,23 @@ class ImageConverter
                     '-format webp' => '-define webp:method=6',
                     default => '',
                 },
-                '+profile "!icm,*"',
+                '+profile "!icm,!xmp,*"',
                 escapeshellarg($destination),
             ]
         );
 
-        passthru($command);
+        $output = [];
+        $returnCode = 0;
+        exec("{$command} 2>&1", $output, $returnCode);
+
+        if ($returnCode !== 0 || !file_exists($destination)) {
+            logs()->error('Could not convert source: ' . $source, [
+                'output' => $output,
+                'command' => $command,
+            ]);
+
+            throw new \Exception('Преобразование файла не удалось.');
+        }
 
         if (!file_exists($destination)) {
             throw new \Exception('Преобразование файла не удалось');
@@ -169,7 +180,7 @@ class ImageConverter
     }
 
     /**
-     * Результат работы конвертера будет помещен во временный файл, который будет удален по завершении запроса
+     * Результат работы конвертера будет помещен во временный файл, который будет удален по завершении запроса.
      * Временный файл после преобразований подразумевается перенести в постоянное хранилище
      */
     protected function tempFile(): string
