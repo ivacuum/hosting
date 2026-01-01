@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 use Symfony\Component\VarDumper\Cloner\AbstractCloner;
 
 AbstractCloner::$defaultCasters[Carbon\CarbonInterface::class] = App\Caster\CarbonCaster::prune(...);
+AbstractCloner::$defaultCasters[Carbon\CarbonInterval::class] = App\Caster\CarbonCaster::prune(...);
 AbstractCloner::$defaultCasters[Illuminate\Database\Eloquent\Model::class] = App\Caster\EloquentModelCaster::prune(...);
 
 return Application::configure(basePath: dirname(__DIR__))

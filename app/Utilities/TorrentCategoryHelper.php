@@ -135,7 +135,7 @@ class TorrentCategoryHelper
 
     public function canPostIds()
     {
-        return array_keys(array_filter($this->categories, fn ($id) => $this->canPost($id), ARRAY_FILTER_USE_KEY));
+        return array_keys(array_filter($this->categories, $this->canPost(...), ARRAY_FILTER_USE_KEY));
     }
 
     public function children($id)
