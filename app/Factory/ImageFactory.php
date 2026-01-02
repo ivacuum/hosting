@@ -3,6 +3,7 @@
 namespace App\Factory;
 
 use App\Image;
+use App\User;
 use Carbon\CarbonImmutable;
 use Carbon\CarbonInterface;
 
@@ -10,6 +11,8 @@ class ImageFactory
 {
     private int|null $userId = null;
     private CarbonInterface|null $updatedAt = null;
+
+    private UserFactory|null $userFactory = null;
 
     public function create()
     {
@@ -26,7 +29,7 @@ class ImageFactory
         $model->date = CarbonImmutable::instance(fake()->dateTimeBetween('-4 years'))->format('ymd');
         $model->size = fake()->numberBetween(1000, 1_000_000);
         $model->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
-        $model->user_id = $this->userId ?? UserFactory::new()->create()->id;
+        $model->user_id = $this->userId ?? ($this->userFactory ?? UserFactory::new())->create()->id;
         $model->updated_at = $this->updatedAt;
 
         return $model;
@@ -50,10 +53,17 @@ class ImageFactory
         return $factory;
     }
 
-    public function withUserId(int $userId)
+    public function withUser(int|User|UserFactory|null $user = null)
     {
         $factory = clone $this;
-        $factory->userId = $userId;
+
+        if ($user instanceof User) {
+            $factory->userId = $user->id;
+        } elseif (is_int($user)) {
+            $factory->userId = $user;
+        } else {
+            $factory->userFactory = $user ?? UserFactory::new();
+        }
 
         return $factory;
     }

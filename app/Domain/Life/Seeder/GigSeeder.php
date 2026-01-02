@@ -26,8 +26,8 @@ class GigSeeder extends Seeder
             }
 
             $gig = GigFactory::new()
-                ->withArtistId($artist->id)
-                ->withCityId($cityIds->random())
+                ->withArtist($artist)
+                ->withCity($cityIds->random())
                 ->make();
 
             $gig->slug = $slug;

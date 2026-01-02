@@ -113,7 +113,7 @@ class CitySeeder extends Seeder
             $country = Country::query()->firstWhere('slug', $countrySlug);
 
             array_map(function (array $data) use ($country) {
-                $city = CityFactory::new()->withCountryId($country->id)->make();
+                $city = CityFactory::new()->withCountry($country)->make();
                 $city->slug = $data['slug'];
                 $city->hashtags = match ($data['slug']) {
                     'msk' => '#moscow #москва',

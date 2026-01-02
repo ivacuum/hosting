@@ -14,7 +14,7 @@ class MailReportTest extends TestCase
     public function testReport()
     {
         $email = EmailFactory::new()
-            ->withCommentId(1)
+            ->withComment(1)
             ->withTemplate(CommentConfirmMail::class)
             ->create();
 

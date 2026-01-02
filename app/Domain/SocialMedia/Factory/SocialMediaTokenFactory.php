@@ -4,6 +4,7 @@ namespace App\Domain\SocialMedia\Factory;
 
 use App\Domain\SocialMedia\Models\SocialMediaToken;
 use App\Factory\UserFactory;
+use App\User;
 use Carbon\CarbonInterface;
 
 class SocialMediaTokenFactory
@@ -11,6 +12,8 @@ class SocialMediaTokenFactory
     private int $userId = 1;
     private string|null $token = null;
     private CarbonInterface|null $expiresAt = null;
+
+    private UserFactory|null $userFactory = null;
 
     public function create()
     {
@@ -24,7 +27,7 @@ class SocialMediaTokenFactory
     {
         $token = new SocialMediaToken;
         $token->token = $this->token ?? fake()->uuid();
-        $token->user_id = $this->userId ?? UserFactory::new()->create()->id;
+        $token->user_id = $this->userId ?? ($this->userFactory ?? UserFactory::new())->create()->id;
         $token->expired_at = $this->expiresAt ?? now()->addMonth();
 
         return $token;
@@ -51,10 +54,17 @@ class SocialMediaTokenFactory
         return $factory;
     }
 
-    public function withUserId(int $userId)
+    public function withUser(int|User|UserFactory|null $user = null)
     {
         $factory = clone $this;
-        $factory->userId = $userId;
+
+        if ($user instanceof User) {
+            $factory->userId = $user->id;
+        } elseif (is_int($user)) {
+            $factory->userId = $user;
+        } else {
+            $factory->userFactory = $user ?? UserFactory::new();
+        }
 
         return $factory;
     }

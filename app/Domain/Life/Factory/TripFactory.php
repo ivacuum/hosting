@@ -7,6 +7,7 @@ use App\Domain\Life\Models\Trip;
 use App\Domain\Life\TripStatus;
 use App\Factory\CommentFactory;
 use App\Factory\UserFactory;
+use App\User;
 use Carbon\CarbonImmutable;
 
 class TripFactory
@@ -28,7 +29,7 @@ class TripFactory
         $model->save();
 
         $this->commentFactory
-            ?->withTripId($model->id)
+            ?->withTrip($model)
             ->create();
 
         return $model;
@@ -68,20 +69,17 @@ class TripFactory
         return new self;
     }
 
-    public function withCity(City $city)
+    public function withCity(int|City $city)
     {
         $factory = clone $this;
-        $factory->cityId = $city->id;
-        $factory->englishTitle = $city->title_en;
-        $factory->russianTitle = $city->title_ru;
 
-        return $factory;
-    }
-
-    public function withCityId(int $cityId)
-    {
-        $factory = clone $this;
-        $factory->cityId = $cityId;
+        if ($city instanceof City) {
+            $factory->cityId = $city->id;
+            $factory->englishTitle = $city->title_en;
+            $factory->russianTitle = $city->title_ru;
+        } else {
+            $factory->cityId = $city;
+        }
 
         return $factory;
     }
@@ -110,18 +108,17 @@ class TripFactory
         return $factory;
     }
 
-    public function withUser(UserFactory|null $userFactory = null)
+    public function withUser(int|User|UserFactory|null $user = null)
     {
         $factory = clone $this;
-        $factory->userFactory = $userFactory ?? UserFactory::new();
 
-        return $factory;
-    }
-
-    public function withUserId(int $userId)
-    {
-        $factory = clone $this;
-        $factory->userId = $userId;
+        if ($user instanceof User) {
+            $factory->userId = $user->id;
+        } elseif (is_int($user)) {
+            $factory->userId = $user;
+        } else {
+            $factory->userFactory = $user ?? UserFactory::new();
+        }
 
         return $factory;
     }

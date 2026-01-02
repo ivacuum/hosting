@@ -23,7 +23,7 @@ class RefreshSocialMediaTokenTest extends TestCase
 
         $token = SocialMediaTokenFactory::new()
             ->withExpiresAt(today()->addDay())
-            ->withUserId($user->id)
+            ->withUser($user)
             ->create();
 
         $this

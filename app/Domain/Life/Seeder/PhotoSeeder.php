@@ -19,7 +19,7 @@ class PhotoSeeder extends Seeder
     {
         $trip = Trip::query()->where('slug', 'msk.2019.09.29')->sole();
 
-        $factory = PhotoFactory::new()->withTripId($trip->id);
+        $factory = PhotoFactory::new()->withTrip($trip);
         $factory->withSlug('msk.2019.09.29/IMG_1345.jpg')->create();
         $factory->withSlug('msk.2019.09.29/IMG_1346.jpg')->create();
         $factory->hidden()->withSlug('msk.2019.09.29/IMG_1347.jpg')->create();
@@ -29,7 +29,7 @@ class PhotoSeeder extends Seeder
     {
         $trip = Trip::query()->where('slug', 'suwon.2019')->sole();
 
-        $factory = PhotoFactory::new()->withTripId($trip->id);
+        $factory = PhotoFactory::new()->withTrip($trip);
         $factory->withSlug('suwon.2019/IMG_4277.jpg')->create();
         $factory->withSlug('suwon.2019/IMG_4278.jpg')->create();
         $factory->withSlug('suwon.2019/IMG_4283.jpg')->create();

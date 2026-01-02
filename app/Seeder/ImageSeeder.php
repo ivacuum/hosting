@@ -16,7 +16,7 @@ class ImageSeeder extends Seeder
             ->withLogin('gallery')
             ->create();
 
-        $factory = ImageFactory::new()->withUserId($user->id);
+        $factory = ImageFactory::new()->withUser($user);
 
         for ($i = 0; $i < 10; $i++) {
             $image = $factory->create();

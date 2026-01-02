@@ -100,19 +100,19 @@ class PhotoFactory
         return $factory;
     }
 
-    public function withTrip(TripFactory|null $tripFactory = null)
+    public function withTrip(int|Trip|TripFactory|null $trip = null)
     {
         $factory = clone $this;
-        $factory->tripFactory = $tripFactory ?? TripFactory::new()->metaImage();
 
-        return $factory;
-    }
-
-    public function withTripId(int $tripId)
-    {
-        $factory = clone $this;
-        $factory->relId = $tripId;
-        $factory->relType = (new Trip)->getMorphClass();
+        if ($trip instanceof Trip) {
+            $factory->relId = $trip->id;
+            $factory->relType = $trip->getMorphClass();
+        } elseif (is_int($trip)) {
+            $factory->relId = $trip;
+            $factory->relType = new Trip()->getMorphClass();
+        } else {
+            $factory->tripFactory = $trip ?? TripFactory::new()->metaImage();
+        }
 
         return $factory;
     }

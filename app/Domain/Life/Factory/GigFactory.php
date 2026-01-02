@@ -3,6 +3,8 @@
 namespace App\Domain\Life\Factory;
 
 use App\Domain\Life\GigStatus;
+use App\Domain\Life\Models\Artist;
+use App\Domain\Life\Models\City;
 use App\Domain\Life\Models\Gig;
 use Carbon\CarbonImmutable;
 
@@ -43,18 +45,28 @@ class GigFactory
         return new self;
     }
 
-    public function withArtistId(int $artistId)
+    public function withArtist(int|Artist $artist)
     {
         $factory = clone $this;
-        $factory->artistId = $artistId;
+
+        if ($artist instanceof Artist) {
+            $factory->artistId = $artist->id;
+        } else {
+            $factory->artistId = $artist;
+        }
 
         return $factory;
     }
 
-    public function withCityId(int $cityId)
+    public function withCity(int|City $city)
     {
         $factory = clone $this;
-        $factory->cityId = $cityId;
+
+        if ($city instanceof City) {
+            $factory->cityId = $city->id;
+        } else {
+            $factory->cityId = $city;
+        }
 
         return $factory;
     }

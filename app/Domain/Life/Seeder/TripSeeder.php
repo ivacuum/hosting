@@ -26,7 +26,7 @@ class TripSeeder extends Seeder
                 continue;
             }
 
-            $trip = TripFactory::new()->withCityId($city->id)->make();
+            $trip = TripFactory::new()->withCity($city)->make();
             $trip->slug = $slug;
             $trip->title_en = $city->title_en;
             $trip->title_ru = $city->title_ru;
@@ -59,9 +59,9 @@ class TripSeeder extends Seeder
         $randomCity = City::query()->inRandomOrder()->first();
 
         TripFactory::new()
-            ->withComment(CommentFactory::new()->withText('С первой публикацией!')->withUserId(1))
+            ->withComment(CommentFactory::new()->withText('С первой публикацией!')->withUser(1))
             ->withCity($randomCity)
-            ->withUserId($user->id)
+            ->withUser($user)
             ->create();
     }
 

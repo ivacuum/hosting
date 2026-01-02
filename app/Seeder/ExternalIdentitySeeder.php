@@ -17,7 +17,7 @@ class ExternalIdentitySeeder extends Seeder
 
         $factory = ExternalIdentityFactory::new()
             ->withEmail($user->email)
-            ->withUserId($user->id);
+            ->withUser($user);
 
         $factory->facebook()->create();
         $factory->github()->create();

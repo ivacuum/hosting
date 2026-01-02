@@ -16,7 +16,7 @@ class NewsSeeder extends Seeder
             ->create();
 
         $newsFactory = NewsFactory::new()
-            ->withUserId($author->id);
+            ->withUser($author);
 
         $newsFactory
             ->withTitle('Markdown post')

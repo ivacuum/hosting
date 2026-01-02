@@ -54,7 +54,7 @@ class IssueSeeder extends Seeder
 
         IssueFactory::new()
             ->closed()
-            ->withComment(CommentFactory::new()->withText('Так и задумано.')->withUserId(1))
+            ->withComment(CommentFactory::new()->withText('Так и задумано.')->withUser(1))
             ->withTitle('Поездки на главной')
             ->withText('Истории выводятся все время случайные. Меня картинка привлекла, а я обновил страницу, и она пропала.')
             ->withUser($user)

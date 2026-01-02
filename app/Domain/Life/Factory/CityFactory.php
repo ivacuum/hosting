@@ -3,6 +3,7 @@
 namespace App\Domain\Life\Factory;
 
 use App\Domain\Life\Models\City;
+use App\Domain\Life\Models\Country;
 use App\Spatial\Point;
 
 class CityFactory
@@ -43,18 +44,17 @@ class CityFactory
         return new self;
     }
 
-    public function withCountry(CountryFactory $countryFactory)
+    public function withCountry(int|Country|CountryFactory|null $country = null)
     {
         $factory = clone $this;
-        $factory->countryFactory = $countryFactory;
 
-        return $factory;
-    }
-
-    public function withCountryId(int $countryId)
-    {
-        $factory = clone $this;
-        $factory->countryId = $countryId;
+        if ($country instanceof Country) {
+            $factory->countryId = $country->id;
+        } elseif (is_int($country)) {
+            $factory->countryId = $country;
+        } else {
+            $factory->countryFactory = $country ?? CountryFactory::new();
+        }
 
         return $factory;
     }

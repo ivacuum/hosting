@@ -43,23 +43,17 @@ class LinkRequestFactory
         return $factory;
     }
 
-    public function withUser(User|UserFactory|null $user = null)
+    public function withUser(int|User|UserFactory|null $user = null)
     {
         $factory = clone $this;
 
         if ($user instanceof User) {
             $factory->userId = $user->id;
+        } elseif (is_int($user)) {
+            $factory->userId = $user;
         } else {
             $factory->userFactory = $user ?? UserFactory::new();
         }
-
-        return $factory;
-    }
-
-    public function withUserId(int $userId)
-    {
-        $factory = clone $this;
-        $factory->userId = $userId;
 
         return $factory;
     }

@@ -17,7 +17,7 @@ class MagnetSeeder extends Seeder
             ->withLogin('magnet')
             ->create();
 
-        $factory = MagnetFactory::new()->withUserId($user->id);
+        $factory = MagnetFactory::new()->withUser($user);
         $factory
             ->withCategory(MagnetCategory::RpgGames)
             ->withTitle('Мир героев [RUS] (2009) (1.25 + 1 DLC)')
@@ -102,15 +102,15 @@ TEXT))
         $factory->advancedTitle()->hidden()->create();
         $factory->advancedTitle()->deleted()->create();
 
-        $this->hitman($user->id);
+        $this->hitman($user);
     }
 
-    private function hitman(int $userId)
+    private function hitman(User $user)
     {
         $factory = MagnetFactory::new()
             ->withCategory(MagnetCategory::ActionGames)
             ->withRelatedQuery('hitman')
-            ->withUserId($userId)
+            ->withUser($user)
             ->withHtml(<<<'HTML'
 <p>Hitman – это популярная компьютерная игра, созданная в жанре экшен-стелс. В ней игроку предстоит стать наемным убийцей, работающим на международную организацию, выполняя различные миссии по устранению целей.</p>
 

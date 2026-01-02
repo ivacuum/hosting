@@ -29,7 +29,7 @@ class PhotoUploadFormTest extends TestCase
             ->create();
 
         $photo = PhotoFactory::new()
-            ->withTripId($trip->id)
+            ->withTrip($trip)
             ->withSlug('our-phpunit-trip/IMG_0013.jpg')
             ->create();
 
@@ -114,7 +114,7 @@ class PhotoUploadFormTest extends TestCase
             ->create();
 
         $photo = PhotoFactory::new()
-            ->withTripId($trip->id)
+            ->withTrip($trip)
             ->withSlug('our-phpunit-trip/IMG_0013.jpg')
             ->create();
 

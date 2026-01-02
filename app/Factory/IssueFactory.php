@@ -15,10 +15,10 @@ class IssueFactory
         '/en/japanese',
     ];
 
+    private int|null $userId = null;
     private string|null $text = null;
     private string|null $email = null;
     private string|null $title = null;
-    private string|null $userId = null;
     private IssueStatus $status = IssueStatus::Open;
 
     private UserFactory|null $userFactory = null;
@@ -35,7 +35,7 @@ class IssueFactory
         $model->save();
 
         $this->commentFactory
-            ?->withIssueId($model->id)
+            ?->withIssue($model)
             ->create();
 
         return $model;
@@ -92,13 +92,15 @@ class IssueFactory
         return $factory;
     }
 
-    public function withUser(User|UserFactory|null $user = null)
+    public function withUser(int|User|UserFactory|null $user = null)
     {
         $factory = clone $this;
 
         if ($user instanceof User) {
             $factory->email = $user->email;
             $factory->userId = $user->id;
+        } elseif (is_int($user)) {
+            $factory->userId = $user;
         } else {
             $factory->userFactory = $user ?? UserFactory::new();
         }

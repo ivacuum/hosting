@@ -17,7 +17,7 @@ class TripStatsCalculatorTest extends TestCase
     {
         $trip1 = TripFactory::new()->create();
         $trip2 = TripFactory::new()->create();
-        $trip3 = TripFactory::new()->withCityId($trip1->city_id)->create();
+        $trip3 = TripFactory::new()->withCity($trip1->city_id)->create();
 
         $trips = new Collection([$trip1, $trip2, $trip3]);
         $stats = new TripStatsCalculator($trips);
@@ -38,7 +38,7 @@ class TripStatsCalculatorTest extends TestCase
         $trip2->date_end = CarbonImmutable::parse('2015-02-01');
         $trip2->date_start = CarbonImmutable::parse('2015-01-28');
 
-        $trip3 = TripFactory::new()->withCityId($trip2->city_id)->make();
+        $trip3 = TripFactory::new()->withCity($trip2->city_id)->make();
         $trip3->date_end = CarbonImmutable::parse('2017-01-01 01:00:00');
         $trip3->date_start = CarbonImmutable::parse('2016-12-31 21:00:00');
 

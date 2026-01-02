@@ -57,10 +57,16 @@ class EmailFactory
         return $factory;
     }
 
-    public function withCommentId(int $id)
+    public function withComment(int|Comment $comment)
     {
         $factory = clone $this;
-        $factory->relationId = $id;
+
+        if ($comment instanceof Comment) {
+            $factory->relationId = $comment->id;
+        } else {
+            $factory->relationId = $comment;
+        }
+
         $factory->relationType = (new Comment)->getMorphClass();
 
         return $factory;

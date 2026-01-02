@@ -5,6 +5,7 @@ namespace App\Factory;
 use App\Domain\Locale;
 use App\Domain\NewsStatus;
 use App\News;
+use App\User;
 
 class NewsFactory
 {
@@ -13,6 +14,8 @@ class NewsFactory
     private string|null $markdown = null;
     private Locale $locale = Locale::Rus;
     private NewsStatus $status = NewsStatus::Published;
+
+    private UserFactory|null $userFactory = null;
 
     public function create()
     {
@@ -39,7 +42,7 @@ class NewsFactory
         $model->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $model->locale = $this->locale;
         $model->status = $this->status;
-        $model->user_id = $this->userId ?? UserFactory::new()->create()->id;
+        $model->user_id = $this->userId ?? ($this->userFactory ?? UserFactory::new())->create()->id;
         $model->markdown = $this->markdown ?? fake()->text();
 
         return $model;
@@ -82,10 +85,17 @@ class NewsFactory
         return $factory;
     }
 
-    public function withUserId(int $userId)
+    public function withUser(int|User|UserFactory|null $user = null)
     {
         $factory = clone $this;
-        $factory->userId = $userId;
+
+        if ($user instanceof User) {
+            $factory->userId = $user->id;
+        } elseif (is_int($user)) {
+            $factory->userId = $user;
+        } else {
+            $factory->userFactory = $user ?? UserFactory::new();
+        }
 
         return $factory;
     }
