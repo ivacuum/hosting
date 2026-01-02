@@ -12,6 +12,7 @@ use App\Domain\Rto\Rto;
 use App\Domain\Rto\RtoMagnetNotFoundException;
 use App\Domain\Rto\RtoTopicDuplicateException;
 use App\Domain\Rto\RtoTopicNotFoundException;
+use Illuminate\Database\UniqueConstraintViolationException;
 use Livewire\Component;
 
 class MagnetAddForm extends Component
@@ -61,10 +62,6 @@ class MagnetAddForm extends Component
             return null;
         }
 
-        if ($userId === null) {
-            event(new \App\Events\Stats\TorrentAddedAnonymously);
-        }
-
         $magnet = new Magnet;
         $magnet->html = $data->body;
         $magnet->size = $data->size;
@@ -78,9 +75,18 @@ class MagnetAddForm extends Component
         $magnet->category_id = $this->categoryId;
         $magnet->registered_at = now();
         $magnet->related_query = '';
-        $magnet->save();
+
+        try {
+            $magnet->save();
+        } catch (UniqueConstraintViolationException) {
+            $this->addError('input', 'Данная раздача уже присутствует на сайте. Вероятно, кто-то добавил ее быстрее вас.');
+
+            return null;
+        }
 
         if ($magnet->isAnonymous()) {
+            event(new \App\Events\Stats\TorrentAddedAnonymously);
+
             $magnet->notify(new AnonymousMagnetNotification($magnet));
         }
 

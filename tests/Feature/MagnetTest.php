@@ -300,6 +300,26 @@ class MagnetTest extends TestCase
         Exceptions::assertReported(ConnectionException::class);
     }
 
+    public function testStoreWithRaceCondition()
+    {
+        $stub = MagnetFactory::new()->make();
+
+        $this->fakeHttpRequests($stub);
+
+        $component = \Livewire::test(MagnetAddForm::class)
+            ->set('input', $stub->externalLink())
+            ->set('categoryId', $stub->category_id->value);
+
+        // Кто-то добавил раздачу параллельно
+        MagnetFactory::new()
+            ->withRtoId($stub->rto_id)
+            ->create();
+
+        $component
+            ->call('submit')
+            ->assertHasErrors(['input' => 'Данная раздача уже присутствует на сайте. Вероятно, кто-то добавил ее быстрее вас.']);
+    }
+
     public function testStoreUnescapedTitle()
     {
         $stub = MagnetFactory::new()->withTitle('Chlo&#233; Ragnar&#246;k &quot;M&amp;M\'s&quot;')->make();
