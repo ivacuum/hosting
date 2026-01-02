@@ -34,7 +34,7 @@ class OllamaApi
     private function configureClient()
     {
         return $this->http
-            ->baseUrl('http://localhost:11434/api/')
+            ->baseUrl(config('services.ollama.base_url'))
             ->timeout(60)
             ->throw();
     }
