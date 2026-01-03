@@ -2,7 +2,7 @@
 
 namespace App\Seeder;
 
-use App\Factory\DcppHubFactory;
+use App\Domain\Dcpp\Factory\DcppHubFactory;
 use Illuminate\Database\Seeder;
 
 class DcppHubSeeder extends Seeder

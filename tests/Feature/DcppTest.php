@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Factory\DcppHubFactory;
+use App\Domain\Dcpp\Factory\DcppHubFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\TestWith;
 use Tests\TestCase;

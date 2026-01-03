@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Factory;
+namespace App\Domain\Dcpp\Factory;
 
 use App\Domain\Dcpp\DcppHubStatus;
 use App\Domain\Dcpp\Models\DcppHub;
