@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Domain\Avatar;
 
 use App\Domain\ImageConverter\ImageConverter;
 use Illuminate\Http\UploadedFile;
@@ -19,7 +19,7 @@ class Avatar
 
     public function resize(UploadedFile $file): UploadedFile
     {
-        return (new ImageConverter)
+        return new ImageConverter()
             ->crop(self::WIDTH, self::HEIGHT)
             ->filter(self::FILTER)
             ->quality(self::QUALITY)

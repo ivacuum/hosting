@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Avatar;
+use App\Domain\Avatar\Avatar;
 use App\Events\Stats;
 use App\User;
 use Illuminate\Support\Str;

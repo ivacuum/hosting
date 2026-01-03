@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Domain\Avatar\Avatar;
 use App\Domain\Life\Models\Trip;
 use App\Domain\Magnet\Models\Magnet;
 use App\Domain\NotificationDeliveryMethod;
