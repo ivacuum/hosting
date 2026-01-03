@@ -1,8 +1,7 @@
 <?php
 
-namespace App;
+namespace App\Domain\Spatial;
 
-use App\Spatial\GeometryInterface;
 use Illuminate\Database\Grammar;
 use Illuminate\Database\Query\Expression;
 

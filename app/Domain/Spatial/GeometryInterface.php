@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Spatial;
+namespace App\Domain\Spatial;
 
 interface GeometryInterface
 {

@@ -7,7 +7,7 @@ use App\Domain\Life\Observer\PhotoObserver;
 use App\Domain\Life\PhotoStatus;
 use App\Domain\Life\Policy\PhotoPolicy;
 use App\Domain\SocialMedia\Models\SocialMediaPost;
-use App\Spatial;
+use App\Domain\Spatial;
 use App\User;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;

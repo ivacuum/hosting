@@ -5,7 +5,7 @@ namespace App\Domain\Life\Factory;
 use App\Domain\Life\Models\Photo;
 use App\Domain\Life\Models\Trip;
 use App\Domain\Life\PhotoStatus;
-use App\Spatial\Point;
+use App\Domain\Spatial\Point;
 
 class PhotoFactory
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Spatial;
+namespace App\Domain\Spatial;
 
 use GeoIO\WKB\Parser\Parser;
 use Illuminate\Contracts\Support\Jsonable;

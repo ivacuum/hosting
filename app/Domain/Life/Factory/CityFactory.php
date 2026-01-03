@@ -4,7 +4,7 @@ namespace App\Domain\Life\Factory;
 
 use App\Domain\Life\Models\City;
 use App\Domain\Life\Models\Country;
-use App\Spatial\Point;
+use App\Domain\Spatial\Point;
 
 class CityFactory
 {

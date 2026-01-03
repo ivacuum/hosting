@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Spatial\Polygon;
+use App\Domain\Spatial\Polygon;
 use Illuminate\Http\Request;
 
 class DevMapPolygonController

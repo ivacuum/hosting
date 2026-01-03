@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Spatial;
+namespace App\Domain\Spatial;
 
 class LineString extends Geometry implements \Stringable
 {

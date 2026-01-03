@@ -2,8 +2,8 @@
 
 namespace App\Cast;
 
-use App\Spatial\Point;
-use App\SpatialExpression;
+use App\Domain\Spatial\Point;
+use App\Domain\Spatial\SpatialExpression;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 
 class PointCast implements CastsAttributes

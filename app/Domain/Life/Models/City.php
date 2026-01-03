@@ -5,7 +5,7 @@ namespace App\Domain\Life\Models;
 use App\Cast;
 use App\Domain\Life\Observer\CityObserver;
 use App\Domain\Life\Policy\CityPolicy;
-use App\Spatial;
+use App\Domain\Spatial;
 use App\Traits;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;

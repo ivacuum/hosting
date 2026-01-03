@@ -2,7 +2,7 @@
 
 namespace App\Domain\Exif;
 
-use App\Spatial\Point;
+use App\Domain\Spatial\Point;
 
 class GetPointFromGpsDataAction
 {
