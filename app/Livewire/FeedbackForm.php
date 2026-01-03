@@ -15,6 +15,7 @@ class FeedbackForm extends Component
 {
     public bool $hideName = false;
     public bool $hideTitle = false;
+    public string $mail = '';
     public string $name = '';
     public string $text = '';
     public string $email = '';
@@ -36,6 +37,14 @@ class FeedbackForm extends Component
     public function submit(FindUserByEmailOrCreateAction $findUserByEmailOrCreate, IssueRateLimiter $limiter)
     {
         $this->validate();
+
+        if ($this->mail) {
+            event(new \App\Events\Stats\SpammerTrappedLivewire);
+
+            $this->addError('mail', __('auth.spammer_trapped'));
+
+            return;
+        }
 
         $user = auth()->user();
         $isGuest = auth()->guest();

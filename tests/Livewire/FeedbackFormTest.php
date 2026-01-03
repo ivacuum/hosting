@@ -80,6 +80,28 @@ class FeedbackFormTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\IssueAdded::class);
     }
 
+    public function testHoneypot()
+    {
+        \Event::fake(\App\Events\Stats\SpammerTrappedLivewire::class);
+        \Notification::fake();
+
+        \Livewire::test(FeedbackForm::class)
+            ->set('name', 'name')
+            ->set('email', 'honeypot@example.com')
+            ->set('title', 'title')
+            ->set('text', 'text')
+            ->set('mail', 'bot')
+            ->call('submit')
+            ->assertHasErrors(['mail' => 'Читер']);
+
+        $issue = Issue::query()->firstWhere(['email' => 'honeypot@example.com']);
+
+        $this->assertNull($issue);
+
+        \Event::assertDispatched(\App\Events\Stats\SpammerTrappedLivewire::class);
+        \Notification::assertNothingSent();
+    }
+
     public function testWithNameHidden()
     {
         \Notification::fake();

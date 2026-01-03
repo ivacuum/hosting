@@ -9,7 +9,7 @@
     </div>
   @endif
   <form wire:submit="submit">
-    {{ ViewHelper::inputHiddenMail() }}
+    <input hidden type="text" wire:model="mail">
 
     @if(!$this->hideName)
       <div class="mb-4">
