@@ -45,10 +45,10 @@
           class="the-input rounded-r-none"
           type="text"
           enterkeyhint="send"
-          placeholder="Сообщение в чат..."
+          placeholder="@lang('Сообщение в чат...')"
           wire:model="text"
         >
-        <button class="btn btn-default -ml-px rounded-l-none">Отправить</button>
+        <button class="btn btn-default -ml-px rounded-l-none">@lang('Отправить')</button>
       </div>
       @error('text')
       <div class="text-red-600">{{ $message }}</div>
