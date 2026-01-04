@@ -125,7 +125,8 @@
     <p>Рады, что у вас стало хорошо получаться набирать слоги! Теперь можно закрепить навык в <a class="link" href="/japanese/words-trainer">следующем тренажере</a>, который посвящен набору настоящих японских слов. Так между делом и получится запомнить как они звучат.</p>
     <p>Еще можно <a class="link" href="{{ to('trainers/numbers', ['lang' => 'ja']) }}">потренировать японские числа</a>. Самое удивительное открытие будет в том, что <a class="link" href="{{ to('trainers/numbers', ['lang' => 'zh']) }}">китайские числа</a> вы тоже автоматически сможете распознавать, ведь в японском используются китайские иероглифы.</p>
   @en
-    <p>We're glad you're get used to Japanese syllabaries! Now you can head on to the <a class="link" href="/en/japanese/words-trainer">next trainer</a> dedicated to typing real Japanese words. As a bonus, you can memorize the words are pronounced while typing.</p>
+    <p>We're glad you're get used to Japanese syllabaries! Now you can head on to the <a class="link" href="/en/japanese/words-trainer">next trainer</a> dedicated to typing real Japanese words. As a bonus, you can memorize pronunciation while typing.</p>
+    <p>You can also <a class="link" href="{{ to('trainers/numbers', ['lang' => 'ja']) }}">practice Japanese numbers</a>. The most surprising discovery will be that you can automatically recognize <a class="link" href="{{ to('trainers/numbers', ['lang' => 'zh']) }}">Chinese numbers</a> too, because Japanese uses Chinese characters.</p>
   @endru
 </div>
 
