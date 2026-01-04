@@ -11,18 +11,18 @@
       @ru
         После <a class="link" href="@lng/japanese/hiragana-katakana">разучивания азбук</a> самое время попробовать набирать целые слова. На примере слова <span class="font-bold">суши</span> <span lang="ja">寿司</span> ответ можно дать следующими способами:
         <ul>
-          <li><span class="font-medium text-gray-500">латиницей</span> — <span class="font-bold" lang="en">sushi</span></li>
-          <li><span class="font-medium text-gray-500">хираганой</span> — <span class="font-bold" lang="ja">すし</span></li>
-          <li><span class="font-medium text-gray-500">катаканой</span> — <span class="font-bold" lang="ja">スシ</span></li>
-          <li>оригинальным написанием с <span class="font-medium text-gray-500">кандзи</span> — <span class="font-bold" lang="ja">寿司</span></li>
+          <li><span class="font-medium text-gray-500 dark:text-gray-300">латиницей</span> — <span class="font-bold" lang="en">sushi</span></li>
+          <li><span class="font-medium text-gray-500 dark:text-gray-300">хираганой</span> — <span class="font-bold" lang="ja">すし</span></li>
+          <li><span class="font-medium text-gray-500 dark:text-gray-300">катаканой</span> — <span class="font-bold" lang="ja">スシ</span></li>
+          <li>оригинальным написанием с <span class="font-medium text-gray-500 dark:text-gray-300">кандзи</span> — <span class="font-bold" lang="ja">寿司</span></li>
         </ul>
       @en
         Once you have <a class="link" href="@lng/japanese/hiragana-katakana">mastered the syllabaries</a>, you are ready to start typing full words. Using 'sushi' (寿司) as an example, answers may be submitted in any of the following formats:
         <ul>
-          <li><span class="font-medium text-gray-500">Romaji</span>: <span class="font-bold" lang="en">sushi</span></li>
-          <li><span class="font-medium text-gray-500">Hiragana</span>: <span class="font-bold" lang="ja">すし</span></li>
-          <li><span class="font-medium text-gray-500">Katakana</span>: <span class="font-bold" lang="ja">スシ</span></li>
-          <li><span class="font-medium text-gray-500">Kanji</span> (original spelling): <span class="font-bold" lang="ja">寿司</span></li>
+          <li><span class="font-medium text-gray-500 dark:text-gray-300">Romaji</span>: <span class="font-bold" lang="en">sushi</span></li>
+          <li><span class="font-medium text-gray-500 dark:text-gray-300">Hiragana</span>: <span class="font-bold" lang="ja">すし</span></li>
+          <li><span class="font-medium text-gray-500 dark:text-gray-300">Katakana</span>: <span class="font-bold" lang="ja">スシ</span></li>
+          <li><span class="font-medium text-gray-500 dark:text-gray-300">Kanji</span> (original spelling): <span class="font-bold" lang="ja">寿司</span></li>
         </ul>
       @endru
     </div>
