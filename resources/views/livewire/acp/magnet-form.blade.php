@@ -7,7 +7,7 @@
     <label class="font-bold md:leading-6 md:pt-1.5 input-required">Рубрика</label>
     <div class="max-md:mt-1.5">
       <select required class="the-input" wire:model.live="categoryId">
-        <option value="">Выберите рубрику...</option>
+        <option value="">@lang('Выберите рубрику...')</option>
         @foreach (TorrentCategoryHelper::tree() as $id => $category)
           <option value="{{ $id }}" {{ !empty($category['children']) ? 'disabled' : '' }} wire:key="{{ $id }}">
             {{ $category['title'] }}

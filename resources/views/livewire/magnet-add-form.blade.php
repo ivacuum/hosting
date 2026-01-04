@@ -8,7 +8,7 @@
         type="text"
         class="the-input pr-10"
         wire:model.live="input"
-        placeholder="Ссылка или инфо-хэш"
+        placeholder="@lang('Ссылка или инфо-хэш')"
       >
       <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
         <div wire:loading.delay>
@@ -43,7 +43,7 @@
 
     <div>
       <select required class="the-input" wire:model.live="categoryId">
-        <option value="">Выберите рубрику...</option>
+        <option value="">@lang('Выберите рубрику...')</option>
         @foreach (TorrentCategoryHelper::tree() as $id => $category)
           <option value="{{ $id }}" {{ !empty($category['children']) ? 'disabled' : '' }}>
             {{ $category['title'] }}
