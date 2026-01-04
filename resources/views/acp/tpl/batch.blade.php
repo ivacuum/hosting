@@ -5,11 +5,11 @@
 >
   <div class="mr-1">
     <select class="the-input" name="action">
-      <option value="">Выберите действие...</option>
+      <option value="">@lang('Выберите действие...')</option>
       @foreach ($actions as $value => $title)
         <option value="{{ $value }}">{{ $title }}</option>
       @endforeach
     </select>
   </div>
-  <button class="btn btn-default">Выполнить</button>
+  <button class="btn btn-default">@lang('Выполнить')</button>
 </form>
