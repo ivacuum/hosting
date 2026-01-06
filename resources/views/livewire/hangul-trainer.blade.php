@@ -119,6 +119,8 @@
     <h1 class="font-medium text-3xl tracking-tight mb-2" id="help">@lang('Тренажер хангыля')</h1>
     @ru
       <p>Данный тренажер помогает быстро запомнить корейский алфавит. Ответы принимаются кириллицей по <a class="link" href="https://ru.wikipedia.org/wiki/Система_Концевича">системе Концевича</a> и латиницей по <a class="link" href="https://en.wikipedia.org/wiki/Revised_Romanization_of_Korean">новой романизации</a>.</p>
+    @en
+      <p>This trainer helps you quickly memorize the Korean alphabet. Answers are accepted in Latin using the <a class="link" href="https://en.wikipedia.org/wiki/Revised_Romanization_of_Korean">Revised Romanization</a>.</p>
     @endru
 
     @ru
@@ -345,6 +347,10 @@
       <p>Как можно заметить, раскладка поделена на две части. В левой половине согласные, а в правой — гласные. Еще можно заметить, что у некоторых букв несколько возможных произношений. Действительно, в зависимости от положения в слове звучание может быть разным. Тренажер не преследует цель объяснить произношение, а лишь помогает выработать связи со знакомым вам языком.</p>
       <p>Курсивный шрифт — <a class="link" href="https://fonts.google.com/specimen/Nanum+Pen+Script?subset=korean">Nanum Pen Script</a>.</p>
       <p>После освоения алфавита можно попробовать свои силы в <a class="link" href="{{ to('trainers/numbers', ['lang' => 'ko']) }}">тренажере корейских чисел</a>.</p>
+    @en
+      <p>As you can see, the layout is divided into two parts: consonants on the left and vowels on the right. Note that the written forms do not indicate exact sounds; pronunciation should be studied independently. This trainer focuses on building associations with a language familiar to you, rather than teaching phonetics.</p>
+      <p>Italic font — <a class="link" href="https://fonts.google.com/specimen/Nanum+Pen+Script?subset=korean">Nanum Pen Script</a>.</p>
+      <p>Once you have mastered the alphabet, test your skills in the <a class="link" href="{{ to('trainers/numbers', ['lang' => 'ko']) }}">Korean numbers trainer</a>.</p>
     @endru
   </div>
 </div>
