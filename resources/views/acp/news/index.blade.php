@@ -25,7 +25,7 @@
       </td>
       <td>
         @if ($model->status->isHidden())
-          <span class="tooltipped tooltipped-n" aria-label="Новость скрыта">
+          <span class="tooltipped tooltipped-n" aria-label="@lang('Новость скрыта')">
             @svg (eye-slash)
           </span>
         @endif
