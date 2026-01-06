@@ -6,8 +6,8 @@
 @include('acp.tpl.dropdown-filter', [
   'field' => 'image_size',
   'values' => [
-    'Миниатюра' => null,
-    'Оригинал' => 'original',
+    __('Миниатюра') => null,
+    __('Оригинал') => 'original',
   ]
 ])
 @endsection
@@ -15,7 +15,7 @@
 @section('toolbar')
 <div class="flex flex-wrap gap-2 mb-2">
   <div class="flex">
-    <a class="btn btn-default rounded-r-none {{ !$year ? 'active' : '' }}" href="{{ UrlHelper::filter(['year' => null]) }}">Все</a>
+    <a class="btn btn-default rounded-r-none {{ !$year ? 'active' : '' }}" href="{{ UrlHelper::filter(['year' => null]) }}">@lang('Все')</a>
     @foreach (range(date('Y'), 2009) as $value)
       <a
         class="btn btn-default -ml-px {{ $loop->last ? 'rounded-l-none rounded-r' : 'rounded-none' }} {{ $year == $value ? 'active' : '' }}"
@@ -24,7 +24,7 @@
     @endforeach
   </div>
   <div class="flex">
-    <a class="btn btn-default rounded-r-none {{ !$touch ? 'active' : '' }}" href="{{ UrlHelper::filter(['touch' => null]) }}">Все</a>
+    <a class="btn btn-default rounded-r-none {{ !$touch ? 'active' : '' }}" href="{{ UrlHelper::filter(['touch' => null]) }}">@lang('Все')</a>
     @foreach (range(1, date('Y') - 2009) as $value)
       <a
         class="btn btn-default -ml-px {{ $loop->last ? 'rounded-l-none rounded-r' : 'rounded-none' }} {{ $touch == $value ? 'active' : '' }}"
@@ -107,7 +107,7 @@
 <div class="mt-4">
   @include('acp.tpl.batch', [
     'actions' => [
-      'delete' => 'Удалить',
+      'delete' => __('Удалить'),
     ],
     'url' => to('acp/images/batch'),
   ])
