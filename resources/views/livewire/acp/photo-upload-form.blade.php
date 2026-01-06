@@ -1,17 +1,17 @@
 <?php /** @var \App\Livewire\Acp\PhotoUploadForm $this */ ?>
 
 <div class="grid grid-cols-1 gap-6 md:gap-4">
-  <div>Для загрузки фотографий необходимо выбрать поездку или концерт.</div>
+  <div>@lang('Для загрузки фотографий необходимо выбрать поездку или концерт.')</div>
 
   <?php $form = LivewireForm::model(new \App\Domain\Life\Models\Photo); ?>
 
   {{ $form->select('tripId')->live()->values($this->tripIds) }}
   {{ $form->select('gigId')->live()->values($this->gigIds) }}
   {{ $form->radio('shouldOverwriteImage')
-        ->label('Перезаписать изображение, если такое уже есть на сервере')
+        ->label(__('Перезаписать изображение, если такое уже есть на сервере'))
         ->values([
-          0 => 'Нет',
-          1 => 'Да',
+          0 => __('Нет'),
+          1 => __('Да'),
         ])
   }}
 
