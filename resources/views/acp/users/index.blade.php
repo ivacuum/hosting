@@ -8,19 +8,19 @@
 @include('acp.tpl.dropdown-filter', [
   'field' => 'last_login_at',
   'values' => [
-    'Неважно' => null,
+    __('Неважно') => null,
     '---' => null,
-    'Неделя' => 'P1W',
-    'Месяц' => 'P1M',
+    __('Неделя') => 'P1W',
+    __('Месяц') => 'P1M',
   ]
 ])
 @include('acp.tpl.dropdown-filter', [
   'field' => 'avatar',
   'values' => [
-    'Все' => null,
+    __('Все') => null,
     '---' => null,
-    'Есть' => 1,
-    'Нет' => 0,
+    __('Есть') => 1,
+    __('Нет') => 0,
   ]
 ])
 @endsection
@@ -34,7 +34,7 @@
     @if($avatar)
       <x-th key="avatar"></x-th>
     @endif
-    <th>Активен</th>
+    <th>@lang('Активен')</th>
     <x-th-numeric-sortable key="chat_messages_count">@svg(paper-airplane-16)</x-th-numeric-sortable>
     <x-th-numeric-sortable key="comments_count">@svg(comment-o)</x-th-numeric-sortable>
     <x-th-numeric-sortable key="images_count">@svg(picture-o)</x-th-numeric-sortable>
@@ -65,7 +65,7 @@
       @endif
       <td>
         @if ($model->isActive())
-          Да
+          @lang('Да')
         @endif
       </td>
       <td class="md:text-right whitespace-nowrap">
