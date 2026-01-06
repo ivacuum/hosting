@@ -8,11 +8,11 @@
 @include('acp.tpl.dropdown-filter', [
   'field' => 'status',
   'values' => [
-    'Все' => null,
+    __('Все') => null,
     '---' => null,
-    'Опубликованные' => App\Domain\Life\TripStatus::Published->value,
-    'Пишутся' => App\Domain\Life\TripStatus::Inactive->value,
-    'Скрытые' => App\Domain\Life\TripStatus::Hidden->value,
+    __('Опубликованные') => App\Domain\Life\TripStatus::Published->value,
+    __('Заметка пишется') => App\Domain\Life\TripStatus::Inactive->value,
+    __('Заметка скрыта') => App\Domain\Life\TripStatus::Hidden->value,
   ]
 ])
 @endsection
@@ -45,11 +45,11 @@
       </td>
       <td>
         @if ($model->status->isHidden())
-          <span class="tooltipped tooltipped-n" aria-label="Заметка скрыта">
+          <span class="tooltipped tooltipped-n" aria-label="@lang('Заметка скрыта')">
             @svg (eye-slash)
           </span>
         @elseif ($model->status->isInactive())
-          <span class="tooltipped tooltipped-n" aria-label="Заметка пишется">
+          <span class="tooltipped tooltipped-n" aria-label="@lang('Заметка пишется')">
             @svg (pencil)
           </span>
         @endif
@@ -71,7 +71,7 @@
       <td>
         @if ($model->meta_image)
           <a href="{{ $model->metaImage() }}">
-            <span class="tooltipped tooltipped-n" aria-label="Обложка">
+            <span class="tooltipped tooltipped-n" aria-label="@lang('Обложка')">
               @svg (paperclip)
             </span>
           </a>
