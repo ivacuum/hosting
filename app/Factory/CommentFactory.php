@@ -31,6 +31,11 @@ class CommentFactory
         return $model;
     }
 
+    public function hidden()
+    {
+        return $this->withStatus(CommentStatus::Hidden);
+    }
+
     public function make()
     {
         $model = new Comment;
@@ -60,6 +65,11 @@ class CommentFactory
     public static function new(): self
     {
         return new self;
+    }
+
+    public function pending()
+    {
+        return $this->withStatus(CommentStatus::Pending);
     }
 
     public function withIssue(int|Issue $issue)
@@ -107,6 +117,14 @@ class CommentFactory
         } else {
             $factory->newsFactory = $news ?? NewsFactory::new();
         }
+
+        return $factory;
+    }
+
+    public function withStatus(CommentStatus $status)
+    {
+        $factory = clone $this;
+        $factory->status = $status;
 
         return $factory;
     }

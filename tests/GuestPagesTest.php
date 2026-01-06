@@ -22,4 +22,17 @@ class GuestPagesTest extends TestCase
     {
         $this->get($url)->assertOk();
     }
+
+    public function testIp()
+    {
+        $this->get('ip', [
+            'REMOTE_ADDR' => '1.2.3.4',
+            'HTTP_CF_IPCOUNTRY' => 'XX',
+        ])
+            ->assertOk()
+            ->assertExactJson([
+                'ip' => '1.2.3.4',
+                'country' => 'XX',
+            ]);
+    }
 }

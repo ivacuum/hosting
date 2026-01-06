@@ -114,9 +114,13 @@ class MagnetTest extends TestCase
 
     public function testPromo()
     {
+        \Event::fake(\App\Events\Stats\TorrentPromoViewed::class);
+
         $this->get('torrent')
             ->assertOk()
             ->assertHasCustomTitle();
+
+        \Event::assertDispatched(\App\Events\Stats\TorrentPromoViewed::class);
     }
 
     public function testRequestRelease()
