@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Testing\Assert;
@@ -50,7 +51,17 @@ class AppServiceProvider extends ServiceProvider
             'ExternalIdentity' => App\ExternalIdentity::class,
         ]);
 
+        $this->livewireSharedVarsWorkaroundForTests();
         $this->testMacros();
+    }
+
+    private function livewireSharedVarsWorkaroundForTests(): void
+    {
+        // Middleware в автотестах компонентов Livewire не запускаются,
+        // поэтому нужно помочь передать локаль, иначе в шаблонах не работает @ru
+        if (app()->runningUnitTests()) {
+            View::composer('*', App\Domain\Blade\LivewirePhpUnitViewComposer::class);
+        }
     }
 
     private function testMacros()

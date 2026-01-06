@@ -7,15 +7,12 @@ use App\Domain\Korean\Action\GetJamoConsonantsAction;
 use App\Domain\Korean\Action\GetJamoVowelsAction;
 use App\Domain\Korean\HangulWhatToTrain;
 use App\Domain\Locale;
-use App\Livewire\WithLocale;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Livewire\Component;
 
 class HangulTrainer extends Component
 {
-    use WithLocale;
-
     public int $answered = 0;
     public int $revealed = 0;
     public bool $reveal = false;

@@ -35,6 +35,8 @@ if (is_array($locales) && in_array($locale, array_keys($locales)) && $locale !==
     // Так можно кэшировать маршруты без указания локализации
     // Но приходится сложнее строить ссылки
     $_SERVER['REQUEST_URI'] = $requestUri;
+} elseif ($request->server->get('HTTP_SITE_LOCALE')) {
+    $_SERVER['LARAVEL_LOCALE'] = $request->server->get('HTTP_SITE_LOCALE');
 }
 
 $app->handleRequest(Illuminate\Http\Request::capture());

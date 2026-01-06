@@ -17,8 +17,6 @@ use Livewire\Component;
  */
 class NumberTrainer extends Component
 {
-    use WithLocale;
-
     private const int MAXIMUM_AT_LEAST = 10;
     private const int MAXIMUM_AT_MOST = 10 ** self::MAXIMUM_ORDER_OF_MAGNITUDE;
     private const int MAXIMUM_ORDER_OF_MAGNITUDE = 8;

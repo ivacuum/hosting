@@ -2,46 +2,48 @@
 
 namespace App\Http\Middleware;
 
-use App\Action\ParseRouteDataAction;
+use App\Domain\Blade\Action\AppendViewSharedVarsAction;
 use App\Domain\Config;
 use Illuminate\Http\Request;
-use Ivacuum\Generic\Utilities\EnvironmentForCss;
 
 class AppendViewSharedVars
 {
-    public function __construct(private ParseRouteDataAction $parseRouteData) {}
+    public function __construct(private AppendViewSharedVarsAction $appendViewSharedVars) {}
 
     public function handle(Request $request, \Closure $next)
     {
-        if (!$request->isMethod('GET') && !$request->isMethod('HEAD')) {
+        if (!$request->isMethod('GET') && !$request->isMethod('HEAD') && !$this->isLivewireRequest($request)) {
             return $next($request);
         }
 
-        $locale = $request->server->get('LARAVEL_LOCALE');
-        $routeData = $this->parseRouteData->execute();
-        $browserEnv = new EnvironmentForCss($request->userAgent());
-        $preferredLocale = $request->getPreferredLanguage(array_keys(Config::Locales->get()));
+        if ($this->isLivewireRequest($request)) {
+            $this->setLocaleFromReferrer($request);
+        }
 
-        view()->share([
-            'tpl' => $routeData->tpl,
-            'view' => $routeData->view,
-
-            'locale' => $locale ?: Config::Locale->get(),
-            'localeUri' => $locale ? "/{$locale}" : '',
-            'localePreferred' => $preferredLocale,
-
-            'goto' => $request->input('goto'),
-            'isMobile' => $browserEnv->isMobile(),
-            'routeUri' => $request->route()
-                ? $request->route()->uri()
-                : '',
-            'isCrawler' => $browserEnv->isCrawler(),
-            'isDesktop' => !$browserEnv->isMobile(),
-            'cssClasses' => (string) $browserEnv,
-            'requestUri' => $request->path(),
-            'firstTimeVisit' => \Session::previousUrl() === null,
-        ]);
+        $this->appendViewSharedVars->execute($request);
 
         return $next($request);
+    }
+
+    private function isLivewireRequest(Request $request): bool
+    {
+        return $request->hasHeader('X-Livewire');
+    }
+
+    private function setLocaleFromReferrer(Request $request)
+    {
+        $referrer = $request->headers->get('referer');
+
+        if (!$referrer) {
+            return;
+        }
+
+        $locale = Request::create($referrer)->segment(1);
+        $locales = Config::Locales->get();
+        $defaultLocale = config('app.locale');
+
+        if (is_array($locales) && in_array($locale, array_keys($locales)) && $locale !== $defaultLocale) {
+            $request->server->set('LARAVEL_LOCALE', $locale);
+        }
     }
 }
