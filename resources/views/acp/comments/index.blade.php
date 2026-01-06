@@ -6,11 +6,11 @@
 @include('acp.tpl.dropdown-filter', [
   'field' => 'status',
   'values' => [
-    'Все' => null,
+    __('Все') => null,
     '---' => null,
-    'Скрытые' => App\Domain\CommentStatus::Hidden->value,
-    'На активации' => App\Domain\CommentStatus::Pending->value,
-    'Опубликованные' => App\Domain\CommentStatus::Published->value,
+    __('Скрытые') => App\Domain\CommentStatus::Hidden->value,
+    __('Ожидает активации') => App\Domain\CommentStatus::Pending->value,
+    __('Опубликованные') => App\Domain\CommentStatus::Published->value,
   ]
 ])
 @endsection
@@ -52,11 +52,11 @@
             @svg (external-link)
           </a>
         @elseif ($model->status->isHidden())
-          <span class="text-gray-500 tooltipped tooltipped-n" aria-label="Комментарий скрыт">
+          <span class="text-gray-500 tooltipped tooltipped-n" aria-label="@lang('Комментарий скрыт')">
             @svg (eye-slash)
           </span>
         @elseif ($model->status->isPending())
-          <span class="text-gray-500 tooltipped tooltipped-n" aria-label="Ожидает активации">
+          <span class="text-gray-500 tooltipped tooltipped-n" aria-label="@lang('Ожидает активации')">
             @svg (unverified)
           </span>
         @endif
