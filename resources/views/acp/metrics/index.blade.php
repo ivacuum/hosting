@@ -5,7 +5,7 @@
 <table class="table-stats table-adaptive">
   <thead>
   <tr>
-    <x-th>Событие</x-th>
+    <x-th>@lang('Событие')</x-th>
     @foreach ($dates as $date => $true)
       <x-th-numeric>{{ substr($date, 5) }}</x-th-numeric>
     @endforeach
