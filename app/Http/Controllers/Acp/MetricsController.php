@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Acp;
 
 use App\Action\Acp\ApplyIndexGoodsAction;
-use App\Metric;
+use App\Domain\Metrics\Models\Metric;
 use App\Scope\MetricWeekScope;
 use Carbon\Carbon;
 

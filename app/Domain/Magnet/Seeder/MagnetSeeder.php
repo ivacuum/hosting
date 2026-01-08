@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Seeder;
+namespace App\Domain\Magnet\Seeder;
 
 use App\Domain\Magnet\Factory\MagnetFactory;
 use App\Domain\Magnet\MagnetCategory;

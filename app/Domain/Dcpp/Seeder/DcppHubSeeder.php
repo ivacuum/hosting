@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Seeder;
+namespace App\Domain\Dcpp\Seeder;
 
 use App\Domain\Dcpp\Factory\DcppHubFactory;
 use Illuminate\Database\Seeder;

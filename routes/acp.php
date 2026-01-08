@@ -49,8 +49,8 @@ Route::post('issues/{issue}/open', Acp\IssueOpenController::class);
 
 Route::resource('magnets', Acp\MagnetsController::class)->except(['create', 'store', 'update']);
 
-Route::get('metrics', [Acp\MetricsController::class, 'index'])->can('viewAny', 'App\Metric');
-Route::get('metrics/{event}', [Acp\MetricsController::class, 'show'])->can('viewAny', 'App\Metric');
+Route::get('metrics', [Acp\MetricsController::class, 'index'])->can('viewAny', App\Domain\Metrics\Models\Metric::class);
+Route::get('metrics/{event}', [Acp\MetricsController::class, 'show'])->can('viewAny', App\Domain\Metrics\Models\Metric::class);
 
 Route::resource('news', Acp\NewsController::class)->except(['store', 'update']);
 Route::post('news/{news}/notify', [Acp\NewsController::class, 'notify']);

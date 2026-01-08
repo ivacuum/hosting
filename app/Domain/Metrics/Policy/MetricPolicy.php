@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Policies;
+namespace App\Domain\Metrics\Policy;
 
 use App\User;
 

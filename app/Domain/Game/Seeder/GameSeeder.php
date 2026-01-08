@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Seeder;
+namespace App\Domain\Game\Seeder;
 
 use App\Domain\Game\Factory\GameFactory;
 use Illuminate\Database\Seeder;
