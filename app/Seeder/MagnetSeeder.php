@@ -6,6 +6,7 @@ use App\Domain\Magnet\Factory\MagnetFactory;
 use App\Domain\Magnet\MagnetCategory;
 use App\Factory\CommentFactory;
 use App\Factory\UserFactory;
+use App\User;
 use Illuminate\Database\Seeder;
 
 class MagnetSeeder extends Seeder

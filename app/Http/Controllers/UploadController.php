@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Domain\SessionKey;
 use App\Domain\Telegram\Action\NotifyAdminViaTelegramAction;
 
 class UploadController
@@ -18,7 +19,7 @@ class UploadController
             $notifyAdminViaTelegram->execute("Загружен файл\n" . url("uploads/temp/{$filename}"));
         }
 
-        session()->flash('message', 'Спасибо за загруженные файлы');
+        session()->flash(SessionKey::FlashMessage->value, 'Спасибо за загруженные файлы');
 
         return redirect('/up');
     }
