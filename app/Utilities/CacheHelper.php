@@ -12,55 +12,55 @@ class CacheHelper
     public function forgetCities()
     {
         $this->cache->deleteMultiple([
-            CacheKey::CitiesById->value,
-            CacheKey::CitiesBySlug->value,
+            CacheKey::CitiesById,
+            CacheKey::CitiesBySlug,
         ]);
     }
 
     public function forgetCountries()
     {
         $this->cache->deleteMultiple([
-            CacheKey::CountriesById->value,
-            CacheKey::CountriesBySlug->value,
+            CacheKey::CountriesById,
+            CacheKey::CountriesBySlug,
         ]);
     }
 
     public function forgetGames()
     {
         $this->cache->deleteMultiple([
-            CacheKey::GamesFinishedById->value,
+            CacheKey::GamesFinishedById,
         ]);
     }
 
     public function forgetGigs()
     {
         $this->cache->deleteMultiple([
-            CacheKey::MyVisibleGigs->value,
+            CacheKey::MyVisibleGigs,
         ]);
     }
 
     public function forgetMagnets()
     {
         $this->cache->deleteMultiple([
-            CacheKey::MagnetStatsByCategories->value,
+            CacheKey::MagnetStatsByCategories,
         ]);
     }
 
     public function forgetPhotoPoints()
     {
         $this->cache->deleteMultiple([
-            CacheKey::PhotosPoints->value,
-            CacheKey::PhotosPointsForTrip->value,
+            CacheKey::PhotosPoints,
+            CacheKey::PhotosPointsForTrip,
         ]);
     }
 
     public function forgetTrips()
     {
         $this->cache->deleteMultiple([
-            CacheKey::MyVisibleTrips->value,
-            CacheKey::TripsPublishedByCountry->value,
-            CacheKey::TripsPublishedByCity->value,
-            CacheKey::TripsPublishedWithCover->value,
+            CacheKey::MyVisibleTrips,
+            CacheKey::TripsPublishedByCountry,
+            CacheKey::TripsPublishedByCity,
+            CacheKey::TripsPublishedWithCover,
         ]);
     }
 }

@@ -15,7 +15,7 @@ class GetTripsPublishedByCountryAction
     {
         $key = CacheKey::TripsPublishedByCountry;
 
-        $ids = $this->cache->remember($key->value, $key->ttl(), function () {
+        $ids = $this->cache->remember($key, $key->ttl(), function () {
             return Trip::query()
                 ->tap(new TripPublishedScope)
                 ->with('city:id,country_id')

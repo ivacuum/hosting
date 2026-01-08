@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Acp\Dev;
 
+use App\Domain\SessionKey;
 use Illuminate\Cookie\CookieJar;
 
 class EnableDebugBarController
@@ -11,6 +12,6 @@ class EnableDebugBarController
         $cookie->queue('debugbar', true, 60);
 
         return redirect(to('acp/dev'))
-            ->with('message', 'Debugbar включен на час');
+            ->with(SessionKey::FlashMessage->value, 'Debugbar включен на час');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\Domain\SessionKey;
 use Illuminate\Session\TokenMismatchException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
@@ -15,6 +16,6 @@ class RenderTokenMismatch
 
         return back()
             ->withInput()
-            ->with('message', __('Пожалуйста, повторите отправку формы. За два часа мы вас подзабыли'));
+            ->with(SessionKey::FlashMessage->value, __('Пожалуйста, повторите отправку формы. За два часа мы вас подзабыли'));
     }
 }

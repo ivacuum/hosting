@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\Domain\SessionKey;
 use App\Http\Controllers\Auth\SignIn;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Cache\RateLimiting\Limit;
@@ -30,6 +31,6 @@ class Handler extends ExceptionHandler
         return $request->expectsJson()
             ? response()->json(['message' => $exception->getMessage()], 401)
             : redirect()->guest(path([SignIn::class, 'index']))
-                ->with('message', __('auth.signin_to_view_page'));
+                ->with(SessionKey::FlashMessage->value, __('auth.signin_to_view_page'));
     }
 }

@@ -10,6 +10,7 @@ use App\Domain\Metrics\Action\FetchMetricsAction;
 use App\Domain\Metrics\RedisStreamId;
 use App\Domain\MetricsAggregator;
 use App\Domain\ViewsAggregator;
+use Illuminate\Cache\Repository;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\Console\Attribute\AsCommand;
@@ -21,6 +22,7 @@ class ProcessMetrics extends Command
     protected $description = 'Process metrics from redis stream and push them to database';
 
     public function handle(
+        Repository $cache,
         FetchMetricsAction $fetchMetrics,
         HandleMetricPayloadAction $handleMetricPayload,
         MetricsAggregator $metricsAggregator,
@@ -28,7 +30,7 @@ class ProcessMetrics extends Command
         ImageViewsAggregator $imageViewsAggregator,
         PhotoViewsAggregator $photoViewsAggregator,
     ) {
-        $nextStartId = \Cache::get(CacheKey::MetricsNextStartId->value) ?? RedisStreamId::FromTheStart->value;
+        $nextStartId = $cache->get(CacheKey::MetricsNextStartId) ?? RedisStreamId::FromTheStart->value;
 
         $this->line("Processing metrics from id: <info>{$nextStartId}</info>");
 
@@ -66,7 +68,7 @@ class ProcessMetrics extends Command
             $imageViewsAggregator->export();
             $photoViewsAggregator->export();
 
-            \Cache::put(CacheKey::MetricsNextStartId->value, $nextStartId, CacheKey::MetricsNextStartId->ttl());
+            $cache->put(CacheKey::MetricsNextStartId, $nextStartId, CacheKey::MetricsNextStartId->ttl());
 
             DB::commit();
         } catch (\Throwable $e) {

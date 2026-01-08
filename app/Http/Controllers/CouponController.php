@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Domain\SessionKey;
 use App\Mail\FirstvdsPromocodeMail;
 use App\Rules\Email;
 
@@ -35,7 +36,7 @@ class CouponController
             ->locale(\App::getLocale())
             ->send(new FirstvdsPromocodeMail);
 
-        return back()->with('message', __('coupons.promocode_sent'));
+        return back()->with(SessionKey::FlashMessage->value, __('coupons.promocode_sent'));
     }
 
     public function timeweb()

@@ -8,6 +8,7 @@ use App\Action\Acp\ResponseToDestroyAction;
 use App\Action\Acp\ResponseToEditAction;
 use App\Action\Acp\ResponseToShowAction;
 use App\Domain\NotificationDeliveryMethod;
+use App\Domain\SessionKey;
 use App\Domain\UserStatus;
 use App\News;
 use App\Notifications\NewsPublishedNotification;
@@ -67,7 +68,7 @@ class NewsController extends Controller
     public function notify(News $news)
     {
         if (!$news->status->isPublished()) {
-            return back()->with('message', 'Для рассылки уведомлений новость должна быть опубликована');
+            return back()->with(SessionKey::FlashMessage->value, 'Для рассылки уведомлений новость должна быть опубликована');
         }
 
         $users = User::query()
@@ -78,7 +79,7 @@ class NewsController extends Controller
 
         \Notification::send($users, new NewsPublishedNotification($news));
 
-        return back()->with('message', "Уведомления разосланы пользователям: {$users->count()}");
+        return back()->with(SessionKey::FlashMessage->value, "Уведомления разосланы пользователям: {$users->count()}");
     }
 
     public function show(News $news, ResponseToShowAction $responseToShow)

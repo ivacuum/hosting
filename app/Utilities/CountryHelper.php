@@ -28,11 +28,9 @@ class CountryHelper
 
     public function cachedById()
     {
-        $cacheKey = CacheKey::CountriesById;
-
         return $this->cache->remember(
-            $cacheKey->value,
-            $cacheKey->ttl(),
+            CacheKey::CountriesById,
+            CacheKey::CountriesById->ttl(),
             fn () => Country::query()
                 ->get(self::CACHED_FIELDS)
                 ->keyBy('id')
@@ -41,11 +39,9 @@ class CountryHelper
 
     public function cachedBySlug()
     {
-        $cacheKey = CacheKey::CountriesBySlug;
-
         return $this->cache->remember(
-            $cacheKey->value,
-            $cacheKey->ttl(),
+            CacheKey::CountriesBySlug,
+            CacheKey::CountriesBySlug->ttl(),
             fn () => Country::query()
                 ->get(self::CACHED_FIELDS)
                 ->keyBy('slug')

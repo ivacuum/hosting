@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Acp\Dev;
 
 use App\Domain\ImageConverter\ImageConverter;
+use App\Domain\SessionKey;
 
 class ThumbnailsController
 {
@@ -22,7 +23,7 @@ class ThumbnailsController
         $storage->delete($files);
 
         return redirect(path([ThumbnailsController::class, 'index']))
-            ->with('message', 'Папка очищена');
+            ->with(SessionKey::FlashMessage->value, 'Папка очищена');
     }
 
     public function store()

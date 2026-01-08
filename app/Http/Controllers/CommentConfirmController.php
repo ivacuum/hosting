@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Domain\CommentStatus;
+use App\Domain\SessionKey;
 
 class CommentConfirmController
 {
@@ -11,7 +12,7 @@ class CommentConfirmController
     {
         if (!$comment->status->isPending()) {
             return redirect($comment->rel->www())
-                ->with('message', __('Комментарий уже активирован.'));
+                ->with(SessionKey::FlashMessage->value, __('Комментарий уже активирован.'));
         }
 
         $comment->status = CommentStatus::Published;

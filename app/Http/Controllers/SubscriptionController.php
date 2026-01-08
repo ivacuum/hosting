@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Action\FindUserByEmailOrCreateAction;
 use App\Domain\NotificationDeliveryMethod;
+use App\Domain\SessionKey;
 use App\Mail\SubscriptionConfirmMail;
 use App\Rules\Email;
 use App\User;
@@ -22,7 +23,7 @@ class SubscriptionController
             $subscriptions = array_flip(explode(',', \Crypt::decryptString($hash)));
         } catch (DecryptException) {
             return redirect(path([MySettingsController::class, 'edit']))
-                ->with('message', 'Запрос не найден. Измените настройки уведомлений вручную на этой странице.');
+                ->with(SessionKey::FlashMessage->value, 'Запрос не найден. Измените настройки уведомлений вручную на этой странице.');
         }
 
         if (isset($subscriptions['gigs'])) {
@@ -40,7 +41,7 @@ class SubscriptionController
         $user->save();
 
         return redirect(path([MySettingsController::class, 'edit']))
-            ->with('message', 'Настройки уведомлений сохранены');
+            ->with(SessionKey::FlashMessage->value, 'Настройки уведомлений сохранены');
     }
 
     public function edit()
@@ -80,7 +81,7 @@ class SubscriptionController
             ->send(new SubscriptionConfirmMail($user, $selectedTopics));
 
         return redirect(path([self::class, 'edit']))
-            ->with('message', __('Теперь необходимо подтвердить подписку по ссылке в письме, которое мы вам отправили.'));
+            ->with(SessionKey::FlashMessage->value, __('Теперь необходимо подтвердить подписку по ссылке в письме, которое мы вам отправили.'));
     }
 
     public function update()
@@ -108,6 +109,6 @@ class SubscriptionController
 
         $user->save();
 
-        return back()->with('message', 'Настройки уведомлений сохранены');
+        return back()->with(SessionKey::FlashMessage->value, 'Настройки уведомлений сохранены');
     }
 }

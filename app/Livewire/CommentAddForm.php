@@ -8,6 +8,7 @@ use App\Domain\CommentStatus;
 use App\Domain\Life\Models\Trip;
 use App\Domain\LivewireEvent;
 use App\Domain\Magnet\Models\Magnet;
+use App\Domain\SessionKey;
 use App\Issue;
 use App\News;
 use App\RateLimit\CommentRateLimiter;
@@ -66,7 +67,7 @@ class CommentAddForm extends Component
         $this->dispatch(LivewireEvent::RefreshComments->name);
 
         if ($isGuest) {
-            session()->flash('message', __('Комментарий ожидает активации. Мы отправили вам ссылку на электронную почту.'));
+            session()->flash(SessionKey::FlashMessage->value, __('Комментарий ожидает активации. Мы отправили вам ссылку на электронную почту.'));
         }
     }
 

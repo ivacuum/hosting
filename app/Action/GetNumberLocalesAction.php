@@ -13,7 +13,7 @@ class GetNumberLocalesAction
     {
         $key = CacheKey::IcuLocales;
 
-        return $this->cache->remember($key->value, $key->ttl(), function () {
+        return $this->cache->remember($key, $key->ttl(), function (): array {
             return collect(\ResourceBundle::getLocales(''))
                 ->reject(fn (string $locale) => mb_strlen($locale) > 2)
                 ->reject(function (string $locale) {

@@ -17,12 +17,10 @@ class GetMyVisibleTripsAction
     public function execute(string|null $from, string|null $to): Collection
     {
         if (!$from && !$to) {
-            $key = CacheKey::MyVisibleTrips;
-
             return $this->cache->remember(
-                $key->value,
-                $key->ttl(),
-                fn () => $this->findModels($from, $to)
+                CacheKey::MyVisibleTrips,
+                CacheKey::MyVisibleTrips->ttl(),
+                fn (): Collection => $this->findModels($from, $to)
             );
         }
 

@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Action\FindUserByEmailOrCreateAction;
 use App\Domain\IssueStatus;
+use App\Domain\SessionKey;
 use App\Events\IssueReported;
 use App\Issue;
 use App\RateLimit\IssueRateLimiter;
@@ -81,7 +82,7 @@ class FeedbackForm extends Component
 
         $this->reset('text');
 
-        session()->flash('message', __('Ваше сообщение принято. Мы постараемся отреагировать на него как можно скорее.'));
+        session()->flash(SessionKey::FlashMessage->value, __('Ваше сообщение принято. Мы постараемся отреагировать на него как можно скорее.'));
     }
 
     protected function rules()

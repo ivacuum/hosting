@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Domain\SessionKey;
 use App\Http\Requests\MyProfileUpdateForm;
 
 class MyProfileController
@@ -20,6 +21,6 @@ class MyProfileController
 
         event(new \App\Events\Stats\MyProfileChanged);
 
-        return back()->with('message', __('Изменения сохранены'));
+        return back()->with(SessionKey::FlashMessage->value, __('Изменения сохранены'));
     }
 }

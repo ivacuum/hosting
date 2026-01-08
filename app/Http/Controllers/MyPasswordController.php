@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Domain\SessionKey;
 use App\Http\Requests\MyPasswordUpdateForm;
 use App\User;
 use Illuminate\Container\Attributes\CurrentUser;
 use Illuminate\Contracts\Hashing\Hasher;
-use Illuminate\Support\Facades\Auth;
 
 class MyPasswordController
 {
@@ -35,6 +35,6 @@ class MyPasswordController
 
         event(new \App\Events\Stats\MyPasswordChanged);
 
-        return back()->with('message', __('Изменения сохранены'));
+        return back()->with(SessionKey::FlashMessage->value, __('Изменения сохранены'));
     }
 }

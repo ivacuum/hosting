@@ -15,12 +15,10 @@ class GetMyVisibleGigsAction
     public function execute(string|null $from, string|null $to): Collection
     {
         if (!$from && !$to) {
-            $key = CacheKey::MyVisibleGigs;
-
             return $this->cache->remember(
-                $key->value,
-                $key->ttl(),
-                fn () => $this->findModels($from, $to)
+                CacheKey::MyVisibleGigs,
+                CacheKey::MyVisibleGigs->ttl(),
+                fn (): Collection => $this->findModels($from, $to)
             );
         }
 

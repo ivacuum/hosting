@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Domain\SessionKey;
 use App\Http\Requests\MySettingsUpdateForm;
 use App\User;
 use Illuminate\Container\Attributes\CurrentUser;
@@ -26,6 +27,6 @@ class MySettingsController
 
         event(new \App\Events\Stats\MySettingsChanged);
 
-        return back()->with('message', __('Изменения сохранены'));
+        return back()->with(SessionKey::FlashMessage->value, __('Изменения сохранены'));
     }
 }

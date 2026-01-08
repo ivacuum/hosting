@@ -13,13 +13,11 @@ class GetFinishedGameIdsAction
 
     public function execute(int|null $count = null): Collection
     {
-        $key = CacheKey::GamesFinishedById;
-
         return $this
             ->cache
             ->remember(
-                $key->value,
-                $key->ttl(),
+                CacheKey::GamesFinishedById,
+                CacheKey::GamesFinishedById->ttl(),
                 function () {
                     return Game::query()
                         ->whereNotNull('finished_at')

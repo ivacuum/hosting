@@ -1,10 +1,10 @@
 <?php /** @var \App\Livewire\FeedbackForm $this */ ?>
 
 <div>
-  @if (Session::has('message'))
+  @if (Session::has(App\Domain\SessionKey::FlashMessage->value))
     <div class="my-4">
       <x-alert-info-dismissable>
-        {{ Session::get('message') }}
+        {{ Session::get(App\Domain\SessionKey::FlashMessage) }}
       </x-alert-info-dismissable>
     </div>
   @endif

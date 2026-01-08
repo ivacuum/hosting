@@ -18,7 +18,7 @@ class GetTripsPublishedWithCoverAction
     {
         $key = CacheKey::TripsPublishedWithCover;
 
-        return $this->cache->remember($key->value, $key->ttl(), function () {
+        return $this->cache->remember($key, $key->ttl(), function () {
             return Trip::query()
                 ->tap(new TripPublishedScope)
                 ->tap(new TripOfAdminScope)

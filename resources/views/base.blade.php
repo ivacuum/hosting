@@ -99,9 +99,9 @@
         @endru
       </x-alert-warning-dismissable>
     @endif
-    @if (Session::has('message'))
+    @if (Session::has(App\Domain\SessionKey::FlashMessage->value))
       <x-alert-info-dismissable>
-        {{ Session::get('message') }}
+        {{ Session::get(App\Domain\SessionKey::FlashMessage) }}
       </x-alert-info-dismissable>
     @endif
     @if ($errors->has('mail'))
