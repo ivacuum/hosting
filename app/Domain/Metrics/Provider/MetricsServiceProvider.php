@@ -23,22 +23,21 @@ class MetricsServiceProvider extends ServiceProvider
     {
         \Event::listen([
             'App\Events\Stats\*',
-            'Ivacuum\Generic\Events\Stats\*',
         ], WildcardMetricsListener::class);
     }
 
     private function triggerStatsOnEvents(): void
     {
         \Event::listen(JobProcessed::class, function () {
-            event(new \Ivacuum\Generic\Events\Stats\JobProcessed);
+            event(new \App\Events\Stats\JobProcessed);
         });
 
         \Event::listen(MessageSent::class, function () {
-            event(new \Ivacuum\Generic\Events\Stats\MailSent);
+            event(new \App\Events\Stats\MailSent);
         });
 
         \Event::listen(NotificationSent::class, function () {
-            event(new \Ivacuum\Generic\Events\Stats\NotificationSent);
+            event(new \App\Events\Stats\NotificationSent);
         });
 
         \Event::listen(WorkerStopping::class, function () {

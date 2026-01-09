@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\Events\Stats\Build;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Ivacuum\Generic\Events\Stats\Build;
 use Tests\TestCase;
 
 class AcpMetricsTest extends TestCase

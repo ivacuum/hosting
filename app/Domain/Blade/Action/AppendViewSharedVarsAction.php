@@ -4,9 +4,9 @@ namespace App\Domain\Blade\Action;
 
 use App\Action\ParseRouteDataAction;
 use App\Domain\Config;
+use App\Utilities\EnvironmentForCss;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
-use Ivacuum\Generic\Utilities\EnvironmentForCss;
 
 class AppendViewSharedVarsAction
 {

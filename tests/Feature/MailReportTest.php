@@ -18,7 +18,7 @@ class MailReportTest extends TestCase
             ->withTemplate(CommentConfirmMail::class)
             ->create();
 
-        \Event::fake(\Ivacuum\Generic\Events\MailReported::class);
+        \Event::fake(\App\Events\MailReported::class);
 
         $this->be($email->user)
             ->get("mail/report/{$email->getTimestamp()}/{$email->id}")
@@ -26,6 +26,6 @@ class MailReportTest extends TestCase
             ->assertRedirect('/')
             ->assertSessionHas('message');
 
-        \Event::assertDispatched(\Ivacuum\Generic\Events\MailReported::class);
+        \Event::assertDispatched(\App\Events\MailReported::class);
     }
 }

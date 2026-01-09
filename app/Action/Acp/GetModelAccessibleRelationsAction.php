@@ -3,9 +3,9 @@
 namespace App\Action\Acp;
 
 use App\Domain\ModelAccessibleRelation;
+use App\Utilities\NamingHelper;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
-use Ivacuum\Generic\Utilities\NamingHelper;
 
 class GetModelAccessibleRelationsAction
 {

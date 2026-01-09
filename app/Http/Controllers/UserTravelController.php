@@ -8,16 +8,20 @@ class UserTravelController extends Controller
 {
     protected User|null $traveler = null;
 
-    protected function alwaysCallBefore(User $traveler)
+    private function setup(User $traveler): void
     {
         $this->traveler = $traveler;
 
         \Breadcrumbs::push("@{$this->traveler->login}", "@{$this->traveler->login}");
+
+        view()->share(['traveler' => $this->traveler]);
     }
 
     #[\Override]
-    protected function appendCustomVars(): void
+    public function callAction($method, $parameters)
     {
-        view()->share(['traveler' => $this->traveler]);
+        $this->setup(...array_values($parameters));
+
+        return parent::callAction($method, $parameters);
     }
 }

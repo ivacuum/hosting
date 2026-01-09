@@ -22,8 +22,8 @@ class MailClickTest extends TestCase
         $clicks = $email->clicks;
 
         \Event::fake([
-            \Ivacuum\Generic\Events\Stats\MailClicked::class,
-            \Ivacuum\Generic\Events\Stats\UserAutologinWithEmailLink::class,
+            \App\Events\Stats\MailClicked::class,
+            \App\Events\Stats\UserAutologinWithEmailLink::class,
         ]);
 
         $queryString = parse_url($email->signedLink($goto), PHP_URL_QUERY);
@@ -37,7 +37,7 @@ class MailClickTest extends TestCase
         $this->assertEquals($clicks + 1, $email->clicks);
         $this->assertAuthenticated();
 
-        \Event::assertDispatched(\Ivacuum\Generic\Events\Stats\MailClicked::class);
-        \Event::assertDispatched(\Ivacuum\Generic\Events\Stats\UserAutologinWithEmailLink::class);
+        \Event::assertDispatched(\App\Events\Stats\MailClicked::class);
+        \Event::assertDispatched(\App\Events\Stats\UserAutologinWithEmailLink::class);
     }
 }

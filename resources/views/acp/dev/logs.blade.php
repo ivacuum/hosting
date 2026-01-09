@@ -57,7 +57,7 @@
         <a href="{{ UrlHelper::filter(['q' => "ip={$line->ip}"]) }}">{{ $line->ip }}</a>
         <a href="https://ipinfo.io/{{ $line->ip }}">{{ $line->country }}</a>
         &middot;
-        <span title="{{ $line->user_agent }}">{{ Ivacuum\Generic\Utilities\UserAgent::tidy($line->user_agent) }}</span>
+        <span title="{{ $line->user_agent }}">{{ App\Utilities\UserAgent::tidy($line->user_agent) }}</span>
       </td>
     </tr>
   @endforeach

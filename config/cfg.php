@@ -48,7 +48,7 @@ return [
     'sphinx' => [
         'host' => env('SPHINX_HOST', 'localhost'),
         'port' => env('SPHINX_PORT', 9306),
-        'socket' => env('SPHINX_SOCKET', ''),
+        'socket' => env('SPHINX_SOCKET'),
     ],
 
     // Купоны

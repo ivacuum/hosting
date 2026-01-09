@@ -2,8 +2,6 @@
 
 namespace App\Exceptions;
 
-use Ivacuum\Generic\Exceptions\LimitExceededException;
-
 class CommentLimitExceededException extends LimitExceededException
 {
     #[\Override]

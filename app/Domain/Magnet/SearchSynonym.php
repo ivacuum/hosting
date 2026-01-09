@@ -15,10 +15,6 @@ class SearchSynonym
         'фифа' => 'fifa',
     ];
 
-    private const array SYNONYMS_TO_REPLACE = [
-        'к?с[ия]оми|xiaomi' => 'ксиоми|ксяоми|сиоми|сяоми|xiaomi',
-    ];
-
     // Methods
     public static function addSynonymsToQuery(string $query): string
     {
@@ -38,15 +34,5 @@ class SearchSynonym
         }
 
         return $result;
-    }
-
-    public static function normalizedQuery(string $query, string $index, bool $hits = false)
-    {
-        return \Sphinx::helper()->callKeywords($query, $index, $hits);
-    }
-
-    public static function replaceWordsInQueryWithSynonyms(string $query)
-    {
-        self::applySynonyms($query, self::SYNONYMS_TO_REPLACE, true);
     }
 }

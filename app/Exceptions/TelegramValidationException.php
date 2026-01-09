@@ -3,9 +3,9 @@
 namespace App\Exceptions;
 
 use App\Domain\Telegram\Action\NotifyAdminViaTelegramAction;
+use App\Utilities\UserAgent;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
-use Ivacuum\Generic\Utilities\UserAgent;
 
 class TelegramValidationException
 {

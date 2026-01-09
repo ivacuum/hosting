@@ -2,6 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Ivacuum\Generic\Controllers\Controller as BaseController;
+use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController {}

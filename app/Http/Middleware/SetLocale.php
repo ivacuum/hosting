@@ -18,12 +18,12 @@ class SetLocale
         $defaultLocale = Config::Locale->get();
         $locale = $request->server->get('LARAVEL_LOCALE') ?? $defaultLocale;
 
-        setlocale(LC_ALL, config("cfg.locales.{$locale}.posix"));
-        setlocale(LC_NUMERIC, 'C');
-        CarbonImmutable::setLocale($locale);
-
         if ($locale !== $defaultLocale) {
             app()->setLocale($locale);
+        } else {
+            setlocale(LC_ALL, config("cfg.locales.{$locale}.posix"));
+            setlocale(LC_NUMERIC, 'C');
+            CarbonImmutable::setLocale($locale);
         }
 
         $this->paginatorCurrentPath($request);

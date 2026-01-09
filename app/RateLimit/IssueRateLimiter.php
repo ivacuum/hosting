@@ -5,9 +5,9 @@ namespace App\RateLimit;
 use App\Domain\Config;
 use App\Domain\RateLimit;
 use App\Domain\RateLimit\Action\LimitRateAction;
+use App\Events\LimitExceeded;
 use App\Issue;
 use Illuminate\Http\Request;
-use Ivacuum\Generic\Events\LimitExceeded;
 
 class IssueRateLimiter
 {

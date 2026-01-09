@@ -39,15 +39,15 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->append(\App\Http\Middleware\EarlyHints::class);
 
         $middleware->web(append: [
-            \Ivacuum\Generic\Middleware\SpammerTrap::class,
-            \Ivacuum\Generic\Middleware\NoCacheHeaders::class,
+            \App\Http\Middleware\SpammerTrap::class,
+            \App\Http\Middleware\NoCacheHeaders::class,
             \App\Http\Middleware\AppendViewSharedVars::class,
         ]);
 
         $middleware->trimStrings(except: ['new_password']);
 
         $middleware->alias([
-            'nav' => \Ivacuum\Generic\Middleware\Breadcrumbs::class,
+            'nav' => \App\Http\Middleware\Breadcrumbs::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

@@ -19,7 +19,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Blade::withoutDoubleEncoding();
+        Blade::directive('ru', fn () => '<?php if ($locale === "ru"): ?>');
+        Blade::directive('en', fn () => '<?php elseif ($locale === "en"): ?>');
+        Blade::directive('de', fn () => '<?php elseif ($locale === "de"): ?>');
+        Blade::directive('endru', fn () => '<?php endif; ?>');
         Blade::directive('lng', fn () => '<?php echo $localeUri ?>');
+        Blade::directive('svg', fn ($expression) => "<?php require base_path(\"resources/svg/$expression.svg\"); ?>");
         Blade::stringable(fn (\BackedEnum $enum) => $enum->value);
         Date::use(CarbonImmutable::class);
         Vite::useBuildDirectory('assets');
@@ -50,6 +55,16 @@ class AppServiceProvider extends ServiceProvider
             'ChatMessage' => App\ChatMessage::class,
             'ExternalIdentity' => App\ExternalIdentity::class,
         ]);
+
+        /**
+         * Обработка доходит до метода только при заполненном значении,
+         * то есть всегда провал, если дошло до обработки
+         */
+        \Validator::extend('empty', function () {
+            event(new \App\Events\Stats\SpammerTrapped);
+
+            return false;
+        }, 'Читер');
 
         $this->livewireSharedVarsWorkaroundForTests();
         $this->testMacros();

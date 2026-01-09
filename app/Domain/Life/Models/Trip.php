@@ -12,12 +12,12 @@ use App\Domain\Life\TripStatus;
 use App\Email;
 use App\Traits;
 use App\User;
+use App\Utilities\TextImagesParser;
 use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
-use Ivacuum\Generic\Utilities\TextImagesParser;
 use League\CommonMark\CommonMarkConverter;
 
 /**
