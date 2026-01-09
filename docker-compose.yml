@@ -1,4 +1,15 @@
 services:
+  #  manticoresearch:
+  #    image: manticoresearch/manticore:15.1.0
+  #    restart: unless-stopped
+  #    container_name: hosting-manticoresearch
+  #    ports:
+  #      - "9306:9306"
+  #      - "9308:9308"
+  #    volumes:
+  #      - ./.docker/manticoresearch/manticore.conf:/etc/manticoresearch/manticore.conf
+  #      - ./.docker/manticoresearch/data:/var/lib/manticore
+
   meilisearch:
     image: getmeili/meilisearch
     restart: unless-stopped
@@ -79,3 +90,13 @@ services:
     container_name: hosting-redis
     profiles:
       - redis
+
+  sphinxsearch:
+    build: .docker/sphinxsearch
+    restart: unless-stopped
+    container_name: hosting-sphinxsearch
+    ports:
+      - "9306:9306"
+    volumes:
+      - ./.docker/sphinxsearch/sphinx.conf:/etc/sphinxsearch/sphinx.conf
+      - ./.docker/sphinxsearch/data:/var/lib/sphinx/data

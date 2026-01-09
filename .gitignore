@@ -1,4 +1,6 @@
 /.docker/mysql
+/.docker/manticoresearch/data
+/.docker/sphinxsearch/data
 /.idea
 /node_modules
 /public/assets
