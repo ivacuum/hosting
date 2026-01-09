@@ -53,7 +53,12 @@ class ExternalHttpRequest extends Model
             ->where('created_at', '<', now()->subWeeks(2))
             ->orderByDesc('id')
             ->first(['id'])
-            ->id;
+            ?->id;
+
+        if ($thresholdId === null) {
+            return self::query()
+                ->whereNull('id');
+        }
 
         return self::query()
             ->where('id', '<=', $thresholdId)
