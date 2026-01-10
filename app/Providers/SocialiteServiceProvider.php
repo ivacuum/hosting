@@ -3,11 +3,10 @@
 namespace App\Providers;
 
 use App\Socialite\VkProvider;
-use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Socialite\Contracts\Factory;
 
-class SocialiteServiceProvider extends ServiceProvider implements DeferrableProvider
+class SocialiteServiceProvider extends ServiceProvider
 {
     public function boot()
     {
@@ -30,11 +29,5 @@ class SocialiteServiceProvider extends ServiceProvider implements DeferrableProv
                 config('services.vk.redirect')
             );
         });
-    }
-
-    #[\Override]
-    public function provides()
-    {
-        return [VkProvider::class];
     }
 }
