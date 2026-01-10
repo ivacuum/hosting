@@ -9,11 +9,15 @@ services:
   #    volumes:
   #      - ./.docker/manticoresearch/manticore.conf:/etc/manticoresearch/manticore.conf
   #      - ./.docker/manticoresearch/data:/var/lib/manticore
+  #    profiles:
+  #      - manticoresearch
 
   meilisearch:
     image: getmeili/meilisearch
     restart: unless-stopped
     container_name: hosting-meilisearch
+    profiles:
+      - meilisearch
 
   mysql:
     image: mysql:8.4
@@ -100,3 +104,5 @@ services:
     volumes:
       - ./.docker/sphinxsearch/sphinx.conf:/etc/sphinxsearch/sphinx.conf
       - ./.docker/sphinxsearch/data:/var/lib/sphinx/data
+    profiles:
+      - sphinxsearch
