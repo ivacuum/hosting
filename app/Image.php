@@ -139,7 +139,7 @@ class Image extends Model
 
     private function convert($source, $width, $height): UploadedFile
     {
-        return (new ImageConverter)
+        return app(ImageConverter::class)
             ->autoOrient()
             ->resize($width, $height)
             ->filter('triangle')
@@ -149,7 +149,7 @@ class Image extends Model
 
     private function convertSmallSource($source): UploadedFile
     {
-        return (new ImageConverter)
+        return app(ImageConverter::class)
             ->autoOrient()
             ->quality(75)
             ->convert($source);
@@ -157,7 +157,7 @@ class Image extends Model
 
     private function gifFirstFrame($source, $width, $height): UploadedFile
     {
-        return (new ImageConverter)
+        return app(ImageConverter::class)
             ->firstFrame()
             ->resize($width, $height)
             ->convert($source);

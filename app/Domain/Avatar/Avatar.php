@@ -12,6 +12,8 @@ class Avatar
     private const string FILTER = 'triangle';
     private const int QUALITY = 75;
 
+    public function __construct(private ImageConverter $imageConverter) {}
+
     public function delete($filename): bool
     {
         return \Storage::disk('avatars')->delete($filename);
@@ -19,7 +21,7 @@ class Avatar
 
     public function resize(UploadedFile $file): UploadedFile
     {
-        return new ImageConverter()
+        return $this->imageConverter
             ->crop(self::WIDTH, self::HEIGHT)
             ->filter(self::FILTER)
             ->quality(self::QUALITY)

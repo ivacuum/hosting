@@ -36,7 +36,7 @@ class UserObserver
     public function deleted(User $user)
     {
         if ($user->avatar) {
-            (new Avatar)->delete($user->avatar);
+            app(Avatar::class)->delete($user->avatar);
         }
     }
 
@@ -55,7 +55,7 @@ class UserObserver
             $lastAvatar = $user->getOriginal('avatar');
 
             if ($lastAvatar) {
-                (new Avatar)->delete($lastAvatar);
+                app(Avatar::class)->delete($lastAvatar);
             }
         }
 

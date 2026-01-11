@@ -32,7 +32,7 @@ class ThumbnailMaker extends Component
         $this->authorize('create', Photo::class);
         $this->validate();
 
-        $image = (new ImageConverter)
+        $image = app(ImageConverter::class)
             ->autoOrient()
             ->resize(2000, 2000)
             ->quality(75)

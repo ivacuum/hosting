@@ -154,7 +154,9 @@ class User extends Authenticatable implements HasLocalePreference
 
     public function avatarUrl(): string
     {
-        return $this->avatar ? (new Avatar)->url($this->avatar) : '';
+        return $this->avatar
+            ? app(Avatar::class)->url($this->avatar)
+            : '';
     }
 
     public function breadcrumb(): string
@@ -219,7 +221,7 @@ class User extends Authenticatable implements HasLocalePreference
 
     public function uploadAvatar(UploadedFile $file): string
     {
-        $avatar = new Avatar;
+        $avatar = app(Avatar::class);
 
         $filename = $avatar->upload($file, $this->id);
 

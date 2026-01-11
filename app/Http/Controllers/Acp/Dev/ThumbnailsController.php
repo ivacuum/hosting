@@ -26,7 +26,7 @@ class ThumbnailsController
             ->with(SessionKey::FlashMessage->value, 'Папка очищена');
     }
 
-    public function store()
+    public function store(ImageConverter $imageConverter)
     {
         $file = request()->file('file');
 
@@ -34,7 +34,7 @@ class ThumbnailsController
             throw new \Exception('Необходимо предоставить хотя бы один файл');
         }
 
-        $image = (new ImageConverter)
+        $image = $imageConverter
             ->autoOrient()
             ->resize(2000, 2000)
             ->quality(75)
