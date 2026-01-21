@@ -13,7 +13,7 @@
     "@tailwindcss/vite": "^4.1",
     "jquery": "3.7.1",
     "laravel-vite-plugin": "^1.0",
-    "lodash": "4.17.21",
+    "lodash": "4.17.23",
     "mousetrap": "1.6.5",
     "vite": "^6.0",
     "vue": "3.2.47"
