@@ -99,7 +99,7 @@
         @endru
       </x-alert-warning-dismissable>
     @endif
-    @if (Session::has(App\Domain\SessionKey::FlashMessage->value))
+    @if (Session::has(App\Domain\SessionKey::FlashMessage))
       <x-alert-info-dismissable>
         {{ Session::get(App\Domain\SessionKey::FlashMessage) }}
       </x-alert-info-dismissable>

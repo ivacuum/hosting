@@ -1,7 +1,7 @@
 <?php /** @var \App\Livewire\CommentAddForm $this */ ?>
 
 <div>
-  @if (Session::has(App\Domain\SessionKey::FlashMessage->value))
+  @if (Session::has(App\Domain\SessionKey::FlashMessage))
     <x-alert-info-dismissable>
       {{ Session::get(App\Domain\SessionKey::FlashMessage) }}
     </x-alert-info-dismissable>
