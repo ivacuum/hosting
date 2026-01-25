@@ -27,6 +27,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
             Route::middleware('web')
                 ->prefix('en')
+                ->name('en.')
                 ->group(__DIR__ . '/../routes/web.php');
 
             Route::middleware(['web', 'auth', Admin::class, AcpNavigation::class])
