@@ -1,7 +1,7 @@
 @extends('base', [
   'bodyClasses' => '',
   'navbarClasses' => '',
-  'noLanguageSelector' => $locale === 'ru',
+  'noLanguageSelector' => $locale === App\Domain\Locale::Rus->value,
   'contentContainerClasses' => 'hanging-punctuation-first lg:text-lg',
 ])
 

@@ -1,5 +1,5 @@
 @extends('life.base', [
-  'noLanguageSelector' => $locale === 'ru',
+  'noLanguageSelector' => $locale === App\Domain\Locale::Rus->value,
 ])
 
 @section('content')

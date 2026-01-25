@@ -1,5 +1,5 @@
 @extends('base', [
-  'noLanguageSelector' => $locale === 'ru',
+  'noLanguageSelector' => $locale === App\Domain\Locale::Rus->value,
 ])
 @include('livewire')
 

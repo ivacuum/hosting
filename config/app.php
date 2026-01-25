@@ -4,7 +4,7 @@ return [
     'name' => env('APP_NAME', 'vacuum.name'),
     'asset_url' => env('ASSET_URL', '/'),
     'timezone' => env('APP_TIMEZONE', 'Europe/Moscow'),
-    'locale' => env('APP_LOCALE', 'ru'),
+    'locale' => env('APP_LOCALE', App\Domain\Locale::Rus->value),
     'editor' => env('APP_EDITOR', 'phpstorm'),
 
     'aliases' => \Illuminate\Support\Facades\Facade::defaultAliases()->merge([

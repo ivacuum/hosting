@@ -1,5 +1,5 @@
 @extends('dcpp.base', [
-  'noLanguageSelector' => $locale === 'ru',
+  'noLanguageSelector' => $locale === App\Domain\Locale::Rus->value,
 ])
 
 @section('content_header')
