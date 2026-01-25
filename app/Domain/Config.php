@@ -13,6 +13,7 @@ enum Config implements Htmlable
     case CronOutput;
     case DigitalOceanLink;
     case DrimsimLink;
+    case DefaultLocale;
     case FirstVdsLink;
     case FirstVdsPromocode;
     case InstagramWebhookVerifyToken;
@@ -39,6 +40,7 @@ enum Config implements Htmlable
             self::CronOutput => config()->string('cfg.cron_output'),
             self::DigitalOceanLink => config()->string('cfg.digitalocean_link'),
             self::DrimsimLink => config()->string('cfg.drimsim_link'),
+            self::DefaultLocale => config()->string('cfg.default_locale'),
             self::FirstVdsLink => config()->string('cfg.firstvds_link'),
             self::FirstVdsPromocode => config()->string('cfg.firstvds_promocode'),
             self::InstagramWebhookVerifyToken => config()->string('services.instagram.webhook_verify_token'),

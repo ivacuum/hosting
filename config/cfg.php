@@ -20,6 +20,7 @@ return [
     ],
     'autoregister_suffixes_blacklist' => ['@ivacuum.org', '@ivacuum.ru', '@vacuum.name'],
     'cron_output' => env('CRON_OUTPUT', '/dev/null'),
+    'default_locale' => App\Domain\Locale::Rus->value,
     'gm_bin' => env('GM_BIN', '/usr/bin/env gm convert'),
     'limits' => [
         'exif-reader' => [
