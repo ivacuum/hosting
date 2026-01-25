@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Action\FindUserByEmailOrCreateAction;
+use App\Domain\I18n\Action\GetLocaleUriAction;
 use App\Domain\IssueStatus;
 use App\Domain\SessionKey;
 use App\Events\IssueReported;
@@ -103,12 +104,11 @@ class FeedbackForm extends Component
             return '';
         }
 
-        $locale = request()->server->get('LARAVEL_LOCALE') ?? '';
         $parsed = parse_url($previousUrl);
 
         $path = $parsed['path'] ?? '';
         $query = isset($parsed['query']) ? "?{$parsed['query']}" : '';
-        $localeUri = $locale ? "/{$locale}" : '';
+        $localeUri = app(GetLocaleUriAction::class)->execute();
 
         return $localeUri . $path . $query;
     }

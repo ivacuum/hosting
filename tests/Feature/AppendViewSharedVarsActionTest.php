@@ -74,7 +74,8 @@ class AppendViewSharedVarsActionTest extends TestCase
         $this->get('/')
             ->assertViewHas('locale', 'ru');
 
-        $this->get('en')
+        $this->withServerVariables(['LARAVEL_LOCALE' => 'en'])
+            ->get('/')
             ->assertViewHas('locale', 'en');
     }
 
@@ -94,7 +95,8 @@ class AppendViewSharedVarsActionTest extends TestCase
         $this->get('/')
             ->assertViewHas('localeUri', '');
 
-        $this->get('en')
+        $this->withServerVariables(['LARAVEL_LOCALE' => 'en'])
+            ->get('/')
             ->assertViewHas('localeUri', '/en');
     }
 

@@ -40,7 +40,7 @@ class AppendViewSharedVars
 
         $locale = Request::create($referrer)->segment(1);
         $locales = Config::Locales->get();
-        $defaultLocale = config('app.locale');
+        $defaultLocale = Config::DefaultLocale->get();
 
         if (is_array($locales) && in_array($locale, array_keys($locales)) && $locale !== $defaultLocale) {
             $request->server->set('LARAVEL_LOCALE', $locale);

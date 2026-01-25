@@ -15,7 +15,7 @@ class SetLocale
             $request->server->set('LARAVEL_LOCALE', $request->server->get('HTTP_SITE_LOCALE'));
         }
 
-        $defaultLocale = Config::Locale->get();
+        $defaultLocale = Config::DefaultLocale->get();
         $locale = $request->server->get('LARAVEL_LOCALE') ?? $defaultLocale;
 
         if ($locale !== $defaultLocale) {
