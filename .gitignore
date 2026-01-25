@@ -1,6 +1,7 @@
 /.docker/mysql
 /.docker/manticoresearch/data
 /.docker/sphinxsearch/data
+/.gemini/settings.json
 /.idea
 /node_modules
 /public/assets
@@ -13,6 +14,8 @@
 /_ide_helper.php
 /.phpstorm.meta.php
 /auth.json
+/boost.json
+/opencode.json
 .DS_Store
 .env
 .phpunit.result.cache
