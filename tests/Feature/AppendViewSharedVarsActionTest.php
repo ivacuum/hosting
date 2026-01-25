@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use PHPUnit\Framework\Attributes\TestWith;
 use Tests\TestCase;
 
 class AppendViewSharedVarsActionTest extends TestCase
@@ -30,13 +31,12 @@ class AppendViewSharedVarsActionTest extends TestCase
             ->assertViewHas('firstTimeVisit', false);
     }
 
-    public function testViewVarsGoto()
+    #[TestWith(['/', null])]
+    #[TestWith(['/?goto=/news', '/news'])]
+    public function testViewVarsGoto(string $url, string|null $expected)
     {
-        $this->get('/')
-            ->assertViewHas('goto', null);
-
-        $this->get('/?goto=/news')
-            ->assertViewHas('goto', '/news');
+        $this->get($url)
+            ->assertViewHas('goto', $expected);
     }
 
     public function testViewVarsIsCrawler()
@@ -69,70 +69,70 @@ class AppendViewSharedVarsActionTest extends TestCase
             ->assertViewHas('isMobile', true);
     }
 
-    public function testViewVarsLocale()
+    #[TestWith(['/', 'ru'])]
+    #[TestWith(['en', 'en'])]
+    public function testViewVarsLocale(string $url, string $expected)
     {
-        $this->get('/')
-            ->assertViewHas('locale', 'ru');
+        $this->get($url)
+            ->assertViewHas('locale', $expected);
+    }
 
-        $this->withServerVariables(['LARAVEL_LOCALE' => 'en'])
+    #[TestWith(['en', 'en'])]
+    #[TestWith(['ru', 'ru'])]
+    public function testViewVarsLocalePreferred(string $acceptLanguage, string $expected)
+    {
+        $this->withHeader('Accept-Language', $acceptLanguage)
             ->get('/')
-            ->assertViewHas('locale', 'en');
+            ->assertViewHas('localePreferred', $expected);
     }
 
-    public function testViewVarsLocalePreferred()
+    #[TestWith(['/', ''])]
+    #[TestWith(['en', '/en'])]
+    public function testViewVarsLocaleUri(string $url, string $expected)
     {
-        $this->withHeader('Accept-Language', 'ru')
-            ->get('/')
-            ->assertViewHas('localePreferred', 'ru');
-
-        $this->withHeader('Accept-Language', 'en')
-            ->get('/')
-            ->assertViewHas('localePreferred', 'en');
+        $this->get($url)
+            ->assertViewHas('localeUri', $expected);
     }
 
-    public function testViewVarsLocaleUri()
+    #[TestWith(['/', '/'])]
+    #[TestWith(['en', ''])]
+    #[TestWith(['about', 'about'])]
+    #[TestWith(['en/about', 'about'])]
+    #[TestWith(['korean/psy/everyday', 'korean/psy/everyday'])]
+    #[TestWith(['en/korean/psy/everyday', 'korean/psy/everyday'])]
+    public function testViewVarsRequestUri(string $url, string $expected)
     {
-        $this->get('/')
-            ->assertViewHas('localeUri', '');
-
-        $this->withServerVariables(['LARAVEL_LOCALE' => 'en'])
-            ->get('/')
-            ->assertViewHas('localeUri', '/en');
+        $this->get($url)
+            ->assertViewHas('requestUri', $expected);
     }
 
-    public function testViewVarsRequestUri()
+    #[TestWith(['/', '/'])]
+    #[TestWith(['en', '/'])]
+    #[TestWith(['about', 'about'])]
+    #[TestWith(['en/about', 'about'])]
+    #[TestWith(['korean/psy/everyday', 'korean/psy/{song}'])]
+    #[TestWith(['en/korean/psy/everyday', 'korean/psy/{song}'])]
+    public function testViewVarsRouteUri(string $url, string $expected)
     {
-        $this->get('/')
-            ->assertViewHas('requestUri', '/');
-
-        $this->get('about')
-            ->assertViewHas('requestUri', 'about');
+        $this->get($url)
+            ->assertViewHas('routeUri', $expected);
     }
 
-    public function testViewVarsRouteUri()
+    #[TestWith(['/', 'home'])]
+    #[TestWith(['news', 'news'])]
+    #[TestWith(['korean/psy/everyday', 'korean-psy-song'])]
+    public function testViewVarsTpl(string $url, string $expected)
     {
-        $this->get('/')
-            ->assertViewHas('routeUri', '/');
-
-        $this->get('about')
-            ->assertViewHas('routeUri', 'about');
+        $this->get($url)
+            ->assertViewHas('tpl', $expected);
     }
 
-    public function testViewVarsTpl()
+    #[TestWith(['/', 'home'])]
+    #[TestWith(['news', 'news.index'])]
+    #[TestWith(['korean/psy/everyday', 'korean-psy-song'])]
+    public function testViewVarsView(string $url, string $expected)
     {
-        $this->get('/')
-            ->assertViewHas('tpl', 'home');
-
-        $this->get('news')
-            ->assertViewHas('tpl', 'news');
-    }
-
-    public function testViewVarsView()
-    {
-        $this->get('/')
-            ->assertViewHas('view', 'home');
-
-        $this->get('news')
-            ->assertViewHas('view', 'news.index');
+        $this->get($url)
+            ->assertViewHas('view', $expected);
     }
 }

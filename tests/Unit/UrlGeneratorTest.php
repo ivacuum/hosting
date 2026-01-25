@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Domain\Locale;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -14,8 +15,6 @@ class UrlGeneratorTest extends TestCase
 
     public function testCanonical()
     {
-        app('url')->useOrigin('http://localhost');
-
         $this->get('news?foo=bar');
 
         $this->assertSame('http://localhost/news', canonical());
@@ -27,8 +26,6 @@ class UrlGeneratorTest extends TestCase
 
     public function testFullUrl()
     {
-        app('url')->useOrigin('http://localhost');
-
         $this->get('news?foo=bar');
 
         $this->assertSame('http://localhost/news?', fullUrl(['foo' => null]));
@@ -48,7 +45,7 @@ class UrlGeneratorTest extends TestCase
         $this->assertSame('/news/123', path([NewsController::class, 'show'], 123));
         $this->assertSame('/news/123', path([NewsController::class, 'show'], ['id' => 123]));
 
-        request()->server->set('LARAVEL_LOCALE', 'en');
+        $this->app->setLocale(Locale::Eng->value);
 
         $this->assertSame('/en', path(HomeController::class));
         $this->assertSame('/en/news/123', path([NewsController::class, 'show'], 123));
@@ -71,7 +68,7 @@ class UrlGeneratorTest extends TestCase
     #[TestWith([['photos/countries/{country}', ['russia']], '/en/photos/countries/russia'])]
     public function testToEn(array $input, string $result)
     {
-        request()->server->set('LARAVEL_LOCALE', 'en');
+        $this->app->setLocale(Locale::Eng->value);
 
         $this->assertSame($result, to(...$input));
     }
@@ -83,7 +80,7 @@ class UrlGeneratorTest extends TestCase
     #[TestWith([['photos/countries/{country}', ['russia']], '/photos/countries/russia'])]
     public function testToRu(array $input, string $result)
     {
-        request()->server->remove('LARAVEL_LOCALE');
+        $this->app->setLocale(Locale::Rus->value);
 
         $this->assertSame($result, to(...$input));
     }

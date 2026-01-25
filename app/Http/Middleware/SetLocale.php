@@ -3,39 +3,36 @@
 namespace App\Http\Middleware;
 
 use App\Domain\Config;
-use Carbon\CarbonImmutable;
+use App\Domain\Locale;
 use Illuminate\Http\Request;
-use Illuminate\Pagination\Paginator;
 
 class SetLocale
 {
     public function handle(Request $request, \Closure $next)
     {
-        if ($request->server->get('HTTP_SITE_LOCALE')) {
-            $request->server->set('LARAVEL_LOCALE', $request->server->get('HTTP_SITE_LOCALE'));
-        }
+        $locale = $this->determineLocale($request);
 
-        $defaultLocale = Config::DefaultLocale->get();
-        $locale = $request->server->get('LARAVEL_LOCALE') ?? $defaultLocale;
-
-        if ($locale !== $defaultLocale) {
-            app()->setLocale($locale);
-        } else {
-            setlocale(LC_ALL, config("cfg.locales.{$locale}.posix"));
-            setlocale(LC_NUMERIC, 'C');
-            CarbonImmutable::setLocale($locale);
-        }
-
-        $this->paginatorCurrentPath($request);
+        app()->setLocale($locale);
 
         return $next($request);
     }
 
-    private function paginatorCurrentPath(Request $request)
+    private function determineLocale(Request $request): string
     {
-        $locale = $request->server->get('LARAVEL_LOCALE');
-        $localeUri = $locale ? "/{$locale}" : '';
+        if ($request->segment(1) === Locale::Eng->value) {
+            return Locale::Eng->value;
+        } elseif ($request->hasHeader('X-Livewire')) {
+            $referrer = $request->header('referer');
 
-        Paginator::currentPathResolver(fn () => $localeUri . $request->getBaseUrl() . $request->getPathInfo());
+            if ($referrer) {
+                $firstSegment = Request::create($referrer)->segment(1);
+
+                if ($firstSegment === Locale::Eng->value) {
+                    return Locale::Eng->value;
+                }
+            }
+        }
+
+        return Config::DefaultLocale->get();
     }
 }

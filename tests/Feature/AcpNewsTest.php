@@ -77,18 +77,17 @@ class AcpNewsTest extends TestCase
         $this->app->setLocale(Locale::Eng->value);
 
         \Livewire::test(NewsForm::class)
-            ->withHeaders(['LARAVEL_LOCALE' => 'en'])
             ->set('title', $news->title)
             ->set('markdown', $news->markdown)
             ->call('submit')
             ->assertHasNoErrors()
-            ->assertRedirect('/acp/news');
+            ->assertRedirect('/en/acp/news');
 
         $model = News::query()->firstWhere(['title' => $news->title]);
 
         $this->assertSame(Locale::Eng, $model->locale);
 
-        $this->get('acp/news')
+        $this->get('en/acp/news')
             ->assertSee($news->title);
     }
 

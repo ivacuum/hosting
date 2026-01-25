@@ -43,4 +43,10 @@ class HomeTest extends TestCase
         $this->get('/')
             ->assertOk();
     }
+
+    public function testRu()
+    {
+        $this->get('ru')
+            ->assertNotFound();
+    }
 }

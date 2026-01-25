@@ -25,8 +25,17 @@ return Application::configure(basePath: dirname(__DIR__))
             Route::prefix('')
                 ->group(__DIR__ . '/../routes/simple.php');
 
+            Route::middleware('web')
+                ->prefix('en')
+                ->group(__DIR__ . '/../routes/web.php');
+
             Route::middleware(['web', 'auth', Admin::class, AcpNavigation::class])
                 ->prefix('acp')
+                ->name('acp.')
+                ->group(__DIR__ . '/../routes/acp.php');
+
+            Route::middleware(['web', 'auth', Admin::class, AcpNavigation::class])
+                ->prefix('en/acp')
                 ->name('acp.')
                 ->group(__DIR__ . '/../routes/acp.php');
         }
