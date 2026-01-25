@@ -37,7 +37,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
             Route::middleware(['web', 'auth', Admin::class, AcpNavigation::class])
                 ->prefix('en/acp')
-                ->name('acp.')
+                ->name('en.acp.')
                 ->group(__DIR__ . '/../routes/acp.php');
         }
     )
