@@ -10,6 +10,8 @@ use App\Domain\Life\Observer\TripObserver;
 use App\Domain\Life\Policy\TripPolicy;
 use App\Domain\Life\TripStatus;
 use App\Email;
+use App\Http\Controllers\LifeController;
+use App\Http\Controllers\UserTravelTripController;
 use App\Traits;
 use App\User;
 use App\Utilities\TextImagesParser;
@@ -265,8 +267,8 @@ class Trip extends Model
     public function wwwLocale(string|null $anchor = null, string $locale = ''): string
     {
         return $this->user_id === 1
-            ? path_locale([Http\Controllers\LifeController::class, 'page'], $this->slug, false, $locale) . $anchor
-            : path_locale([Http\Controllers\UserTravelTripController::class, 'show'], [$this->user->login, $this->slug], false, $locale) . $anchor;
+            ? path_locale([LifeController::class, 'page'], $this->slug, false, $locale) . $anchor
+            : path_locale([UserTravelTripController::class, 'show'], [$this->user->login, $this->slug], false, $locale) . $anchor;
     }
 
     #[\Override]

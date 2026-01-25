@@ -6,6 +6,7 @@ use App\Domain\Life\GigStatus;
 use App\Domain\Life\Observer\GigObserver;
 use App\Domain\Life\Policy\GigPolicy;
 use App\Email;
+use App\Http\Controllers\LifeController;
 use App\Traits;
 use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
@@ -140,7 +141,7 @@ class Gig extends Model
 
     public function wwwLocale(string $locale = ''): string
     {
-        return path_locale([Http\Controllers\LifeController::class, 'page'], $this->slug, false, $locale);
+        return path_locale([LifeController::class, 'page'], $this->slug, false, $locale);
     }
 
     #[\Override]
