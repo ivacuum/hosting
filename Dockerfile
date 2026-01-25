@@ -9,13 +9,15 @@ apt install -y --no-install-recommends \
   libicu-dev \
   libjpeg62-turbo-dev \
   libpng-dev \
+  libvips42 \
+  libvips-dev \
   libzip-dev \
   tini \
   zlib1g-dev
 docker-php-ext-configure gd --with-freetype --with-jpeg
 docker-php-ext-install -j$(nproc) exif gd intl opcache pcntl pdo_mysql zip
-yes '' | pecl install excimer swoole
-docker-php-ext-enable excimer swoole
+yes '' | pecl install excimer swoole vips
+docker-php-ext-enable excimer swoole vips
 # Удаляем то, что нужно было только для сборки расширений
 # $PHPIZE_DEPS родом из базового образа php
 apt purge -y $PHPIZE_DEPS
