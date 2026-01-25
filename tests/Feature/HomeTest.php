@@ -10,6 +10,19 @@ class HomeTest extends TestCase
 {
     use DatabaseTransactions;
 
+    public function testAbout()
+    {
+        $this->get('about')
+            ->assertOk();
+    }
+
+    public function testCv()
+    {
+        $this->get('cv')
+            ->assertOk()
+            ->assertHasCustomTitle();
+    }
+
     public function testHead()
     {
         $this->head('/')
@@ -29,18 +42,5 @@ class HomeTest extends TestCase
 
         $this->get('/')
             ->assertOk();
-    }
-
-    public function testAbout()
-    {
-        $this->get('about')
-            ->assertOk();
-    }
-
-    public function testCv()
-    {
-        $this->get('cv')
-            ->assertOk()
-            ->assertHasCustomTitle();
     }
 }
