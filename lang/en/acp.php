@@ -40,7 +40,6 @@ return [
     'dev.svg' => 'SVG',
     'dev.logs' => 'Logs',
     'dev.index' => 'Dev',
-    'dev.debugbar' => 'Deburbar for an hour',
     'dev.templates.index' => 'Trip templates',
     'dev.thumbnails.index' => 'Thumbnails',
     'dev.gig-templates.index' => 'Gig templates',

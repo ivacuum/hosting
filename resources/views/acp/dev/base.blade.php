@@ -18,11 +18,6 @@
     <x-nav-link-to href="{{ to('acp/dev/svg') }}" is-active="{{ $routeUri === 'acp/dev/svg' }}">
       @lang('acp.dev.svg')
     </x-nav-link-to>
-    @if (App::isLocal() && !Request::cookie('debugbar', false))
-      <x-nav-link-to href="{{ to('acp/dev/debugbar') }}">
-        @lang('acp.dev.debugbar')
-      </x-nav-link-to>
-    @endif
   </x-nav-link-tabs>
 </div>
 @endsection

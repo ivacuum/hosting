@@ -18,7 +18,6 @@ Route::resource('countries', Acp\CountriesController::class)->except(['store', '
 Route::resource('dcpp-hubs', Acp\DcppHubsController::class)->except(['store', 'update']);
 
 Route::redirect('dev', '/acp/dev/templates');
-Route::get('dev/debugbar', Acp\Dev\EnableDebugBarController::class);
 Route::get('dev/logs', [Acp\DevController::class, 'logs']);
 Route::get('dev/svg', [Acp\DevController::class, 'svg']);
 Route::get('dev/gig-templates', [Acp\Dev\GigTemplatesController::class, 'index']);
