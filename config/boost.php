@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'code_environments' => [
+    'agents' => [
         'gemini' => [
             'guidelines_path' => 'AGENTS.md',
         ],
