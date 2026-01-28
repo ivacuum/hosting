@@ -2,9 +2,9 @@
 
 namespace App\Domain\Game\Models;
 
+use App\Domain\Game\Observer\GameObserver;
 use App\Domain\Steam\SteamCountryCode;
 use App\Domain\Steam\SteamLanguage;
-use App\Observers\GameObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;

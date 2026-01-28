@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Observers;
+namespace App\Domain\Game\Observer;
 
 use App\Domain\Game\Models\Game;
 use App\Utilities\CacheHelper;
