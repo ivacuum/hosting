@@ -75,6 +75,8 @@ class UrlGeneratorTest extends TestCase
 
     #[TestWith([[''], '/'])]
     #[TestWith([['/'], '/'])]
+    #[TestWith([['новости'], '/%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8'])]
+    #[TestWith([['новости/{news}', 1], '/%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8/1'])]
     #[TestWith([['photos/1'], '/photos/1'])]
     #[TestWith([['photos/1', ['city_id' => 5, 'tag_id' => 10]], '/photos/1?city_id=5&tag_id=10'])]
     #[TestWith([['photos/countries/{country}', ['russia']], '/photos/countries/russia'])]
