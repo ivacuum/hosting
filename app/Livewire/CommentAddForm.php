@@ -67,7 +67,7 @@ class CommentAddForm extends Component
         $this->dispatch(LivewireEvent::RefreshComments->name);
 
         if ($isGuest) {
-            session()->flash(SessionKey::FlashMessage->value, __('Комментарий ожидает активации. Мы отправили вам ссылку на электронную почту.'));
+            session()->flash(SessionKey::FlashMessage, __('Комментарий ожидает активации. Мы отправили вам ссылку на электронную почту.'));
         }
     }
 

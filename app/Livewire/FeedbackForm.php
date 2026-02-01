@@ -83,7 +83,7 @@ class FeedbackForm extends Component
 
         $this->reset('text');
 
-        session()->flash(SessionKey::FlashMessage->value, __('Ваше сообщение принято. Мы постараемся отреагировать на него как можно скорее.'));
+        session()->flash(SessionKey::FlashMessage, __('Ваше сообщение принято. Мы постараемся отреагировать на него как можно скорее.'));
     }
 
     protected function rules()

@@ -19,7 +19,7 @@ class UploadController
             $notifyAdminViaTelegram->execute("Загружен файл\n" . url("uploads/temp/{$filename}"));
         }
 
-        session()->flash(SessionKey::FlashMessage->value, 'Спасибо за загруженные файлы');
+        session()->flash(SessionKey::FlashMessage, 'Спасибо за загруженные файлы');
 
         return redirect('/up');
     }
