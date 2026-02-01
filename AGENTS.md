@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This is a Laravel 12 application serving as a personal website for notes, trip stories, and concert history. It takes advantage of modern PHP features (8.4+), and Livewire for dynamic interactions.
+This is a Laravel 12 application serving as a personal website for notes, trip stories, and concert history. It takes advantage of modern PHP features (8.4+), and Livewire for dynamic interactions. It is a production-grade app that serves pretty high-load on a modest server.
 
 ## Tech Stack
 
@@ -72,4 +72,6 @@ Russian is the default language of this project. English is optional. When trans
 - Try to use existing domain from `app/Domain/` if possible.
 - Always delete `down` method from database migrations.
 - Use `composer test` for verification, as it runs tests in parallel.
+- Always use `composer fresh` instead of `php artisan db:seed`.
+- Always write tests for new features and test new code.
 - The project uses `laravel/octane`, so be mindful of state persistence in memory across requests if modifying bootstrapping logic.
