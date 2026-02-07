@@ -53,13 +53,13 @@ The project follows a specific structure deviating slightly from standard Larave
 
 Translations are done either in Laravel traditional way using `__(key)` or using the following syntax:
 
-```blade
+<code-snippet name="Example Output" lang="blade">
 @ru
   Русский текст.
 @en
   English text.
 @endru
-```
+</code-snippet>
 
 Russian is the default language of this project. English is optional. When translating, keep the author style.
 
