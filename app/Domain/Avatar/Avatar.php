@@ -14,7 +14,7 @@ class Avatar
 
     public function __construct(private ImageConverter $imageConverter) {}
 
-    public function delete($filename): bool
+    public function delete(string $filename): bool
     {
         return \Storage::disk('avatars')->delete($filename);
     }
@@ -28,7 +28,7 @@ class Avatar
             ->convert($file->getRealPath());
     }
 
-    public function upload(UploadedFile $file, $userId): string
+    public function upload(UploadedFile $file, int $userId): string
     {
         $filename = sprintf('%s_%s.%s', $userId, \Str::random(6), strtolower($file->getClientOriginalExtension()));
 
@@ -37,7 +37,7 @@ class Avatar
         return $filename;
     }
 
-    public function url($filename): string
+    public function url(string $filename): string
     {
         return \Storage::disk('avatars')->url($filename);
     }
