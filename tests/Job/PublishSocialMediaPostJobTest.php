@@ -57,6 +57,33 @@ class PublishSocialMediaPostJobTest extends TestCase
         });
     }
 
+    public function testRetryOnCreateMediaFailure()
+    {
+        \Http::fake([
+            ...InstagramCreateMediaResponse::fakeInvalidMedia(),
+        ]);
+
+        Sleep::fake();
+
+        User::query()->findOr(1, fn () => UserFactory::new()->admin()->create());
+
+        SocialMediaTokenFactory::new()
+            ->withToken('token')
+            ->create();
+
+        $post = SocialMediaPostFactory::new()
+            ->withCaption('caption')
+            ->create();
+
+        $this->assertSame(SocialMediaPostStatus::Queued, $post->status);
+
+        $job = new PublishSocialMediaPostJob($post);
+
+        $this->expectException(\Illuminate\Http\Client\RequestException::class);
+
+        $this->app->call($job->handle(...));
+    }
+
     public function testRetryPublish()
     {
         $fakeMediaNotAvailableResponse = InstagramPublishMediaResponse::fakeMediaNotAvailable();

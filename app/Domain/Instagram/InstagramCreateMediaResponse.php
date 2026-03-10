@@ -16,7 +16,7 @@ readonly class InstagramCreateMediaResponse
         $this->containerId = $response->json('id');
     }
 
-    public static function fakeNotFound()
+    public static function fakeInvalidMedia()
     {
         return [
             'graph.vacuum.name/v23.0/me/media?*' => Factory::response([
@@ -30,7 +30,7 @@ readonly class InstagramCreateMediaResponse
                     'error_user_msg' => 'Не удалось извлечь медиафайл по URI: https://example.com/. Чтобы узнать подробнее, посмотрите раздел с ограничениями в нашем документе для разработчиков: https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media#creating',
                     'fbtrace_id' => 'xxx',
                 ],
-            ]),
+            ], 400),
         ];
     }
 
