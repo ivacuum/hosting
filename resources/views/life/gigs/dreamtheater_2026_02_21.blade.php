@@ -28,12 +28,12 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_5177.jpg'])
 
 @ru
-  <p>Джеймс ЛаБри поет трек Through My Words. Звучал он хорошо. А эта песня примечательна тем, что в ней только вокал и клавишные — оба исполнителя в кадре.</p>
+  <p>Джеймс ЛаБри поет трек <span class="font-bold">Through My Words</span>. Звучал он хорошо. А эта песня примечательна тем, что в ней только вокал и клавишные — оба исполнителя в кадре.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5178.jpg'])
 
 @ru
-  <p>Играют Fatal Tragedy.</p>
+  <p>Играют <span class="font-bold">Fatal Tragedy</span>.</p>
 @endru
 @include('tpl.fotorama-2x', ['pics' => [
   'IMG_5181.jpg',
@@ -41,7 +41,7 @@
 ]])
 
 @ru
-  <p>Подходит к концу Take the Time. Ее неожиданно добавили в сет.</p>
+  <p>Подходит к концу <span class="font-bold">Take the Time</span>. Ее неожиданно добавили в сет.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5184.jpg'])
 
@@ -51,17 +51,17 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_5185.jpg'])
 
 @ru
-  <p>Восьмиструнная гитара для исполнения In the Arms of Morpheus.</p>
+  <p>Восьмиструнная гитара для исполнения <span class="font-bold">In the Arms of Morpheus</span>.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5186.jpg'])
 
 @ru
-  <p>Сыграли Octavarium.</p>
+  <p>Сыграли <span class="font-bold">Octavarium</span>.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5189.jpg'])
 
 @ru
-  <p>Исполняют Pull Me Under в качестве завершающей песни.</p>
+  <p>Исполняют <span class="font-bold">Pull Me Under</span> в качестве завершающей песни.</p>
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5205.jpg'])
 

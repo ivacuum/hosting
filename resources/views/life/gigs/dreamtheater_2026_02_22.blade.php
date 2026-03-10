@@ -40,9 +40,9 @@
 @include('tpl.pic-2x', ['pic' => 'IMG_5228.jpg'])
 
 @ru
-  <p>Начали с нового альбома Parasomnia. И сыграли его целиком! Это и стало объяснением почему не было занавеса перед началом — он был срежиссирован только под определенную первую песню Metropolis Pt. 1, которую в этот вечер вообще не играли.</p>
+  <p>Начали с нового альбома <span class="font-bold">Parasomnia</span>. И сыграли его целиком! Это и стало объяснением почему не было занавеса перед началом — он был срежиссирован только под определенную первую песню <span class="font-bold">Metropolis Pt. 1</span>, которую в этот вечер вообще не играли.</p>
 @en
-  <p>They started with the new album Parasomnia. And played it in its entirety! This explained why there was no curtain before the start — it was directed only for a specific opening song Metropolis Pt. 1, which they didn't play at all this evening.</p>
+  <p>They started with the new album <span class="font-bold">Parasomnia</span>. And played it in its entirety! This explained why there was no curtain before the start — it was directed only for a specific opening song <span class="font-bold">Metropolis Pt. 1</span>, which they didn't play at all this evening.</p>
 @endru
 
 @component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/dreamtheater.2026.jpg'])
@@ -67,9 +67,9 @@
 @endcomponent
 
 @ru
-  <p>Вокруг на танцполе была активная молодежь — единомышленники. Если первую часть (новый альбом) мы в основном стояли и слушали, то вторую часть группа начала с трека As I Am, и это был разнос! Вторая часть оказалась максимально бодрой из всех трех концертов — одна ритмичная песня за другой. Мы очень много прыгали с молодежью. Даже Петруччи вдохновили попрыгать в конце Peruvian Skies. Перед Take the Time один из корейцев рядом спросил меня: «Ты готов [зажигать]?». Всегда готов! Это получился лучший концерт из трех, плюс самый продолжительный.</p>
+  <p>Вокруг на танцполе была активная молодежь — единомышленники. Если первую часть (новый альбом) мы в основном стояли и слушали, то вторую часть группа начала с трека <span class="font-bold">As I Am</span>, и это был разнос! Вторая часть оказалась максимально бодрой из всех трех концертов — одна ритмичная песня за другой. Мы очень много прыгали с молодежью. Даже Петруччи вдохновили попрыгать в конце <span class="font-bold">Peruvian Skies</span>. Перед <span class="font-bold">Take the Time</span> один из корейцев рядом спросил меня: «Ты готов [зажигать]?». Всегда готов! Это получился лучший концерт из трех, плюс самый продолжительный.</p>
 @en
-  <p>Around us on the dance floor were energetic young folks — kindred spirits. While we mostly just stood and listened during the first part (the new album), the band kicked off the second part with the track As I Am, and it was a blast! That second half turned out to be the most energetic out of all three concerts — just one driving song after another. We jumped around a ton with the younger crowd. Even Petrucci got inspired to jump at the end of Peruvian Skies. Before Take the Time, a Korean guy next to me asked: "Are you ready [to rock]?". Born ready! This ended up being the best concert of the three, plus the longest one.</p>
+  <p>Around us on the dance floor were energetic young folks — kindred spirits. While we mostly just stood and listened during the first part (the new album), the band kicked off the second part with the track <span class="font-bold">As I Am</span>, and it was a blast! That second half turned out to be the most energetic out of all three concerts — just one driving song after another. We jumped around a ton with the younger crowd. Even Petrucci got inspired to jump at the end of <span class="font-bold">Peruvian Skies</span>. Before <span class="font-bold">Take the Time</span>, a Korean guy next to me asked: "Are you ready [to rock]?". Born ready! This ended up being the best concert of the three, plus the longest one.</p>
 @endru
 
 @ru
