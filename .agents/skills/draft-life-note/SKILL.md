@@ -115,6 +115,7 @@ IMG_1236.jpeg
 - **Cleanup:** Delete lines for files that do not exist on disk.
 - **Do not group:** Keep one description per image for now.
 - **Image filenames:** Keep `IMG_xxxx.yyy` lines as is.
+- **No Sub-Agents:** Do not use sub-agents to describe photos. Sub-agents process images in isolation and lose the context of the whole story.
 
 ### 6. Translation & Localization
 
