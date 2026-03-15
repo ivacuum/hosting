@@ -41,7 +41,7 @@ Before analyzing any images, you **must** establish the context of the destinati
 
 ### 2. Analyze the Image
 
-For each image (`IMG_xxxx.yyy`), read it visually and check its metadata (using `exiftool`). Real images are available in `~/Downloads/buffer/` folder (for example, `IMG_1234.jpeg` is available as `~/Downloads/buffer/IMG_1234.jpeg`).
+For each image (`IMG_xxxx.yyy`), read it visually and check its metadata (using `exiftool`). Real images are available in `~/Downloads/buffer/` folder (for example, `IMG_1234.jpeg` is available as `~/Downloads/buffer/IMG_1234.heic`).
 
 **What to look for (Topics of Interest):**
 
@@ -127,5 +127,5 @@ IMG_1236.jpeg
 To get metadata:
 
 ```
-exiftool -json -g -n ~/Downloads/buffer/IMG_xxxx.jpeg
+exiftool -json -g -n ~/Downloads/buffer/IMG_xxxx.heic
 ```
