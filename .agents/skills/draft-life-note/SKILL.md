@@ -1,7 +1,6 @@
 ---
 name: draft-life-note
-description: >-
-  Writes first draft note for a travel trip. Activates when dealing with `resources/views/life/trips/*.blade.php` files which only have lonely `IMG_xxxx.yyy` lines.
+description: "Writes first draft note for a travel trip. Activates when dealing with `resources/views/life/trips/*.blade.php` files which only have lonely `IMG_xxxx.yyy` lines."
 ---
 
 # Life note writer
@@ -87,26 +86,26 @@ For each image (`IMG_xxxx.yyy`), read it visually and check its metadata (using 
 
 ### 4. Output format
 
-<code-snippet name="Example Output" lang="blade">
-@ru
+```blade
+\@ru
   <p>Tier 3: История о том, как я пытался купить билет в этом автомате. Экран тугой, карты не принимает. Пришлось звать помощь.</p>
-@endru
+\@endru
 IMG_1234.jpeg
 
-@ru
+\@ru
   <p>Tier 1: Турникеты.</p>
-@en
+\@en
   <p>Turnstiles.</p>
-@endru
+\@endru
 IMG_1235.jpeg
 
-@ru
+\@ru
   <p>Tier 2: Разметка на полу подсказывает, где стоять в очереди.</p>
-@en
+\@en
   <p>Floor markings suggest where to stand in line.</p>
-@endru
+\@endru
 IMG_1236.jpeg
-</code-snippet>
+```
 
 ### 5. Rules
 
