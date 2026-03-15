@@ -12,6 +12,7 @@
 /public/vendor
 /vendor
 /_ide_helper.php
+/.phpactor.json
 /.phpstorm.meta.php
 /auth.json
 /boost.json
