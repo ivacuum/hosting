@@ -4,7 +4,7 @@
 
 @section('content')
 @ru
-  <p></p>
+  <p>В Кванджу был отличный, чистый, мощный звук с первых секунд.</p>
 @endru
 
 @component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/psy.2025.08.23.jpg'])

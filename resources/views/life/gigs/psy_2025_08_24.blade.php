@@ -4,7 +4,11 @@
 
 @section('content')
 @ru
-  <p></p>
+  <p>На территории есть курилка — ребята выходили с танцпола покурить и возвращались.</p>
+@endru
+
+@ru
+  <p>Женщина за 50 на танцполе подарила нам кепку. И вообще, она была весьма общительна.</p>
 @endru
 
 @component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/psy.2025.08.23.jpg'])
@@ -67,4 +71,8 @@
     <li>에술이야 <span class="text-sm text-gray-500">It's Art</span></li>
   </ol>
 @endcomponent
+
+@ru
+  <p>На метро домой снова быстрее, чем на такси, которое невозможно вызвать.</p>
+@endru
 @endsection
