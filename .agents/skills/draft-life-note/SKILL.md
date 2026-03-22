@@ -40,7 +40,7 @@ Before analyzing any images, you **must** establish the context of the destinati
 
 ### 2. Analyze the Image
 
-For each image (`IMG_xxxx.yyy`), read it visually and check its metadata (using `exiftool`). Real images are available in `~/Downloads/buffer/` folder (for example, `IMG_1234.jpeg` is available as `~/Downloads/buffer/IMG_1234.heic`).
+For each image (`IMG_xxxx.yyy`), read it visually and check its metadata (see `exiftool` usage below). Real images are available in `~/Downloads/buffer/` folder (for example, `IMG_1234.jpeg` is available as `~/Downloads/buffer/IMG_1234.heic`).
 
 **What to look for (Topics of Interest):**
 
@@ -51,7 +51,7 @@ For each image (`IMG_xxxx.yyy`), read it visually and check its metadata (using 
 - **Accommodation:** Interior details (switches, plugs, views from window).
 - **Anomalies:** Anything broken, weird, funny, or culturally distinct.
 
-**IMPORTANT:** You must process images **one by one**. Do not try to read or analyze multiple images in a single tool call or step, as this may cause the process to hang. Finish one image completely before moving to the next.
+**CRITICAL:** You must process images **one by one**. Do not try to read or analyze multiple images in a single tool call or step, as this causes the process to hang and connection between images to be lost. Finish one image completely before moving to the next.
 
 ### 3. Determine Description Length (The 3 Tiers)
 
@@ -87,25 +87,27 @@ For each image (`IMG_xxxx.yyy`), read it visually and check its metadata (using 
 ### 4. Output format
 
 ```blade
-\@ru
+@ru
   <p>Tier 3: История о том, как я пытался купить билет в этом автомате. Экран тугой, карты не принимает. Пришлось звать помощь.</p>
-\@endru
+@endru
 IMG_1234.jpeg
 
-\@ru
+@ru
   <p>Tier 1: Турникеты.</p>
-\@en
+@en
   <p>Turnstiles.</p>
-\@endru
+@endru
 IMG_1235.jpeg
 
-\@ru
+@ru
   <p>Tier 2: Разметка на полу подсказывает, где стоять в очереди.</p>
-\@en
+@en
   <p>Floor markings suggest where to stand in line.</p>
-\@endru
+@endru
 IMG_1236.jpeg
 ```
+
+Note the blank line between the image and the next paragraph.
 
 ### 5. Rules
 
@@ -127,6 +129,9 @@ IMG_1236.jpeg
 
 To get metadata:
 
+```bash
+exiftool -json -DateTimeOriginal -OffsetTimeOriginal -GPSPosition -GPSAltitude -GPSImgDirection -LensModel -FocalLengthIn35mmFormat -LightValue -Orientation -ImageSize ~/Downloads/buffer/IMG_xxxx.heic
+}
 ```
-exiftool -json -g -n ~/Downloads/buffer/IMG_xxxx.heic
-```
+
+**CRITICAL:** You MUST pass all the specified parameters to `exiftool` because they are all needed to write a good description. Only change the file name.
