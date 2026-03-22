@@ -37,7 +37,10 @@ class TripsController extends Controller
             ->withCount('comments', 'photos')
             ->when($cityId, fn (Builder $query) => $query->where('city_id', $cityId))
             ->when($countryId, fn (Builder $query) => $query->whereRelation('city.country', 'country_id', $countryId))
-            ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
+            ->when($userId, fn (Builder $query) => match ($userId) {
+                'other' => $query->where('user_id', '<>', 1),
+                default => $query->where('user_id', $userId),
+            })
             ->unless($status === null, fn (Builder $query) => $query->where('status', $status))
             ->when($q,
                 fn (Builder $query) => $query->where('id', $q)

@@ -31,7 +31,7 @@
 
   <x-dropdown-item href="/acp/cities">@lang('acp.cities.index')</x-dropdown-item>
   <x-dropdown-item href="/acp/countries">@lang('acp.countries.index')</x-dropdown-item>
-  <x-dropdown-item href="/acp/trips">@lang('acp.trips.index')</x-dropdown-item>
+  <x-dropdown-item href="/acp/trips?user_id=1">@lang('acp.trips.index')</x-dropdown-item>
   <x-dropdown-item href="/acp/gigs">@lang('acp.gigs.index')</x-dropdown-item>
   <x-dropdown-item href="/acp/artists">@lang('acp.artists.index')</x-dropdown-item>
   <x-dropdown-item href="/acp/tags">@lang('acp.tags.index')</x-dropdown-item>

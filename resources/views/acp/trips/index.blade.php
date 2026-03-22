@@ -6,6 +6,15 @@
 
 @section('heading-after-search')
 @include('acp.tpl.dropdown-filter', [
+  'field' => 'user_id',
+  'values' => [
+    __('Все') => null,
+    '---' => null,
+    '#1' => 1,
+    __('Другие') => 'other',
+  ]
+])
+@include('acp.tpl.dropdown-filter', [
   'field' => 'status',
   'values' => [
     __('Все') => null,
