@@ -13,6 +13,9 @@ use Illuminate\Queue\Attributes\WithoutRelations;
 #[WithoutRelations]
 class PublishSocialMediaPostJob extends AbstractJob implements ShouldBeUnique
 {
+    public $maxExceptions = 10;
+    public $backoff = [60, 300, 900, 1800, 3600];
+
     public function __construct(public SocialMediaPost $post) {}
 
     public function handle(InstagramApi $instagram)
@@ -33,6 +36,11 @@ class PublishSocialMediaPostJob extends AbstractJob implements ShouldBeUnique
 
         $this->post->status = SocialMediaPostStatus::Published;
         $this->post->save();
+    }
+
+    public function retryUntil()
+    {
+        return now()->addHours(12);
     }
 
     public function uniqueFor(): int
