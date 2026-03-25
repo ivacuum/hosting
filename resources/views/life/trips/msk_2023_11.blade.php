@@ -4,259 +4,326 @@
 @ru
   <p>В комфортном брянском поезде Иван Паристый откидываются спинки кресел.</p>
 @endru
-IMG_4917.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4917.jpg'])
 
 @ru
   <p>Вместо Макдональдса теперь Вкусно и точка, а вместо KFC — Ростикс.</p>
 @endru
-IMG_4918.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4918.jpg'])
 
 @ru
-  <p>Дождливая улица.</p>
+  <p>Торговые ряды на дождливой улице.</p>
 @endru
-IMG_4919.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4919.jpg'])
 
 @ru
   <p>Интерьер Сёрф кофе.</p>
+@en
+  <p>Surf Coffee interior.</p>
 @endru
-IMG_4920.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4920.jpg'])
 
 @ru
-  <p>Колесо обозрения.</p>
+  <p>«Солнце Москвы» — новое колесо обозрения на ВДНХ.</p>
+@en
+  <p>"Sun of Moscow"—the new Ferris wheel at VDNKh.</p>
 @endru
-IMG_4923.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4923.jpg'])
 
 @ru
-  <p>Перечисление достижений страны на ВДНХ.</p>
+  <p>В иммерсивном тоннеле презентуются достижения транспорта.</p>
 @endru
-IMG_4924.jpeg
-IMG_4927.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4924.jpg'])
 
 @ru
-  <p>Фасад.</p>
+  <p>Цифровые проекции нацпроектов.</p>
+@en
+  <p>Digital projections of national projects.</p>
 @endru
-IMG_4928.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4927.jpg'])
 
 @ru
-  <p>Фонтан.</p>
+  <p>Детали фасада исторического павильона.</p>
+@en
+  <p>Facade details of a historical pavilion.</p>
 @endru
-IMG_4929.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4928.jpg'])
 
 @ru
-  <p>На выставку Росатома в этот день бесплатный вход. Правда, на некоторые экспозиции нужно записываться заранее, так как количество мест в день ограничено.</p>
+  <p>Фонтан «Каменный цветок».</p>
+@en
+  <p>"Stone Flower" fountain.</p>
 @endru
-IMG_4930.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4929.jpg'])
+
+@ru
+  <p>Внутри павильона «Атом». На выставку Росатома в этот день бесплатный вход. Правда, на некоторые экспозиции нужно записываться заранее, так как количество мест в день ограничено.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_4930.jpg'])
 
 @ru
   <p>Просторный зал.</p>
 @endru
-IMG_4931.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4931.jpg'])
 
 @ru
   <p>Детский уголок с историей как Никола Тесла ударило током при попытке погладить кота.</p>
 @endru
-IMG_4932.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4932.jpg'])
 
 @ru
   <p>Кафе.</p>
+@en
+  <p>Cafe.</p>
 @endru
-IMG_4933.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4933.jpg'])
 
 @ru
-  <p>Надписи на разных языках.</p>
+  <p>Стена, расписанная научными формулами и чертежами.</p>
+@en
+  <p>A wall covered with scientific formulas and blueprints.</p>
 @endru
-IMG_4934.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4934.jpg'])
 
 @ru
   <p>Пинг-понг и другие спортивные развлечения.</p>
 @endru
-IMG_4935.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4935.jpg'])
 
 @ru
   <p>Велотренажеры с залипательными горными и лесными пейзажами.</p>
 @endru
-IMG_4936.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4936.jpg'])
 
 @ru
-  <p>Коридор с гербами городов России.</p>
+  <p>Галерея гербов атомных городов России.</p>
+@en
+  <p>A gallery of coats of arms of Russia's nuclear cities.</p>
 @endru
-IMG_4938.jpeg
-IMG_4942.jpeg
-IMG_4943.jpeg
-IMG_4944.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4938.jpg'])
 
 @ru
-  <p>Мозаичное панно.</p>
+  <p>Почти в каждом гербе спрятан атом.</p>
+@en
+  <p>Almost every coat of arms hides an atom.</p>
 @endru
-IMG_4946.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_4942.jpg',
+  'IMG_4943.jpg',
+]])
 
 @ru
-  <p>Истории и снимки о стройке электростанций и атомных городков.</p>
+  <p>Информационные таблички рядом с гербами рассказывают историю городов.</p>
+@en
+  <p>Information plaques next to the coats of arms tell the history of the cities.</p>
 @endru
-IMG_4947.jpeg
-IMG_4948.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4944.jpg'])
+
+@ru
+  <p>Мозаичное панно, посвященное мирному атому.</p>
+@en
+  <p>A mosaic panel dedicated to the peaceful atom.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_4946.jpg'])
+
+@ru
+  <p>Историческая фотохроника строительства атомных объектов.</p>
+@en
+  <p>Historical photo chronicles of the construction of nuclear facilities.</p>
+@endru
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_4947.jpg',
+  'IMG_4948.jpg',
+]])
 
 @ru
   <p>Листья с именами людей.</p>
 @endru
-IMG_4950.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4950.jpg'])
 
 @ru
   <p>Макет Атомграда со сменой дня и ночи.</p>
 @endru
-IMG_4951.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4951.jpg'])
 
 @ru
   <p>Лозунг стремления к светлому будущему.</p>
 @endru
-IMG_4952.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4952.jpg'])
 
 @ru
-  <p>Рукописный текст на стене. Намекает на это различное написание одной и той же буквы в рамках одного слова.</p>
+  <p>Рукописный текст на стене. Намекает на это различное написание одной и той же буквы в рамках одного слова. Историю развития ядерной физики писали будто мелом на доске.</p>
 @endru
-IMG_4955.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4955.jpg'])
 
 @ru
-  <p>Железнодорожный уголок и проба съемки в темных условиях. Результат выглядит словно света было достаточно, а его на самом деле было очень мало.</p>
+  <p>Реконструкция вагона немецкой железной дороги и бочек с ураном. Проба съемки в темных условиях. Результат выглядит словно света было достаточно, а его на самом деле было очень мало.</p>
 @endru
-IMG_4956.jpeg
-IMG_4957.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_4956.jpg',
+  'IMG_4957.jpg',
+]])
 
 @ru
-  <p>Комната для проявки пленки.</p>
+  <p>Красная комната (фотолаборатория). Белая плитка, кюветы и сохнущие на веревке снимки.</p>
+@en
+  <p>A red room (photo lab). White tiles, trays, and photos drying on a line.</p>
 @endru
-IMG_4958.jpeg
-IMG_4959.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4958.jpg'])
 
 @ru
-  <p>Три телефона на столе.</p>
+  <p>Стол с реактивами и фотоувеличитель.</p>
+@en
+  <p>A desk with chemicals and a photo enlarger.</p>
 @endru
-IMG_4961.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4959.jpg'])
 
 @ru
-  <p>Царь-бомба?</p>
+  <p>Три дисковых телефона на столе.</p>
 @endru
-IMG_4962.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4961.jpg'])
+
+@ru
+  <p>Макет первой советской атомной бомбы РДС-1.</p>
+@en
+  <p>A replica of the first Soviet atomic bomb, RDS-1.</p>
+@endru
+@include('tpl.pic-2x', ['pic' => 'IMG_4962.jpg'])
 
 @ru
   <p>Темный угол при съемке в ночном режиме получился светлым.</p>
 @endru
-IMG_4963.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4963.jpg'])
 
 @ru
-  <p>Для демонстрации интерьера быта американских и советских ученых одного времени комнату поделили пополам.</p>
+  <p>Комната поделена пополам для демонстрации интерьера быта американских и советских ученых одного времени.</p>
 @endru
-IMG_4968.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4968.jpg'])
 
 @ru
-  <p>Кухня американцев в сороковые годы двадцатого века. Даже сейчас от такой сложно отказаться.</p>
+  <p>Кухня американцев в сороковые годы двадцатого века. Даже спустя восемьдесят лет от такой бы не отказался.</p>
 @endru
-IMG_4969.jpeg
-IMG_4970.jpeg
+@include('tpl.fotorama-2x', ['pics' => [
+  'IMG_4969.jpg',
+  'IMG_4970.jpg',
+]])
 
 @ru
   <p>И такая американская гостиная видится очень даже уютной по нынешним меркам.</p>
 @endru
-IMG_4971.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4971.jpg'])
 
 @ru
-  <p>Кинопоказ с субтитрами.</p>
+  <p>Небольшой кинозал с исторической хроникой.</p>
+@en
+  <p>A small cinema hall showing historical footage.</p>
 @endru
-IMG_4972.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4972.jpg'])
 
 @ru
-  <p>Царь-бомба?</p>
+  <p>«Царь-бомба» (АН602) на фоне мультимедийной проекции.</p>
+@en
+  <p>The famous "Tsar Bomba" (AN602) against a multimedia projection.</p>
 @endru
-IMG_4973.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4973.jpg'])
 
 @ru
-  <p>Студия?</p>
+  <p>Пульт управления ядерными испытаниями. На десятках экранов крутят исторические кадры.</p>
+@en
+  <p>A nuclear test control panel. Historical footage is playing on dozens of screens.</p>
 @endru
-IMG_4974.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4974.jpg'])
 
 @ru
-  <p>Макет самолета ТУ-144 выше человеческого роста.</p>
+  <p>Макет сверхзвукового пассажирского самолета Ту-144 выше человеческого роста.</p>
 @endru
-IMG_4981.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4981.jpg'])
 
 @ru
-  <p>Макет автомобиля Форд Нуклеон.</p>
+  <p>Макет концепт-кара Форд Нуклеон — автомобиля с ядерным реактором.</p>
+@en
+  <p>A model of the Ford Nucleon concept car—a vehicle with a nuclear reactor.</p>
 @endru
-IMG_4982.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4982.jpg'])
 
 @ru
   <p>Книги про ядерную физику.</p>
 @endru
-IMG_4983.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4983.jpg'])
 
 @ru
-  <p>Макет подводной лодки.</p>
+  <p>Общий вид зала с макетом подводной лодки.</p>
+@en
+  <p>General view of the hall with a submarine model.</p>
 @endru
-IMG_4984.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4984.jpg'])
 
 @ru
-  <p>Окно в Европу. На самом деле, окно в экран.</p>
+  <p>Окно в Европу. На самом деле, лишь проекция на экране.</p>
 @endru
-IMG_4985.jpeg
-
+@include('tpl.pic-2x', ['pic' => 'IMG_4985.jpg'])
 
 @ru
-  <p>Стихи Теслы.</p>
+  <p>Стенд, посвященный Николе Тесле.</p>
+@en
+  <p>An exhibit dedicated to Nikola Tesla.</p>
 @endru
-IMG_4990.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4990.jpg'])
 
 @ru
   <p>Книжные полки.</p>
 @endru
-IMG_4994.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4994.jpg'])
 
 @ru
   <p>Мягкие места для полежать.</p>
 @endru
-IMG_4997.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4997.jpg'])
 
 @ru
   <p>Мягкие места для посидеть.</p>
 @endru
-IMG_4998.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4998.jpg'])
 
 @ru
   <p>Красочная конструкция.</p>
 @endru
-IMG_4999.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_4999.jpg'])
 
 @ru
   <p>Выводы про атомную энергетику.</p>
 @endru
-IMG_5005.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5005.jpg'])
 
 @ru
-  <p>Лобби павильона Росатома.</p>
+  <p>Вечернее лобби павильона Росатома.</p>
 @endru
-IMG_5008.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5008.jpg'])
 
 @ru
-  <p>Каток вокруг самолета еще не открыт.</p>
+  <p>Ракета-носитель «Восток» и самолет в гирляндах. Каток еще не открыт.</p>
 @endru
-IMG_5009.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5009.jpg'])
 
 @ru
   <p>Настала пора подкрепиться раменом в заведении Ку.</p>
 @endru
-IMG_5012.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5012.jpg'])
 
 @ru
-  <p>Москва-река?</p>
+  <p>Ночная Москва-река, светящийся мост и теплоход.</p>
+@en
+  <p>The Moscow River at night, a glowing bridge, and a boat.</p>
 @endru
-IMG_5013.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5013.jpg'])
 
 @ru
   <p>Овощи и фрукты в магазине Перекресток.</p>
 @endru
-IMG_5014.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5014.jpg'])
 
 @ru
   <p>Отправление домой с Киевского вокзала. Часы отстают на минуту.</p>
 @endru
-IMG_5015.jpeg
+@include('tpl.pic-2x', ['pic' => 'IMG_5015.jpg'])
 @endsection
