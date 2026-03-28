@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3295d9b45d327644538b48dd3aecb57d",
+    "content-hash": "8a003cab065686cd3b1932ec65603f70",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -2950,16 +2950,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v3.7.12",
+            "version": "v4.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "7fcb612d1274980d80703efb5658e58d6d37ada9"
+                "reference": "71c28888f99b4bfdaad89a07a104adbc3f98c04b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/7fcb612d1274980d80703efb5658e58d6d37ada9",
-                "reference": "7fcb612d1274980d80703efb5658e58d6d37ada9",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/71c28888f99b4bfdaad89a07a104adbc3f98c04b",
+                "reference": "71c28888f99b4bfdaad89a07a104adbc3f98c04b",
                 "shasum": ""
             },
             "require": {
@@ -3014,7 +3014,7 @@
             "description": "A front-end framework for Laravel.",
             "support": {
                 "issues": "https://github.com/livewire/livewire/issues",
-                "source": "https://github.com/livewire/livewire/tree/v3.7.12"
+                "source": "https://github.com/livewire/livewire/tree/v4.2.2"
             },
             "funding": [
                 {
@@ -3022,7 +3022,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-03-25T23:04:42+00:00"
+            "time": "2026-03-25T23:19:23+00:00"
         },
         {
             "name": "meilisearch/meilisearch-php",

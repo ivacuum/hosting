@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Domain\Locale;
+use Livewire\Mechanisms\HandleRequests\EndpointResolver;
 use Tests\TestCase;
 
 class LivewireLocalizationTest extends TestCase
@@ -14,7 +15,7 @@ class LivewireLocalizationTest extends TestCase
                 'X-Livewire' => '',
                 'Referer' => 'http://localhost/en/trainers/numbers',
             ])
-            ->post('livewire/update');
+            ->post(EndpointResolver::updatePath());
 
         $this->assertSame(Locale::Eng->value, app()->getLocale());
     }
@@ -26,7 +27,7 @@ class LivewireLocalizationTest extends TestCase
                 'X-Livewire' => '',
                 'Referer' => 'http://localhost/trainers/numbers',
             ])
-            ->post('livewire/update');
+            ->post(EndpointResolver::updatePath());
 
         $this->assertSame(Locale::Rus->value, app()->getLocale());
     }

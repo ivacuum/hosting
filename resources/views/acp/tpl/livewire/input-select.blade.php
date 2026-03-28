@@ -4,7 +4,7 @@
   @if($live)
     wire:model.live="{{ $name }}"
   @elseif($blur)
-    wire:model.blur="{{ $name }}"
+    wire:model.live.blur="{{ $name }}"
   @else
     wire:model="{{ $name }}"
   @endif
