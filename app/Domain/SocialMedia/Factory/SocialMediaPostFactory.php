@@ -34,7 +34,7 @@ class SocialMediaPostFactory
         $post->status = $this->status;
         $post->caption = $this->caption ?? fake()->text();
         $post->user_id = $this->userId ?? UserFactory::new()->create()->id;
-        $post->photo_id = $this->photoId ?? PhotoFactory::new()->withTrip()->create()->id;
+        $post->photo_id = PhotoFactory::new()->withTrip()->create()->id;
         $post->published_at = $this->publishedAt;
 
         $post->published_at ??= match ($post->status) {
