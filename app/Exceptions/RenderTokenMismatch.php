@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use App\Domain\SessionKey;
+use Illuminate\Http\Exceptions\OriginMismatchException;
 use Illuminate\Session\TokenMismatchException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
@@ -10,7 +11,9 @@ class RenderTokenMismatch
 {
     public function __invoke(HttpException $e)
     {
-        if (!$e->getPrevious() instanceof TokenMismatchException) {
+        $previous = $e->getPrevious();
+
+        if (!$previous instanceof TokenMismatchException && !$previous instanceof OriginMismatchException) {
             return null;
         }
 

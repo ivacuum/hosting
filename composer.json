@@ -11,7 +11,7 @@
     "geo-io/wkb-parser": "^1.0",
     "guzzlehttp/guzzle": "^7.0",
     "http-interop/http-factory-guzzle": "^1.2",
-    "laravel/framework": "^12.0",
+    "laravel/framework": "^13.0",
     "laravel/octane": "^2.0",
     "laravel/scout": "^10.0",
     "laravel/socialite": "^5.0",
@@ -22,8 +22,8 @@
     "meilisearch/meilisearch-php": "^1.0",
     "predis/predis": "^3.0",
     "sentry/sentry-laravel": "^4.7",
-    "symfony/css-selector": "^7.0",
-    "symfony/dom-crawler": "^7.0"
+    "symfony/css-selector": "^8.0",
+    "symfony/dom-crawler": "^8.0"
   },
   "require-dev": {
     "barryvdh/laravel-ide-helper": "^3.0",
