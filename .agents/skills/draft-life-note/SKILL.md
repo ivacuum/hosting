@@ -1,16 +1,9 @@
 ---
 name: draft-life-note
-description: "Writes first draft note for a travel trip. Activates when dealing with `resources/views/life/trips/*.blade.php` files which only have lonely `IMG_xxxx.yyy` lines."
+description: "Writes first draft note for a travel trip. Activate when working with `resources/views/life/trips/*.blade.php` files which don't have Russian or English text for every `IMG_xxxx.yyy` image."
 ---
 
 # Life note writer
-
-## When to Apply
-
-Activate this skill when:
-
-- Working with `resources/view/trips/*.blade.php` file
-- That file doesn't have Russian or English text for every `IMG_xxxx` image
 
 ## Context and Style
 
@@ -40,7 +33,7 @@ Before analyzing any images, you **must** establish the context of the destinati
 
 ### 2. Analyze the Image
 
-For each image (`IMG_xxxx.yyy`), read it visually and check its metadata (see `exiftool` usage below). Real images are available in `~/Downloads/buffer/` folder (for example, `IMG_1234.jpeg` is available as `~/Downloads/buffer/IMG_1234.heic`).
+For each image (`IMG_xxxx.yyy`), read it visually and check its metadata (see `exiftool` usage below). Real images are available in `~/Downloads/buffer/` folder (for example, `IMG_1234.jpeg` is available as `~/Downloads/buffer/IMG_1234.jpeg`).
 
 **What to look for (Topics of Interest):**
 
@@ -107,7 +100,7 @@ IMG_1235.jpeg
 IMG_1236.jpeg
 ```
 
-Note the blank line between the image and the next paragraph.
+**CRITICAL:** You MUST separate each unit (text + photo) with a blank line as in the output format example. Without the blank line, the drafting flow breaks.
 
 ### 5. Rules
 
@@ -116,7 +109,6 @@ Note the blank line between the image and the next paragraph.
 - **Cleanup:** Delete lines for files that do not exist on disk.
 - **Do not group:** Keep one description per image for now.
 - **Image filenames:** Keep `IMG_xxxx.yyy` lines as is.
-- **Formatting:** There should be a blank line between the image and the next paragraph as shown in the output example.
 - **No Sub-Agents:** Do not use sub-agents to describe photos. Sub-agents process images in isolation and lose the context of the whole story.
 
 ### 6. Translation & Localization
@@ -130,7 +122,7 @@ Note the blank line between the image and the next paragraph.
 To get metadata:
 
 ```bash
-exiftool -json -DateTimeOriginal -OffsetTimeOriginal -GPSPosition -GPSAltitude -GPSImgDirection -LensModel -FocalLengthIn35mmFormat -LightValue -Orientation -ImageSize ~/Downloads/buffer/IMG_xxxx.heic
+exiftool -json -DateTimeOriginal -OffsetTimeOriginal -GPSPosition -GPSAltitude -GPSImgDirection -LensModel -FocalLengthIn35mmFormat -LightValue -Orientation -ImageSize ~/Downloads/buffer/IMG_xxxx.jpeg
 }
 ```
 
