@@ -6,9 +6,11 @@ use App\Action\Acp\ApplyIndexGoodsAction;
 use App\Domain\Metrics\Models\Metric;
 use App\Scope\MetricWeekScope;
 use Carbon\Carbon;
+use Illuminate\Routing\Attributes\Controllers\Authorize;
 
 class MetricsController
 {
+    #[Authorize('viewAny', Metric::class)]
     public function index(ApplyIndexGoodsAction $applyIndexGoods)
     {
         $applyIndexGoods->execute(new Metric);
@@ -31,6 +33,7 @@ class MetricsController
         ]);
     }
 
+    #[Authorize('viewAny', Metric::class)]
     public function show(string $event)
     {
         \Breadcrumbs::push($event);

@@ -7,6 +7,7 @@ use App\Domain\Life\Models\Trip;
 use App\Http\Requests\TripStoreForm;
 use App\Http\Requests\TripUpdateForm;
 use App\Utilities\CityHelper;
+use Illuminate\Routing\Attributes\Controllers\Authorize;
 
 class MyTripController
 {
@@ -27,6 +28,7 @@ class MyTripController
         return view('my.trips.create', ['model' => $trip]);
     }
 
+    #[Authorize('delete', 'trip')]
     public function destroy(Trip $trip)
     {
         $trip->delete();
@@ -34,6 +36,7 @@ class MyTripController
         return redirect(path([MyTripController::class, 'index']));
     }
 
+    #[Authorize('update', 'trip')]
     public function edit(Trip $trip)
     {
         return view('my.trips.edit', ['model' => $trip]);
@@ -60,6 +63,7 @@ class MyTripController
         return redirect(path([MyTripController::class, 'index']));
     }
 
+    #[Authorize('update', 'trip')]
     public function update(
         Trip $trip,
         CityHelper $cityHelper,

@@ -7,16 +7,13 @@ use App\Events\Stats\UserRegisteredWithExternalIdentity;
 use App\ExternalIdentity;
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Routing\Attributes\Controllers\Middleware;
 use Laravel\Socialite\AbstractUser;
 
+#[Middleware('guest')]
 abstract class Base extends Controller
 {
     protected $provider;
-
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
 
     /**
      * Поиск или создание новой учетки социального сервиса

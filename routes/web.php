@@ -32,7 +32,7 @@ Route::get('auth/google/callback', [Ctrl\Auth\Google::class, 'callback']);
 Route::get('auth/vk', [Ctrl\Auth\Vk::class, 'index']);
 Route::get('auth/vk/callback', [Ctrl\Auth\Vk::class, 'callback']);
 
-Route::get('comments/{comment}/confirm', Ctrl\CommentConfirmController::class)->middleware('auth')->can('confirm', 'comment');
+Route::get('comments/{comment}/confirm', Ctrl\CommentConfirmController::class)->middleware('auth');
 
 Route::view('contact', 'issues.create');
 
@@ -173,9 +173,9 @@ Route::middleware('auth')->group(function () {
     Route::get('my/trips', [Ctrl\MyTripController::class, 'index']);
     Route::post('my/trips', [Ctrl\MyTripController::class, 'store']);
     Route::get('my/trips/create', [Ctrl\MyTripController::class, 'create']);
-    Route::put('my/trips/{trip}', [Ctrl\MyTripController::class, 'update'])->can('update', 'trip');
-    Route::delete('my/trips/{trip}', [Ctrl\MyTripController::class, 'destroy'])->can('delete', 'trip');
-    Route::get('my/trips/{trip}/edit', [Ctrl\MyTripController::class, 'edit'])->can('update', 'trip');
+    Route::put('my/trips/{trip}', [Ctrl\MyTripController::class, 'update']);
+    Route::delete('my/trips/{trip}', [Ctrl\MyTripController::class, 'destroy']);
+    Route::get('my/trips/{trip}/edit', [Ctrl\MyTripController::class, 'edit']);
 });
 
 Route::get('news', [Ctrl\NewsController::class, 'index'])->middleware('nav:Новости,news');
