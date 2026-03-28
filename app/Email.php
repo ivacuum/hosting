@@ -34,10 +34,6 @@ class Email extends Model
     protected $guarded = ['created_at'];
     protected $perPage = 50;
 
-    protected $casts = [
-        'user_id' => 'int',
-    ];
-
     // Relations
     public function rel()
     {
@@ -85,5 +81,13 @@ class Email extends Model
             'goto' => $goto,
             'timestamp' => $this->getTimestamp(),
         ], $expiration);
+    }
+
+    #[\Override]
+    protected function casts(): array
+    {
+        return [
+            'user_id' => 'int',
+        ];
     }
 }

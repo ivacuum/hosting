@@ -17,7 +17,6 @@ use Illuminate\Database\Eloquent\Model;
 class Metric extends Model
 {
     public $timestamps = false;
-    protected $casts = ['date' => 'datetime'];
     protected $perPage = 100;
 
     public static function possibleMetrics(): array
@@ -29,5 +28,13 @@ class Metric extends Model
         asort($events);
 
         return $events ?? [];
+    }
+
+    #[\Override]
+    protected function casts(): array
+    {
+        return [
+            'date' => 'datetime',
+        ];
     }
 }
