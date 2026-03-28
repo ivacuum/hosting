@@ -2,7 +2,6 @@
   'noFooterBanner' => true,
   'contentContainerClasses' => '',
 ])
-@include('livewire')
 
 @section('content')
 <div class="hanging-punctuation-first lg:text-lg">

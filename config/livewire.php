@@ -10,6 +10,4 @@ return [
             'test' => false,
         ],
     ],
-
-    'inject_assets' => false,
 ];

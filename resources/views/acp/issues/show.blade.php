@@ -1,7 +1,6 @@
 <?php /** @var App\Issue $model */ ?>
 
 @extends('acp.show')
-@include('livewire')
 
 @section('content')
 <div>

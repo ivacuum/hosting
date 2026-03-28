@@ -1,5 +1,4 @@
 @extends('my.base')
-@include('livewire')
 
 @section('content')
 <div class="max-w-[500px]">

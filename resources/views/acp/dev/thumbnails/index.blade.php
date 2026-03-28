@@ -1,5 +1,4 @@
 @extends('acp.dev.base')
-@include('livewire')
 
 @section('content')
 <h2 class="font-medium text-3xl mb-2">Создание миниатюр</h2>

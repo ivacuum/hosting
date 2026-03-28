@@ -5,7 +5,6 @@
 ?>
 
 @extends('base')
-@include('livewire')
 
 @section('content')
 <article itemscope itemtype="https://schema.org/BlogPosting">

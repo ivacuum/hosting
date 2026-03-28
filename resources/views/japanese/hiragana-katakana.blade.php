@@ -1,5 +1,4 @@
 @extends('japanese.base')
-@include('livewire')
 
 @section('content')
 <h1 class="font-medium text-3xl tracking-tight mb-2">@lang('Хирагана и катакана')</h1>

@@ -1,5 +1,4 @@
 @extends('magnets.base')
-@include('livewire')
 
 @section('content')
 <div class="flex">

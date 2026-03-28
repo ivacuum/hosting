@@ -1,7 +1,6 @@
 <?php /** @var \App\Domain\Magnet\Models\Magnet $model */ ?>
 
 @extends('acp.show')
-@include('livewire')
 
 @section('content')
 <?php $relatedTorrents = $model->relatedTorrents() ?>

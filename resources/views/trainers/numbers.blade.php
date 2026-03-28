@@ -1,5 +1,4 @@
 @extends('base')
-@include('livewire')
 
 @section('content')
 @livewire(App\Livewire\NumberTrainer::class)

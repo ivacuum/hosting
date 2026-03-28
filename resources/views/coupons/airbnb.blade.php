@@ -1,5 +1,4 @@
 @extends('base')
-@include('livewire')
 
 @section('content')
 <h1 class="font-medium text-4xl tracking-tight text-balance mb-2">{{ $metaTitle }}</h1>

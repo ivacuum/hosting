@@ -1,5 +1,4 @@
 @extends('korean.base')
-@include('livewire')
 
 @section('content')
 @livewire(App\Livewire\HangulTrainer::class)

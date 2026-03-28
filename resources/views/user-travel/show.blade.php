@@ -10,7 +10,6 @@
   'metaImage' => $trip->metaImage(),
   'metaDescription' => $trip->metaDescription(),
 ])
-@include('livewire')
 
 @section('content_header')
 @parent

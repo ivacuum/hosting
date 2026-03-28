@@ -1,7 +1,6 @@
 @extends('base', [
   'noLanguageSelector' => $locale === App\Domain\Locale::Rus->value,
 ])
-@include('livewire')
 
 @section('content')
 <h1 class="font-medium text-4xl tracking-tight mb-2">{{ $metaTitle }}</h1>

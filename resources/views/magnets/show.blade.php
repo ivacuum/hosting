@@ -5,7 +5,6 @@
 ?>
 
 @extends('magnets.base')
-@include('livewire')
 
 @section('magnet-download-button')
 @if (Auth::user()?->isRoot())

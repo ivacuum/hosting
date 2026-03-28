@@ -1,5 +1,4 @@
 @extends('life.base')
-@include('livewire')
 
 @section('content')
 <div>

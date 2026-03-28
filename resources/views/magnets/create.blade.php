@@ -1,5 +1,4 @@
 @extends('magnets.base')
-@include('livewire')
 
 @section('content')
 <div class="grid lg:grid-cols-2 gap-8">

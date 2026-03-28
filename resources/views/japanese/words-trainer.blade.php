@@ -1,5 +1,4 @@
 @extends('japanese.base')
-@include('livewire')
 
 @section('content')
 @livewire(App\Livewire\VocabularyTrainer::class)
