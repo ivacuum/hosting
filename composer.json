@@ -13,7 +13,7 @@
     "http-interop/http-factory-guzzle": "^1.2",
     "laravel/framework": "^13.0",
     "laravel/octane": "^2.0",
-    "laravel/scout": "^10.0",
+    "laravel/scout": "^11.0",
     "laravel/socialite": "^5.0",
     "league/commonmark": "^2.2",
     "league/flysystem-aws-s3-v3": "^3.0",
