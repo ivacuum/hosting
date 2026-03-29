@@ -11,6 +11,6 @@ class ScoutServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app->make(EngineManager::class)
-            ->extend('sphinx', fn () => $this->app->make(SphinxScoutEngine::class));
+            ->extend('sphinx', fn () => app(SphinxScoutEngine::class));
     }
 }
