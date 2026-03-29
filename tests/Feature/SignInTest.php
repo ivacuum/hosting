@@ -6,6 +6,7 @@ use App\Domain\ExternalIdentityProvider;
 use App\Factory\UserFactory;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
 class SignInTest extends TestCase
@@ -99,6 +100,63 @@ class SignInTest extends TestCase
             ->assertRedirect('/');
 
         $this->assertAuthenticated();
+    }
+
+    public function testSubmitGuestWithLegacyMd5Password()
+    {
+        $password = 'legacy_password';
+        $user = UserFactory::new()->create();
+
+        DB::table('users')
+            ->where('id', $user->id)
+            ->update([
+                'password' => md5($password),
+                'salt' => '',
+            ]);
+
+        $this->from('auth/login')
+            ->post('auth/login', [
+                'email' => $user->email,
+                'password' => $password,
+            ])
+            ->assertSessionHasNoErrors()
+            ->assertRedirect('/');
+
+        $this->assertAuthenticated();
+
+        $user->refresh();
+        $this->assertSame('', $user->salt);
+        $this->assertNotSame(32, strlen($user->password));
+        $this->assertTrue(password_verify($password, $user->password));
+    }
+
+    public function testSubmitGuestWithLegacySaltedMd5Password()
+    {
+        $password = 'legacy_salted';
+        $salt = 'salt1';
+        $user = UserFactory::new()->create();
+
+        DB::table('users')
+            ->where('id', $user->id)
+            ->update([
+                'password' => md5($password . $salt),
+                'salt' => $salt,
+            ]);
+
+        $this->from('auth/login')
+            ->post('auth/login', [
+                'email' => $user->email,
+                'password' => $password,
+            ])
+            ->assertSessionHasNoErrors()
+            ->assertRedirect('/');
+
+        $this->assertAuthenticated();
+
+        $user->refresh();
+        $this->assertSame('', $user->salt);
+        $this->assertNotSame(32, strlen($user->password));
+        $this->assertTrue(password_verify($password, $user->password));
     }
 
     public function testVkCallback()

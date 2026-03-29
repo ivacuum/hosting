@@ -67,8 +67,13 @@ class SignIn extends Controller
     {
         $credentials = $this->credentials($request);
 
-        if (\Auth::attempt($credentials, $this->remember)) {
-            return true;
+        try {
+            if (\Auth::attempt($credentials, $this->remember)) {
+                return true;
+            }
+        } catch (\RuntimeException) {
+            // Laravel 13 `Auth::attempt()` стал бросать RuntimeException: This password does not use the Bcrypt algorithm.
+            // Заглушаем его, чтобы попробовать конвертировать старый md5-пароль
         }
 
         if (null === $user = \Auth::getLastAttempted()) {
