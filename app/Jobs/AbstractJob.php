@@ -8,9 +8,4 @@ use Illuminate\Foundation\Queue\Queueable;
 abstract class AbstractJob implements ShouldQueue
 {
     use Queueable;
-
-    public $tries;
-    public $backoff;
-    public $timeout;
-    public $maxExceptions;
 }

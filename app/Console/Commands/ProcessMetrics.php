@@ -11,16 +11,14 @@ use App\Domain\Metrics\RedisStreamId;
 use App\Domain\MetricsAggregator;
 use App\Domain\ViewsAggregator;
 use Illuminate\Cache\Repository;
-use Illuminate\Console\Command;
+use Illuminate\Console\Attributes\Description;
+use Illuminate\Console\Attributes\Signature;
 use Illuminate\Support\Facades\DB;
-use Symfony\Component\Console\Attribute\AsCommand;
 
-#[AsCommand('app:metrics:process')]
+#[Signature('app:metrics:process')]
+#[Description('Process metrics from redis stream and push them to database')]
 class ProcessMetrics extends Command
 {
-    protected $signature = 'app:metrics:process';
-    protected $description = 'Process metrics from redis stream and push them to database';
-
     public function handle(
         Repository $cache,
         FetchMetricsAction $fetchMetrics,

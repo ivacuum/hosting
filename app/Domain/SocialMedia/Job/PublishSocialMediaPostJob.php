@@ -8,14 +8,15 @@ use App\Domain\SocialMedia\SocialMediaPostStatus;
 use App\Jobs\AbstractJob;
 use Carbon\CarbonInterval;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
+use Illuminate\Queue\Attributes\Backoff;
+use Illuminate\Queue\Attributes\MaxExceptions;
 use Illuminate\Queue\Attributes\WithoutRelations;
 
 #[WithoutRelations]
+#[MaxExceptions(10)]
+#[Backoff(60, 300, 900, 1800, 3600)]
 class PublishSocialMediaPostJob extends AbstractJob implements ShouldBeUnique
 {
-    public $maxExceptions = 10;
-    public $backoff = [60, 300, 900, 1800, 3600];
-
     public function __construct(public SocialMediaPost $post) {}
 
     public function handle(InstagramApi $instagram)

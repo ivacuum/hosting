@@ -6,14 +6,13 @@ use App\Domain\Config;
 use App\Jobs\UnlikeVkPost;
 use App\Services\Vk;
 use Carbon\CarbonInterval;
-use Symfony\Component\Console\Attribute\AsCommand;
+use Illuminate\Console\Attributes\Description;
+use Illuminate\Console\Attributes\Signature;
 
-#[AsCommand('app:vk-likes-delete')]
+#[Signature('app:vk-likes-delete {page}')]
+#[Description('Delete VK likes')]
 class VkLikesDelete extends Command
 {
-    protected $signature = 'app:vk-likes-delete {page}';
-    protected $description = 'Delete VK likes';
-
     public function handle(Vk $vk)
     {
         $page = $this->argument('page');

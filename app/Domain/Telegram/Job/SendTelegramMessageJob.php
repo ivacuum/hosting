@@ -5,14 +5,17 @@ namespace App\Domain\Telegram\Job;
 use App\Domain\Telegram\Api\TelegramClient;
 use App\Domain\Telegram\Api\TelegramException;
 use App\Jobs\AbstractJob;
+use Illuminate\Queue\Attributes\Backoff;
+use Illuminate\Queue\Attributes\MaxExceptions;
+use Illuminate\Queue\Attributes\Timeout;
+use Illuminate\Queue\Attributes\Tries;
 
+#[Tries(10)]
+#[Backoff(30)]
+#[Timeout(20)]
+#[MaxExceptions(1)]
 class SendTelegramMessageJob extends AbstractJob
 {
-    public $tries = 10;
-    public $backoff = 30;
-    public $timeout = 20;
-    public $maxExceptions = 1;
-
     public function __construct(
         private int $chatId,
         private string $text,

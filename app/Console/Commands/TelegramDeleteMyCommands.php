@@ -4,9 +4,11 @@ namespace App\Console\Commands;
 
 use App\Domain\Telegram\Api\LanguageCode;
 use App\Domain\Telegram\Api\TelegramClient;
-use Symfony\Component\Console\Attribute\AsCommand;
+use Illuminate\Console\Attributes\Description;
+use Illuminate\Console\Attributes\Signature;
 
-#[AsCommand('telegram:delete-my-commands')]
+#[Signature('telegram:delete-my-commands')]
+#[Description('Delete menu commands')]
 class TelegramDeleteMyCommands extends Command
 {
     /** @var array<LanguageCode> */
@@ -14,9 +16,6 @@ class TelegramDeleteMyCommands extends Command
         LanguageCode::English,
         LanguageCode::Russian,
     ];
-
-    protected $signature = 'telegram:delete-my-commands';
-    protected $description = 'Delete menu commands';
 
     public function handle(TelegramClient $telegram)
     {

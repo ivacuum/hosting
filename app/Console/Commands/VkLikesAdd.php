@@ -6,14 +6,13 @@ use App\Domain\Config;
 use App\Jobs\LikeVkPost;
 use App\Services\Vk;
 use Carbon\CarbonInterval;
-use Symfony\Component\Console\Attribute\AsCommand;
+use Illuminate\Console\Attributes\Description;
+use Illuminate\Console\Attributes\Signature;
 
-#[AsCommand('app:vk-likes-add')]
+#[Signature('app:vk-likes-add {page}')]
+#[Description('Add VK likes')]
 class VkLikesAdd extends Command
 {
-    protected $signature = 'app:vk-likes-add {page}';
-    protected $description = 'Add VK likes';
-
     public function handle(Vk $vk)
     {
         $page = $this->argument('page');

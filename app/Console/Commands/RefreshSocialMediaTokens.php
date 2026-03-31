@@ -4,15 +4,15 @@ namespace App\Console\Commands;
 
 use App\Domain\Instagram\InstagramApi;
 use App\Domain\SocialMedia\Models\SocialMediaToken;
+use Illuminate\Console\Attributes\Description;
+use Illuminate\Console\Attributes\Signature;
 use Illuminate\Contracts\Console\Isolatable;
 use Illuminate\Database\Eloquent\Builder;
-use Symfony\Component\Console\Attribute\AsCommand;
 
-#[AsCommand('app:refresh-social-media-tokens')]
+#[Signature('app:refresh-social-media-tokens {--user_id}')]
+#[Description('Refresh expiring social media access tokens')]
 class RefreshSocialMediaTokens extends Command implements Isolatable
 {
-    protected $signature = 'app:refresh-social-media-tokens {--user_id}';
-
     public function handle(InstagramApi $instagram)
     {
         $userId = $this->option('user_id');

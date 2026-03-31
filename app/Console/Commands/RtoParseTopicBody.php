@@ -3,14 +3,13 @@
 namespace App\Console\Commands;
 
 use App\Domain\Rto\Rto;
-use Symfony\Component\Console\Attribute\AsCommand;
+use Illuminate\Console\Attributes\Description;
+use Illuminate\Console\Attributes\Signature;
 
-#[AsCommand('app:parse-topic-body')]
+#[Signature('app:parse-topic-body {topicId}')]
+#[Description('Get html of the rto topic')]
 class RtoParseTopicBody extends Command
 {
-    protected $signature = 'app:parse-topic-body {topicId}';
-    protected $description = 'Get html of the rto topic';
-
     public function handle(Rto $rto)
     {
         \Validator::make($this->arguments(), [

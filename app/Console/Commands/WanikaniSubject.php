@@ -3,14 +3,13 @@
 namespace App\Console\Commands;
 
 use App\Domain\Wanikani\Api\WanikaniApi;
-use Symfony\Component\Console\Attribute\AsCommand;
+use Illuminate\Console\Attributes\Description;
+use Illuminate\Console\Attributes\Signature;
 
-#[AsCommand('app:wk-subject')]
+#[Signature('app:wk-subject {id}')]
+#[Description('Request subject from wanikani.com')]
 class WanikaniSubject extends Command
 {
-    protected $signature = 'app:wk-subject {id}';
-    protected $description = 'Request subject from wanikani.com';
-
     public function handle(WanikaniApi $wanikani)
     {
         $response = $wanikani->subject($this->argument('id'));

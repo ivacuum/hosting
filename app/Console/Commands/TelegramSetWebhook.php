@@ -4,14 +4,13 @@ namespace App\Console\Commands;
 
 use App\Domain\Telegram\Api\TelegramClient;
 use App\Http\Controllers\TelegramWebhookController;
-use Symfony\Component\Console\Attribute\AsCommand;
+use Illuminate\Console\Attributes\Description;
+use Illuminate\Console\Attributes\Signature;
 
-#[AsCommand('telegram:set-webhook')]
+#[Signature('telegram:set-webhook {host?} {--secret}')]
+#[Description('Set webhook address')]
 class TelegramSetWebhook extends Command
 {
-    protected $signature = 'telegram:set-webhook {host?} {--secret}';
-    protected $description = 'Set webhook address';
-
     public function handle(TelegramClient $telegram): never
     {
         $secretToken = $this->option('secret')

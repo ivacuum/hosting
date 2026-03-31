@@ -5,15 +5,14 @@ namespace App\Console\Commands;
 use App\Domain\Magnet\Job\FetchTorrentMetaJob;
 use App\Domain\Magnet\Models\Magnet;
 use App\Domain\Magnet\Scope\MagnetPublishedScope;
+use Illuminate\Console\Attributes\Description;
+use Illuminate\Console\Attributes\Signature;
 use Illuminate\Support\Collection;
-use Symfony\Component\Console\Attribute\AsCommand;
 
-#[AsCommand('app:rto-update')]
+#[Signature('app:rto-update')]
+#[Description('Update magnet releases info from rto')]
 class RtoUpdate extends Command
 {
-    protected $signature = 'app:rto-update';
-    protected $description = 'Update magnet releases info from rto';
-
     public function handle()
     {
         Magnet::query()

@@ -11,15 +11,13 @@ use App\Domain\Life\Scope\TripOfAdminScope;
 use App\Domain\Life\Scope\TripPublishedScope;
 use App\News;
 use App\Scope\NewsPublishedScope;
-use Illuminate\Console\Command;
-use Symfony\Component\Console\Attribute\AsCommand;
+use Illuminate\Console\Attributes\Description;
+use Illuminate\Console\Attributes\Signature;
 
-#[AsCommand('app:sitemap-build')]
+#[Signature('app:sitemap-build {threshold=50000}')]
+#[Description('Build sitemap.xml')]
 class SitemapBuild extends Command
 {
-    protected $signature = 'app:sitemap-build {threshold=50000}';
-    protected $description = 'Build sitemap.xml';
-
     protected $now;
     protected $count = 0;
     protected $pages = [];

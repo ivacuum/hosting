@@ -3,14 +3,13 @@
 namespace App\Console\Commands;
 
 use App\Domain\Telegram\Action\NotifyAdminViaTelegramAction;
-use Symfony\Component\Console\Attribute\AsCommand;
+use Illuminate\Console\Attributes\Description;
+use Illuminate\Console\Attributes\Signature;
 
-#[AsCommand('telegram:notify-admin')]
+#[Signature('telegram:notify-admin {text}')]
+#[Description('Notify admin via telegram')]
 class TelegramNotifyAdmin extends Command
 {
-    protected $signature = 'telegram:notify-admin {text}';
-    protected $description = 'Notify admin via telegram';
-
     public function handle(NotifyAdminViaTelegramAction $notifyAdminViaTelegram)
     {
         $notifyAdminViaTelegram->execute($this->argument('text'));

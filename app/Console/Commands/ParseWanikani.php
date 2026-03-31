@@ -6,15 +6,14 @@ use App\Domain\Wanikani\Api\WanikaniApi;
 use App\Domain\Wanikani\Models\Kanji;
 use App\Domain\Wanikani\Models\Radical;
 use App\Domain\Wanikani\Models\Vocabulary;
+use Illuminate\Console\Attributes\Description;
+use Illuminate\Console\Attributes\Signature;
 use Illuminate\Support\Sleep;
-use Symfony\Component\Console\Attribute\AsCommand;
 
-#[AsCommand('app:parse-wanikani')]
+#[Signature('app:parse-wanikani {min_level=1} {max_level=1} {sleep=1}')]
+#[Description('Parse radicals, kanji or vocabulary from wanikani.com')]
 class ParseWanikani extends Command
 {
-    protected $signature = 'app:parse-wanikani {min_level=1} {max_level=1} {sleep=1}';
-    protected $description = 'Parse radicals, kanji or vocabulary from wanikani.com';
-
     public function handle(WanikaniApi $wanikani)
     {
         $sleep = (int) $this->argument('sleep');

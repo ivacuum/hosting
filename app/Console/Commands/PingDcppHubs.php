@@ -5,14 +5,13 @@ namespace App\Console\Commands;
 use App\Domain\Dcpp\DcppHubStatus;
 use App\Domain\Dcpp\Models\DcppHub;
 use App\Jobs\PingDcppHubJob;
-use Symfony\Component\Console\Attribute\AsCommand;
+use Illuminate\Console\Attributes\Description;
+use Illuminate\Console\Attributes\Signature;
 
-#[AsCommand('app:ping-dcpp-hubs')]
+#[Signature('app:ping-dcpp-hubs')]
+#[Description('Check if dc++ hubs are online')]
 class PingDcppHubs extends Command
 {
-    protected $signature = 'app:ping-dcpp-hubs';
-    protected $description = 'Check if dc++ hubs are online';
-
     public function handle()
     {
         DcppHub::query()

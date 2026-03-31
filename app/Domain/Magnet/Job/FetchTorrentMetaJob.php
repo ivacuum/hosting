@@ -9,12 +9,12 @@ use App\Domain\Magnet\Notification\MagnetDuplicateDeletedAdminNotification;
 use App\Domain\Magnet\Notification\MagnetNotFoundAndDeletedAdminNotification;
 use App\Domain\Rto\Rto;
 use App\Jobs\AbstractJob;
+use Illuminate\Queue\Attributes\Tries;
 
 #[WithoutFailedJobLog]
+#[Tries(1)]
 class FetchTorrentMetaJob extends AbstractJob
 {
-    public $tries = 1;
-
     public array $rtoIds;
 
     public function __construct(int ...$rtoIds)

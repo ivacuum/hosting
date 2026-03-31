@@ -9,17 +9,16 @@ use App\Domain\Life\PhotoViewsAggregator;
 use App\Domain\MetricsAggregator;
 use App\Domain\ViewsAggregator;
 use Carbon\CarbonInterval;
+use Illuminate\Console\Attributes\Description;
+use Illuminate\Console\Attributes\Signature;
 use Swoole\Process;
 use Swoole\Server;
 use Swoole\Timer;
-use Symfony\Component\Console\Attribute\AsCommand;
 
-#[AsCommand('app:metrics-udp-server')]
+#[Signature('app:metrics-udp-server {host=127.0.0.1} {port=2720}')]
+#[Description('Metrics daemon')]
 class MetricsUdpServer extends Command
 {
-    protected $signature = 'app:metrics-udp-server {host=127.0.0.1} {port=2720}';
-    protected $description = 'Metrics daemon';
-
     private int $acceptedConnections = 0;
     private bool $started = false;
     private Server $server;

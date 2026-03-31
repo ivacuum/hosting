@@ -5,18 +5,17 @@ namespace App\Console\Commands;
 use App\Domain\Steam\SteamApi;
 use App\Domain\Steam\SteamCountryCode;
 use App\Domain\Steam\SteamLanguage;
+use Illuminate\Console\Attributes\Description;
+use Illuminate\Console\Attributes\Signature;
 use Illuminate\Contracts\Console\Isolatable;
 use Illuminate\Support\Str;
-use Symfony\Component\Console\Attribute\AsCommand;
 
 use function Laravel\Prompts\search;
 
-#[AsCommand('app:find-steam-game')]
+#[Signature('app:find-steam-game')]
+#[Description('Get steam game data for seeder')]
 class FindSteamGame extends Command implements Isolatable
 {
-    protected $signature = 'app:find-steam-game';
-    protected $description = 'Get steam game data for seeder';
-
     public function handle(SteamApi $steam)
     {
         $steamId = search(

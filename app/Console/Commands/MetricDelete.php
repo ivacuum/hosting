@@ -3,14 +3,13 @@
 namespace App\Console\Commands;
 
 use App\Domain\Metrics\Models\Metric;
-use Symfony\Component\Console\Attribute\AsCommand;
+use Illuminate\Console\Attributes\Description;
+use Illuminate\Console\Attributes\Signature;
 
-#[AsCommand('app:metric-delete')]
+#[Signature('app:metric-delete {metric}')]
+#[Description('Delete a metric')]
 class MetricDelete extends Command
 {
-    protected $signature = 'app:metric-delete {metric}';
-    protected $description = 'Delete a metric';
-
     public function handle()
     {
         $metric = $this->argument('metric');

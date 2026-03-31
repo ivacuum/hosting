@@ -3,14 +3,13 @@
 namespace App\Console\Commands;
 
 use App\Domain\Metrics\Models\Metric;
-use Symfony\Component\Console\Attribute\AsCommand;
+use Illuminate\Console\Attributes\Description;
+use Illuminate\Console\Attributes\Signature;
 
-#[AsCommand('app:metric-rename')]
+#[Signature('app:metric-rename {from} {to}')]
+#[Description('Rename a metric')]
 class MetricRename extends Command
 {
-    protected $signature = 'app:metric-rename {from} {to}';
-    protected $description = 'Rename a metric';
-
     public function handle()
     {
         $to = $this->argument('to');
