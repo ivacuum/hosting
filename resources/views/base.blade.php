@@ -174,7 +174,7 @@ window.AppOptions = JSON.parse('<?= json_encode([
   'yandexMetrikaId' => 5266444,
 ], JSON_HEX_APOS) ?>')
 </script>
-@vite('node_modules/mousetrap/mousetrap.min.js?commonjs-entry')
+@vite('node_modules/mousetrap/mousetrap.min.js')
 @vite('node_modules/@github/details-menu-element/dist/index.js')
 @stack('js_vendor')
 @vite('resources/js/app.js')
