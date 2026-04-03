@@ -24,7 +24,16 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('de', fn () => '<?php elseif ($locale === "de"): ?>');
         Blade::directive('endru', fn () => '<?php endif; ?>');
         Blade::directive('lng', fn () => '<?php echo $localeUri ?>');
-        Blade::directive('svg', fn ($expression) => "<?php require base_path(\"resources/svg/$expression.svg\"); ?>");
+        Blade::directive('svg', function ($expression) {
+            $icon = trim($expression, " '\"()");
+            $path = base_path("resources/svg/{$icon}.svg");
+
+            if (is_file($path)) {
+                return file_get_contents($path);
+            }
+
+            return "<?php require base_path(\"resources/svg/{$expression}.svg\"); ?>";
+        });
         Blade::stringable(fn (\BackedEnum $enum) => $enum->value);
         Date::use(CarbonImmutable::class);
         Vite::useBuildDirectory('assets');
