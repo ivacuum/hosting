@@ -5,6 +5,15 @@ description: "Writes first draft note for a travel trip. Activate when working w
 
 # Life note writer
 
+## What is a Unit?
+
+A **unit** is the combination of:
+
+1. A photo description (Russian + English text)
+2. The corresponding `IMG_xxxx.yyy` filename
+
+**CRITICAL RULE:** You MUST finish the entire unit (write the description to the file) before moving on to the next photo. Do NOT accumulate multiple descriptions in memory—all pending writes will be lost if the process hangs.
+
 ## Context and Style
 
 The author acts as an experienced **Urban Observer**. The tone is **neutral, concise, and informative**, occasionally spiced with **dry humor or irony**. The author is not a typical "tourist" admiring views, but rather an inspector of how the city functions.
@@ -44,7 +53,7 @@ For each image (`IMG_xxxx.yyy`), read it visually and check its metadata (see `e
 - **Accommodation:** Interior details (switches, plugs, views from window).
 - **Anomalies:** Anything broken, weird, funny, or culturally distinct.
 
-**CRITICAL:** You must process images **one by one**. Do not try to read or analyze multiple images in a single tool call or step, as this causes the process to hang and connection between images to be lost. Finish one image completely before moving to the next.
+**CRITICAL:** You must process images **one by one**. Read the image, write its description to the file, then move to the next photo. Do NOT accumulate descriptions—all pending writes will be lost if the process hangs.
 
 ### 3. Determine Description Length (The 3 Tiers)
 
@@ -100,16 +109,17 @@ IMG_1235.jpeg
 IMG_1236.jpeg
 ```
 
-**CRITICAL:** You MUST separate each unit (text + photo) with a blank line as in the output format example. Without the blank line, the drafting flow breaks.
+**CRITICAL:** You MUST prepend each unit (text + photo) with a blank line as in the output format example. Without the blank line, the drafting flow breaks.
 
 ### 5. Rules
 
 - **Minimum Length:** Even "simple" descriptions should be at least a word or two. **Never leave it empty.** Tier 2 descriptions are the most welcome.
 - **Language:** Both Russian (`@ru`) and English (`@en`) are mandatory.
 - **Cleanup:** Delete lines for files that do not exist on disk.
-- **Do not group:** Keep one description per image for now.
+- **Do not group images:** Keep one description per image.
 - **Image filenames:** Keep `IMG_xxxx.yyy` lines as is.
 - **No Sub-Agents:** Do not use sub-agents to describe photos. Sub-agents process images in isolation and lose the context of the whole story.
+- **One unit at a time:** Write each photo's description to the file immediately after processing it. Do NOT batch multiple writes—the process will likely hang with nothing written.
 
 ### 6. Translation & Localization
 
