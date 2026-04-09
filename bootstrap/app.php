@@ -42,8 +42,10 @@ return Application::configure(basePath: dirname(__DIR__))
         }
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->redirectGuestsTo(fn () => to('auth/login'));
-        $middleware->redirectUsersTo(fn () => to('/'));
+        $middleware->redirectTo(
+            guests: fn () => to('auth/login'),
+            users: fn () => to('/'),
+        );
 
         $middleware->append(\App\Http\Middleware\SetLocale::class);
         $middleware->append(\App\Http\Middleware\EarlyHints::class);
