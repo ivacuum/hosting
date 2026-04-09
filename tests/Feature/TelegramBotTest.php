@@ -27,6 +27,8 @@ class TelegramBotTest extends TestCase
                 ->make()
         );
 
+        $response->assertOk();
+
         $this->assertSame(1, $response->json('chat_id'));
         $this->assertSame('10', $response->json('latitude'));
         $this->assertSame('20', $response->json('longitude'));

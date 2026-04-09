@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Domain\Life\Factory\TripFactory;
 use App\Domain\Life\Models\Trip;
+use App\Domain\Life\TripStatus;
 use App\Factory\UserFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -76,7 +77,16 @@ class MyTripsTest extends TestCase
         $user = UserFactory::new()->create();
 
         $this->be($user)
-            ->post('my/trips', $trip->attributesToArray())
+            ->post('my/trips', [
+                'slug' => 'phpunit',
+                'status' => TripStatus::Published->value,
+                'city_id' => $trip->city_id,
+                'date_end' => $trip->date_end->toDateTimeString(),
+                'markdown' => 'Markdown text',
+                'title_en' => 'phpunit EN',
+                'title_ru' => 'phpunit RU',
+                'date_start' => $trip->date_start->toDateTimeString(),
+            ])
             ->assertRedirect('my/trips');
 
         $tripSaved = Trip::query()->whereBelongsTo($trip->city)->first();
@@ -89,27 +99,27 @@ class MyTripsTest extends TestCase
     {
         $trip = TripFactory::new()->withUser()->create();
 
-        $data = [
-            'slug' => '_new-slug_',
-            'title_en' => 'title EN',
-            'title_ru' => 'title RU',
-            'date_end' => '2018-12-31',
-            'markdown' => 'some formatted *markdown*',
-            'date_start' => '2018-01-01',
-        ];
-
         $this->be($trip->user)
-            ->put("my/trips/{$trip->id}", array_merge($trip->attributesToArray(), $data))
+            ->put("my/trips/{$trip->id}", [
+                'slug' => 'phpunit',
+                'status' => $trip->status->value,
+                'city_id' => $trip->city_id,
+                'title_en' => 'phpunit EN',
+                'title_ru' => 'phpunit RU',
+                'date_end' => '2018-12-31',
+                'markdown' => 'Some formatted *markdown*',
+                'date_start' => '2018-01-01 01:23:45',
+            ])
             ->assertRedirect('my/trips');
 
         $trip->refresh();
 
-        $this->assertSame($data['slug'], $trip->slug);
-        $this->assertSame($data['title_en'], $trip->title_en);
-        $this->assertSame($data['title_ru'], $trip->title_ru);
-        $this->assertSame($data['date_end'], $trip->date_end->toDateString());
-        $this->assertSame($data['date_start'], $trip->date_start->toDateString());
-        $this->assertSame($data['markdown'], $trip->markdown);
+        $this->assertSame('phpunit', $trip->slug);
+        $this->assertSame('phpunit EN', $trip->title_en);
+        $this->assertSame('phpunit RU', $trip->title_ru);
+        $this->assertSame('2018-12-31 00:00:00', $trip->date_end->toDateTimeString());
+        $this->assertSame('2018-01-01 01:23:45', $trip->date_start->toDateTimeString());
+        $this->assertSame('Some formatted *markdown*', $trip->markdown);
     }
 
     public function testUpdateForbidden()

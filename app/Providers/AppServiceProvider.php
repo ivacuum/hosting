@@ -6,6 +6,7 @@ use App;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\View;
@@ -36,6 +37,7 @@ class AppServiceProvider extends ServiceProvider
         });
         Blade::stringable(fn (\BackedEnum $enum) => $enum->value);
         Date::use(CarbonImmutable::class);
+        FormRequest::failOnUnknownFields(!app()->isProduction());
         Vite::useBuildDirectory('assets');
 
         Model::automaticallyEagerLoadRelationships();

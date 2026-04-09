@@ -5,8 +5,10 @@ namespace App\Http\Requests;
 use App\Domain\Config;
 use App\Support\Telegram\CallbackQuery;
 use App\Support\Telegram\Message;
+use Illuminate\Foundation\Http\Attributes\FailOnUnknownFields;
 use Illuminate\Foundation\Http\FormRequest;
 
+#[FailOnUnknownFields(false)]
 class TelegramWebhook extends FormRequest
 {
     public readonly bool $shouldIgnoreWebhook;

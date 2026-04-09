@@ -14,7 +14,11 @@ class MagnetsIndexForm extends FormRequest
 
     public function rules(): array
     {
-        return [];
+        return [
+            'category_id' => ['nullable', 'integer'],
+            'fulltext' => ['nullable', 'boolean'],
+            'q' => ['nullable', 'string'],
+        ];
     }
 
     #[\Override]
