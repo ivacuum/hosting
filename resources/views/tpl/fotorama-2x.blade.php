@@ -1,6 +1,7 @@
 <?php
 /**
  * @var bool $isCrawler
+ * @var string[] $pics
  * @var \App\Domain\Life\Models\Trip $trip
  */
 $alt = $isCrawler && isset($trip) ? $trip->imgAltText() : '';
