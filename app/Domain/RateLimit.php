@@ -8,6 +8,7 @@ enum RateLimit
 {
     case CommentByIp;
     case CommentByUser;
+    case CommentFlood;
     case ExifReader;
     case IssueByIp;
     case IssueByUser;
@@ -18,6 +19,7 @@ enum RateLimit
         return match ($this) {
             self::CommentByIp => Limit::perDay(config()->integer('cfg.limits.comment.ip')),
             self::CommentByUser => Limit::perDay(config()->integer('cfg.limits.comment.user')),
+            self::CommentFlood => new Limit('', 1, config()->integer('cfg.limits.comment.flood_interval')),
             self::ExifReader => Limit::perHour(config()->integer('cfg.limits.exif-reader.per_hour')),
             self::IssueByIp => Limit::perDay(config()->integer('cfg.limits.issue.ip')),
             self::IssueByUser => Limit::perDay(config()->integer('cfg.limits.issue.user')),

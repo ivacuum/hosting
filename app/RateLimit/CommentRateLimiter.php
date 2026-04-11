@@ -2,7 +2,6 @@
 
 namespace App\RateLimit;
 
-use App\Comment;
 use App\Domain\Config;
 use App\Domain\RateLimit;
 use App\Domain\RateLimit\Action\LimitRateAction;
@@ -14,29 +13,15 @@ class CommentRateLimiter
 
     public function flooded(int $userId): bool
     {
-        $interval = Config::CommentFloodInterval->get();
-
-        if ($interval <= 0) {
+        if (Config::CommentFloodInterval->get() <= 0) {
             return false;
         }
 
-        /** @var Comment $last */
-        $last = Comment::query()
-            ->where('user_id', $userId)
-            ->orderByDesc('id')
-            ->first(['created_at']);
+        $limit = RateLimit::CommentFlood
+            ->get()
+            ->by("comment.flood:{$userId}");
 
-        if ($last === null) {
-            return false;
-        }
-
-        $diff = now()->diffInSeconds($last->created_at, true);
-
-        if ($diff < $interval) {
-            return true;
-        }
-
-        return false;
+        return $this->limitRate->execute($limit);
     }
 
     public function tooManyAttempts(int $userId): bool

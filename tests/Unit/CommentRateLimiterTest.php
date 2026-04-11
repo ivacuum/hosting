@@ -11,6 +11,30 @@ class CommentRateLimiterTest extends TestCase
 {
     use DatabaseTransactions;
 
+    public function testFlooded()
+    {
+        $user = UserFactory::new()->create();
+
+        config(['cfg.limits.comment.flood_interval' => 10]);
+
+        $limiter = app(CommentRateLimiter::class);
+
+        $this->assertFalse($limiter->flooded($user->id));
+        $this->assertTrue($limiter->flooded($user->id));
+    }
+
+    public function testFloodedDisabled()
+    {
+        $user = UserFactory::new()->create();
+
+        config(['cfg.limits.comment.flood_interval' => 0]);
+
+        $limiter = app(CommentRateLimiter::class);
+
+        $this->assertFalse($limiter->flooded($user->id));
+        $this->assertFalse($limiter->flooded($user->id));
+    }
+
     public function testIpExceeded()
     {
         $user = UserFactory::new()->create();
