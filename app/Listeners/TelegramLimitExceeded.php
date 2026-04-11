@@ -2,15 +2,13 @@
 
 namespace App\Listeners;
 
-use App\Events\LimitExceeded;
+use App\Domain\RateLimit\Events\RateLimitExceeded;
 
 class TelegramLimitExceeded extends TelegramNotifier
 {
-    public function handle(LimitExceeded $event)
+    public function handle(RateLimitExceeded $event)
     {
-        $limit = config("cfg.limits.{$event->title}");
-
-        $text = "\xE2\x9A\xA0\xEF\xB8\x8F Превышен лимит {$limit}, {$event->title}: {$event->value}";
+        $text = "\xE2\x9A\xA0\xEF\xB8\x8F Превышен лимит {$event->maxAttempts}, {$event->key}";
 
         $this->telegram->notifyAdmin($text);
     }

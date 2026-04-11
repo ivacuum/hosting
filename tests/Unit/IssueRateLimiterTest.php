@@ -4,12 +4,12 @@ namespace Tests\Unit;
 
 use App\Domain\RateLimit\Events\RateLimitExceeded;
 use App\Factory\UserFactory;
-use App\RateLimit\CommentRateLimiter;
+use App\RateLimit\IssueRateLimiter;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
-class CommentRateLimiterTest extends TestCase
+class IssueRateLimiterTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -19,13 +19,14 @@ class CommentRateLimiterTest extends TestCase
 
         $user = UserFactory::new()->create();
 
-        config(['cfg.limits.comment.flood_interval' => 10]);
+        config(['cfg.limits.issue.flood_interval' => 10]);
 
-        $limiter = app(CommentRateLimiter::class);
+        $limiter = app(IssueRateLimiter::class);
 
         $this->assertFalse($limiter->flooded($user->id));
-        $this->assertTrue($limiter->flooded($user->id));
+        Event::assertNotDispatched(RateLimitExceeded::class);
 
+        $this->assertTrue($limiter->flooded($user->id));
         Event::assertDispatched(RateLimitExceeded::class);
     }
 
@@ -35,9 +36,9 @@ class CommentRateLimiterTest extends TestCase
 
         $user = UserFactory::new()->create();
 
-        config(['cfg.limits.comment.flood_interval' => 0]);
+        config(['cfg.limits.issue.flood_interval' => 0]);
 
-        $limiter = app(CommentRateLimiter::class);
+        $limiter = app(IssueRateLimiter::class);
 
         $this->assertFalse($limiter->flooded($user->id));
         $this->assertFalse($limiter->flooded($user->id));
@@ -51,10 +52,10 @@ class CommentRateLimiterTest extends TestCase
 
         $user = UserFactory::new()->create();
 
-        config(['cfg.limits.comment.ip' => 1]);
-        config(['cfg.limits.comment.user' => 0]);
+        config(['cfg.limits.issue.ip' => 1]);
+        config(['cfg.limits.issue.user' => 0]);
 
-        $limiter = app(CommentRateLimiter::class);
+        $limiter = app(IssueRateLimiter::class);
 
         $this->assertFalse($limiter->tooManyAttempts($user->id));
         $this->assertTrue($limiter->tooManyAttempts($user->id));
@@ -68,10 +69,10 @@ class CommentRateLimiterTest extends TestCase
 
         $user = UserFactory::new()->create();
 
-        config(['cfg.limits.comment.ip' => 0]);
-        config(['cfg.limits.comment.user' => 1]);
+        config(['cfg.limits.issue.ip' => 0]);
+        config(['cfg.limits.issue.user' => 1]);
 
-        $limiter = app(CommentRateLimiter::class);
+        $limiter = app(IssueRateLimiter::class);
 
         $this->assertFalse($limiter->tooManyAttempts($user->id));
         $this->assertTrue($limiter->tooManyAttempts($user->id));

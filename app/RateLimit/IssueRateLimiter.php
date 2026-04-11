@@ -5,8 +5,6 @@ namespace App\RateLimit;
 use App\Domain\Config;
 use App\Domain\RateLimit;
 use App\Domain\RateLimit\Action\LimitRateAction;
-use App\Events\LimitExceeded;
-use App\Issue;
 use Illuminate\Http\Request;
 
 class IssueRateLimiter
@@ -15,31 +13,15 @@ class IssueRateLimiter
 
     public function flooded(int $userId): bool
     {
-        $interval = Config::IssueFloodInterval->get();
-
-        if ($interval <= 0) {
+        if (Config::IssueFloodInterval->get() <= 0) {
             return false;
         }
 
-        /** @var Issue $last */
-        $last = Issue::query()
-            ->where('user_id', $userId)
-            ->orderByDesc('id')
-            ->first(['created_at']);
+        $limit = RateLimit::IssueFlood
+            ->get()
+            ->by("issue.flood:{$userId}");
 
-        if ($last === null) {
-            return false;
-        }
-
-        $diff = now()->diffInSeconds($last->created_at, true);
-
-        if ($diff < $interval) {
-            event(new LimitExceeded('issue.flood_interval', $userId));
-
-            return true;
-        }
-
-        return false;
+        return $this->limitRate->execute($limit);
     }
 
     public function tooManyAttempts(int $userId): bool
