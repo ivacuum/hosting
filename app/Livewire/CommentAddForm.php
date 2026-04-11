@@ -14,6 +14,7 @@ use App\News;
 use App\RateLimit\CommentRateLimiter;
 use App\Rules\Email;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 use Livewire\Component;
 
 class CommentAddForm extends Component
@@ -27,9 +28,7 @@ class CommentAddForm extends Component
         $this->validate();
 
         if (!$this->model->canBeCommented()) {
-            $this->addError('text', 'Эту страницу нельзя прокомментировать.');
-
-            return;
+            throw ValidationException::withMessages(['text' => 'Эту страницу нельзя прокомментировать.']);
         }
 
         $user = auth()->user();
@@ -44,13 +43,11 @@ class CommentAddForm extends Component
         }
 
         if ($limiter->flooded($user->id)) {
-            $this->addError('text', __('limits.flood_control'));
+            throw ValidationException::withMessages(['text' => __('limits.flood_control')]);
+        }
 
-            return;
-        } elseif ($limiter->tooManyAttempts($user->id)) {
-            $this->addError('text', __('limits.comment'));
-
-            return;
+        if ($limiter->tooManyAttempts($user->id)) {
+            throw ValidationException::withMessages(['text' => __('limits.comment')]);
         }
 
         $comment = new Comment;

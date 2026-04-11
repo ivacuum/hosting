@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\User;
+use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -45,7 +46,9 @@ class AvatarManager extends Component
         try {
             $this->avatar = \Auth::user()->uploadAvatar($this->image);
         } catch (\Throwable $e) {
-            $this->addError('image', $e->getMessage());
+            $this->resetChosenFile();
+
+            throw ValidationException::withMessages(['image' => $e->getMessage()]);
         }
 
         $this->resetChosenFile();

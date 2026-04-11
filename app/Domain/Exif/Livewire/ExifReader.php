@@ -11,6 +11,7 @@ use App\Domain\Exif\ReadExifDataAction;
 use App\Domain\Exif\ShouldDeleteImageForTestAction;
 use App\Utilities\ExifHelper;
 use Carbon\CarbonImmutable;
+use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\FileUploadConfiguration;
@@ -51,12 +52,12 @@ class ExifReader extends Component
         }
 
         if (!$this->image->exists()) {
-            $this->addError('image', 'Файл уже удален с сервера. Загрузите его, пожалуйста, еще раз.');
-
             $this->resetData();
             $this->image = null;
 
-            return;
+            throw ValidationException::withMessages([
+                'image' => 'Файл уже удален с сервера. Загрузите его, пожалуйста, еще раз.',
+            ]);
         }
 
         $this->validate();
@@ -65,9 +66,7 @@ class ExifReader extends Component
             $this->resetData();
             $this->image = null;
 
-            $this->addError('image', __('Достигнут ежечасный лимит чтения файлов. Видимо, большой наплыв желающих воспользоваться сервисом. Продолжить читать файлы можно будет через час.'));
-
-            return;
+            throw ValidationException::withMessages(['image' => __('Достигнут ежечасный лимит чтения файлов. Видимо, большой наплыв желающих воспользоваться сервисом. Продолжить читать файлы можно будет через час.')]);
         }
 
         try {

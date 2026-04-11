@@ -11,6 +11,7 @@ use App\Issue;
 use App\RateLimit\IssueRateLimiter;
 use App\Rules\Email;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 use Livewire\Component;
 
 class FeedbackForm extends Component
@@ -43,9 +44,7 @@ class FeedbackForm extends Component
         if ($this->mail) {
             event(new \App\Events\Stats\SpammerTrappedLivewire);
 
-            $this->addError('mail', __('auth.spammer_trapped'));
-
-            return;
+            throw ValidationException::withMessages(['mail' => __('auth.spammer_trapped')]);
         }
 
         $user = auth()->user();
@@ -60,13 +59,11 @@ class FeedbackForm extends Component
         }
 
         if ($limiter->flooded($user->id)) {
-            $this->addError('text', __('limits.flood_control'));
+            throw ValidationException::withMessages(['text' => __('limits.flood_control')]);
+        }
 
-            return;
-        } elseif ($limiter->tooManyAttempts($user->id)) {
-            $this->addError('text', __('limits.issue'));
-
-            return;
+        if ($limiter->tooManyAttempts($user->id)) {
+            throw ValidationException::withMessages(['text' => __('limits.issue')]);
         }
 
         $issue = new Issue;

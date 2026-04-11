@@ -13,6 +13,7 @@ use App\Domain\Rto\RtoMagnetNotFoundException;
 use App\Domain\Rto\RtoTopicDuplicateException;
 use App\Domain\Rto\RtoTopicNotFoundException;
 use Illuminate\Database\UniqueConstraintViolationException;
+use Illuminate\Validation\ValidationException;
 use Livewire\Component;
 
 class MagnetAddForm extends Component
@@ -29,9 +30,9 @@ class MagnetAddForm extends Component
         $this->validate();
 
         if ($this->topicId <= 0) {
-            $this->addError('input', 'Ввод не распознан, попробуйте другую ссылку или хэш');
-
-            return null;
+            throw ValidationException::withMessages([
+                'input' => 'Ввод не распознан, попробуйте другую ссылку или хэш',
+            ]);
         }
 
         try {
@@ -57,9 +58,9 @@ class MagnetAddForm extends Component
         $userId = auth()->id();
 
         if ($limiter->tooManyAttempts()) {
-            $this->addError('input', __('Исчерпан лимит добавления раздач на сегодня. Повторите попытку через 24 часа'));
-
-            return null;
+            throw ValidationException::withMessages([
+                'input' => __('Исчерпан лимит добавления раздач на сегодня. Повторите попытку через 24 часа'),
+            ]);
         }
 
         $magnet = new Magnet;
@@ -79,9 +80,9 @@ class MagnetAddForm extends Component
         try {
             $magnet->save();
         } catch (UniqueConstraintViolationException) {
-            $this->addError('input', 'Данная раздача уже присутствует на сайте. Вероятно, кто-то добавил ее быстрее вас.');
-
-            return null;
+            throw ValidationException::withMessages([
+                'input' => 'Данная раздача уже присутствует на сайте. Вероятно, кто-то добавил ее быстрее вас.',
+            ]);
         }
 
         if ($magnet->isAnonymous()) {
@@ -106,9 +107,9 @@ class MagnetAddForm extends Component
             $topicId = $rto->findTopicId($this->input);
 
             if ($topicId === null) {
-                $this->addError('input', 'Ввод не распознан, попробуйте другую ссылку или хэш');
-
-                return;
+                throw ValidationException::withMessages([
+                    'input' => 'Ввод не распознан, попробуйте другую ссылку или хэш',
+                ]);
             }
 
             $topicData = $rto->topicDataById($topicId);
@@ -118,26 +119,30 @@ class MagnetAddForm extends Component
             if ($magnet) {
                 event(new \App\Events\Stats\TorrentDuplicateFound);
 
-                $this->addError('input', 'Данная раздача уже присутствует на сайте. Попробуйте добавить другую.');
-
-                return;
+                throw ValidationException::withMessages([
+                    'input' => 'Данная раздача уже присутствует на сайте. Попробуйте добавить другую.',
+                ]);
             }
         } catch (\Throwable $e) {
             $this->resetTopicInfo();
 
-            $error = 'Ввод не распознан, попробуйте другую ссылку или хэш';
-
             if ($e instanceof RtoMagnetNotFoundException) {
-                $error = 'Магнет-ссылка не найдена в раздаче, попробуйте другую ссылку';
+                throw ValidationException::withMessages([
+                    'input' => 'Магнет-ссылка не найдена в раздаче, попробуйте другую ссылку',
+                ]);
             } elseif ($e instanceof RtoTopicDuplicateException) {
-                $error = 'Раздача закрыта как повторная, попробуйте другую ссылку';
+                throw ValidationException::withMessages([
+                    'input' => 'Раздача закрыта как повторная, попробуйте другую ссылку',
+                ]);
             } elseif ($e instanceof RtoTopicNotFoundException) {
-                $error = 'Раздача не найдена, попробуйте другую ссылку';
+                throw ValidationException::withMessages([
+                    'input' => 'Раздача не найдена, попробуйте другую ссылку',
+                ]);
             }
 
-            $this->addError('input', $error);
-
-            return;
+            throw ValidationException::withMessages([
+                'input' => 'Ввод не распознан, попробуйте другую ссылку или хэш',
+            ]);
         }
 
         $this->size = $topicData->size;
