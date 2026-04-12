@@ -1,5 +1,5 @@
 <?php
-/** @var \App\Livewire\ExifReader $this */
+/** @var \App\Domain\Exif\Livewire\ExifReader $this */
 ?>
 
 <form

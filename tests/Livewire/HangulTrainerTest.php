@@ -2,7 +2,7 @@
 
 namespace Tests\Livewire;
 
-use App\Livewire\HangulTrainer;
+use App\Domain\Korean\Livewire\HangulTrainer;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 

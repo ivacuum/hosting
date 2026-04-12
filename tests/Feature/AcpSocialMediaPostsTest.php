@@ -7,7 +7,7 @@ use App\Domain\SocialMedia\Action\PickRandomPhotoAction;
 use App\Domain\SocialMedia\Factory\SocialMediaPostFactory;
 use App\Domain\SocialMedia\Models\SocialMediaPost;
 use App\Domain\SocialMedia\SocialMediaPostStatus;
-use App\Livewire\Acp\SocialMediaPostForm;
+use App\Domain\SocialMedia\Livewire\SocialMediaPostForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 

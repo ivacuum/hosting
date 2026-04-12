@@ -1,4 +1,4 @@
-<?php /** @var \App\Livewire\BurnVocabulary $this */ ?>
+<?php /** @var \App\Domain\Wanikani\Livewire\BurnVocabulary $this */ ?>
 
 <div>
   <button

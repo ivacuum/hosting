@@ -65,6 +65,11 @@ class VocabularyList extends Component
         }
     }
 
+    public function render()
+    {
+        return view('livewire.vocabulary-list');
+    }
+
     public function reveal(int $id)
     {
         $this->visible[$id] = empty($this->visible[$id]);

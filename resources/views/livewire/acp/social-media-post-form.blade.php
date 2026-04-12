@@ -1,4 +1,4 @@
-<?php /** @var \App\Livewire\Acp\SocialMediaPostForm $this */ ?>
+<?php /** @var \App\Domain\SocialMedia\Livewire\SocialMediaPostForm $this */ ?>
 
 <form class="grid grid-cols-1 gap-6 md:gap-4" wire:submit="submit">
   <?php $form = LivewireForm::model(\App\Domain\SocialMedia\Models\SocialMediaPost::class); ?>

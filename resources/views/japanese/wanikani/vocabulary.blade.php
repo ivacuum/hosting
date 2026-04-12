@@ -41,7 +41,7 @@
   @endif
 </div>
 
-@livewire(App\Livewire\KanjiList::class, ['vocabularyWord' => $vocab->character])
+@livewire(App\Domain\Wanikani\Livewire\KanjiList::class, ['vocabularyWord' => $vocab->character])
 
 @if ($vocab->sentences)
   <div class="mt-12">
@@ -69,7 +69,7 @@
 
 @auth
   <div class="mt-6">
-    @livewire(App\Livewire\BurnVocabulary::class, ['id' => $vocab->id, 'burned' => $vocab->burnable !== null])
+    @livewire(App\Domain\Wanikani\Livewire\BurnVocabulary::class, ['id' => $vocab->id, 'burned' => $vocab->burnable !== null])
   </div>
 @endauth
 @endsection

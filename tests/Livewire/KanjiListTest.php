@@ -7,7 +7,7 @@ use App\Domain\Wanikani\Collection\ShowKanjiInTheSameOrderAsInVocab;
 use App\Domain\Wanikani\Factory\KanjiFactory;
 use App\Domain\Wanikani\Factory\VocabularyFactory;
 use App\Factory\UserFactory;
-use App\Livewire\KanjiList;
+use App\Domain\Wanikani\Livewire\KanjiList;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;

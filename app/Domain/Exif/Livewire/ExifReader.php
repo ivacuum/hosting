@@ -39,6 +39,11 @@ class ExifReader extends Component
     public string|null $lon = null;
     public CarbonImmutable|null $date = null;
 
+    public function render()
+    {
+        return view('livewire.exif-reader');
+    }
+
     public function submit(
         GetTakenAtFromExifDataAction $getTakenAtFromExifData,
         ReadExifDataAction $readExifData,

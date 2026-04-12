@@ -1,4 +1,4 @@
-<?php /** @var \App\Livewire\RadicalList $this */ ?>
+<?php /** @var \App\Domain\Wanikani\Livewire\RadicalList $this */ ?>
 
 <div>
   @if ($this->radicals->count())

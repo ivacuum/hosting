@@ -43,6 +43,11 @@ class RadicalList extends Component
         }
     }
 
+    public function render()
+    {
+        return view('livewire.radical-list');
+    }
+
     public function shuffle()
     {
         $this->radicals = $this->radicals->shuffle();

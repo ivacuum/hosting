@@ -1,7 +1,7 @@
 @extends('korean.base')
 
 @section('content')
-@livewire(App\Livewire\HangulTrainer::class)
+@livewire(App\Domain\Korean\Livewire\HangulTrainer::class)
 
 <div class="mt-12 max-w-xl mx-auto">
   <div class="font-medium text-2xl mb-2 mt-12 dark:text-white">@lang('Обратная связь')</div>

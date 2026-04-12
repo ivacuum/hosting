@@ -3,7 +3,7 @@
 @section('content')
 <div class="grid lg:grid-cols-2 gap-8">
   <div>
-    @livewire(App\Livewire\MagnetAddForm::class)
+    @livewire(App\Domain\Magnet\Livewire\MagnetAddForm::class)
   </div>
   <div>
     @ru

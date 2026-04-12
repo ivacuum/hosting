@@ -54,6 +54,11 @@ class KanjiList extends Component
         }
     }
 
+    public function render()
+    {
+        return view('livewire.kanji-list');
+    }
+
     public function shuffle()
     {
         $this->kanjis = $this->kanjis->shuffle();

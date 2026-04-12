@@ -4,7 +4,7 @@ namespace Tests\Livewire;
 
 use App\Domain\Wanikani\Factory\KanjiFactory;
 use App\Factory\UserFactory;
-use App\Livewire\BurnKanji;
+use App\Domain\Wanikani\Livewire\BurnKanji;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 

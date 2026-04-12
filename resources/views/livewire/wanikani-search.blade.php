@@ -1,4 +1,4 @@
-<?php /** @var \App\Livewire\WanikaniSearch $this */ ?>
+<?php /** @var \App\Domain\Wanikani\Livewire\WanikaniSearch $this */ ?>
 
 <div>
   <div class="items-center md:flex justify-between mb-4 md:mb-0 -mt-2">

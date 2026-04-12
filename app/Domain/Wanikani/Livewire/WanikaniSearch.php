@@ -27,6 +27,11 @@ class WanikaniSearch extends Component
         $this->resetValidation();
     }
 
+    public function render()
+    {
+        return view('livewire.wanikani-search');
+    }
+
     public function search()
     {
         $this->validate([

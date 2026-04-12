@@ -5,7 +5,7 @@ namespace Tests\Livewire;
 use App\Domain\Wanikani\Factory\KanjiFactory;
 use App\Domain\Wanikani\Factory\RadicalFactory;
 use App\Domain\Wanikani\Factory\VocabularyFactory;
-use App\Livewire\WanikaniSearch;
+use App\Domain\Wanikani\Livewire\WanikaniSearch;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;

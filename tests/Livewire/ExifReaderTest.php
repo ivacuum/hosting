@@ -5,7 +5,7 @@ namespace Tests\Livewire;
 use App\Domain\Exif\Jobs\DeleteTempLivewireFileJob;
 use App\Domain\Exif\ReadRawExifDataAction;
 use App\Domain\Exif\ShouldDeleteImageForTestAction;
-use App\Livewire\ExifReader;
+use App\Domain\Exif\Livewire\ExifReader;
 use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;

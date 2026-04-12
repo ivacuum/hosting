@@ -1,4 +1,4 @@
-<?php /** @var \App\Livewire\MagnetAddForm $this */ ?>
+<?php /** @var \App\Domain\Magnet\Livewire\MagnetAddForm $this */ ?>
 
 <form class="grid grid-cols-1 gap-4" wire:submit="submit">
   <div>

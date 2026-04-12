@@ -1,4 +1,4 @@
-<?php /** @var \App\Livewire\BurnRadical $this */ ?>
+<?php /** @var \App\Domain\Wanikani\Livewire\BurnRadical $this */ ?>
 
 <div>
   <button

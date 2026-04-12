@@ -20,7 +20,7 @@
   <div class="capitalize tracking-tight">{{ $radical->meaning }}</div>
 </div>
 
-@livewire(App\Livewire\KanjiList::class, ['radicalId' => $radical->id])
+@livewire(App\Domain\Wanikani\Livewire\KanjiList::class, ['radicalId' => $radical->id])
 
 <div class="mt-12">
   <a class="mr-4" href="{{ $radical->externalLink() }}" rel="noreferrer">
@@ -31,7 +31,7 @@
 
 @auth
   <div class="mt-6">
-    @livewire(App\Livewire\BurnRadical::class, ['id' => $radical->id, 'burned' => $radical->burnable !== null])
+    @livewire(App\Domain\Wanikani\Livewire\BurnRadical::class, ['id' => $radical->id, 'burned' => $radical->burnable !== null])
   </div>
 @endauth
 @endsection

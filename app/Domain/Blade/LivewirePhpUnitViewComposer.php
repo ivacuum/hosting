@@ -15,7 +15,7 @@ class LivewirePhpUnitViewComposer
 
     public function compose(View $view)
     {
-        if (!str_contains($view->getName(), '/resources/views/livewire/')) {
+        if (!str_contains($view->getPath(), '/resources/views/livewire/')) {
             return;
         }
 

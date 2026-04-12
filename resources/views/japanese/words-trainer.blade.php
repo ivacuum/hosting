@@ -1,7 +1,7 @@
 @extends('japanese.base')
 
 @section('content')
-@livewire(App\Livewire\VocabularyTrainer::class)
+@livewire(App\Domain\Wanikani\Livewire\VocabularyTrainer::class)
 
 <div class="max-w-lg mt-12">
   <h1 class="font-medium text-3xl tracking-tight text-balance mb-2">@lang('Тренажер по набору слов хираганой и катаканой')</h1>

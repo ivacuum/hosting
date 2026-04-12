@@ -13,6 +13,11 @@ class BurnKanji extends Component
     public int $id;
     public bool $burned = false;
 
+    public function render()
+    {
+        return view('livewire.burn-kanji');
+    }
+
     public function toggleBurned(BurnAction $burn, ResurrectAction $resurrect)
     {
         $userId = auth()->id();

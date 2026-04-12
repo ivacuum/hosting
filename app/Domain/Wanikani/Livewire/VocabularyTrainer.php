@@ -81,6 +81,11 @@ class VocabularyTrainer extends Component
         event(new \App\Events\Stats\VocabularyMounted);
     }
 
+    public function render()
+    {
+        return view('livewire.vocabulary-trainer');
+    }
+
     public function setVocabId(int $vocabId)
     {
         $this->vocab = Vocabulary::query()->findOrFail($vocabId);

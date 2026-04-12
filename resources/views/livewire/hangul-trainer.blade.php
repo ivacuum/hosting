@@ -1,4 +1,4 @@
-<?php /** @var \App\Livewire\HangulTrainer $this */ ?>
+<?php /** @var \App\Domain\Korean\Livewire\HangulTrainer $this */ ?>
 
 @once
 @push('head')

@@ -12,6 +12,11 @@ class MagnetReplaceForm extends Component
     public Magnet $magnet;
     public string|null $input = null;
 
+    public function render()
+    {
+        return view('livewire.magnet-replace-form');
+    }
+
     public function submit(UpdateMagnetAction $updateMagnet)
     {
         $this->validate();

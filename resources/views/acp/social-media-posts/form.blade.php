@@ -1,1 +1,1 @@
-@livewire(App\Livewire\Acp\SocialMediaPostForm::class, ['id' => $model->id])
+@livewire(App\Domain\SocialMedia\Livewire\SocialMediaPostForm::class, ['id' => $model->id])

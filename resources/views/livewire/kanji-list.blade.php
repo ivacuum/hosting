@@ -1,4 +1,4 @@
-<?php /** @var \App\Livewire\KanjiList $this */ ?>
+<?php /** @var \App\Domain\Wanikani\Livewire\KanjiList $this */ ?>
 
 <div>
   @if ($this->kanjis->count())

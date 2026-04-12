@@ -25,6 +25,11 @@ class MagnetAddForm extends Component
     public string $input = '';
     public string $title = '';
 
+    public function render()
+    {
+        return view('livewire.magnet-add-form');
+    }
+
     public function submit(Rto $rto, MagnetRateLimiter $limiter)
     {
         $this->validate();

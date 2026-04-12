@@ -59,6 +59,11 @@ class HangulTrainer extends Component
         event(new \App\Events\Stats\HangulMounted);
     }
 
+    public function render()
+    {
+        return view('livewire.hangul-trainer');
+    }
+
     public function updatedItalic()
     {
         match ($this->italic) {

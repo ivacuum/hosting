@@ -24,9 +24,9 @@
   @endif
 </div>
 
-@livewire(App\Livewire\RadicalList::class, ['kanjiId' => $kanji->id])
-@livewire(App\Livewire\KanjiList::class, ['similarId' => $kanji->id])
-@livewire(App\Livewire\VocabularyList::class, ['kanji' => $kanji->character])
+@livewire(App\Domain\Wanikani\Livewire\RadicalList::class, ['kanjiId' => $kanji->id])
+@livewire(App\Domain\Wanikani\Livewire\KanjiList::class, ['similarId' => $kanji->id])
+@livewire(App\Domain\Wanikani\Livewire\VocabularyList::class, ['kanji' => $kanji->character])
 
 <div class="mt-12">
   <a class="mr-4" href="{{ $kanji->externalLink() }}" rel="noreferrer">
@@ -47,7 +47,7 @@
 
 @auth
   <div class="mt-6">
-    @livewire(App\Livewire\BurnKanji::class, ['id' => $kanji->id, 'burned' => $kanji->burnable !== null])
+    @livewire(App\Domain\Wanikani\Livewire\BurnKanji::class, ['id' => $kanji->id, 'burned' => $kanji->burnable !== null])
   </div>
 @endauth
 @endsection

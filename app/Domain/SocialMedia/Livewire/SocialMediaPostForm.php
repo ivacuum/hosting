@@ -58,6 +58,11 @@ class SocialMediaPostForm extends Component
         $this->caption = "{$this->photo->rel->city->hashtags} {$this->photo->rel->city->country->hashtags}";
     }
 
+    public function render()
+    {
+        return view('livewire.acp.social-media-post-form');
+    }
+
     public function submit()
     {
         $this->authorize('create', SocialMediaPost::class);
