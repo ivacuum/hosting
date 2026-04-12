@@ -18,17 +18,18 @@ class SteamApi
         return new SteamGameDetailsResponse($this->sendRequest($request));
     }
 
-    public function gameList()
+    public function searchGames(string $query)
     {
-        $request = new SteamGameListRequest;
+        $request = new SteamGameSearchRequest($query);
 
-        return new SteamGameListResponse($this->sendRequest($request));
+        return new SteamGameSearchResponse($this->sendRequest($request));
     }
 
     private function configureClient()
     {
         return $this->http
-            ->timeout(10);
+            ->timeout(10)
+            ->throw();
     }
 
     private function sendRequest(HttpRequest $request)

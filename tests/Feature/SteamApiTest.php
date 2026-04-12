@@ -6,7 +6,7 @@ use App\Domain\Steam\SteamApi;
 use App\Domain\Steam\SteamCountryCode;
 use App\Domain\Steam\SteamGameDetailsResponse;
 use App\Domain\Steam\SteamGameEntity;
-use App\Domain\Steam\SteamGameListResponse;
+use App\Domain\Steam\SteamGameSearchResponse;
 use App\Domain\Steam\SteamLanguage;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -45,15 +45,15 @@ class SteamApiTest extends TestCase
         $this->assertFalse($response->successful);
     }
 
-    public function testGameList()
+    public function testSearchGames()
     {
         \Http::fake([
-            ...SteamGameListResponse::fakeSuccess(),
+            ...SteamGameSearchResponse::fakeSuccess(),
         ]);
 
         $response = $this->app
             ->make(SteamApi::class)
-            ->gameList();
+            ->searchGames('Half-Life');
 
         $this->assertCount(2, $response->games);
         $this->assertSame('Half-Life 2', $response->games[220]);

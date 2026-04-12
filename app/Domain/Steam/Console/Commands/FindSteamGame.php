@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Domain\Steam\Console\Commands;
 
+use App\Console\Commands\Command;
 use App\Domain\Steam\SteamApi;
 use App\Domain\Steam\SteamCountryCode;
 use App\Domain\Steam\SteamLanguage;
@@ -21,7 +22,7 @@ class FindSteamGame extends Command implements Isolatable
         $steamId = search(
             label: 'Game title',
             options: fn (string $q) => mb_strlen($q) > 3
-                ? $steam->gameList()->games->filter(fn ($title) => str_contains($title, $q))->all()
+                ? $steam->searchGames($q)->games->all()
                 : [],
         );
 
