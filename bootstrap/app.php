@@ -41,6 +41,10 @@ return Application::configure(basePath: dirname(__DIR__))
                 ->group(__DIR__ . '/../routes/acp.php');
         }
     )
+    ->withCommands([
+        __DIR__ . '/../app/Console/Commands',
+        ...(glob(__DIR__ . '/../app/Domain/*/Console/Commands', GLOB_ONLYDIR) ?: []),
+    ])
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->redirectTo(
             guests: fn () => to('auth/login'),
