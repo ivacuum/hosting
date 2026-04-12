@@ -46,7 +46,7 @@ class EmailFactory
     {
         $factory = clone $this;
         $factory->template = class_basename(TripPublishedMail::class);
-        $factory->relationType = (new Trip)->getMorphClass();
+        $factory->relationType = new Trip()->getMorphClass();
 
         $factory->relationId = match (true) {
             $trip instanceof Trip => $trip->id,
@@ -67,7 +67,7 @@ class EmailFactory
             $factory->relationId = $comment;
         }
 
-        $factory->relationType = (new Comment)->getMorphClass();
+        $factory->relationType = new Comment()->getMorphClass();
 
         return $factory;
     }
