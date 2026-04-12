@@ -5,9 +5,9 @@ namespace Tests\Feature;
 use App\Domain\Life\Factory\PhotoFactory;
 use App\Domain\SocialMedia\Action\PickRandomPhotoAction;
 use App\Domain\SocialMedia\Factory\SocialMediaPostFactory;
+use App\Domain\SocialMedia\Livewire\SocialMediaPostForm;
 use App\Domain\SocialMedia\Models\SocialMediaPost;
 use App\Domain\SocialMedia\SocialMediaPostStatus;
-use App\Domain\SocialMedia\Livewire\SocialMediaPostForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
