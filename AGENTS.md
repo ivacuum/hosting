@@ -2,17 +2,7 @@
 
 ## Project Overview
 
-This is a Laravel 12 application serving as a personal website for notes, trip stories, and concert history. It takes advantage of modern PHP features (8.4+), and Livewire for dynamic interactions. It is a production-grade app that serves pretty high-load on a modest server.
-
-## Tech Stack
-
-- **Language:** PHP 8.4+
-- **Framework:** Laravel 12.x
-- **Server:** PHP-FPM, Nginx
-- **Frontend:** Vite 6, Tailwind CSS 4, Livewire 3, Vue 3
-- **Database:** MySQL 8.4, Redis (Cache/Queue)
-- **Search:** Sphinxsearch, Meilisearch (possible alternative)
-- **Infrastructure:** Docker Compose
+This is a Laravel application serving as a personal website for notes, trip stories, and concert history. It takes advantage of modern PHP features, and Livewire for dynamic interactions. It is a production-grade app that serves pretty high-load for a modest server.
 
 ## Architecture & Conventions
 
