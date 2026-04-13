@@ -3,10 +3,15 @@
 namespace Tests\Unit;
 
 use App\Action\FilterNullsAction;
+use Illuminate\Foundation\Testing\Attributes\UnitTest;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class FilterNullsActionTest extends TestCase
 {
+    use DatabaseTransactions;
+
+    #[UnitTest]
     public function testOk()
     {
         $action = new FilterNullsAction;
