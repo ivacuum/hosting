@@ -74,7 +74,11 @@ class User extends Authenticatable implements HasLocalePreference
     protected $hidden = ['password', 'salt', 'remember_token', 'two_factor_secret', 'two_factor_recovery_codes'];
 
     protected $attributes = [
+        'ip' => '',
+        'salt' => '',
+        'login' => '',
         'avatar' => '',
+        'password' => '',
         'remember_token' => null,
         'notify_gigs' => NotificationDeliveryMethod::Disabled,
         'notify_news' => NotificationDeliveryMethod::Disabled,

@@ -91,6 +91,6 @@ class UserObserver
         $user->email = Str::trim($user->email);
         $user->login = Str::trim($user->login);
         $user->avatar = Str::trim($user->avatar);
-        $user->locale = Str::trim($user->locale);
+        $user->locale = Str::trim($user->locale ?? config('app.locale'));
     }
 }
