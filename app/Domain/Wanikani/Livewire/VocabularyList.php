@@ -50,8 +50,8 @@ class VocabularyList extends Component
         $this->vocabularies = Vocabulary::query()
             ->orderBy('level')
             ->orderBy('meaning')
-            ->when($kanji, fn (Builder $query) => $query->where('character', 'LIKE', "%{$kanji}%"))
-            ->when($level, fn (Builder $query) => $query->where('level', $level))
+            ->when($kanji, static fn (Builder $query) => $query->where('character', 'LIKE', "%{$kanji}%"))
+            ->when($level, static fn (Builder $query) => $query->where('level', $level))
             ->get(['id', 'level', 'character', 'kana', 'meaning']);
 
         if ($user) {

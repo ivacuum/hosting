@@ -31,7 +31,7 @@ class GigTemplatesController
             $i18n = collect($languages)
                 ->keys()
                 ->flip()
-                ->map(fn ($value, $key) => substr_count($contents, "@{$key}\n"))
+                ->map(static fn ($value, $key) => substr_count($contents, "@{$key}\n"))
                 ->all();
 
             if ($hideFinished === 1 && $i18n['ru'] === $i18n['en']) {

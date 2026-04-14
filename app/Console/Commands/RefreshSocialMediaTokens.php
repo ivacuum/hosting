@@ -18,7 +18,7 @@ class RefreshSocialMediaTokens extends Command implements Isolatable
         $userId = $this->option('user_id');
 
         $query = SocialMediaToken::query()
-            ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
+            ->when($userId, static fn (Builder $query) => $query->where('user_id', $userId))
             ->where('expired_at', '<', today()->addWeek());
 
         foreach ($query->lazy() as $token) {

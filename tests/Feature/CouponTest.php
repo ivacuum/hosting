@@ -20,7 +20,7 @@ class CouponTest extends TestCase
         $this->post('promocodes-coupons/firstvds', ['email' => $email])
             ->assertFound();
 
-        \Mail::assertQueued(FirstvdsPromocodeMail::class, fn (FirstvdsPromocodeMail $mail) => $mail->hasTo($email));
+        \Mail::assertQueued(FirstvdsPromocodeMail::class, static fn (FirstvdsPromocodeMail $mail) => $mail->hasTo($email));
         \Mail::assertOutgoingCount(1);
     }
 

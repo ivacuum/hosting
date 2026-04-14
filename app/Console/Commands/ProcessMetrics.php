@@ -53,7 +53,7 @@ class ProcessMetrics extends Command
                 ['Metric', 'Value'],
                 collect($metricsAggregator->data())
                     ->filter()
-                    ->map(fn ($value, $key) => [$key, $value])
+                    ->map(static fn ($value, $key) => [$key, $value])
                     ->all(),
             );
         }

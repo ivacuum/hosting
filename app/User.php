@@ -260,7 +260,7 @@ class User extends Authenticatable implements HasLocalePreference
     protected function password(): Attribute
     {
         return Attribute::make(
-            set: fn ($value) => $value
+            set: static fn ($value) => $value
                 ? \Hash::make($value)
                 : '',
         );

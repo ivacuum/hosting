@@ -34,7 +34,7 @@ class MagnetsController
         }
 
         $magnets = $magnets->tap(new MagnetPublishedScope)
-            ->when(!$request->searchQuery && $request->category, fn (Builder $query) => $query->tap(new MagnetFilterByCategoryScope($request->categoryId)))
+            ->when(!$request->searchQuery && $request->category, static fn (Builder $query) => $query->tap(new MagnetFilterByCategoryScope($request->categoryId)))
             ->orderByDesc('registered_at')
             ->simplePaginate(25, Magnet::LIST_COLUMNS);
 

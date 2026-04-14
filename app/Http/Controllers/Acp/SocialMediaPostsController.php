@@ -31,7 +31,7 @@ class SocialMediaPostsController extends Controller
 
         $models = SocialMediaPost::query()
             ->with('photo')
-            ->when($status, fn (Builder $query) => $query->where('status', $status))
+            ->when($status, static fn (Builder $query) => $query->where('status', $status))
             ->orderBy(match ($sort->key) {
                 'views',
                 'photos_count' => $sort->key,

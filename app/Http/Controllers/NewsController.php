@@ -17,7 +17,7 @@ class NewsController
             ->withCount('commentsPublished AS comments_count')
             ->tap(new NewsPublishedScope)
             ->tap(new NewsCurrentLocaleScope)
-            ->when($year || $month || $day, fn (Builder $query) => $query->whereBetween('created_at', News::interval($year, $month, $day)))
+            ->when($year || $month || $day, static fn (Builder $query) => $query->whereBetween('created_at', News::interval($year, $month, $day)))
             ->orderByDesc('created_at')
             ->paginate(10);
 

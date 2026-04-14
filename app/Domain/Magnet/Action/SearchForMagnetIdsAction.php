@@ -27,7 +27,7 @@ class SearchForMagnetIdsAction
     private function collection(string $q, int|null $categoryId)
     {
         return Magnet::search($q)
-            ->when($categoryId, fn (Builder $query) => $query->whereIn('category_id', \TorrentCategoryHelper::selfAndDescendantsIds($categoryId)))
+            ->when($categoryId, static fn (Builder $query) => $query->whereIn('category_id', \TorrentCategoryHelper::selfAndDescendantsIds($categoryId)))
             ->raw()['results'];
     }
 
@@ -40,13 +40,13 @@ class SearchForMagnetIdsAction
                     ? ['title', 'text']
                     : ['title'],
             ])
-            ->when($categoryId, fn (Builder $query) => $query->whereIn('category_id', \TorrentCategoryHelper::selfAndDescendantsIds($categoryId)))
+            ->when($categoryId, static fn (Builder $query) => $query->whereIn('category_id', \TorrentCategoryHelper::selfAndDescendantsIds($categoryId)))
             ->raw()['hits'];
     }
 
     private function sphinx(string $q, int|null $categoryId, bool $fulltext)
     {
-        return Magnet::search($q, function (SphinxQL $builder) use ($categoryId, $fulltext, $q) {
+        return Magnet::search($q, static function (SphinxQL $builder) use ($categoryId, $fulltext, $q) {
             $builder = $builder->match(
                 $fulltext ? '*' : 'title',
                 SearchSynonym::addSynonymsToQuery($q),

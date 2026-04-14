@@ -31,7 +31,7 @@ class CountryHelper
         return $this->cache->remember(
             CacheKey::CountriesById,
             CacheKey::CountriesById->ttl(),
-            fn () => Country::query()
+            static fn () => Country::query()
                 ->get(self::CACHED_FIELDS)
                 ->keyBy('id')
         );
@@ -42,7 +42,7 @@ class CountryHelper
         return $this->cache->remember(
             CacheKey::CountriesBySlug,
             CacheKey::CountriesBySlug->ttl(),
-            fn () => Country::query()
+            static fn () => Country::query()
                 ->get(self::CACHED_FIELDS)
                 ->keyBy('slug')
         );

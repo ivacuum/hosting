@@ -8,7 +8,7 @@ class DeduceTplFromControllerAction
     {
         return str($controllerBasename)
             ->explode('\\')
-            ->map(fn ($part) => str($part)->snake('-'))
+            ->map(static fn ($part) => str($part)->snake('-'))
             ->implode('.');
     }
 }

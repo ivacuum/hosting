@@ -59,7 +59,7 @@ class TelegramClientTest extends TestCase
             ->chat(12345)
             ->sendMessage('Some info to notify about');
 
-        \Http::assertSent(function (Request $request) {
+        \Http::assertSent(static function (Request $request) {
             return $request->url() === 'https://api.telegram.org/bot1234:token/sendMessage'
                 && $request['chat_id'] === 12345
                 && $request['text'] === 'Some info to notify about';
@@ -98,7 +98,7 @@ class TelegramClientTest extends TestCase
             ->disableWebPagePreview()
             ->sendMessage('Text');
 
-        \Http::assertSent(function (Request $request) {
+        \Http::assertSent(static function (Request $request) {
             return $request->url() === 'https://api.telegram.org/bot1234:token/sendMessage'
                 && $request['chat_id'] === 1
                 && $request['text'] === 'Text'
@@ -123,7 +123,7 @@ class TelegramClientTest extends TestCase
             )
             ->sendMessage('Message with keyboard');
 
-        \Http::assertSent(function (Request $request) {
+        \Http::assertSent(static function (Request $request) {
             return $request->url() === 'https://api.telegram.org/bot1234:token/sendMessage'
                 && $request['chat_id'] === 12345
                 && $request['text'] === 'Message with keyboard'
@@ -155,7 +155,7 @@ class TelegramClientTest extends TestCase
         app(TelegramClient::class)
             ->setWebhook('https://localhost/telegram/webhook', 'secret');
 
-        \Http::assertSent(function (Request $request) {
+        \Http::assertSent(static function (Request $request) {
             return $request->url() === 'https://api.telegram.org/bot1234:token/setWebhook'
                 && $request['url'] === 'https://localhost/telegram/webhook'
                 && $request['secret_token'] === 'secret';

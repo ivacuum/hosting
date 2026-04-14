@@ -60,8 +60,8 @@ class Country extends Model
         $tripCount = resolve(GetTripCountByCitiesAction::class)->execute($userId);
 
         $cities = \CityHelper::cachedById()
-            ->filter(fn (City $city) => isset($tripCount[$city->id]))
-            ->each(function (City $city) use (&$tripCount) {
+            ->filter(static fn (City $city) => isset($tripCount[$city->id]))
+            ->each(static function (City $city) use (&$tripCount) {
                 $city->trips_count = $tripCount[$city->id]['total'] ?? 0;
                 $city->trips_published_count = $tripCount[$city->id]['published'] ?? 0;
             })
@@ -70,8 +70,8 @@ class Country extends Model
         $countries = $cities->groupBy('country_id');
 
         return \CountryHelper::cachedById()
-            ->filter(fn (self $country) => isset($countries[$country->id]))
-            ->each(function (self $country) use ($countries) {
+            ->filter(static fn (self $country) => isset($countries[$country->id]))
+            ->each(static function (self $country) use ($countries) {
                 $country->setRelation('cities', $countries[$country->id]);
 
                 $country->trips_count = $country->cities->sum->trips_count;
@@ -85,16 +85,16 @@ class Country extends Model
         $tripCount = resolve(GetTripCountByCitiesAction::class)->execute($userId);
 
         $cities = \CityHelper::cachedById()
-            ->filter(fn (City $city) => isset($tripCount[$city->id]['published']))
-            ->each(function (City $city) use (&$tripCount) {
+            ->filter(static fn (City $city) => isset($tripCount[$city->id]['published']))
+            ->each(static function (City $city) use (&$tripCount) {
                 $city->trips_count = $tripCount[$city->id]['published'] ?? 0;
             });
 
         $countries = $cities->groupBy('country_id');
 
         return \CountryHelper::cachedById()
-            ->filter(fn (self $country) => isset($countries[$country->id]))
-            ->each(function (self $country) use ($countries) {
+            ->filter(static fn (self $country) => isset($countries[$country->id]))
+            ->each(static function (self $country) use ($countries) {
                 $country->trips_count = $countries[$country->id]->sum->trips_count;
             })
             ->sortBy(static::titleField());

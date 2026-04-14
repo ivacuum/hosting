@@ -22,7 +22,7 @@ class NumberTrainerTest extends TestCase
             ->set('minimum', 11)
             ->set('maximum', 19)
             ->call('skip')
-            ->assertSet('number', fn (int $value) => $value >= 11 && $value <= 19);
+            ->assertSet('number', static fn (int $value) => $value >= 11 && $value <= 19);
     }
 
     public function testCustomIntervalBoundariesForced()

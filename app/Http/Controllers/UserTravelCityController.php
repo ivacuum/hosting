@@ -16,8 +16,8 @@ class UserTravelCityController extends UserTravelController
         $tripCount = $getTripCountByCities->execute($traveler->id);
 
         $cities = \CityHelper::cachedById()
-            ->filter(fn (City $city) => isset($tripCount[$city->id]))
-            ->each(function (City $city) use (&$tripCount) {
+            ->filter(static fn (City $city) => isset($tripCount[$city->id]))
+            ->each(static function (City $city) use (&$tripCount) {
                 $city->trips_count = $tripCount[$city->id]['total'] ?? 0;
                 $city->trips_published_count = $tripCount[$city->id]['published'] ?? 0;
             })
@@ -36,7 +36,7 @@ class UserTravelCityController extends UserTravelController
             ->withCount('photos')
             ->tap(new TripVisibleScope)
             ->get()
-            ->groupBy(fn (Trip $model) => $model->year);
+            ->groupBy(static fn (Trip $model) => $model->year);
 
         $publishedTrips = $trips->where('status', TripStatus::Published);
 

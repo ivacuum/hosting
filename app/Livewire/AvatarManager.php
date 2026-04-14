@@ -25,7 +25,7 @@ class AvatarManager extends Component
 
     public function deleteAvatar()
     {
-        tap(\Auth::user(), function (User $user) {
+        tap(\Auth::user(), static function (User $user) {
             $user->avatar = '';
             $user->save();
         });

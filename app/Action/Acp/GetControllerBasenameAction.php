@@ -10,7 +10,7 @@ class GetControllerBasenameAction
     {
         return str($action)
             ->before('@')
-            ->whenEndsWith('Controller', fn (Stringable $string) => $string->beforeLast('Controller'))
+            ->whenEndsWith('Controller', static fn (Stringable $string) => $string->beforeLast('Controller'))
             ->after('App\Http\Controllers\\')
             ->value();
     }

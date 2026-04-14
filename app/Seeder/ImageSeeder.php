@@ -34,6 +34,6 @@ class ImageSeeder extends Seeder
 
         $image->siteThumbnail($file);
         $image->upload($file);
-        $image::withoutTimestamps(fn () => $image->save());
+        $image::withoutTimestamps(static fn () => $image->save());
     }
 }

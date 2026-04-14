@@ -8,7 +8,7 @@ class VocabularyObserver
 {
     public function deleting(Vocabulary $vocab)
     {
-        \DB::transaction(function () use ($vocab) {
+        \DB::transaction(static function () use ($vocab) {
             $vocab->burnables()->delete();
         });
     }

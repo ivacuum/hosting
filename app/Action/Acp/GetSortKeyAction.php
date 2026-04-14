@@ -13,7 +13,7 @@ class GetSortKeyAction
     {
         return $this->request
             ->string('sk', $defaultSortKey)
-            ->whenStartsWith('-', fn (Stringable $string) => $string->after('-'))
+            ->whenStartsWith('-', static fn (Stringable $string) => $string->after('-'))
             ->toString();
     }
 }

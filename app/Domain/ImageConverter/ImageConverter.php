@@ -196,7 +196,7 @@ class ImageConverter
         $destination = storage_path("app/resize-{$filename}.{$extension}");
 
         register_shutdown_function(
-            function () use ($destination) {
+            static function () use ($destination) {
                 unlink($destination);
             }
         );

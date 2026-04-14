@@ -26,7 +26,7 @@ class UserTravelCountryController extends UserTravelController
             ->withCount('photos')
             ->tap(new TripVisibleScope)
             ->get()
-            ->groupBy(fn (Trip $model) => $model->year);
+            ->groupBy(static fn (Trip $model) => $model->year);
 
         \Breadcrumbs::push(__('Заметки'), "@{$traveler->login}/travel");
         \Breadcrumbs::push(__('Страны'), "@{$traveler->login}/travel/countries");

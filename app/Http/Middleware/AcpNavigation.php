@@ -71,7 +71,7 @@ class AcpNavigation
     {
         return str($carry)
             ->explode('/')
-            ->reject(fn ($dir) => str($dir)->startsWith('{'))
+            ->reject(static fn ($dir) => str($dir)->startsWith('{'))
             ->implode('.');
     }
 

@@ -9,7 +9,7 @@ class TagObserver
 {
     public function deleting(Tag $tag)
     {
-        \DB::transaction(function () use ($tag) {
+        \DB::transaction(static function () use ($tag) {
             foreach ($tag->photos as $photo) {
                 $photo->tags()->detach($tag->id);
             }

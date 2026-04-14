@@ -6,7 +6,7 @@ class NamingHelper
 {
     public static function acpControllerPrefix(string $controller): string
     {
-        return implode('/', array_map(function ($ary) {
+        return implode('/', array_map(static function ($ary) {
             return \Str::snake($ary, '-');
         }, explode('\\', \Str::replaceLast('Controller', '', \Str::after($controller, 'Acp\\')))));
     }
@@ -22,7 +22,7 @@ class NamingHelper
     // PostPhotos\FunnyEvents => post-photos.funny-events
     public static function kebab(string $classString): string
     {
-        return implode('.', array_map(function ($item) {
+        return implode('.', array_map(static function ($item) {
             return \Str::kebab($item);
         }, explode('\\', $classString)));
     }

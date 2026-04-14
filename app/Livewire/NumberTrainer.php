@@ -110,7 +110,7 @@ class NumberTrainer extends Component
     public function mount(Request $request, GetNumberLocalesAction $getNumberLocales)
     {
         $this->locales = collect($getNumberLocales->execute())
-            ->mapWithKeys(fn (string $locale) => [$locale => \Locale::getDisplayName($locale, \App::getLocale())])
+            ->mapWithKeys(static fn (string $locale) => [$locale => \Locale::getDisplayName($locale, \App::getLocale())])
             ->sort()
             ->all();
 
@@ -167,7 +167,7 @@ class NumberTrainer extends Component
             $this->minimum = 0;
 
             $predefinedMaximums = collect(range(1, self::MAXIMUM_ORDER_OF_MAGNITUDE))
-                ->map(fn (int $order) => 10 ** $order);
+                ->map(static fn (int $order) => 10 ** $order);
 
             if ($predefinedMaximums->doesntContain($this->maximum)) {
                 $this->maximum = 10;

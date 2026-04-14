@@ -33,7 +33,7 @@ class CityHelper
         return $this->cache->remember(
             CacheKey::CitiesById,
             CacheKey::CitiesById->ttl(),
-            fn () => City::query()
+            static fn () => City::query()
                 ->get(self::CACHED_FIELDS)
                 ->keyBy('id')
         );
@@ -44,7 +44,7 @@ class CityHelper
         return $this->cache->remember(
             CacheKey::CitiesBySlug,
             CacheKey::CitiesBySlug->ttl(),
-            fn () => City::query()
+            static fn () => City::query()
                 ->get(self::CACHED_FIELDS)
                 ->keyBy('slug')
         );

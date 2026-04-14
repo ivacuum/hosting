@@ -32,27 +32,27 @@ class KanjiEntity
     public function getImportantReading()
     {
         return $this->readings
-            ->first(fn ($reading) => $reading['primary'])['type'];
+            ->first(static fn ($reading) => $reading['primary'])['type'];
     }
 
     public function getKunyomi()
     {
         return $this->readings
-            ->filter(fn ($reading) => $reading['type'] === 'kunyomi')
-            ->map(fn ($reading) => $reading['reading']);
+            ->filter(static fn ($reading) => $reading['type'] === 'kunyomi')
+            ->map(static fn ($reading) => $reading['reading']);
     }
 
     public function getNanori()
     {
         return $this->readings
-            ->filter(fn ($reading) => $reading['type'] === 'nanori')
-            ->map(fn ($reading) => $reading['reading']);
+            ->filter(static fn ($reading) => $reading['type'] === 'nanori')
+            ->map(static fn ($reading) => $reading['reading']);
     }
 
     public function getOnyomi()
     {
         return $this->readings
-            ->filter(fn ($reading) => $reading['type'] === 'onyomi')
-            ->map(fn ($reading) => $reading['reading']);
+            ->filter(static fn ($reading) => $reading['type'] === 'onyomi')
+            ->map(static fn ($reading) => $reading['reading']);
     }
 }

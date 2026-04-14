@@ -12,7 +12,7 @@ class SubjectsResponse
     public function __construct(Response $response)
     {
         $this->subjects = $response->collect('data')
-            ->map(fn ($object) => match ($object['object']) {
+            ->map(static fn ($object) => match ($object['object']) {
                 'radical' => RadicalEntity::fromArray($object['id'], $object['data']),
                 'kanji' => KanjiEntity::fromArray($object['id'], $object['data']),
                 'vocabulary' => VocabularyEntity::fromArray($object['id'], $object['data']),
@@ -23,18 +23,18 @@ class SubjectsResponse
     /** @return Collection<int, KanjiEntity> */
     public function getKanjis()
     {
-        return $this->subjects->filter(fn ($subject) => $subject instanceof KanjiEntity);
+        return $this->subjects->filter(static fn ($subject) => $subject instanceof KanjiEntity);
     }
 
     /** @return Collection<int, RadicalEntity> */
     public function getRadicals()
     {
-        return $this->subjects->filter(fn ($subject) => $subject instanceof RadicalEntity);
+        return $this->subjects->filter(static fn ($subject) => $subject instanceof RadicalEntity);
     }
 
     /** @return Collection<int, VocabularyEntity> */
     public function getVocabularies()
     {
-        return $this->subjects->filter(fn ($subject) => $subject instanceof VocabularyEntity);
+        return $this->subjects->filter(static fn ($subject) => $subject instanceof VocabularyEntity);
     }
 }

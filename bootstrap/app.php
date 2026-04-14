@@ -21,7 +21,7 @@ return Application::configure(basePath: dirname(__DIR__))
         web: __DIR__ . '/../routes/web.php',
         commands: __DIR__ . '/../routes/console.php',
         health: '/health-up',
-        then: function () {
+        then: static function () {
             Route::prefix('')
                 ->group(__DIR__ . '/../routes/simple.php');
 
@@ -45,10 +45,10 @@ return Application::configure(basePath: dirname(__DIR__))
         __DIR__ . '/../app/Console/Commands',
         ...(glob(__DIR__ . '/../app/Domain/*/Console/Commands', GLOB_ONLYDIR) ?: []),
     ])
-    ->withMiddleware(function (Middleware $middleware) {
+    ->withMiddleware(static function (Middleware $middleware) {
         $middleware->redirectTo(
-            guests: fn () => to('auth/login'),
-            users: fn () => to('/'),
+            guests: static fn () => to('auth/login'),
+            users: static fn () => to('/'),
         );
 
         $middleware->append(\App\Http\Middleware\SetLocale::class);
@@ -66,13 +66,13 @@ return Application::configure(basePath: dirname(__DIR__))
             'nav' => \App\Http\Middleware\Breadcrumbs::class,
         ]);
     })
-    ->withExceptions(function (Exceptions $exceptions) {
+    ->withExceptions(static function (Exceptions $exceptions) {
         $exceptions->renderable(app(RenderTokenMismatch::class));
 
         $exceptions->reportable(app(SkipDatabaseOffline::class));
         $exceptions->reportable(app(SendToSentry::class));
 
-        $exceptions->throttle(fn (\Throwable $e) => Limit::perDay(50));
+        $exceptions->throttle(static fn (\Throwable $e) => Limit::perDay(50));
 
         $exceptions->dontTruncateRequestExceptions();
     })

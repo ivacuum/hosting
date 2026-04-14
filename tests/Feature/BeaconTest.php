@@ -67,7 +67,7 @@ class BeaconTest extends TestCase
     #[TestWith([Stats\TorrentViewed::class, [1]])]
     public function testViewCounters(string $event, array $ids)
     {
-        $payload = $this->payload(collect($ids)->map(fn ($id) => [
+        $payload = $this->payload(collect($ids)->map(static fn ($id) => [
             'id' => $id,
             'event' => class_basename($event),
         ])->toArray());
@@ -76,7 +76,7 @@ class BeaconTest extends TestCase
             $this->post('js/beacon', $payload)
                 ->assertNoContent();
 
-            \Event::assertDispatched($event, fn ($e) => in_array($e->id, $ids, true));
+            \Event::assertDispatched($event, static fn ($e) => in_array($e->id, $ids, true));
         });
     }
 

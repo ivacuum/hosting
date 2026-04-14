@@ -23,7 +23,7 @@ class BeaconStoreForm extends FormRequest
     protected function passedValidation()
     {
         $this->events = $this->collect('events')
-            ->map(fn ($payload) => BeaconEvent::fromArray($payload))
+            ->map(static fn ($payload) => BeaconEvent::fromArray($payload))
             ->all();
     }
 

@@ -29,9 +29,9 @@ class ImagesController extends Controller
         $imageSize = request('image_size');
 
         $models = Image::query()
-            ->when($year, fn (Builder $query) => $query->whereYear('created_at', $year))
-            ->when($touch, fn (Builder $query) => $query->whereYear('updated_at', '<=', now()->subYears($touch)->year))
-            ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
+            ->when($year, static fn (Builder $query) => $query->whereYear('created_at', $year))
+            ->when($touch, static fn (Builder $query) => $query->whereYear('updated_at', '<=', now()->subYears($touch)->year))
+            ->when($userId, static fn (Builder $query) => $query->where('user_id', $userId))
             ->orderBy(match ($sort->key) {
                 'size',
                 'views',

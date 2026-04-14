@@ -13,7 +13,7 @@ class TripObserver
 
     public function deleting(Trip $trip)
     {
-        \DB::transaction(function () use ($trip) {
+        \DB::transaction(static function () use ($trip) {
             $trip->comments->each->delete();
         });
     }

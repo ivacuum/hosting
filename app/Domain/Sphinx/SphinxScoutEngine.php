@@ -26,7 +26,7 @@ class SphinxScoutEngine extends Engine
             ->into($model->searchableAs())
             ->columns(array_keys($model->toSearchableArray()));
 
-        $models->each(function ($model) use ($query) {
+        $models->each(static function ($model) use ($query) {
             $query->values($model->toSearchableArray());
         });
 

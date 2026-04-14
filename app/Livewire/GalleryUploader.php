@@ -18,7 +18,7 @@ class GalleryUploader extends Component
     public function linksWithTags()
     {
         return collect($this->links)
-            ->map(fn ($link) => "[img]{$link['original']}[/img]")
+            ->map(static fn ($link) => "[img]{$link['original']}[/img]")
             ->implode(' ');
     }
 

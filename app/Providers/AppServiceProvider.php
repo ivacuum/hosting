@@ -20,12 +20,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Blade::withoutDoubleEncoding();
-        Blade::directive('ru', fn () => '<?php if ($locale === "ru"): ?>');
-        Blade::directive('en', fn () => '<?php elseif ($locale === "en"): ?>');
-        Blade::directive('de', fn () => '<?php elseif ($locale === "de"): ?>');
-        Blade::directive('endru', fn () => '<?php endif; ?>');
-        Blade::directive('lng', fn () => '<?php echo $localeUri ?>');
-        Blade::directive('svg', function ($expression) {
+        Blade::directive('ru', static fn () => '<?php if ($locale === "ru"): ?>');
+        Blade::directive('en', static fn () => '<?php elseif ($locale === "en"): ?>');
+        Blade::directive('de', static fn () => '<?php elseif ($locale === "de"): ?>');
+        Blade::directive('endru', static fn () => '<?php endif; ?>');
+        Blade::directive('lng', static fn () => '<?php echo $localeUri ?>');
+        Blade::directive('svg', static function ($expression) {
             $icon = trim($expression, " '\"()");
             $path = base_path("resources/svg/{$icon}.svg");
 
@@ -35,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
 
             return "<?php require base_path(\"resources/svg/{$expression}.svg\"); ?>";
         });
-        Blade::stringable(fn (\BackedEnum $enum) => $enum->value);
+        Blade::stringable(static fn (\BackedEnum $enum) => $enum->value);
         Date::use(CarbonImmutable::class);
         FormRequest::failOnUnknownFields(!app()->isProduction());
         Vite::useBuildDirectory('assets');
@@ -71,7 +71,7 @@ class AppServiceProvider extends ServiceProvider
          * Обработка доходит до метода только при заполненном значении,
          * то есть всегда провал, если дошло до обработки
          */
-        \Validator::extend('empty', function () {
+        \Validator::extend('empty', static function () {
             event(new \App\Events\Stats\SpammerTrapped);
 
             return false;

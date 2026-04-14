@@ -18,14 +18,14 @@ class LifeSlug
             'required',
             'string',
             Rule::unique(Artist::class, 'slug')
-                ->when($model instanceof Artist, fn (Unique $rule) => $rule->ignoreModel($model)),
+                ->when($model instanceof Artist, static fn (Unique $rule) => $rule->ignoreModel($model)),
             Rule::unique(City::class, 'slug')
-                ->when($model instanceof City, fn (Unique $rule) => $rule->ignoreModel($model)),
+                ->when($model instanceof City, static fn (Unique $rule) => $rule->ignoreModel($model)),
             Rule::unique(Gig::class, 'slug')
-                ->when($model instanceof Gig, fn (Unique $rule) => $rule->ignoreModel($model)),
+                ->when($model instanceof Gig, static fn (Unique $rule) => $rule->ignoreModel($model)),
             Rule::unique(Trip::class, 'slug')
                 ->where('user_id', 1)
-                ->when($model instanceof Trip, fn (Unique $rule) => $rule->ignoreModel($model)),
+                ->when($model instanceof Trip, static fn (Unique $rule) => $rule->ignoreModel($model)),
         ];
     }
 }

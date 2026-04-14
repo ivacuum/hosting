@@ -15,11 +15,11 @@ class GetTripsPublishedByCityAction
     {
         $key = CacheKey::TripsPublishedByCity;
 
-        $ids = $this->cache->remember($key, $key->ttl(), function (): array {
+        $ids = $this->cache->remember($key, $key->ttl(), static function (): array {
             return Trip::query()
                 ->tap(new TripPublishedScope)
                 ->get(['id', 'city_id'])
-                ->mapToGroups(fn (Trip $trip) => [$trip->city_id => $trip->id])
+                ->mapToGroups(static fn (Trip $trip) => [$trip->city_id => $trip->id])
                 ->toArray();
         });
 

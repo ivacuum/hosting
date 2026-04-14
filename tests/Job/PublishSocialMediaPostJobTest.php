@@ -26,7 +26,7 @@ class PublishSocialMediaPostJobTest extends TestCase
             ...InstagramPublishMediaResponse::fakeSuccess('media-id'),
         ]);
 
-        User::query()->findOr(1, fn () => UserFactory::new()->admin()->create());
+        User::query()->findOr(1, static fn () => UserFactory::new()->admin()->create());
 
         SocialMediaTokenFactory::new()
             ->withToken('token')
@@ -45,13 +45,13 @@ class PublishSocialMediaPostJobTest extends TestCase
 
         $this->assertSame(SocialMediaPostStatus::Published, $post->status);
 
-        \Http::assertSent(function (Request $request) use ($post) {
+        \Http::assertSent(static function (Request $request) use ($post) {
             return $request->url() === 'https://graph.vacuum.name/v23.0/me/media?access_token=token'
                 && $request['image_url'] === $post->photo->originalUrl()
                 && $request['caption'] === 'caption';
         });
 
-        \Http::assertSent(function (Request $request) {
+        \Http::assertSent(static function (Request $request) {
             return $request->url() === 'https://graph.vacuum.name/v23.0/me/media_publish?access_token=token'
                 && $request['creation_id'] === 'container-id';
         });
@@ -65,7 +65,7 @@ class PublishSocialMediaPostJobTest extends TestCase
 
         Sleep::fake();
 
-        User::query()->findOr(1, fn () => UserFactory::new()->admin()->create());
+        User::query()->findOr(1, static fn () => UserFactory::new()->admin()->create());
 
         SocialMediaTokenFactory::new()
             ->withToken('token')
@@ -101,7 +101,7 @@ class PublishSocialMediaPostJobTest extends TestCase
 
         Sleep::fake();
 
-        User::query()->findOr(1, fn () => UserFactory::new()->admin()->create());
+        User::query()->findOr(1, static fn () => UserFactory::new()->admin()->create());
 
         SocialMediaTokenFactory::new()
             ->withToken('token')
@@ -122,13 +122,13 @@ class PublishSocialMediaPostJobTest extends TestCase
 
         \Http::assertSentCount(3);
 
-        \Http::assertSent(function (Request $request) use ($post) {
+        \Http::assertSent(static function (Request $request) use ($post) {
             return $request->url() === 'https://graph.vacuum.name/v23.0/me/media?access_token=token'
                 && $request['image_url'] === $post->photo->originalUrl()
                 && $request['caption'] === 'caption';
         });
 
-        \Http::assertSent(function (Request $request) {
+        \Http::assertSent(static function (Request $request) {
             return $request->url() === 'https://graph.vacuum.name/v23.0/me/media_publish?access_token=token'
                 && $request['creation_id'] === 'container-id';
         });

@@ -25,7 +25,7 @@ class NumberSynopsis extends Component
     public function mount(Request $request, GetNumberLocalesAction $getNumberLocales)
     {
         $this->locales = collect($getNumberLocales->execute())
-            ->mapWithKeys(fn (string $locale) => [$locale => \Locale::getDisplayName($locale, \App::getLocale())])
+            ->mapWithKeys(static fn (string $locale) => [$locale => \Locale::getDisplayName($locale, \App::getLocale())])
             ->sort()
             ->all();
 

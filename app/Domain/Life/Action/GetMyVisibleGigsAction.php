@@ -29,8 +29,8 @@ class GetMyVisibleGigsAction
     {
         return Gig::query()
             ->with('artist')
-            ->when($from, fn (Builder $query) => $query->where('date', '>=', $from))
-            ->when($to, fn (Builder $query) => $query->where('date', '<=', $to))
+            ->when($from, static fn (Builder $query) => $query->where('date', '>=', $from))
+            ->when($to, static fn (Builder $query) => $query->where('date', '<=', $to))
             ->get();
     }
 }

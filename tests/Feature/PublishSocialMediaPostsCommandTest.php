@@ -41,27 +41,27 @@ class PublishSocialMediaPostsCommandTest extends TestCase
 
         \Queue::assertNotPushed(
             PublishSocialMediaPostJob::class,
-            fn (PublishSocialMediaPostJob $job) => $job->post->is($excludedPost)
+            static fn (PublishSocialMediaPostJob $job) => $job->post->is($excludedPost)
         );
 
         \Queue::assertNotPushed(
             PublishSocialMediaPostJob::class,
-            fn (PublishSocialMediaPostJob $job) => $job->post->is($publishedPost)
+            static fn (PublishSocialMediaPostJob $job) => $job->post->is($publishedPost)
         );
 
         \Queue::assertNotPushed(
             PublishSocialMediaPostJob::class,
-            fn (PublishSocialMediaPostJob $job) => $job->post->is($queuedFuturePost)
+            static fn (PublishSocialMediaPostJob $job) => $job->post->is($queuedFuturePost)
         );
 
         \Queue::assertPushed(
             PublishSocialMediaPostJob::class,
-            fn (PublishSocialMediaPostJob $job) => $job->post->is($queuedPost)
+            static fn (PublishSocialMediaPostJob $job) => $job->post->is($queuedPost)
         );
 
         \Queue::assertPushed(
             PublishSocialMediaPostJob::class,
-            fn (PublishSocialMediaPostJob $job) => $job->post->is($queuedOldPost)
+            static fn (PublishSocialMediaPostJob $job) => $job->post->is($queuedOldPost)
         );
     }
 }

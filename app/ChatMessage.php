@@ -55,7 +55,7 @@ class ChatMessage extends Model
     protected function text(): Attribute
     {
         return Attribute::make(
-            set: function ($value) {
+            set: static function ($value) {
                 $converter = new CommonMarkConverter([
                     'html_input' => 'escape',
                     'max_nesting_level' => 15,

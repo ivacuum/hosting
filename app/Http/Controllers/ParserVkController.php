@@ -58,10 +58,10 @@ class ParserVkController
             $portion = count($json);
 
             if ($own) {
-                $json = collect($json)->reject(fn ($post) => !empty($post->copy_history));
+                $json = collect($json)->reject(static fn ($post) => !empty($post->copy_history));
             }
 
-            $json = collect($json)->reject(function ($post) {
+            $json = collect($json)->reject(static function ($post) {
                 if (isset($post->attachments)) {
                     foreach ($post->attachments as $attach) {
                         if ($attach->type === 'link' && str_contains($attach->link->url, 'vk.com/@')) {

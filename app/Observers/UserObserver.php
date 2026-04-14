@@ -22,7 +22,7 @@ class UserObserver
 
     public function deleting(User $user)
     {
-        \DB::transaction(function () use ($user) {
+        \DB::transaction(static function () use ($user) {
             $user->chatMessages->each->delete();
             $user->comments->each->delete();
             $user->externalIdentities->each->delete();

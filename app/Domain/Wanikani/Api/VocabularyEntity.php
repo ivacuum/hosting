@@ -22,17 +22,17 @@ class VocabularyEntity
     {
         $primaryReading = $isKanaVocabulary
             ? $json['characters']
-            : collect($json['readings'])->first(fn ($reading) => $reading['primary'])['reading'];
+            : collect($json['readings'])->first(static fn ($reading) => $reading['primary'])['reading'];
 
         $audios = collect($json['pronunciation_audios']);
 
-        $maleAudioUrl = $audios->first(function ($audio) use ($primaryReading) {
+        $maleAudioUrl = $audios->first(static function ($audio) use ($primaryReading) {
             return $audio['metadata']['voice_actor_id'] === 2
                 && $audio['content_type'] === 'audio/mpeg'
                 && $audio['metadata']['pronunciation'] === $primaryReading;
         })['url'] ?? '';
 
-        $femaleAudioUrl = $audios->first(function ($audio) use ($primaryReading) {
+        $femaleAudioUrl = $audios->first(static function ($audio) use ($primaryReading) {
             return $audio['metadata']['voice_actor_id'] === 1
                 && $audio['content_type'] === 'audio/mpeg'
                 && $audio['metadata']['pronunciation'] === $primaryReading;
@@ -43,11 +43,11 @@ class VocabularyEntity
             $json['level'],
             $json['characters'],
             collect($json['meanings'])
-                ->filter(fn ($meaning) => $meaning['accepted_answer'])->pluck('meaning'),
+                ->filter(static fn ($meaning) => $meaning['accepted_answer'])->pluck('meaning'),
             $isKanaVocabulary
                 ? collect([$json['characters']])
                 : collect($json['readings'])
-                    ->filter(fn ($reading) => $reading['accepted_answer'])->pluck('reading'),
+                    ->filter(static fn ($reading) => $reading['accepted_answer'])->pluck('reading'),
             collect($json['context_sentences']),
             str($maleAudioUrl)->after('wanikani.com/')->__toString(),
             str($femaleAudioUrl)->after('wanikani.com/')->__toString(),
@@ -57,6 +57,6 @@ class VocabularyEntity
 
     public function getSentences()
     {
-        return $this->sentences->map(fn ($sentence) => "{$sentence['ja']}\n{$sentence['en']}");
+        return $this->sentences->map(static fn ($sentence) => "{$sentence['ja']}\n{$sentence['en']}");
     }
 }

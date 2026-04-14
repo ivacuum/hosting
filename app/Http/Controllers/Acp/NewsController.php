@@ -35,7 +35,7 @@ class NewsController extends Controller
 
         $models = News::query()
             ->withCount('comments')
-            ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
+            ->when($userId, static fn (Builder $query) => $query->where('user_id', $userId))
             ->tap(new NewsCurrentLocaleScope)
             ->orderBy(match ($sort->key) {
                 'views',

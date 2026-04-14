@@ -78,6 +78,6 @@ class ResizeImageForm extends FormRequest
             return false;
         }
 
-        return array_any($whitelist, fn ($site) => $domain === $site);
+        return array_any($whitelist, static fn ($site) => $domain === $site);
     }
 }

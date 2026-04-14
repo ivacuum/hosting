@@ -81,7 +81,7 @@ class Comment extends Model
             ->unique('user_id')
             ->pluck('user')
             // Фильтр удаленных пользователей
-            ->filter(fn ($value) => $value !== null);
+            ->filter(static fn ($value) => $value !== null);
     }
 
     public function www(): string

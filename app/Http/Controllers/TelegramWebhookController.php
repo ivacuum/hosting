@@ -29,7 +29,7 @@ class TelegramWebhookController
                 OnCommandStart::class,
                 OnCallbackQueryPhotoOnMap::class,
             ])
-            ->then(fn (array|TelegramWebhook $result) => $result);
+            ->then(static fn (array|TelegramWebhook $result) => $result);
 
         if ($response instanceof TelegramWebhook) {
             return [];

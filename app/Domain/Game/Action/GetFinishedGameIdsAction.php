@@ -18,13 +18,13 @@ class GetFinishedGameIdsAction
             ->remember(
                 CacheKey::GamesFinishedById,
                 CacheKey::GamesFinishedById->ttl(),
-                function () {
+                static function () {
                     return Game::query()
                         ->whereNotNull('finished_at')
                         ->orderByDesc('finished_at')
                         ->pluck('id');
                 })
-            ->when($count > 0, function (Collection $games) use ($count) {
+            ->when($count > 0, static function (Collection $games) use ($count) {
                 return $games->count() > $count
                     ? $games->random($count)
                     : $games;

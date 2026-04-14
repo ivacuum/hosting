@@ -17,7 +17,7 @@ class Polygon extends Geometry implements \Stringable
     {
         return implode(
             ',',
-            array_map(fn (LineString $lineString) => sprintf('(%s)', $lineString->__toString()), $this->items)
+            array_map(static fn (LineString $lineString) => sprintf('(%s)', $lineString->__toString()), $this->items)
         );
     }
 
@@ -25,7 +25,7 @@ class Polygon extends Geometry implements \Stringable
     public static function fromString(string $wktArgument, int $srid = 4326)
     {
         $str = preg_split('/\)\s*,\s*\(/', substr(trim($wktArgument), 1, -1));
-        $lineStrings = array_map(fn ($geometry) => LineString::fromString($geometry), $str);
+        $lineStrings = array_map(static fn ($geometry) => LineString::fromString($geometry), $str);
 
         return new static($srid, ...$lineStrings);
     }
@@ -36,7 +36,7 @@ class Polygon extends Geometry implements \Stringable
         return [
             'type' => 'Polygon',
             'coordinates' => collect($this->items)
-                ->map(fn (LineString $lineString) => $lineString->jsonSerialize()['coordinates'])
+                ->map(static fn (LineString $lineString) => $lineString->jsonSerialize()['coordinates'])
                 ->all(),
         ];
     }

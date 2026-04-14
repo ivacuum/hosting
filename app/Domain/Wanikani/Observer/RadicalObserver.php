@@ -8,7 +8,7 @@ class RadicalObserver
 {
     public function deleting(Radical $radical)
     {
-        \DB::transaction(function () use ($radical) {
+        \DB::transaction(static function () use ($radical) {
             $radical->burnables()->delete();
             $radical->kanjis()->detach();
         });

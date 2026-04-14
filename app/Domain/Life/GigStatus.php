@@ -28,7 +28,7 @@ enum GigStatus: int
     public static function labels(): array
     {
         return collect(self::cases())
-            ->mapWithKeys(fn (self $case) => [$case->value => $case->i18n()])
+            ->mapWithKeys(static fn (self $case) => [$case->value => $case->i18n()])
             ->all();
     }
 }

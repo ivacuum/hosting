@@ -18,14 +18,14 @@ class GetTripsPublishedWithCoverAction
     {
         $key = CacheKey::TripsPublishedWithCover;
 
-        return $this->cache->remember($key, $key->ttl(), function () {
+        return $this->cache->remember($key, $key->ttl(), static function () {
             return Trip::query()
                 ->tap(new TripPublishedScope)
                 ->tap(new TripOfAdminScope)
                 ->tap(new TripWithCoverScope)
                 ->orderByDesc('date_start')
                 ->get();
-        })->when($count > 0, function (Collection $trips) use ($count) {
+        })->when($count > 0, static function (Collection $trips) use ($count) {
             return $trips->count() > $count
                 ? $trips->random($count)
                 : $trips;

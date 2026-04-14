@@ -12,7 +12,7 @@ class PickRandomPhotoAction
     {
         $randomId = Photo::query()
             ->whereBelongsTo($user)
-            ->when($skipId, fn (Builder $query) => $query->where('id', '<>', $skipId))
+            ->when($skipId, static fn (Builder $query) => $query->where('id', '<>', $skipId))
             ->doesntHave('socialMediaPost')
             ->inRandomOrder()
             ->firstOrFail(['id'])

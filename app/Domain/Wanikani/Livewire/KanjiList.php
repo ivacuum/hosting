@@ -37,7 +37,7 @@ class KanjiList extends Component
             ->tap(new KanjiRadicalsScope($radicalId))
             ->tap(new KanjiSimilarToScope($this->similarId))
             ->tap(new KanjiLevelScope($this->level))
-            ->when($vocabularyWord, fn (Builder $query) => $query->whereIn('character', $characters))
+            ->when($vocabularyWord, static fn (Builder $query) => $query->whereIn('character', $characters))
             ->orderBy('level')
             ->orderBy('meaning')
             ->get(['id', 'level', 'character', 'meaning', 'onyomi', 'kunyomi', 'important_reading'])

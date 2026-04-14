@@ -25,6 +25,6 @@ class FetchMetricsAction
         }
 
         return collect($response[0][1])
-            ->mapWithKeys(fn ($value) => [$value[0] => $value[1][1]]);
+            ->mapWithKeys(static fn ($value) => [$value[0] => $value[1][1]]);
     }
 }

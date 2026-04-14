@@ -21,7 +21,7 @@ class MetricsController
         Metric::query()
             ->tap(new MetricWeekScope)
             ->get()
-            ->map(function (Metric $item) use (&$metrics, &$dates) {
+            ->map(static function (Metric $item) use (&$metrics, &$dates) {
                 $dates[$item->date->toDateString()] = true;
                 $metrics[$item->event][$item->date->toDateString()] = $item->count;
             });

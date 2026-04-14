@@ -14,10 +14,10 @@ class GetTripCountByCitiesAction
         $tripCount = [];
 
         Trip::query()
-            ->when($userId > 0, fn (Builder $query) => $query->where('user_id', $userId))
+            ->when($userId > 0, static fn (Builder $query) => $query->where('user_id', $userId))
             ->tap(new TripVisibleScope)
             ->get(['id', 'city_id', 'status'])
-            ->each(function (Trip $trip) use (&$tripCount) {
+            ->each(static function (Trip $trip) use (&$tripCount) {
                 if ($trip->status->isPublished()) {
                     @$tripCount[$trip->city_id]['published'] += 1;
                 }

@@ -20,7 +20,7 @@ class GetPhotoPointsAction
             ? CacheKey::PhotosPointsForTrip
             : CacheKey::PhotosPoints;
 
-        return $this->cache->remember($key, $key->ttl(), function () use ($tripId): array {
+        return $this->cache->remember($key, $key->ttl(), static function () use ($tripId): array {
             $photos = Photo::query()
                 ->with('rel')
                 ->tap(new PhotoForTripScope($tripId))

@@ -9,7 +9,7 @@ class NewsObserver
 {
     public function deleting(News $news)
     {
-        \DB::transaction(function () use ($news) {
+        \DB::transaction(static function () use ($news) {
             $news->comments->each->delete();
         });
     }

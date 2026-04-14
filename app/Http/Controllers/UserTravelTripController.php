@@ -20,11 +20,11 @@ class UserTravelTripController extends UserTravelController
             ->withCount('photos')
             ->whereBelongsTo($traveler)
             ->tap(new TripVisibleScope)
-            ->when($request->from, fn (Builder $query) => $query->where('date_start', '>=', $request->from))
-            ->when($request->to, fn (Builder $query) => $query->where('date_start', '<=', $request->to))
+            ->when($request->from, static fn (Builder $query) => $query->where('date_start', '>=', $request->from))
+            ->when($request->to, static fn (Builder $query) => $query->where('date_start', '<=', $request->to))
             ->orderBy('date_start', $request->from || $request->to ? 'asc' : 'desc')
             ->get(Trip::COLUMNS_LIST)
-            ->groupBy(fn (Trip $model) => $model->year);
+            ->groupBy(static fn (Trip $model) => $model->year);
 
         \Breadcrumbs::push(__('Заметки'));
 

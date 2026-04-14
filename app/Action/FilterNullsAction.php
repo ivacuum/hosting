@@ -16,6 +16,6 @@ class FilterNullsAction
             }
         }
 
-        return array_filter($data, fn ($value) => $value !== null);
+        return array_filter($data, static fn ($value) => $value !== null);
     }
 }

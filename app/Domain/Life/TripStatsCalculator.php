@@ -40,7 +40,7 @@ class TripStatsCalculator
 
         $this->calculate($trips);
 
-        $this->cityVisits = $trips->mapToDictionary(fn (Trip $trip) => [$trip->city_id => $trip->id]);
+        $this->cityVisits = $trips->mapToDictionary(static fn (Trip $trip) => [$trip->city_id => $trip->id]);
     }
 
     public function calendar(): Collection
@@ -52,7 +52,7 @@ class TripStatsCalculator
     {
         return $this->cities
             ->reverse()
-            ->map(fn (Collection $cities) => $cities->unique()->count());
+            ->map(static fn (Collection $cities) => $cities->unique()->count());
     }
 
     public function cityVisits(): Collection
@@ -64,26 +64,26 @@ class TripStatsCalculator
     {
         return $this->countries
             ->reverse()
-            ->map(fn (Collection $countries) => $countries->unique()->count());
+            ->map(static fn (Collection $countries) => $countries->unique()->count());
     }
 
     public function daysInCities(): Collection
     {
         return $this->daysInCities
-            ->map(fn ($years) => $years->reverse()->map(fn (Collection $days) => $days->count()));
+            ->map(static fn ($years) => $years->reverse()->map(static fn (Collection $days) => $days->count()));
     }
 
     public function daysInCountries(): Collection
     {
         return $this->daysInCountries
-            ->map(fn ($years) => $years->reverse()->map(fn (Collection $days) => $days->count()));
+            ->map(static fn ($years) => $years->reverse()->map(static fn (Collection $days) => $days->count()));
     }
 
     public function daysInTrips(): Collection
     {
         return $this->daysInTrips
             ->reverse()
-            ->map(fn (Collection $trips) => $trips->count());
+            ->map(static fn (Collection $trips) => $trips->count());
     }
 
     public function firstDate(): CarbonImmutable
@@ -98,12 +98,12 @@ class TripStatsCalculator
 
     public function newCitiesByYearsCount(): Collection
     {
-        return $this->newCities->map(fn (Collection $cities) => $cities->count());
+        return $this->newCities->map(static fn (Collection $cities) => $cities->count());
     }
 
     public function newCountriesByYearsCount(): Collection
     {
-        return $this->newCountries->map(fn (Collection $countries) => $countries->count());
+        return $this->newCountries->map(static fn (Collection $countries) => $countries->count());
     }
 
     /** @param \Illuminate\Database\Eloquent\Collection<int, \App\Domain\Life\Models\Trip> $trips */

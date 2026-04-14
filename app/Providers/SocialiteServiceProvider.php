@@ -21,7 +21,7 @@ class SocialiteServiceProvider extends ServiceProvider
     #[\Override]
     public function register()
     {
-        $this->app->scoped(VkProvider::class, function ($app) {
+        $this->app->scoped(VkProvider::class, static function ($app) {
             return new VkProvider(
                 $app['request'],
                 config('services.vk.client_id'),

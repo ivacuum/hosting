@@ -15,12 +15,12 @@ class FindRelatedMagnetsAction
 
         $builder = $magnet->search(
             $magnet->related_query,
-            fn (SphinxQL $builder) => $builder->match('title', $magnet->related_query, true)->execute()
+            static fn (SphinxQL $builder) => $builder->match('title', $magnet->related_query, true)->execute()
         );
 
         return array_filter(
             \Arr::pluck($builder->raw(), 'id'),
-            fn ($item) => $magnet->id !== intval($item)
+            static fn ($item) => $magnet->id !== intval($item)
         );
     }
 }

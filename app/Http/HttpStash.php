@@ -15,7 +15,7 @@ class HttpStash
             $cachedResponse = $this->cache->remember(
                 $request->cacheKey(),
                 $request->cacheTtl(),
-                fn () => CachedResponse::fromResponse($fn())
+                static fn () => CachedResponse::fromResponse($fn())
                     ->jsonSerialize(),
             );
 

@@ -14,8 +14,8 @@ class RtoGetTorTopicDataResponse
         $this->topics = $response->collect('result')
             // Почему-то стали попадаться элементы вида "hash" => topic_id
             // Отфильтровываем их
-            ->reject(fn ($object) => is_int($object))
-            ->map(function ($payload, $topicId) {
+            ->reject(static fn ($object) => is_int($object))
+            ->map(static function ($payload, $topicId) {
                 return $payload !== null
                     ? RtoTopicData::fromArray($topicId, $payload)
                     : null;

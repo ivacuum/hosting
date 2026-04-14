@@ -16,11 +16,11 @@ class RouteServiceProvider extends ServiceProvider
 
         \Route::pattern('id', '\d+');
 
-        \Route::bind('CityCached', function (string $slug) {
+        \Route::bind('CityCached', static function (string $slug) {
             return \CityHelper::findBySlugOrFail($slug);
         });
 
-        \Route::bind('CountryCached', function (string $slug) {
+        \Route::bind('CountryCached', static function (string $slug) {
             return \CountryHelper::findBySlugOrFail($slug);
         });
 
@@ -29,15 +29,15 @@ class RouteServiceProvider extends ServiceProvider
 
     private function configureRateLimiting()
     {
-        RateLimiter::for('2fa', function (Request $request) {
+        RateLimiter::for('2fa', static function (Request $request) {
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
         });
 
-        RateLimiter::for('api', function (Request $request) {
+        RateLimiter::for('api', static function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
 
-        RateLimiter::for('login', function (Request $request) {
+        RateLimiter::for('login', static function (Request $request) {
             return Limit::perMinute(5)->by($request->input('email') . $request->ip());
         });
     }

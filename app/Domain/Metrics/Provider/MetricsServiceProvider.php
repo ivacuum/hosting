@@ -28,19 +28,19 @@ class MetricsServiceProvider extends ServiceProvider
 
     private function triggerStatsOnEvents(): void
     {
-        \Event::listen(JobProcessed::class, function () {
+        \Event::listen(JobProcessed::class, static function () {
             event(new \App\Events\Stats\JobProcessed);
         });
 
-        \Event::listen(MessageSent::class, function () {
+        \Event::listen(MessageSent::class, static function () {
             event(new \App\Events\Stats\MailSent);
         });
 
-        \Event::listen(NotificationSent::class, function () {
+        \Event::listen(NotificationSent::class, static function () {
             event(new \App\Events\Stats\NotificationSent);
         });
 
-        \Event::listen(WorkerStopping::class, function () {
+        \Event::listen(WorkerStopping::class, static function () {
             \Log::info("Worker is stopping...\n");
         });
     }

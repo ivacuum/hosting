@@ -216,13 +216,13 @@ class SitemapBuild extends Command
     private function appendCitiesAndCountries()
     {
         Country::allWithCitiesAndTrips(1)
-            ->filter(fn (Country $country) => $country->trips_published_count)
+            ->filter(static fn (Country $country) => $country->trips_published_count)
             ->each(function (Country $country) {
                 $this->page("life/countries/{$country->slug}", '0.2');
                 $this->page("en/life/countries/{$country->slug}", '0.2');
 
                 $country->cities
-                    ->filter(fn (City $city) => $city->trips_published_count)
+                    ->filter(static fn (City $city) => $city->trips_published_count)
                     ->each(function (City $city) {
                         $this->page("life/{$city->slug}", '0.2');
                         $this->page("en/life/{$city->slug}", '0.2');

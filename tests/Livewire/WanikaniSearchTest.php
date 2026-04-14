@@ -21,7 +21,7 @@ class WanikaniSearchTest extends TestCase
         \Livewire::test(WanikaniSearch::class)
             ->set('q', $radical->meaning)
             ->call('search')
-            ->assertViewHas('radicals', fn (Collection $radicals) => $radicals->firstWhere('id', $radical->id) !== null);
+            ->assertViewHas('radicals', static fn (Collection $radicals) => $radicals->firstWhere('id', $radical->id) !== null);
     }
 
     public function testSearchForKanji()
@@ -31,7 +31,7 @@ class WanikaniSearchTest extends TestCase
         \Livewire::test(WanikaniSearch::class)
             ->set('q', $kanji->meaning)
             ->call('search')
-            ->assertViewHas('kanjis', fn (Collection $kanjis) => $kanjis->firstWhere('id', $kanji->id) !== null);
+            ->assertViewHas('kanjis', static fn (Collection $kanjis) => $kanjis->firstWhere('id', $kanji->id) !== null);
     }
 
     public function testSearchForVocabulary()
@@ -41,6 +41,6 @@ class WanikaniSearchTest extends TestCase
         \Livewire::test(WanikaniSearch::class)
             ->set('q', $vocab->meaning)
             ->call('search')
-            ->assertViewHas('vocabularies', fn (Collection $vocabularies) => $vocabularies->firstWhere('id', $vocab->id) !== null);
+            ->assertViewHas('vocabularies', static fn (Collection $vocabularies) => $vocabularies->firstWhere('id', $vocab->id) !== null);
     }
 }

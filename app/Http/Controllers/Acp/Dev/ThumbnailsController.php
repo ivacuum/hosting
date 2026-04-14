@@ -17,7 +17,7 @@ class ThumbnailsController
         $storage = \Storage::disk('temp');
 
         $files = collect($storage->allFiles())
-            ->filter(fn ($file) => $file !== '.gitignore')
+            ->filter(static fn ($file) => $file !== '.gitignore')
             ->all();
 
         $storage->delete($files);

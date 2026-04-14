@@ -38,12 +38,12 @@ class CommentsController extends Controller
 
         $models = Comment::query()
             ->with('user')
-            ->when($status !== null, fn (Builder $query) => $query->where('status', $status))
+            ->when($status !== null, static fn (Builder $query) => $query->where('status', $status))
             ->when($issueId, new CommentRelationScope(new Issue, $issueId))
             ->when($newsId, new CommentRelationScope(new News, $newsId))
             ->when($tripId, new CommentRelationScope(new Trip, $tripId))
             ->when($magnetId, new CommentRelationScope(new Magnet, $magnetId))
-            ->when($userId, fn (Builder $query) => $query->where('user_id', $userId))
+            ->when($userId, static fn (Builder $query) => $query->where('user_id', $userId))
             ->orderBy('id', $sort->direction->value)
             ->paginate(20);
 

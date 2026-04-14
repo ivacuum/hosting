@@ -26,7 +26,7 @@ class RadicalList extends Component
         $this->flat = $kanjiId !== null;
 
         $this->radicals = Radical::query()
-            ->when($kanjiId, fn (Builder $query) => $query->whereRelation('kanjis', 'kanji_id', $kanjiId))
+            ->when($kanjiId, static fn (Builder $query) => $query->whereRelation('kanjis', 'kanji_id', $kanjiId))
             ->when($this->level, fn (Builder $query) => $query->where('level', $this->level))
             ->orderBy('level')
             ->orderBy('meaning')

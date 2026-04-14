@@ -14,7 +14,7 @@ readonly class SteamGameSearchResponse
     {
         $this->games = $response
             ->collect('items')
-            ->mapWithKeys(fn ($data) => [$data['id'] => $data['name']]);
+            ->mapWithKeys(static fn ($data) => [$data['id'] => $data['name']]);
     }
 
     public static function fakeSuccess()

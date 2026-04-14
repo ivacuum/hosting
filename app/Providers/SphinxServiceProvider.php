@@ -12,7 +12,7 @@ class SphinxServiceProvider extends ServiceProvider implements DeferrableProvide
     #[\Override]
     public function register()
     {
-        $this->app->scoped(ConnectionInterface::class, function () {
+        $this->app->scoped(ConnectionInterface::class, static function () {
             $connection = new SphinxPdoConnection;
             $connection->setParams([
                 'host' => config('cfg.sphinx.host'),

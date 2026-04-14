@@ -287,7 +287,7 @@ class Trip extends Model
     protected function markdown(): Attribute
     {
         return Attribute::make(
-            set: function ($value) {
+            set: static function ($value) {
                 $converter = new CommonMarkConverter([
                     'max_nesting_level' => 15,
                     'allow_unsafe_links' => false,
@@ -310,7 +310,7 @@ class Trip extends Model
     protected function slug(): Attribute
     {
         return Attribute::make(
-            set: fn ($value) => mb_strtolower($value),
+            set: static fn ($value) => mb_strtolower($value),
         );
     }
 

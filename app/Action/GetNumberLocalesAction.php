@@ -13,10 +13,10 @@ class GetNumberLocalesAction
     {
         $key = CacheKey::IcuLocales;
 
-        return $this->cache->remember($key, $key->ttl(), function (): array {
+        return $this->cache->remember($key, $key->ttl(), static function (): array {
             return collect(\ResourceBundle::getLocales(''))
-                ->reject(fn (string $locale) => mb_strlen($locale) > 2)
-                ->reject(function (string $locale) {
+                ->reject(static fn (string $locale) => mb_strlen($locale) > 2)
+                ->reject(static function (string $locale) {
                     $formatter = new \NumberFormatter($locale, \NumberFormatter::SPELLOUT);
 
                     if ($locale !== $formatter->getLocale()) {

@@ -27,7 +27,7 @@ class EmailsController extends Controller
 
         $models = Email::query()
             ->with('user')
-            ->unless($userId === null, fn (Builder $query) => $query->where('user_id', $userId))
+            ->unless($userId === null, static fn (Builder $query) => $query->where('user_id', $userId))
             ->orderBy(match ($sort->key) {
                 'views',
                 'clicks' => $sort->key,

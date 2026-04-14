@@ -174,7 +174,7 @@ class TorrentCategoryHelper
             $this->initTree();
         }
 
-        return collect(array_filter($this->tree, fn ($value) => $value['parent'] === $parentId));
+        return collect(array_filter($this->tree, static fn ($value) => $value['parent'] === $parentId));
     }
 
     protected function initTree()

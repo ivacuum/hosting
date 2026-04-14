@@ -29,8 +29,8 @@ class LifeController
         $gigs = $getMyVisibleGigs->execute($request->from, $request->to);
 
         $models = collect([...$trips, ...$gigs])
-            ->sortByDesc(fn (Gig|Trip $model) => $model->date())
-            ->groupBy(fn (Gig|Trip $model) => $model->year);
+            ->sortByDesc(static fn (Gig|Trip $model) => $model->date())
+            ->groupBy(static fn (Gig|Trip $model) => $model->year);
 
         return view('life.index', [
             'modelsByYears' => $models,
@@ -42,8 +42,8 @@ class LifeController
         $tripCount = $getTripCountByCities->execute(1);
 
         $cities = \CityHelper::cachedById()
-            ->filter(fn (City $city) => isset($tripCount[$city->id]))
-            ->each(function (City $city) use (&$tripCount) {
+            ->filter(static fn (City $city) => isset($tripCount[$city->id]))
+            ->each(static function (City $city) use (&$tripCount) {
                 $city->trips_count = $tripCount[$city->id]['total'] ?? 0;
                 $city->trips_published_count = $tripCount[$city->id]['published'] ?? 0;
             })
@@ -61,7 +61,7 @@ class LifeController
             ->tap(new TripOfAdminScope)
             ->tap(new TripVisibleScope)
             ->get()
-            ->groupBy(fn (Trip $model) => $model->year);
+            ->groupBy(static fn (Trip $model) => $model->year);
 
         $publishedTrips = $trips->where('status', TripStatus::Published);
 
@@ -102,7 +102,7 @@ class LifeController
             ->tap(new TripOfAdminScope)
             ->tap(new TripVisibleScope)
             ->get()
-            ->groupBy(fn (Trip $model) => $model->year);
+            ->groupBy(static fn (Trip $model) => $model->year);
 
         \Breadcrumbs::push($country->title, "life/countries/{$country->slug}");
 
@@ -143,7 +143,7 @@ class LifeController
             ->with('artist')
             ->orderByDesc('date')
             ->get()
-            ->groupBy(fn (Gig $model) => $model->date->year);
+            ->groupBy(static fn (Gig $model) => $model->date->year);
 
         return view('life.gigs', [
             'gigs' => $gigs,

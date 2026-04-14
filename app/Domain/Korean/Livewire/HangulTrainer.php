@@ -103,7 +103,7 @@ class HangulTrainer extends Component
     protected function appendCyrillicAnswers(Collection $answers)
     {
         return $answers->push(...app(CyrillicizeJamoAction::class)->execute($this->jamo))
-            ->map(fn ($answer) => str_replace('-', '', $answer));
+            ->map(static fn ($answer) => str_replace('-', '', $answer));
     }
 
     protected function next()

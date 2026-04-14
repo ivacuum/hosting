@@ -33,8 +33,8 @@ class GetMyVisibleTripsAction
             ->withCount('photos')
             ->tap(new TripOfAdminScope)
             ->tap(new TripVisibleScope)
-            ->when($from, fn (Builder $query) => $query->where('date_start', '>=', $from))
-            ->when($to, fn (Builder $query) => $query->where('date_start', '<=', $to))
+            ->when($from, static fn (Builder $query) => $query->where('date_start', '>=', $from))
+            ->when($to, static fn (Builder $query) => $query->where('date_start', '<=', $to))
             ->get();
     }
 }

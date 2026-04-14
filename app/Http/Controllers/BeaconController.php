@@ -55,7 +55,7 @@ class BeaconController
     private function metrics()
     {
         return collect(self::METRICS)
-            ->mapWithKeys(fn ($metric) => [class_basename($metric) => $metric])
+            ->mapWithKeys(static fn ($metric) => [class_basename($metric) => $metric])
             ->toArray();
     }
 

@@ -14,7 +14,7 @@ class MagnetObserver
 
     public function deleting(Magnet $magnet)
     {
-        \DB::transaction(function () use ($magnet) {
+        \DB::transaction(static function () use ($magnet) {
             $magnet->comments->each->delete();
         });
     }

@@ -108,7 +108,7 @@ class News extends Model
     protected function markdown(): Attribute
     {
         return Attribute::make(
-            set: fn ($value) => [
+            set: static fn ($value) => [
                 'markdown' => $value,
                 'html' => (new CommonMarkConverter)->convert($value)->getContent(),
             ],

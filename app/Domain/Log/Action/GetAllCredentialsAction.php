@@ -10,7 +10,7 @@ class GetAllCredentialsAction
     {
         return collect(config('services'))
             ->dot()
-            ->filter(fn ($value, $key) => $value && \Str::endsWith($key, ['_key', '_secret', '_token']))
-            ->mapWithKeys(fn ($value, $key) => [str($key)->replace('.', '_')->studly()->value() => $value]);
+            ->filter(static fn ($value, $key) => $value && \Str::endsWith($key, ['_key', '_secret', '_token']))
+            ->mapWithKeys(static fn ($value, $key) => [str($key)->replace('.', '_')->studly()->value() => $value]);
     }
 }

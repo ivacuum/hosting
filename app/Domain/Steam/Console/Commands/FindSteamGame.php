@@ -21,7 +21,7 @@ class FindSteamGame extends Command implements Isolatable
     {
         $steamId = search(
             label: 'Game title',
-            options: fn (string $q) => mb_strlen($q) > 3
+            options: static fn (string $q) => mb_strlen($q) > 3
                 ? $steam->searchGames($q)->games->all()
                 : [],
         );

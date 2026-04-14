@@ -23,7 +23,7 @@ class GameTest extends TestCase
         // С заметкой
         Game::query()
             ->where(['slug' => 'prey'])
-            ->firstOr(fn () => GameFactory::new()->withSlug('prey')->create());
+            ->firstOr(static fn () => GameFactory::new()->withSlug('prey')->create());
 
         // Без заметки
         GameFactory::new()->create();
