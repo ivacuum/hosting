@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Acp;
 
 use App\Action\Acp\ApplyIndexGoodsAction;
 use App\Domain\Metrics\Models\Metric;
+use App\Domain\SortDirection;
 use App\Scope\MetricWeekScope;
 use Carbon\Carbon;
 use Illuminate\Routing\Attributes\Controllers\Authorize;
@@ -38,15 +39,28 @@ class MetricsController
     {
         \Breadcrumbs::push($event);
 
-        $metrics = Metric::query()->where('event', $event)->pluck('count', 'date');
-        $lastDay = Carbon::parse(array_key_last($metrics->toArray()));
-        $firstDay = Carbon::parse(array_key_first($metrics->toArray()));
+        $raw = Metric::query()
+            ->where('event', $event)
+            ->orderBy('date', SortDirection::Desc->value)
+            ->pluck('count', 'date');
+
+        $yearly = [];
+        $daily = [];
+
+        foreach ($raw as $date => $count) {
+            $carbon = Carbon::parse($date);
+            $year = $carbon->year;
+            $month = $carbon->month;
+            $day = $carbon->day;
+
+            $yearly[$year] = ($yearly[$year] ?? 0) + $count;
+            $daily[$year][$month][$day] = $count;
+        }
 
         return view('acp.metrics.show', [
             'event' => $event,
-            'lastDay' => $lastDay,
-            'metrics' => $metrics,
-            'firstDay' => $firstDay,
+            'yearly' => $yearly,
+            'daily' => $daily,
         ]);
     }
 }

@@ -3,17 +3,36 @@
 namespace App\Domain\Metrics\Seeder;
 
 use App\Domain\Metrics\Models\Metric;
-use App\Events\Stats\IssueAdded;
 use Illuminate\Database\Seeder;
 
 class MetricSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        $metric = new Metric;
-        $metric->date = now();
-        $metric->count = 4;
-        $metric->event = class_basename(IssueAdded::class);
-        $metric->save();
+        $event = 'IssueAdded';
+        $current = now()->subYears(10)->startOfYear();
+        $end = now();
+        $rows = [];
+
+        while ($current->lte($end)) {
+            if (mt_rand(1, 100) > 5) {
+                $rows[] = [
+                    'date' => $current->toDateString(),
+                    'event' => $event,
+                    'count' => mt_rand(0, 50),
+                ];
+            }
+
+            $current = $current->addDay();
+
+            if (count($rows) >= 500) {
+                Metric::upsert($rows, ['date', 'event'], ['count' => new \Illuminate\Database\Query\Expression('`count` + VALUES(`count`)')]);
+                $rows = [];
+            }
+        }
+
+        if ($rows !== []) {
+            Metric::upsert($rows, ['date', 'event'], ['count' => new \Illuminate\Database\Query\Expression('`count` + VALUES(`count`)')]);
+        }
     }
 }
