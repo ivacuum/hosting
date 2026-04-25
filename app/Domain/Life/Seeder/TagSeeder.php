@@ -28,9 +28,12 @@ class TagSeeder extends Seeder
 
     public function run()
     {
-        foreach (self::TAGS as $tag) {
+        foreach (self::TAGS as [
+            'title_ru' => $titleRu,
+            'title_en' => $titleEn,
+        ]) {
             TagFactory::new()
-                ->withTitle($tag['title_ru'], $tag['title_en'])
+                ->withTitle($titleRu, $titleEn)
                 ->create();
         }
     }

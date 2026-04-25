@@ -62,16 +62,16 @@ class VocabularySeeder extends Seeder
 
     public function run()
     {
-        foreach (self::VOCABULARY as $data) {
+        foreach (self::VOCABULARY as ['kana' => $kana, 'level' => $level, 'wk_id' => $wkId, 'meaning' => $meaning, 'character' => $character, 'sentences' => $sentences, 'male_audio' => $maleAudio, 'female_audio' => $femaleAudio]) {
             $vocab = VocabularyFactory::new()->make();
-            $vocab->kana = $data['kana'];
-            $vocab->level = $data['level'];
-            $vocab->wk_id = $data['wk_id'];
-            $vocab->meaning = $data['meaning'];
-            $vocab->character = $data['character'];
-            $vocab->sentences = $data['sentences'];
-            $vocab->male_audio = $data['male_audio'];
-            $vocab->female_audio = $data['female_audio'];
+            $vocab->kana = $kana;
+            $vocab->level = $level;
+            $vocab->wk_id = $wkId;
+            $vocab->meaning = $meaning;
+            $vocab->character = $character;
+            $vocab->sentences = $sentences;
+            $vocab->male_audio = $maleAudio;
+            $vocab->female_audio = $femaleAudio;
             $vocab->save();
         }
     }

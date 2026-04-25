@@ -43,11 +43,11 @@ class RadicalSeeder extends Seeder
 
     public function run()
     {
-        foreach (self::RADICALS as $radical) {
+        foreach (self::RADICALS as ['level' => $level, 'meaning' => $meaning, 'character' => $character]) {
             $model = RadicalFactory::new()->make();
-            $model->level = $radical['level'];
-            $model->meaning = $radical['meaning'];
-            $model->character = $radical['character'];
+            $model->level = $level;
+            $model->meaning = $meaning;
+            $model->character = $character;
             $model->save();
         }
     }

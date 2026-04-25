@@ -36,19 +36,24 @@ class CountrySeeder extends Seeder
 
     public function run()
     {
-        foreach (self::COUNTRIES as $attributes) {
+        foreach (self::COUNTRIES as [
+            'slug' => $slug,
+            'title_ru' => $titleRu,
+            'title_en' => $titleEn,
+            'emoji' => $emoji,
+        ]) {
             $country = CountryFactory::new()->make();
-            $country->slug = $attributes['slug'];
-            $country->emoji = $attributes['emoji'];
-            $country->hashtags = match ($attributes['slug']) {
+            $country->slug = $slug;
+            $country->emoji = $emoji;
+            $country->hashtags = match ($slug) {
                 'hongkong',
                 'singapore' => '',
                 'russia' => '#russia #россия',
                 'south-korea' => '#korea',
-                default => str_replace('-', '', "#{$attributes['slug']}"),
+                default => str_replace('-', '', "#{$slug}"),
             };
-            $country->title_en = $attributes['title_en'];
-            $country->title_ru = $attributes['title_ru'];
+            $country->title_en = $titleEn;
+            $country->title_ru = $titleRu;
             $country->save();
         }
     }

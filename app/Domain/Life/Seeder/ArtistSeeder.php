@@ -24,11 +24,14 @@ class ArtistSeeder extends Seeder
 
     public function run()
     {
-        foreach (self::ARTISTS as $artist) {
-            $model = ArtistFactory::new()->make();
-            $model->slug = $artist['slug'];
-            $model->title = $artist['title'];
-            $model->save();
+        foreach (self::ARTISTS as [
+            'slug' => $slug,
+            'title' => $title,
+        ]) {
+            $artist = ArtistFactory::new()->make();
+            $artist->slug = $slug;
+            $artist->title = $title;
+            $artist->save();
         }
     }
 }
