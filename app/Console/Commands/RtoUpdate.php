@@ -19,7 +19,7 @@ class RtoUpdate extends Command
             ->tap(new MagnetPublishedScope)
             ->select(['id', 'rto_id'])
             ->orderByDesc('id')
-            ->chunk(100, static function (Collection $magnets) {
+            ->chunk(50, static function (Collection $magnets) {
                 $rtoIds = $magnets->pluck('rto_id')->all();
 
                 dispatch(new FetchTorrentMetaJob(...$rtoIds));
