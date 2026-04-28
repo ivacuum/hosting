@@ -171,9 +171,10 @@ class TelegramClient
     private function configureClient()
     {
         $botToken = config('services.telegram.bot_token');
+        $apiUrl = config('services.telegram.api_url');
 
         return $this->http
-            ->baseUrl("https://api.telegram.org/bot{$botToken}/")
+            ->baseUrl("{$apiUrl}/bot{$botToken}/")
             ->timeout(\App::runningInConsole() ? 60 : 15)
             ->throw();
     }
