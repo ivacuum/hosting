@@ -92,6 +92,10 @@ class Rto
                 'val' => implode(',', $ids),
             ]);
 
+        if ($error = $response->json('error')) {
+            throw new RtoApiException($error['text'], $error['code']);
+        }
+
         return new RtoGetTorTopicDataResponse($response);
     }
 
@@ -102,6 +106,10 @@ class Rto
                 'by' => 'hash',
                 'val' => $hash,
             ]);
+
+        if ($error = $response->json('error')) {
+            throw new RtoApiException($error['text'], $error['code']);
+        }
 
         return $response->object()->result->{$hash};
     }
