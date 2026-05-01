@@ -134,7 +134,7 @@ class Magnet extends Model
             ->execute($this);
     }
 
-    public function relatedTorrents()
+    public function relatedMagnets()
     {
         if (!count($ids = $this->relatedIds())) {
             return collect();

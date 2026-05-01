@@ -3,15 +3,15 @@
 @extends('acp.show')
 
 @section('content')
-<?php $relatedTorrents = $model->relatedTorrents() ?>
-@if ($relatedTorrents?->count())
+<?php $relatedMagnets = $model->relatedMagnets() ?>
+@if ($relatedMagnets?->count())
   <div class="font-medium text-xl">
     @lang('Связанные раздачи')
-    <span class="text-base text-gray-500">{{ $relatedTorrents->count() }}</span>
+    <span class="text-base text-gray-500">{{ $relatedMagnets->count() }}</span>
   </div>
   <div><span class="text-gray-500">Запрос:</span> {{ $model->related_query }}</div>
   <ol class="mb-4">
-    @foreach ($relatedTorrents as $row)
+    @foreach ($relatedMagnets as $row)
       <li><a href="{{ Acp::show($row) }}">{{ $row->shortTitle() }}</a></li>
     @endforeach
   </ol>

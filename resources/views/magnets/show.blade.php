@@ -64,13 +64,13 @@
   </div>
 @endif
 
-@if (($relatedTorrents = $magnet->relatedTorrents())?->count())
+@if (($relatedMagnets = $magnet->relatedMagnets())?->count())
   <div class="font-medium text-2xl mb-2 mt-12">
     @lang('Связанные раздачи')
-    <span class="text-base text-gray-500">{{ $relatedTorrents->count() }}</span>
+    <span class="text-base text-gray-500">{{ $relatedMagnets->count() }}</span>
   </div>
   <?php /** @var \App\Domain\Magnet\Models\Magnet $row */ ?>
-  @foreach ($relatedTorrents as $row)
+  @foreach ($relatedMagnets as $row)
     <div class="flex flex-wrap md:flex-nowrap justify-center md:justify-start magnets-list-container js-magnets-views-observer" data-id="{{ $row->id }}">
       <div class="shrink-0 w-8 magnet-icon order-1 md:order-none mr-1 md:text-2xl" title="{{ $row->category_id->title() }}">
         <?php $icon = $row->category_id->icon() ?>
