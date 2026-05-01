@@ -5,14 +5,13 @@ namespace App\Livewire\Acp;
 use App\Domain\Life\Models\Artist;
 use App\Domain\Life\Rule\LifeSlug;
 use App\Livewire\WithGoto;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Livewire\Attributes\Authorize;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class ArtistForm extends Component
 {
-    use AuthorizesRequests;
     use WithGoto;
 
     #[Locked]
@@ -33,9 +32,9 @@ class ArtistForm extends Component
         }
     }
 
+    #[Authorize('create', Artist::class)]
     public function submit()
     {
-        $this->authorize('create', Artist::class);
         $this->validate();
         $this->store();
 

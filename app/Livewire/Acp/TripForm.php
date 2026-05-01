@@ -9,15 +9,14 @@ use App\Domain\Life\TripStatus;
 use App\Livewire\WithCityIds;
 use App\Livewire\WithGoto;
 use Carbon\CarbonImmutable;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Enum;
+use Livewire\Attributes\Authorize;
 use Livewire\Attributes\Locked;
 use Livewire\Component;
 
 class TripForm extends Component
 {
-    use AuthorizesRequests;
     use WithCityIds;
     use WithGoto;
 
@@ -70,9 +69,9 @@ class TripForm extends Component
         }
     }
 
+    #[Authorize('create', Trip::class)]
     public function submit()
     {
-        $this->authorize('create', Trip::class);
         $this->validate();
         $this->store();
 

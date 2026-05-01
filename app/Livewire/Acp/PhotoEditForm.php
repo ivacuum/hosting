@@ -4,13 +4,12 @@ namespace App\Livewire\Acp;
 
 use App\Domain\Life\Models\Photo;
 use App\Livewire\WithGoto;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Livewire\Attributes\Authorize;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class PhotoEditForm extends Component
 {
-    use AuthorizesRequests;
     use WithFileUploads;
     use WithGoto;
 
@@ -22,9 +21,9 @@ class PhotoEditForm extends Component
         $this->tags = $this->photo->tags->modelKeys();
     }
 
+    #[Authorize('update', 'photo')]
     public function submit()
     {
-        $this->authorize('update', $this->photo);
         $this->validate();
 
         $this->photo->tags()->sync($this->tags);

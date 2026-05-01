@@ -9,14 +9,13 @@ use App\Domain\SocialMedia\Models\SocialMediaPost;
 use App\Domain\SocialMedia\SocialMediaPostStatus;
 use App\Livewire\WithGoto;
 use Carbon\CarbonImmutable;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;
+use Livewire\Attributes\Authorize;
 use Livewire\Attributes\Locked;
 use Livewire\Component;
 
 class SocialMediaPostForm extends Component
 {
-    use AuthorizesRequests;
     use WithGoto;
 
     #[Locked]
@@ -63,9 +62,9 @@ class SocialMediaPostForm extends Component
         return view('livewire.acp.social-media-post-form');
     }
 
+    #[Authorize('create', SocialMediaPost::class)]
     public function submit()
     {
-        $this->authorize('create', SocialMediaPost::class);
         $this->validate();
         $this->store();
 

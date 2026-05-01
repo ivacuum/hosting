@@ -5,15 +5,14 @@ namespace App\Livewire\Acp;
 use App\Domain\UserStatus;
 use App\Livewire\WithGoto;
 use App\User;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;
+use Livewire\Attributes\Authorize;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class UserForm extends Component
 {
-    use AuthorizesRequests;
     use WithGoto;
 
     public User $user;
@@ -28,20 +27,18 @@ class UserForm extends Component
     public function mount()
     {
         if ($this->id) {
-            $user = User::query()->findOrFail($this->id);
+            $this->user = User::query()->findOrFail($this->id);
 
-            $this->email = $user->email;
-            $this->status = $user->status;
+            $this->email = $this->user->email;
+            $this->status = $this->user->status;
         }
     }
 
+    #[Authorize('update', 'user')]
     public function submit()
     {
-        $user = User::query()->findOrFail($this->id);
-
-        $this->authorize('update', $user);
         $this->validate();
-        $this->store($user);
+        $this->store();
 
         return redirect()->to($this->goto ?? to('acp/users'));
     }
@@ -58,10 +55,10 @@ class UserForm extends Component
         ];
     }
 
-    private function store(User $user)
+    private function store()
     {
-        $user->email = $this->email;
-        $user->status = $this->status;
-        $user->save();
+        $this->user->email = $this->email;
+        $this->user->status = $this->status;
+        $this->user->save();
     }
 }

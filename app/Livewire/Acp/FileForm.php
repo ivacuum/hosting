@@ -5,8 +5,8 @@ namespace App\Livewire\Acp;
 use App\Domain\FileStatus;
 use App\File;
 use App\Livewire\WithGoto;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;
+use Livewire\Attributes\Authorize;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -15,7 +15,6 @@ use Livewire\WithFileUploads;
 
 class FileForm extends Component
 {
-    use AuthorizesRequests;
     use WithFileUploads;
     use WithGoto;
 
@@ -47,13 +46,13 @@ class FileForm extends Component
         }
     }
 
+    #[Authorize('create', File::class)]
     public function submit()
     {
         $file = $this->id
             ? File::query()->findOrFail($this->id)
             : new File;
 
-        $this->authorize('create', File::class);
         $this->validate();
 
         $file->title = $this->title;

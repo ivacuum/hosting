@@ -10,14 +10,13 @@ use App\Livewire\WithArtistIds;
 use App\Livewire\WithCityIds;
 use App\Livewire\WithGoto;
 use Carbon\CarbonImmutable;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Livewire\Attributes\Authorize;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class GigForm extends Component
 {
-    use AuthorizesRequests;
     use WithArtistIds;
     use WithCityIds;
     use WithGoto;
@@ -62,9 +61,9 @@ class GigForm extends Component
         }
     }
 
+    #[Authorize('create', Gig::class)]
     public function submit()
     {
-        $this->authorize('create', Gig::class);
         $this->validate();
         $this->store();
 

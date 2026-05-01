@@ -4,7 +4,7 @@ namespace App\Livewire;
 
 use App\Domain\ImageConverter\ImageConverter;
 use App\Domain\Life\Models\Photo;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Livewire\Attributes\Authorize;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
@@ -12,7 +12,6 @@ use Livewire\WithFileUploads;
 
 class ThumbnailMaker extends Component
 {
-    use AuthorizesRequests;
     use WithFileUploads;
 
     public int $total = 0;
@@ -27,9 +26,9 @@ class ThumbnailMaker extends Component
     ])]
     public TemporaryUploadedFile|string|null $file = null;
 
+    #[Authorize('create', Photo::class)]
     public function updatedFile()
     {
-        $this->authorize('create', Photo::class);
         $this->validate();
 
         $image = app(ImageConverter::class)

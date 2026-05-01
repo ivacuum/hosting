@@ -6,15 +6,14 @@ use App\Domain\Magnet\MagnetCategory;
 use App\Domain\Magnet\MagnetStatus;
 use App\Domain\Magnet\Models\Magnet;
 use App\Livewire\WithGoto;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;
+use Livewire\Attributes\Authorize;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class MagnetForm extends Component
 {
-    use AuthorizesRequests;
     use WithGoto;
 
     public Magnet $magnet;
@@ -36,22 +35,20 @@ class MagnetForm extends Component
     public function mount()
     {
         if ($this->id) {
-            $magnet = Magnet::query()->findOrFail($this->id);
+            $this->magnet = Magnet::query()->findOrFail($this->id);
 
-            $this->rtoId = $magnet->rto_id;
-            $this->status = $magnet->status;
-            $this->categoryId = $magnet->category_id;
-            $this->relatedQuery = $magnet->related_query;
+            $this->rtoId = $this->magnet->rto_id;
+            $this->status = $this->magnet->status;
+            $this->categoryId = $this->magnet->category_id;
+            $this->relatedQuery = $this->magnet->related_query;
         }
     }
 
+    #[Authorize('update', 'magnet')]
     public function submit()
     {
-        $magnet = Magnet::query()->findOrFail($this->id);
-
-        $this->authorize('update', $magnet);
         $this->validate();
-        $this->store($magnet);
+        $this->store();
 
         return redirect()->to($this->goto ?? to('acp/magnets'));
     }
@@ -67,12 +64,12 @@ class MagnetForm extends Component
         ];
     }
 
-    private function store(Magnet $magnet)
+    private function store()
     {
-        $magnet->rto_id = $this->rtoId;
-        $magnet->status = $this->status;
-        $magnet->category_id = $this->categoryId;
-        $magnet->related_query = $this->relatedQuery;
-        $magnet->save();
+        $this->magnet->rto_id = $this->rtoId;
+        $this->magnet->status = $this->status;
+        $this->magnet->category_id = $this->categoryId;
+        $this->magnet->related_query = $this->relatedQuery;
+        $this->magnet->save();
     }
 }

@@ -4,15 +4,14 @@ namespace App\Livewire\Acp;
 
 use App\Domain\Life\Models\Country;
 use App\Livewire\WithGoto;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;
+use Livewire\Attributes\Authorize;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class CountryForm extends Component
 {
-    use AuthorizesRequests;
     use WithGoto;
 
     #[Locked]
@@ -43,9 +42,9 @@ class CountryForm extends Component
         }
     }
 
+    #[Authorize('create', Country::class)]
     public function submit()
     {
-        $this->authorize('create', Country::class);
         $this->validate();
         $this->store();
 

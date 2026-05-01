@@ -5,15 +5,16 @@ namespace App\Livewire\Acp;
 use App\ChatMessage;
 use App\Domain\ChatMessageStatus;
 use App\Livewire\WithGoto;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Livewire\Attributes\Authorize;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class ChatMessageForm extends Component
 {
-    use AuthorizesRequests;
     use WithGoto;
+
+    public ChatMessage $chatMessage;
 
     #[Locked]
     public int $id;
@@ -27,28 +28,26 @@ class ChatMessageForm extends Component
     public function mount()
     {
         if ($this->id) {
-            $chatMessage = ChatMessage::query()->findOrFail($this->id);
+            $this->chatMessage = ChatMessage::query()->findOrFail($this->id);
 
-            $this->text = $chatMessage->text;
-            $this->status = $chatMessage->status;
+            $this->text = $this->chatMessage->text;
+            $this->status = $this->chatMessage->status;
         }
     }
 
+    #[Authorize('update', 'chatMessage')]
     public function submit()
     {
-        $chatMessage = ChatMessage::query()->findOrFail($this->id);
-
-        $this->authorize('update', $chatMessage);
         $this->validate();
-        $this->store($chatMessage);
+        $this->store();
 
         return redirect()->to($this->goto ?? to('acp/chat-messages'));
     }
 
-    private function store(ChatMessage $chatMessage)
+    private function store()
     {
-        $chatMessage->text = $this->text;
-        $chatMessage->status = $this->status;
-        $chatMessage->save();
+        $this->chatMessage->text = $this->text;
+        $this->chatMessage->status = $this->status;
+        $this->chatMessage->save();
     }
 }

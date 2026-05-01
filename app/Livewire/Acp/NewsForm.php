@@ -5,14 +5,13 @@ namespace App\Livewire\Acp;
 use App\Domain\NewsStatus;
 use App\Livewire\WithGoto;
 use App\News;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Livewire\Attributes\Authorize;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class NewsForm extends Component
 {
-    use AuthorizesRequests;
     use WithGoto;
 
     #[Locked]
@@ -38,9 +37,9 @@ class NewsForm extends Component
         }
     }
 
+    #[Authorize('create', News::class)]
     public function submit()
     {
-        $this->authorize('create', News::class);
         $this->validate();
         $this->store();
 

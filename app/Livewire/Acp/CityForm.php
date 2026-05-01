@@ -7,14 +7,13 @@ use App\Domain\Life\Rule\LifeSlug;
 use App\Domain\Spatial\Point;
 use App\Livewire\WithCountryIds;
 use App\Livewire\WithGoto;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Livewire\Attributes\Authorize;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class CityForm extends Component
 {
-    use AuthorizesRequests;
     use WithCountryIds;
     use WithGoto;
 
@@ -59,9 +58,9 @@ class CityForm extends Component
         }
     }
 
+    #[Authorize('create', City::class)]
     public function submit()
     {
-        $this->authorize('create', City::class);
         $this->validate();
 
         $city = $this->id

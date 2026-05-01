@@ -5,14 +5,13 @@ namespace App\Livewire\Acp;
 use App\Domain\Dcpp\DcppHubStatus;
 use App\Domain\Dcpp\Models\DcppHub;
 use App\Livewire\WithGoto;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Livewire\Attributes\Authorize;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class DcppHubForm extends Component
 {
-    use AuthorizesRequests;
     use WithGoto;
 
     #[Locked]
@@ -42,9 +41,9 @@ class DcppHubForm extends Component
         }
     }
 
+    #[Authorize('create', DcppHub::class)]
     public function submit()
     {
-        $this->authorize('create', DcppHub::class);
         $this->validate();
         $this->store();
 

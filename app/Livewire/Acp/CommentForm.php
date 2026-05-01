@@ -5,15 +5,16 @@ namespace App\Livewire\Acp;
 use App\Comment;
 use App\Domain\CommentStatus;
 use App\Livewire\WithGoto;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Livewire\Attributes\Authorize;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class CommentForm extends Component
 {
-    use AuthorizesRequests;
     use WithGoto;
+
+    public Comment $comment;
 
     #[Locked]
     public int $id;
@@ -27,28 +28,26 @@ class CommentForm extends Component
     public function mount()
     {
         if ($this->id) {
-            $comment = Comment::query()->findOrFail($this->id);
+            $this->comment = Comment::query()->findOrFail($this->id);
 
-            $this->html = $comment->html;
-            $this->status = $comment->status;
+            $this->html = $this->comment->html;
+            $this->status = $this->comment->status;
         }
     }
 
+    #[Authorize('update', 'comment')]
     public function submit()
     {
-        $comment = Comment::query()->findOrFail($this->id);
-
-        $this->authorize('update', $comment);
         $this->validate();
-        $this->store($comment);
+        $this->store();
 
         return redirect()->to($this->goto ?? to('acp/comments'));
     }
 
-    private function store(Comment $comment)
+    private function store()
     {
-        $comment->html = $this->html;
-        $comment->status = $this->status;
-        $comment->save();
+        $this->comment->html = $this->html;
+        $this->comment->status = $this->status;
+        $this->comment->save();
     }
 }

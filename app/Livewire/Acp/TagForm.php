@@ -4,14 +4,13 @@ namespace App\Livewire\Acp;
 
 use App\Domain\Life\Models\Tag;
 use App\Livewire\WithGoto;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;
+use Livewire\Attributes\Authorize;
 use Livewire\Attributes\Locked;
 use Livewire\Component;
 
 class TagForm extends Component
 {
-    use AuthorizesRequests;
     use WithGoto;
 
     #[Locked]
@@ -30,9 +29,9 @@ class TagForm extends Component
         }
     }
 
+    #[Authorize('create', Tag::class)]
     public function submit()
     {
-        $this->authorize('create', Tag::class);
         $this->validate();
         $this->store();
 

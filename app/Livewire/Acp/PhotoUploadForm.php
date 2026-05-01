@@ -17,8 +17,8 @@ use App\Domain\Life\Models\Gig;
 use App\Domain\Life\Models\Photo;
 use App\Domain\Life\Models\Trip;
 use App\Domain\Life\PhotoStatus;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Collection;
+use Livewire\Attributes\Authorize;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
@@ -30,7 +30,6 @@ use Livewire\WithFileUploads;
  */
 class PhotoUploadForm extends Component
 {
-    use AuthorizesRequests;
     use WithFileUploads;
 
     public $gigId;
@@ -53,6 +52,7 @@ class PhotoUploadForm extends Component
         return app(ListTripsForInputSelectAction::class)->execute();
     }
 
+    #[Authorize('create', Photo::class)]
     public function updatedFile(
         FindUploadedPhotoAction $findUploadedPhoto,
         GetAltitudeInCentimetersFromGpsDataAction $getAltitudeInCentimetersFromGpsData,
@@ -62,7 +62,6 @@ class PhotoUploadForm extends Component
         GetTakenAtFromExifDataAction $getTakenAtFromExifData,
         ReadRawExifDataAction $readRawExifData,
     ) {
-        $this->authorize('create', Photo::class);
         $this->validate();
 
         if ($this->gigId) {
