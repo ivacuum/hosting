@@ -15,6 +15,10 @@ The project follows a specific structure deviating slightly from standard Larave
 - **Livewire:** Components in `app/Livewire/` and `app/Domain/*/Livewire/`.
 - **ADR:** Architectural Decision Records are stored in `adr/`.
 
+## Guidelines
+
+- For Testing guidelines, see `.agents/guidelines/tests.md`.
+
 ## Key Commands
 
 ### Development
