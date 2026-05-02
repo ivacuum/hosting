@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e42336ca6cbca037d9284da16d5a97ac",
+    "content-hash": "b42619bb44ed91274ca90964e705b6a4",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -62,16 +62,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.379.10",
+            "version": "3.379.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "e742805410f6aaf7a910b07915ed012d90d9e069"
+                "reference": "af784a64c1fc91c55bcfa493d8b92328bc3b38bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/e742805410f6aaf7a910b07915ed012d90d9e069",
-                "reference": "e742805410f6aaf7a910b07915ed012d90d9e069",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/af784a64c1fc91c55bcfa493d8b92328bc3b38bf",
+                "reference": "af784a64c1fc91c55bcfa493d8b92328bc3b38bf",
                 "shasum": ""
             },
             "require": {
@@ -153,9 +153,9 @@
             "support": {
                 "forum": "https://github.com/aws/aws-sdk-php/discussions",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.379.10"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.379.11"
             },
-            "time": "2026-04-30T18:07:43+00:00"
+            "time": "2026-05-01T18:16:33+00:00"
         },
         {
             "name": "brick/math",
@@ -11682,7 +11682,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.4",
+        "php": ">=8.5",
         "ext-intl": "*",
         "ext-swoole": "*"
     },

@@ -1,4 +1,4 @@
-FROM php:8.4-fpm AS build
+FROM php:8.5-fpm AS build
 
 RUN <<EOF
 set -ex
@@ -15,7 +15,7 @@ apt install -y --no-install-recommends \
   tini \
   zlib1g-dev
 docker-php-ext-configure gd --with-freetype --with-jpeg
-docker-php-ext-install -j$(nproc) exif gd intl opcache pcntl pdo_mysql zip
+docker-php-ext-install -j$(nproc) exif gd intl pcntl pdo_mysql zip
 yes '' | pecl install excimer swoole vips
 docker-php-ext-enable excimer swoole vips
 # Удаляем то, что нужно было только для сборки расширений
