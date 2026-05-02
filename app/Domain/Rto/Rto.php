@@ -5,6 +5,7 @@ namespace App\Domain\Rto;
 use App\Domain\Config;
 use GuzzleHttp\RequestOptions;
 use Illuminate\Http\Client\Factory;
+use Illuminate\Support\Uri;
 
 class Rto
 {
@@ -25,19 +26,13 @@ class Rto
 
         if (str_starts_with($input, 'http')) {
             if (\Str::contains($input, ['://rutracker.org', '://rutracker.net', '://rutracker.nl'])) {
-                $url = parse_url($input);
+                $query = Uri::of($input)->query();
 
-                if (!isset($url['query'])) {
+                if (!$query->has('t')) {
                     return null;
                 }
 
-                parse_str($url['query'], $args);
-
-                if (!isset($args['t'])) {
-                    return null;
-                }
-
-                return $args['t'];
+                return $query->integer('t');
             }
         }
 

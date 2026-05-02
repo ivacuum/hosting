@@ -6,6 +6,7 @@ use App\Factory\EmailFactory;
 use App\Mail\CommentConfirmMail;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
+use Uri\WhatWg\Url;
 
 class MailClickTest extends TestCase
 {
@@ -26,7 +27,7 @@ class MailClickTest extends TestCase
             \App\Events\Stats\UserAutologinWithEmailLink::class,
         ]);
 
-        $queryString = parse_url($email->signedLink($goto), PHP_URL_QUERY);
+        $queryString = Url::parse($email->signedLink($goto))->getQuery();
 
         $this->get("mail/click/{$email->getTimestamp()}/{$email->id}?{$queryString}")
             ->assertFound()

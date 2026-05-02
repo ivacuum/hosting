@@ -94,7 +94,7 @@
                   class="block markdown-responsive-image rounded-sm"
                   width="{{ $attach->doc->preview->video->width }}"
                   height="{{ $attach->doc->preview->video->height }}"
-                  poster="{{ Arr::last($attach->doc->preview->photo->sizes)->src }}"
+                  poster="{{ array_last($attach->doc->preview->photo->sizes)->src }}"
                 >
                   <source src="{{ $attach->doc->preview->video->src }}" type="video/mp4">
                 </video>
