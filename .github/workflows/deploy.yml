@@ -34,9 +34,13 @@ jobs:
 
       - name: Archive
         run: |
-          tar --exclude ./.ansible \
+          tar --exclude ./.agents \
+            --exclude ./.ansible \
+            --exclude ./.docker \
+            --exclude ./.gemini \
             --exclude ./.git \
             --exclude ./.github \
+            --exclude ./adr \
             --exclude ./node_modules \
             --exclude ./resources/css \
             --exclude ./resources/js \
