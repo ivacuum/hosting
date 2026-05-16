@@ -6,6 +6,9 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
   phpunit:
     runs-on: ubuntu-latest
@@ -26,17 +29,13 @@ jobs:
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, bcmath, intl, gd, exif, iconv, fileinfo, swoole
           ini-values: error_reporting=E_ALL
           coverage: none
+          cache: composer
 
+      # Поставляемая версия mysql быстра и достаточно современна
       - name: Start mysql
         run: |
           sudo systemctl start mysql.service
           mysql -u root -proot -e 'CREATE DATABASE IF NOT EXISTS tests;'
-
-      - name: Cache composer dependencies
-        uses: actions/cache@v5
-        with:
-          path: vendor
-          key: composer-${{ hashFiles('composer.lock') }}
 
       - name: Run composer install
         run: composer install --prefer-dist --no-interaction --no-progress
@@ -50,7 +49,7 @@ jobs:
           path: node_modules
           key: yarn-${{ hashFiles('yarn.lock') }}
 
-      - run: yarn
+      - run: yarn install --frozen-lockfile
       - run: yarn build
 
       - name: Install graphicsmagick
@@ -62,8 +61,8 @@ jobs:
           php artisan key:generate
           php artisan migrate:fresh
 
+      - name: Run Laravel Pint
+        run: composer pint --parallel --test
+
       - name: Run PHPUnit
         run: composer test
-
-      - name: Run Laravel Pint
-        run: composer pint --parallel
