@@ -17,6 +17,7 @@ The project follows a specific structure deviating slightly from standard Larave
 
 ## Guidelines
 
+- **Do not overwrite user edits.** The user may change code between messages. If something changed, understand *why* and build on it.
 - For Testing guidelines, see `.agents/guidelines/tests.md`.
 
 ## Key Commands
