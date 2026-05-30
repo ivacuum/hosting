@@ -102,6 +102,25 @@ class FeedbackFormTest extends TestCase
         \Notification::assertNothingSent();
     }
 
+    public function testPageUrlWithLocalePrefix()
+    {
+        \Notification::fake();
+
+        session()->setPreviousUrl('http://example.com/en/contact');
+
+        \Livewire::test(FeedbackForm::class)
+            ->set('name', 'name')
+            ->set('email', 'previous-url@example.com')
+            ->set('title', 'title')
+            ->set('text', 'testing locale prefix')
+            ->call('submit')
+            ->assertHasNoErrors();
+
+        $issue = Issue::query()->firstWhere(['email' => 'previous-url@example.com']);
+
+        $this->assertSame('/en/contact', $issue->page);
+    }
+
     public function testRejectsGibberishWithoutSpaces()
     {
         \Livewire::test(FeedbackForm::class)
