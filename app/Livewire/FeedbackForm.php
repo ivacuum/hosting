@@ -9,6 +9,7 @@ use App\Domain\SessionKey;
 use App\Events\IssueReported;
 use App\Issue;
 use App\RateLimit\IssueRateLimiter;
+use App\Rules\AtLeastFewWords;
 use App\Rules\Email;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
@@ -87,7 +88,7 @@ class FeedbackForm extends Component
     {
         return [
             'name' => Rule::requiredIf(!$this->hideName),
-            'text' => ['required', 'string', 'max:1000'],
+            'text' => ['required', 'string', 'max:1000', new AtLeastFewWords(2)],
             'email' => Email::rules(),
             'title' => Rule::requiredIf(!$this->hideTitle),
         ];

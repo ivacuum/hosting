@@ -89,7 +89,7 @@ class FeedbackFormTest extends TestCase
             ->set('name', 'name')
             ->set('email', 'honeypot@example.com')
             ->set('title', 'title')
-            ->set('text', 'text')
+            ->set('text', 'some text')
             ->set('mail', 'bot')
             ->call('submit')
             ->assertHasErrors(['mail' => 'Читер']);
@@ -100,6 +100,17 @@ class FeedbackFormTest extends TestCase
 
         \Event::assertDispatched(\App\Events\Stats\SpammerTrappedLivewire::class);
         \Notification::assertNothingSent();
+    }
+
+    public function testRejectsGibberishWithoutSpaces()
+    {
+        \Livewire::test(FeedbackForm::class)
+            ->set('name', 'name')
+            ->set('email', 'gibberish@example.com')
+            ->set('title', 'title')
+            ->set('text', 'givbEltQUPKUVsQRV')
+            ->call('submit')
+            ->assertHasErrors(['text']);
     }
 
     public function testWithNameHidden()
