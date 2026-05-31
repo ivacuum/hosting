@@ -10,9 +10,9 @@ use Tests\TestCase;
 
 class FormatTripPeriodWithYearActionTest extends TestCase
 {
-    #[TestWith(['2022-01-01', '2022-01-01', 'January&nbsp;1,&nbsp;2022'], 'same day')]
-    #[TestWith(['2022-01-01', '2022-01-09', 'January&nbsp;1–9,&nbsp;2022'], 'same month')]
-    #[TestWith(['2022-01-01', '2022-02-01', 'January&nbsp;1 – February&nbsp;1,&nbsp;2022'], 'different months')]
+    #[TestWith(['2022-01-01', '2022-01-01', "January\u{00A0}1,\u{00A0}2022"], 'same day')]
+    #[TestWith(['2022-01-01', '2022-01-09', "January\u{00A0}1–9,\u{00A0}2022"], 'same month')]
+    #[TestWith(['2022-01-01', '2022-02-01', "January\u{00A0}1 – February\u{00A0}1,\u{00A0}2022"], 'different months')]
     public function testEnglish(string $start, string $end, string $result)
     {
         $this->app->setLocale(Locale::Eng->value);
@@ -22,9 +22,9 @@ class FormatTripPeriodWithYearActionTest extends TestCase
         $this->assertSame($result, $format->execute(Carbon::parse($start), Carbon::parse($end)));
     }
 
-    #[TestWith(['2022-01-01', '2022-01-01', '1&nbsp;января&nbsp;2022'], 'same day')]
-    #[TestWith(['2022-01-01', '2022-01-09', '1–9&nbsp;января&nbsp;2022'], 'same month')]
-    #[TestWith(['2022-01-01', '2022-02-01', '1&nbsp;января – 1&nbsp;февраля&nbsp;2022'], 'different months')]
+    #[TestWith(['2022-01-01', '2022-01-01', "1\u{00A0}января\u{00A0}2022"], 'same day')]
+    #[TestWith(['2022-01-01', '2022-01-09', "1–9\u{00A0}января\u{00A0}2022"], 'same month')]
+    #[TestWith(['2022-01-01', '2022-02-01', "1\u{00A0}января – 1\u{00A0}февраля\u{00A0}2022"], 'different months')]
     public function testRussian(string $start, string $end, string $result)
     {
         $this->app->setLocale(Locale::Rus->value);
