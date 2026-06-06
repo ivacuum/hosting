@@ -28,7 +28,7 @@ class PublishSocialMediaPostJob extends AbstractJob implements ShouldBeUnique
         $containerId = $instagram
             ->createMedia(
                 $this->post->user->socialMediaTokens->first()->token,
-                $this->post->photo->originalUrl(),
+                $this->post->photo->originalR2Url(),
                 $this->post->caption
             )
             ->containerId;

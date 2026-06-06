@@ -4,6 +4,7 @@ namespace Tests\Job;
 
 use App\Domain\Instagram\InstagramCreateMediaResponse;
 use App\Domain\Instagram\InstagramPublishMediaResponse;
+use App\Domain\Life\Factory\PhotoFactory;
 use App\Domain\SocialMedia\Factory\SocialMediaPostFactory;
 use App\Domain\SocialMedia\Factory\SocialMediaTokenFactory;
 use App\Domain\SocialMedia\Job\PublishSocialMediaPostJob;
@@ -34,6 +35,10 @@ class PublishSocialMediaPostJobTest extends TestCase
 
         $post = SocialMediaPostFactory::new()
             ->withCaption('caption')
+            ->withPhoto(
+                PhotoFactory::new()
+                    ->withSlug('test/IMG_1234.jpg')
+            )
             ->create();
 
         $this->assertSame(SocialMediaPostStatus::Queued, $post->status);
@@ -45,9 +50,9 @@ class PublishSocialMediaPostJobTest extends TestCase
 
         $this->assertSame(SocialMediaPostStatus::Published, $post->status);
 
-        \Http::assertSent(static function (Request $request) use ($post) {
+        \Http::assertSent(static function (Request $request) {
             return $request->url() === 'https://graph.vacuum.name/v23.0/me/media?access_token=token'
-                && $request['image_url'] === $post->photo->originalUrl()
+                && $request['image_url'] === 'https://life-r2.ivacuum.org/test/IMG_1234.jpg'
                 && $request['caption'] === 'caption';
         });
 
@@ -109,6 +114,10 @@ class PublishSocialMediaPostJobTest extends TestCase
 
         $post = SocialMediaPostFactory::new()
             ->withCaption('caption')
+            ->withPhoto(
+                PhotoFactory::new()
+                    ->withSlug('test/IMG_1234.jpg')
+            )
             ->create();
 
         $this->assertSame(SocialMediaPostStatus::Queued, $post->status);
@@ -122,9 +131,9 @@ class PublishSocialMediaPostJobTest extends TestCase
 
         \Http::assertSentCount(3);
 
-        \Http::assertSent(static function (Request $request) use ($post) {
+        \Http::assertSent(static function (Request $request) {
             return $request->url() === 'https://graph.vacuum.name/v23.0/me/media?access_token=token'
-                && $request['image_url'] === $post->photo->originalUrl()
+                && $request['image_url'] === 'https://life-r2.ivacuum.org/test/IMG_1234.jpg'
                 && $request['caption'] === 'caption';
         });
 

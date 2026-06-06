@@ -110,6 +110,13 @@ class Photo extends Model
         $this->slug = "{$newPrefix}/{$filename}";
     }
 
+    public function originalR2Url(): string
+    {
+        return $this->isGig()
+            ? "https://life-r2.ivacuum.org/gigs/{$this->slug}"
+            : "https://life-r2.ivacuum.org/{$this->slug}";
+    }
+
     public function originalUrl(): string
     {
         return $this->isGig()
