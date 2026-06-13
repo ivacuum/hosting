@@ -10,7 +10,6 @@
     "foolz/sphinxql-query-builder": "^3.0",
     "geo-io/wkb-parser": "^1.0",
     "guzzlehttp/guzzle": "^7.0",
-    "http-interop/http-factory-guzzle": "^1.2",
     "laravel/framework": "^13.0",
     "laravel/octane": "^2.0",
     "laravel/scout": "^11.0",
