@@ -17,17 +17,4 @@ class SocialiteServiceProvider extends ServiceProvider
             return $socialite->buildProvider(VkProvider::class, config('services.vk'));
         });
     }
-
-    #[\Override]
-    public function register()
-    {
-        $this->app->scoped(VkProvider::class, static function ($app) {
-            return new VkProvider(
-                $app['request'],
-                config('services.vk.client_id'),
-                config('services.vk.client_secret'),
-                config('services.vk.redirect')
-            );
-        });
-    }
 }
