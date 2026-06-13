@@ -319,18 +319,6 @@ return new class extends Migration {
             $table->timestamps();
         });
 
-        Schema::create('servers', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('title');
-            $table->string('host');
-            $table->mediumText('text');
-            $table->string('ftp_host');
-            $table->string('ftp_root');
-            $table->string('ftp_user');
-            $table->string('ftp_pass');
-            $table->timestamps();
-        });
-
         Schema::create('social_media_posts', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
