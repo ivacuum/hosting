@@ -128,4 +128,4 @@
 @ru
   <p>Команда разбирает экипировку в фургоне.</p>
 @endru
-@include('tpl.game-screenshot', ['pic' => 'Phasmophobia Screenshot 2026.01.09 - 21.04.54.13.png'])
+@include('tpl.game-screenshot', ['pic' => 'Phasmophobia Screenshot 2026.01.09 - 21.04.54.13.webp'])
