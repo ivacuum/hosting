@@ -11,9 +11,9 @@ enum Config implements Htmlable
     case BookingLink;
     case CommentFloodInterval;
     case CronOutput;
+    case DefaultLocale;
     case DigitalOceanLink;
     case DrimsimLink;
-    case DefaultLocale;
     case FirstVdsLink;
     case FirstVdsPromocode;
     case InstagramWebhookVerifyToken;
