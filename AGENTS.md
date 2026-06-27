@@ -22,6 +22,8 @@ The project follows a specific structure deviating slightly from standard Larave
 
 ## Key Commands
 
+`AI_AGENT=1` has to be passed to every composer and artisan command to let `laravel/pao` optimize the output of the tool for an agent.
+
 ### Development
 
 - **Start Environment:** `docker-compose up -d`
