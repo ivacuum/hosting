@@ -28,7 +28,7 @@ class CacheHelper
     public function forgetGames()
     {
         $this->cache->deleteMultiple([
-            CacheKey::GamesFinishedById,
+            CacheKey::GamesFrontPageById,
         ]);
     }
 

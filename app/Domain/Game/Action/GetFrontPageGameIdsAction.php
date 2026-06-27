@@ -7,7 +7,7 @@ use App\Domain\Game\Models\Game;
 use Illuminate\Cache\Repository;
 use Illuminate\Support\Collection;
 
-class GetFinishedGameIdsAction
+class GetFrontPageGameIdsAction
 {
     public function __construct(private Repository $cache) {}
 
@@ -16,13 +16,10 @@ class GetFinishedGameIdsAction
         return $this
             ->cache
             ->remember(
-                CacheKey::GamesFinishedById,
-                CacheKey::GamesFinishedById->ttl(),
+                CacheKey::GamesFrontPageById,
+                CacheKey::GamesFrontPageById->ttl(),
                 static function () {
-                    return Game::query()
-                        ->whereNotNull('finished_at')
-                        ->orderByDesc('finished_at')
-                        ->pluck('id');
+                    return Game::query()->pluck('id');
                 })
             ->when($count > 0, static function (Collection $games) use ($count) {
                 return $games->count() > $count
