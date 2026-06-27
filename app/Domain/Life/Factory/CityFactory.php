@@ -11,6 +11,8 @@ class CityFactory
     private int|null $countryId = null;
     private Point|null $point = null;
     private string|null $slug = null;
+    private string|null $titleEn = null;
+    private string|null $titleRu = null;
 
     private CountryFactory|null $countryFactory = null;
 
@@ -26,14 +28,17 @@ class CityFactory
     {
         $title = fake()->city() . ' ' . fake()->randomDigit();
 
+        $titleEn = $this->titleEn ?? $title;
+        $titleRu = $this->titleRu ?? $title;
+
         $city = new City;
         $city->iata = '';
-        $city->slug = $this->slug ?? \Str::slug($title);
+        $city->slug = $this->slug ?? \Str::slug($titleEn);
         $city->point = $this->point ?? new Point(fake()->latitude(), fake()->longitude());
         $city->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
-        $city->hashtags = mb_strtolower(str_replace(' ', '', $title));
-        $city->title_en = $title;
-        $city->title_ru = $title;
+        $city->hashtags = mb_strtolower(str_replace(' ', '', $titleEn));
+        $city->title_en = $titleEn;
+        $city->title_ru = $titleRu;
         $city->country_id = $this->countryId ?? ($this->countryFactory ?? CountryFactory::new())->create()->id;
 
         return $city;
@@ -71,6 +76,15 @@ class CityFactory
     {
         $factory = clone $this;
         $factory->slug = $slug;
+
+        return $factory;
+    }
+
+    public function withTitle(string $titleEn, string $titleRu)
+    {
+        $factory = clone $this;
+        $factory->titleEn = $titleEn;
+        $factory->titleRu = $titleRu;
 
         return $factory;
     }
