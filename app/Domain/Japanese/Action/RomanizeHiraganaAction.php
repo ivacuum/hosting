@@ -164,7 +164,7 @@ class RomanizeHiraganaAction
                     continue;
                 }
 
-                throw new \Exception("Next kana: {$nextKana}");
+                throw new \InvalidArgumentException("Next kana: {$nextKana}");
             } elseif (in_array($nextKana, ['ゃ', 'ょ', 'ゅ'])) {
                 if ($nextRomaji = self::DICTIONARY[$kana . $nextKana] ?? '') {
                     $result .= $nextRomaji;
@@ -172,7 +172,7 @@ class RomanizeHiraganaAction
                     continue;
                 }
 
-                throw new \Exception("Combination: {$kana}{$nextKana}");
+                throw new \InvalidArgumentException("Combination: {$kana}{$nextKana}");
             }
 
             $result .= $romaji;

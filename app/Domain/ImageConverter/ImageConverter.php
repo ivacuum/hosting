@@ -75,11 +75,11 @@ class ImageConverter
                 'command' => $command,
             ]);
 
-            throw new \Exception('Преобразование файла не удалось.');
+            throw new \RuntimeException('Преобразование файла не удалось.');
         }
 
         if (!file_exists($destination)) {
-            throw new \Exception('Преобразование файла не удалось');
+            throw new \RuntimeException('Преобразование файла не удалось');
         }
 
         return new UploadedFile($destination, basename($source));
@@ -100,7 +100,7 @@ class ImageConverter
     public function filter(string $filter): self
     {
         if (!in_array($filter, $this->filters)) {
-            throw new \Exception("Фильтр [{$filter}] не найден");
+            throw new \RuntimeException("Фильтр [{$filter}] не найден");
         }
 
         $this->filter = "-filter {$filter}";
@@ -137,7 +137,7 @@ class ImageConverter
         $gravity = strtolower($gravity);
 
         if (!in_array($gravity, $this->gravities)) {
-            throw new \Exception("Фильтр [{$gravity}] не найден");
+            throw new \RuntimeException("Фильтр [{$gravity}] не найден");
         }
 
         $this->gravity = "-gravity {$gravity}";
