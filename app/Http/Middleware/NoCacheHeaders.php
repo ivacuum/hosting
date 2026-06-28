@@ -2,15 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use Illuminate\Contracts\Foundation\Application;
-
 class NoCacheHeaders
 {
-    public function __construct(private Application $app) {}
-
     public function handle($request, \Closure $next)
     {
-        if ($this->app->runningUnitTests()) {
+        if (app()->runningUnitTests()) {
             return $next($request);
         }
 
