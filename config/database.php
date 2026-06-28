@@ -2,6 +2,8 @@
 
 return [
     'connections' => [
+        // Только переопределенное подключение ради `mysql.options`.
+        // Остальные подключения берутся из конфига фреймворка.
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
