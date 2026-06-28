@@ -205,7 +205,7 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 
 ## URL Generation
 
-- When generating links to other pages, never use named routes or the `route()` function.
+- When generating links to other pages, never use named routes or the `route()` function, except `signedRoute()`.
 
 ## Testing
 
