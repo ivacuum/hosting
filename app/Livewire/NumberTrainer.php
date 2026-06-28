@@ -91,22 +91,6 @@ class NumberTrainer extends Component
         $this->reveal();
     }
 
-    public function decreaseLevel()
-    {
-        $this->validate(['maximum' => 'integer|min:10|max:100000000']);
-        $this->maximum = max($this->maximum / 10, 10);
-
-        event(new \App\Events\Stats\NumberDecreaseMaximum);
-    }
-
-    public function increaseLevel()
-    {
-        $this->validate(['maximum' => 'integer|min:10|max:100000000']);
-        $this->maximum *= 10;
-
-        event(new \App\Events\Stats\NumberIncreaseMaximum);
-    }
-
     public function mount(Request $request, GetNumberLocalesAction $getNumberLocales)
     {
         $this->locales = collect($getNumberLocales->execute())
