@@ -4,8 +4,8 @@ namespace App\Livewire;
 
 use App\Action\GetNumberLocalesAction;
 use App\Domain\Japanese\Action\HiraganizeJapaneseNumberAction;
-use Illuminate\Http\Request;
 use Livewire\Attributes\Computed;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 
 /**
@@ -16,22 +16,20 @@ class NumberSynopsis extends Component
     public $input = 1234;
     public int $number = 1234;
     public array $locales = [];
+
+    #[Url(except: 'en')]
     public string $lang = 'en';
 
-    protected $queryString = [
-        'lang' => ['except' => 'en'],
-    ];
-
-    public function mount(Request $request, GetNumberLocalesAction $getNumberLocales)
+    public function mount(GetNumberLocalesAction $getNumberLocales)
     {
         $this->locales = collect($getNumberLocales->execute())
             ->mapWithKeys(static fn (string $locale) => [$locale => \Locale::getDisplayName($locale, \App::getLocale())])
             ->sort()
             ->all();
 
-        $this->lang = in_array($request->input('lang'), array_keys($this->locales))
-            ? $request->input('lang')
-            : 'en';
+        if (!array_key_exists($this->lang, $this->locales)) {
+            $this->lang = 'en';
+        }
     }
 
     #[Computed]

@@ -5,10 +5,10 @@ namespace App\Livewire;
 use App\Action\GetNumberLocalesAction;
 use App\Domain\Japanese\Action\HiraganizeJapaneseNumberAction;
 use App\Domain\LivewireEvent;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Locked;
+use Livewire\Attributes\Url;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -52,12 +52,9 @@ class NumberTrainer extends Component
     #[Locked]
     public array $locales = [];
 
+    #[Url(except: 'en')]
     public string $lang = 'en';
     public string $answer = '';
-
-    protected $queryString = [
-        'lang' => ['except' => 'en'],
-    ];
 
     public function acceptedAnswers(): array
     {
@@ -91,16 +88,16 @@ class NumberTrainer extends Component
         $this->reveal();
     }
 
-    public function mount(Request $request, GetNumberLocalesAction $getNumberLocales)
+    public function mount(GetNumberLocalesAction $getNumberLocales)
     {
         $this->locales = collect($getNumberLocales->execute())
             ->mapWithKeys(static fn (string $locale) => [$locale => \Locale::getDisplayName($locale, \App::getLocale())])
             ->sort()
             ->all();
 
-        $this->lang = in_array($request->input('lang'), array_keys($this->locales))
-            ? $request->input('lang')
-            : 'en';
+        if (!array_key_exists($this->lang, $this->locales)) {
+            $this->lang = 'en';
+        }
 
         $this->pickRandomNumber();
 

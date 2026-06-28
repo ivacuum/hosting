@@ -203,6 +203,13 @@ class NumberTrainerTest extends TestCase
             ->assertSet('answered', 1);
     }
 
+    public function testUnknownLocale()
+    {
+        \Livewire::withQueryParams(['lang' => 'xx'])
+            ->test(NumberTrainer::class)
+            ->assertSet('lang', 'en');
+    }
+
     public function testWrongAnswer()
     {
         \Livewire::test(NumberTrainer::class)
