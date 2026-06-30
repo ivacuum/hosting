@@ -45,6 +45,7 @@ use Illuminate\Notifications\Notifiable;
  * @property \Illuminate\Database\Eloquent\Collection<int, ChatMessage> $chatMessages
  * @property \Illuminate\Database\Eloquent\Collection<int, Comment> $comments
  * @property \Illuminate\Database\Eloquent\Collection<int, Email> $emails
+ * @property \Illuminate\Database\Eloquent\Collection<int, Email> $receivedEmails
  * @property \Illuminate\Database\Eloquent\Collection<int, ExternalIdentity> $externalIdentities
  * @property \Illuminate\Database\Eloquent\Collection<int, Image> $images
  * @property \Illuminate\Database\Eloquent\Collection<int, Magnet> $magnets
@@ -125,6 +126,11 @@ class User extends Authenticatable implements HasLocalePreference
     public function news()
     {
         return $this->hasMany(News::class)->chaperone();
+    }
+
+    public function receivedEmails()
+    {
+        return $this->hasMany(Email::class)->chaperone();
     }
 
     public function socialMediaTokens()

@@ -25,10 +25,12 @@ class UserObserver
         \DB::transaction(static function () use ($user) {
             $user->chatMessages->each->delete();
             $user->comments->each->delete();
+            $user->emails->each->delete();
             $user->externalIdentities->each->delete();
             $user->images->each->delete();
             $user->magnets->each->delete();
             $user->news->each->delete();
+            $user->receivedEmails->each->delete();
             $user->trips->each->delete();
         });
     }

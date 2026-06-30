@@ -8,9 +8,11 @@ use App\Domain\Life\Mail\TripPublishedMail;
 use App\Domain\Life\Models\Trip;
 use App\Domain\Locale;
 use App\Email;
+use App\User;
 
 class EmailFactory
 {
+    private int|null $userId = null;
     private int|null $relationId = null;
     private string|null $template = null;
     private string|null $relationType = null;
@@ -30,7 +32,7 @@ class EmailFactory
         $model->clicks = 0;
         $model->locale = Locale::Rus->value;
         $model->rel_id = $this->relationId;
-        $model->user_id = UserFactory::new()->create()->id;
+        $model->user_id = $this->userId ?? UserFactory::new()->create()->id;
         $model->rel_type = $this->relationType;
         $model->template = $this->template ?? '';
 
@@ -76,6 +78,16 @@ class EmailFactory
     {
         $factory = clone $this;
         $factory->template = class_basename($template);
+
+        return $factory;
+    }
+
+    public function withUser(int|User $user)
+    {
+        $factory = clone $this;
+        $factory->userId = $user instanceof User ? $user->id : $user;
+        $factory->relationId = $factory->userId;
+        $factory->relationType = new User()->getMorphClass();
 
         return $factory;
     }
