@@ -61,6 +61,7 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
 
         $middleware->trimStrings(except: ['new_password']);
+        $middleware->throttleWithRedis();
 
         $middleware->alias([
             'nav' => \App\Http\Middleware\Breadcrumbs::class,
