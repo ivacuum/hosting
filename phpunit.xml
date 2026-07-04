@@ -17,6 +17,7 @@
     <env name="CACHE_STORE" value="array"/>
     <env name="LOG_CHANNEL" value="null"/>
     <env name="MAIL_MAILER" value="array"/>
+    <env name="MCP_TOKEN" value="test-mcp-token"/>
     <env name="QUEUE_CONNECTION" value="sync"/>
     <env name="SCOUT_DRIVER" value="collection"/>
     <env name="SESSION_DRIVER" value="array"/>

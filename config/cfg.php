@@ -45,6 +45,7 @@ return [
         App\Domain\Locale::Eng->value => ['posix' => 'en_US.UTF-8'],
     ],
     'magnet_anonymous_releaser' => (int) env('MAGNET_ANONYMOUS_RELEASER', 3),
+    'mcp_token' => env('MCP_TOKEN'),
     'sitename' => 'vacuum.kaluga',
     'sphinx' => [
         'host' => env('SPHINX_HOST', 'localhost'),

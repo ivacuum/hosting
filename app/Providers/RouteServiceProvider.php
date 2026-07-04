@@ -40,5 +40,9 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('login', static function (Request $request) {
             return Limit::perMinute(5)->by($request->input('email') . $request->ip());
         });
+
+        RateLimiter::for('mcp', static function (Request $request) {
+            return Limit::perMinute(60)->by($request->bearerToken() ?? $request->ip());
+        });
     }
 }
