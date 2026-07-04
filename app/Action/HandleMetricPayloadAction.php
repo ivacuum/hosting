@@ -20,37 +20,45 @@ class HandleMetricPayloadAction
         PhotoViewsAggregator $photoViewsAggregator,
     ): void {
         foreach ($json as $payload) {
-            if (empty($payload['event'])) {
-                continue;
-            }
+            try {
+                if (empty($payload['event'])) {
+                    logs()->warning('Metrics: payload missing event', ['payload' => $payload]);
 
-            $event = $payload['event'];
-
-            $metricsAggregator->push($event);
-
-            if (empty($payload['data'])) {
-                continue;
-            }
-
-            if ($event === class_basename(GalleryImageViewed::class)) {
-                $imageViewsAggregator->push(GalleryImageViewed::fromArray($payload['data'])->dateAndSlug);
-
-                continue;
-            }
-
-            match ($event) {
-                class_basename(Photo1000Viewed::class),
-                class_basename(Photo2000Viewed::class) => $photoViewsAggregator->push($payload['data']['slug']),
-                default => null,
-            };
-
-            if (str_ends_with($event, 'Viewed')) {
-                $id = intval($payload['data']['id'] ?? 0);
-                $table = $payload['data']['table'] ?? null;
-
-                if ($id > 0 && preg_match('/^[a-z_]+$/', $table)) {
-                    $viewsAggregator->push($table, $id);
+                    continue;
                 }
+
+                $event = $payload['event'];
+
+                $metricsAggregator->push($event);
+
+                if (empty($payload['data'])) {
+                    continue;
+                }
+
+                if ($event === class_basename(GalleryImageViewed::class)) {
+                    $imageViewsAggregator->push(GalleryImageViewed::fromArray($payload['data'])->dateAndSlug);
+
+                    continue;
+                }
+
+                match ($event) {
+                    class_basename(Photo1000Viewed::class),
+                    class_basename(Photo2000Viewed::class) => $photoViewsAggregator->push($payload['data']['slug']),
+                    default => null,
+                };
+
+                if (str_ends_with($event, 'Viewed')) {
+                    $id = intval($payload['data']['id'] ?? 0);
+                    $table = $payload['data']['table'] ?? null;
+
+                    if ($id > 0 && preg_match('/^[a-z_]+$/', $table)) {
+                        $viewsAggregator->push($table, $id);
+                    }
+                }
+            } catch (\Throwable $e) {
+                report($e);
+
+                logs()->warning('Metrics: skipping malformed payload item', ['payload' => $payload]);
             }
         }
     }
