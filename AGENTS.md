@@ -14,6 +14,7 @@ The project follows a specific structure deviating slightly from standard Larave
 - **Seeders:** Located in `app/Seeder/` and `app/Domain/*/Seeder/` (not `database/seeders`).
 - **Livewire:** Components in `app/Livewire/` and `app/Domain/*/Livewire/`.
 - **ADR:** Architectural Decision Records are stored in `adr/`.
+- **Eloquent:** `Model::automaticallyEagerLoadRelationships()` is enabled in `AppServiceProvider`, and `preventLazyLoading` is on outside production. Do **not** manually eager-load relations in controllers/actions "for safety" — relationships load automatically. Only add explicit `with()` when you're consciously restricting the loaded set or shaping the query.
 
 ## Guidelines
 
