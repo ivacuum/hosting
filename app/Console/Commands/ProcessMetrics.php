@@ -66,14 +66,17 @@ class ProcessMetrics extends Command
             $imageViewsAggregator->export();
             $photoViewsAggregator->export();
 
-            $cache->put(CacheKey::MetricsNextStartId, $nextStartId, CacheKey::MetricsNextStartId->ttl());
-
             DB::commit();
         } catch (\Throwable $e) {
             report($e);
-
             DB::rollBack();
+
+            $this->error('Export failed, cursor not advanced. See logs.');
+
+            return;
         }
+
+        $cache->put(CacheKey::MetricsNextStartId, $nextStartId, CacheKey::MetricsNextStartId->ttl());
 
         $this->line("Processed metric stream entries: <info>{$processed}</info>");
     }
