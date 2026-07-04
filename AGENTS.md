@@ -20,6 +20,7 @@ The project follows a specific structure deviating slightly from standard Larave
 
 - **Do not overwrite user edits.** The user may change code between messages. If something changed, understand *why* and build on it.
 - For Testing guidelines, see `.agents/guidelines/tests.md`.
+- For Metrics guidelines, see `.agents/guidelines/metrics.md`. `App\Events\Stats\*` events have **no per-event listeners** — a wildcard listener pushes them to a Redis Stream (aggregated by the `app:metrics:process` cron). Never assume a `Stats\*` event is "dead" just because `grep` finds no listener.
 
 ## Key Commands
 
