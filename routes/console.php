@@ -13,6 +13,7 @@ $cronOutput = Config::CronOutput->get();
 // 4. month 1-12
 // 5. day of week 0-7 (0 and 7 is Sunday)
 Schedule::command(Commands\ProcessMetrics::class)
+    ->withoutOverlapping()
     ->appendOutputTo($cronOutput);
 
 Schedule::command(Commands\SitemapBuild::class)
