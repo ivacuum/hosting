@@ -21,13 +21,17 @@ class Metric extends Model
 
     public static function possibleMetrics(): array
     {
-        foreach (glob(app_path('Events/Stats/*.php')) as $file) {
-            $events[] = pathinfo($file, PATHINFO_FILENAME);
-        }
+        return once(static function () {
+            $events = [];
 
-        asort($events);
+            foreach (glob(app_path('Events/Stats/*.php')) as $file) {
+                $events[] = pathinfo($file, PATHINFO_FILENAME);
+            }
 
-        return $events ?? [];
+            asort($events);
+
+            return $events ?? [];
+        });
     }
 
     #[\Override]
