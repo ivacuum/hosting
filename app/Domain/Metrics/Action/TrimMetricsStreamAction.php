@@ -10,6 +10,6 @@ class TrimMetricsStreamAction
     public function execute(): int
     {
         return Redis::client()
-            ->executeRaw(['XTRIM', RedisKey::Metrics->value, 'MAXLEN', '~', '5000']);
+            ->executeRaw(['XTRIM', RedisKey::Metrics->value, 'MAXLEN', '~', '50000']);
     }
 }
