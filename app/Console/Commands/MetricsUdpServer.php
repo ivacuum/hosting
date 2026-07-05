@@ -17,6 +17,9 @@ use Swoole\Timer;
 
 #[Signature('app:metrics-udp-server {host=127.0.0.1} {port=2720}')]
 #[Description('Metrics daemon')]
+/**
+ * @deprecated Код остался в качестве примера как писать udp-сервер на swoole.
+ */
 class MetricsUdpServer extends Command
 {
     private int $acceptedConnections = 0;
