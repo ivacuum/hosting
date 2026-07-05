@@ -48,15 +48,19 @@ class ProcessMetrics extends Command
             $processed++;
         }
 
-        if ($processed) {
-            $this->table(
-                ['Metric', 'Value'],
-                collect($metricsAggregator->data())
-                    ->filter()
-                    ->map(static fn ($value, $key) => [$key, $value])
-                    ->all(),
-            );
+        if ($processed === 0) {
+            $this->line('There was nothing to process.');
+
+            return self::SUCCESS;
         }
+
+        $this->table(
+            ['Metric', 'Value'],
+            collect($metricsAggregator->data())
+                ->filter()
+                ->map(static fn ($value, $key) => [$key, $value])
+                ->all(),
+        );
 
         DB::beginTransaction();
 
@@ -71,9 +75,9 @@ class ProcessMetrics extends Command
             report($e);
             DB::rollBack();
 
-            $this->error('Export failed, cursor not advanced. See logs.');
+            $this->error('Processing failed, cursor not advanced.');
 
-            return;
+            return self::FAILURE;
         }
 
         $cache->put(CacheKey::MetricsNextStartId, $nextStartId, CacheKey::MetricsNextStartId->ttl());

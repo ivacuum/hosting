@@ -41,6 +41,15 @@ class MetricsAggregatorTest extends TestCase
             'event' => $metric2,
             'count' => 1,
         ]);
+
+        $aggregator->push($metric1);
+        $aggregator->export();
+
+        $this->assertDatabaseHas('metrics', [
+            'date' => now()->toDateString(),
+            'event' => $metric1,
+            'count' => 3,
+        ]);
     }
 
     public function testNotExist()
