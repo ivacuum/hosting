@@ -143,6 +143,8 @@ class MagnetAddForm extends Component
                 throw ValidationException::withMessages([
                     'input' => 'Раздача не найдена, попробуйте другую ссылку',
                 ]);
+            } elseif ($e instanceof ValidationException) {
+                throw $e;
             }
 
             throw ValidationException::withMessages([

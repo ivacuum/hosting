@@ -259,7 +259,7 @@ class MagnetTest extends TestCase
 
         \Livewire::test(MagnetAddForm::class)
             ->set('input', $magnet->externalLink())
-            ->assertHasErrors('input');
+            ->assertHasErrors(['input' => 'Данная раздача уже присутствует на сайте. Попробуйте добавить другую.']);
 
         $this->assertCount(0, $user->magnets);
 
