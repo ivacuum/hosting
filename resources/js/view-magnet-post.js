@@ -49,6 +49,8 @@ const app = createApp({
         return this.getOriginalImagebanSrc($item.parent('.postLink').attr('href'))
       } else if (-1 !== title.search(/\.radikal\.ru/)) {
         return this.getOriginalRadikalSrc($item.parent('.postLink').attr('href'))
+      } else if (-1 !== title.search(/i\.ibb\.co\//)) {
+        return this.getOriginalIbbSrc($item.parent('.postLink').attr('href'))
       }
     },
 
@@ -75,6 +77,14 @@ const app = createApp({
 
     getOriginalRadikalSrc(path) {
       if (!path || -1 === path.search(/\.radikal\.ru/)) {
+        return
+      }
+
+      return path
+    },
+
+    getOriginalIbbSrc(path) {
+      if (!path || -1 === path.search(/i\.ibb\.co\//)) {
         return
       }
 
