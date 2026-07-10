@@ -13,12 +13,13 @@ The Tag Server MCP must be configured and connected in your client before runnin
 
 ## Session workflow
 
-You keep **no state between sessions**. Resume is purely in-session, tracked in your own context:
+You keep **no state between sessions**. Do not write scripts. Do not create folders. Resume is purely in-session, tracked in your own context:
 
 1. Start from the lowest untagged photo_id or use specific photo_id if provided by user.
 2. Call `list_tags` once and hold the EN+RU label set in memory. Build the list of allowed `title_en` values and the matching `id` map.
 3. Paginate `list_untagged_photos` from `<starter_id or 1>` upward until `has_more_pages` is false. Iterate the returned photos in memory.
-4. For each photo:
+4. Group all `curl` calls to download all photos in one go.
+5. For each photo:
 
 - Read the image at `original_url` (a public R2 URL, no auth needed) directly — you are multimodal and can see it yourself.
 - Tag the photo using the system prompt:
@@ -38,7 +39,8 @@ You keep **no state between sessions**. Resume is purely in-session, tracked in 
 - If vision returned no tags AND no new proposals: **do not silently skip**. Surface the photo to the user (slug + URL) and ask whether to (a) leave it untagged and move on, or (b) supply custom tags manually.
 - Report progress: "photo_id=N assigned=[title_en,...]" to stderr as you go.
 
-5. When the page iterator is exhausted, summarize: how many newly tagged, how many skipped, what new tags were minted.
+6. `rm` all downloaded photos in one go.
+7. When the page iterator is exhausted, summarize: how many newly tagged, how many skipped, what new tags were minted.
 
 ## Idempotency & resume guarantees
 
