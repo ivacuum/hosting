@@ -6,10 +6,13 @@ use App\Domain\Life\Models\Photo;
 use App\Domain\Life\Models\Trip;
 use App\Domain\Life\PhotoStatus;
 use App\Domain\Spatial\Point;
+use App\Factory\UserFactory;
+use App\User;
 
 class PhotoFactory
 {
     private int|null $relId = null;
+    private int|null $userId = 1;
     private string|null $lat = null;
     private string|null $lon = null;
     private string|null $slug = null;
@@ -18,6 +21,7 @@ class PhotoFactory
 
     private TagFactory|null $tagFactory = null;
     private TripFactory|null $tripFactory = null;
+    private UserFactory|null $userFactory = null;
 
     public function create()
     {
@@ -49,7 +53,7 @@ class PhotoFactory
         $photo->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $photo->rel_id = $this->relId;
         $photo->status = $this->status;
-        $photo->user_id = 1;
+        $photo->user_id = $this->userId ?? ($this->userFactory ?? UserFactory::new())->create()->id;
         $photo->rel_type = $this->relType;
 
         if ($this->tripFactory) {
@@ -112,6 +116,21 @@ class PhotoFactory
             $factory->relType = new Trip()->getMorphClass();
         } else {
             $factory->tripFactory = $trip ?? TripFactory::new()->metaImage();
+        }
+
+        return $factory;
+    }
+
+    public function withUser(int|User|UserFactory|null $user = null)
+    {
+        $factory = clone $this;
+
+        if ($user instanceof User) {
+            $factory->userId = $user->id;
+        } elseif (is_int($user)) {
+            $factory->userId = $user;
+        } else {
+            $factory->userFactory = $user ?? UserFactory::new();
         }
 
         return $factory;

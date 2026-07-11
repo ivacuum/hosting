@@ -11,18 +11,23 @@ use Carbon\CarbonInterface;
 
 class SocialMediaPostFactory
 {
-    private int $userId = 1;
+    private int|null $userId = null;
     private int|null $photoId = null;
     private string|null $caption = null;
     private SocialMediaPostStatus $status = SocialMediaPostStatus::Queued;
     private CarbonInterface|null $publishedAt = null;
 
     private PhotoFactory|null $photoFactory = null;
+    private SocialMediaTokenFactory|null $socialMediaTokenFactory = null;
 
     public function create()
     {
         $model = $this->make();
         $model->save();
+
+        $this->socialMediaTokenFactory
+            ?->withUser($model->user)
+            ->create();
 
         return $model;
     }
@@ -86,6 +91,20 @@ class SocialMediaPostFactory
     {
         $factory = clone $this;
         $factory->publishedAt = $publishedAt;
+
+        return $factory;
+    }
+
+    public function withSocialMediaToken(string|SocialMediaTokenFactory|null $token = null)
+    {
+        $factory = clone $this;
+
+        if (is_string($token)) {
+            $factory->socialMediaTokenFactory = SocialMediaTokenFactory::new()
+                ->withToken($token);
+        } else {
+            $factory->socialMediaTokenFactory = $token ?? SocialMediaTokenFactory::new();
+        }
 
         return $factory;
     }

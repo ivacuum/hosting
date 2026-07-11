@@ -197,14 +197,14 @@ class MagnetTest extends TestCase
 
         \Event::fake(\App\Events\Stats\TorrentAddedAnonymously::class);
 
+        $user = User::query()->find(Config::MagnetAnonymousReleaser->get())
+            ?? UserFactory::new()->withId(Config::MagnetAnonymousReleaser->get())->create();
+
         $livewire = \Livewire::test(MagnetAddForm::class)
             ->set('input', $stub->rto_id)
             ->set('categoryId', $stub->category_id->value)
             ->call('submit')
             ->assertHasNoErrors();
-
-        $user = User::query()->find(Config::MagnetAnonymousReleaser->get())
-            ?? UserFactory::new()->withId(Config::MagnetAnonymousReleaser->get())->create();
 
         /** @var Magnet $magnet */
         $magnet = $user->magnets()->latest('id')->first();

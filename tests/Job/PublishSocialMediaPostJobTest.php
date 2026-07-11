@@ -6,11 +6,8 @@ use App\Domain\Instagram\InstagramCreateMediaResponse;
 use App\Domain\Instagram\InstagramPublishMediaResponse;
 use App\Domain\Life\Factory\PhotoFactory;
 use App\Domain\SocialMedia\Factory\SocialMediaPostFactory;
-use App\Domain\SocialMedia\Factory\SocialMediaTokenFactory;
 use App\Domain\SocialMedia\Job\PublishSocialMediaPostJob;
 use App\Domain\SocialMedia\SocialMediaPostStatus;
-use App\Factory\UserFactory;
-use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Sleep;
@@ -27,18 +24,13 @@ class PublishSocialMediaPostJobTest extends TestCase
             ...InstagramPublishMediaResponse::fakeSuccess('media-id'),
         ]);
 
-        User::query()->findOr(1, static fn () => UserFactory::new()->admin()->create());
-
-        SocialMediaTokenFactory::new()
-            ->withToken('token')
-            ->create();
-
         $post = SocialMediaPostFactory::new()
             ->withCaption('caption')
             ->withPhoto(
                 PhotoFactory::new()
                     ->withSlug('test/IMG_1234.jpg')
             )
+            ->withSocialMediaToken('token')
             ->create();
 
         $this->assertSame(SocialMediaPostStatus::Queued, $post->status);
@@ -70,14 +62,9 @@ class PublishSocialMediaPostJobTest extends TestCase
 
         Sleep::fake();
 
-        User::query()->findOr(1, static fn () => UserFactory::new()->admin()->create());
-
-        SocialMediaTokenFactory::new()
-            ->withToken('token')
-            ->create();
-
         $post = SocialMediaPostFactory::new()
             ->withCaption('caption')
+            ->withSocialMediaToken('token')
             ->create();
 
         $this->assertSame(SocialMediaPostStatus::Queued, $post->status);
@@ -106,18 +93,13 @@ class PublishSocialMediaPostJobTest extends TestCase
 
         Sleep::fake();
 
-        User::query()->findOr(1, static fn () => UserFactory::new()->admin()->create());
-
-        SocialMediaTokenFactory::new()
-            ->withToken('token')
-            ->create();
-
         $post = SocialMediaPostFactory::new()
             ->withCaption('caption')
             ->withPhoto(
                 PhotoFactory::new()
                     ->withSlug('test/IMG_1234.jpg')
             )
+            ->withSocialMediaToken('token')
             ->create();
 
         $this->assertSame(SocialMediaPostStatus::Queued, $post->status);
