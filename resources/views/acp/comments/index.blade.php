@@ -47,7 +47,7 @@
       </td>
       <td class="whitespace-nowrap">{{ ViewHelper::dateShort($model->created_at) }}</td>
       <td>
-        @if ($model->status->isPublished())
+        @if ($model->status->isPublished() && $model->www())
           <a href="{{ $model->www() }}">
             @svg (external-link)
           </a>

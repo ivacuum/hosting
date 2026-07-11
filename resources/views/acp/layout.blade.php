@@ -32,7 +32,7 @@
           </a>
         @endforeach
       @endif
-      @if (method_exists($model, 'www'))
+      @if (method_exists($model, 'www') && $model->www())
         <a class="border-l-2 border-transparent px-3 py-2" href="{{ $model->www() }}">
           @lang('acp.www')
           @svg (external-link)
