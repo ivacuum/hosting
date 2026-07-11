@@ -1,5 +1,6 @@
 <?php
 
+use App\Exceptions\RedirectUnauthenticatedGuest;
 use App\Exceptions\RenderTokenMismatch;
 use App\Exceptions\SendToSentry;
 use App\Exceptions\SkipDatabaseOffline;
@@ -71,6 +72,7 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(static function (Exceptions $exceptions) {
+        $exceptions->renderable(app(RedirectUnauthenticatedGuest::class));
         $exceptions->renderable(app(RenderTokenMismatch::class));
 
         $exceptions->reportable(app(SkipDatabaseOffline::class));

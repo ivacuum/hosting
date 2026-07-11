@@ -13,7 +13,8 @@ class SignOutTest extends TestCase
     public function testGuest()
     {
         $this->get('auth/logout')
-            ->assertRedirect('auth/login');
+            ->assertRedirect('auth/login')
+            ->assertSessionHas('message', 'Для просмотра этой страницы необходимо быть зарегистрированным пользователем');
 
         $this->assertGuest();
     }
