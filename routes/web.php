@@ -15,14 +15,14 @@ Route::post('auth/login', [Ctrl\Auth\SignIn::class, 'login'])->middleware('guest
 Route::get('auth/logout', [Ctrl\Auth\SignIn::class, 'logout'])->middleware('auth');
 
 Route::get('auth/register', [Ctrl\Auth\NewAccount::class, 'index'])->middleware('guest');
-Route::post('auth/register', [Ctrl\Auth\NewAccount::class, 'register'])->middleware('guest');
+Route::post('auth/register', [Ctrl\Auth\NewAccount::class, 'register'])->middleware(['guest', 'throttle:register']);
 Route::get('auth/register/confirm/{token}', [Ctrl\Auth\NewAccount::class, 'confirm'])->middleware('guest');
 
 Route::get('auth/password/remind', [Ctrl\Auth\ForgotPassword::class, 'index'])->middleware('guest');
-Route::post('auth/password/remind', [Ctrl\Auth\ForgotPassword::class, 'sendResetLink']);
+Route::post('auth/password/remind', [Ctrl\Auth\ForgotPassword::class, 'sendResetLink'])->middleware('throttle:password-remind');
 
 Route::get('auth/password/reset/{token}', [Ctrl\Auth\ResetPassword::class, 'index']);
-Route::post('auth/password/reset', [Ctrl\Auth\ResetPassword::class, 'reset']);
+Route::post('auth/password/reset', [Ctrl\Auth\ResetPassword::class, 'reset'])->middleware('throttle:password-reset');
 
 // OAuth
 Route::get('auth/facebook', [Ctrl\Auth\Facebook::class, 'index']);
@@ -109,7 +109,7 @@ Route::middleware('nav:Японский язык,japanese')->group(static functi
     Route::view('japanese/words-trainer', 'japanese.words-trainer')->middleware('nav:Тренажер по набору слов хираганой и катаканой');
 });
 
-Route::post('js/typo', Ctrl\JsTypoController::class);
+Route::post('js/typo', Ctrl\JsTypoController::class)->middleware('throttle:typo');
 
 Route::middleware('nav:Корейский язык,korean')->group(static function () {
     Route::view('korean', 'korean.index');
@@ -147,7 +147,7 @@ Route::view('magnets/add', 'magnets.create');
 Route::get('magnets/comments', [Ctrl\MagnetsController::class, 'comments']);
 Route::get('magnets/faq', [Ctrl\MagnetsController::class, 'faq']);
 Route::get('magnets/my', [Ctrl\MagnetsController::class, 'my'])->middleware('auth');
-Route::post('magnets/request', Ctrl\MagnetRequestReleaseController::class);
+Route::post('magnets/request', Ctrl\MagnetRequestReleaseController::class)->middleware('throttle:magnet-request');
 Route::get('magnets/{magnet}', [Ctrl\MagnetsController::class, 'show'])->middleware('nav:Магнеты,magnets');
 Route::post('magnets/{magnet}/magnet', [Ctrl\MagnetsController::class, 'magnet']);
 
@@ -235,7 +235,7 @@ Route::view('retracker/dev', 'retracker.dev');
 Route::view('retracker/usage', 'retracker.usage');
 
 Route::get('subscriptions', [Ctrl\SubscriptionController::class, 'edit']);
-Route::post('subscriptions', [Ctrl\SubscriptionController::class, 'store']);
+Route::post('subscriptions', [Ctrl\SubscriptionController::class, 'store'])->middleware('throttle:subscription');
 Route::put('subscriptions', [Ctrl\SubscriptionController::class, 'update'])->middleware('auth');
 Route::get('subscriptions/confirm', [Ctrl\SubscriptionController::class, 'confirm'])->middleware('auth');
 
@@ -253,7 +253,7 @@ Route::middleware('nav:Тренажеры,trainers')->group(static function () {
 Route::get('trips/{trip}', [Ctrl\TripController::class, 'show']);
 
 Route::view('up', 'upload');
-Route::post('up', Ctrl\UploadController::class);
+Route::post('up', Ctrl\UploadController::class)->middleware('throttle:upload');
 
 Route::middleware('nav:Пользователи,users')->group(static function () {
     Route::get('users', [Ctrl\UserController::class, 'index']);

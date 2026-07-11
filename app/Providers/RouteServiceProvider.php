@@ -38,11 +38,54 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         RateLimiter::for('login', static function (Request $request) {
-            return Limit::perMinute(5)->by($request->input('email') . $request->ip());
+            return [
+                Limit::perMinute(5)->by($request->input('email')),
+                Limit::perMinute(10)->by($request->ip()),
+            ];
+        });
+
+        RateLimiter::for('magnet-request', static function (Request $request) {
+            return Limit::perMinute(3)->by($request->user()?->id ?: $request->ip());
         });
 
         RateLimiter::for('mcp', static function (Request $request) {
             return Limit::perMinute(60)->by($request->bearerToken() ?? $request->ip());
+        });
+
+        RateLimiter::for('password-remind', static function (Request $request) {
+            return [
+                Limit::perMinute(3)->by($request->input('email')),
+                Limit::perMinute(5)->by($request->ip()),
+            ];
+        });
+
+        RateLimiter::for('password-reset', static function (Request $request) {
+            return [
+                Limit::perMinute(3)->by($request->input('email')),
+                Limit::perMinute(5)->by($request->ip()),
+            ];
+        });
+
+        RateLimiter::for('register', static function (Request $request) {
+            return [
+                Limit::perMinute(5)->by($request->ip()),
+                Limit::perMinute(5)->by($request->input('email')),
+            ];
+        });
+
+        RateLimiter::for('subscription', static function (Request $request) {
+            return [
+                Limit::perMinute(3)->by($request->ip()),
+                Limit::perMinute(3)->by($request->input('email')),
+            ];
+        });
+
+        RateLimiter::for('typo', static function (Request $request) {
+            return Limit::perMinute(3)->by($request->ip());
+        });
+
+        RateLimiter::for('upload', static function (Request $request) {
+            return Limit::perMinute(3)->by($request->ip());
         });
     }
 }
