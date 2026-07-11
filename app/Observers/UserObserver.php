@@ -91,8 +91,11 @@ class UserObserver
         $user->ip = Str::trim($user->ip);
         $user->salt = Str::trim($user->salt);
         $user->email = Str::trim($user->email);
-        $user->login = Str::trim($user->login);
         $user->avatar = Str::trim($user->avatar);
         $user->locale = Str::trim($user->locale ?? config('app.locale'));
+
+        if (filled($user->login)) {
+            $user->login = Str::trim($user->login);
+        }
     }
 }

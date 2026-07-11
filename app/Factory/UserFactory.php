@@ -12,8 +12,8 @@ class UserFactory
     private int|null $id = null;
     private int|null $telegramUserId = null;
     private int|null $magnetShortTitle = 0;
-    private string $login = '';
     private string|null $email = null;
+    private string|null $login = null;
     private string|null $password = null;
     private Locale $locale = Locale::Rus;
     private UserStatus $status = UserStatus::Active;

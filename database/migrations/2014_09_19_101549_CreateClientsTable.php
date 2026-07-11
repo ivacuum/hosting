@@ -384,7 +384,7 @@ return new class extends Migration {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('email')->unique();
-            $table->string('login')->default('');
+            $table->string('login')->nullable()->unique();
             $table->string('password')->default('');
             // $table->text('two_factor_secret')->nullable();
             // $table->text('two_factor_recovery_codes')->nullable();
