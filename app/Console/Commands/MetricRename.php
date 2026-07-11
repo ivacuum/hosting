@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Action\IfMetricExistsAction;
 use App\Domain\Metrics\Models\Metric;
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
@@ -10,29 +11,40 @@ use Illuminate\Console\Attributes\Signature;
 #[Description('Rename a metric')]
 class MetricRename extends Command
 {
-    public function handle()
+    public function handle(IfMetricExistsAction $metricExists): int
     {
         $to = $this->argument('to');
         $from = $this->argument('from');
 
-        $metrics = Metric::query()
-            ->where('event', $from)
-            ->orderBy('date')
-            ->get(['date', 'count']);
+        if (!$metricExists->execute($to)) {
+            $this->error("Unknown target metric [{$to}]. Must be one of: " . implode(', ', Metric::possibleMetrics()));
 
-        $values = [];
-
-        /** @var Metric $metric */
-        foreach ($metrics as $metric) {
-            $values[] = sprintf('("%s", "%s", %d)', $metric->date, $to, $metric->count);
+            return self::FAILURE;
         }
 
-        $rows = count($values);
+        $rows = Metric::query()
+            ->where('event', $from)
+            ->count();
 
-        \DB::statement('INSERT INTO metrics (`date`, `event`, `count`) VALUES ' . implode(', ', $values) . ' ON DUPLICATE KEY UPDATE `count` = `count` + values(`count`)');
+        if ($rows === 0) {
+            $this->info("No metrics found for [{$from}]");
 
-        Metric::query()->where('event', $from)->delete();
+            return self::SUCCESS;
+        }
+
+        \DB::transaction(function () use ($to, $from): void {
+            \DB::statement(
+                'INSERT INTO metrics (`date`, `event`, `count`) SELECT src.`date`, ?, src.`count` FROM metrics AS src WHERE src.event = ? ON DUPLICATE KEY UPDATE metrics.`count` = metrics.`count` + VALUES(`count`)',
+                [$to, $from],
+            );
+
+            Metric::query()
+                ->where('event', $from)
+                ->delete();
+        });
 
         $this->info("Renamed {$from} => {$to} (rows: {$rows})");
+
+        return self::SUCCESS;
     }
 }
