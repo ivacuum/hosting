@@ -1,3 +1,4 @@
+<?php /** @var \Illuminate\Pagination\AbstractPaginator $paginator */ ?>
 <nav class="flex items-center justify-between w-full">
   @if (!$paginator->onFirstPage())
     <a

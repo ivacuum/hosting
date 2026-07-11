@@ -1,3 +1,4 @@
+<?php /** @var \Illuminate\Support\ViewErrorBag $errors */ ?>
 @if (count($errors))
   <x-alert-danger>
     <ul>

@@ -1,3 +1,4 @@
+<?php /** @var \Illuminate\Pagination\AbstractPaginator $paginator */ ?>
 @section('pagination_seo')
   @if($paginator->hasMorePages())
     <link rel="next" id="next_page" href="{{ $paginator->nextPageUrl() }}">
