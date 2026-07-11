@@ -51,7 +51,8 @@ class Google extends Base
         }
 
         if (!$identity->user_id) {
-            $identity->update(['user_id' => $user->id]);
+            $identity->user_id = $user->id;
+            $identity->save();
         }
 
         $user->activate();

@@ -13,7 +13,10 @@ class BurnAction
     public function execute(Kanji|Radical|Vocabulary $burnable, int $userId): Burnable|null
     {
         try {
-            return value($burnable->burnable()->create(['user_id' => $userId]));
+            $burn = new Burnable;
+            $burn->user_id = $userId;
+
+            return $burnable->burnable()->save($burn) ?: null;
         } catch (QueryException) {
             return null;
         }

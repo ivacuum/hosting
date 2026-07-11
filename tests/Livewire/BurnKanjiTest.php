@@ -2,6 +2,7 @@
 
 namespace Tests\Livewire;
 
+use App\Domain\Wanikani\Action\BurnAction;
 use App\Domain\Wanikani\Factory\KanjiFactory;
 use App\Domain\Wanikani\Livewire\BurnKanji;
 use App\Factory\UserFactory;
@@ -28,7 +29,7 @@ class BurnKanjiTest extends TestCase
     {
         $user = UserFactory::new()->create();
         $kanji = KanjiFactory::new()->create();
-        $kanji->burnable()->create(['user_id' => $user->id]);
+        app(BurnAction::class)->execute($kanji, $user->id);
 
         \Livewire::actingAs($user)
             ->test(BurnKanji::class, ['id' => $kanji->id])

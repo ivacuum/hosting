@@ -71,7 +71,6 @@ class User extends Authenticatable implements HasLocalePreference
     public const int STATUS_INACTIVE = 0;
     public const int STATUS_ACTIVE = 1;
 
-    protected $guarded = ['created_at', 'updated_at'];
     protected $hidden = ['password', 'salt', 'remember_token', 'two_factor_secret', 'two_factor_recovery_codes'];
 
     protected $attributes = [

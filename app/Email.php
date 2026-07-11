@@ -31,7 +31,6 @@ class Email extends Model
 {
     const TIMESTAMP_FORMAT = 'YmdHis';
 
-    protected $guarded = ['created_at'];
     protected $perPage = 50;
 
     // Relations

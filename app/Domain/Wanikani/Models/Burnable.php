@@ -19,7 +19,6 @@ class Burnable extends Model
     public $timestamps = false;
 
     protected $primaryKey;
-    protected $fillable = ['user_id'];
 
     #[\Override]
     protected function casts(): array

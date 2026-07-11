@@ -2,6 +2,7 @@
 
 namespace Tests\Livewire;
 
+use App\Domain\Wanikani\Action\BurnAction;
 use App\Domain\Wanikani\Factory\RadicalFactory;
 use App\Domain\Wanikani\Livewire\BurnRadical;
 use App\Factory\UserFactory;
@@ -28,7 +29,7 @@ class BurnRadicalTest extends TestCase
     {
         $user = UserFactory::new()->create();
         $radical = RadicalFactory::new()->create();
-        $radical->burnable()->create(['user_id' => $user->id]);
+        app(BurnAction::class)->execute($radical, $user->id);
 
         \Livewire::actingAs($user)
             ->test(BurnRadical::class, ['id' => $radical->id])
