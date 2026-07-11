@@ -19,7 +19,7 @@ class GetModelAccessibleRelationsAction
         }
 
         $me = \Auth::user();
-        $result = [];
+        $relatedByField = [];
 
         foreach ($showWithCount as $field) {
             $related = $model->{$field}()->getRelated();
@@ -28,9 +28,19 @@ class GetModelAccessibleRelationsAction
                 continue;
             }
 
-            $model->loadCount($field);
-            $countField = str($field)->snake() . '_count';
-            $count = $model->{$countField};
+            $relatedByField[$field] = $related;
+        }
+
+        if (count($relatedByField) < 1) {
+            return collect();
+        }
+
+        $model->loadCount(array_keys($relatedByField));
+
+        $result = [];
+
+        foreach ($relatedByField as $field => $related) {
+            $count = $model->{str($field)->snake() . '_count'};
 
             if ($count < 1) {
                 continue;
