@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Domain\UserStatus;
 use App\Events\Stats\ExternalIdentityAdded;
 use App\Events\Stats\UserRegisteredWithExternalIdentity;
 use App\ExternalIdentity;
@@ -59,7 +60,7 @@ abstract class Base extends Controller
     {
         $newUser = new User;
         $newUser->email = $user->getEmail();
-        $newUser->status = User::STATUS_ACTIVE;
+        $newUser->status = UserStatus::Active;
         $newUser->save();
 
         event(new UserRegisteredWithExternalIdentity);

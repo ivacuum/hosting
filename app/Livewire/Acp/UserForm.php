@@ -8,7 +8,6 @@ use App\User;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Authorize;
 use Livewire\Attributes\Locked;
-use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class UserForm extends Component
@@ -20,8 +19,7 @@ class UserForm extends Component
     #[Locked]
     public int $id;
 
-    #[Validate('integer')]
-    public int|null $status = UserStatus::Active->value;
+    public UserStatus $status = UserStatus::Active;
     public string|null $email = '';
 
     public function mount()

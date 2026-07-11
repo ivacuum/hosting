@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Domain\SessionKey;
+use App\Domain\UserStatus;
 use App\Events\Stats\UserPasswordRemindedDuringRegistration;
 use App\Events\Stats\UserRegisteredWithEmail;
 use App\Http\Controllers\Controller;
@@ -40,7 +41,7 @@ class NewAccount extends Controller
 
         $user = new User;
         $user->email = $data['email'];
-        $user->status = User::STATUS_INACTIVE;
+        $user->status = UserStatus::Inactive;
         $user->password = $data['password'];
         $user->activation_token = \Str::random(16);
         $user->save();

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Domain\SessionKey;
+use App\Domain\UserStatus;
 use App\Email;
 use App\Events\MailReported;
 use App\Events\Stats\MailClicked;
@@ -30,7 +31,7 @@ class MailController extends Controller
             if (null !== $user = User::query()->find($email->user_id)) {
                 $user->activate();
 
-                if ($user->status === User::STATUS_ACTIVE && $auth->id() !== $user->id) {
+                if ($user->status === UserStatus::Active && $auth->id() !== $user->id) {
                     $auth->login($user);
 
                     event(new \App\Events\Stats\UserAutologinWithEmailLink);

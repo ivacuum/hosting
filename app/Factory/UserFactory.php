@@ -49,7 +49,7 @@ class UserFactory
         $user->email = $this->email ?? fake()->safeEmail();
         $user->login = $this->login;
         $user->locale = $this->locale->value;
-        $user->status = $this->status->value;
+        $user->status = $this->status;
         $user->last_login_at = $this->lastLoginAt;
         $user->telegram_id = $this->telegramUserId;
         $user->magnet_short_title = $this->magnetShortTitle;

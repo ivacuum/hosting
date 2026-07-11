@@ -31,7 +31,7 @@ class FindUserByEmailOrCreateAction
 
         $user = new User;
         $user->email = $email;
-        $user->status = $status->value;
+        $user->status = $status;
         $user->save();
 
         event(new \App\Events\Stats\UserRegisteredAuto);

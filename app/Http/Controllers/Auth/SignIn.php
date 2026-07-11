@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Domain\SessionKey;
+use App\Domain\UserStatus;
 use App\Events\Stats\UserLoggedOut;
 use App\Events\Stats\UserSignedInWithEmail;
 use App\Events\Stats\UserSignedInWithUsername;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
-use App\User;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 
@@ -103,7 +103,7 @@ class SignIn extends Controller
     protected function credentials(Request $request)
     {
         return [
-            'status' => User::STATUS_ACTIVE,
+            'status' => UserStatus::Active,
             'password' => $request->input('password'),
             $this->username() => $request->input('email'),
         ];

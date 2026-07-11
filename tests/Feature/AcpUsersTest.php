@@ -101,7 +101,7 @@ class AcpUsersTest extends TestCase
         $user = UserFactory::new()->create();
 
         \Livewire::test(UserForm::class, ['id' => $user->id])
-            ->set('status', UserStatus::Inactive->value)
+            ->set('status', UserStatus::Inactive)
             ->set('email', 'livewire@example.com')
             ->call('submit')
             ->assertHasNoErrors()
@@ -110,6 +110,6 @@ class AcpUsersTest extends TestCase
         $user->refresh();
 
         $this->assertSame('livewire@example.com', $user->email);
-        $this->assertSame(UserStatus::Inactive->value, $user->status);
+        $this->assertSame(UserStatus::Inactive, $user->status);
     }
 }

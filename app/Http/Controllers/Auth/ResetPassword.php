@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Domain\SessionKey;
+use App\Domain\UserStatus;
 use App\Events\Stats\UserPasswordResetted;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
@@ -98,8 +99,8 @@ class ResetPassword extends Controller
     protected function userStatusesOkToReset()
     {
         return [
-            User::STATUS_INACTIVE,
-            User::STATUS_ACTIVE,
+            UserStatus::Inactive,
+            UserStatus::Active,
         ];
     }
 }

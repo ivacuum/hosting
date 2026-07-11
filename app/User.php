@@ -24,7 +24,7 @@ use Illuminate\Notifications\Notifiable;
  * @property string $login
  * @property string $password
  * @property string $salt
- * @property int $status
+ * @property UserStatus $status
  * @property string $locale
  * @property int $magnet_short_title
  * @property NotificationDeliveryMethod $notify_gigs
@@ -67,9 +67,6 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable implements HasLocalePreference
 {
     use Notifiable;
-
-    public const int STATUS_INACTIVE = 0;
-    public const int STATUS_ACTIVE = 1;
 
     protected $hidden = ['password', 'salt', 'remember_token', 'two_factor_secret', 'two_factor_recovery_codes'];
 
@@ -145,8 +142,8 @@ class User extends Authenticatable implements HasLocalePreference
     // Methods
     public function activate(): bool
     {
-        if ($this->status === UserStatus::Inactive->value) {
-            $this->status = UserStatus::Active->value;
+        if ($this->status === UserStatus::Inactive) {
+            $this->status = UserStatus::Active;
             $this->activation_token = '';
             $this->save();
 
@@ -180,7 +177,7 @@ class User extends Authenticatable implements HasLocalePreference
 
     public function isActive(): bool
     {
-        return $this->status === UserStatus::Active->value;
+        return $this->status === UserStatus::Active;
     }
 
     public function isAdmin(): bool
@@ -249,7 +246,7 @@ class User extends Authenticatable implements HasLocalePreference
     protected function casts(): array
     {
         return [
-            'status' => 'int',
+            'status' => UserStatus::class,
             'notify_gigs' => NotificationDeliveryMethod::class,
             'notify_news' => NotificationDeliveryMethod::class,
             'notify_trips' => NotificationDeliveryMethod::class,
