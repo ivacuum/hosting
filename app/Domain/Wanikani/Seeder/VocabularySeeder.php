@@ -2,7 +2,7 @@
 
 namespace App\Domain\Wanikani\Seeder;
 
-use App\Domain\Wanikani\Factory\VocabularyFactory;
+use App\Domain\Wanikani\Models\Vocabulary;
 use Illuminate\Database\Seeder;
 
 class VocabularySeeder extends Seeder
@@ -62,8 +62,17 @@ class VocabularySeeder extends Seeder
 
     public function run()
     {
-        foreach (self::VOCABULARY as ['kana' => $kana, 'level' => $level, 'wk_id' => $wkId, 'meaning' => $meaning, 'character' => $character, 'sentences' => $sentences, 'male_audio' => $maleAudio, 'female_audio' => $femaleAudio]) {
-            $vocab = VocabularyFactory::new()->make();
+        foreach (self::VOCABULARY as [
+            'kana' => $kana,
+            'level' => $level,
+            'wk_id' => $wkId,
+            'meaning' => $meaning,
+            'character' => $character,
+            'sentences' => $sentences,
+            'male_audio' => $maleAudio,
+            'female_audio' => $femaleAudio,
+        ]) {
+            $vocab = new Vocabulary;
             $vocab->kana = $kana;
             $vocab->level = $level;
             $vocab->wk_id = $wkId;

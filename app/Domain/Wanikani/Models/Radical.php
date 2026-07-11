@@ -14,7 +14,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $level
  * @property string $character
  * @property string $meaning
- * @property string $image
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  * @property Burnable $burnable
@@ -51,13 +50,6 @@ class Radical extends Model
     public function externalLink(): string
     {
         return "https://www.wanikani.com/radicals/{$this->meaning}";
-    }
-
-    public function svgContent(): string
-    {
-        return $this->character
-            ? ''
-            : file_get_contents(resource_path("svg/wk/{$this->meaning}.svg"));
     }
 
     public function www(): string

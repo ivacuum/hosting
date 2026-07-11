@@ -44,7 +44,7 @@ class WanikaniSearch extends Component
             ->where('meaning', 'LIKE', "%{$this->q}%")
             ->orderBy('level')
             ->orderBy('meaning')
-            ->get(['id', 'level', 'character', 'meaning', 'image']);
+            ->get(['id', 'level', 'character', 'meaning']);
 
         $this->kanjis = Kanji::query()
             ->where('meaning', 'LIKE', "%{$this->q}%")

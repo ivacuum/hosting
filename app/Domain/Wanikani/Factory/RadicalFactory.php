@@ -19,8 +19,8 @@ class RadicalFactory
     public function make()
     {
         $radical = new Radical;
-        $radical->image = '';
         $radical->level = $this->level ?? fake()->numberBetween(1, 60);
+        $radical->wk_id = random_int(1, 1111);
         $radical->meaning = fake()->words(2, true);
         $radical->character = fake()->unique()->word();
 

@@ -30,7 +30,7 @@ class RadicalList extends Component
             ->when($this->level, fn (Builder $query) => $query->where('level', $this->level))
             ->orderBy('level')
             ->orderBy('meaning')
-            ->get(['id', 'level', 'character', 'meaning', 'image']);
+            ->get(['id', 'level', 'character', 'meaning']);
 
         if ($user) {
             $this->burned = Burnable::query()

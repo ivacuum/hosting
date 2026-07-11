@@ -40,11 +40,11 @@ return new class extends Migration {
 
         Schema::create('cities', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('country_id')->default(0);
+            $table->unsignedInteger('country_id');
             $table->string('title_ru');
-            $table->string('title_en')->default('');
+            $table->string('title_en');
             $table->string('slug');
-            $table->char('iata', 3);
+            $table->char('iata', 3)->default('');
             $table->string('hashtags')->default('');
             $table->geography('point', 'point')->nullable();
             $table->unsignedInteger('views')->default(0);
@@ -53,7 +53,7 @@ return new class extends Migration {
 
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id')->default(0);
+            $table->unsignedInteger('user_id');
             $table->morphs('rel');
             $table->unsignedTinyInteger('status')->default(App\Domain\CommentStatus::Published->value);
             $table->text('html');
@@ -63,7 +63,7 @@ return new class extends Migration {
         Schema::create('countries', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title_ru');
-            $table->string('title_en')->default('');
+            $table->string('title_en');
             $table->string('slug');
             $table->string('emoji', 20)->charset('utf8mb4')->collation('utf8mb4_unicode_ci')->collate('utf8mb4_unicode_ci');
             $table->string('hashtags')->default('');
@@ -105,7 +105,7 @@ return new class extends Migration {
             $table->string('path');
             $table->string('query', 2000);
             $table->text('request_headers');
-            $table->text('request_body');
+            $table->mediumText('request_body');
             $table->text('response_headers');
             $table->mediumText('response_body');
             $table->unsignedBigInteger('response_size');
@@ -120,7 +120,7 @@ return new class extends Migration {
 
         Schema::create('external_identities', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned()->default(0);
+            $table->unsignedInteger('user_id')->nullable();
             $table->string('provider');
             $table->string('uid');
             $table->string('email');
@@ -161,7 +161,7 @@ return new class extends Migration {
 
         Schema::create('games', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('steam_id')->nullable()->unique();
+            $table->unsignedInteger('steam_id')->unique();
             $table->string('title');
             $table->string('slug')->unique();
             $table->string('short_description_en', 2000);
@@ -173,12 +173,12 @@ return new class extends Migration {
 
         Schema::create('gigs', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('city_id')->default(0);
-            $table->unsignedInteger('artist_id')->default(0);
+            $table->unsignedInteger('city_id');
+            $table->unsignedInteger('artist_id');
             $table->string('title_ru')->default('');
             $table->string('title_en')->default('');
             $table->string('slug')->default('');
-            $table->timestamp('date')->nullable();
+            $table->timestamp('date');
             $table->tinyInteger('status')->unsigned()->default(App\Domain\Life\GigStatus::Hidden->value);
             $table->string('meta_title_ru')->default('');
             $table->string('meta_title_en')->default('');
@@ -191,7 +191,7 @@ return new class extends Migration {
 
         Schema::create('images', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id')->default(0);
+            $table->unsignedInteger('user_id');
             $table->string('slug');
             $table->char('date', 6);
             $table->unsignedBigInteger('size')->default(0);
@@ -201,7 +201,7 @@ return new class extends Migration {
 
         Schema::create('issues', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id')->default(0);
+            $table->unsignedInteger('user_id');
             $table->unsignedTinyInteger('status')->default(App\Domain\IssueStatus::Pending->value);
             $table->string('name');
             $table->string('email');
@@ -240,8 +240,8 @@ return new class extends Migration {
 
         Schema::create('kanjis', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('wk_id')->default(0);
-            $table->unsignedTinyInteger('level')->default(0);
+            $table->unsignedInteger('wk_id');
+            $table->unsignedTinyInteger('level');
             $table->string('character');
             $table->string('meaning');
             $table->string('onyomi');
@@ -259,16 +259,16 @@ return new class extends Migration {
 
         Schema::create('magnets', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id')->default(0);
-            $table->unsignedInteger('category_id')->default(0);
-            $table->unsignedInteger('rto_id')->default(0)->unique();
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('category_id');
+            $table->unsignedInteger('rto_id')->unique();
             $table->string('title', 300);
             $table->mediumText('html');
             $table->string('related_query');
             $table->unsignedBigInteger('size')->default(0);
             $table->char('info_hash', 40);
             $table->string('announcer');
-            $table->unsignedTinyInteger('status')->default(1);
+            $table->unsignedTinyInteger('status')->default(App\Domain\Magnet\MagnetStatus::Published->value);
             $table->unsignedInteger('clicks')->default(0);
             $table->unsignedInteger('views')->default(0);
             $table->timestamp('registered_at')->nullable();
@@ -285,12 +285,12 @@ return new class extends Migration {
 
         Schema::create('news', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id')->default(0);
+            $table->unsignedInteger('user_id');
             $table->string('title');
             $table->text('markdown');
             $table->text('html');
-            $table->unsignedTinyInteger('status')->default(0);
             $table->string('locale', 10);
+            $table->unsignedTinyInteger('status')->default(0);
             $table->unsignedInteger('views')->default(0);
             $table->timestamps();
         });
@@ -303,7 +303,7 @@ return new class extends Migration {
 
         Schema::create('photos', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id')->default(0);
+            $table->unsignedInteger('user_id');
             $table->morphs('rel');
             $table->string('slug');
             $table->geography('point', 'point')->nullable();
@@ -318,11 +318,10 @@ return new class extends Migration {
 
         Schema::create('radicals', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('wk_id')->default(0);
-            $table->unsignedTinyInteger('level')->default(0);
+            $table->unsignedInteger('wk_id');
+            $table->unsignedTinyInteger('level');
             $table->string('character');
             $table->string('meaning');
-            $table->string('image');
             $table->timestamps();
         });
 
@@ -363,13 +362,13 @@ return new class extends Migration {
 
         Schema::create('trips', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id')->default(0);
-            $table->unsignedInteger('city_id')->default(0);
-            $table->string('title_ru')->default('');
-            $table->string('title_en')->default('');
-            $table->string('slug')->default('');
-            $table->timestamp('date_start')->nullable();
-            $table->timestamp('date_end')->nullable();
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('city_id');
+            $table->string('title_ru');
+            $table->string('title_en');
+            $table->string('slug');
+            $table->timestamp('date_start');
+            $table->timestamp('date_end');
             $table->unsignedTinyInteger('status')->default(App\Domain\Life\TripStatus::Inactive->value);
             $table->text('markdown');
             $table->text('html');
@@ -390,7 +389,7 @@ return new class extends Migration {
             // $table->text('two_factor_secret')->nullable();
             // $table->text('two_factor_recovery_codes')->nullable();
             $table->string('salt', 5)->default('');
-            $table->unsignedTinyInteger('status')->default(0);
+            $table->unsignedTinyInteger('status')->default(App\Domain\UserStatus::Inactive->value);
             $table->string('locale', 10)->default(App\Domain\Locale::Rus->value);
             $table->unsignedTinyInteger('magnet_short_title')->default(0);
             $table->unsignedTinyInteger('notify_gigs')->default(App\Domain\NotificationDeliveryMethod::Disabled->value);
@@ -411,8 +410,8 @@ return new class extends Migration {
 
         Schema::create('vocabularies', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('wk_id')->default(0);
-            $table->unsignedTinyInteger('level')->default(0);
+            $table->unsignedInteger('wk_id');
+            $table->unsignedTinyInteger('level');
             $table->string('character');
             $table->string('meaning');
             $table->string('kana');

@@ -30,7 +30,6 @@ class ParseWanikani extends Command
                     ?? Radical::query()->firstWhere('meaning', $radicalEntity->meaning)
                     ?? new Radical;
 
-                $radical->image = '';
                 $radical->wk_id = $radicalEntity->id;
                 $radical->level = $radicalEntity->level;
                 $radical->meaning = mb_strtolower($radicalEntity->meaning);

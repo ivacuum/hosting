@@ -2,7 +2,6 @@
 
 namespace App\Domain\Wanikani\Seeder;
 
-use App\Domain\Wanikani\Factory\KanjiFactory;
 use App\Domain\Wanikani\Models\Kanji;
 use App\Domain\Wanikani\Models\Radical;
 use Illuminate\Database\Seeder;
@@ -12,6 +11,7 @@ class KanjiSeeder extends Seeder
     private const array KANJI = [
         [
             'level' => 1,
+            'wk_id' => 440,
             'nanori' => 'かず',
             'onyomi' => 'いち',
             'kunyomi' => 'ひと',
@@ -21,6 +21,7 @@ class KanjiSeeder extends Seeder
         ],
         [
             'level' => 1,
+            'wk_id' => 441,
             'onyomi' => 'に',
             'kunyomi' => 'ふた',
             'meaning' => 'two',
@@ -29,6 +30,7 @@ class KanjiSeeder extends Seeder
         ],
         [
             'level' => 2,
+            'wk_id' => 470,
             'onyomi' => 'ご',
             'kunyomi' => 'いつ',
             'meaning' => 'five',
@@ -37,6 +39,7 @@ class KanjiSeeder extends Seeder
         ],
         [
             'level' => 2,
+            'wk_id' => 477,
             'onyomi' => 'げつ, がつ',
             'kunyomi' => 'つき',
             'meaning' => 'moon, month',
@@ -45,6 +48,7 @@ class KanjiSeeder extends Seeder
         ],
         [
             'level' => 7,
+            'wk_id' => 662,
             'onyomi' => 'じ',
             'kunyomi' => 'とき',
             'meaning' => "time, o'clock, hour",
@@ -53,6 +57,7 @@ class KanjiSeeder extends Seeder
         ],
         [
             'level' => 9,
+            'wk_id' => 726,
             'onyomi' => 'たい',
             'kunyomi' => 'ま',
             'meaning' => 'wait',
@@ -64,8 +69,9 @@ class KanjiSeeder extends Seeder
     public function run()
     {
         foreach (self::KANJI as $data) {
-            $kanji = KanjiFactory::new()->make();
+            $kanji = new Kanji;
             $kanji->level = $data['level'];
+            $kanji->wk_id = $data['wk_id'];
             $kanji->nanori = $data['nanori'] ?? '';
             $kanji->onyomi = $data['onyomi'];
             $kanji->kunyomi = $data['kunyomi'];

@@ -29,7 +29,7 @@ class GameFactory
         $game = new Game;
         $game->slug = $this->slug ?? fake()->slug();
         $game->title = $this->title ?? fake()->company();
-        $game->steam_id = $this->steamId;
+        $game->steam_id = $this->steamId ?? random_int(100_000, 1_000_000);
         $game->finished_at = $this->finishedAt;
         $game->released_at = $this->releasedAt ?? fake()->dateTimeBetween('1998-01-01');
         $game->short_description_en = $this->shortDescriptionEn ?? fake()->sentences(2, asText: true);

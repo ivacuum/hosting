@@ -21,6 +21,7 @@ class KanjiFactory
     {
         $kanji = new Kanji;
         $kanji->level = $this->level ?? fake()->numberBetween(1, 60);
+        $kanji->wk_id = random_int(1, 1111);
         $kanji->nanori = '';
         $kanji->onyomi = fake()->word();
         $kanji->kunyomi = fake()->word();
