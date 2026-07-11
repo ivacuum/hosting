@@ -12,6 +12,7 @@ use App\Scope\CommentRelationScope;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
 /**
  * @property int $id
@@ -86,10 +87,10 @@ class Comment extends Model
 
     public function www(): string
     {
-        return match ($this->rel_type) {
-            new Magnet()->getMorphClass() => to('magnets/{magnet}', $this->rel_id) . $this->anchor(),
-            new News()->getMorphClass() => to('news/{id}', $this->rel_id) . $this->anchor(),
-            new Trip()->getMorphClass() => to('trips/{trip}', [$this->rel_id, 'anchor' => $this->anchor()]),
+        return match (Relation::getMorphedModel($this->rel_type)) {
+            Magnet::class => to('magnets/{magnet}', $this->rel_id) . $this->anchor(),
+            News::class => to('news/{id}', $this->rel_id) . $this->anchor(),
+            Trip::class => to('trips/{trip}', [$this->rel_id, 'anchor' => $this->anchor()]),
             default => '',
         };
     }
