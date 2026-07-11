@@ -36,6 +36,7 @@ use Illuminate\Notifications\Notifiable;
  * @property string $ip
  * @property string $activation_token
  * @property string $remember_token
+ * @property bool $root
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  * @property \Carbon\CarbonImmutable $last_login_at
@@ -205,7 +206,7 @@ class User extends Authenticatable implements HasLocalePreference
 
     public function isRoot(): bool
     {
-        return $this->id === 1;
+        return $this->root;
     }
 
     #[\Override]
@@ -246,6 +247,7 @@ class User extends Authenticatable implements HasLocalePreference
     protected function casts(): array
     {
         return [
+            'root' => 'bool',
             'status' => UserStatus::class,
             'notify_gigs' => NotificationDeliveryMethod::class,
             'notify_news' => NotificationDeliveryMethod::class,

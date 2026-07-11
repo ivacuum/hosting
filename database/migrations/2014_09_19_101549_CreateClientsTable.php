@@ -401,6 +401,7 @@ return new class extends Migration {
             $table->ipAddress('ip')->default('');
             $table->string('activation_token')->default('');
             $table->rememberToken();
+            $table->unsignedTinyInteger('root')->default(0);
             $table->timestamps();
             $table->timestamp('last_login_at')->nullable();
             $table->timestamp('password_changed_at')->nullable();

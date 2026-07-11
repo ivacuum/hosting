@@ -9,6 +9,7 @@ use Carbon\CarbonInterface;
 
 class UserFactory
 {
+    private bool $root = false;
     private int|null $id = null;
     private int|null $telegramUserId = null;
     private int|null $magnetShortTitle = 0;
@@ -21,7 +22,9 @@ class UserFactory
 
     public function admin()
     {
-        return $this->withId(1);
+        return $this
+            ->withId(1)
+            ->withRoot();
     }
 
     public function create()
@@ -44,8 +47,11 @@ class UserFactory
 
     public function make()
     {
-        $user = new User;
+        $user = $this->id === 1
+            ? User::query()->find(1) ?? new User
+            : new User;
         $user->id = $this->id;
+        $user->root = $this->root;
         $user->email = $this->email ?? fake()->safeEmail();
         $user->login = $this->login;
         $user->locale = $this->locale->value;
@@ -64,6 +70,11 @@ class UserFactory
     public static function new(): self
     {
         return new self;
+    }
+
+    public function root()
+    {
+        return $this->withRoot();
     }
 
     public function withEmail(string $email)
@@ -110,6 +121,14 @@ class UserFactory
     {
         $factory = clone $this;
         $factory->password = $password;
+
+        return $factory;
+    }
+
+    public function withRoot(bool $isRoot = true)
+    {
+        $factory = clone $this;
+        $factory->root = $isRoot;
 
         return $factory;
     }

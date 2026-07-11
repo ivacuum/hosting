@@ -10,6 +10,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         UserFactory::new()
+            ->root()
             ->withEmail('root@example.com')
             ->withLogin('root')
             ->withPassword('top-secret')
