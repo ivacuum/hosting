@@ -240,9 +240,9 @@ return new class extends Migration {
 
         Schema::create('kanjis', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('wk_id');
+            $table->unsignedInteger('wk_id')->unique();
             $table->unsignedTinyInteger('level');
-            $table->string('character');
+            $table->string('character')->unique();
             $table->string('meaning');
             $table->string('onyomi');
             $table->string('kunyomi');
@@ -305,7 +305,7 @@ return new class extends Migration {
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->morphs('rel');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->geography('point', 'point')->nullable();
             $table->unsignedTinyInteger('status')->default(1);
             $table->unsignedInteger('views')->default(0);
@@ -318,10 +318,10 @@ return new class extends Migration {
 
         Schema::create('radicals', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('wk_id');
+            $table->unsignedInteger('wk_id')->unique();
             $table->unsignedTinyInteger('level');
             $table->string('character');
-            $table->string('meaning');
+            $table->string('meaning')->unique();
             $table->timestamps();
         });
 
@@ -410,9 +410,9 @@ return new class extends Migration {
 
         Schema::create('vocabularies', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('wk_id');
+            $table->unsignedInteger('wk_id')->unique();
             $table->unsignedTinyInteger('level');
-            $table->string('character');
+            $table->string('character')->unique();
             $table->string('meaning');
             $table->string('kana');
             $table->text('sentences');
