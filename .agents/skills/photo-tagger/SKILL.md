@@ -13,12 +13,16 @@ The Tag Server MCP must be configured and connected in your client before runnin
 
 ## Session workflow
 
-You keep **no state between sessions**. Do not write scripts. Do not create folders. Resume is purely in-session, tracked in your own context:
+You keep **no state between sessions**. Do not write scripts. Do not create folders or subdirectories (never run `mkdir`). Resume is purely in-session, tracked in your own context:
+
+- **Local Application Isolation**: Do not query the local Laravel application database or run SQL queries. Rely solely on the Tag Server MCP.
+- **No Artifacts**: Do not generate markdown files or artifacts for tagging summaries. Always print the tagging summary and detail tables directly to the user in the final text response.
+- **Direct Downloads**: Always download photos directly into the root of the existing session scratch directory as `<photo_id>.jpg` without creating any subdirectory.
 
 1. Start from the lowest untagged photo_id or use specific photo_id if provided by user.
 2. Call `list_tags` once and hold the EN+RU label set in memory. Build the list of allowed `title_en` values and the matching `id` map.
 3. Paginate `list_untagged_photos` from `<starter_id or 1>` upward until `has_more_pages` is false. Iterate the returned photos in memory.
-4. Group all `curl` calls to download all photos in one go.
+4. Download all photos directly into the scratch folder in a single `curl` invocation by chaining multiple `-o <local_path> <url>` arguments for each photo.
 5. For each photo:
 
 - Read the image at `original_url` (a public R2 URL, no auth needed) directly — you are multimodal and can see it yourself.
@@ -40,7 +44,7 @@ You keep **no state between sessions**. Do not write scripts. Do not create fold
 - Report progress: "photo_id=N assigned=[title_en,...]" to stderr as you go.
 
 6. `rm` all downloaded photos in one go.
-7. When the page iterator is exhausted, summarize: how many newly tagged, how many skipped, what new tags were minted.
+7. When the page iterator is exhausted, summarize directly in the chat response (do not create files or artifacts): how many newly tagged, how many skipped, what new tags were minted, and a table of the tags assigned to each photo.
 
 ## Idempotency & resume guarantees
 
