@@ -16,8 +16,8 @@ class TagServerAssignTagsToolTest extends TestCase
     public function testAssignTagsAttachAndIdempotent(): void
     {
         $photo = PhotoFactory::new()->withTrip()->create();
-        $tag1 = TagFactory::new()->withTitle('закат', 'sunset')->create();
-        $tag2 = TagFactory::new()->withTitle('река', 'river')->create();
+        $tag1 = TagFactory::new()->withTitle('phpunit закат', 'phpunit sunset')->create();
+        $tag2 = TagFactory::new()->withTitle('phpunit река', 'phpunit river')->create();
 
         $response = TagServer::tool(AssignTagsTool::class, [
             'photo_id' => $photo->id,
@@ -54,7 +54,7 @@ class TagServerAssignTagsToolTest extends TestCase
 
     public function testAssignTagsRejectsUnknownPhoto(): void
     {
-        $tag = TagFactory::new()->withTitle('закат', 'sunset')->create();
+        $tag = TagFactory::new()->withTitle('phpunit закат', 'phpunit sunset')->create();
 
         TagServer::tool(AssignTagsTool::class, [
             'photo_id' => 999_999_999,

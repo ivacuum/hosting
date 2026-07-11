@@ -15,8 +15,8 @@ class TagServerCreateTagToolTest extends TestCase
     public function testCreateTag(): void
     {
         $response = TagServer::tool(CreateTagTool::class, [
-            'title_ru' => 'мост',
-            'title_en' => 'bridge',
+            'title_ru' => 'phpunit мост',
+            'title_en' => 'phpunit bridge',
         ]);
 
         $response
@@ -24,34 +24,34 @@ class TagServerCreateTagToolTest extends TestCase
             ->assertName('create-tag')
             ->assertStructuredContent(fn ($json) => $json
                 ->has('id')
-                ->where('title_ru', 'мост')
-                ->where('title_en', 'bridge')
+                ->where('title_ru', 'phpunit мост')
+                ->where('title_en', 'phpunit bridge')
                 ->etc()
             );
 
         $this->assertDatabaseHas('tags', [
-            'title_ru' => 'мост',
-            'title_en' => 'bridge',
+            'title_ru' => 'phpunit мост',
+            'title_en' => 'phpunit bridge',
         ]);
     }
 
     public function testCreateTagRejectsDuplicateByEnTitle(): void
     {
-        TagFactory::new()->withTitle('что-то', 'sunset')->create();
+        TagFactory::new()->withTitle('phpunit что-то', 'phpunit sunset')->create();
 
         TagServer::tool(CreateTagTool::class, [
-            'title_ru' => 'что-то-ещё',
-            'title_en' => 'sunset',
+            'title_ru' => 'phpunit что-то-ещё',
+            'title_en' => 'phpunit sunset',
         ])->assertHasErrors();
     }
 
     public function testCreateTagRejectsDuplicateByRuTitle(): void
     {
-        TagFactory::new()->withTitle('закат', 'sunset')->create();
+        TagFactory::new()->withTitle('phpunit закат', 'phpunit sunset')->create();
 
         TagServer::tool(CreateTagTool::class, [
-            'title_ru' => 'закат',
-            'title_en' => 'something-else',
+            'title_ru' => 'phpunit закат',
+            'title_en' => 'phpunit something-else',
         ])->assertHasErrors();
     }
 }

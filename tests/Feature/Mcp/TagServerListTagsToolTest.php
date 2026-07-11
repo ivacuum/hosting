@@ -15,8 +15,8 @@ class TagServerListTagsToolTest extends TestCase
 
     public function testListTags(): void
     {
-        TagFactory::new()->withTitle('железная дорога', 'railroad')->create();
-        TagFactory::new()->withTitle('закат', 'sunset')->create();
+        TagFactory::new()->withTitle('phpunit железная дорога', 'phpunit railroad')->create();
+        TagFactory::new()->withTitle('phpunit закат', 'phpunit sunset')->create();
 
         $response = TagServer::tool(ListTagsTool::class);
 
