@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Observers;
+namespace App\Domain\SocialMedia\Observers;
 
 use App\Domain\SocialMedia\Models\SocialMediaPost;
 use App\Domain\SocialMedia\SocialMediaPostStatus;
