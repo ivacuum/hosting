@@ -354,8 +354,8 @@ return new class extends Migration {
 
         Schema::create('tags', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title_ru');
-            $table->string('title_en');
+            $table->string('title_ru')->unique();
+            $table->string('title_en')->unique();
             $table->unsignedInteger('views')->default(0);
             $table->timestamps();
         });
