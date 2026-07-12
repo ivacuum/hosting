@@ -13,7 +13,8 @@ The project follows a specific structure deviating slightly from standard Larave
 - **Domains:** Value Objects, Enums, and domain-specific logic reside in `app/Domain/`. Directories inside can mirror the Laravel directory structure convention.
 - **Seeders:** Located in `app/Seeder/` and `app/Domain/*/Seeder/` (not `database/seeders`).
 - **Livewire:** Components in `app/Livewire/` and `app/Domain/*/Livewire/`.
-- **ADR:** Architectural Decision Records are stored in `adr/`.
+- **Factories:** Custom factory classes live in `app/Factory/` and `app/Domain/*/Factory/`. They are plain PHP builders (static `new()` entry point, immutable `with*()` modifiers that return a cloned instance, `make()` to build an unsaved model, `create()` to persist). **Do not use Eloquent factories** (`Illuminate\Database\Eloquent\Factories\Factory`) — not for tests, not for seeding.
+- **ADR:** Architectural Decision Records are stored in `adr/` in Russian.
 - **Eloquent:** `Model::automaticallyEagerLoadRelationships()` is enabled in `AppServiceProvider`, and `preventLazyLoading` is on outside production. Do **not** manually eager-load relations in controllers/actions "for safety" — relationships load automatically. Only add explicit `with()` when you're consciously restricting the loaded set or shaping the query.
 
 ## Guidelines
@@ -66,7 +67,7 @@ Russian is the default language of this project. English is optional. When trans
 
 - Act as a Senior Laravel Developer, Senior DevOps, and SRE.
 - When creating new logic, check if it fits into an `Action` class.
-- Respect the `app/Factory/` and `app/Domain/*/Factory/` location for Eloquent model factories.
+- Respect the `app/Factory/` and `app/Domain/*/Factory/` location for custom model factories (see Factories above).
 - Respect the `app/Seeder/` and `app/Domain/*/Seeder/` location for database seeding.
 - Try to use existing domain from `app/Domain/` if possible.
 - Always delete `down` method from database migrations.
