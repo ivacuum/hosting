@@ -26,7 +26,7 @@ class TripSeeder extends Seeder
                 continue;
             }
 
-            $trip = TripFactory::new()->withCity($city)->make();
+            $trip = TripFactory::new()->withCity($city)->withUser(1)->make();
             $trip->slug = $slug;
             $trip->title_en = $city->title_en;
             $trip->title_ru = $city->title_ru;

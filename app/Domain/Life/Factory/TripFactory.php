@@ -48,7 +48,9 @@ class TripFactory
         $trip->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $trip->status = $this->status;
         $trip->city_id = $this->cityId ?? CityFactory::new()->create()->id;
-        $trip->user_id = $this->userId ?? $this->userFactory?->create()->id ?? 1;
+        $trip->user_id = $this->userId
+            ?? $this->userFactory?->create()->id
+            ?? 1;
         $trip->date_end = $dateEnd;
         $trip->markdown = '';
         $trip->title_en = $this->englishTitle ?? $title;

@@ -421,5 +421,91 @@ return new class extends Migration {
             $table->string('male_audio')->nullable();
             $table->timestamps();
         });
+
+        $this->foreignKeys();
+    }
+
+    private function foreignKeys(): void
+    {
+        Schema::table('burnables', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+        });
+
+        Schema::table('chat_messages', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+        });
+
+        Schema::table('cities', function (Blueprint $table) {
+            $table->foreign('country_id')->references('id')->on('countries');
+        });
+
+        Schema::table('comments', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+        });
+
+        Schema::table('emails', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+        });
+
+        Schema::table('external_identities', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+        });
+
+        Schema::table('gigs', function (Blueprint $table) {
+            $table->foreign('city_id')->references('id')->on('cities');
+            $table->foreign('artist_id')->references('id')->on('artists');
+        });
+
+        Schema::table('images', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+        });
+
+        Schema::table('issues', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+        });
+
+        Schema::table('kanji_radical', function (Blueprint $table) {
+            $table->foreign('kanji_id')->references('id')->on('kanjis');
+            $table->foreign('radical_id')->references('id')->on('radicals');
+        });
+
+        Schema::table('kanji_similar', function (Blueprint $table) {
+            $table->foreign('kanji_id')->references('id')->on('kanjis');
+            $table->foreign('similar_id')->references('id')->on('kanjis');
+        });
+
+        Schema::table('link_requests', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+        });
+
+        Schema::table('magnets', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+        });
+
+        Schema::table('news', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+        });
+
+        Schema::table('photos', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+        });
+
+        Schema::table('social_media_posts', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('photo_id')->references('id')->on('photos');
+        });
+
+        Schema::table('social_media_tokens', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+        });
+
+        Schema::table('taggable', function (Blueprint $table) {
+            $table->foreign('tag_id')->references('id')->on('tags');
+        });
+
+        Schema::table('trips', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('city_id')->references('id')->on('cities');
+        });
     }
 };

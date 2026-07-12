@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\ParallelTesting;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
@@ -78,6 +79,7 @@ class AppServiceProvider extends ServiceProvider
         }, 'Читер');
 
         $this->livewireSharedVarsWorkaroundForTests();
+        $this->parallelTestingSetUpDatabase();
         $this->testMacros();
     }
 
@@ -88,6 +90,14 @@ class AppServiceProvider extends ServiceProvider
         if (app()->runningUnitTests()) {
             View::composer('*', App\Domain\Blade\LivewirePhpUnitViewComposer::class);
         }
+    }
+
+    private function parallelTestingSetUpDatabase(): void
+    {
+        ParallelTesting::setUpTestDatabase(static function () {
+            // Часть функционала сайта завязана на user_id=1
+            App\Factory\UserFactory::new()->root()->create();
+        });
     }
 
     private function testMacros()

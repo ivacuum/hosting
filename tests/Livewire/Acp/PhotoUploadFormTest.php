@@ -144,8 +144,8 @@ class PhotoUploadFormTest extends TestCase
         \Storage::fake(FileUploadConfiguration::disk());
 
         $file = UploadedFile::fake()->image('IMG_0011.jpeg');
-        $trip = TripFactory::new()->withSlug('phpunit-trip')->create();
         $user = UserFactory::new()->admin()->make();
+        $trip = TripFactory::new()->withSlug('phpunit-trip')->withUser($user)->create();
 
         \Livewire::actingAs($user)
             ->test(PhotoUploadForm::class)
