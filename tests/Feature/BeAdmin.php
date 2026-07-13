@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use App\Factory\UserFactory;
 use App\User;
 
 trait BeAdmin
@@ -11,6 +10,6 @@ trait BeAdmin
 
     protected function setUpBeAdmin()
     {
-        $this->be($this->admin = UserFactory::new()->admin()->create());
+        $this->be($this->admin = User::query()->findOrFail(1));
     }
 }
