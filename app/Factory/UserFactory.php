@@ -20,13 +20,6 @@ class UserFactory
     private UserStatus $status = UserStatus::Active;
     private CarbonInterface|null $lastLoginAt = null;
 
-    public function admin()
-    {
-        return $this
-            ->withId(1)
-            ->withRoot();
-    }
-
     public function create()
     {
         $model = $this->make();

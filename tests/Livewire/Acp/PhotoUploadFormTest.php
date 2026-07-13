@@ -28,12 +28,13 @@ class PhotoUploadFormTest extends TestCase
             ->withSlug('our-phpunit-trip')
             ->create();
 
+        $user = UserFactory::new()->root()->create();
+
         $photo = PhotoFactory::new()
             ->withTrip($trip)
+            ->withUser($user)
             ->withSlug('our-phpunit-trip/IMG_0013.jpg')
             ->create();
-
-        $user = UserFactory::new()->admin()->make();
 
         \Livewire::actingAs($user)
             ->test(PhotoUploadForm::class)
@@ -59,7 +60,7 @@ class PhotoUploadFormTest extends TestCase
 
         $gig = GigFactory::new()->withSlug('phpunit-gig')->create();
         $file = UploadedFile::fake()->image('IMG_0025.jpeg');
-        $user = UserFactory::new()->admin()->make();
+        $user = UserFactory::new()->root()->create();
 
         \Livewire::actingAs($user)
             ->test(PhotoUploadForm::class)
@@ -83,7 +84,7 @@ class PhotoUploadFormTest extends TestCase
 
         $gig = GigFactory::new()->withSlug('phpunit-gig')->create();
         $file = UploadedFile::fake()->image('IMG_1234.png');
-        $user = UserFactory::new()->admin()->make();
+        $user = UserFactory::new()->root()->create();
 
         \Livewire::actingAs($user)
             ->test(PhotoUploadForm::class)
@@ -113,12 +114,13 @@ class PhotoUploadFormTest extends TestCase
             ->withSlug('our-phpunit-trip')
             ->create();
 
+        $user = UserFactory::new()->root()->create();
+
         $photo = PhotoFactory::new()
             ->withTrip($trip)
+            ->withUser($user)
             ->withSlug('our-phpunit-trip/IMG_0013.jpg')
             ->create();
-
-        $user = UserFactory::new()->admin()->make();
 
         \Livewire::actingAs($user)
             ->test(PhotoUploadForm::class)
@@ -144,7 +146,7 @@ class PhotoUploadFormTest extends TestCase
         \Storage::fake(FileUploadConfiguration::disk());
 
         $file = UploadedFile::fake()->image('IMG_0011.jpeg');
-        $user = UserFactory::new()->admin()->make();
+        $user = UserFactory::new()->root()->create();
         $trip = TripFactory::new()->withSlug('phpunit-trip')->withUser($user)->create();
 
         \Livewire::actingAs($user)

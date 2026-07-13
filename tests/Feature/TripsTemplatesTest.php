@@ -4,19 +4,17 @@ namespace Tests\Feature;
 
 use App\Domain\Life\Action\FindTripTemplatesAction;
 use App\Domain\Life\Factory\TripFactory;
-use App\Factory\UserFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class TripsTemplatesTest extends TestCase
 {
+    use BeAdmin;
     use DatabaseTransactions;
 
     /** @slowThreshold 10000 */
     public function testTripsTemplates()
     {
-        $this->be(UserFactory::new()->admin()->make());
-
         TripFactory::new()->create();
 
         foreach (resolve(FindTripTemplatesAction::class)->execute() as $template) {
@@ -27,8 +25,6 @@ class TripsTemplatesTest extends TestCase
 
     public function testList()
     {
-        $this->be(UserFactory::new()->admin()->make());
-
         $this->get('acp/dev/templates')->assertOk();
     }
 }

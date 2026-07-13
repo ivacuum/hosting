@@ -3,6 +3,7 @@
 namespace App\Domain\SocialMedia\Factory;
 
 use App\Domain\Life\Factory\PhotoFactory;
+use App\Domain\Life\Factory\TripFactory;
 use App\Domain\Life\Models\Photo;
 use App\Domain\SocialMedia\Models\SocialMediaPost;
 use App\Domain\SocialMedia\SocialMediaPostStatus;
@@ -25,7 +26,7 @@ class SocialMediaPostFactory
         $model = $this->make();
         $model->user_id ??= UserFactory::new()->create()->id;
         $model->photo_id ??= ($this->photoFactory ?? PhotoFactory::new())
-            ->withTrip()
+            ->withTrip(TripFactory::new()->withUser($model->user_id))
             ->withUser($model->user_id)
             ->create()
             ->id;
