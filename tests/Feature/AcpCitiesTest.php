@@ -58,19 +58,19 @@ class AcpCitiesTest extends TestCase
 
     public function testStore()
     {
-        $city = CityFactory::new()->make();
+        $country = CountryFactory::new()->create();
 
         \Livewire::test(CityForm::class)
-            ->set('slug', $city->slug)
-            ->set('titleEn', $city->title_en)
-            ->set('titleRu', $city->title_ru)
-            ->set('countryId', $city->country_id)
+            ->set('slug', 'phpunit slug')
+            ->set('titleEn', 'phpunit en')
+            ->set('titleRu', 'phpunit ru')
+            ->set('countryId', $country->id)
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/cities');
 
         $this->get('acp/cities')
-            ->assertSee($city->title);
+            ->assertSee('phpunit ru');
     }
 
     public function testUpdate()

@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\Domain\Life\Factory\ArtistFactory;
+use App\Domain\Life\Factory\CityFactory;
 use App\Domain\Life\Factory\GigFactory;
 use App\Domain\Life\GigStatus;
 use App\Livewire\Acp\GigForm;
@@ -49,18 +51,19 @@ class AcpGigsTest extends TestCase
 
     public function testStore()
     {
-        $gig = GigFactory::new()->make();
+        $artist = ArtistFactory::new()->withTitle('phpunit artist')->create();
+        $city = CityFactory::new()->create();
 
         \Livewire::test(GigForm::class)
-            ->set('cityId', $gig->city_id)
-            ->set('artistId', $gig->artist_id)
+            ->set('cityId', $city->id)
+            ->set('artistId', $artist->id)
             ->set('date', '2024-03-01T00:00')
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/gigs');
 
         $this->get('acp/gigs')
-            ->assertSee($gig->artist->title);
+            ->assertSee('phpunit artist');
     }
 
     public function testUpdate()

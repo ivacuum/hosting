@@ -7,6 +7,7 @@ use App\Domain\Life\Models\Artist;
 class ArtistFactory
 {
     private string|null $slug = null;
+    private string|null $title = null;
 
     public function create()
     {
@@ -18,7 +19,7 @@ class ArtistFactory
 
     public function make()
     {
-        $title = fake()->lexify('??????????');
+        $title = $this->title ?? fake()->lexify('??????????');
 
         $artist = new Artist;
         $artist->slug = $this->slug ?? \Str::slug($title);
@@ -36,6 +37,14 @@ class ArtistFactory
     {
         $factory = clone $this;
         $factory->slug = $slug;
+
+        return $factory;
+    }
+
+    public function withTitle(string $title)
+    {
+        $factory = clone $this;
+        $factory->title = $title;
 
         return $factory;
     }

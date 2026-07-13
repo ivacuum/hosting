@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Domain\Life\Factory\CityFactory;
 use App\Domain\Life\Factory\TripFactory;
 use App\Domain\Life\Models\Trip;
 use App\Domain\Life\TripStatus;
@@ -73,26 +74,29 @@ class MyTripsTest extends TestCase
 
     public function testStore()
     {
-        $trip = TripFactory::new()->make();
+        $city = CityFactory::new()
+            ->withTitle('phpunit city en', 'phpunit city ru')
+            ->create();
+
         $user = UserFactory::new()->create();
 
         $this->be($user)
             ->post('my/trips', [
                 'slug' => 'phpunit',
                 'status' => TripStatus::Published->value,
-                'city_id' => $trip->city_id,
-                'date_end' => $trip->date_end->toDateTimeString(),
+                'city_id' => $city->id,
+                'date_end' => '2025-01-08',
                 'markdown' => 'Markdown text',
                 'title_en' => 'phpunit EN',
                 'title_ru' => 'phpunit RU',
-                'date_start' => $trip->date_start->toDateTimeString(),
+                'date_start' => '2025-01-01',
             ])
             ->assertRedirect('my/trips');
 
-        $tripSaved = Trip::query()->whereBelongsTo($trip->city)->first();
+        $trip = Trip::query()->whereBelongsTo($user)->first();
 
-        $this->assertSame($trip->city->title_en, $tripSaved->title_en);
-        $this->assertSame($trip->city->title_ru, $tripSaved->title_ru);
+        $this->assertSame('phpunit city en', $trip->title_en);
+        $this->assertSame('phpunit city ru', $trip->title_ru);
     }
 
     public function testUpdate()

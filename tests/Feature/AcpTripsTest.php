@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Domain\Life\Factory\CityFactory;
 use App\Domain\Life\Factory\TripFactory;
 use App\Domain\Life\TripStatus;
 use App\Livewire\Acp\TripForm;
@@ -47,10 +48,12 @@ class AcpTripsTest extends TestCase
 
     public function testStore()
     {
-        $trip = TripFactory::new()->make();
+        $city = CityFactory::new()
+            ->withTitle('phpunit en', 'phpunit ru')
+            ->create();
 
         \Livewire::test(TripForm::class)
-            ->set('cityId', $trip->city_id)
+            ->set('cityId', $city->id)
             ->set('dateStart', '2034-03-01T00:00')
             ->set('dateEnd', '2034-03-03T00:00')
             ->call('submit')
@@ -58,7 +61,7 @@ class AcpTripsTest extends TestCase
             ->assertRedirect('/acp/trips');
 
         $this->get('acp/trips')
-            ->assertSee($trip->city->title);
+            ->assertSee('phpunit ru');
     }
 
     public function testUpdate()

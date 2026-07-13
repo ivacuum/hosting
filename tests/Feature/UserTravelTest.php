@@ -11,70 +11,70 @@ class UserTravelTest extends TestCase
 {
     use DatabaseTransactions;
 
-    private const string LOGIN = '_test-user5';
-
     public function testCitiesIndex()
     {
-        $trip = TripFactory::new()->make();
-        $this->user()->trips()->save($trip);
+        $trip = TripFactory::new()
+            ->withUser(UserFactory::new()->withLogin('phpunit-user'))
+            ->create();
 
-        $this->get('@' . self::LOGIN . '/travel/cities')
+        $this->get('@phpunit-user/travel/cities')
             ->assertOk()
             ->assertSee($trip->city->title);
     }
 
     public function testCitiesShow()
     {
-        $trip = TripFactory::new()->make();
-        $this->user()->trips()->save($trip);
+        $trip = TripFactory::new()
+            ->withUser(UserFactory::new()->withLogin('phpunit-user'))
+            ->create();
 
-        $this->get('@' . self::LOGIN . "/travel/cities/{$trip->city->slug}")
+        $this->get("@phpunit-user/travel/cities/{$trip->city->slug}")
             ->assertOk()
             ->assertSee($trip->city->title);
     }
 
     public function testCountriesIndex()
     {
-        $trip = TripFactory::new()->make();
-        $this->user()->trips()->save($trip);
+        $trip = TripFactory::new()
+            ->withUser(UserFactory::new()->withLogin('phpunit-user'))
+            ->create();
 
-        $this->get('@' . self::LOGIN . '/travel/countries')
+        $this->get('@phpunit-user/travel/countries')
             ->assertOk()
             ->assertSee($trip->city->country->title);
     }
 
     public function testCountriesShow()
     {
-        $trip = TripFactory::new()->make();
-        $this->user()->trips()->save($trip);
+        $trip = TripFactory::new()
+            ->withUser(UserFactory::new()->withLogin('phpunit-user'))
+            ->create();
 
-        $this->get('@' . self::LOGIN . "/travel/countries/{$trip->city->country->slug}")
+        $this->get("@phpunit-user/travel/countries/{$trip->city->country->slug}")
             ->assertOk()
             ->assertSee($trip->city->country->title);
     }
 
     public function testTripsIndex()
     {
-        $trip = TripFactory::new()->make();
-        $this->user()->trips()->save($trip);
+        $trip = TripFactory::new()
+            ->withUser(UserFactory::new()->withLogin('phpunit-user'))
+            ->create();
 
-        $this->get('@' . self::LOGIN . '/travel')
+        $this->get('@phpunit-user/travel')
             ->assertOk()
             ->assertSee($trip->title);
     }
 
     public function testTripsShow()
     {
-        $trip = TripFactory::new()->make();
-        $this->user()->trips()->save($trip);
+        $trip = TripFactory::new()
+            ->withUser(UserFactory::new()->withLogin('phpunit-user'))
+            ->withSlug('phpunit-trip')
+            ->create();
 
-        $this->get('@' . self::LOGIN . "/travel/{$trip->slug}")
+        $this->get('@phpunit-user/travel/phpunit-trip')
             ->assertOk()
             ->assertSee($trip->title);
-    }
-
-    private function user()
-    {
-        return UserFactory::new()->withLogin(self::LOGIN)->create();
     }
 }
