@@ -20,12 +20,15 @@ class TripFactory
     private string|null $russianTitle = null;
     private TripStatus $status = TripStatus::Published;
 
+    private CityFactory|null $cityFactory = null;
     private UserFactory|null $userFactory = null;
     private CommentFactory|null $commentFactory = null;
 
     public function create()
     {
         $model = $this->make();
+        $model->city_id ??= ($this->cityFactory ?? CityFactory::new())->create()->id;
+        $model->user_id ??= $this->userFactory?->create()->id ?? 1;
         $model->save();
 
         $this->commentFactory
@@ -47,10 +50,8 @@ class TripFactory
         $trip->slug = $this->slug ?? \Str::slug($this->englishTitle ?? $title);
         $trip->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $trip->status = $this->status;
-        $trip->city_id = $this->cityId ?? CityFactory::new()->create()->id;
-        $trip->user_id = $this->userId
-            ?? $this->userFactory?->create()->id
-            ?? 1;
+        $trip->city_id = $this->cityId;
+        $trip->user_id = $this->userId;
         $trip->date_end = $dateEnd;
         $trip->markdown = '';
         $trip->title_en = $this->englishTitle ?? $title;

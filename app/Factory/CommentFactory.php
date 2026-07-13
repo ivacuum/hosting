@@ -26,6 +26,22 @@ class CommentFactory
     public function create()
     {
         $model = $this->make();
+        $model->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
+
+        if ($this->newsFactory) {
+            $news = $this->newsFactory->create();
+
+            $model->rel_id = $news->id;
+            $model->rel_type = $news->getMorphClass();
+        }
+
+        if ($this->magnetFactory) {
+            $magnet = $this->magnetFactory->create();
+
+            $model->rel_id = $magnet->id;
+            $model->rel_type = $magnet->getMorphClass();
+        }
+
         $model->save();
 
         return $model;
@@ -42,22 +58,8 @@ class CommentFactory
         $model->html = $this->html ?? fake()->text();
         $model->status = $this->status;
         $model->rel_id = $this->relId ?? 0;
-        $model->user_id = $this->userId ?? ($this->userFactory ?? UserFactory::new())->create()->id;
+        $model->user_id = $this->userId;
         $model->rel_type = $this->relType ?? (new News)->getMorphClass();
-
-        if ($this->newsFactory) {
-            $news = $this->newsFactory->create();
-
-            $model->rel_id = $news->id;
-            $model->rel_type = $news->getMorphClass();
-        }
-
-        if ($this->magnetFactory) {
-            $magnet = $this->magnetFactory->create();
-
-            $model->rel_id = $magnet->id;
-            $model->rel_type = $magnet->getMorphClass();
-        }
 
         return $model;
     }

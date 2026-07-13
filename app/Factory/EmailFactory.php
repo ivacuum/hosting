@@ -17,9 +17,25 @@ class EmailFactory
     private string|null $template = null;
     private string|null $relationType = null;
 
+    private TripFactory|null $tripFactory = null;
+    private UserFactory|null $userFactory = null;
+
     public function create()
     {
         $model = $this->make();
+        $model->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
+
+        if ($model->rel_type === new User()->getMorphClass() && $model->rel_id === null) {
+            $model->rel_id = $model->user_id;
+        }
+
+        if ($this->tripFactory) {
+            $trip = $this->tripFactory->create();
+
+            $model->rel_id = $trip->id;
+            $model->rel_type = $trip->getMorphClass();
+        }
+
         $model->save();
 
         return $model;
@@ -32,7 +48,7 @@ class EmailFactory
         $model->clicks = 0;
         $model->locale = Locale::Rus->value;
         $model->rel_id = $this->relationId;
-        $model->user_id = $this->userId ?? UserFactory::new()->create()->id;
+        $model->user_id = $this->userId;
         $model->rel_type = $this->relationType;
         $model->template = $this->template ?? '';
 
@@ -42,21 +58,6 @@ class EmailFactory
     public static function new(): self
     {
         return new self;
-    }
-
-    public function withTripPublished(Trip|TripFactory|null $trip = null)
-    {
-        $factory = clone $this;
-        $factory->template = class_basename(TripPublishedMail::class);
-        $factory->relationType = new Trip()->getMorphClass();
-
-        $factory->relationId = match (true) {
-            $trip instanceof Trip => $trip->id,
-            $trip instanceof TripFactory => $trip->create()->id,
-            default => TripFactory::new()->create()->id,
-        };
-
-        return $factory;
     }
 
     public function withComment(int|Comment $comment)
@@ -82,10 +83,33 @@ class EmailFactory
         return $factory;
     }
 
-    public function withUser(int|User $user)
+    public function withTripPublished(Trip|TripFactory|null $trip = null)
     {
         $factory = clone $this;
-        $factory->userId = $user instanceof User ? $user->id : $user;
+        $factory->template = class_basename(TripPublishedMail::class);
+        $factory->relationType = new Trip()->getMorphClass();
+
+        if ($trip instanceof Trip) {
+            $factory->relationId = $trip->id;
+        } else {
+            $factory->tripFactory = $trip ?? TripFactory::new();
+        }
+
+        return $factory;
+    }
+
+    public function withUser(int|User|UserFactory|null $user = null)
+    {
+        $factory = clone $this;
+
+        if ($user instanceof User) {
+            $factory->userId = $user->id;
+        } elseif (is_int($user)) {
+            $factory->userId = $user;
+        } else {
+            $factory->userFactory = $user ?? UserFactory::new();
+        }
+
         $factory->relationId = $factory->userId;
         $factory->relationType = new User()->getMorphClass();
 

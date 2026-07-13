@@ -33,6 +33,7 @@ class MagnetFactory
     public function create()
     {
         $model = $this->make();
+        $model->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
         $model->save();
 
         $this->commentFactory
@@ -63,7 +64,7 @@ class MagnetFactory
         $model->clicks = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $model->rto_id = $this->rtoId ?? fake()->numberBetween(1_000_000, 5_000_000);
         $model->status = $this->status;
-        $model->user_id = $this->userId ?? ($this->userFactory ?? UserFactory::new())->create()->id;
+        $model->user_id = $this->userId;
         $model->info_hash = fake()->regexify('[A-F0-9]{40}');
         $model->announcer = 'https://example.com';
         $model->category_id = $this->categoryId ?? fake()->randomElement([2, 3, 4, 5, 7, 8, 9, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]);

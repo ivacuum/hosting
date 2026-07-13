@@ -26,6 +26,15 @@ class PhotoFactory
     public function create()
     {
         $model = $this->make();
+        $model->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
+
+        if ($this->tripFactory) {
+            $trip = $this->tripFactory->create();
+
+            $model->rel_id = $trip->id;
+            $model->rel_type = $trip->getMorphClass();
+        }
+
         $model->save();
 
         if ($this->tagFactory) {
@@ -53,15 +62,8 @@ class PhotoFactory
         $photo->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $photo->rel_id = $this->relId;
         $photo->status = $this->status;
-        $photo->user_id = $this->userId ?? ($this->userFactory ?? UserFactory::new())->create()->id;
+        $photo->user_id = $this->userId;
         $photo->rel_type = $this->relType;
-
-        if ($this->tripFactory) {
-            $trip = $this->tripFactory->create();
-
-            $photo->rel_id = $trip->id;
-            $photo->rel_type = $trip->getMorphClass();
-        }
 
         return $photo;
     }
@@ -130,6 +132,7 @@ class PhotoFactory
         } elseif (is_int($user)) {
             $factory->userId = $user;
         } else {
+            $factory->userId = null;
             $factory->userFactory = $user ?? UserFactory::new();
         }
 

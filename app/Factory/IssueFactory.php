@@ -32,6 +32,10 @@ class IssueFactory
     public function create()
     {
         $model = $this->make();
+        $model->user_id ??= ($this->userFactory ?? UserFactory::new())
+            ->withEmail($model->email)
+            ->create()
+            ->id;
         $model->save();
 
         $this->commentFactory
@@ -50,7 +54,7 @@ class IssueFactory
         $model->email = $this->email ?? fake()->safeEmail();
         $model->title = $this->title ?? fake()->optional(0.6, 'Default title')->words(4, true);
         $model->status = $this->status;
-        $model->user_id = $this->userId ?? $this->userFactory?->withEmail($model->email)->create()->id;
+        $model->user_id = $this->userId;
 
         return $model;
     }

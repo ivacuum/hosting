@@ -15,9 +15,14 @@ class GigFactory
     private string|null $slug = null;
     private GigStatus $status = GigStatus::Published;
 
+    private CityFactory|null $cityFactory = null;
+    private ArtistFactory|null $artistFactory = null;
+
     public function create()
     {
         $model = $this->make();
+        $model->city_id ??= ($this->cityFactory ?? CityFactory::new())->create()->id;
+        $model->artist_id ??= ($this->artistFactory ?? ArtistFactory::new())->create()->id;
         $model->save();
 
         return $model;
@@ -32,10 +37,10 @@ class GigFactory
         $gig->slug = $this->slug ?? \Str::slug($title);
         $gig->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $gig->status = $this->status;
-        $gig->city_id = $this->cityId ?? CityFactory::new()->create()->id;
+        $gig->city_id = $this->cityId;
         $gig->title_en = $title;
         $gig->title_ru = $title;
-        $gig->artist_id = $this->artistId ?? ArtistFactory::new()->create()->id;
+        $gig->artist_id = $this->artistId;
 
         return $gig;
     }

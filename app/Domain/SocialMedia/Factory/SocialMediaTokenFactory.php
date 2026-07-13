@@ -9,7 +9,7 @@ use Carbon\CarbonInterface;
 
 class SocialMediaTokenFactory
 {
-    private int $userId = 1;
+    private int|null $userId = 1;
     private string|null $token = null;
     private CarbonInterface|null $expiresAt = null;
 
@@ -18,6 +18,7 @@ class SocialMediaTokenFactory
     public function create()
     {
         $model = $this->make();
+        $model->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
         $model->save();
 
         return $model;
@@ -27,7 +28,7 @@ class SocialMediaTokenFactory
     {
         $token = new SocialMediaToken;
         $token->token = $this->token ?? fake()->uuid();
-        $token->user_id = $this->userId ?? ($this->userFactory ?? UserFactory::new())->create()->id;
+        $token->user_id = $this->userId;
         $token->expired_at = $this->expiresAt ?? now()->addMonth();
 
         return $token;
@@ -63,6 +64,7 @@ class SocialMediaTokenFactory
         } elseif (is_int($user)) {
             $factory->userId = $user;
         } else {
+            $factory->userId = null;
             $factory->userFactory = $user ?? UserFactory::new();
         }
 

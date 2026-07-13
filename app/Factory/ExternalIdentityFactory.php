@@ -17,6 +17,7 @@ class ExternalIdentityFactory
     public function create()
     {
         $model = $this->make();
+        $model->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
         $model->save();
 
         return $model;
@@ -42,7 +43,7 @@ class ExternalIdentityFactory
         $externalIdentity = new ExternalIdentity;
         $externalIdentity->uid = fake()->numberBetween(10000, 999_999_999_999);
         $externalIdentity->email = $this->email ?? fake()->optional(0.6, '')->safeEmail();
-        $externalIdentity->user_id = $this->userId ?? ($this->userFactory ?? UserFactory::new())->create()->id;
+        $externalIdentity->user_id = $this->userId;
         $externalIdentity->provider = $this->provider ?? fake()->randomElement(ExternalIdentityProvider::class);
 
         return $externalIdentity;

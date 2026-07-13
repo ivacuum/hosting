@@ -47,9 +47,7 @@ class UserFactory
 
     public function make()
     {
-        $user = $this->id === 1
-            ? User::query()->find(1) ?? new User
-            : new User;
+        $user = new User;
         $user->id = $this->id;
         $user->root = $this->root;
         $user->email = $this->email ?? fake()->safeEmail();

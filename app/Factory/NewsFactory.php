@@ -20,6 +20,7 @@ class NewsFactory
     public function create()
     {
         $model = $this->make();
+        $model->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
         $model->save();
 
         return $model;
@@ -42,7 +43,7 @@ class NewsFactory
         $model->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $model->locale = $this->locale;
         $model->status = $this->status;
-        $model->user_id = $this->userId ?? ($this->userFactory ?? UserFactory::new())->create()->id;
+        $model->user_id = $this->userId;
         $model->markdown = $this->markdown ?? fake()->text();
 
         return $model;

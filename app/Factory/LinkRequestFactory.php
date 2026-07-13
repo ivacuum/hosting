@@ -16,6 +16,7 @@ class LinkRequestFactory
     public function create()
     {
         $model = $this->make();
+        $model->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
         $model->save();
 
         return $model;
@@ -25,7 +26,7 @@ class LinkRequestFactory
     {
         $linkRequest = new LinkRequest;
         $linkRequest->token = $this->token ?? Str::random(32);
-        $linkRequest->user_id = $this->userId ?? ($this->userFactory ?? UserFactory::new())->create()->id;
+        $linkRequest->user_id = $this->userId;
 
         return $linkRequest;
     }

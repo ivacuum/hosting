@@ -19,6 +19,7 @@ class CityFactory
     public function create()
     {
         $city = $this->make();
+        $city->country_id ??= ($this->countryFactory ?? CountryFactory::new())->create()->id;
         $city->save();
 
         return $city;
@@ -39,7 +40,7 @@ class CityFactory
         $city->hashtags = mb_strtolower(str_replace(' ', '', $titleEn));
         $city->title_en = $titleEn;
         $city->title_ru = $titleRu;
-        $city->country_id = $this->countryId ?? ($this->countryFactory ?? CountryFactory::new())->create()->id;
+        $city->country_id = $this->countryId;
 
         return $city;
     }

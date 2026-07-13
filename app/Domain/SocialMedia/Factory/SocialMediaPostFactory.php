@@ -23,10 +23,15 @@ class SocialMediaPostFactory
     public function create()
     {
         $model = $this->make();
+        $model->user_id ??= UserFactory::new()->create()->id;
+        $model->photo_id ??= ($this->photoFactory ?? PhotoFactory::new())
+            ->withTrip()
+            ->create()
+            ->id;
         $model->save();
 
         $this->socialMediaTokenFactory
-            ?->withUser($model->user)
+            ?->withUser($model->user_id)
             ->create();
 
         return $model;
@@ -42,8 +47,8 @@ class SocialMediaPostFactory
         $post = new SocialMediaPost;
         $post->status = $this->status;
         $post->caption = $this->caption ?? fake()->text();
-        $post->user_id = $this->userId ?? UserFactory::new()->create()->id;
-        $post->photo_id = $this->photoId ?? ($this->photoFactory ?? PhotoFactory::new())->withTrip()->create()->id;
+        $post->user_id = $this->userId;
+        $post->photo_id = $this->photoId;
         $post->published_at = $this->publishedAt;
 
         $post->published_at ??= match ($post->status) {

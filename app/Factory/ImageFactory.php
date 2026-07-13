@@ -17,6 +17,7 @@ class ImageFactory
     public function create()
     {
         $model = $this->make();
+        $model->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
         $model->save();
 
         return $model;
@@ -29,7 +30,7 @@ class ImageFactory
         $model->date = CarbonImmutable::instance(fake()->dateTimeBetween('-4 years'))->format('ymd');
         $model->size = fake()->numberBetween(1000, 1_000_000);
         $model->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
-        $model->user_id = $this->userId ?? ($this->userFactory ?? UserFactory::new())->create()->id;
+        $model->user_id = $this->userId;
         $model->updated_at = $this->updatedAt;
 
         return $model;

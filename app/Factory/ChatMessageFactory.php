@@ -19,6 +19,7 @@ class ChatMessageFactory
     public function create()
     {
         $model = $this->make();
+        $model->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
         $model->save();
 
         return $model;
@@ -35,7 +36,7 @@ class ChatMessageFactory
         $model->ip = fake()->ipv4();
         $model->text = $this->text ?? fake()->sentence(20);
         $model->status = $this->status;
-        $model->user_id = $this->userId ?? ($this->userFactory ?? UserFactory::new())->create()->id;
+        $model->user_id = $this->userId;
         $model->created_at = $this->createdAt ?? now();
 
         return $model;
