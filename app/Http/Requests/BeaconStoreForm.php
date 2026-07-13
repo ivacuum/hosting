@@ -13,9 +13,11 @@ class BeaconStoreForm extends FormRequest
     public function rules(): array
     {
         return [
+            '_token' => ['nullable'],
             'events' => ['required', 'array'],
             'events.*.event' => ['required', 'string'],
             'events.*.id' => ['nullable'],
+            'events.*.slug' => ['nullable', 'string'],
         ];
     }
 

@@ -24,6 +24,9 @@ class BeaconController
         Stats\NumberSpoken::class,
         Stats\NumberSpeakPressed::class,
         Stats\NumberVoiceSelected::class,
+
+        Stats\YoutubeOpened::class,
+        Stats\YoutubeClosed::class,
     ];
 
     public function __invoke(BeaconStoreForm $request)
