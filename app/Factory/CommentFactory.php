@@ -57,9 +57,9 @@ class CommentFactory
         $model = new Comment;
         $model->html = $this->html ?? fake()->text();
         $model->status = $this->status;
-        $model->rel_id = $this->relId ?? 0;
+        $model->rel_id = $this->relId;
         $model->user_id = $this->userId;
-        $model->rel_type = $this->relType ?? (new News)->getMorphClass();
+        $model->rel_type = $this->relType;
 
         return $model;
     }

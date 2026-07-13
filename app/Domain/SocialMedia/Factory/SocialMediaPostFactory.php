@@ -26,6 +26,7 @@ class SocialMediaPostFactory
         $model->user_id ??= UserFactory::new()->create()->id;
         $model->photo_id ??= ($this->photoFactory ?? PhotoFactory::new())
             ->withTrip()
+            ->withUser($model->user_id)
             ->create()
             ->id;
         $model->save();

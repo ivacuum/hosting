@@ -27,7 +27,7 @@ class AcpUsersTest extends TestCase
         $user = UserFactory::new()->create();
 
         ChatMessageFactory::new()->withUser($user)->create();
-        CommentFactory::new()->withUser($user)->create();
+        CommentFactory::new()->withUser($user)->withNews()->create();
         ExternalIdentityFactory::new()->withUser($user)->create();
         ImageFactory::new()->withUser($user)->create();
         MagnetFactory::new()->withUser($user)->create();

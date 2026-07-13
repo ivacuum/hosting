@@ -75,7 +75,7 @@ class MyTripsTest extends TestCase
     public function testStore()
     {
         $city = CityFactory::new()
-            ->withTitle('phpunit city en', 'phpunit city ru')
+            ->withTitle('phpunit city ru', 'phpunit city en')
             ->create();
 
         $user = UserFactory::new()->create();

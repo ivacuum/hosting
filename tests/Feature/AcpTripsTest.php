@@ -49,7 +49,7 @@ class AcpTripsTest extends TestCase
     public function testStore()
     {
         $city = CityFactory::new()
-            ->withTitle('phpunit en', 'phpunit ru')
+            ->withTitle('phpunit city ru', 'phpunit city en')
             ->create();
 
         \Livewire::test(TripForm::class)
@@ -61,7 +61,7 @@ class AcpTripsTest extends TestCase
             ->assertRedirect('/acp/trips');
 
         $this->get('acp/trips')
-            ->assertSee('phpunit ru');
+            ->assertSee('phpunit city ru');
     }
 
     public function testUpdate()

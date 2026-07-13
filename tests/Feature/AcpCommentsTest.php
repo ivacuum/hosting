@@ -40,7 +40,7 @@ class AcpCommentsTest extends TestCase
 
     public function testUpdate()
     {
-        $comment = CommentFactory::new()->create();
+        $comment = CommentFactory::new()->withNews()->create();
 
         \Livewire::test(CommentForm::class, ['id' => $comment->id])
             ->set('html', 'Markdown html! 🌚️')

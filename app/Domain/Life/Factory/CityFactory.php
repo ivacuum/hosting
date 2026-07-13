@@ -81,7 +81,7 @@ class CityFactory
         return $factory;
     }
 
-    public function withTitle(string $titleEn, string $titleRu)
+    public function withTitle(string $titleRu, string $titleEn)
     {
         $factory = clone $this;
         $factory->titleEn = $titleEn;
