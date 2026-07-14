@@ -20,12 +20,27 @@
     <img class="size-full rounded-sm border border-black/10 dark:border-white/10 object-contain" src="{{ $model->originalUrl() }}" alt="">
   </div>
 </div>
-<div class="mt-4 flex flex-wrap gap-1.5">
-  @foreach ($model->tags as $tag)
-    <a class="inline-flex items-center px-2 py-0.5 text-sm rounded-sm border border-hover" href="{{ Acp::show($tag) }}">
-      #{{ $tag->title }}
-    </a>
-  @endforeach
-</div>
+@if ($model->tags->isNotEmpty())
+  <div class="mt-4 flex flex-wrap items-center gap-1.5">
+    @foreach ($model->tags as $tag)
+      <span class="inline-flex items-stretch overflow-hidden rounded-sm border border-sky-700 text-sm text-sky-700">
+        <a class="inline-flex items-center px-2 py-1 lowercase hover:bg-sky-700 hover:text-white" href="{{ Acp::show($tag) }}">
+          #{{ $tag->title }}
+        </a>
+        <form method="POST" action="{{ to('acp/photos/{photo}/tags/{tag}', [$model, $tag]) }}">
+          @csrf
+          @method('DELETE')
+          <button class="h-full cursor-pointer px-2 text-red-600 hover:bg-red-600 hover:text-white" type="submit" aria-label="{{ __('Удалить тэг') }} {{ $tag->title }}" title="@lang('Удалить тэг')">×</button>
+        </form>
+      </span>
+    @endforeach
+
+    <form method="POST" action="{{ to('acp/photos/{photo}/tags', $model) }}" onsubmit="return confirm('@lang('Удалить все тэги?')')">
+      @csrf
+      @method('DELETE')
+      <button class="cursor-pointer rounded-sm border border-red-600 px-2 py-1 text-sm text-red-600 hover:bg-red-600 hover:text-white" type="submit">@lang('Удалить все тэги')</button>
+    </form>
+  </div>
+@endif
 @parent
 @endsection

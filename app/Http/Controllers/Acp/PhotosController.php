@@ -8,6 +8,7 @@ use App\Action\Acp\ResponseToDestroyAction;
 use App\Action\Acp\ResponseToEditAction;
 use App\Action\Acp\ResponseToShowAction;
 use App\Domain\Life\Models\Photo;
+use App\Domain\Life\Models\Tag;
 use App\Domain\Life\Scope\PhotoApplyFilterScope;
 use App\Domain\Life\Scope\PhotoForTagScope;
 use App\Domain\Life\Scope\PhotoForTripScope;
@@ -55,6 +56,24 @@ class PhotosController extends Controller
     public function destroy(Photo $photo, ResponseToDestroyAction $responseToDestroy)
     {
         return $responseToDestroy->execute($photo);
+    }
+
+    public function destroyTag(Photo $photo, Tag $tag)
+    {
+        $this->authorize('update', $photo);
+
+        $photo->tags()->detach($tag);
+
+        return back();
+    }
+
+    public function destroyTags(Photo $photo)
+    {
+        $this->authorize('update', $photo);
+
+        $photo->tags()->detach();
+
+        return back();
     }
 
     public function edit(Photo $photo, ResponseToEditAction $responseToEdit)

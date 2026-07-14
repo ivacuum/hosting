@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Domain\Life\Factory\PhotoFactory;
+use App\Domain\Life\Factory\TagFactory;
 use App\Livewire\Acp\PhotoEditForm;
 use App\Livewire\Acp\PhotoUploadForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -34,6 +35,38 @@ class AcpPhotosTest extends TestCase
 
         $this->get('acp/photos')
             ->assertOk();
+    }
+
+    public function testRemoveAllTags()
+    {
+        $photo = PhotoFactory::new()->withTag()->withTrip()->create();
+        $secondTag = TagFactory::new()->create();
+        $photo->tags()->attach($secondTag);
+
+        $this->delete("acp/photos/{$photo->id}/tags")
+            ->assertRedirect();
+
+        $photo->refresh();
+
+        $this->assertCount(0, $photo->tags);
+        $this->assertDatabaseHas('tags', ['id' => $secondTag->id]);
+    }
+
+    public function testRemoveTag()
+    {
+        $photo = PhotoFactory::new()->withTag()->withTrip()->create();
+        $tag = $photo->tags->first();
+        $remainingTag = TagFactory::new()->create();
+        $photo->tags()->attach($remainingTag);
+
+        $this->delete("acp/photos/{$photo->id}/tags/{$tag->id}")
+            ->assertRedirect();
+
+        $photo->refresh();
+
+        $this->assertFalse($photo->tags->contains($tag));
+        $this->assertTrue($photo->tags->contains($remainingTag));
+        $this->assertDatabaseHas('tags', ['id' => $tag->id]);
     }
 
     public function testShow()

@@ -54,6 +54,8 @@ Route::get('metrics/{event}', [Acp\MetricsController::class, 'show']);
 Route::resource('news', Acp\NewsController::class)->except(['store', 'update']);
 Route::post('news/{news}/notify', [Acp\NewsController::class, 'notify']);
 
+Route::delete('photos/{photo}/tags', [Acp\PhotosController::class, 'destroyTags']);
+Route::delete('photos/{photo}/tags/{tag}', [Acp\PhotosController::class, 'destroyTag']);
 Route::resource('photos', Acp\PhotosController::class)->except(['store', 'update']);
 
 Route::resource('social-media-posts', Acp\SocialMediaPostsController::class)->except(['store', 'update']);
