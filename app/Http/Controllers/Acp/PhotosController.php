@@ -64,6 +64,17 @@ class PhotosController extends Controller
 
     public function show(Photo $photo, ResponseToShowAction $responseToShow)
     {
-        return $responseToShow->execute($photo);
+        $previous = Photo::query()
+            ->where('id', '<', $photo->id)
+            ->orderByDesc('id')
+            ->first();
+
+        $next = Photo::query()
+            ->where('id', '>', $photo->id)
+            ->first();
+
+        return $responseToShow->execute($photo)
+            ->with('previous', $previous)
+            ->with('next', $next);
     }
 }

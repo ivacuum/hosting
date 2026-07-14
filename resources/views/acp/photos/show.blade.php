@@ -5,9 +5,20 @@
 ?>
 @extends('acp.show')
 
+@push('head')
+@if ($previous)
+  <link rel="prev" id="prev_page" href="{{ Acp::show($previous) }}">
+@endif
+@if ($next)
+  <link rel="next" id="next_page" href="{{ Acp::show($next) }}">
+@endif
+@endpush
+
 @section('content')
 <div class="mt-4">
-  <img class="image-fit-viewport rounded-sm border border-hover" src="{{ $model->originalUrl() }}" alt="">
+  <div class="aspect-[4/3] w-full max-w-[120vh]">
+    <img class="size-full rounded-sm border border-black/10 dark:border-white/10 object-contain" src="{{ $model->originalUrl() }}" alt="">
+  </div>
 </div>
 <div class="mt-4 flex flex-wrap gap-1.5">
   @foreach ($model->tags as $tag)
