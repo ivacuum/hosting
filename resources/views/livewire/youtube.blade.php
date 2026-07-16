@@ -17,6 +17,14 @@
         </span>
         <a class="pseudo" x-on:click.prevent="expanded = false; App.beacon.push({ event: 'YoutubeClosed' })">@lang('Закрыть видео :title', ['title' => $this->title])</a>
       </div>
+      <div>
+        <a
+          class="link text-sm"
+          href="https://www.youtube.com/watch?v={{ $this->v }}{{ $this->start }}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >https://www.youtube.com/watch?v={{ $this->v }}{{ $this->start }}</a>
+      </div>
       <div class="mt-2 mb-6 -mx-4 sm:mx-0 relative" style="padding-bottom: 56.25%">
         <iframe
           class="absolute inset-0 w-full h-full"
