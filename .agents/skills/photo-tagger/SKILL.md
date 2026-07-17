@@ -19,13 +19,36 @@ You keep **no state between sessions**. Do not write scripts. Do not create fold
 - **No Artifacts**: Do not generate markdown files or artifacts for tagging summaries. Always print the tagging summary and detail tables directly to the user in the final text response.
 - **Direct Downloads**: Always download photos directly into the root of the existing session scratch directory as `<photo_id>.jpg` without creating any subdirectory.
 
+### Concurrency safety invariant
+
+Parallelism is allowed **only for downloading photo bytes**. After the download command completes, process photos strictly one at a time.
+
+- Never issue parallel image `read` calls, include multiple images in one vision request, or delegate recognition to parallel subagents.
+- Never recognize several photos first and assign their tags later. Recognition and assignment form one indivisible per-photo transaction.
+- Keep exactly one active work item: `{photo_id, local_path, rel_type, slug, original_url}`. The `photo_id` must come from that work item, never from response order or memory of the previous photo.
+- Do not open the next image until the active photo has been assigned, explicitly skipped, or surfaced to the user for a decision.
+- Before calling `assign_tags`, verify that its `photo_id` equals the numeric basename of `local_path`. If they differ, stop without assigning and reconstruct the active work item from the untagged-photo record.
+
+This serialization is intentional. Do not optimize it away with parallel tool calls; correctness of the photo/tag relationship is more important than recognition throughput.
+
 1. Start from the lowest untagged photo_id or use specific photo_id if provided by user.
 2. Call `list_tags` once and hold the EN+RU label set in memory. Build the list of allowed `title_en` values and the matching `id` map.
 3. Paginate `list_untagged_photos` from `<starter_id or 1>` upward until `has_more_pages` is false. Iterate the returned photos in memory.
-4. Download all photos directly into the scratch folder in a single `curl` invocation by chaining multiple `-o <local_path> <url>` arguments for each photo.
-5. For each photo:
+4. Download all photos directly into the scratch folder in a single parallel `curl` invocation. 
+   
+   **Exact `curl` command structure:**
+   ```bash
+   curl -s -Z --output-dir <scratch_dir> -o <photo_id_1>.jpg <url_1> -o <photo_id_2>.jpg <url_2> ...
+   ```
+   * **`-s`**: Silent mode.
+   * **`-Z` / `--parallel`**: Downloads all files concurrently over HTTP/2 multiplexing.
+   * **`--output-dir <scratch_dir>`**: Saves files directly into the session's scratch folder.
+   * **`-o <photo_id>.jpg <url>`**: Chains 1-to-1 explicit output filenames with matching URLs.
+   * **CRITICAL RULE**: **NEVER use the `-O` (uppercase O) flag anywhere in the `curl` command.** `-O` consumes an unmapped URL argument, which causes a fatal off-by-one misalignment across all downloaded filenames.
+5. For each photo, complete this entire transaction before proceeding to the next photo:
 
-- Read the image at `original_url` (a public R2 URL, no auth needed) directly — you are multimodal and can see it yourself.
+- Set the active work item from one `list_untagged_photos` record.
+- Read exactly one local image at `<scratch_dir>/<photo_id>.jpg`. Do not read `original_url` after downloading the batch, and do not read any other image in the same tool call.
 - Tag the photo using the system prompt:
   > You are tagging a personal photo from a trip/gig. `rel_type` is `{rel_type}` — if `Gig`, this is a concert photo; otherwise a travel photo.
   >
@@ -39,9 +62,10 @@ You keep **no state between sessions**. Do not write scripts. Do not create fold
   > Return strictly JSON: `{"tags": ["en-title", ...], "new": [{"ru": "...", "en": "..."}, ...]}`.
 - Resolve returned EN titles to tag ids via your in-memory map.
 - For each `new` entry: call `create_tag` first; append the new id to your map and the attach batch.
-- If you ended up with at least one tag id: call `assign_tags` with `{photo_id, tag_ids}`.
+- If you ended up with at least one tag id: verify the active `photo_id` against the local filename, then immediately call `assign_tags` with `{photo_id, tag_ids}`. Do not defer or batch assignments.
 - If vision returned no tags AND no new proposals: **do not silently skip**. Surface the photo to the user (slug + URL) and ask whether to (a) leave it untagged and move on, or (b) supply custom tags manually.
 - Report progress: "photo_id=N assigned=[title_en,...]" to stderr as you go.
+- Clear the active work item only after assignment or an explicit skip, then begin the next photo.
 
 6. `rm` all downloaded photos in one go.
 7. When the page iterator is exhausted, summarize directly in the chat response (do not create files or artifacts): how many newly tagged, how many skipped, what new tags were minted, and a table of the tags assigned to each photo.
