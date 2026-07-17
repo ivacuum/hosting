@@ -19,27 +19,19 @@ class CommentFactory
     private string|null $relType = null;
     private CommentStatus $status = CommentStatus::Published;
 
-    private NewsFactory|null $newsFactory = null;
     private UserFactory|null $userFactory = null;
-    private MagnetFactory|null $magnetFactory = null;
+    private NewsFactory|MagnetFactory|null $relationFactory = null;
 
     public function create()
     {
         $model = $this->make();
         $model->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
 
-        if ($this->newsFactory) {
-            $news = $this->newsFactory->create();
+        if ($this->relationFactory) {
+            $relation = $this->relationFactory->create();
 
-            $model->rel_id = $news->id;
-            $model->rel_type = $news->getMorphClass();
-        }
-
-        if ($this->magnetFactory) {
-            $magnet = $this->magnetFactory->create();
-
-            $model->rel_id = $magnet->id;
-            $model->rel_type = $magnet->getMorphClass();
+            $model->rel_id = $relation->id;
+            $model->rel_type = $relation->getMorphClass();
         }
 
         $model->save();
@@ -77,6 +69,7 @@ class CommentFactory
     public function withIssue(int|Issue $issue)
     {
         $factory = clone $this;
+        $factory->relationFactory = null;
 
         if ($issue instanceof Issue) {
             $factory->relId = $issue->id;
@@ -92,6 +85,7 @@ class CommentFactory
     public function withMagnet(int|Magnet|MagnetFactory|null $magnet = null)
     {
         $factory = clone $this;
+        $factory->relationFactory = null;
 
         if ($magnet instanceof Magnet) {
             $factory->relId = $magnet->id;
@@ -100,7 +94,7 @@ class CommentFactory
             $factory->relId = $magnet;
             $factory->relType = new Magnet()->getMorphClass();
         } else {
-            $factory->magnetFactory = $magnet ?? MagnetFactory::new();
+            $factory->relationFactory = $magnet ?? MagnetFactory::new();
         }
 
         return $factory;
@@ -109,6 +103,7 @@ class CommentFactory
     public function withNews(int|News|NewsFactory|null $news = null)
     {
         $factory = clone $this;
+        $factory->relationFactory = null;
 
         if ($news instanceof News) {
             $factory->relId = $news->id;
@@ -117,7 +112,7 @@ class CommentFactory
             $factory->relId = $news;
             $factory->relType = new News()->getMorphClass();
         } else {
-            $factory->newsFactory = $news ?? NewsFactory::new();
+            $factory->relationFactory = $news ?? NewsFactory::new();
         }
 
         return $factory;
@@ -142,6 +137,7 @@ class CommentFactory
     public function withTrip(int|Trip $trip)
     {
         $factory = clone $this;
+        $factory->relationFactory = null;
 
         if ($trip instanceof Trip) {
             $factory->relId = $trip->id;
