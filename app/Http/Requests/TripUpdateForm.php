@@ -35,7 +35,7 @@ class TripUpdateForm extends FormRequest
             'markdown' => '',
             'title_ru' => Rule::requiredIf($trip !== null),
             'title_en' => Rule::requiredIf($trip !== null),
-            'date_end' => 'required|date',
+            'date_end' => 'required|date|after_or_equal:date_start',
             'date_start' => 'required|date',
         ];
     }

@@ -30,7 +30,7 @@ class TripObserver
         $this->cache->forgetTrips();
     }
 
-    public function saving(Trip $trip)
+    public function saving(Trip $trip): void
     {
         $this->maintainConsistency($trip);
     }
@@ -71,6 +71,10 @@ class TripObserver
 
     private function maintainConsistency(Trip $trip)
     {
+        if ($trip->date_end->isBefore($trip->date_start)) {
+            throw new \InvalidArgumentException('Trip end date must be on or after its start date.');
+        }
+
         $trip->slug = Str::trim($trip->slug);
         $trip->markdown = Str::trim($trip->markdown);
         $trip->title_en = Str::trim($trip->title_en);
