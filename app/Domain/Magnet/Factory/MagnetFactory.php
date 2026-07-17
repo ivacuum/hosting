@@ -62,7 +62,7 @@ class MagnetFactory
         $model->title = $this->title ?? fake()->words(3, true);
         $model->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $model->clicks = fake()->optional(0.9, 0)->numberBetween(1, 10000);
-        $model->rto_id = $this->rtoId ?? fake()->numberBetween(1_000_000, 5_000_000);
+        $model->rto_id = $this->rtoId ?? fake()->unique()->numberBetween(3_000_000_000, 4_294_967_295);
         $model->status = $this->status;
         $model->user_id = $this->userId;
         $model->info_hash = fake()->regexify('[A-F0-9]{40}');

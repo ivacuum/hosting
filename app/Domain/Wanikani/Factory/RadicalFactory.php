@@ -20,9 +20,9 @@ class RadicalFactory
     {
         $radical = new Radical;
         $radical->level = $this->level ?? fake()->numberBetween(1, 60);
-        $radical->wk_id = random_int(1, 1111);
-        $radical->meaning = fake()->words(2, true);
-        $radical->character = fake()->unique()->word();
+        $radical->wk_id = fake()->unique()->numberBetween(3_000_000_000, 4_294_967_295);
+        $radical->meaning = 'radical-' . fake()->uuid();
+        $radical->character = fake()->word();
 
         return $radical;
     }

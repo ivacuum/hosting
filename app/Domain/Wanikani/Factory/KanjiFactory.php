@@ -21,12 +21,12 @@ class KanjiFactory
     {
         $kanji = new Kanji;
         $kanji->level = $this->level ?? fake()->numberBetween(1, 60);
-        $kanji->wk_id = random_int(1, 1111);
+        $kanji->wk_id = fake()->unique()->numberBetween(3_000_000_000, 4_294_967_295);
         $kanji->nanori = '';
         $kanji->onyomi = fake()->word();
         $kanji->kunyomi = fake()->word();
         $kanji->meaning = fake()->words(2, true);
-        $kanji->character = $this->character ?? fake()->unique()->word();
+        $kanji->character = $this->character ?? 'kanji-' . fake()->uuid();
         $kanji->important_reading = fake()->randomElement(['onyomi', 'kunyomi']);
 
         return $kanji;

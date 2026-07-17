@@ -43,7 +43,7 @@ class UserFactory
         $user = new User;
         $user->id = $this->id;
         $user->root = $this->root;
-        $user->email = $this->email ?? fake()->safeEmail();
+        $user->email = $this->email ?? fake()->uuid() . '@example.com';
         $user->login = $this->login;
         $user->locale = $this->locale->value;
         $user->status = $this->status;

@@ -24,9 +24,9 @@ class VocabularyFactory
 
         $vocab->kana = $this->kana ?? fake()->word();
         $vocab->level = $this->level ?? fake()->numberBetween(1, 60);
-        $vocab->wk_id = random_int(1, 1111);
+        $vocab->wk_id = fake()->unique()->numberBetween(3_000_000_000, 4_294_967_295);
         $vocab->meaning = fake()->words(2, true);
-        $vocab->character = $this->character ?? fake()->unique()->word();
+        $vocab->character = $this->character ?? 'vocabulary-' . fake()->uuid();
         $vocab->sentences = fake()->sentence();
 
         return $vocab;

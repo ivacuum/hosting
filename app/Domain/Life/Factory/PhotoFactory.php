@@ -55,7 +55,7 @@ class PhotoFactory
         $lon = $this->lon ?? ($lat ? (string) fake()->longitude() : '');
 
         $photo = new Photo;
-        $photo->slug = $this->slug ?? fake()->numerify('test/IMG_####.jpg');
+        $photo->slug = $this->slug ?? 'test/' . fake()->uuid() . '.jpg';
         $photo->point = $lat
             ? new Point($lat, $lon)
             : null;

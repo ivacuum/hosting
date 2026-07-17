@@ -19,7 +19,7 @@ class TagFactory
 
     public function make()
     {
-        $title = fake()->word() . ' ' . fake()->randomDigit();
+        $title = 'tag-' . fake()->uuid();
 
         $tag = new Tag;
         $tag->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
