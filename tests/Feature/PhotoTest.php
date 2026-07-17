@@ -109,6 +109,18 @@ class PhotoTest extends TestCase
             ]);
     }
 
+    public function testMapPointAtEquator()
+    {
+        $photo = PhotoFactory::new()
+            ->withPoint(0, 15)
+            ->withTrip()
+            ->create();
+
+        $this->assertTrue($photo->isOnMap());
+        $this->assertSame('0', $photo->point->lat);
+        $this->assertSame('15', $photo->point->lon);
+    }
+
     public function testMapPointOfOnePhoto()
     {
         $photo = PhotoFactory::new()

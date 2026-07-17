@@ -52,11 +52,11 @@ class PhotoFactory
     public function make()
     {
         $lat = $this->lat ?? (string) fake()->optional(0.9, '')->latitude();
-        $lon = $this->lon ?? ($lat ? (string) fake()->longitude() : '');
+        $lon = $this->lon ?? ($lat !== '' ? (string) fake()->longitude() : '');
 
         $photo = new Photo;
         $photo->slug = $this->slug ?? 'test/' . fake()->uuid() . '.jpg';
-        $photo->point = $lat
+        $photo->point = $lat !== ''
             ? new Point($lat, $lon)
             : null;
         $photo->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
