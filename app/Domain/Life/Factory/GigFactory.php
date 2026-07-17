@@ -50,12 +50,14 @@ class GigFactory
         return new self;
     }
 
-    public function withArtist(int|Artist $artist)
+    public function withArtist(int|Artist|ArtistFactory $artist)
     {
         $factory = clone $this;
 
         if ($artist instanceof Artist) {
             $factory->artistId = $artist->id;
+        } elseif ($artist instanceof ArtistFactory) {
+            $factory->artistFactory = $artist;
         } else {
             $factory->artistId = $artist;
         }
@@ -63,12 +65,14 @@ class GigFactory
         return $factory;
     }
 
-    public function withCity(int|City $city)
+    public function withCity(int|City|CityFactory $city)
     {
         $factory = clone $this;
 
         if ($city instanceof City) {
             $factory->cityId = $city->id;
+        } elseif ($city instanceof CityFactory) {
+            $factory->cityFactory = $city;
         } else {
             $factory->cityId = $city;
         }

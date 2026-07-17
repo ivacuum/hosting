@@ -72,7 +72,7 @@ class TripFactory
         return new self;
     }
 
-    public function withCity(int|City $city)
+    public function withCity(int|City|CityFactory $city)
     {
         $factory = clone $this;
 
@@ -80,6 +80,8 @@ class TripFactory
             $factory->cityId = $city->id;
             $factory->englishTitle = $city->title_en;
             $factory->russianTitle = $city->title_ru;
+        } elseif ($city instanceof CityFactory) {
+            $factory->cityFactory = $city;
         } else {
             $factory->cityId = $city;
         }
