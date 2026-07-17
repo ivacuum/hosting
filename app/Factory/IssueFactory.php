@@ -66,34 +66,22 @@ class IssueFactory
 
     public function withComment(CommentFactory|null $commentFactory = null)
     {
-        $factory = clone $this;
-        $factory->commentFactory = $commentFactory ?? CommentFactory::new();
-
-        return $factory;
+        return clone ($this, ['commentFactory' => $commentFactory ?? CommentFactory::new()]);
     }
 
     public function withStatus(IssueStatus $status)
     {
-        $factory = clone $this;
-        $factory->status = $status;
-
-        return $factory;
+        return clone ($this, ['status' => $status]);
     }
 
     public function withText(string $text)
     {
-        $factory = clone $this;
-        $factory->text = $text;
-
-        return $factory;
+        return clone ($this, ['text' => $text]);
     }
 
     public function withTitle(string $title)
     {
-        $factory = clone $this;
-        $factory->title = $title;
-
-        return $factory;
+        return clone ($this, ['title' => $title]);
     }
 
     public function withUser(int|User|UserFactory|null $user = null)

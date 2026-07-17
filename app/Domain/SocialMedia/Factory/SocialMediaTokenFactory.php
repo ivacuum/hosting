@@ -41,18 +41,12 @@ class SocialMediaTokenFactory
 
     public function withExpiresAt(CarbonInterface $expiresAt)
     {
-        $factory = clone $this;
-        $factory->expiresAt = $expiresAt;
-
-        return $factory;
+        return clone ($this, ['expiresAt' => $expiresAt]);
     }
 
     public function withToken(string $token)
     {
-        $factory = clone $this;
-        $factory->token = $token;
-
-        return $factory;
+        return clone ($this, ['token' => $token]);
     }
 
     public function withUser(int|User|UserFactory|null $user = null)

@@ -56,9 +56,6 @@ class TelegramUpdateCallbackQueryFactory
 
     public function withData(string $data)
     {
-        $factory = clone $this;
-        $factory->data = $data;
-
-        return $factory;
+        return clone ($this, ['data' => $data]);
     }
 }

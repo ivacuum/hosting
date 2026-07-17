@@ -56,34 +56,22 @@ class NewsFactory
 
     public function withLocale(Locale $locale)
     {
-        $factory = clone $this;
-        $factory->locale = $locale;
-
-        return $factory;
+        return clone ($this, ['locale' => $locale]);
     }
 
     public function withMarkdown(string $markdown)
     {
-        $factory = clone $this;
-        $factory->markdown = $markdown;
-
-        return $factory;
+        return clone ($this, ['markdown' => $markdown]);
     }
 
     public function withStatus(NewsStatus $status)
     {
-        $factory = clone $this;
-        $factory->status = $status;
-
-        return $factory;
+        return clone ($this, ['status' => $status]);
     }
 
     public function withTitle(string $title)
     {
-        $factory = clone $this;
-        $factory->title = $title;
-
-        return $factory;
+        return clone ($this, ['title' => $title]);
     }
 
     public function withUser(int|User|UserFactory|null $user = null)

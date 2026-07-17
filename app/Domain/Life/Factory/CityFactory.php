@@ -67,26 +67,19 @@ class CityFactory
 
     public function withPoint(Point $point)
     {
-        $factory = clone $this;
-        $factory->point = $point;
-
-        return $factory;
+        return clone ($this, ['point' => $point]);
     }
 
     public function withSlug(string $slug)
     {
-        $factory = clone $this;
-        $factory->slug = $slug;
-
-        return $factory;
+        return clone ($this, ['slug' => $slug]);
     }
 
     public function withTitle(string $titleRu, string $titleEn)
     {
-        $factory = clone $this;
-        $factory->titleEn = $titleEn;
-        $factory->titleRu = $titleRu;
-
-        return $factory;
+        return clone ($this, [
+            'titleEn' => $titleEn,
+            'titleRu' => $titleRu,
+        ]);
     }
 }

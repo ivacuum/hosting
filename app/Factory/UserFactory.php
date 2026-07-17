@@ -70,73 +70,46 @@ class UserFactory
 
     public function withEmail(string $email)
     {
-        $factory = clone $this;
-        $factory->email = $email;
-
-        return $factory;
+        return clone ($this, ['email' => $email]);
     }
 
     public function withId(int $id)
     {
-        $factory = clone $this;
-        $factory->id = $id;
-
-        return $factory;
+        return clone ($this, ['id' => $id]);
     }
 
     public function withLastLoginAt(CarbonInterface|null $lastLoginAt = null)
     {
-        $factory = clone $this;
-        $factory->lastLoginAt = $lastLoginAt ?? now();
-
-        return $factory;
+        return clone ($this, ['lastLoginAt' => $lastLoginAt ?? now()]);
     }
 
     public function withLocale(Locale $locale)
     {
-        $factory = clone $this;
-        $factory->locale = $locale;
-
-        return $factory;
+        return clone ($this, ['locale' => $locale]);
     }
 
     public function withLogin(string $login)
     {
-        $factory = clone $this;
-        $factory->login = $login;
-
-        return $factory;
+        return clone ($this, ['login' => $login]);
     }
 
     public function withPassword(#[\SensitiveParameter] string $password): self
     {
-        $factory = clone $this;
-        $factory->password = $password;
-
-        return $factory;
+        return clone ($this, ['password' => $password]);
     }
 
     public function withRoot(bool $isRoot = true)
     {
-        $factory = clone $this;
-        $factory->root = $isRoot;
-
-        return $factory;
+        return clone ($this, ['root' => $isRoot]);
     }
 
     public function withStatus(UserStatus $status)
     {
-        $factory = clone $this;
-        $factory->status = $status;
-
-        return $factory;
+        return clone ($this, ['status' => $status]);
     }
 
     public function withTelegramUserId(int $telegramUserId)
     {
-        $factory = clone $this;
-        $factory->telegramUserId = $telegramUserId;
-
-        return $factory;
+        return clone ($this, ['telegramUserId' => $telegramUserId]);
     }
 }

@@ -48,10 +48,7 @@ class ImageFactory
 
     public function withUpdatedAt(CarbonInterface $updatedAt)
     {
-        $factory = clone $this;
-        $factory->updatedAt = $updatedAt;
-
-        return $factory;
+        return clone ($this, ['updatedAt' => $updatedAt]);
     }
 
     public function withUser(int|User|UserFactory|null $user = null)

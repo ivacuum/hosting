@@ -24,10 +24,9 @@ class MagnetFactory
 
     public function advancedTitle()
     {
-        $factory = clone $this;
-        $factory->title = fake()->words(random_int(5, 15), true) . ' (' . fake()->words(2, true) . ') [' . random_int(2000, 2020) . ', RUS]';
-
-        return $factory;
+        return clone ($this, [
+            'title' => fake()->words(random_int(5, 15), true) . ' (' . fake()->words(2, true) . ') [' . random_int(2000, 2020) . ', RUS]',
+        ]);
     }
 
     public function create()
@@ -81,58 +80,37 @@ class MagnetFactory
 
     public function withCategory(MagnetCategory $category)
     {
-        $factory = clone $this;
-        $factory->categoryId = $category;
-
-        return $factory;
+        return clone ($this, ['categoryId' => $category]);
     }
 
     public function withComment(CommentFactory|null $commentFactory = null)
     {
-        $factory = clone $this;
-        $factory->commentFactory = $commentFactory ?? CommentFactory::new();
-
-        return $factory;
+        return clone ($this, ['commentFactory' => $commentFactory ?? CommentFactory::new()]);
     }
 
     public function withHtml(string $html)
     {
-        $factory = clone $this;
-        $factory->html = $html;
-
-        return $factory;
+        return clone ($this, ['html' => $html]);
     }
 
     public function withRelatedQuery(string $relatedQuery)
     {
-        $factory = clone $this;
-        $factory->relatedQuery = $relatedQuery;
-
-        return $factory;
+        return clone ($this, ['relatedQuery' => $relatedQuery]);
     }
 
     public function withRtoId(int $rtoId)
     {
-        $factory = clone $this;
-        $factory->rtoId = $rtoId;
-
-        return $factory;
+        return clone ($this, ['rtoId' => $rtoId]);
     }
 
     public function withStatus(MagnetStatus $status)
     {
-        $factory = clone $this;
-        $factory->status = $status;
-
-        return $factory;
+        return clone ($this, ['status' => $status]);
     }
 
     public function withTitle(string $title)
     {
-        $factory = clone $this;
-        $factory->title = $title;
-
-        return $factory;
+        return clone ($this, ['title' => $title]);
     }
 
     public function withUser(int|User|UserFactory|null $user = null)

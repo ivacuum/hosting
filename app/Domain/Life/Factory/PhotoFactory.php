@@ -75,35 +75,25 @@ class PhotoFactory
 
     public function withPoint(string|int $lat, string|int $lon)
     {
-        $factory = clone $this;
-        $factory->lat = $lat;
-        $factory->lon = $lon;
-
-        return $factory;
+        return clone ($this, [
+            'lat' => $lat,
+            'lon' => $lon,
+        ]);
     }
 
     public function withSlug(string $slug)
     {
-        $factory = clone $this;
-        $factory->slug = $slug;
-
-        return $factory;
+        return clone ($this, ['slug' => $slug]);
     }
 
     public function withStatus(PhotoStatus $status)
     {
-        $factory = clone $this;
-        $factory->status = $status;
-
-        return $factory;
+        return clone ($this, ['status' => $status]);
     }
 
     public function withTag(TagFactory|null $tagFactory = null)
     {
-        $factory = clone $this;
-        $factory->tagFactory = $tagFactory ?? TagFactory::new();
-
-        return $factory;
+        return clone ($this, ['tagFactory' => $tagFactory ?? TagFactory::new()]);
     }
 
     public function withTrip(int|Trip|TripFactory|null $trip = null)

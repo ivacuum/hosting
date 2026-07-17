@@ -91,26 +91,17 @@ class TripFactory
 
     public function withComment(CommentFactory|null $commentFactory = null)
     {
-        $factory = clone $this;
-        $factory->commentFactory = $commentFactory ?? CommentFactory::new();
-
-        return $factory;
+        return clone ($this, ['commentFactory' => $commentFactory ?? CommentFactory::new()]);
     }
 
     public function withMetaImage(string $metaImage)
     {
-        $factory = clone $this;
-        $factory->metaImage = $metaImage;
-
-        return $factory;
+        return clone ($this, ['metaImage' => $metaImage]);
     }
 
     public function withSlug(string $slug)
     {
-        $factory = clone $this;
-        $factory->slug = $slug;
-
-        return $factory;
+        return clone ($this, ['slug' => $slug]);
     }
 
     public function withUser(int|User|UserFactory|null $user = null)

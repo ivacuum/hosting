@@ -45,9 +45,6 @@ class FileFactory
 
     public function withStatus(FileStatus $status)
     {
-        $factory = clone $this;
-        $factory->status = $status;
-
-        return $factory;
+        return clone ($this, ['status' => $status]);
     }
 }

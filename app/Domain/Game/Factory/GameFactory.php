@@ -45,61 +45,44 @@ class GameFactory
 
     public function withFinishedAt(CarbonInterface|string $finishedAt)
     {
-        $factory = clone $this;
-        $factory->finishedAt = $finishedAt instanceof CarbonInterface
-            ? $finishedAt
-            : CarbonImmutable::make($finishedAt);
-
-        return $factory;
+        return clone ($this, [
+            'finishedAt' => $finishedAt instanceof CarbonInterface
+                ? $finishedAt
+                : CarbonImmutable::make($finishedAt),
+        ]);
     }
 
     public function withReleasedAt(CarbonInterface|string $releasedAt)
     {
-        $factory = clone $this;
-        $factory->releasedAt = $releasedAt instanceof CarbonInterface
-            ? $releasedAt
-            : CarbonImmutable::make($releasedAt);
-
-        return $factory;
+        return clone ($this, [
+            'releasedAt' => $releasedAt instanceof CarbonInterface
+                ? $releasedAt
+                : CarbonImmutable::make($releasedAt),
+        ]);
     }
 
     public function withShortDescriptionEn(string $shortDescription)
     {
-        $factory = clone $this;
-        $factory->shortDescriptionEn = $shortDescription;
-
-        return $factory;
+        return clone ($this, ['shortDescriptionEn' => $shortDescription]);
     }
 
     public function withShortDescriptionRu(string $shortDescription)
     {
-        $factory = clone $this;
-        $factory->shortDescriptionRu = $shortDescription;
-
-        return $factory;
+        return clone ($this, ['shortDescriptionRu' => $shortDescription]);
     }
 
     public function withSlug(string $slug)
     {
-        $factory = clone $this;
-        $factory->slug = $slug;
-
-        return $factory;
+        return clone ($this, ['slug' => $slug]);
     }
 
     public function withSteamId(int $steamId)
     {
-        $factory = clone $this;
-        $factory->steamId = $steamId;
-
-        return $factory;
+        return clone ($this, ['steamId' => $steamId]);
     }
 
     public function withTitle(string $title)
     {
-        $factory = clone $this;
-        $factory->title = $title;
-
-        return $factory;
+        return clone ($this, ['title' => $title]);
     }
 }

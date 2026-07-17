@@ -62,9 +62,6 @@ class TelegramUpdateFactory
 
     public function withText(string $text)
     {
-        $factory = clone $this;
-        $factory->text = $text;
-
-        return $factory;
+        return clone ($this, ['text' => $text]);
     }
 }

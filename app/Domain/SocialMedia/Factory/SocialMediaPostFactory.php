@@ -78,26 +78,17 @@ class SocialMediaPostFactory
 
     public function withCaption(string $caption)
     {
-        $factory = clone $this;
-        $factory->caption = $caption;
-
-        return $factory;
+        return clone ($this, ['caption' => $caption]);
     }
 
     public function withPhoto(int|Photo|PhotoFactory|null $photo = null)
     {
-        $factory = clone $this;
-        $factory->photo = $photo ?? PhotoFactory::new();
-
-        return $factory;
+        return clone ($this, ['photo' => $photo ?? PhotoFactory::new()]);
     }
 
     public function withPublishedAt(CarbonInterface $publishedAt)
     {
-        $factory = clone $this;
-        $factory->publishedAt = $publishedAt;
-
-        return $factory;
+        return clone ($this, ['publishedAt' => $publishedAt]);
     }
 
     public function withSocialMediaToken(string|SocialMediaTokenFactory|null $token = null)
@@ -116,9 +107,6 @@ class SocialMediaPostFactory
 
     public function withStatus(SocialMediaPostStatus $status)
     {
-        $factory = clone $this;
-        $factory->status = $status;
-
-        return $factory;
+        return clone ($this, ['status' => $status]);
     }
 }

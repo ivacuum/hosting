@@ -120,18 +120,12 @@ class CommentFactory
 
     public function withStatus(CommentStatus $status)
     {
-        $factory = clone $this;
-        $factory->status = $status;
-
-        return $factory;
+        return clone ($this, ['status' => $status]);
     }
 
     public function withText(string $text)
     {
-        $factory = clone $this;
-        $factory->html = $text;
-
-        return $factory;
+        return clone ($this, ['html' => $text]);
     }
 
     public function withTrip(int|Trip $trip)

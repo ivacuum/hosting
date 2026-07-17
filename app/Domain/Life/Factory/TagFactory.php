@@ -36,10 +36,9 @@ class TagFactory
 
     public function withTitle(string $titleRu, string $titleEn)
     {
-        $factory = clone $this;
-        $factory->titleEn = $titleEn;
-        $factory->titleRu = $titleRu;
-
-        return $factory;
+        return clone ($this, [
+            'titleEn' => $titleEn,
+            'titleRu' => $titleRu,
+        ]);
     }
 }

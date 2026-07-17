@@ -39,25 +39,16 @@ class VocabularyFactory
 
     public function withCharacter(string $character)
     {
-        $factory = clone $this;
-        $factory->character = $character;
-
-        return $factory;
+        return clone ($this, ['character' => $character]);
     }
 
     public function withLevel(int $level)
     {
-        $factory = clone $this;
-        $factory->level = $level;
-
-        return $factory;
+        return clone ($this, ['level' => $level]);
     }
 
     public function withKana(string $kana)
     {
-        $factory = clone $this;
-        $factory->kana = $kana;
-
-        return $factory;
+        return clone ($this, ['kana' => $kana]);
     }
 }

@@ -66,18 +66,12 @@ class ExternalIdentityFactory
 
     public function withEmail(string $email)
     {
-        $factory = clone $this;
-        $factory->email = $email;
-
-        return $factory;
+        return clone ($this, ['email' => $email]);
     }
 
     public function withProvider(ExternalIdentityProvider $provider)
     {
-        $factory = clone $this;
-        $factory->provider = $provider;
-
-        return $factory;
+        return clone ($this, ['provider' => $provider]);
     }
 
     public function withUser(int|User|UserFactory|null $user = null)

@@ -35,17 +35,11 @@ class ArtistFactory
 
     public function withSlug(string $slug)
     {
-        $factory = clone $this;
-        $factory->slug = $slug;
-
-        return $factory;
+        return clone ($this, ['slug' => $slug]);
     }
 
     public function withTitle(string $title)
     {
-        $factory = clone $this;
-        $factory->title = $title;
-
-        return $factory;
+        return clone ($this, ['title' => $title]);
     }
 }

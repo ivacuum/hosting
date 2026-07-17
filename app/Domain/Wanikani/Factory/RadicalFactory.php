@@ -34,9 +34,6 @@ class RadicalFactory
 
     public function withLevel(int $level)
     {
-        $factory = clone $this;
-        $factory->level = $level;
-
-        return $factory;
+        return clone ($this, ['level' => $level]);
     }
 }

@@ -77,10 +77,7 @@ class EmailFactory
 
     public function withTemplate(string $template)
     {
-        $factory = clone $this;
-        $factory->template = class_basename($template);
-
-        return $factory;
+        return clone ($this, ['template' => class_basename($template)]);
     }
 
     public function withTripPublished(Trip|TripFactory|null $trip = null)

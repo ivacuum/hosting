@@ -49,26 +49,17 @@ class ChatMessageFactory
 
     public function withCreatedAt(CarbonInterface $createdAt)
     {
-        $factory = clone $this;
-        $factory->createdAt = $createdAt;
-
-        return $factory;
+        return clone ($this, ['createdAt' => $createdAt]);
     }
 
     public function withStatus(ChatMessageStatus $status)
     {
-        $factory = clone $this;
-        $factory->status = $status;
-
-        return $factory;
+        return clone ($this, ['status' => $status]);
     }
 
     public function withText(string $text)
     {
-        $factory = clone $this;
-        $factory->text = $text;
-
-        return $factory;
+        return clone ($this, ['text' => $text]);
     }
 
     public function withUser(int|User|UserFactory|null $user = null)

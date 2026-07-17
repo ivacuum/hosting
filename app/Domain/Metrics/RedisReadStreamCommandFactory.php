@@ -37,25 +37,16 @@ class RedisReadStreamCommandFactory
 
     public function withBlock(CarbonInterval $interval)
     {
-        $factory = clone $this;
-        $factory->blockForMs = $interval->totalMilliseconds;
-
-        return $factory;
+        return clone ($this, ['blockForMs' => $interval->totalMilliseconds]);
     }
 
     public function withCount(int $count)
     {
-        $factory = clone $this;
-        $factory->count = $count;
-
-        return $factory;
+        return clone ($this, ['count' => $count]);
     }
 
     public function withStreams(RedisStream ...$streams)
     {
-        $factory = clone $this;
-        $factory->streams = $streams;
-
-        return $factory;
+        return clone ($this, ['streams' => $streams]);
     }
 }
