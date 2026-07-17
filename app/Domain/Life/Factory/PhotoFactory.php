@@ -29,7 +29,7 @@ class PhotoFactory
         $model->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
 
         if ($this->tripFactory) {
-            $trip = $this->tripFactory->create();
+            $trip = $this->tripFactory->withUser($model->user_id)->create();
 
             $model->rel_id = $trip->id;
             $model->rel_type = $trip->getMorphClass();
