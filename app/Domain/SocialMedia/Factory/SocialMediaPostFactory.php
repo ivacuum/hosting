@@ -3,33 +3,40 @@
 namespace App\Domain\SocialMedia\Factory;
 
 use App\Domain\Life\Factory\PhotoFactory;
-use App\Domain\Life\Factory\TripFactory;
 use App\Domain\Life\Models\Photo;
 use App\Domain\SocialMedia\Models\SocialMediaPost;
 use App\Domain\SocialMedia\SocialMediaPostStatus;
-use App\Factory\UserFactory;
 use Carbon\CarbonInterface;
 
 class SocialMediaPostFactory
 {
-    private int|null $userId = null;
-    private int|null $photoId = null;
     private string|null $caption = null;
     private SocialMediaPostStatus $status = SocialMediaPostStatus::Queued;
     private CarbonInterface|null $publishedAt = null;
 
-    private PhotoFactory|null $photoFactory = null;
+    private int|Photo|PhotoFactory|null $photo = null;
     private SocialMediaTokenFactory|null $socialMediaTokenFactory = null;
 
     public function create()
     {
         $model = $this->make();
-        $model->user_id ??= UserFactory::new()->create()->id;
-        $model->photo_id ??= ($this->photoFactory ?? PhotoFactory::new())
-            ->withTrip(TripFactory::new()->withUser($model->user_id))
-            ->withUser($model->user_id)
-            ->create()
-            ->id;
+
+        if ($this->photo instanceof Photo) {
+            $photo = $this->photo;
+        } elseif (is_int($this->photo)) {
+            $photo = Photo::query()->findOrFail($this->photo);
+        } else {
+            $photoFactory = $this->photo instanceof PhotoFactory
+                ? $this->photo
+                : PhotoFactory::new();
+
+            $photo = $photoFactory
+                ->withTrip()
+                ->create();
+        }
+
+        $model->user_id = $photo->user_id;
+        $model->photo_id = $photo->id;
         $model->save();
 
         $this->socialMediaTokenFactory
@@ -49,8 +56,6 @@ class SocialMediaPostFactory
         $post = new SocialMediaPost;
         $post->status = $this->status;
         $post->caption = $this->caption ?? fake()->text();
-        $post->user_id = $this->userId;
-        $post->photo_id = $this->photoId;
         $post->published_at = $this->publishedAt;
 
         $post->published_at ??= match ($post->status) {
@@ -82,14 +87,7 @@ class SocialMediaPostFactory
     public function withPhoto(int|Photo|PhotoFactory|null $photo = null)
     {
         $factory = clone $this;
-
-        if ($photo instanceof Photo) {
-            $factory->photoId = $photo->id;
-        } elseif (is_int($photo)) {
-            $factory->photoId = $photo;
-        } else {
-            $factory->photoFactory = $photo ?? PhotoFactory::new();
-        }
+        $factory->photo = $photo ?? PhotoFactory::new();
 
         return $factory;
     }
