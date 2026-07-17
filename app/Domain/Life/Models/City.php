@@ -38,6 +38,7 @@ class City extends Model
     use Traits\HasLocalizedTitle;
     use Traits\HasTripsMetaDescription;
 
+    #[\Override]
     protected $attributes = [
         'iata' => '',
     ];

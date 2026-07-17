@@ -86,8 +86,8 @@ class PublishSocialMediaPostJobTest extends TestCase
             ...InstagramCreateMediaResponse::fakeSuccess('container-id'),
             ...[
                 $mediaPublishUrl => \Http::sequence()
-                    ->pushResponse(array_values($fakeMediaNotAvailableResponse)[0])
-                    ->pushResponse(array_values($fakeSuccessResponse)[0]),
+                    ->pushResponse(array_first($fakeMediaNotAvailableResponse))
+                    ->pushResponse(array_first($fakeSuccessResponse)),
             ],
         ]);
 

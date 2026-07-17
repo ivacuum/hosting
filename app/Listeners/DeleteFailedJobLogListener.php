@@ -20,8 +20,7 @@ class DeleteFailedJobLogListener
             $reflectionClass = new \ReflectionClass($appClass);
 
             if (!empty($reflectionClass->getAttributes(WithoutFailedJobLog::class))) {
-                dispatch(new DeleteFailedJobJob($event->job->uuid()))
-                    ->delay(now()->addSeconds(5));
+                dispatch(new DeleteFailedJobJob($event->job->uuid()));
             }
         }
     }

@@ -9,6 +9,7 @@ use Illuminate\Support\HtmlString;
 
 class Vk extends Base
 {
+    #[\Override]
     protected $provider = 'vk';
 
     public function index()

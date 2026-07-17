@@ -16,18 +16,11 @@ use Laravel\Mcp\Server\Attributes\Version;
 #[Version('1.0.0')]
 class TagServer extends Server
 {
+    #[\Override]
     protected array $tools = [
         AssignTagsTool::class,
         CreateTagTool::class,
         ListTagsTool::class,
         ListUntaggedPhotosTool::class,
-    ];
-
-    protected array $resources = [
-        //
-    ];
-
-    protected array $prompts = [
-        //
     ];
 }

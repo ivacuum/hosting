@@ -32,6 +32,7 @@ class ListTagsTool extends Tool
         ]);
     }
 
+    #[\Override]
     public function outputSchema(JsonSchema $schema): array
     {
         return [

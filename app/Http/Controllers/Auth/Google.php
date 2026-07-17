@@ -12,6 +12,7 @@ use App\Events\Stats\UserSignedInWithExternalIdentity;
  */
 class Google extends Base
 {
+    #[\Override]
     protected $provider = 'google';
 
     public function index()

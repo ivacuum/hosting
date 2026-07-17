@@ -75,6 +75,7 @@ class Trip extends Model
         'views',
     ];
 
+    #[\Override]
     protected $attributes = [
         'html' => '',
         'status' => TripStatus::Inactive,

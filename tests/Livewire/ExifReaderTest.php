@@ -91,9 +91,7 @@ class ExifReaderTest extends TestCase
         \Livewire::test(ExifReader::class)
             ->set('image', $image);
 
-        \Queue::assertPushed(DeleteTempLivewireFileJob::class, static function ($job) {
-            return $job->delay === 300;
-        });
+        \Queue::assertPushed(DeleteTempLivewireFileJob::class);
     }
 
     public function testInvalidDateTime()

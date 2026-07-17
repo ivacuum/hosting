@@ -44,6 +44,7 @@ class CreateTagTool extends Tool
         ]);
     }
 
+    #[\Override]
     public function schema(JsonSchema $schema): array
     {
         return [
@@ -56,6 +57,7 @@ class CreateTagTool extends Tool
         ];
     }
 
+    #[\Override]
     public function outputSchema(JsonSchema $schema): array
     {
         return [

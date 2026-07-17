@@ -11,8 +11,10 @@ class VkProvider extends AbstractProvider implements ProviderInterface
     protected $accessTokenResponse;
     protected $fields = ['screen_name', 'photo'];
     protected $revoke = false;
-    protected $scopes = ['email'];
     protected $version = '5.131';
+
+    #[\Override]
+    protected $scopes = ['email'];
 
     #[\Override]
     public function getAccessTokenResponse($code)

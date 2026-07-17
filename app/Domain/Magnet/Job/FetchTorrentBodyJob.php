@@ -8,11 +8,11 @@ use App\Domain\Rto\Rto;
 use App\Jobs\AbstractJob;
 use Carbon\CarbonInterval;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
+use Illuminate\Queue\Attributes\Delay;
 
+#[Delay(5)]
 class FetchTorrentBodyJob extends AbstractJob implements ShouldBeUnique
 {
-    public $delay = 5;
-
     public function __construct(public int $rtoId) {}
 
     public function handle(Rto $rto)

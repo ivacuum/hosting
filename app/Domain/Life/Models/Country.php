@@ -37,6 +37,7 @@ class Country extends Model
     use Traits\HasLocalizedTitle;
     use Traits\HasTripsMetaDescription;
 
+    #[\Override]
     protected $attributes = [
         'emoji' => '',
     ];

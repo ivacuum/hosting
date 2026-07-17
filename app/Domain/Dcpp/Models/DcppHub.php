@@ -27,6 +27,7 @@ use Illuminate\Database\Eloquent\Model;
 #[UsePolicy(DcppHubPolicy::class)]
 class DcppHub extends Model
 {
+    #[\Override]
     protected $attributes = [
         'port' => 411,
         'status' => DcppHubStatus::Published,

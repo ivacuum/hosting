@@ -27,6 +27,7 @@ use Illuminate\Database\Eloquent\Model;
 #[UsePolicy(FilePolicy::class)]
 class File extends Model
 {
+    #[\Override]
     protected $attributes = [
         'folder' => '',
         'status' => FileStatus::Published,

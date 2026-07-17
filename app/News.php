@@ -36,6 +36,7 @@ use League\CommonMark\CommonMarkConverter;
 #[UsePolicy(NewsPolicy::class)]
 class News extends Model
 {
+    #[\Override]
     protected $attributes = [
         'status' => NewsStatus::Hidden,
         'markdown' => '',
@@ -110,7 +111,9 @@ class News extends Model
         return Attribute::make(
             set: static fn ($value) => [
                 'markdown' => $value,
-                'html' => (new CommonMarkConverter)->convert($value)->getContent(),
+                'html' => new CommonMarkConverter()
+                    ->convert($value)
+                    ->getContent(),
             ],
         );
     }

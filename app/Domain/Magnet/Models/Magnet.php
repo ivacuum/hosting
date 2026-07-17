@@ -14,6 +14,7 @@ use App\Domain\Magnet\Observer\MagnetObserver;
 use App\Domain\Magnet\Policy\MagnetPolicy;
 use App\Domain\Magnet\Scope\MagnetPublishedScope;
 use App\User;
+use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Model;
@@ -46,6 +47,7 @@ use Laravel\Scout\Searchable;
  */
 #[ObservedBy(MagnetObserver::class)]
 #[UsePolicy(MagnetPolicy::class)]
+#[Hidden(['html'])]
 class Magnet extends Model
 {
     use Notifiable;
@@ -63,8 +65,6 @@ class Magnet extends Model
         'views',
         'registered_at',
     ];
-
-    protected $hidden = ['html'];
 
     // Relations
     public function comments()

@@ -29,9 +29,7 @@ use Illuminate\Database\Eloquent\Model;
 #[UsePolicy(EmailPolicy::class)]
 class Email extends Model
 {
-    const TIMESTAMP_FORMAT = 'YmdHis';
-
-    protected $perPage = 50;
+    private const string TIMESTAMP_FORMAT = 'YmdHis';
 
     // Relations
     public function rel()

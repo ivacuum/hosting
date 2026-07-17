@@ -2,6 +2,9 @@
 
 namespace App\Domain\Wanikani\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Table;
+use Illuminate\Database\Eloquent\Attributes\WithoutIncrementing;
+use Illuminate\Database\Eloquent\Attributes\WithoutTimestamps;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -13,13 +16,11 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @mixin \Eloquent
  */
+#[Table(key: null)]
+#[WithoutIncrementing]
+#[WithoutTimestamps]
 class Burnable extends Model
 {
-    public $incrementing = false;
-    public $timestamps = false;
-
-    protected $primaryKey;
-
     #[\Override]
     protected function casts(): array
     {

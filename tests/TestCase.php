@@ -10,7 +10,6 @@ abstract class TestCase extends \Illuminate\Foundation\Testing\TestCase
     use WithCachedConfig;
     use WithCachedRoutes;
 
-    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();

@@ -4,6 +4,7 @@ namespace App\Domain\Metrics\Models;
 
 use App\Domain\Metrics\Policy\MetricPolicy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
+use Illuminate\Database\Eloquent\Attributes\WithoutTimestamps;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -14,11 +15,9 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  */
 #[UsePolicy(MetricPolicy::class)]
+#[WithoutTimestamps]
 class Metric extends Model
 {
-    public $timestamps = false;
-    protected $perPage = 100;
-
     public static function possibleMetrics(): array
     {
         return once(static function () {

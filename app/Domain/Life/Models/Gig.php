@@ -45,6 +45,7 @@ class Gig extends Model
 {
     use Traits\HasLocalizedTitle;
 
+    #[\Override]
     protected $attributes = [
         'status' => GigStatus::Hidden,
         'meta_image' => '',

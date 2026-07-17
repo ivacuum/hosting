@@ -10,7 +10,7 @@ class AssignTagsToPhotoAction
 
     public function execute(Photo $photo, array $tagIds): array
     {
-        $tagIds = array_map('intval', $tagIds)
+        $tagIds = array_map(intval(...), $tagIds)
             |> array_unique(...)
             |> array_values(...);
 

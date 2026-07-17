@@ -8,6 +8,7 @@ use Illuminate\Support\HtmlString;
 
 class Facebook extends Base
 {
+    #[\Override]
     protected $provider = 'facebook';
 
     public function index()

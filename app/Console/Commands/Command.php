@@ -6,6 +6,7 @@ abstract class Command extends \Illuminate\Console\Command
 {
     protected $dateFormat = 'Y-m-d H:i:s';
 
+    #[\Override]
     public function comment($string, $verbosity = null)
     {
         $this->line(
@@ -15,6 +16,7 @@ abstract class Command extends \Illuminate\Console\Command
         );
     }
 
+    #[\Override]
     public function error($string, $verbosity = null)
     {
         $this->line(
@@ -24,6 +26,7 @@ abstract class Command extends \Illuminate\Console\Command
         );
     }
 
+    #[\Override]
     public function info($string, $verbosity = null)
     {
         $this->line(
@@ -33,6 +36,7 @@ abstract class Command extends \Illuminate\Console\Command
         );
     }
 
+    #[\Override]
     public function question($string, $verbosity = null)
     {
         $this->line(

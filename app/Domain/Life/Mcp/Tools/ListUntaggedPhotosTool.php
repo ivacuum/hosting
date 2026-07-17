@@ -53,6 +53,7 @@ class ListUntaggedPhotosTool extends Tool
         ]);
     }
 
+    #[\Override]
     public function schema(JsonSchema $schema): array
     {
         return [
@@ -65,6 +66,7 @@ class ListUntaggedPhotosTool extends Tool
         ];
     }
 
+    #[\Override]
     public function outputSchema(JsonSchema $schema): array
     {
         return [

@@ -11,6 +11,7 @@ use App\Domain\UserStatus;
 use App\Observers\UserObserver;
 use App\Policies\UserPolicy;
 use Illuminate\Contracts\Translation\HasLocalePreference;
+use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -65,12 +66,12 @@ use Illuminate\Notifications\Notifiable;
  */
 #[ObservedBy(UserObserver::class)]
 #[UsePolicy(UserPolicy::class)]
+#[Hidden(['password', 'salt', 'remember_token', 'two_factor_secret', 'two_factor_recovery_codes'])]
 class User extends Authenticatable implements HasLocalePreference
 {
     use Notifiable;
 
-    protected $hidden = ['password', 'salt', 'remember_token', 'two_factor_secret', 'two_factor_recovery_codes'];
-
+    #[\Override]
     protected $attributes = [
         'ip' => '',
         'salt' => '',

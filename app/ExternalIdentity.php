@@ -24,8 +24,6 @@ use Illuminate\Database\Eloquent\Model;
 #[UsePolicy(ExternalIdentityPolicy::class)]
 class ExternalIdentity extends Model
 {
-    protected $perPage = 50;
-
     public function user()
     {
         return $this->belongsTo(User::class);
