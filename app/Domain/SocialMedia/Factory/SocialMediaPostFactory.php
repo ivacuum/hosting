@@ -17,9 +17,9 @@ class SocialMediaPostFactory
     private int|Photo|PhotoFactory|null $photo = null;
     private SocialMediaTokenFactory|null $socialMediaTokenFactory = null;
 
-    public function create()
+    public function create(): SocialMediaPost
     {
-        $model = $this->make();
+        $post = $this->make();
 
         if ($this->photo instanceof Photo) {
             $photo = $this->photo;
@@ -35,23 +35,24 @@ class SocialMediaPostFactory
                 ->create();
         }
 
-        $model->user_id = $photo->user_id;
-        $model->photo_id = $photo->id;
-        $model->save();
+        $post->user_id = $photo->user_id;
+        $post->photo_id = $photo->id;
+        $post->save();
 
         $this->socialMediaTokenFactory
-            ?->withUser($model->user_id)
+            ?->withUser($post->user_id)
             ->create();
 
-        return $model;
+        return $post;
     }
 
-    public function excluded()
+    #[\NoDiscard]
+    public function excluded(): self
     {
         return $this->withStatus(SocialMediaPostStatus::Excluded);
     }
 
-    public function make()
+    public function make(): SocialMediaPost
     {
         $post = new SocialMediaPost;
         $post->status = $this->status;
@@ -71,41 +72,42 @@ class SocialMediaPostFactory
         return new self;
     }
 
-    public function published()
+    #[\NoDiscard]
+    public function published(): self
     {
         return $this->withStatus(SocialMediaPostStatus::Published);
     }
 
-    public function withCaption(string $caption)
+    #[\NoDiscard]
+    public function withCaption(string $caption): self
     {
         return clone ($this, ['caption' => $caption]);
     }
 
-    public function withPhoto(int|Photo|PhotoFactory|null $photo = null)
+    #[\NoDiscard]
+    public function withPhoto(int|Photo|PhotoFactory|null $photo = null): self
     {
         return clone ($this, ['photo' => $photo ?? PhotoFactory::new()]);
     }
 
-    public function withPublishedAt(CarbonInterface $publishedAt)
+    #[\NoDiscard]
+    public function withPublishedAt(CarbonInterface $publishedAt): self
     {
         return clone ($this, ['publishedAt' => $publishedAt]);
     }
 
-    public function withSocialMediaToken(string|SocialMediaTokenFactory|null $token = null)
+    #[\NoDiscard]
+    public function withSocialMediaToken(string|SocialMediaTokenFactory|null $token = null): self
     {
-        $factory = clone $this;
-
-        if (is_string($token)) {
-            $factory->socialMediaTokenFactory = SocialMediaTokenFactory::new()
-                ->withToken($token);
-        } else {
-            $factory->socialMediaTokenFactory = $token ?? SocialMediaTokenFactory::new();
-        }
-
-        return $factory;
+        return clone ($this, [
+            'socialMediaTokenFactory' => is_string($token)
+                ? SocialMediaTokenFactory::new()->withToken($token)
+                : $token ?? SocialMediaTokenFactory::new(),
+        ]);
     }
 
-    public function withStatus(SocialMediaPostStatus $status)
+    #[\NoDiscard]
+    public function withStatus(SocialMediaPostStatus $status): self
     {
         return clone ($this, ['status' => $status]);
     }

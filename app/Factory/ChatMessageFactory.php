@@ -16,30 +16,31 @@ class ChatMessageFactory
 
     private UserFactory|null $userFactory = null;
 
-    public function create()
+    public function create(): ChatMessage
     {
-        $model = $this->make();
-        $model->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
-        $model->save();
+        $chatMessage = $this->make();
+        $chatMessage->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
+        $chatMessage->save();
 
-        return $model;
+        return $chatMessage;
     }
 
-    public function hidden()
+    #[\NoDiscard]
+    public function hidden(): self
     {
         return $this->withStatus(ChatMessageStatus::Hidden);
     }
 
-    public function make()
+    public function make(): ChatMessage
     {
-        $model = new ChatMessage;
-        $model->ip = fake()->ipv4();
-        $model->text = $this->text ?? fake()->sentence(20);
-        $model->status = $this->status;
-        $model->user_id = $this->userId;
-        $model->created_at = $this->createdAt ?? now();
+        $chatMessage = new ChatMessage;
+        $chatMessage->ip = fake()->ipv4();
+        $chatMessage->text = $this->text ?? fake()->sentence(20);
+        $chatMessage->status = $this->status;
+        $chatMessage->user_id = $this->userId;
+        $chatMessage->created_at = $this->createdAt ?? now();
 
-        return $model;
+        return $chatMessage;
     }
 
     public static function new(): self
@@ -47,33 +48,40 @@ class ChatMessageFactory
         return new self;
     }
 
-    public function withCreatedAt(CarbonInterface $createdAt)
+    #[\NoDiscard]
+    public function withCreatedAt(CarbonInterface $createdAt): self
     {
         return clone ($this, ['createdAt' => $createdAt]);
     }
 
-    public function withStatus(ChatMessageStatus $status)
+    #[\NoDiscard]
+    public function withStatus(ChatMessageStatus $status): self
     {
         return clone ($this, ['status' => $status]);
     }
 
-    public function withText(string $text)
+    #[\NoDiscard]
+    public function withText(string $text): self
     {
         return clone ($this, ['text' => $text]);
     }
 
-    public function withUser(int|User|UserFactory|null $user = null)
+    #[\NoDiscard]
+    public function withUser(int|User|UserFactory|null $user = null): self
     {
-        $factory = clone $this;
-
-        if ($user instanceof User) {
-            $factory->userId = $user->id;
-        } elseif (is_int($user)) {
-            $factory->userId = $user;
-        } else {
-            $factory->userFactory = $user ?? UserFactory::new();
-        }
-
-        return $factory;
+        return match (true) {
+            $user instanceof User => clone ($this, [
+                'userId' => $user->id,
+                'userFactory' => null,
+            ]),
+            is_int($user) => clone ($this, [
+                'userId' => $user,
+                'userFactory' => null,
+            ]),
+            default => clone ($this, [
+                'userId' => null,
+                'userFactory' => $user ?? UserFactory::new(),
+            ]),
+        };
     }
 }

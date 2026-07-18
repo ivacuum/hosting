@@ -13,16 +13,16 @@ class LinkRequestFactory
 
     private UserFactory|null $userFactory = null;
 
-    public function create()
+    public function create(): LinkRequest
     {
-        $model = $this->make();
-        $model->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
-        $model->save();
+        $linkRequest = $this->make();
+        $linkRequest->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
+        $linkRequest->save();
 
-        return $model;
+        return $linkRequest;
     }
 
-    public function make()
+    public function make(): LinkRequest
     {
         $linkRequest = new LinkRequest;
         $linkRequest->token = $this->token ?? Str::random(32);
@@ -36,23 +36,28 @@ class LinkRequestFactory
         return new self;
     }
 
-    public function withToken(string $token)
+    #[\NoDiscard]
+    public function withToken(string $token): self
     {
         return clone ($this, ['token' => $token]);
     }
 
-    public function withUser(int|User|UserFactory|null $user = null)
+    #[\NoDiscard]
+    public function withUser(int|User|UserFactory|null $user = null): self
     {
-        $factory = clone $this;
-
-        if ($user instanceof User) {
-            $factory->userId = $user->id;
-        } elseif (is_int($user)) {
-            $factory->userId = $user;
-        } else {
-            $factory->userFactory = $user ?? UserFactory::new();
-        }
-
-        return $factory;
+        return match (true) {
+            $user instanceof User => clone ($this, [
+                'userId' => $user->id,
+                'userFactory' => null,
+            ]),
+            is_int($user) => clone ($this, [
+                'userId' => $user,
+                'userFactory' => null,
+            ]),
+            default => clone ($this, [
+                'userId' => null,
+                'userFactory' => $user ?? UserFactory::new(),
+            ]),
+        };
     }
 }

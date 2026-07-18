@@ -23,33 +23,34 @@ class PhotoFactory
     private TripFactory|null $tripFactory = null;
     private UserFactory|null $userFactory = null;
 
-    public function create()
+    public function create(): Photo
     {
-        $model = $this->make();
-        $model->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
+        $photo = $this->make();
+        $photo->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
 
         if ($this->tripFactory) {
-            $trip = $this->tripFactory->withUser($model->user_id)->create();
+            $trip = $this->tripFactory->withUser($photo->user_id)->create();
 
-            $model->rel_id = $trip->id;
-            $model->rel_type = $trip->getMorphClass();
+            $photo->rel_id = $trip->id;
+            $photo->rel_type = $trip->getMorphClass();
         }
 
-        $model->save();
+        $photo->save();
 
         if ($this->tagFactory) {
-            $model->tags()->attach($this->tagFactory->create()->getKey());
+            $photo->tags()->attach($this->tagFactory->create()->getKey());
         }
 
-        return $model;
+        return $photo;
     }
 
-    public function hidden()
+    #[\NoDiscard]
+    public function hidden(): self
     {
         return $this->withStatus(PhotoStatus::Hidden);
     }
 
-    public function make()
+    public function make(): Photo
     {
         $lat = $this->lat ?? (string) fake()->optional(0.9, '')->latitude();
         $lon = $this->lon ?? ($lat !== '' ? (string) fake()->longitude() : '');
@@ -73,7 +74,8 @@ class PhotoFactory
         return new self;
     }
 
-    public function withPoint(string|int $lat, string|int $lon)
+    #[\NoDiscard]
+    public function withPoint(string|int $lat, string|int $lon): self
     {
         return clone ($this, [
             'lat' => $lat,
@@ -81,51 +83,62 @@ class PhotoFactory
         ]);
     }
 
-    public function withSlug(string $slug)
+    #[\NoDiscard]
+    public function withSlug(string $slug): self
     {
         return clone ($this, ['slug' => $slug]);
     }
 
-    public function withStatus(PhotoStatus $status)
+    #[\NoDiscard]
+    public function withStatus(PhotoStatus $status): self
     {
         return clone ($this, ['status' => $status]);
     }
 
-    public function withTag(TagFactory|null $tagFactory = null)
+    #[\NoDiscard]
+    public function withTag(TagFactory|null $tagFactory = null): self
     {
         return clone ($this, ['tagFactory' => $tagFactory ?? TagFactory::new()]);
     }
 
-    public function withTrip(int|Trip|TripFactory|null $trip = null)
+    #[\NoDiscard]
+    public function withTrip(int|Trip|TripFactory|null $trip = null): self
     {
-        $factory = clone $this;
-
-        if ($trip instanceof Trip) {
-            $factory->relId = $trip->id;
-            $factory->relType = $trip->getMorphClass();
-        } elseif (is_int($trip)) {
-            $factory->relId = $trip;
-            $factory->relType = new Trip()->getMorphClass();
-        } else {
-            $factory->tripFactory = $trip ?? TripFactory::new()->metaImage();
-        }
-
-        return $factory;
+        return match (true) {
+            $trip instanceof Trip => clone ($this, [
+                'relId' => $trip->id,
+                'relType' => $trip->getMorphClass(),
+                'tripFactory' => null,
+            ]),
+            is_int($trip) => clone ($this, [
+                'relId' => $trip,
+                'relType' => new Trip()->getMorphClass(),
+                'tripFactory' => null,
+            ]),
+            default => clone ($this, [
+                'relId' => null,
+                'relType' => null,
+                'tripFactory' => $trip ?? TripFactory::new()->metaImage(),
+            ]),
+        };
     }
 
-    public function withUser(int|User|UserFactory|null $user = null)
+    #[\NoDiscard]
+    public function withUser(int|User|UserFactory|null $user = null): self
     {
-        $factory = clone $this;
-
-        if ($user instanceof User) {
-            $factory->userId = $user->id;
-        } elseif (is_int($user)) {
-            $factory->userId = $user;
-        } else {
-            $factory->userId = null;
-            $factory->userFactory = $user ?? UserFactory::new();
-        }
-
-        return $factory;
+        return match (true) {
+            $user instanceof User => clone ($this, [
+                'userId' => $user->id,
+                'userFactory' => null,
+            ]),
+            is_int($user) => clone ($this, [
+                'userId' => $user,
+                'userFactory' => null,
+            ]),
+            default => clone ($this, [
+                'userId' => null,
+                'userFactory' => $user ?? UserFactory::new(),
+            ]),
+        };
     }
 }

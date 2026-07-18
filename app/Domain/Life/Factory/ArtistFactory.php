@@ -9,15 +9,15 @@ class ArtistFactory
     private string|null $slug = null;
     private string|null $title = null;
 
-    public function create()
+    public function create(): Artist
     {
-        $model = $this->make();
-        $model->save();
+        $artist = $this->make();
+        $artist->save();
 
-        return $model;
+        return $artist;
     }
 
-    public function make()
+    public function make(): Artist
     {
         $title = $this->title ?? fake()->lexify('??????????');
 
@@ -33,12 +33,14 @@ class ArtistFactory
         return new self;
     }
 
-    public function withSlug(string $slug)
+    #[\NoDiscard]
+    public function withSlug(string $slug): self
     {
         return clone ($this, ['slug' => $slug]);
     }
 
-    public function withTitle(string $title)
+    #[\NoDiscard]
+    public function withTitle(string $title): self
     {
         return clone ($this, ['title' => $title]);
     }

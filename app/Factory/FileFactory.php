@@ -9,33 +9,34 @@ class FileFactory
 {
     private FileStatus $status = FileStatus::Published;
 
-    public function create()
+    public function create(): File
     {
-        $model = $this->make();
-        $model->save();
+        $file = $this->make();
+        $file->save();
 
-        return $model;
+        return $file;
     }
 
-    public function hidden()
+    #[\NoDiscard]
+    public function hidden(): self
     {
         return $this->withStatus(FileStatus::Hidden);
     }
 
-    public function make()
+    public function make(): File
     {
         $title = fake()->lexify('??????????');
 
-        $model = new File;
-        $model->size = fake()->numberBetween(1000, 1_000_000);
-        $model->slug = \Str::slug($title);
-        $model->title = $title;
-        $model->folder = fake()->word();
-        $model->status = $this->status;
-        $model->extension = fake()->fileExtension();
-        $model->downloads = fake()->optional(0.9, 0)->numberBetween(1, 10000);
+        $file = new File;
+        $file->size = fake()->numberBetween(1000, 1_000_000);
+        $file->slug = \Str::slug($title);
+        $file->title = $title;
+        $file->folder = fake()->word();
+        $file->status = $this->status;
+        $file->extension = fake()->fileExtension();
+        $file->downloads = fake()->optional(0.9, 0)->numberBetween(1, 10000);
 
-        return $model;
+        return $file;
     }
 
     public static function new(): self
@@ -43,7 +44,8 @@ class FileFactory
         return new self;
     }
 
-    public function withStatus(FileStatus $status)
+    #[\NoDiscard]
+    public function withStatus(FileStatus $status): self
     {
         return clone ($this, ['status' => $status]);
     }

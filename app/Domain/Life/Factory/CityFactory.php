@@ -16,7 +16,7 @@ class CityFactory
 
     private CountryFactory|null $countryFactory = null;
 
-    public function create()
+    public function create(): City
     {
         $city = $this->make();
         $city->country_id ??= ($this->countryFactory ?? CountryFactory::new())->create()->id;
@@ -25,7 +25,7 @@ class CityFactory
         return $city;
     }
 
-    public function make()
+    public function make(): City
     {
         $title = fake()->city() . ' ' . fake()->randomDigit();
 
@@ -50,32 +50,39 @@ class CityFactory
         return new self;
     }
 
-    public function withCountry(int|Country|CountryFactory|null $country = null)
+    #[\NoDiscard]
+    public function withCountry(int|Country|CountryFactory|null $country = null): self
     {
-        $factory = clone $this;
-
-        if ($country instanceof Country) {
-            $factory->countryId = $country->id;
-        } elseif (is_int($country)) {
-            $factory->countryId = $country;
-        } else {
-            $factory->countryFactory = $country ?? CountryFactory::new();
-        }
-
-        return $factory;
+        return match (true) {
+            $country instanceof Country => clone ($this, [
+                'countryId' => $country->id,
+                'countryFactory' => null,
+            ]),
+            is_int($country) => clone ($this, [
+                'countryId' => $country,
+                'countryFactory' => null,
+            ]),
+            default => clone ($this, [
+                'countryId' => null,
+                'countryFactory' => $country ?? CountryFactory::new(),
+            ]),
+        };
     }
 
-    public function withPoint(Point $point)
+    #[\NoDiscard]
+    public function withPoint(Point $point): self
     {
         return clone ($this, ['point' => $point]);
     }
 
-    public function withSlug(string $slug)
+    #[\NoDiscard]
+    public function withSlug(string $slug): self
     {
         return clone ($this, ['slug' => $slug]);
     }
 
-    public function withTitle(string $titleRu, string $titleEn)
+    #[\NoDiscard]
+    public function withTitle(string $titleRu, string $titleEn): self
     {
         return clone ($this, [
             'titleEn' => $titleEn,

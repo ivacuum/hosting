@@ -17,36 +17,38 @@ class NewsFactory
 
     private UserFactory|null $userFactory = null;
 
-    public function create()
+    public function create(): News
     {
-        $model = $this->make();
-        $model->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
-        $model->save();
+        $news = $this->make();
+        $news->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
+        $news->save();
 
-        return $model;
+        return $news;
     }
 
-    public function english()
+    #[\NoDiscard]
+    public function english(): self
     {
         return $this->withLocale(Locale::Eng);
     }
 
-    public function hidden()
+    #[\NoDiscard]
+    public function hidden(): self
     {
         return $this->withStatus(NewsStatus::Hidden);
     }
 
-    public function make()
+    public function make(): News
     {
-        $model = new News;
-        $model->title = $this->title ?? fake()->words(3, true);
-        $model->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
-        $model->locale = $this->locale;
-        $model->status = $this->status;
-        $model->user_id = $this->userId;
-        $model->markdown = $this->markdown ?? fake()->text();
+        $news = new News;
+        $news->title = $this->title ?? fake()->words(3, true);
+        $news->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
+        $news->locale = $this->locale;
+        $news->status = $this->status;
+        $news->user_id = $this->userId;
+        $news->markdown = $this->markdown ?? fake()->text();
 
-        return $model;
+        return $news;
     }
 
     public static function new(): self
@@ -54,38 +56,46 @@ class NewsFactory
         return new self;
     }
 
-    public function withLocale(Locale $locale)
+    #[\NoDiscard]
+    public function withLocale(Locale $locale): self
     {
         return clone ($this, ['locale' => $locale]);
     }
 
-    public function withMarkdown(string $markdown)
+    #[\NoDiscard]
+    public function withMarkdown(string $markdown): self
     {
         return clone ($this, ['markdown' => $markdown]);
     }
 
-    public function withStatus(NewsStatus $status)
+    #[\NoDiscard]
+    public function withStatus(NewsStatus $status): self
     {
         return clone ($this, ['status' => $status]);
     }
 
-    public function withTitle(string $title)
+    #[\NoDiscard]
+    public function withTitle(string $title): self
     {
         return clone ($this, ['title' => $title]);
     }
 
-    public function withUser(int|User|UserFactory|null $user = null)
+    #[\NoDiscard]
+    public function withUser(int|User|UserFactory|null $user = null): self
     {
-        $factory = clone $this;
-
-        if ($user instanceof User) {
-            $factory->userId = $user->id;
-        } elseif (is_int($user)) {
-            $factory->userId = $user;
-        } else {
-            $factory->userFactory = $user ?? UserFactory::new();
-        }
-
-        return $factory;
+        return match (true) {
+            $user instanceof User => clone ($this, [
+                'userId' => $user->id,
+                'userFactory' => null,
+            ]),
+            is_int($user) => clone ($this, [
+                'userId' => $user,
+                'userFactory' => null,
+            ]),
+            default => clone ($this, [
+                'userId' => null,
+                'userFactory' => $user ?? UserFactory::new(),
+            ]),
+        };
     }
 }

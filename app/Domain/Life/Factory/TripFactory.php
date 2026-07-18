@@ -24,21 +24,21 @@ class TripFactory
     private UserFactory|null $userFactory = null;
     private CommentFactory|null $commentFactory = null;
 
-    public function create()
+    public function create(): Trip
     {
-        $model = $this->make();
-        $model->city_id ??= ($this->cityFactory ?? CityFactory::new())->create()->id;
-        $model->user_id ??= $this->userFactory?->create()->id ?? 1;
-        $model->save();
+        $trip = $this->make();
+        $trip->city_id ??= ($this->cityFactory ?? CityFactory::new())->create()->id;
+        $trip->user_id ??= $this->userFactory?->create()->id ?? 1;
+        $trip->save();
 
         $this->commentFactory
-            ?->withTrip($model)
+            ?->withTrip($trip)
             ->create();
 
-        return $model;
+        return $trip;
     }
 
-    public function make()
+    public function make(): Trip
     {
         $trip = new Trip;
 
@@ -62,7 +62,8 @@ class TripFactory
         return $trip;
     }
 
-    public function metaImage()
+    #[\NoDiscard]
+    public function metaImage(): self
     {
         return $this->withMetaImage(fake()->numerify('test/IMG_####.jpg'));
     }
@@ -72,50 +73,65 @@ class TripFactory
         return new self;
     }
 
-    public function withCity(int|City|CityFactory $city)
+    #[\NoDiscard]
+    public function withCity(int|City|CityFactory $city): self
     {
-        $factory = clone $this;
-
-        if ($city instanceof City) {
-            $factory->cityId = $city->id;
-            $factory->englishTitle = $city->title_en;
-            $factory->russianTitle = $city->title_ru;
-        } elseif ($city instanceof CityFactory) {
-            $factory->cityFactory = $city;
-        } else {
-            $factory->cityId = $city;
-        }
-
-        return $factory;
+        return match (true) {
+            $city instanceof City => clone ($this, [
+                'cityId' => $city->id,
+                'cityFactory' => null,
+                'englishTitle' => $city->title_en,
+                'russianTitle' => $city->title_ru,
+            ]),
+            $city instanceof CityFactory => clone ($this, [
+                'cityId' => null,
+                'cityFactory' => $city,
+                'englishTitle' => null,
+                'russianTitle' => null,
+            ]),
+            default => clone ($this, [
+                'cityId' => $city,
+                'cityFactory' => null,
+                'englishTitle' => null,
+                'russianTitle' => null,
+            ]),
+        };
     }
 
-    public function withComment(CommentFactory|null $commentFactory = null)
+    #[\NoDiscard]
+    public function withComment(CommentFactory|null $commentFactory = null): self
     {
         return clone ($this, ['commentFactory' => $commentFactory ?? CommentFactory::new()]);
     }
 
-    public function withMetaImage(string $metaImage)
+    #[\NoDiscard]
+    public function withMetaImage(string $metaImage): self
     {
         return clone ($this, ['metaImage' => $metaImage]);
     }
 
-    public function withSlug(string $slug)
+    #[\NoDiscard]
+    public function withSlug(string $slug): self
     {
         return clone ($this, ['slug' => $slug]);
     }
 
-    public function withUser(int|User|UserFactory|null $user = null)
+    #[\NoDiscard]
+    public function withUser(int|User|UserFactory|null $user = null): self
     {
-        $factory = clone $this;
-
-        if ($user instanceof User) {
-            $factory->userId = $user->id;
-        } elseif (is_int($user)) {
-            $factory->userId = $user;
-        } else {
-            $factory->userFactory = $user ?? UserFactory::new();
-        }
-
-        return $factory;
+        return match (true) {
+            $user instanceof User => clone ($this, [
+                'userId' => $user->id,
+                'userFactory' => null,
+            ]),
+            is_int($user) => clone ($this, [
+                'userId' => $user,
+                'userFactory' => null,
+            ]),
+            default => clone ($this, [
+                'userId' => null,
+                'userFactory' => $user ?? UserFactory::new(),
+            ]),
+        };
     }
 }

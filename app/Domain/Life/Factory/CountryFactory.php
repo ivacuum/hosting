@@ -6,7 +6,7 @@ use App\Domain\Life\Models\Country;
 
 class CountryFactory
 {
-    public function create()
+    public function create(): Country
     {
         $country = $this->make();
         $country->save();
@@ -14,7 +14,7 @@ class CountryFactory
         return $country;
     }
 
-    public function make()
+    public function make(): Country
     {
         $title = fake()->country() . ' ' . fake()->randomDigit();
 

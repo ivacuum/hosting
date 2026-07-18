@@ -20,25 +20,27 @@ class UserFactory
     private UserStatus $status = UserStatus::Active;
     private CarbonInterface|null $lastLoginAt = null;
 
-    public function create()
+    public function create(): User
     {
-        $model = $this->make();
-        $model->save();
+        $user = $this->make();
+        $user->save();
 
-        return $model;
+        return $user;
     }
 
-    public function english()
+    #[\NoDiscard]
+    public function english(): self
     {
         return $this->withLocale(Locale::Eng);
     }
 
-    public function inactive()
+    #[\NoDiscard]
+    public function inactive(): self
     {
         return $this->withStatus(UserStatus::Inactive);
     }
 
-    public function make()
+    public function make(): User
     {
         $user = new User;
         $user->id = $this->id;
@@ -63,52 +65,62 @@ class UserFactory
         return new self;
     }
 
-    public function root()
+    #[\NoDiscard]
+    public function root(): self
     {
         return $this->withRoot();
     }
 
-    public function withEmail(string $email)
+    #[\NoDiscard]
+    public function withEmail(string $email): self
     {
         return clone ($this, ['email' => $email]);
     }
 
-    public function withId(int $id)
+    #[\NoDiscard]
+    public function withId(int $id): self
     {
         return clone ($this, ['id' => $id]);
     }
 
-    public function withLastLoginAt(CarbonInterface|null $lastLoginAt = null)
+    #[\NoDiscard]
+    public function withLastLoginAt(CarbonInterface|null $lastLoginAt = null): self
     {
         return clone ($this, ['lastLoginAt' => $lastLoginAt ?? now()]);
     }
 
-    public function withLocale(Locale $locale)
+    #[\NoDiscard]
+    public function withLocale(Locale $locale): self
     {
         return clone ($this, ['locale' => $locale]);
     }
 
-    public function withLogin(string $login)
+    #[\NoDiscard]
+    public function withLogin(string $login): self
     {
         return clone ($this, ['login' => $login]);
     }
 
+    #[\NoDiscard]
     public function withPassword(#[\SensitiveParameter] string $password): self
     {
         return clone ($this, ['password' => $password]);
     }
 
-    public function withRoot(bool $isRoot = true)
+    #[\NoDiscard]
+    public function withRoot(bool $isRoot = true): self
     {
         return clone ($this, ['root' => $isRoot]);
     }
 
-    public function withStatus(UserStatus $status)
+    #[\NoDiscard]
+    public function withStatus(UserStatus $status): self
     {
         return clone ($this, ['status' => $status]);
     }
 
-    public function withTelegramUserId(int $telegramUserId)
+    #[\NoDiscard]
+    public function withTelegramUserId(int $telegramUserId): self
     {
         return clone ($this, ['telegramUserId' => $telegramUserId]);
     }

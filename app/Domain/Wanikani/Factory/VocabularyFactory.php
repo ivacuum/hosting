@@ -10,15 +10,15 @@ class VocabularyFactory
     private string|null $kana = null;
     private string|null $character = null;
 
-    public function create()
+    public function create(): Vocabulary
     {
-        $model = $this->make();
-        $model->save();
+        $vocab = $this->make();
+        $vocab->save();
 
-        return $model;
+        return $vocab;
     }
 
-    public function make()
+    public function make(): Vocabulary
     {
         $vocab = new Vocabulary;
 
@@ -37,17 +37,20 @@ class VocabularyFactory
         return new self;
     }
 
-    public function withCharacter(string $character)
+    #[\NoDiscard]
+    public function withCharacter(string $character): self
     {
         return clone ($this, ['character' => $character]);
     }
 
-    public function withLevel(int $level)
+    #[\NoDiscard]
+    public function withLevel(int $level): self
     {
         return clone ($this, ['level' => $level]);
     }
 
-    public function withKana(string $kana)
+    #[\NoDiscard]
+    public function withKana(string $kana): self
     {
         return clone ($this, ['kana' => $kana]);
     }

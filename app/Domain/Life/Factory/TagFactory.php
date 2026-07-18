@@ -9,15 +9,15 @@ class TagFactory
     private string|null $titleEn = null;
     private string|null $titleRu = null;
 
-    public function create()
+    public function create(): Tag
     {
-        $model = $this->make();
-        $model->save();
+        $tag = $this->make();
+        $tag->save();
 
-        return $model;
+        return $tag;
     }
 
-    public function make()
+    public function make(): Tag
     {
         $title = 'tag-' . fake()->uuid();
 
@@ -34,7 +34,8 @@ class TagFactory
         return new self;
     }
 
-    public function withTitle(string $titleRu, string $titleEn)
+    #[\NoDiscard]
+    public function withTitle(string $titleRu, string $titleEn): self
     {
         return clone ($this, [
             'titleEn' => $titleEn,

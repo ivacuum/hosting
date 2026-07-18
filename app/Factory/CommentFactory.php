@@ -22,38 +22,39 @@ class CommentFactory
     private UserFactory|null $userFactory = null;
     private NewsFactory|MagnetFactory|null $relationFactory = null;
 
-    public function create()
+    public function create(): Comment
     {
-        $model = $this->make();
-        $model->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
+        $comment = $this->make();
+        $comment->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
 
         if ($this->relationFactory) {
             $relation = $this->relationFactory->create();
 
-            $model->rel_id = $relation->id;
-            $model->rel_type = $relation->getMorphClass();
+            $comment->rel_id = $relation->id;
+            $comment->rel_type = $relation->getMorphClass();
         }
 
-        $model->save();
+        $comment->save();
 
-        return $model;
+        return $comment;
     }
 
-    public function hidden()
+    #[\NoDiscard]
+    public function hidden(): self
     {
         return $this->withStatus(CommentStatus::Hidden);
     }
 
-    public function make()
+    public function make(): Comment
     {
-        $model = new Comment;
-        $model->html = $this->html ?? fake()->text();
-        $model->status = $this->status;
-        $model->rel_id = $this->relId;
-        $model->user_id = $this->userId;
-        $model->rel_type = $this->relType;
+        $comment = new Comment;
+        $comment->html = $this->html ?? fake()->text();
+        $comment->status = $this->status;
+        $comment->rel_id = $this->relId;
+        $comment->user_id = $this->userId;
+        $comment->rel_type = $this->relType;
 
-        return $model;
+        return $comment;
     }
 
     public static function new(): self
@@ -61,101 +62,104 @@ class CommentFactory
         return new self;
     }
 
-    public function pending()
+    #[\NoDiscard]
+    public function pending(): self
     {
         return $this->withStatus(CommentStatus::Pending);
     }
 
-    public function withIssue(int|Issue $issue)
+    #[\NoDiscard]
+    public function withIssue(int|Issue $issue): self
     {
-        $factory = clone $this;
-        $factory->relationFactory = null;
-
-        if ($issue instanceof Issue) {
-            $factory->relId = $issue->id;
-        } else {
-            $factory->relId = $issue;
-        }
-
-        $factory->relType = new Issue()->getMorphClass();
-
-        return $factory;
+        return clone ($this, [
+            'relId' => $issue instanceof Issue ? $issue->id : $issue,
+            'relType' => new Issue()->getMorphClass(),
+            'relationFactory' => null,
+        ]);
     }
 
-    public function withMagnet(int|Magnet|MagnetFactory|null $magnet = null)
+    #[\NoDiscard]
+    public function withMagnet(int|Magnet|MagnetFactory|null $magnet = null): self
     {
-        $factory = clone $this;
-        $factory->relationFactory = null;
-
-        if ($magnet instanceof Magnet) {
-            $factory->relId = $magnet->id;
-            $factory->relType = $magnet->getMorphClass();
-        } elseif (is_int($magnet)) {
-            $factory->relId = $magnet;
-            $factory->relType = new Magnet()->getMorphClass();
-        } else {
-            $factory->relationFactory = $magnet ?? MagnetFactory::new();
-        }
-
-        return $factory;
+        return match (true) {
+            $magnet instanceof Magnet => clone ($this, [
+                'relId' => $magnet->id,
+                'relType' => $magnet->getMorphClass(),
+                'relationFactory' => null,
+            ]),
+            is_int($magnet) => clone ($this, [
+                'relId' => $magnet,
+                'relType' => new Magnet()->getMorphClass(),
+                'relationFactory' => null,
+            ]),
+            default => clone ($this, [
+                'relId' => null,
+                'relType' => null,
+                'relationFactory' => $magnet ?? MagnetFactory::new(),
+            ]),
+        };
     }
 
-    public function withNews(int|News|NewsFactory|null $news = null)
+    #[\NoDiscard]
+    public function withNews(int|News|NewsFactory|null $news = null): self
     {
-        $factory = clone $this;
-        $factory->relationFactory = null;
-
-        if ($news instanceof News) {
-            $factory->relId = $news->id;
-            $factory->relType = $news->getMorphClass();
-        } elseif (is_int($news)) {
-            $factory->relId = $news;
-            $factory->relType = new News()->getMorphClass();
-        } else {
-            $factory->relationFactory = $news ?? NewsFactory::new();
-        }
-
-        return $factory;
+        return match (true) {
+            $news instanceof News => clone ($this, [
+                'relId' => $news->id,
+                'relType' => $news->getMorphClass(),
+                'relationFactory' => null,
+            ]),
+            is_int($news) => clone ($this, [
+                'relId' => $news,
+                'relType' => new News()->getMorphClass(),
+                'relationFactory' => null,
+            ]),
+            default => clone ($this, [
+                'relId' => null,
+                'relType' => null,
+                'relationFactory' => $news ?? NewsFactory::new(),
+            ]),
+        };
     }
 
-    public function withStatus(CommentStatus $status)
+    #[\NoDiscard]
+    public function withStatus(CommentStatus $status): self
     {
         return clone ($this, ['status' => $status]);
     }
 
-    public function withText(string $text)
+    #[\NoDiscard]
+    public function withText(string $text): self
     {
         return clone ($this, ['html' => $text]);
     }
 
-    public function withTrip(int|Trip $trip)
+    #[\NoDiscard]
+    public function withTrip(int|Trip $trip): self
     {
-        $factory = clone $this;
-        $factory->relationFactory = null;
-
-        if ($trip instanceof Trip) {
-            $factory->relId = $trip->id;
-        } else {
-            $factory->relId = $trip;
-        }
-
-        $factory->relType = (new Trip)->getMorphClass();
-
-        return $factory;
+        return clone ($this, [
+            'relId' => $trip instanceof Trip ? $trip->id : $trip,
+            'relType' => (new Trip)->getMorphClass(),
+            'relationFactory' => null,
+        ]);
     }
 
-    public function withUser(int|User|UserFactory|null $user = null)
+    #[\NoDiscard]
+    public function withUser(int|User|UserFactory|null $user = null): self
     {
-        $factory = clone $this;
-
-        if ($user instanceof User) {
-            $factory->userId = $user->id;
-        } elseif (is_int($user)) {
-            $factory->userId = $user;
-        } else {
-            $factory->userFactory = $user ?? UserFactory::new();
-        }
-
-        return $factory;
+        return match (true) {
+            $user instanceof User => clone ($this, [
+                'userId' => $user->id,
+                'userFactory' => null,
+            ]),
+            is_int($user) => clone ($this, [
+                'userId' => $user,
+                'userFactory' => null,
+            ]),
+            default => clone ($this, [
+                'userId' => null,
+                'userFactory' => $user ?? UserFactory::new(),
+            ]),
+        };
     }
 }

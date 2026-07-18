@@ -18,17 +18,17 @@ class GigFactory
     private CityFactory|null $cityFactory = null;
     private ArtistFactory|null $artistFactory = null;
 
-    public function create()
+    public function create(): Gig
     {
-        $model = $this->make();
-        $model->city_id ??= ($this->cityFactory ?? CityFactory::new())->create()->id;
-        $model->artist_id ??= ($this->artistFactory ?? ArtistFactory::new())->create()->id;
-        $model->save();
+        $gig = $this->make();
+        $gig->city_id ??= ($this->cityFactory ?? CityFactory::new())->create()->id;
+        $gig->artist_id ??= ($this->artistFactory ?? ArtistFactory::new())->create()->id;
+        $gig->save();
 
-        return $model;
+        return $gig;
     }
 
-    public function make()
+    public function make(): Gig
     {
         $title = fake()->word() . ' ' . fake()->numberBetween(2000, 3000);
 
@@ -50,37 +50,46 @@ class GigFactory
         return new self;
     }
 
-    public function withArtist(int|Artist|ArtistFactory $artist)
+    #[\NoDiscard]
+    public function withArtist(int|Artist|ArtistFactory $artist): self
     {
-        $factory = clone $this;
-
-        if ($artist instanceof Artist) {
-            $factory->artistId = $artist->id;
-        } elseif ($artist instanceof ArtistFactory) {
-            $factory->artistFactory = $artist;
-        } else {
-            $factory->artistId = $artist;
-        }
-
-        return $factory;
+        return match (true) {
+            $artist instanceof Artist => clone ($this, [
+                'artistId' => $artist->id,
+                'artistFactory' => null,
+            ]),
+            $artist instanceof ArtistFactory => clone ($this, [
+                'artistId' => null,
+                'artistFactory' => $artist,
+            ]),
+            default => clone ($this, [
+                'artistId' => $artist,
+                'artistFactory' => null,
+            ]),
+        };
     }
 
-    public function withCity(int|City|CityFactory $city)
+    #[\NoDiscard]
+    public function withCity(int|City|CityFactory $city): self
     {
-        $factory = clone $this;
-
-        if ($city instanceof City) {
-            $factory->cityId = $city->id;
-        } elseif ($city instanceof CityFactory) {
-            $factory->cityFactory = $city;
-        } else {
-            $factory->cityId = $city;
-        }
-
-        return $factory;
+        return match (true) {
+            $city instanceof City => clone ($this, [
+                'cityId' => $city->id,
+                'cityFactory' => null,
+            ]),
+            $city instanceof CityFactory => clone ($this, [
+                'cityId' => null,
+                'cityFactory' => $city,
+            ]),
+            default => clone ($this, [
+                'cityId' => $city,
+                'cityFactory' => null,
+            ]),
+        };
     }
 
-    public function withSlug(string $slug)
+    #[\NoDiscard]
+    public function withSlug(string $slug): self
     {
         return clone ($this, ['slug' => $slug]);
     }

@@ -15,16 +15,16 @@ class SocialMediaTokenFactory
 
     private UserFactory|null $userFactory = null;
 
-    public function create()
+    public function create(): SocialMediaToken
     {
-        $model = $this->make();
-        $model->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
-        $model->save();
+        $token = $this->make();
+        $token->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
+        $token->save();
 
-        return $model;
+        return $token;
     }
 
-    public function make()
+    public function make(): SocialMediaToken
     {
         $token = new SocialMediaToken;
         $token->token = $this->token ?? fake()->uuid();
@@ -39,29 +39,34 @@ class SocialMediaTokenFactory
         return new self;
     }
 
-    public function withExpiresAt(CarbonInterface $expiresAt)
+    #[\NoDiscard]
+    public function withExpiresAt(CarbonInterface $expiresAt): self
     {
         return clone ($this, ['expiresAt' => $expiresAt]);
     }
 
-    public function withToken(string $token)
+    #[\NoDiscard]
+    public function withToken(string $token): self
     {
         return clone ($this, ['token' => $token]);
     }
 
-    public function withUser(int|User|UserFactory|null $user = null)
+    #[\NoDiscard]
+    public function withUser(int|User|UserFactory|null $user = null): self
     {
-        $factory = clone $this;
-
-        if ($user instanceof User) {
-            $factory->userId = $user->id;
-        } elseif (is_int($user)) {
-            $factory->userId = $user;
-        } else {
-            $factory->userId = null;
-            $factory->userFactory = $user ?? UserFactory::new();
-        }
-
-        return $factory;
+        return match (true) {
+            $user instanceof User => clone ($this, [
+                'userId' => $user->id,
+                'userFactory' => null,
+            ]),
+            is_int($user) => clone ($this, [
+                'userId' => $user,
+                'userFactory' => null,
+            ]),
+            default => clone ($this, [
+                'userId' => null,
+                'userFactory' => $user ?? UserFactory::new(),
+            ]),
+        };
     }
 }

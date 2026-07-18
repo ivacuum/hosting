@@ -14,26 +14,26 @@ class ImageFactory
 
     private UserFactory|null $userFactory = null;
 
-    public function create()
+    public function create(): Image
     {
-        $model = $this->make();
-        $model->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
-        $model->save();
+        $image = $this->make();
+        $image->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
+        $image->save();
 
-        return $model;
+        return $image;
     }
 
-    public function make()
+    public function make(): Image
     {
-        $model = new Image;
-        $model->slug = \Str::random(10) . fake()->randomElement(['.jpg', '.png']);
-        $model->date = CarbonImmutable::instance(fake()->dateTimeBetween('-4 years'))->format('ymd');
-        $model->size = fake()->numberBetween(1000, 1_000_000);
-        $model->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
-        $model->user_id = $this->userId;
-        $model->updated_at = $this->updatedAt;
+        $image = new Image;
+        $image->slug = \Str::random(10) . fake()->randomElement(['.jpg', '.png']);
+        $image->date = CarbonImmutable::instance(fake()->dateTimeBetween('-4 years'))->format('ymd');
+        $image->size = fake()->numberBetween(1000, 1_000_000);
+        $image->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
+        $image->user_id = $this->userId;
+        $image->updated_at = $this->updatedAt;
 
-        return $model;
+        return $image;
     }
 
     public static function new(): self
@@ -41,28 +41,34 @@ class ImageFactory
         return new self;
     }
 
-    public function obsolete()
+    #[\NoDiscard]
+    public function obsolete(): self
     {
         return $this->withUpdatedAt(now()->subMonths(7));
     }
 
-    public function withUpdatedAt(CarbonInterface $updatedAt)
+    #[\NoDiscard]
+    public function withUpdatedAt(CarbonInterface $updatedAt): self
     {
         return clone ($this, ['updatedAt' => $updatedAt]);
     }
 
-    public function withUser(int|User|UserFactory|null $user = null)
+    #[\NoDiscard]
+    public function withUser(int|User|UserFactory|null $user = null): self
     {
-        $factory = clone $this;
-
-        if ($user instanceof User) {
-            $factory->userId = $user->id;
-        } elseif (is_int($user)) {
-            $factory->userId = $user;
-        } else {
-            $factory->userFactory = $user ?? UserFactory::new();
-        }
-
-        return $factory;
+        return match (true) {
+            $user instanceof User => clone ($this, [
+                'userId' => $user->id,
+                'userFactory' => null,
+            ]),
+            is_int($user) => clone ($this, [
+                'userId' => $user,
+                'userFactory' => null,
+            ]),
+            default => clone ($this, [
+                'userId' => null,
+                'userFactory' => $user ?? UserFactory::new(),
+            ]),
+        };
     }
 }

@@ -24,39 +24,40 @@ class IssueFactory
     private UserFactory|null $userFactory = null;
     private CommentFactory|null $commentFactory = null;
 
-    public function closed()
+    #[\NoDiscard]
+    public function closed(): self
     {
         return $this->withStatus(IssueStatus::Closed);
     }
 
-    public function create()
+    public function create(): Issue
     {
-        $model = $this->make();
-        $model->user_id ??= ($this->userFactory ?? UserFactory::new())
-            ->withEmail($model->email)
+        $issue = $this->make();
+        $issue->user_id ??= ($this->userFactory ?? UserFactory::new())
+            ->withEmail($issue->email)
             ->create()
             ->id;
-        $model->save();
+        $issue->save();
 
         $this->commentFactory
-            ?->withIssue($model)
+            ?->withIssue($issue)
             ->create();
 
-        return $model;
+        return $issue;
     }
 
-    public function make()
+    public function make(): Issue
     {
-        $model = new Issue;
-        $model->name = fake()->name();
-        $model->page = fake()->randomElement(self::PAGES);
-        $model->text = $this->text ?? fake()->sentence(20);
-        $model->email = $this->email ?? fake()->safeEmail();
-        $model->title = $this->title ?? fake()->optional(0.6, 'Default title')->words(4, true);
-        $model->status = $this->status;
-        $model->user_id = $this->userId;
+        $issue = new Issue;
+        $issue->name = fake()->name();
+        $issue->page = fake()->randomElement(self::PAGES);
+        $issue->text = $this->text ?? fake()->sentence(20);
+        $issue->email = $this->email ?? fake()->safeEmail();
+        $issue->title = $this->title ?? fake()->optional(0.6, 'Default title')->words(4, true);
+        $issue->status = $this->status;
+        $issue->user_id = $this->userId;
 
-        return $model;
+        return $issue;
     }
 
     public static function new(): self
@@ -64,39 +65,49 @@ class IssueFactory
         return new self;
     }
 
-    public function withComment(CommentFactory|null $commentFactory = null)
+    #[\NoDiscard]
+    public function withComment(CommentFactory|null $commentFactory = null): self
     {
         return clone ($this, ['commentFactory' => $commentFactory ?? CommentFactory::new()]);
     }
 
-    public function withStatus(IssueStatus $status)
+    #[\NoDiscard]
+    public function withStatus(IssueStatus $status): self
     {
         return clone ($this, ['status' => $status]);
     }
 
-    public function withText(string $text)
+    #[\NoDiscard]
+    public function withText(string $text): self
     {
         return clone ($this, ['text' => $text]);
     }
 
-    public function withTitle(string $title)
+    #[\NoDiscard]
+    public function withTitle(string $title): self
     {
         return clone ($this, ['title' => $title]);
     }
 
-    public function withUser(int|User|UserFactory|null $user = null)
+    #[\NoDiscard]
+    public function withUser(int|User|UserFactory|null $user = null): self
     {
-        $factory = clone $this;
-
-        if ($user instanceof User) {
-            $factory->email = $user->email;
-            $factory->userId = $user->id;
-        } elseif (is_int($user)) {
-            $factory->userId = $user;
-        } else {
-            $factory->userFactory = $user ?? UserFactory::new();
-        }
-
-        return $factory;
+        return match (true) {
+            $user instanceof User => clone ($this, [
+                'email' => $user->email,
+                'userId' => $user->id,
+                'userFactory' => null,
+            ]),
+            is_int($user) => clone ($this, [
+                'email' => null,
+                'userId' => $user,
+                'userFactory' => null,
+            ]),
+            default => clone ($this, [
+                'email' => null,
+                'userId' => null,
+                'userFactory' => $user ?? UserFactory::new(),
+            ]),
+        };
     }
 }

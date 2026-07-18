@@ -7,24 +7,24 @@ use App\Domain\Dcpp\Models\DcppHub;
 
 class DcppHubFactory
 {
-    public function create()
+    public function create(): DcppHub
     {
-        $model = $this->make();
-        $model->save();
+        $dcppHub = $this->make();
+        $dcppHub->save();
 
-        return $model;
+        return $dcppHub;
     }
 
-    public function make()
+    public function make(): DcppHub
     {
-        $model = new DcppHub;
-        $model->port = 411;
-        $model->title = fake()->words(3, true);
-        $model->clicks = fake()->optional(0.9, 0)->numberBetween(1, 10000);
-        $model->status = DcppHubStatus::Published;
-        $model->address = fake()->domainName();
+        $dcppHub = new DcppHub;
+        $dcppHub->port = 411;
+        $dcppHub->title = fake()->words(3, true);
+        $dcppHub->clicks = fake()->optional(0.9, 0)->numberBetween(1, 10000);
+        $dcppHub->status = DcppHubStatus::Published;
+        $dcppHub->address = fake()->domainName();
 
-        return $model;
+        return $dcppHub;
     }
 
     public static function new(): self

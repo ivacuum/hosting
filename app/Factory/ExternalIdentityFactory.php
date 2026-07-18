@@ -14,31 +14,34 @@ class ExternalIdentityFactory
 
     private UserFactory|null $userFactory = null;
 
-    public function create()
+    public function create(): ExternalIdentity
     {
-        $model = $this->make();
-        $model->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
-        $model->save();
+        $externalIdentity = $this->make();
+        $externalIdentity->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
+        $externalIdentity->save();
 
-        return $model;
+        return $externalIdentity;
     }
 
-    public function facebook()
+    #[\NoDiscard]
+    public function facebook(): self
     {
         return $this->withProvider(ExternalIdentityProvider::Facebook);
     }
 
-    public function github()
+    #[\NoDiscard]
+    public function github(): self
     {
         return $this->withProvider(ExternalIdentityProvider::GitHub);
     }
 
-    public function google()
+    #[\NoDiscard]
+    public function google(): self
     {
         return $this->withProvider(ExternalIdentityProvider::Google);
     }
 
-    public function make()
+    public function make(): ExternalIdentity
     {
         $externalIdentity = new ExternalIdentity;
         $externalIdentity->uid = fake()->numberBetween(10000, 999_999_999_999);
@@ -54,42 +57,51 @@ class ExternalIdentityFactory
         return new self;
     }
 
-    public function twitter()
+    #[\NoDiscard]
+    public function twitter(): self
     {
         return $this->withProvider(ExternalIdentityProvider::Twitter);
     }
 
-    public function vk()
+    #[\NoDiscard]
+    public function vk(): self
     {
         return $this->withProvider(ExternalIdentityProvider::Vk);
     }
 
-    public function withEmail(string $email)
+    #[\NoDiscard]
+    public function withEmail(string $email): self
     {
         return clone ($this, ['email' => $email]);
     }
 
-    public function withProvider(ExternalIdentityProvider $provider)
+    #[\NoDiscard]
+    public function withProvider(ExternalIdentityProvider $provider): self
     {
         return clone ($this, ['provider' => $provider]);
     }
 
-    public function withUser(int|User|UserFactory|null $user = null)
+    #[\NoDiscard]
+    public function withUser(int|User|UserFactory|null $user = null): self
     {
-        $factory = clone $this;
-
-        if ($user instanceof User) {
-            $factory->userId = $user->id;
-        } elseif (is_int($user)) {
-            $factory->userId = $user;
-        } else {
-            $factory->userFactory = $user ?? UserFactory::new();
-        }
-
-        return $factory;
+        return match (true) {
+            $user instanceof User => clone ($this, [
+                'userId' => $user->id,
+                'userFactory' => null,
+            ]),
+            is_int($user) => clone ($this, [
+                'userId' => $user,
+                'userFactory' => null,
+            ]),
+            default => clone ($this, [
+                'userId' => null,
+                'userFactory' => $user ?? UserFactory::new(),
+            ]),
+        };
     }
 
-    public function yandex()
+    #[\NoDiscard]
+    public function yandex(): self
     {
         return $this->withProvider(ExternalIdentityProvider::Yandex);
     }

@@ -8,15 +8,15 @@ class RadicalFactory
 {
     private int|null $level = null;
 
-    public function create()
+    public function create(): Radical
     {
-        $model = $this->make();
-        $model->save();
+        $radical = $this->make();
+        $radical->save();
 
-        return $model;
+        return $radical;
     }
 
-    public function make()
+    public function make(): Radical
     {
         $radical = new Radical;
         $radical->level = $this->level ?? fake()->numberBetween(1, 60);
@@ -32,7 +32,8 @@ class RadicalFactory
         return new self;
     }
 
-    public function withLevel(int $level)
+    #[\NoDiscard]
+    public function withLevel(int $level): self
     {
         return clone ($this, ['level' => $level]);
     }

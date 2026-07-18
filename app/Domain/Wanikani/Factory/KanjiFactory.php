@@ -9,15 +9,15 @@ class KanjiFactory
     private int|null $level = null;
     private string|null $character = null;
 
-    public function create()
+    public function create(): Kanji
     {
-        $model = $this->make();
-        $model->save();
+        $kanji = $this->make();
+        $kanji->save();
 
-        return $model;
+        return $kanji;
     }
 
-    public function make()
+    public function make(): Kanji
     {
         $kanji = new Kanji;
         $kanji->level = $this->level ?? fake()->numberBetween(1, 60);
@@ -37,12 +37,14 @@ class KanjiFactory
         return new self;
     }
 
-    public function withCharacter(string $character)
+    #[\NoDiscard]
+    public function withCharacter(string $character): self
     {
         return clone ($this, ['character' => $character]);
     }
 
-    public function withLevel(int $level)
+    #[\NoDiscard]
+    public function withLevel(int $level): self
     {
         return clone ($this, ['level' => $level]);
     }

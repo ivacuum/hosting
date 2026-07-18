@@ -16,15 +16,15 @@ class GameFactory
     private CarbonInterface|null $finishedAt = null;
     private CarbonInterface|null $releasedAt = null;
 
-    public function create()
+    public function create(): Game
     {
-        $model = $this->make();
-        $model->save();
+        $game = $this->make();
+        $game->save();
 
-        return $model;
+        return $game;
     }
 
-    public function make()
+    public function make(): Game
     {
         $game = new Game;
         $game->slug = $this->slug ?? 'game-' . fake()->uuid();
@@ -43,7 +43,8 @@ class GameFactory
         return new self;
     }
 
-    public function withFinishedAt(CarbonInterface|string $finishedAt)
+    #[\NoDiscard]
+    public function withFinishedAt(CarbonInterface|string $finishedAt): self
     {
         return clone ($this, [
             'finishedAt' => $finishedAt instanceof CarbonInterface
@@ -52,7 +53,8 @@ class GameFactory
         ]);
     }
 
-    public function withReleasedAt(CarbonInterface|string $releasedAt)
+    #[\NoDiscard]
+    public function withReleasedAt(CarbonInterface|string $releasedAt): self
     {
         return clone ($this, [
             'releasedAt' => $releasedAt instanceof CarbonInterface
@@ -61,27 +63,32 @@ class GameFactory
         ]);
     }
 
-    public function withShortDescriptionEn(string $shortDescription)
+    #[\NoDiscard]
+    public function withShortDescriptionEn(string $shortDescription): self
     {
         return clone ($this, ['shortDescriptionEn' => $shortDescription]);
     }
 
-    public function withShortDescriptionRu(string $shortDescription)
+    #[\NoDiscard]
+    public function withShortDescriptionRu(string $shortDescription): self
     {
         return clone ($this, ['shortDescriptionRu' => $shortDescription]);
     }
 
-    public function withSlug(string $slug)
+    #[\NoDiscard]
+    public function withSlug(string $slug): self
     {
         return clone ($this, ['slug' => $slug]);
     }
 
-    public function withSteamId(int $steamId)
+    #[\NoDiscard]
+    public function withSteamId(int $steamId): self
     {
         return clone ($this, ['steamId' => $steamId]);
     }
 
-    public function withTitle(string $title)
+    #[\NoDiscard]
+    public function withTitle(string $title): self
     {
         return clone ($this, ['title' => $title]);
     }
