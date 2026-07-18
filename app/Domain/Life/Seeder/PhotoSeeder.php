@@ -3,7 +3,7 @@
 namespace App\Domain\Life\Seeder;
 
 use App\Domain\Life\Factory\PhotoFactory;
-use App\Domain\Life\Factory\TagFactory;
+use App\Domain\Life\Models\Tag;
 use App\Domain\Life\Models\Trip;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +12,7 @@ class PhotoSeeder extends Seeder
     public function run()
     {
         $this->seedMoscow();
+        $this->seedOsaka();
         $this->seedSuwon();
     }
 
@@ -25,16 +26,29 @@ class PhotoSeeder extends Seeder
         $factory->hidden()->withSlug('msk.2019.09.29/IMG_1347.jpg')->create();
     }
 
+    private function seedOsaka()
+    {
+        $trip = Trip::query()->where('slug', 'osaka.2019.04.19')->sole();
+        $screenshotTag = Tag::query()->where('title_en', 'screenshot')->sole();
+
+        $factory = PhotoFactory::new()->withTrip($trip);
+        $factory->withSlug('osaka.2019.04.19/IMG_9018.jpg')->create();
+        $factory->withSlug('osaka.2019.04.19/IMG_9019.png')->withTag($screenshotTag)->create();
+        $factory->withSlug('osaka.2019.04.19/IMG_9080.png')->withTag($screenshotTag)->create();
+        $factory->withSlug('osaka.2019.04.19/IMG_9081.png')->withTag($screenshotTag)->create();
+    }
+
     private function seedSuwon()
     {
         $trip = Trip::query()->where('slug', 'suwon.2019')->sole();
+        $localWritingTag = Tag::query()->where('title_en', 'local writing')->sole();
 
         $factory = PhotoFactory::new()->withTrip($trip);
         $factory->withSlug('suwon.2019/IMG_4277.jpg')->create();
         $factory->withSlug('suwon.2019/IMG_4278.jpg')->create();
         $factory->withSlug('suwon.2019/IMG_4283.jpg')->create();
         $factory->withSlug('suwon.2019/IMG_4285.jpg')->create();
-        $factory->withSlug('suwon.2019/IMG_4287.jpg')->withTag(TagFactory::new()->withTitle('местная надпись', 'local writing'))->create();
+        $factory->withSlug('suwon.2019/IMG_4287.jpg')->withTag($localWritingTag)->create();
         $factory->withSlug('suwon.2019/IMG_4288.jpg')->create();
         $factory->withSlug('suwon.2019/IMG_4291.jpg')->create();
         $factory->withSlug('suwon.2019/IMG_4293.jpg')->create();

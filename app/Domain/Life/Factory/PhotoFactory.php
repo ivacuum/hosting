@@ -3,6 +3,7 @@
 namespace App\Domain\Life\Factory;
 
 use App\Domain\Life\Models\Photo;
+use App\Domain\Life\Models\Tag;
 use App\Domain\Life\Models\Trip;
 use App\Domain\Life\PhotoStatus;
 use App\Domain\Spatial\Point;
@@ -19,7 +20,7 @@ class PhotoFactory
     private string|null $relType = null;
     private PhotoStatus $status = PhotoStatus::Published;
 
-    private TagFactory|null $tagFactory = null;
+    private Tag|TagFactory|null $tag = null;
     private TripFactory|null $tripFactory = null;
     private UserFactory|null $userFactory = null;
 
@@ -37,8 +38,12 @@ class PhotoFactory
 
         $photo->save();
 
-        if ($this->tagFactory) {
-            $photo->tags()->attach($this->tagFactory->create()->getKey());
+        if ($this->tag) {
+            $tag = $this->tag instanceof Tag
+                ? $this->tag
+                : $this->tag->create();
+
+            $photo->tags()->attach($tag->getKey());
         }
 
         return $photo;
@@ -96,9 +101,9 @@ class PhotoFactory
     }
 
     #[\NoDiscard]
-    public function withTag(TagFactory|null $tagFactory = null): self
+    public function withTag(Tag|TagFactory|null $tag = null): self
     {
-        return clone ($this, ['tagFactory' => $tagFactory ?? TagFactory::new()]);
+        return clone ($this, ['tag' => $tag ?? TagFactory::new()]);
     }
 
     #[\NoDiscard]
