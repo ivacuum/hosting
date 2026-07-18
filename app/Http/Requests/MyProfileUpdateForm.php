@@ -12,7 +12,7 @@ class MyProfileUpdateForm extends FormRequest
 {
     public User $user;
     public readonly string $email;
-    public readonly string $username;
+    public readonly string|null $username;
 
     public function rules(): array
     {
@@ -35,6 +35,6 @@ class MyProfileUpdateForm extends FormRequest
     {
         $this->user = $this->user();
         $this->email = $this->input('email');
-        $this->username = $this->input('username', '');
+        $this->username = $this->input('username');
     }
 }

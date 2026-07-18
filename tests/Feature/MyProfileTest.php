@@ -19,7 +19,7 @@ class MyProfileTest extends TestCase
 
     public function testUpdateEmail()
     {
-        $user = UserFactory::new()->withLogin('')->create();
+        $user = UserFactory::new()->create();
         $email = "__{$user->email}";
 
         \Event::fake(\App\Events\Stats\MyProfileChanged::class);
@@ -33,7 +33,7 @@ class MyProfileTest extends TestCase
         $user->refresh();
 
         $this->assertSame($email, $user->email);
-        $this->assertSame('', $user->login);
+        $this->assertNull($user->login);
 
         \Event::assertDispatched(\App\Events\Stats\MyProfileChanged::class);
     }

@@ -22,7 +22,7 @@ use Illuminate\Notifications\Notifiable;
 /**
  * @property int $id
  * @property string $email
- * @property string $login
+ * @property string|null $login
  * @property string $password
  * @property string $salt
  * @property UserStatus $status
@@ -75,7 +75,7 @@ class User extends Authenticatable implements HasLocalePreference
     protected $attributes = [
         'ip' => '',
         'salt' => '',
-        'login' => '',
+        'login' => null,
         'avatar' => '',
         'password' => '',
         'remember_token' => null,
