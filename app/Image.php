@@ -50,14 +50,14 @@ class Image extends Model
 
     public static function newFromFile(UploadedFile $file, $userId): self
     {
-        $model = new self;
-        $model->date = date('ymd');
-        $model->size = 0;
-        $model->slug = sprintf('%s_%s.%s', $userId, \Str::random(10), strtolower($file->getClientOriginalExtension()));
-        $model->views = 0;
-        $model->user_id = $userId;
+        $image = new self;
+        $image->date = date('ymd');
+        $image->size = 0;
+        $image->slug = sprintf('%s_%s.%s', $userId, \Str::random(10), strtolower($file->getClientOriginalExtension()));
+        $image->views = 0;
+        $image->user_id = $userId;
 
-        return $model;
+        return $image;
     }
 
     public function originalUrl(): string
