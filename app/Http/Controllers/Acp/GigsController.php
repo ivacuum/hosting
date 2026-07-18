@@ -9,6 +9,7 @@ use App\Action\Acp\ResponseToEditAction;
 use App\Action\Acp\ResponseToShowAction;
 use App\Domain\Life\Models\Gig;
 use App\Domain\Sort;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
 
@@ -24,8 +25,10 @@ class GigsController extends Controller
     public function index(ApplyIndexGoodsAction $applyIndexGoods)
     {
         $sort = $applyIndexGoods->execute(new Gig, Sort::desc('date'));
+        $artistId = request('artist_id');
 
         $models = Gig::query()
+            ->when($artistId, static fn (Builder $query) => $query->where('artist_id', $artistId))
             ->orderBy(match ($sort->key) {
                 'views' => $sort->key,
                 default => 'date',

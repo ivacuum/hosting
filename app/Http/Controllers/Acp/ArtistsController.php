@@ -26,7 +26,11 @@ class ArtistsController extends Controller
         $sort = $applyIndexGoods->execute(new Artist, Sort::asc('title'));
 
         $models = Artist::query()
-            ->orderBy('title', $sort->direction->value)
+            ->withCount('gigs')
+            ->orderBy(match ($sort->key) {
+                'gigs_count' => $sort->key,
+                default => 'title',
+            }, $sort->direction->value)
             ->paginate(500);
 
         return view('acp.artists.index', ['models' => $models]);

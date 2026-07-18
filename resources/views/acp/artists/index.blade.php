@@ -8,6 +8,7 @@
   <tr>
     <x-th key="title"/>
     <x-th key="slug"/>
+    <x-th-numeric-sortable key="gigs_count">@svg(music)</x-th-numeric-sortable>
   </tr>
   </thead>
   <tbody>
@@ -19,6 +20,11 @@
         </a>
       </td>
       <td>{{ $model->slug }}</td>
+      <td class="md:text-right whitespace-nowrap">
+        <a href="{{ Acp::index(new App\Domain\Life\Models\Gig, $model) }}">
+          {{ ViewHelper::number($model->gigs_count) ?: '' }}
+        </a>
+      </td>
     </tr>
   @endforeach
   </tbody>
