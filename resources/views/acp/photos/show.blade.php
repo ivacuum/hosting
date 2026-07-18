@@ -16,7 +16,7 @@
 
 @section('content')
 <div class="mt-4">
-  <div class="aspect-[4/3] w-full max-w-[120vh]">
+  <div class="aspect-4/3 w-full max-w-[120vh]">
     <img class="size-full rounded-sm border border-black/10 dark:border-white/10 object-contain" src="{{ $model->originalUrl() }}" alt="">
   </div>
 </div>
