@@ -34,7 +34,7 @@ class RegisterTest extends TestCase
             'password' => 'secret42',
         ])->assertRedirect('/');
 
-        $this->get('auth/logout');
+        $this->post('auth/logout');
 
         $this->post('auth/register', [
             'email' => 'second-phpunit@example.com',

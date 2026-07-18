@@ -25,8 +25,10 @@
       @lang('Аккаунт')
     </x-dropdown-item>
     <div class="h-0 my-2 overflow-hidden border-t border-gray-100 dark:border-slate-700"></div>
-    <x-dropdown-item href="/auth/logout">
-      @lang('auth.logout')
-    </x-dropdown-item>
+    <x-logout-form>
+      <button class="flex text-grey-900 dark:text-slate-400 px-6 py-1 whitespace-nowrap w-full hover:bg-grey-100 dark:hover:bg-slate-700 hover:text-grey-900 dark:hover:text-slate-200" type="submit" role="menuitem">
+        @lang('auth.logout')
+      </button>
+    </x-logout-form>
   </details-menu>
 </details>
