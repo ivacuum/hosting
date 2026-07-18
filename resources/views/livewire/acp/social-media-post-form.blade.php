@@ -7,9 +7,9 @@
 
   <div class="md:grid md:grid-cols-(--form-two-columns) md:gap-4">
     <label class="font-semibold md:leading-6 md:pt-1.5">{{ \ViewHelper::modelFieldTrans('social-media-post', 'photo_id') }}</label>
-    <div class="max-md:mt-1.5">
+    <div class="aspect-4/3 w-full max-w-full max-md:mt-1.5">
       <img
-        class="rounded-sm pointer aspect-4/3"
+        class="size-full rounded-sm pointer object-contain"
         src="{{ $this->photo->originalUrl() }}"
         alt=""
         wire:click.prevent="pickRandomPhoto"
