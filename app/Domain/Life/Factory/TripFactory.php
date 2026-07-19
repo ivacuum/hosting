@@ -12,23 +12,23 @@ use Carbon\CarbonImmutable;
 
 class TripFactory
 {
-    private int|null $cityId = null;
-    private int|null $userId = null;
     private string|null $slug = null;
     private string|null $metaImage = null;
     private string|null $englishTitle = null;
     private string|null $russianTitle = null;
     private TripStatus $status = TripStatus::Published;
 
-    private CityFactory|null $cityFactory = null;
-    private UserFactory|null $userFactory = null;
+    private int|City|CityFactory|null $city = null;
+    private int|User|UserFactory|null $user = null;
     private CommentFactory|null $commentFactory = null;
 
     public function create(): Trip
     {
         $trip = $this->make();
-        $trip->city_id ??= ($this->cityFactory ?? CityFactory::new())->create()->id;
-        $trip->user_id ??= $this->userFactory?->create()->id ?? 1;
+        $trip->city_id ??= ($this->city instanceof CityFactory ? $this->city : CityFactory::new())->create()->id;
+        $trip->user_id ??= $this->user instanceof UserFactory
+            ? $this->user->create()->id
+            : 1;
         $trip->save();
 
         $this->commentFactory
@@ -50,8 +50,16 @@ class TripFactory
         $trip->slug = $this->slug ?? \Str::slug($this->englishTitle ?? $title);
         $trip->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $trip->status = $this->status;
-        $trip->city_id = $this->cityId;
-        $trip->user_id = $this->userId;
+        $trip->city_id = match (true) {
+            $this->city instanceof City => $this->city->id,
+            is_int($this->city) => $this->city,
+            default => null,
+        };
+        $trip->user_id = match (true) {
+            $this->user instanceof User => $this->user->id,
+            is_int($this->user) => $this->user,
+            default => null,
+        };
         $trip->date_end = $dateEnd;
         $trip->markdown = '';
         $trip->title_en = $this->englishTitle ?? $title;
@@ -76,26 +84,11 @@ class TripFactory
     #[\NoDiscard]
     public function withCity(int|City|CityFactory $city): self
     {
-        return match (true) {
-            $city instanceof City => clone ($this, [
-                'cityId' => $city->id,
-                'cityFactory' => null,
-                'englishTitle' => $city->title_en,
-                'russianTitle' => $city->title_ru,
-            ]),
-            $city instanceof CityFactory => clone ($this, [
-                'cityId' => null,
-                'cityFactory' => $city,
-                'englishTitle' => null,
-                'russianTitle' => null,
-            ]),
-            default => clone ($this, [
-                'cityId' => $city,
-                'cityFactory' => null,
-                'englishTitle' => null,
-                'russianTitle' => null,
-            ]),
-        };
+        return clone ($this, [
+            'city' => $city,
+            'englishTitle' => $city instanceof City ? $city->title_en : null,
+            'russianTitle' => $city instanceof City ? $city->title_ru : null,
+        ]);
     }
 
     #[\NoDiscard]
@@ -119,19 +112,6 @@ class TripFactory
     #[\NoDiscard]
     public function withUser(int|User|UserFactory|null $user = null): self
     {
-        return match (true) {
-            $user instanceof User => clone ($this, [
-                'userId' => $user->id,
-                'userFactory' => null,
-            ]),
-            is_int($user) => clone ($this, [
-                'userId' => $user,
-                'userFactory' => null,
-            ]),
-            default => clone ($this, [
-                'userId' => null,
-                'userFactory' => $user ?? UserFactory::new(),
-            ]),
-        };
+        return clone ($this, ['user' => $user ?? UserFactory::new()]);
     }
 }

@@ -8,16 +8,15 @@ use App\User;
 
 class ExternalIdentityFactory
 {
-    private int|null $userId = null;
     private string|null $email = null;
     private ExternalIdentityProvider|null $provider = null;
 
-    private UserFactory|null $userFactory = null;
+    private int|User|UserFactory|null $user = null;
 
     public function create(): ExternalIdentity
     {
         $externalIdentity = $this->make();
-        $externalIdentity->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
+        $externalIdentity->user_id ??= ($this->user instanceof UserFactory ? $this->user : UserFactory::new())->create()->id;
         $externalIdentity->save();
 
         return $externalIdentity;
@@ -46,7 +45,11 @@ class ExternalIdentityFactory
         $externalIdentity = new ExternalIdentity;
         $externalIdentity->uid = fake()->numberBetween(10000, 999_999_999_999);
         $externalIdentity->email = $this->email ?? fake()->optional(0.6, '')->safeEmail();
-        $externalIdentity->user_id = $this->userId;
+        $externalIdentity->user_id = match (true) {
+            $this->user instanceof User => $this->user->id,
+            is_int($this->user) => $this->user,
+            default => null,
+        };
         $externalIdentity->provider = $this->provider ?? fake()->randomElement(ExternalIdentityProvider::class);
 
         return $externalIdentity;
@@ -84,20 +87,7 @@ class ExternalIdentityFactory
     #[\NoDiscard]
     public function withUser(int|User|UserFactory|null $user = null): self
     {
-        return match (true) {
-            $user instanceof User => clone ($this, [
-                'userId' => $user->id,
-                'userFactory' => null,
-            ]),
-            is_int($user) => clone ($this, [
-                'userId' => $user,
-                'userFactory' => null,
-            ]),
-            default => clone ($this, [
-                'userId' => null,
-                'userFactory' => $user ?? UserFactory::new(),
-            ]),
-        };
+        return clone ($this, ['user' => $user ?? UserFactory::new()]);
     }
 
     #[\NoDiscard]

@@ -9,16 +9,15 @@ use Carbon\CarbonInterface;
 
 class SocialMediaTokenFactory
 {
-    private int|null $userId = 1;
     private string|null $token = null;
     private CarbonInterface|null $expiresAt = null;
 
-    private UserFactory|null $userFactory = null;
+    private int|User|UserFactory|null $user = 1;
 
     public function create(): SocialMediaToken
     {
         $token = $this->make();
-        $token->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
+        $token->user_id ??= ($this->user instanceof UserFactory ? $this->user : UserFactory::new())->create()->id;
         $token->save();
 
         return $token;
@@ -28,7 +27,11 @@ class SocialMediaTokenFactory
     {
         $token = new SocialMediaToken;
         $token->token = $this->token ?? fake()->uuid();
-        $token->user_id = $this->userId;
+        $token->user_id = match (true) {
+            $this->user instanceof User => $this->user->id,
+            is_int($this->user) => $this->user,
+            default => null,
+        };
         $token->expired_at = $this->expiresAt ?? now()->addMonth();
 
         return $token;
@@ -54,19 +57,6 @@ class SocialMediaTokenFactory
     #[\NoDiscard]
     public function withUser(int|User|UserFactory|null $user = null): self
     {
-        return match (true) {
-            $user instanceof User => clone ($this, [
-                'userId' => $user->id,
-                'userFactory' => null,
-            ]),
-            is_int($user) => clone ($this, [
-                'userId' => $user,
-                'userFactory' => null,
-            ]),
-            default => clone ($this, [
-                'userId' => null,
-                'userFactory' => $user ?? UserFactory::new(),
-            ]),
-        };
+        return clone ($this, ['user' => $user ?? UserFactory::new()]);
     }
 }

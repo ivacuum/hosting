@@ -9,15 +9,14 @@ use Carbon\CarbonInterface;
 
 class ImageFactory
 {
-    private int|null $userId = null;
     private CarbonInterface|null $updatedAt = null;
 
-    private UserFactory|null $userFactory = null;
+    private int|User|UserFactory|null $user = null;
 
     public function create(): Image
     {
         $image = $this->make();
-        $image->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
+        $image->user_id ??= ($this->user instanceof UserFactory ? $this->user : UserFactory::new())->create()->id;
         $image->save();
 
         return $image;
@@ -30,7 +29,11 @@ class ImageFactory
         $image->date = CarbonImmutable::instance(fake()->dateTimeBetween('-4 years'))->format('ymd');
         $image->size = fake()->numberBetween(1000, 1_000_000);
         $image->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
-        $image->user_id = $this->userId;
+        $image->user_id = match (true) {
+            $this->user instanceof User => $this->user->id,
+            is_int($this->user) => $this->user,
+            default => null,
+        };
         $image->updated_at = $this->updatedAt;
 
         return $image;
@@ -56,19 +59,6 @@ class ImageFactory
     #[\NoDiscard]
     public function withUser(int|User|UserFactory|null $user = null): self
     {
-        return match (true) {
-            $user instanceof User => clone ($this, [
-                'userId' => $user->id,
-                'userFactory' => null,
-            ]),
-            is_int($user) => clone ($this, [
-                'userId' => $user,
-                'userFactory' => null,
-            ]),
-            default => clone ($this, [
-                'userId' => null,
-                'userFactory' => $user ?? UserFactory::new(),
-            ]),
-        };
+        return clone ($this, ['user' => $user ?? UserFactory::new()]);
     }
 }

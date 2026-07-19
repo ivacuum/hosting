@@ -8,18 +8,17 @@ use App\Domain\Spatial\Point;
 
 class CityFactory
 {
-    private int|null $countryId = null;
     private Point|null $point = null;
     private string|null $slug = null;
     private string|null $titleEn = null;
     private string|null $titleRu = null;
 
-    private CountryFactory|null $countryFactory = null;
+    private int|Country|CountryFactory|null $country = null;
 
     public function create(): City
     {
         $city = $this->make();
-        $city->country_id ??= ($this->countryFactory ?? CountryFactory::new())->create()->id;
+        $city->country_id ??= ($this->country instanceof CountryFactory ? $this->country : CountryFactory::new())->create()->id;
         $city->save();
 
         return $city;
@@ -40,7 +39,11 @@ class CityFactory
         $city->hashtags = mb_strtolower(str_replace(' ', '', $titleEn));
         $city->title_en = $titleEn;
         $city->title_ru = $titleRu;
-        $city->country_id = $this->countryId;
+        $city->country_id = match (true) {
+            $this->country instanceof Country => $this->country->id,
+            is_int($this->country) => $this->country,
+            default => null,
+        };
 
         return $city;
     }
@@ -53,20 +56,7 @@ class CityFactory
     #[\NoDiscard]
     public function withCountry(int|Country|CountryFactory|null $country = null): self
     {
-        return match (true) {
-            $country instanceof Country => clone ($this, [
-                'countryId' => $country->id,
-                'countryFactory' => null,
-            ]),
-            is_int($country) => clone ($this, [
-                'countryId' => $country,
-                'countryFactory' => null,
-            ]),
-            default => clone ($this, [
-                'countryId' => null,
-                'countryFactory' => $country ?? CountryFactory::new(),
-            ]),
-        };
+        return clone ($this, ['country' => $country ?? CountryFactory::new()]);
     }
 
     #[\NoDiscard]

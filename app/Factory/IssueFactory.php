@@ -15,13 +15,12 @@ class IssueFactory
         '/en/japanese',
     ];
 
-    private int|null $userId = null;
     private string|null $text = null;
     private string|null $email = null;
     private string|null $title = null;
     private IssueStatus $status = IssueStatus::Open;
 
-    private UserFactory|null $userFactory = null;
+    private int|User|UserFactory|null $user = null;
     private CommentFactory|null $commentFactory = null;
 
     #[\NoDiscard]
@@ -33,7 +32,7 @@ class IssueFactory
     public function create(): Issue
     {
         $issue = $this->make();
-        $issue->user_id ??= ($this->userFactory ?? UserFactory::new())
+        $issue->user_id ??= ($this->user instanceof UserFactory ? $this->user : UserFactory::new())
             ->withEmail($issue->email)
             ->create()
             ->id;
@@ -55,7 +54,11 @@ class IssueFactory
         $issue->email = $this->email ?? fake()->safeEmail();
         $issue->title = $this->title ?? fake()->optional(0.6, 'Default title')->words(4, true);
         $issue->status = $this->status;
-        $issue->user_id = $this->userId;
+        $issue->user_id = match (true) {
+            $this->user instanceof User => $this->user->id,
+            is_int($this->user) => $this->user,
+            default => null,
+        };
 
         return $issue;
     }
@@ -92,22 +95,9 @@ class IssueFactory
     #[\NoDiscard]
     public function withUser(int|User|UserFactory|null $user = null): self
     {
-        return match (true) {
-            $user instanceof User => clone ($this, [
-                'email' => $user->email,
-                'userId' => $user->id,
-                'userFactory' => null,
-            ]),
-            is_int($user) => clone ($this, [
-                'email' => null,
-                'userId' => $user,
-                'userFactory' => null,
-            ]),
-            default => clone ($this, [
-                'email' => null,
-                'userId' => null,
-                'userFactory' => $user ?? UserFactory::new(),
-            ]),
-        };
+        return clone ($this, [
+            'email' => $user instanceof User ? $user->email : null,
+            'user' => $user ?? UserFactory::new(),
+        ]);
     }
 }

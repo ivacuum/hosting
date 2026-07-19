@@ -15,7 +15,7 @@ class PhotoForTripScope
             return;
         }
 
-        $query->where('rel_type', (new Trip)->getMorphClass())
+        $query->where('rel_type', new Trip()->getMorphClass())
             ->where('rel_id', $this->id);
     }
 }

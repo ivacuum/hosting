@@ -8,15 +8,14 @@ use Illuminate\Support\Str;
 
 class LinkRequestFactory
 {
-    private int|null $userId = null;
     private string|null $token = null;
 
-    private UserFactory|null $userFactory = null;
+    private int|User|UserFactory|null $user = null;
 
     public function create(): LinkRequest
     {
         $linkRequest = $this->make();
-        $linkRequest->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
+        $linkRequest->user_id ??= ($this->user instanceof UserFactory ? $this->user : UserFactory::new())->create()->id;
         $linkRequest->save();
 
         return $linkRequest;
@@ -26,7 +25,11 @@ class LinkRequestFactory
     {
         $linkRequest = new LinkRequest;
         $linkRequest->token = $this->token ?? Str::random(32);
-        $linkRequest->user_id = $this->userId;
+        $linkRequest->user_id = match (true) {
+            $this->user instanceof User => $this->user->id,
+            is_int($this->user) => $this->user,
+            default => null,
+        };
 
         return $linkRequest;
     }
@@ -45,19 +48,6 @@ class LinkRequestFactory
     #[\NoDiscard]
     public function withUser(int|User|UserFactory|null $user = null): self
     {
-        return match (true) {
-            $user instanceof User => clone ($this, [
-                'userId' => $user->id,
-                'userFactory' => null,
-            ]),
-            is_int($user) => clone ($this, [
-                'userId' => $user,
-                'userFactory' => null,
-            ]),
-            default => clone ($this, [
-                'userId' => null,
-                'userFactory' => $user ?? UserFactory::new(),
-            ]),
-        };
+        return clone ($this, ['user' => $user ?? UserFactory::new()]);
     }
 }

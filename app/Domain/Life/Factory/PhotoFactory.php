@@ -12,25 +12,22 @@ use App\User;
 
 class PhotoFactory
 {
-    private int|null $relId = null;
-    private int|null $userId = 1;
     private string|null $lat = null;
     private string|null $lon = null;
     private string|null $slug = null;
-    private string|null $relType = null;
     private PhotoStatus $status = PhotoStatus::Published;
 
     private Tag|TagFactory|null $tag = null;
-    private TripFactory|null $tripFactory = null;
-    private UserFactory|null $userFactory = null;
+    private int|Trip|TripFactory|null $trip = null;
+    private int|User|UserFactory|null $user = 1;
 
     public function create(): Photo
     {
         $photo = $this->make();
-        $photo->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
+        $photo->user_id ??= ($this->user instanceof UserFactory ? $this->user : UserFactory::new())->create()->id;
 
-        if ($this->tripFactory) {
-            $trip = $this->tripFactory->withUser($photo->user_id)->create();
+        if ($this->trip instanceof TripFactory) {
+            $trip = $this->trip->withUser($photo->user_id)->create();
 
             $photo->rel_id = $trip->id;
             $photo->rel_type = $trip->getMorphClass();
@@ -66,10 +63,22 @@ class PhotoFactory
             ? new Point($lat, $lon)
             : null;
         $photo->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
-        $photo->rel_id = $this->relId;
+        $photo->rel_id = match (true) {
+            $this->trip instanceof Trip => $this->trip->id,
+            is_int($this->trip) => $this->trip,
+            default => null,
+        };
         $photo->status = $this->status;
-        $photo->user_id = $this->userId;
-        $photo->rel_type = $this->relType;
+        $photo->user_id = match (true) {
+            $this->user instanceof User => $this->user->id,
+            is_int($this->user) => $this->user,
+            default => null,
+        };
+        $photo->rel_type = match (true) {
+            $this->trip instanceof Trip => $this->trip->getMorphClass(),
+            is_int($this->trip) => new Trip()->getMorphClass(),
+            default => null,
+        };
 
         return $photo;
     }
@@ -109,41 +118,12 @@ class PhotoFactory
     #[\NoDiscard]
     public function withTrip(int|Trip|TripFactory|null $trip = null): self
     {
-        return match (true) {
-            $trip instanceof Trip => clone ($this, [
-                'relId' => $trip->id,
-                'relType' => $trip->getMorphClass(),
-                'tripFactory' => null,
-            ]),
-            is_int($trip) => clone ($this, [
-                'relId' => $trip,
-                'relType' => new Trip()->getMorphClass(),
-                'tripFactory' => null,
-            ]),
-            default => clone ($this, [
-                'relId' => null,
-                'relType' => null,
-                'tripFactory' => $trip ?? TripFactory::new()->metaImage(),
-            ]),
-        };
+        return clone ($this, ['trip' => $trip ?? TripFactory::new()->metaImage()]);
     }
 
     #[\NoDiscard]
     public function withUser(int|User|UserFactory|null $user = null): self
     {
-        return match (true) {
-            $user instanceof User => clone ($this, [
-                'userId' => $user->id,
-                'userFactory' => null,
-            ]),
-            is_int($user) => clone ($this, [
-                'userId' => $user,
-                'userFactory' => null,
-            ]),
-            default => clone ($this, [
-                'userId' => null,
-                'userFactory' => $user ?? UserFactory::new(),
-            ]),
-        };
+        return clone ($this, ['user' => $user ?? UserFactory::new()]);
     }
 }

@@ -9,18 +9,17 @@ use App\User;
 
 class NewsFactory
 {
-    private int|null $userId = null;
     private string|null $title = null;
     private string|null $markdown = null;
     private Locale $locale = Locale::Rus;
     private NewsStatus $status = NewsStatus::Published;
 
-    private UserFactory|null $userFactory = null;
+    private int|User|UserFactory|null $user = null;
 
     public function create(): News
     {
         $news = $this->make();
-        $news->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
+        $news->user_id ??= ($this->user instanceof UserFactory ? $this->user : UserFactory::new())->create()->id;
         $news->save();
 
         return $news;
@@ -45,7 +44,11 @@ class NewsFactory
         $news->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $news->locale = $this->locale;
         $news->status = $this->status;
-        $news->user_id = $this->userId;
+        $news->user_id = match (true) {
+            $this->user instanceof User => $this->user->id,
+            is_int($this->user) => $this->user,
+            default => null,
+        };
         $news->markdown = $this->markdown ?? fake()->text();
 
         return $news;
@@ -83,19 +86,6 @@ class NewsFactory
     #[\NoDiscard]
     public function withUser(int|User|UserFactory|null $user = null): self
     {
-        return match (true) {
-            $user instanceof User => clone ($this, [
-                'userId' => $user->id,
-                'userFactory' => null,
-            ]),
-            is_int($user) => clone ($this, [
-                'userId' => $user,
-                'userFactory' => null,
-            ]),
-            default => clone ($this, [
-                'userId' => null,
-                'userFactory' => $user ?? UserFactory::new(),
-            ]),
-        };
+        return clone ($this, ['user' => $user ?? UserFactory::new()]);
     }
 }

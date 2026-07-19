@@ -13,13 +13,12 @@ class MagnetFactory
 {
     private string $relatedQuery = '';
     private int|null $rtoId = null;
-    private int|null $userId = null;
     private string|null $html = null;
     private string|null $title = null;
     private MagnetStatus $status = MagnetStatus::Published;
     private MagnetCategory|null $categoryId = null;
 
-    private UserFactory|null $userFactory = null;
+    private int|User|UserFactory|null $user = null;
     private CommentFactory|null $commentFactory = null;
 
     #[\NoDiscard]
@@ -33,7 +32,7 @@ class MagnetFactory
     public function create(): Magnet
     {
         $magnet = $this->make();
-        $magnet->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
+        $magnet->user_id ??= ($this->user instanceof UserFactory ? $this->user : UserFactory::new())->create()->id;
         $magnet->save();
 
         $this->commentFactory
@@ -66,7 +65,11 @@ class MagnetFactory
         $magnet->clicks = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $magnet->rto_id = $this->rtoId ?? fake()->unique()->numberBetween(3_000_000_000, 4_294_967_295);
         $magnet->status = $this->status;
-        $magnet->user_id = $this->userId;
+        $magnet->user_id = match (true) {
+            $this->user instanceof User => $this->user->id,
+            is_int($this->user) => $this->user,
+            default => null,
+        };
         $magnet->info_hash = fake()->regexify('[A-F0-9]{40}');
         $magnet->announcer = 'https://example.com';
         $magnet->category_id = $this->categoryId ?? fake()->randomElement([2, 3, 4, 5, 7, 8, 9, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]);
@@ -126,19 +129,6 @@ class MagnetFactory
     #[\NoDiscard]
     public function withUser(int|User|UserFactory|null $user = null): self
     {
-        return match (true) {
-            $user instanceof User => clone ($this, [
-                'userId' => $user->id,
-                'userFactory' => null,
-            ]),
-            is_int($user) => clone ($this, [
-                'userId' => $user,
-                'userFactory' => null,
-            ]),
-            default => clone ($this, [
-                'userId' => null,
-                'userFactory' => $user ?? UserFactory::new(),
-            ]),
-        };
+        return clone ($this, ['user' => $user ?? UserFactory::new()]);
     }
 }

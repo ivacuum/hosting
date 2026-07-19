@@ -10,19 +10,17 @@ use Carbon\CarbonImmutable;
 
 class GigFactory
 {
-    private int|null $cityId = null;
-    private int|null $artistId = null;
     private string|null $slug = null;
     private GigStatus $status = GigStatus::Published;
 
-    private CityFactory|null $cityFactory = null;
-    private ArtistFactory|null $artistFactory = null;
+    private int|Artist|ArtistFactory|null $artist = null;
+    private int|City|CityFactory|null $city = null;
 
     public function create(): Gig
     {
         $gig = $this->make();
-        $gig->city_id ??= ($this->cityFactory ?? CityFactory::new())->create()->id;
-        $gig->artist_id ??= ($this->artistFactory ?? ArtistFactory::new())->create()->id;
+        $gig->city_id ??= ($this->city instanceof CityFactory ? $this->city : CityFactory::new())->create()->id;
+        $gig->artist_id ??= ($this->artist instanceof ArtistFactory ? $this->artist : ArtistFactory::new())->create()->id;
         $gig->save();
 
         return $gig;
@@ -37,10 +35,18 @@ class GigFactory
         $gig->slug = $this->slug ?? \Str::slug($title);
         $gig->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $gig->status = $this->status;
-        $gig->city_id = $this->cityId;
+        $gig->city_id = match (true) {
+            $this->city instanceof City => $this->city->id,
+            is_int($this->city) => $this->city,
+            default => null,
+        };
         $gig->title_en = $title;
         $gig->title_ru = $title;
-        $gig->artist_id = $this->artistId;
+        $gig->artist_id = match (true) {
+            $this->artist instanceof Artist => $this->artist->id,
+            is_int($this->artist) => $this->artist,
+            default => null,
+        };
 
         return $gig;
     }
@@ -53,39 +59,13 @@ class GigFactory
     #[\NoDiscard]
     public function withArtist(int|Artist|ArtistFactory $artist): self
     {
-        return match (true) {
-            $artist instanceof Artist => clone ($this, [
-                'artistId' => $artist->id,
-                'artistFactory' => null,
-            ]),
-            $artist instanceof ArtistFactory => clone ($this, [
-                'artistId' => null,
-                'artistFactory' => $artist,
-            ]),
-            default => clone ($this, [
-                'artistId' => $artist,
-                'artistFactory' => null,
-            ]),
-        };
+        return clone ($this, ['artist' => $artist]);
     }
 
     #[\NoDiscard]
     public function withCity(int|City|CityFactory $city): self
     {
-        return match (true) {
-            $city instanceof City => clone ($this, [
-                'cityId' => $city->id,
-                'cityFactory' => null,
-            ]),
-            $city instanceof CityFactory => clone ($this, [
-                'cityId' => null,
-                'cityFactory' => $city,
-            ]),
-            default => clone ($this, [
-                'cityId' => $city,
-                'cityFactory' => null,
-            ]),
-        };
+        return clone ($this, ['city' => $city]);
     }
 
     #[\NoDiscard]

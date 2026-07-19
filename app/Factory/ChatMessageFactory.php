@@ -9,17 +9,16 @@ use Carbon\CarbonInterface;
 
 class ChatMessageFactory
 {
-    private int|null $userId = null;
     private string|null $text = null;
     private ChatMessageStatus $status = ChatMessageStatus::Published;
     private CarbonInterface|null $createdAt = null;
 
-    private UserFactory|null $userFactory = null;
+    private int|User|UserFactory|null $user = null;
 
     public function create(): ChatMessage
     {
         $chatMessage = $this->make();
-        $chatMessage->user_id ??= ($this->userFactory ?? UserFactory::new())->create()->id;
+        $chatMessage->user_id ??= ($this->user instanceof UserFactory ? $this->user : UserFactory::new())->create()->id;
         $chatMessage->save();
 
         return $chatMessage;
@@ -37,7 +36,11 @@ class ChatMessageFactory
         $chatMessage->ip = fake()->ipv4();
         $chatMessage->text = $this->text ?? fake()->sentence(20);
         $chatMessage->status = $this->status;
-        $chatMessage->user_id = $this->userId;
+        $chatMessage->user_id = match (true) {
+            $this->user instanceof User => $this->user->id,
+            is_int($this->user) => $this->user,
+            default => null,
+        };
         $chatMessage->created_at = $this->createdAt ?? now();
 
         return $chatMessage;
@@ -69,19 +72,6 @@ class ChatMessageFactory
     #[\NoDiscard]
     public function withUser(int|User|UserFactory|null $user = null): self
     {
-        return match (true) {
-            $user instanceof User => clone ($this, [
-                'userId' => $user->id,
-                'userFactory' => null,
-            ]),
-            is_int($user) => clone ($this, [
-                'userId' => $user,
-                'userFactory' => null,
-            ]),
-            default => clone ($this, [
-                'userId' => null,
-                'userFactory' => $user ?? UserFactory::new(),
-            ]),
-        };
+        return clone ($this, ['user' => $user ?? UserFactory::new()]);
     }
 }
