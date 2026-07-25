@@ -16,7 +16,7 @@ return new class extends Migration {
         Schema::create('artists', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
 
@@ -43,7 +43,7 @@ return new class extends Migration {
             $table->unsignedInteger('country_id');
             $table->string('title_ru');
             $table->string('title_en');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->char('iata', 3)->default('');
             $table->string('hashtags')->default('');
             $table->geography('point', 'point')->nullable();
@@ -64,7 +64,7 @@ return new class extends Migration {
             $table->increments('id');
             $table->string('title_ru');
             $table->string('title_en');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->string('emoji', 20)->charset('utf8mb4')->collation('utf8mb4_unicode_ci')->collate('utf8mb4_unicode_ci');
             $table->string('hashtags')->default('');
             $table->unsignedInteger('views')->default(0);
@@ -116,6 +116,8 @@ return new class extends Migration {
             $table->unsignedBigInteger('redirect_time_us');
             $table->string('redirect_url');
             $table->timestamps(6);
+
+            $table->index('created_at');
         });
 
         Schema::create('external_identities', function (Blueprint $table) {
@@ -125,6 +127,8 @@ return new class extends Migration {
             $table->string('uid');
             $table->string('email');
             $table->timestamps();
+
+            $table->unique(['provider', 'uid']);
         });
 
         Schema::create('failed_jobs', function (Blueprint $table) {
@@ -177,7 +181,7 @@ return new class extends Migration {
             $table->unsignedInteger('artist_id');
             $table->string('title_ru')->default('');
             $table->string('title_en')->default('');
-            $table->string('slug')->default('');
+            $table->string('slug')->unique();
             $table->timestamp('date');
             $table->tinyInteger('status')->unsigned()->default(App\Domain\Life\GigStatus::Hidden->value);
             $table->string('meta_title_ru')->default('');
@@ -379,6 +383,8 @@ return new class extends Migration {
             $table->string('meta_image')->default('');
             $table->unsignedInteger('views')->default(0);
             $table->timestamps();
+
+            $table->unique(['user_id', 'slug']);
         });
 
         Schema::create('users', function (Blueprint $table) {
