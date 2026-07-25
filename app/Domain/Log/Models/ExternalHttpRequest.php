@@ -6,6 +6,7 @@ use App\Domain\Log\ExternalService;
 use App\Domain\Log\Policy\ExternalHttpRequestPolicy;
 use Illuminate\Database\Eloquent\Attributes\DateFormat;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\MassPrunable;
 use Illuminate\Database\Eloquent\Model;
@@ -47,22 +48,10 @@ class ExternalHttpRequest extends Model
         return "#{$this->id}";
     }
 
-    public function prunable()
+    public function prunable(): Builder
     {
-        $thresholdId = self::query()
-            ->where('created_at', '<', now()->subWeeks(2))
-            ->orderByDesc('id')
-            ->first(['id'])
-            ?->id;
-
-        if ($thresholdId === null) {
-            return self::query()
-                ->whereNull('id');
-        }
-
         return self::query()
-            ->where('id', '<=', $thresholdId)
-            ->limit(1_000_000);
+            ->where('created_at', '<', now()->subWeeks(2));
     }
 
     public function toUri(): Uri
