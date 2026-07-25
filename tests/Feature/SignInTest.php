@@ -3,10 +3,17 @@
 namespace Tests\Feature;
 
 use App\Domain\ExternalIdentityProvider;
+use App\Domain\SessionKey;
+use App\Domain\UserStatus;
+use App\Events\Stats\UserSignedInWithExternalIdentity;
+use App\Factory\ExternalIdentityFactory;
 use App\Factory\UserFactory;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\HtmlString;
+use Laravel\Socialite\Socialite;
+use Laravel\Socialite\Two\User as SocialiteUser;
 use Tests\TestCase;
 
 class SignInTest extends TestCase
@@ -15,11 +22,10 @@ class SignInTest extends TestCase
 
     public function testFacebookCallback()
     {
-        $socialUser = $this->mock('Laravel\Socialite\Two\User');
-        $socialUser->shouldReceive('getId')->atLeast()->once()->andReturn('1');
-        $socialUser->shouldReceive('getEmail')->atLeast()->once()->andReturn('facebook@example.com');
-
-        \Socialite::expects('driver->user')->andReturn($socialUser);
+        Socialite::fake('facebook', SocialiteUser::fake([
+            'id' => 'facebook-1',
+            'email' => 'facebook@example.com',
+        ]));
 
         $this->get('auth/facebook/callback')
             ->assertRedirect('/');
@@ -29,8 +35,29 @@ class SignInTest extends TestCase
         $user = User::query()->firstWhere(['email' => 'facebook@example.com']);
         $externalIdentity = $user->externalIdentities->first();
 
-        $this->assertSame('1', $externalIdentity->uid);
+        $this->assertSame('facebook-1', $externalIdentity->uid);
         $this->assertSame(ExternalIdentityProvider::Facebook, $externalIdentity->provider);
+    }
+
+    public function testFacebookCallbackWithoutEmail()
+    {
+        Socialite::fake('facebook', SocialiteUser::fake([
+            'id' => 'facebook-without-email',
+            'email' => null,
+        ]));
+
+        $this->get('auth/facebook/callback')
+            ->assertRedirect('auth/login')
+            ->assertSessionHas(
+                SessionKey::FlashMessage->value,
+                static fn (HtmlString $message) => str_contains($message->toHtml(), 'auth/facebook?rerequest=1'),
+            );
+
+        $this->assertGuest();
+        $this->assertDatabaseMissing('external_identities', [
+            'provider' => ExternalIdentityProvider::Facebook,
+            'uid' => 'facebook-without-email',
+        ]);
     }
 
     public function testFacebookRedirect()
@@ -61,11 +88,10 @@ class SignInTest extends TestCase
 
     public function testGoogleCallback()
     {
-        $socialUser = $this->mock('Laravel\Socialite\Two\User');
-        $socialUser->shouldReceive('getId')->atLeast()->once()->andReturn('1');
-        $socialUser->shouldReceive('getEmail')->atLeast()->once()->andReturn('google@example.com');
-
-        \Socialite::expects('driver->user')->andReturn($socialUser);
+        Socialite::fake('google', SocialiteUser::fake([
+            'id' => 'google-1',
+            'email' => 'google@example.com',
+        ]));
 
         $this->get('auth/google/callback')
             ->assertRedirect('/');
@@ -75,8 +101,102 @@ class SignInTest extends TestCase
         $user = User::query()->firstWhere(['email' => 'google@example.com']);
         $externalIdentity = $user->externalIdentities->first();
 
-        $this->assertSame('1', $externalIdentity->uid);
+        $this->assertSame('google-1', $externalIdentity->uid);
         $this->assertSame(ExternalIdentityProvider::Google, $externalIdentity->provider);
+    }
+
+    public function testGoogleCallbackActivatesAndLinksExistingUserByEmail()
+    {
+        $user = UserFactory::new()
+            ->inactive()
+            ->withEmail('existing@example.com')
+            ->create();
+
+        Socialite::fake('google', SocialiteUser::fake([
+            'id' => 'google-existing-email',
+            'email' => 'existing@example.com',
+        ]));
+
+        $this->get('auth/google/callback')
+            ->assertRedirect('/');
+
+        $user->refresh();
+
+        $this->assertAuthenticatedAs($user);
+        $this->assertSame(UserStatus::Active, $user->status);
+        $this->assertDatabaseHas('external_identities', [
+            'provider' => ExternalIdentityProvider::Google,
+            'uid' => 'google-existing-email',
+            'user_id' => $user->id,
+        ]);
+    }
+
+    public function testGoogleCallbackAuthenticatesExistingLinkedIdentity()
+    {
+        \Event::fake(UserSignedInWithExternalIdentity::class);
+
+        $user = UserFactory::new()->withEmail('linked@example.com')->create();
+
+        ExternalIdentityFactory::new()
+            ->google()
+            ->withEmail('linked@example.com')
+            ->withUid('google-linked')
+            ->withUser($user)
+            ->create();
+
+        Socialite::fake('google', SocialiteUser::fake([
+            'id' => 'google-linked',
+            'email' => 'different-provider-email@example.com',
+        ]));
+
+        $this->get('auth/google/callback')
+            ->assertRedirect('/');
+
+        $this->assertAuthenticatedAs($user);
+        $this->assertSame(
+            1,
+            $user->externalIdentities()
+                ->where('provider', ExternalIdentityProvider::Google)
+                ->where('uid', 'google-linked')
+                ->count(),
+        );
+        \Event::assertDispatched(UserSignedInWithExternalIdentity::class);
+    }
+
+    public function testGoogleCallbackHonorsIntendedUrl()
+    {
+        Socialite::fake('google', SocialiteUser::fake([
+            'id' => 'google-intended',
+            'email' => 'intended@example.com',
+        ]));
+
+        \Redirect::setIntendedUrl('/about');
+
+        $this->get('auth/google/callback')
+            ->assertRedirect('/about');
+
+        $this->assertAuthenticated();
+    }
+
+    public function testGoogleCallbackWithoutEmail()
+    {
+        Socialite::fake('google', SocialiteUser::fake([
+            'id' => 'google-without-email',
+            'email' => null,
+        ]));
+
+        $this->get('auth/google/callback')
+            ->assertRedirect('auth/login')
+            ->assertSessionHas(
+                SessionKey::FlashMessage->value,
+                'Мы не можем вас зарегистрировать, так как не получили от Гугла вашу электронную почту',
+            );
+
+        $this->assertGuest();
+        $this->assertDatabaseMissing('external_identities', [
+            'provider' => ExternalIdentityProvider::Google,
+            'uid' => 'google-without-email',
+        ]);
     }
 
     public function testGoogleRedirect()
@@ -161,11 +281,10 @@ class SignInTest extends TestCase
 
     public function testVkCallback()
     {
-        $socialUser = $this->mock('Laravel\Socialite\Two\User');
-        $socialUser->shouldReceive('getId')->atLeast()->once()->andReturn('1');
-        $socialUser->shouldReceive('getEmail')->atLeast()->once()->andReturn('vk@example.com');
-
-        \Socialite::expects('driver->user')->andReturn($socialUser);
+        Socialite::fake('vk', SocialiteUser::fake([
+            'id' => 'vk-1',
+            'email' => 'vk@example.com',
+        ]));
 
         $this->get('auth/vk/callback')
             ->assertRedirect('/');
@@ -175,8 +294,29 @@ class SignInTest extends TestCase
         $user = User::query()->firstWhere(['email' => 'vk@example.com']);
         $externalIdentity = $user->externalIdentities->first();
 
-        $this->assertSame('1', $externalIdentity->uid);
+        $this->assertSame('vk-1', $externalIdentity->uid);
         $this->assertSame(ExternalIdentityProvider::Vk, $externalIdentity->provider);
+    }
+
+    public function testVkCallbackWithoutEmail()
+    {
+        Socialite::fake('vk', SocialiteUser::fake([
+            'id' => 'vk-without-email',
+            'email' => null,
+        ]));
+
+        $this->get('auth/vk/callback')
+            ->assertRedirect('auth/login')
+            ->assertSessionHas(
+                SessionKey::FlashMessage->value,
+                static fn (HtmlString $message) => str_contains($message->toHtml(), 'auth/vk?revoke=1'),
+            );
+
+        $this->assertGuest();
+        $this->assertDatabaseMissing('external_identities', [
+            'provider' => ExternalIdentityProvider::Vk,
+            'uid' => 'vk-without-email',
+        ]);
     }
 
     public function testVkRedirect()

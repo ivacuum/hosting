@@ -32,6 +32,12 @@ class Google extends Base
 
         /** @var \Laravel\Socialite\Two\User $userdata */
         $userdata = \Socialite::driver('google')->user();
+
+        if ($userdata->getEmail() === null) {
+            return redirect(path([SignIn::class, 'index']))
+                ->with(SessionKey::FlashMessage->value, 'Мы не можем вас зарегистрировать, так как не получили от Гугла вашу электронную почту');
+        }
+
         $identity = $this->externalIdentity($userdata);
 
         if ($identity->user_id) {
@@ -40,11 +46,6 @@ class Google extends Base
             event(new UserSignedInWithExternalIdentity);
 
             return redirect()->intended();
-        }
-
-        if ($userdata->getEmail() === null) {
-            return redirect(path([SignIn::class, 'index']))
-                ->with(SessionKey::FlashMessage->value, 'Мы не можем вас зарегистрировать, так как не получили от Гугла вашу электронную почту');
         }
 
         if (null === $user = $this->findUserByEmail($userdata->getEmail())) {

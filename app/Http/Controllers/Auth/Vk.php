@@ -38,6 +38,12 @@ class Vk extends Base
 
         /** @var \Laravel\Socialite\Two\User $userdata */
         $userdata = \Socialite::driver('vk')->user();
+
+        if ($userdata->getEmail() === null) {
+            return redirect(path([SignIn::class, 'index']))
+                ->with(SessionKey::FlashMessage->value, $this->noEmailMessage());
+        }
+
         $identity = $this->externalIdentity($userdata);
 
         if ($identity->user_id) {
@@ -46,11 +52,6 @@ class Vk extends Base
             event(new UserSignedInWithExternalIdentity);
 
             return redirect()->intended();
-        }
-
-        if ($userdata->getEmail() === null) {
-            return redirect(path([SignIn::class, 'index']))
-                ->with(SessionKey::FlashMessage->value, $this->noEmailMessage());
         }
 
         if (null === $user = $this->findUserByEmail($userdata->getEmail())) {

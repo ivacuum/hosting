@@ -36,6 +36,12 @@ class Facebook extends Base
 
         /** @var \Laravel\Socialite\Two\User $userdata */
         $userdata = \Socialite::driver('facebook')->user();
+
+        if ($userdata->getEmail() === null) {
+            return redirect(path([SignIn::class, 'index']))
+                ->with(SessionKey::FlashMessage->value, $this->noEmailMessage());
+        }
+
         $identity = $this->externalIdentity($userdata);
 
         if ($identity->user_id) {
@@ -44,11 +50,6 @@ class Facebook extends Base
             event(new UserSignedInWithExternalIdentity);
 
             return redirect()->intended();
-        }
-
-        if ($userdata->getEmail() === null) {
-            return redirect(path([SignIn::class, 'index']))
-                ->with(SessionKey::FlashMessage->value, $this->noEmailMessage());
         }
 
         if (null === $user = $this->findUserByEmail($userdata->getEmail())) {

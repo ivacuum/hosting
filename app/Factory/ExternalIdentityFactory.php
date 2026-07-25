@@ -8,6 +8,7 @@ use App\User;
 
 class ExternalIdentityFactory
 {
+    private string|null $uid = null;
     private string|null $email = null;
     private ExternalIdentityProvider|null $provider = null;
 
@@ -43,7 +44,7 @@ class ExternalIdentityFactory
     public function make(): ExternalIdentity
     {
         $externalIdentity = new ExternalIdentity;
-        $externalIdentity->uid = fake()->numberBetween(10000, 999_999_999_999);
+        $externalIdentity->uid = $this->uid ?? fake()->numberBetween(10000, 999_999_999_999);
         $externalIdentity->email = $this->email ?? fake()->optional(0.6, '')->safeEmail();
         $externalIdentity->user_id = match (true) {
             $this->user instanceof User => $this->user->id,
@@ -82,6 +83,12 @@ class ExternalIdentityFactory
     public function withProvider(ExternalIdentityProvider $provider): self
     {
         return clone ($this, ['provider' => $provider]);
+    }
+
+    #[\NoDiscard]
+    public function withUid(string $uid): self
+    {
+        return clone ($this, ['uid' => $uid]);
     }
 
     #[\NoDiscard]
