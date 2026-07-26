@@ -24,6 +24,7 @@ class MyProfileUpdateForm extends FormRequest
                 Rule::unique(User::class)->ignore($user),
             ],
             'username' => [
+                'nullable',
                 ...Username::rules(),
                 Rule::unique(User::class, 'login')->ignore($user),
             ],

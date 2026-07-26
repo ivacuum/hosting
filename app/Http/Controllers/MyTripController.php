@@ -46,18 +46,18 @@ class MyTripController
     {
         /** @var \App\User $user */
         $user = $request->user();
-        $city = $cityHelper->findByIdOrFail($request->input('city_id'));
+        $city = $cityHelper->findByIdOrFail($request->cityId);
 
         $trip = new Trip;
-        $trip->slug = $request->input('slug');
-        $trip->status = $request->input('status');
+        $trip->slug = $request->slug;
+        $trip->status = $request->status;
         $trip->city_id = $city->id;
         $trip->user_id = $user->id;
-        $trip->markdown = $request->input('markdown');
+        $trip->markdown = $request->markdown;
         $trip->title_en = $city->title_en;
         $trip->title_ru = $city->title_ru;
-        $trip->date_end = $request->input('date_end');
-        $trip->date_start = $request->input('date_start');
+        $trip->date_end = $request->dateEnd;
+        $trip->date_start = $request->dateStart;
         $trip->save();
 
         return redirect(path([MyTripController::class, 'index']));
@@ -70,16 +70,16 @@ class MyTripController
         TripUpdateForm $request,
         RedirectAfterUpdateAction $redirectAfterUpdate,
     ) {
-        $city = $cityHelper->findByIdOrFail($request->input('city_id'));
+        $city = $cityHelper->findByIdOrFail($request->cityId);
 
-        $trip->slug = $request->input('slug');
-        $trip->status = $request->input('status');
+        $trip->slug = $request->slug;
+        $trip->status = $request->status;
         $trip->city_id = $city->id;
-        $trip->markdown = $request->input('markdown');
-        $trip->title_en = $request->input('title_en');
-        $trip->title_ru = $request->input('title_ru');
-        $trip->date_end = $request->input('date_end');
-        $trip->date_start = $request->input('date_start');
+        $trip->markdown = $request->markdown;
+        $trip->title_en = $request->titleEn;
+        $trip->title_ru = $request->titleRu;
+        $trip->date_end = $request->dateEnd;
+        $trip->date_start = $request->dateStart;
 
         $trip->save();
 

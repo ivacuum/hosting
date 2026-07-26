@@ -18,11 +18,16 @@ class PhotoShowForm extends FormRequest
 
     public function rules(): array
     {
-        return [];
+        return [
+            'tag_id' => ['nullable', 'integer', 'min:1'],
+            'city_id' => ['nullable', 'integer', 'min:1'],
+            'trip_id' => ['nullable', 'integer', 'min:1'],
+            'country_id' => ['nullable', 'integer', 'min:1'],
+        ];
     }
 
     #[\Override]
-    protected function passedValidation()
+    protected function passedValidation(): void
     {
         $this->tagId = $this->input('tag_id');
         $this->cityId = $this->input('city_id');

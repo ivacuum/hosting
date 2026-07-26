@@ -28,7 +28,8 @@ class MyProfileTest extends TestCase
             ->put('my/profile', [
                 'email' => $email,
             ])
-            ->assertFound();
+            ->assertFound()
+            ->assertSessionHasNoErrors();
 
         $user->refresh();
 

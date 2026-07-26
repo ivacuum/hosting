@@ -15,7 +15,7 @@ class MagnetRequestReleaseForm extends FormRequest
     {
         return [
             'query' => 'required|string',
-            'comment' => 'string',
+            'comment' => 'nullable|string',
         ];
     }
 

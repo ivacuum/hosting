@@ -35,6 +35,8 @@ class ResizeImageForm extends FormRequest
     public function rules(): array
     {
         return [
+            'width' => ['required', 'integer', 'min:50', 'max:2000'],
+            'height' => ['required', 'integer', 'min:50', 'max:2000'],
             'extension' => [
                 'required',
                 Rule::in(['jpg', 'png']),
@@ -43,31 +45,26 @@ class ResizeImageForm extends FormRequest
     }
 
     #[\Override]
-    protected function failedValidation(Validator $validator)
+    protected function failedValidation(Validator $validator): never
     {
-        if ($validator->failed()['extension']) {
-            abort(422);
-        }
-
-        parent::failedValidation($validator);
+        abort(422);
     }
 
     #[\Override]
-    protected function passedValidation()
+    protected function passedValidation(): void
     {
         $this->image = "https://{$this->route('domain')}/{$this->route('path')}";
-
-        // От 50 до 2000px
-        $this->width = min(2000, max(50, $this->route('width')));
-        $this->height = min(2000, max(50, $this->route('height')));
-
-        $this->extension = pathinfo($this->image)['extension'] ?? null;
+        $this->width = $this->integer('width');
+        $this->height = $this->integer('height');
+        $this->extension = $this->input('extension');
     }
 
     #[\Override]
-    protected function prepareForValidation()
+    protected function prepareForValidation(): void
     {
         $this->merge([
+            'width' => $this->route('width'),
+            'height' => $this->route('height'),
             'extension' => pathinfo($this->route('path'), PATHINFO_EXTENSION),
         ]);
     }
