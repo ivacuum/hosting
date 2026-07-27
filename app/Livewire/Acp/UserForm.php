@@ -4,6 +4,7 @@ namespace App\Livewire\Acp;
 
 use App\Domain\UserStatus;
 use App\Livewire\WithGoto;
+use App\Rules\Email;
 use App\User;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Authorize;
@@ -45,8 +46,7 @@ class UserForm extends Component
     {
         return [
             'email' => [
-                'required',
-                'email',
+                ...Email::rules(),
                 Rule::unique(User::class, 'email')
                     ->ignore(User::query()->find($this->id)),
             ],

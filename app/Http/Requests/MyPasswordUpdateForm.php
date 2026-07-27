@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\Password;
 use App\User;
 use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Foundation\Http\FormRequest;
@@ -22,7 +23,7 @@ class MyPasswordUpdateForm extends FormRequest
     {
         return [
             'password' => Rule::requiredIf($this->userHasPassword()),
-            'new_password' => 'required|string|min:8',
+            'new_password' => Password::rules(),
         ];
     }
 
