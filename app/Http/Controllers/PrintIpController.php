@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\PrintIpForm;
 
 class PrintIpController
 {
-    public function __invoke(Request $request)
+    public function __invoke(PrintIpForm $request)
     {
         return [
-            'ip' => $request->ip(),
-            'country' => $request->server->get('HTTP_CF_IPCOUNTRY')
-                ?? $request->server->get('COUNTRY_ALPHA2'),
+            'ip' => $request->ip,
+            'country' => $request->countryCode,
         ];
     }
 }
