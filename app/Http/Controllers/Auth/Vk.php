@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Domain\SessionKey;
 use App\Events\Stats\UserSignedInWithExternalIdentity;
+use App\Http\Requests\Auth\ExternalCallbackForm;
+use App\Http\Requests\Auth\VkRedirectForm;
 use App\Socialite\VkProvider;
 use Illuminate\Support\HtmlString;
 
@@ -12,27 +14,23 @@ class Vk extends Base
     #[\Override]
     protected $provider = 'vk';
 
-    public function index()
+    public function index(VkRedirectForm $request)
     {
-        $revoke = request('revoke');
-
         /** @var VkProvider $driver */
         $driver = \Socialite::driver('vk');
 
-        if ($revoke) {
+        if ($request->shouldRevoke) {
             $driver = $driver->revoke();
         }
 
-        $this->saveUrlIntended();
+        $this->saveUrlIntended($request->goto);
 
         return $driver->redirect();
     }
 
-    public function callback()
+    public function callback(ExternalCallbackForm $request)
     {
-        $error = request('error');
-
-        if ($error) {
+        if ($request->hasError) {
             return redirect(path([SignIn::class, 'index']));
         }
 

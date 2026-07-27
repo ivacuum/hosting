@@ -9,29 +9,25 @@ use App\Events\Stats\UserSignedInWithEmail;
 use App\Events\Stats\UserSignedInWithUsername;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Http\Request;
+use App\Http\Requests\Auth\SignInForm;
+use App\Http\Requests\Auth\SignInIndexForm;
 
 class SignIn extends Controller
 {
-    use ValidatesRequests;
-
     protected $username = 'email';
     protected $remember = true;
 
-    public function index()
+    public function index(SignInIndexForm $request)
     {
-        if ($goto = request('goto')) {
-            \Redirect::setIntendedUrl($goto);
+        if ($request->goto) {
+            \Redirect::setIntendedUrl($request->goto);
         }
 
         return view('auth.login');
     }
 
-    public function login(Request $request)
+    public function login(SignInForm $request)
     {
-        $this->validateLogin($request);
-
         if ($this->attemptLogin($request)) {
             $this->loginOkCallback();
 
@@ -63,7 +59,7 @@ class SignIn extends Controller
         return $this->sendLoggedOutResponse();
     }
 
-    protected function attemptLogin(Request $request)
+    protected function attemptLogin(SignInForm $request)
     {
         $credentials = $this->credentials($request);
 
@@ -93,19 +89,19 @@ class SignIn extends Controller
         return false;
     }
 
-    protected function attemptLoginCustom(Request $request)
+    protected function attemptLoginCustom(SignInForm $request)
     {
         $this->username = 'login';
 
         return $this->attemptLogin($request);
     }
 
-    protected function credentials(Request $request)
+    protected function credentials(SignInForm $request)
     {
         return [
             'status' => UserStatus::Active,
-            'password' => $request->input('password'),
-            $this->username() => $request->input('email'),
+            'password' => $request->password,
+            $this->username() => $request->emailOrLogin,
         ];
     }
 
@@ -124,11 +120,11 @@ class SignIn extends Controller
         return redirect()->intended(path(HomeController::class));
     }
 
-    protected function sendFailedResponse(Request $request)
+    protected function sendFailedResponse(SignInForm $request)
     {
         return back()
             ->with(SessionKey::FlashMessage->value, __('auth.failed'))
-            ->withInput($request->except('password'));
+            ->withInput(['email' => $request->emailOrLogin]);
     }
 
     protected function sendLoggedOutResponse()
@@ -136,7 +132,7 @@ class SignIn extends Controller
         return redirect(path(HomeController::class));
     }
 
-    protected function sendOkResponse(Request $request)
+    protected function sendOkResponse(SignInForm $request)
     {
         $request->session()->regenerate();
 
@@ -146,13 +142,5 @@ class SignIn extends Controller
     protected function username()
     {
         return $this->username;
-    }
-
-    protected function validateLogin(Request $request)
-    {
-        $this->validate($request, [
-            'email' => 'required|string',
-            'password' => 'required|string',
-        ]);
     }
 }

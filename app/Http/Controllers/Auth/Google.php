@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Domain\SessionKey;
 use App\Events\Stats\UserSignedInWithExternalIdentity;
+use App\Http\Requests\Auth\ExternalCallbackForm;
+use App\Http\Requests\Auth\GoogleRedirectForm;
 
 /**
  * Вход через Гугл
@@ -15,18 +17,16 @@ class Google extends Base
     #[\Override]
     protected $provider = 'google';
 
-    public function index()
+    public function index(GoogleRedirectForm $request)
     {
-        $this->saveUrlIntended();
+        $this->saveUrlIntended($request->goto);
 
         return \Socialite::driver('google')->redirect();
     }
 
-    public function callback()
+    public function callback(ExternalCallbackForm $request)
     {
-        $error = request('error');
-
-        if ($error) {
+        if ($request->hasError) {
             return redirect(path([SignIn::class, 'index']));
         }
 

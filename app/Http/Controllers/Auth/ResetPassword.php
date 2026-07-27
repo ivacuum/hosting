@@ -7,6 +7,7 @@ use App\Domain\UserStatus;
 use App\Events\Stats\UserPasswordResetted;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
+use App\Http\Requests\Auth\ResetPasswordForm;
 use App\User;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Contracts\Auth\PasswordBroker;
@@ -28,15 +29,14 @@ class ResetPassword extends Controller
         return view('auth.password_reset', ['token' => $token]);
     }
 
-    public function reset(PasswordBroker $broker)
+    public function reset(ResetPasswordForm $request, PasswordBroker $broker)
     {
-        $credentials = request()->validate([
-            'token' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:8',
-        ]);
-
-        $credentials['password_confirmation'] = $credentials['password'];
+        $credentials = [
+            'token' => $request->token,
+            'email' => $request->email,
+            'password' => $request->password,
+            'password_confirmation' => $request->password,
+        ];
 
         $response = $broker->reset($credentials, function (User $user, string $password) {
             if (in_array($user->status, $this->userStatusesOkToReset())) {
@@ -47,12 +47,12 @@ class ResetPassword extends Controller
         });
 
         if ($this->bannedUser) {
-            return $this->sendBannedResponse();
+            return $this->sendBannedResponse($request);
         }
 
         return $response === PasswordBroker::PASSWORD_RESET
             ? $this->sendOkResponse($response)
-            : $this->sendFailedResponse($response);
+            : $this->sendFailedResponse($request, $response);
     }
 
     protected function redirectPath(): string
@@ -74,17 +74,17 @@ class ResetPassword extends Controller
         \Auth::login($user);
     }
 
-    protected function sendBannedResponse()
+    protected function sendBannedResponse(ResetPasswordForm $request)
     {
         return back()
-            ->withInput(request(['email']))
+            ->withInput(['email' => $request->email])
             ->with(SessionKey::FlashMessage->value, __('passwords.banned'));
     }
 
-    protected function sendFailedResponse(string $response)
+    protected function sendFailedResponse(ResetPasswordForm $request, string $response)
     {
         return back()
-            ->withInput(request(['email']))
+            ->withInput(['email' => $request->email])
             ->withErrors(['email' => __($response)]);
     }
 

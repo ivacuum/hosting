@@ -87,14 +87,10 @@ abstract class Base extends Controller
     /**
      * Сохранение адреса для перенаправления после входа
      */
-    protected function saveUrlIntended(): bool
+    protected function saveUrlIntended(string|null $goto): void
     {
-        $goto = request('goto');
-
         if ($goto) {
             \Redirect::setIntendedUrl($goto);
         }
-
-        return true;
     }
 }

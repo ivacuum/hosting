@@ -8,6 +8,7 @@ use App\Events\Stats\UserPasswordRemindedDuringRegistration;
 use App\Events\Stats\UserRegisteredWithEmail;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
+use App\Http\Requests\Auth\NewAccountForm;
 use App\User;
 use Illuminate\Auth\Events\Registered;
 
@@ -18,31 +19,29 @@ class NewAccount extends Controller
         return view('auth.register');
     }
 
-    public function register()
+    public function register(NewAccountForm $request)
     {
-        $data = request()->validate($this->rules());
-
-        $user = User::query()->where('email', $data['email'])->first();
+        $user = User::query()->where('email', $request->email)->first();
 
         if ($user !== null) {
             return $this->existingUserResponse($user);
         }
 
-        $user = $this->createUser($data);
+        $user = $this->createUser($request);
 
         event(new Registered($user));
 
         return $this->registeredResponse($user);
     }
 
-    protected function createUser(array $data): User
+    protected function createUser(NewAccountForm $request): User
     {
         event(new UserRegisteredWithEmail);
 
         $user = new User;
-        $user->email = $data['email'];
+        $user->email = $request->email;
         $user->status = UserStatus::Inactive;
-        $user->password = $data['password'];
+        $user->password = $request->password;
         $user->activation_token = \Str::random(16);
         $user->save();
 
@@ -66,13 +65,5 @@ class NewAccount extends Controller
         \Auth::login($user, true);
 
         return redirect(path(HomeController::class));
-    }
-
-    protected function rules(): array
-    {
-        return [
-            'email' => 'required|string|email|max:125',
-            'password' => 'required|string|min:8',
-        ];
     }
 }

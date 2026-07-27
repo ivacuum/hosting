@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Domain\SessionKey;
 use App\Events\Stats\UserPasswordReminded;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\ForgotPasswordForm;
 use Illuminate\Contracts\Auth\PasswordBroker;
 
 class ForgotPassword extends Controller
@@ -14,14 +15,12 @@ class ForgotPassword extends Controller
         return view('auth.password_remind');
     }
 
-    public function sendResetLink(PasswordBroker $broker)
+    public function sendResetLink(ForgotPasswordForm $request, PasswordBroker $broker)
     {
-        $data = request()->validate(['email' => 'required|email']);
-
-        $response = $broker->sendResetLink(['email' => $data['email']]);
+        $response = $broker->sendResetLink(['email' => $request->email]);
 
         return $response === PasswordBroker::RESET_LINK_SENT
-            ? $this->sendOkResponse($response, $data['email'])
+            ? $this->sendOkResponse($response, $request->email)
             : $this->sendFailedResponse($response);
     }
 

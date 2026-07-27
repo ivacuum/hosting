@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Domain\SessionKey;
 use App\Events\Stats\UserSignedInWithExternalIdentity;
+use App\Http\Requests\Auth\ExternalCallbackForm;
+use App\Http\Requests\Auth\FacebookRedirectForm;
 use Illuminate\Support\HtmlString;
 
 class Facebook extends Base
@@ -11,26 +13,22 @@ class Facebook extends Base
     #[\Override]
     protected $provider = 'facebook';
 
-    public function index()
+    public function index(FacebookRedirectForm $request)
     {
-        $rerequest = request('rerequest');
-
         $driver = \Socialite::driver('facebook');
 
-        if ($rerequest) {
+        if ($request->shouldRerequest) {
             $driver = $driver->reRequest();
         }
 
-        $this->saveUrlIntended();
+        $this->saveUrlIntended($request->goto);
 
         return $driver->redirect();
     }
 
-    public function callback()
+    public function callback(ExternalCallbackForm $request)
     {
-        $error = request('error');
-
-        if ($error) {
+        if ($request->hasError) {
             return redirect(path([SignIn::class, 'index']));
         }
 
