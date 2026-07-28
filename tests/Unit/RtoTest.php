@@ -4,10 +4,30 @@ namespace Tests\Unit;
 
 use App\Domain\Rto\Rto;
 use App\Domain\Rto\RtoApiException;
+use App\Domain\Rto\RtoTemporarilyUnavailableException;
 use Tests\TestCase;
 
 class RtoTest extends TestCase
 {
+    public function testTemporarilyDisabledErrorThrowsDedicatedExceptionAndRecordsMetric(): void
+    {
+        \Http::fake([
+            'api-rto.vacuum.name/v1/get_tor_topic_data*' => \Http::response([
+                'error' => [
+                    'code' => 1,
+                    'text' => 'Temporarily disabled',
+                ],
+            ]),
+        ]);
+
+        $this->expectException(RtoTemporarilyUnavailableException::class);
+        $this->expectExceptionMessageIs('Temporarily disabled');
+        $this->expectExceptionCode(1);
+
+        app(Rto::class)
+            ->topicDataByIds([911]);
+    }
+
     public function testTopicDataByIdsThrowsExceptionOnApiError(): void
     {
         \Http::fake([

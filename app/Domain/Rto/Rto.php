@@ -88,7 +88,7 @@ class Rto
             ]);
 
         if ($error = $response->json('error')) {
-            throw new RtoApiException($error['text'], $error['code']);
+            $this->throwApiException($error);
         }
 
         return new RtoGetTorTopicDataResponse($response);
@@ -103,7 +103,7 @@ class Rto
             ]);
 
         if ($error = $response->json('error')) {
-            throw new RtoApiException($error['text'], $error['code']);
+            $this->throwApiException($error);
         }
 
         return $response->object()->result->{$hash};
@@ -128,5 +128,14 @@ class Rto
             ->withOptions([
                 RequestOptions::PROXY => Config::RtoProxy->get(),
             ]);
+    }
+
+    private function throwApiException(array $error): never
+    {
+        if ($error['code'] === 1 && $error['text'] === 'Temporarily disabled') {
+            throw new RtoTemporarilyUnavailableException($error['text'], $error['code']);
+        }
+
+        throw new RtoApiException($error['text'], $error['code']);
     }
 }

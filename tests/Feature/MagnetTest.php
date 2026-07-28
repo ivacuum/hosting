@@ -324,6 +324,22 @@ class MagnetTest extends TestCase
             ->assertHasErrors(['input' => 'Данная раздача уже присутствует на сайте. Вероятно, кто-то добавил ее быстрее вас.']);
     }
 
+    public function testStoreWithRtoTemporarilyUnavailable()
+    {
+        \Http::fake([
+            'api-rto.vacuum.name/v1/get_tor_topic_data?by=topic_id&val=1234567890' => \Http::response([
+                'error' => [
+                    'code' => 1,
+                    'text' => 'Temporarily disabled',
+                ],
+            ]),
+        ]);
+
+        \Livewire::test(MagnetAddForm::class)
+            ->set('input', '1234567890')
+            ->assertHasErrors(['input' => 'Рутрекер временно недоступен. Пожалуйста, повторите попытку позже.']);
+    }
+
     public function testStoreUnescapedTitle()
     {
         $stub = MagnetFactory::new()->withTitle('Chlo&#233; Ragnar&#246;k &quot;M&amp;M\'s&quot;')->make();

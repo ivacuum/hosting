@@ -10,6 +10,7 @@ use App\Domain\Magnet\RateLimit\MagnetRateLimiter;
 use App\Domain\Magnet\Rule\MagnetCategoryId;
 use App\Domain\Rto\Rto;
 use App\Domain\Rto\RtoMagnetNotFoundException;
+use App\Domain\Rto\RtoTemporarilyUnavailableException;
 use App\Domain\Rto\RtoTopicDuplicateException;
 use App\Domain\Rto\RtoTopicNotFoundException;
 use Illuminate\Database\UniqueConstraintViolationException;
@@ -42,6 +43,10 @@ class MagnetAddForm extends Component
 
         try {
             $data = $rto->torrentData($this->topicId);
+        } catch (RtoTemporarilyUnavailableException) {
+            $this->addError('input', 'Рутрекер временно недоступен. Пожалуйста, повторите попытку позже.');
+
+            return null;
         } catch (\Throwable $e) {
             $this->addError('input', 'Возникли сложности с подключением к рутрекеру. Пожалуйста, повторите попытку');
 
@@ -134,6 +139,10 @@ class MagnetAddForm extends Component
             if ($e instanceof RtoMagnetNotFoundException) {
                 throw ValidationException::withMessages([
                     'input' => 'Магнет-ссылка не найдена в раздаче, попробуйте другую ссылку',
+                ]);
+            } elseif ($e instanceof RtoTemporarilyUnavailableException) {
+                throw ValidationException::withMessages([
+                    'input' => 'Рутрекер временно недоступен. Пожалуйста, повторите попытку позже.',
                 ]);
             } elseif ($e instanceof RtoTopicDuplicateException) {
                 throw ValidationException::withMessages([

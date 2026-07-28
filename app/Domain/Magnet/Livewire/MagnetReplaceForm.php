@@ -5,6 +5,7 @@ namespace App\Domain\Magnet\Livewire;
 use App\Domain\Magnet\Action\UpdateMagnetAction;
 use App\Domain\Magnet\Models\Magnet;
 use App\Domain\Rto\Rto;
+use App\Domain\Rto\RtoTemporarilyUnavailableException;
 use Livewire\Component;
 
 class MagnetReplaceForm extends Component
@@ -23,6 +24,10 @@ class MagnetReplaceForm extends Component
 
         try {
             $updateMagnet->execute($this->magnet, $this->input);
+        } catch (RtoTemporarilyUnavailableException) {
+            $this->addError('input', 'Рутрекер временно недоступен. Пожалуйста, повторите попытку позже.');
+
+            return null;
         } catch (\Throwable $e) {
             $this->addError('input', $e->getMessage());
 
