@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Auth;
 
-use App\Rules\Email;
+use App\Rules\EmailRule;
 use App\Rules\HtmlFormInfrastructureRules;
-use App\Rules\Password;
+use App\Rules\PasswordRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class NewAccountForm extends FormRequest
@@ -16,8 +16,8 @@ class NewAccountForm extends FormRequest
     {
         return [
             ...HtmlFormInfrastructureRules::rules(),
-            'email' => Email::rules(),
-            'password' => Password::rules(),
+            'email' => EmailRule::rules(),
+            'password' => PasswordRule::rules(),
         ];
     }
 

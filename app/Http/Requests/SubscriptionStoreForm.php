@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\Email;
+use App\Rules\EmailRule;
 use App\Rules\HtmlFormInfrastructureRules;
 use App\User;
 use Illuminate\Foundation\Http\FormRequest;
@@ -20,7 +20,7 @@ class SubscriptionStoreForm extends FormRequest
             ...HtmlFormInfrastructureRules::rules(),
             'gigs' => 'in:0,1',
             'news' => 'in:0,1',
-            'email' => Rule::when($this->user() === null, Email::rules()),
+            'email' => Rule::when($this->user() === null, EmailRule::rules()),
             'trips' => 'in:0,1',
         ];
     }

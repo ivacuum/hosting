@@ -4,7 +4,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 
-class AtLeastFewWords implements ValidationRule
+class AtLeastFewWordsRule implements ValidationRule
 {
     public function __construct(public int $minWords) {}
 

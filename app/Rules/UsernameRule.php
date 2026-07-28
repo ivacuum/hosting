@@ -2,7 +2,7 @@
 
 namespace App\Rules;
 
-class Username
+class UsernameRule
 {
     public static function rules(): array
     {

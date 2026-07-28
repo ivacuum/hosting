@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\Email;
+use App\Rules\EmailRule;
 use App\Rules\HtmlFormInfrastructureRules;
-use App\Rules\Username;
+use App\Rules\UsernameRule;
 use App\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -22,12 +22,12 @@ class MyProfileUpdateForm extends FormRequest
         return [
             ...HtmlFormInfrastructureRules::rules(),
             'email' => [
-                ...Email::rules(),
+                ...EmailRule::rules(),
                 Rule::unique(User::class)->ignore($user),
             ],
             'username' => [
                 'nullable',
-                ...Username::rules(),
+                ...UsernameRule::rules(),
                 Rule::unique(User::class, 'login')->ignore($user),
             ],
         ];

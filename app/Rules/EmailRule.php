@@ -2,7 +2,7 @@
 
 namespace App\Rules;
 
-class Email
+class EmailRule
 {
     public static function rules(): array
     {

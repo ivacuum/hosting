@@ -4,7 +4,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class ConcurrencyControl implements Rule
+class ConcurrencyControlRule implements Rule
 {
     const string FIELD = '_concurrency_control';
 

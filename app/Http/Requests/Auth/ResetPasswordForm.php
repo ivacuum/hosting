@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Auth;
 
-use App\Rules\Email;
+use App\Rules\EmailRule;
 use App\Rules\HtmlFormInfrastructureRules;
-use App\Rules\Password;
+use App\Rules\PasswordRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ResetPasswordForm extends FormRequest
@@ -18,8 +18,8 @@ class ResetPasswordForm extends FormRequest
         return [
             ...HtmlFormInfrastructureRules::rules(),
             'token' => ['required'],
-            'email' => Email::rules(),
-            'password' => Password::rules(),
+            'email' => EmailRule::rules(),
+            'password' => PasswordRule::rules(),
         ];
     }
 

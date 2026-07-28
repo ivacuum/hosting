@@ -8,8 +8,8 @@ use App\Domain\SessionKey;
 use App\Events\IssueReported;
 use App\Issue;
 use App\RateLimit\IssueRateLimiter;
-use App\Rules\AtLeastFewWords;
-use App\Rules\Email;
+use App\Rules\AtLeastFewWordsRule;
+use App\Rules\EmailRule;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
@@ -87,8 +87,8 @@ class FeedbackForm extends Component
     {
         return [
             'name' => Rule::requiredIf(!$this->hideName),
-            'text' => ['required', 'string', 'max:1000', new AtLeastFewWords(2)],
-            'email' => Email::rules(),
+            'text' => ['required', 'string', 'max:1000', new AtLeastFewWordsRule(2)],
+            'email' => EmailRule::rules(),
             'title' => Rule::requiredIf(!$this->hideTitle),
         ];
     }

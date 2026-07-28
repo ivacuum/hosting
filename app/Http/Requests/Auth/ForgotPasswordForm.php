@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Auth;
 
-use App\Rules\Email;
+use App\Rules\EmailRule;
 use App\Rules\HtmlFormInfrastructureRules;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -14,7 +14,7 @@ class ForgotPasswordForm extends FormRequest
     {
         return [
             ...HtmlFormInfrastructureRules::rules(),
-            'email' => Email::rules(),
+            'email' => EmailRule::rules(),
         ];
     }
 

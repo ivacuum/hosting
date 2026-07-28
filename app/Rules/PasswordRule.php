@@ -2,7 +2,7 @@
 
 namespace App\Rules;
 
-class Password
+class PasswordRule
 {
     public static function rules(): array
     {

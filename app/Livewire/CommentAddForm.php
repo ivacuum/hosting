@@ -12,7 +12,7 @@ use App\Domain\SessionKey;
 use App\Issue;
 use App\News;
 use App\RateLimit\CommentRateLimiter;
-use App\Rules\Email;
+use App\Rules\EmailRule;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
@@ -72,7 +72,7 @@ class CommentAddForm extends Component
     {
         return [
             'text' => 'required|max:1000',
-            'email' => Rule::when(auth()->guest(), Email::rules()),
+            'email' => Rule::when(auth()->guest(), EmailRule::rules()),
         ];
     }
 
