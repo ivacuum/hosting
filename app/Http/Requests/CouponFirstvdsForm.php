@@ -1,23 +1,20 @@
 <?php
 
-namespace App\Http\Requests\Auth;
+namespace App\Http\Requests;
 
 use App\Rules\Email;
 use App\Rules\HtmlFormInfrastructureRules;
-use App\Rules\Password;
 use Illuminate\Foundation\Http\FormRequest;
 
-class NewAccountForm extends FormRequest
+class CouponFirstvdsForm extends FormRequest
 {
     public readonly string $email;
-    public readonly string $password;
 
     public function rules(): array
     {
         return [
             ...HtmlFormInfrastructureRules::rules(),
             'email' => Email::rules(),
-            'password' => Password::rules(),
         ];
     }
 
@@ -25,6 +22,5 @@ class NewAccountForm extends FormRequest
     protected function passedValidation(): void
     {
         $this->email = $this->input('email');
-        $this->password = $this->input('password');
     }
 }

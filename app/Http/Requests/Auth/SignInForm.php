@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests\Auth;
 
-use Illuminate\Foundation\Http\Attributes\FailOnUnknownFields;
+use App\Rules\HtmlFormInfrastructureRules;
 use Illuminate\Foundation\Http\FormRequest;
 
-#[FailOnUnknownFields(false)]
 class SignInForm extends FormRequest
 {
     public readonly string $password;
@@ -14,8 +13,8 @@ class SignInForm extends FormRequest
     public function rules(): array
     {
         return [
-            // Можно ввести и почту, и логин
-            'email' => ['required', 'string'],
+            ...HtmlFormInfrastructureRules::rules(),
+            'email' => ['required', 'string'], // Можно ввести и почту, и логин
             'password' => ['required', 'string'],
         ];
     }

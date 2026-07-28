@@ -5,22 +5,20 @@ namespace App\Http\Controllers;
 use App\Action\FindUserByEmailOrCreateAction;
 use App\Domain\NotificationDeliveryMethod;
 use App\Domain\SessionKey;
+use App\Http\Requests\SubscriptionConfirmForm;
+use App\Http\Requests\SubscriptionStoreForm;
+use App\Http\Requests\SubscriptionUpdateForm;
 use App\Mail\SubscriptionConfirmMail;
-use App\Rules\Email;
-use App\User;
 use Illuminate\Contracts\Encryption\DecryptException;
-use Illuminate\Validation\Rule;
 
 class SubscriptionController
 {
-    public function confirm()
+    public function confirm(SubscriptionConfirmForm $request)
     {
-        /** @var User $user */
-        $user = request()->user();
-        $hash = request('hash');
+        $user = $request->user;
 
         try {
-            $subscriptions = array_flip(explode(',', \Crypt::decryptString($hash)));
+            $subscriptions = array_flip(explode(',', \Crypt::decryptString($request->hash)));
         } catch (DecryptException) {
             return redirect(path([MySettingsController::class, 'edit']))
                 ->with(SessionKey::FlashMessage->value, 'Запрос не найден. Измените настройки уведомлений вручную на этой странице.');
@@ -53,56 +51,44 @@ class SubscriptionController
         return view('subscriptions');
     }
 
-    public function store(FindUserByEmailOrCreateAction $findUserByEmailOrCreate)
+    public function store(SubscriptionStoreForm $request, FindUserByEmailOrCreateAction $findUserByEmailOrCreate)
     {
-        /** @var User $user */
-        $user = request()->user();
-        $email = request('email');
+        $user = $request->user;
         $isGuest = $user === null;
-
-        request()->validate([
-            'gigs' => 'in:0,1',
-            'news' => 'in:0,1',
-            'email' => Rule::when($isGuest, Email::rules()),
-            'trips' => 'in:0,1',
-        ]);
 
         if ($isGuest) {
             $user = $findUserByEmailOrCreate->execute(
-                $email,
+                $request->email,
                 new \App\Events\Stats\UserRegisteredAutoWhenSubscribing,
                 new \App\Events\Stats\UserFoundByEmailWhenSubscribing
             );
         }
 
-        $selectedTopics = array_keys(array_filter(request(['gigs', 'news', 'trips'])));
-
         \Mail::to($user)
-            ->send(new SubscriptionConfirmMail($user, $selectedTopics));
+            ->send(new SubscriptionConfirmMail($user, $request->selectedTopics));
 
         return redirect(path([self::class, 'edit']))
             ->with(SessionKey::FlashMessage->value, __('Теперь необходимо подтвердить подписку по ссылке в письме, которое мы вам отправили.'));
     }
 
-    public function update()
+    public function update(SubscriptionUpdateForm $request)
     {
-        /** @var User $user */
-        $user = request()->user();
+        $user = $request->user;
 
-        if (null !== $value = request('gigs')) {
-            $user->notify_gigs = $value
+        if ($request->gigs !== null) {
+            $user->notify_gigs = $request->gigs
                 ? NotificationDeliveryMethod::Mail
                 : NotificationDeliveryMethod::Disabled;
         }
 
-        if (null !== $value = request('news')) {
-            $user->notify_news = $value
+        if ($request->news !== null) {
+            $user->notify_news = $request->news
                 ? NotificationDeliveryMethod::Mail
                 : NotificationDeliveryMethod::Disabled;
         }
 
-        if (null !== $value = request('trips')) {
-            $user->notify_trips = $value
+        if ($request->trips !== null) {
+            $user->notify_trips = $request->trips
                 ? NotificationDeliveryMethod::Mail
                 : NotificationDeliveryMethod::Disabled;
         }

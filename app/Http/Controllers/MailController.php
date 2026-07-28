@@ -8,18 +8,18 @@ use App\Email;
 use App\Events\MailReported;
 use App\Events\Stats\MailClicked;
 use App\Events\Stats\MailViewed;
+use App\Http\Requests\MailClickForm;
 use App\User;
 use Illuminate\Contracts\Auth\Guard;
 
 class MailController extends Controller
 {
-    public function click(Guard $auth, string $timestamp, int $id)
+    public function click(MailClickForm $request, Guard $auth, string $timestamp, int $id)
     {
-        $goto = request('goto', '/');
         $email = Email::query()->find($id);
 
-        if ($email === null || !\URL::hasValidSignature(request())) {
-            return redirect($goto);
+        if ($email === null || !\URL::hasValidSignature($request)) {
+            return redirect($request->goto);
         }
 
         if ($email->hasValidTimestamp($timestamp)) {
@@ -41,7 +41,7 @@ class MailController extends Controller
 
         event(new MailClicked);
 
-        return redirect($goto);
+        return redirect($request->goto);
     }
 
     public function report(string $timestamp, int $id)

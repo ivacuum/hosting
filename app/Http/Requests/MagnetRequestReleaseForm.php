@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\HtmlFormInfrastructureRules;
 use App\User;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -14,6 +15,7 @@ class MagnetRequestReleaseForm extends FormRequest
     public function rules(): array
     {
         return [
+            ...HtmlFormInfrastructureRules::rules(),
             'query' => 'required|string',
             'comment' => 'nullable|string',
         ];

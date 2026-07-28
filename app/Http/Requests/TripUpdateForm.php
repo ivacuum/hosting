@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\Domain\Life\Models\Trip;
 use App\Domain\Life\Rule\TripSlug;
 use App\Domain\Life\TripStatus;
+use App\Rules\HtmlFormInfrastructureRules;
 use App\User;
 use Illuminate\Container\Attributes\CurrentUser;
 use Illuminate\Container\Attributes\RouteParameter;
@@ -28,6 +29,7 @@ class TripUpdateForm extends FormRequest
         #[CurrentUser] User $user,
     ): array {
         return [
+            ...HtmlFormInfrastructureRules::rules(),
             'slug' => [
                 'bail',
                 'required',

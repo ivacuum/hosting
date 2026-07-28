@@ -3,11 +3,10 @@
 namespace App\Http\Requests\Auth;
 
 use App\Rules\Email;
+use App\Rules\HtmlFormInfrastructureRules;
 use App\Rules\Password;
-use Illuminate\Foundation\Http\Attributes\FailOnUnknownFields;
 use Illuminate\Foundation\Http\FormRequest;
 
-#[FailOnUnknownFields(false)]
 class ResetPasswordForm extends FormRequest
 {
     public readonly string $email;
@@ -17,6 +16,7 @@ class ResetPasswordForm extends FormRequest
     public function rules(): array
     {
         return [
+            ...HtmlFormInfrastructureRules::rules(),
             'token' => ['required'],
             'email' => Email::rules(),
             'password' => Password::rules(),

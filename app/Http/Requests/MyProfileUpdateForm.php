@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Rules\Email;
+use App\Rules\HtmlFormInfrastructureRules;
 use App\Rules\Username;
 use App\User;
 use Illuminate\Foundation\Http\FormRequest;
@@ -19,6 +20,7 @@ class MyProfileUpdateForm extends FormRequest
         $user = $this->user();
 
         return [
+            ...HtmlFormInfrastructureRules::rules(),
             'email' => [
                 ...Email::rules(),
                 Rule::unique(User::class)->ignore($user),

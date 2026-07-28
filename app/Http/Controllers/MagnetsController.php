@@ -81,11 +81,9 @@ class MagnetsController
 
     public function my()
     {
-        $user = request()->user();
-
         $magnets = Magnet::query()
             ->select(Magnet::LIST_COLUMNS)
-            ->whereBelongsTo($user)
+            ->whereBelongsTo(request()->user())
             ->tap(new MagnetPublishedScope)
             ->withCount('commentsPublished AS comments_count')
             ->orderByDesc('registered_at')

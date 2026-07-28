@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Domain\SessionKey;
+use App\Http\Requests\CouponFirstvdsForm;
 use App\Mail\FirstvdsPromocodeMail;
-use App\Rules\Email;
 
 class CouponController
 {
@@ -28,11 +28,9 @@ class CouponController
         return view('coupons.drimsim', ['metaTitle' => $this->getServiceMetaTitle('drimsim')]);
     }
 
-    public function firstvds()
+    public function firstvds(CouponFirstvdsForm $request)
     {
-        request()->validate(['email' => Email::rules()]);
-
-        \Mail::to(request('email'))
+        \Mail::to($request->email)
             ->locale(\App::getLocale())
             ->send(new FirstvdsPromocodeMail);
 

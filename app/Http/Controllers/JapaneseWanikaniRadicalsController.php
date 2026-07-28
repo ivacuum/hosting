@@ -4,18 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Domain\Wanikani\Models\Radical;
 use App\Domain\Wanikani\Scope\UserBurnableScope;
-use Illuminate\Http\Request;
+use App\Http\Requests\WanikaniRadicalIndexForm;
 
 class JapaneseWanikaniRadicalsController
 {
-    public function index(Request $request)
+    public function index(WanikaniRadicalIndexForm $request)
     {
-        $from = max(1, min(60, $request->input('from', 1)));
-        $to = min(60, $from + 9);
-
         return view('japanese.wanikani.radicals', [
-            'to' => $to,
-            'from' => $from,
+            'to' => $request->to,
+            'from' => $request->from,
         ]);
     }
 

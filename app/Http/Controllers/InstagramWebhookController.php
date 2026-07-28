@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\InstagramWebhookForm;
 
 class InstagramWebhookController
 {
-    public function __invoke(Request $request)
+    public function __invoke(InstagramWebhookForm $request)
     {
-        logs()->info('Instagram event payload: ' . json_encode($request->all(), \JSON_PRETTY_PRINT));
+        logs()->info('Instagram event payload: ' . json_encode($request->payload, \JSON_PRETTY_PRINT));
     }
 }

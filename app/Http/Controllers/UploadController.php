@@ -4,14 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Domain\SessionKey;
 use App\Domain\Telegram\Action\NotifyAdminViaTelegramAction;
+use App\Http\Requests\UploadForm;
 
 class UploadController
 {
-    public function __invoke(NotifyAdminViaTelegramAction $notifyAdminViaTelegram)
+    public function __invoke(UploadForm $request, NotifyAdminViaTelegramAction $notifyAdminViaTelegram)
     {
-        $files = request()->file('files');
-
-        foreach ($files as $file) {
+        foreach ($request->uploadedFiles as $file) {
             $filename = now()->format('Ymd-His') . '-' . $file->getClientOriginalName();
 
             \Storage::disk('temp')->putFileAs('', $file, $filename);

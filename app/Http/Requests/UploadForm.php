@@ -1,26 +1,26 @@
 <?php
 
-namespace App\Http\Requests\Auth;
+namespace App\Http\Requests;
 
-use App\Rules\Email;
 use App\Rules\HtmlFormInfrastructureRules;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ForgotPasswordForm extends FormRequest
+class UploadForm extends FormRequest
 {
-    public readonly string $email;
+    /** @var array<\Illuminate\Http\UploadedFile>|null */
+    public readonly array|null $uploadedFiles;
 
     public function rules(): array
     {
         return [
             ...HtmlFormInfrastructureRules::rules(),
-            'email' => Email::rules(),
+            'files' => ['required', 'array', 'max:51200'],
         ];
     }
 
     #[\Override]
     protected function passedValidation(): void
     {
-        $this->email = $this->input('email');
+        $this->uploadedFiles = $this->file('files');
     }
 }

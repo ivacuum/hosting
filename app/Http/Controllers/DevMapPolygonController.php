@@ -3,22 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Domain\Spatial\Polygon;
-use Illuminate\Http\Request;
+use App\Http\Requests\DevMapPolygonForm;
 
 class DevMapPolygonController
 {
-    public function __invoke(Request $request)
+    public function __invoke(DevMapPolygonForm $request)
     {
-        $wkt = $request->input('wkt');
-
         try {
-            $polygon = Polygon::fromWkt($wkt);
+            $polygon = Polygon::fromWkt($request->wkt);
         } catch (\Throwable) {
             $polygon = null;
         }
 
         return view('dev.map-polygon', [
-            'wkt' => $wkt,
+            'wkt' => $request->wkt,
             'polygon' => $polygon,
         ]);
     }

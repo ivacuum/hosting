@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\Domain\Config;
 use App\Domain\Locale;
 use App\Domain\NotificationDeliveryMethod;
+use App\Rules\HtmlFormInfrastructureRules;
 use App\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -23,6 +24,7 @@ class MySettingsUpdateForm extends FormRequest
     public function rules(): array
     {
         return [
+            ...HtmlFormInfrastructureRules::rules(),
             'locale' => Rule::in(array_keys(Config::Locales->get())),
             'notify_gigs' => new Enum(NotificationDeliveryMethod::class),
             'notify_news' => new Enum(NotificationDeliveryMethod::class),

@@ -4,18 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Domain\Wanikani\Models\Vocabulary;
 use App\Domain\Wanikani\Scope\UserBurnableScope;
-use Illuminate\Http\Request;
+use App\Http\Requests\WanikaniVocabIndexForm;
 
 class JapaneseWanikaniVocabularyController
 {
-    public function index(Request $request)
+    public function index(WanikaniVocabIndexForm $request)
     {
-        $from = max(1, min(60, $request->input('from', 1)));
-        $to = min(60, $from + 4);
-
         return view('japanese.wanikani.vocabularies', [
-            'to' => $to,
-            'from' => $from,
+            'to' => $request->to,
+            'from' => $request->from,
         ]);
     }
 
