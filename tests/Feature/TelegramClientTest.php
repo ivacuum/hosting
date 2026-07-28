@@ -25,7 +25,7 @@ class TelegramClientTest extends TestCase
         config(['services.telegram.bot_token' => '1234:token']);
 
         $this->expectException(TelegramException::class);
-        $this->expectExceptionMessage('400 - Bad Request: can\'t parse entities');
+        $this->expectExceptionMessageIsOrContains("400 - Bad Request: can't parse entities");
 
         app(TelegramClient::class)
             ->chat(12345)

@@ -40,7 +40,7 @@ class RtoTest extends TestCase
         ]);
 
         $this->expectException(RtoApiException::class);
-        $this->expectExceptionMessage('Param [val] is over the limit of 50 (you sent 100 values)');
+        $this->expectExceptionMessageIs('Param [val] is over the limit of 50 (you sent 100 values)');
         $this->expectExceptionCode(1);
 
         app(Rto::class)
@@ -59,7 +59,7 @@ class RtoTest extends TestCase
         ]);
 
         $this->expectException(RtoApiException::class);
-        $this->expectExceptionMessage('Invalid hash format');
+        $this->expectExceptionMessageIs('Invalid hash format');
         $this->expectExceptionCode(2);
 
         app(Rto::class)
