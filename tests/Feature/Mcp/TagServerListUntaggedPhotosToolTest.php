@@ -12,7 +12,7 @@ class TagServerListUntaggedPhotosToolTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testListUntaggedPhotosReturnsOnlyPublishedUntagged(): void
+    public function testListUntaggedPhotosReturnsAllUntaggedPhotos(): void
     {
         $untagged = PhotoFactory::new()->withTrip()->withSlug('test/IMG_0001.jpg')->create();
         $tagged = PhotoFactory::new()->withTrip()->withSlug('test/IMG_0002.jpg')->withTag()->create();
@@ -25,7 +25,9 @@ class TagServerListUntaggedPhotosToolTest extends TestCase
             ->assertName('list-untagged-photos')
             ->assertSee($untagged->slug)
             ->assertSee($untagged->originalR2Url())
+            ->assertSee($hidden->slug)
+            ->assertSee($hidden->originalR2Url())
             ->assertDontSee($tagged->slug)
-            ->assertDontSee($hidden->slug);
+            ->assertDontSee($tagged->originalR2Url());
     }
 }

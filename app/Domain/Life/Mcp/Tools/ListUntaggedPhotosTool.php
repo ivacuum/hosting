@@ -3,7 +3,6 @@
 namespace App\Domain\Life\Mcp\Tools;
 
 use App\Domain\Life\Models\Photo;
-use App\Domain\Life\PhotoStatus;
 use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Laravel\Mcp\Request;
 use Laravel\Mcp\Response;
@@ -14,7 +13,7 @@ use Laravel\Mcp\Server\Tool;
 
 #[Name('list-untagged-photos')]
 #[Title('List Untagged Photos')]
-#[Description('Returns a paginated list of published photos that currently have no tags assigned. Use original_url to download the photo bytes for vision recognition. Iterate with page + per_page until total is exhausted.')]
+#[Description('Returns a paginated list of photos that currently have no tags assigned. Use original_url to download the photo bytes for vision recognition. Iterate with page + per_page until has_more_pages is false.')]
 class ListUntaggedPhotosTool extends Tool
 {
     private const int MAX_PER_PAGE = 200;
@@ -32,7 +31,6 @@ class ListUntaggedPhotosTool extends Tool
 
         $paginator = Photo::query()
             ->whereDoesntHave('tags')
-            ->where('status', PhotoStatus::Published)
             ->orderBy('id')
             ->simplePaginate($perPage, ['id', 'slug', 'rel_type', 'rel_id'], 'page', $page);
 
