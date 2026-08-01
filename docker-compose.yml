@@ -20,7 +20,7 @@ services:
       - meilisearch
 
   mysql:
-    image: mysql:8.4
+    image: mysql:26.7
     restart: unless-stopped
     container_name: hosting-mysql
     ports:
