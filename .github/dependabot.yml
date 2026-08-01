@@ -1,13 +1,46 @@
 version: 2
 updates:
-  #- package-ecosystem: "composer"
-  #  directory: "/"
-  #  schedule:
-  #    interval: "weekly"
-  #    day: "friday"
+  - package-ecosystem: "composer"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      monthly-composer:
+        patterns:
+          - "*"
+
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      monthly-npm:
+        patterns:
+          - "*"
+
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      monthly-docker:
+        patterns:
+          - "*"
+
+  - package-ecosystem: "docker-compose"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      monthly-docker-compose:
+        patterns:
+          - "*"
 
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
-      day: "monday"
+      interval: "monthly"
+    groups:
+      monthly-github-actions:
+        patterns:
+          - "*"
