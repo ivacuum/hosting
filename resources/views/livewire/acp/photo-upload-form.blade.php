@@ -23,7 +23,7 @@
         @lang('Фотографии')
       </label>
       <div class="max-md:mt-1.5">
-        @if ($this->uploaded === $this->total)
+        @if ($this->processed === $this->total)
           <input
             class="block text-gray-500 w-full file:px-4 file:py-1 file:rounded-sm file:border-0 file:bg-sky-700 file:text-white hover:file:bg-sky-800"
             accept="image/jpeg,image/png"
@@ -32,30 +32,55 @@
             wire:change="$dispatch('upload-files', $event.currentTarget.files)"
           >
         @else
-          @lang('Идет загрузка...') {{ $this->uploaded }} из {{ $this->total }}
+          @lang('Обработано') {{ $this->processed }} @lang('из') {{ $this->total }}.
+          @lang('Успешно загружено:') {{ $this->uploaded }}
         @endif
       </div>
     </div>
   @endif
 
-  @if (count($this->thumbnails))
+  @if (count($this->uploadResults))
     <div class="my-4">
       <h3 class="font-medium text-2xl mb-2">@lang('История загрузки')</h3>
-      @foreach ($this->thumbnails as $thumbnail)
-        <div>{{ $thumbnail }} ... ok</div>
+      @foreach ($this->uploadResults as $result)
+        <div @class([
+          'text-gray-500' => $result['status'] === 'pending',
+          'text-red-700' => $result['status'] === 'error',
+        ])>
+          <span class="font-medium">{{ $result['filename'] }}</span>
+          ...
+          @if ($result['status'] === 'success')
+            ok ({{ $result['message'] }})
+          @else
+            {{ $result['message'] }}
+          @endif
+        </div>
       @endforeach
     </div>
   @endif
 
+  @script
   <script>
-  document.addEventListener('livewire:init', function () {
-    window.Livewire.on('upload-files', function (files) {
-      @this.total += files.length
+    const uploadCancelledMessage = @js(__('Загрузка отменена.'))
+
+    $wire.$on('upload-files', async function (files) {
+      files = Array.from(files)
+
+      await $wire.queueFiles(files.map((file) => file.name))
 
       for (let i = 0, length = files.length; i < length; i++) {
-        @this.upload('file', files[i])
+        const file = files[i]
+
+        $wire.$upload(
+          'file',
+          file,
+          () => {},
+          () => $wire.uploadFailed(file.name),
+          () => {},
+          () => $wire.uploadFailed(file.name, uploadCancelledMessage),
+        )
       }
     })
-  })
   </script>
+  @endscript
 </div>
