@@ -22,7 +22,7 @@ class ThumbnailMaker extends Component
         'required',
         'image',
         'mimetypes:image/jpeg,image/png',
-        'max:12288',
+        'max:20480',
     ])]
     public TemporaryUploadedFile|string|null $file = null;
 
