@@ -7,7 +7,7 @@
     "php": ">=8.5",
     "ext-intl": "*",
     "ext-swoole": "*",
-    "foolz/sphinxql-query-builder": "^3.0",
+    "foolz/sphinxql-query-builder": "^4.0",
     "geo-io/wkb-parser": "^1.0",
     "guzzlehttp/guzzle": "^7.0",
     "laravel/framework": "^13.0",

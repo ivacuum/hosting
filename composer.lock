@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "543b50f3c6766aa8a227b8debbfd1a18",
+    "content-hash": "f0f6dbfc3f08ade3b760a3bcebb8fb87",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -726,25 +726,26 @@
         },
         {
             "name": "foolz/sphinxql-query-builder",
-            "version": "3.0.3",
+            "version": "v4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FoolCode/SphinxQL-Query-Builder.git",
-                "reference": "b1eb01cd2e2cae2c451fb60088221d8ce8d284c4"
+                "reference": "f1552c943c9fe1742fa8361886e84de41c09f803"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FoolCode/SphinxQL-Query-Builder/zipball/b1eb01cd2e2cae2c451fb60088221d8ce8d284c4",
-                "reference": "b1eb01cd2e2cae2c451fb60088221d8ce8d284c4",
+                "url": "https://api.github.com/repos/FoolCode/SphinxQL-Query-Builder/zipball/f1552c943c9fe1742fa8361886e84de41c09f803",
+                "reference": "f1552c943c9fe1742fa8361886e84de41c09f803",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1 || ^8"
+                "php": "^8.2"
             },
             "replace": {
                 "foolz/sphinxql": "self.version"
             },
             "require-dev": {
+                "phpstan/phpstan": "^1.12",
                 "phpunit/phpunit": "^7 || ^8 || ^9"
             },
             "type": "library",
@@ -763,8 +764,8 @@
                     "email": "support@foolz.us"
                 }
             ],
-            "description": "A PHP query builder for SphinxQL. Uses MySQLi to connect to the Sphinx server.",
-            "homepage": "http://www.foolz.us",
+            "description": "A PHP query builder for SphinxQL and ManticoreQL with MySQLi and PDO drivers.",
+            "homepage": "https://github.com/FoolCode/SphinxQL-Query-Builder",
             "keywords": [
                 "database",
                 "query builder",
@@ -774,12 +775,11 @@
                 "sql"
             ],
             "support": {
-                "email": "support@foolz.us",
-                "irc": "irc://irc.irchighway.net/fooldriver",
+                "docs": "https://github.com/FoolCode/SphinxQL-Query-Builder/tree/master/docs",
                 "issues": "https://github.com/FoolCode/SphinxQL-Query-Builder/issues",
-                "source": "https://github.com/FoolCode/SphinxQL-Query-Builder/tree/3.0.3"
+                "source": "https://github.com/FoolCode/SphinxQL-Query-Builder"
             },
-            "time": "2025-12-18T18:49:34+00:00"
+            "time": "2026-02-28T01:29:17+00:00"
         },
         {
             "name": "fruitcake/php-cors",
