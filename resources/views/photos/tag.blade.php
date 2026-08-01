@@ -16,7 +16,12 @@
         class="block relative w-full pb-[75%]"
         href="{{ to('photos/{photo}', [$photo, $tag->getForeignKey() => $tag]) }}"
       >
-        <img class="absolute top-0 left-0 w-full object-cover" src="{{ $photo->thumbnailUrl() }}" alt="">
+        <img
+          class="absolute top-0 left-0 w-full object-cover"
+          src="{{ $photo->thumbnailUrl() }}"
+          srcset="{{ $photo->thumbnailUrl() }} 500w, {{ $photo->mobileUrl() }} 1000w"
+          alt=""
+        >
       </a>
     </div>
   @endforeach
