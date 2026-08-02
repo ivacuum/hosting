@@ -5,13 +5,15 @@ namespace App\Http\Controllers\Acp\Dev;
 use App\Domain\Config;
 use App\Domain\Life\Action\FindTripTemplatesAction;
 use App\Domain\Life\Models\Trip;
+use Illuminate\Http\Request;
 
 class TemplatesController
 {
-    public function index(FindTripTemplatesAction $findTripTemplates)
+    public function index(Request $request, FindTripTemplatesAction $findTripTemplates)
     {
-        $filter = request('filter');
-        $hideFinished = (int) request('hide_finished', 0);
+        $filter = $request->query('filter');
+        $finished = $request->query('finished');
+        $translated = $request->has('translated') ? $request->boolean('translated') : null;
 
         $templates = collect();
         $total = (object) ['pics' => 0];
@@ -28,17 +30,29 @@ class TemplatesController
 
             $contents = $template->getContents();
 
+            if ($finished !== 'any') {
+                $hasUnhandledImages = preg_match('#^[A-Za-z_\d]+\.[a-z]{3,4}\r?$#m', $contents) === 1;
+
+                if ($finished !== 'yes' && !$hasUnhandledImages) {
+                    continue;
+                }
+
+                if ($finished === 'yes' && $hasUnhandledImages) {
+                    continue;
+                }
+            }
+
             $i18n = collect($languages)
                 ->keys()
                 ->flip()
                 ->map(static fn ($value, $key) => substr_count($contents, "@{$key}\n"))
                 ->all();
 
-            if ($hideFinished === 1 && $i18n['ru'] === $i18n['en']) {
+            if ($translated === false && $i18n['ru'] === $i18n['en']) {
                 continue;
             }
 
-            if ($hideFinished === 2 && $i18n['ru'] !== $i18n['en']) {
+            if ($translated === true && $i18n['ru'] !== $i18n['en']) {
                 continue;
             }
 
@@ -63,7 +77,7 @@ class TemplatesController
         ]);
     }
 
-    public function show(string $template)
+    public function show(Request $request, string $template)
     {
         // Внутренние ссылки на шаблоны
         $template = str_replace('.', '_', $template);
@@ -75,7 +89,7 @@ class TemplatesController
         $trip->slug = $slug;
         $trip->loadCityAndCountry();
 
-        if (request('images')) {
+        if ($request->boolean('images')) {
             $path = resource_path("views/{$trip->templatePath()}.blade.php");
             $content = \File::get($path);
 
