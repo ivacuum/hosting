@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Domain\Life\Factory\CityFactory;
 use App\Domain\Life\Factory\PhotoFactory;
+use App\Domain\Life\Factory\TagFactory;
 use App\Domain\Life\Factory\TripFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -157,18 +158,6 @@ class PhotoTest extends TestCase
             ->assertJsonPath('features.0.properties.clusterCaption', basename($photo->slug));
     }
 
-    public function testTags()
-    {
-        $photo = PhotoFactory::new()
-            ->withTag()
-            ->withTrip()
-            ->create();
-
-        $this->get('photos/tags')
-            ->assertOk()
-            ->assertSee($photo->tags->first()->title);
-    }
-
     public function testTag()
     {
         $photo = PhotoFactory::new()
@@ -179,6 +168,25 @@ class PhotoTest extends TestCase
         $this->get("photos/tags/{$photo->tags->first()->id}")
             ->assertOk()
             ->assertSee($photo->tags->first()->title);
+    }
+
+    public function testTags()
+    {
+        $publishedTag = TagFactory::new()
+            ->withTitle('phpunit опубликованный тэг', 'phpunit published tag')
+            ->create();
+
+        $hiddenTag = TagFactory::new()
+            ->withTitle('phpunit скрытый тэг', 'phpunit hidden tag')
+            ->create();
+
+        PhotoFactory::new()->withTag($publishedTag)->withTrip()->create();
+        PhotoFactory::new()->hidden()->withTag($hiddenTag)->withTrip()->create();
+
+        $this->get('photos/tags')
+            ->assertOk()
+            ->assertSee($publishedTag->title)
+            ->assertDontSee($hiddenTag->title);
     }
 
     public function testTrips()

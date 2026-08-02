@@ -203,15 +203,9 @@ class PhotoController
 
     public function tags()
     {
-        // Тэги с фотками
-        $tagIds = \DB::table('taggable')
-            ->where('rel_type', (new Photo)->getMorphClass())
-            ->distinct()
-            ->pluck('tag_id');
-
         $tags = Tag::query()
             ->withCount('photosPublished')
-            ->whereIn('id', $tagIds)
+            ->whereHas('photosPublished')
             ->orderBy(Tag::titleField())
             ->get();
 
