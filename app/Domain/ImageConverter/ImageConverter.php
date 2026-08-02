@@ -70,6 +70,10 @@ class ImageConverter
         exec("{$command} 2>&1", $output, $returnCode);
 
         if ($returnCode !== 0 || !file_exists($destination)) {
+            if (is_file($destination)) {
+                unlink($destination);
+            }
+
             logs()->error('Could not convert source: ' . $source, [
                 'output' => $output,
                 'command' => $command,
@@ -78,11 +82,7 @@ class ImageConverter
             throw new \RuntimeException('Преобразование файла не удалось.');
         }
 
-        if (!file_exists($destination)) {
-            throw new \RuntimeException('Преобразование файла не удалось');
-        }
-
-        return new UploadedFile($destination, basename($source));
+        return new ConvertedImage($destination, basename($source));
     }
 
     public function crop(int $width, int $height): self
@@ -180,8 +180,7 @@ class ImageConverter
     }
 
     /**
-     * Результат работы конвертера будет помещен во временный файл, который будет удален по завершении запроса.
-     * Временный файл после преобразований подразумевается перенести в постоянное хранилище
+     * Временный файл принадлежит объекту ConvertedImage и удаляется вместе с ним.
      */
     protected function tempFile(): string
     {
@@ -193,14 +192,7 @@ class ImageConverter
         };
 
         $filename = \Str::random(6);
-        $destination = storage_path("app/resize-{$filename}.{$extension}");
 
-        register_shutdown_function(
-            static function () use ($destination) {
-                unlink($destination);
-            }
-        );
-
-        return $destination;
+        return storage_path("app/resize-{$filename}.{$extension}");
     }
 }
