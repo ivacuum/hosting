@@ -19,6 +19,10 @@ abstract class TestCase extends \Illuminate\Foundation\Testing\TestCase
             $this->withoutDeprecationHandling();
             $this->withoutMix();
             $this->withoutVite();
+
+            // По умолчанию, есть задержка 200 мс
+            // Ноль ускоряет тесты входа и выхода
+            config(['auth.timebox_duration' => 0]);
         }
     }
 }
