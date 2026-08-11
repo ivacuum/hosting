@@ -22,6 +22,8 @@ Schedule::command(Commands\SitemapBuild::class)
 
 Schedule::command('model:prune', [
     '--model' => [
+        // После миграции моделей из App в App\Models
+        // можно будет указать App\Domain и App\Models вместо конкретных моделей
         App\Domain\Log\Models\ExternalHttpRequest::class,
         App\PasswordResetToken::class,
     ],
