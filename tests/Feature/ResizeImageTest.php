@@ -72,6 +72,9 @@ class ResizeImageTest extends TestCase
 
     public function testNoExtension()
     {
+        // Ускоряет выполнение теста — не рендерит страницу с исключением и стеком
+        config(['app.debug' => false]);
+
         $this->mock(GetResizeImageWhitelistAction::class)
             ->expects('execute')
             ->andReturn(['example.com']);
