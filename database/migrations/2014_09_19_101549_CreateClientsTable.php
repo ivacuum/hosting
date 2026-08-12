@@ -54,10 +54,13 @@ return new class extends Migration {
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->morphs('rel');
+            $table->string('rel_type');
+            $table->unsignedBigInteger('rel_id');
             $table->unsignedTinyInteger('status')->default(App\Domain\CommentStatus::Published->value);
             $table->text('html');
             $table->timestamps();
+
+            $table->index(['rel_type', 'rel_id', 'status', 'created_at']);
         });
 
         Schema::create('countries', function (Blueprint $table) {
@@ -285,6 +288,7 @@ return new class extends Migration {
             $table->unsignedInteger('count')->default(0);
 
             $table->primary(['date', 'event']);
+            $table->index(['event', 'date']);
         });
 
         Schema::create('news', function (Blueprint $table) {
@@ -354,6 +358,7 @@ return new class extends Migration {
             $table->string('rel_type', 40);
 
             $table->primary(['tag_id', 'rel_type', 'rel_id']);
+            $table->index(['rel_type', 'rel_id', 'tag_id']);
         });
 
         Schema::create('tags', function (Blueprint $table) {
