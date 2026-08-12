@@ -3,7 +3,7 @@
 namespace App\Domain\SocialMedia\Models;
 
 use App\Domain\Life\Models\Photo;
-use App\Domain\SocialMedia\Observers\SocialMediaPostObserver;
+use App\Domain\SocialMedia\Observer\SocialMediaPostObserver;
 use App\Domain\SocialMedia\Policy\SocialMediaPostPolicy;
 use App\Domain\SocialMedia\SocialMediaPostStatus;
 use App\User;
