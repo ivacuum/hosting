@@ -3,29 +3,46 @@
 namespace App\Domain\Magnet\Observer;
 
 use App\Domain\Magnet\Models\Magnet;
+use App\Utilities\CacheHelper;
 use Illuminate\Support\Str;
 
 class MagnetObserver
 {
-    public function created(Magnet $magnet)
+    public function __construct(private CacheHelper $cache) {}
+
+    public function created(Magnet $magnet): void
     {
         event(new \App\Events\Stats\TorrentAdded);
+
+        $this->cache->forgetMagnets();
     }
 
-    public function deleting(Magnet $magnet)
+    public function deleted(): void
+    {
+        $this->cache->forgetMagnets();
+    }
+
+    public function deleting(Magnet $magnet): void
     {
         \DB::transaction(static function () use ($magnet) {
             $magnet->comments->each->delete();
         });
     }
 
-    public function saving(Magnet $magnet)
+    public function saving(Magnet $magnet): void
     {
         if ($magnet->isDirty('title') && str_starts_with($magnet->title, '[ATV')) {
             $magnet->title = preg_replace('/^\[ATV ?3\] /', '', $magnet->title);
         }
 
         $this->maintainConsistency($magnet);
+    }
+
+    public function updated(Magnet $magnet): void
+    {
+        if ($magnet->wasChanged(['category_id', 'status'])) {
+            $this->cache->forgetMagnets();
+        }
     }
 
     private function maintainConsistency(Magnet $magnet): void

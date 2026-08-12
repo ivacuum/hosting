@@ -18,16 +18,21 @@ class TripObserver
         });
     }
 
-    public function deleted()
+    public function deleted(): void
     {
         $this->cache->forgetTrips();
+        $this->cache->forgetPhotoPoints();
     }
 
-    public function saved(Trip $trip)
+    public function saved(Trip $trip): void
     {
         $this->toggleTripPhotosStatus($trip);
 
         $this->cache->forgetTrips();
+
+        if ($trip->wasRecentlyCreated || $trip->wasChanged(['slug', 'title_ru', 'title_en', 'date_start', 'date_end'])) {
+            $this->cache->forgetPhotoPoints();
+        }
     }
 
     public function saving(Trip $trip): void
