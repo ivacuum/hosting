@@ -45,7 +45,7 @@
       </td>
       <td class="md:text-right leading-none text-xl whitespace-nowrap">
         <a class="tooltipped tooltipped-n" aria-label="@lang('acp.gigs.create_similar')" href="{{ to('acp/gigs/create', ['source_id' => $model->id]) }}">
-          @svg (plus)
+          @svg (copy)
         </a>
       </td>
       <td class="md:text-right leading-none text-xl">
