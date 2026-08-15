@@ -7,10 +7,17 @@ use App\Domain\Life\Models\Artist;
 use App\Domain\Life\Models\City;
 use App\Domain\Life\Models\Gig;
 use Carbon\CarbonImmutable;
+use Carbon\CarbonInterface;
 
 class GigFactory
 {
     private string|null $slug = null;
+    private CarbonInterface|string|null $date = null;
+    private string|null $englishTitle = null;
+    private string|null $russianTitle = null;
+    private string|null $metaImage = null;
+    private string|null $englishMetaDescription = null;
+    private string|null $russianMetaDescription = null;
     private GigStatus $status = GigStatus::Published;
 
     private int|Artist|ArtistFactory|null $artist = null;
@@ -31,7 +38,7 @@ class GigFactory
         $title = fake()->word() . ' ' . fake()->numberBetween(2000, 3000);
 
         $gig = new Gig;
-        $gig->date = CarbonImmutable::instance(fake()->dateTimeBetween('-4 years'))->startOfDay();
+        $gig->date = $this->date ?? CarbonImmutable::instance(fake()->dateTimeBetween('-4 years'))->startOfDay();
         $gig->slug = $this->slug ?? \Str::slug($title);
         $gig->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $gig->status = $this->status;
@@ -40,8 +47,11 @@ class GigFactory
             is_int($this->city) => $this->city,
             default => null,
         };
-        $gig->title_en = $title;
-        $gig->title_ru = $title;
+        $gig->title_en = $this->englishTitle ?? $title;
+        $gig->title_ru = $this->russianTitle ?? $title;
+        $gig->meta_image = $this->metaImage ?? '';
+        $gig->meta_description_en = $this->englishMetaDescription ?? '';
+        $gig->meta_description_ru = $this->russianMetaDescription ?? '';
         $gig->artist_id = match (true) {
             $this->artist instanceof Artist => $this->artist->id,
             is_int($this->artist) => $this->artist,
@@ -69,8 +79,44 @@ class GigFactory
     }
 
     #[\NoDiscard]
+    public function withDate(CarbonInterface|string $date): self
+    {
+        return clone ($this, ['date' => $date]);
+    }
+
+    #[\NoDiscard]
+    public function withMetaDescription(string $russianMetaDescription, string $englishMetaDescription): self
+    {
+        return clone ($this, [
+            'russianMetaDescription' => $russianMetaDescription,
+            'englishMetaDescription' => $englishMetaDescription,
+        ]);
+    }
+
+    #[\NoDiscard]
+    public function withMetaImage(string $metaImage): self
+    {
+        return clone ($this, ['metaImage' => $metaImage]);
+    }
+
+    #[\NoDiscard]
     public function withSlug(string $slug): self
     {
         return clone ($this, ['slug' => $slug]);
+    }
+
+    #[\NoDiscard]
+    public function withStatus(GigStatus $status): self
+    {
+        return clone ($this, ['status' => $status]);
+    }
+
+    #[\NoDiscard]
+    public function withTitle(string $russianTitle, string $englishTitle): self
+    {
+        return clone ($this, [
+            'russianTitle' => $russianTitle,
+            'englishTitle' => $englishTitle,
+        ]);
     }
 }

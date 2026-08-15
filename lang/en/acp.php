@@ -62,6 +62,7 @@ return [
     'gigs.show' => 'Gig',
     'gigs.index' => 'Gigs',
     'gigs.create' => 'New gig',
+    'gigs.create_similar' => 'Create similar gig',
 
     'images.show' => 'Image',
     'images.view' => 'Increment views',

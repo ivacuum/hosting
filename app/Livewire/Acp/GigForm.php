@@ -24,6 +24,9 @@ class GigForm extends Component
     #[Locked]
     public int|null $id = null;
 
+    #[Locked]
+    public int|null $sourceId = null;
+
     public int|null $cityId = null;
     public int|null $artistId = null;
     public string|null $slug = '';
@@ -58,6 +61,21 @@ class GigForm extends Component
         } else {
             $this->date = today()->toDateTimeLocalString();
             $this->slug = 'artist.' . now()->year;
+
+            if ($this->sourceId) {
+                $gig = Gig::query()->findOrFail($this->sourceId);
+
+                $this->date = $gig->date->toDateTimeLocalString();
+                $this->slug = $gig->slug;
+                $this->cityId = $gig->city_id;
+                $this->status = GigStatus::Hidden;
+                $this->titleEn = $gig->title_en;
+                $this->titleRu = $gig->title_ru;
+                $this->artistId = $gig->artist_id;
+                $this->metaImage = $gig->meta_image;
+                $this->metaDescriptionEn = $gig->meta_description_en;
+                $this->metaDescriptionRu = $gig->meta_description_ru;
+            }
         }
     }
 

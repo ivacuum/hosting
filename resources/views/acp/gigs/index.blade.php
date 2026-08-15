@@ -14,6 +14,7 @@
     <x-th-numeric-sortable key="views">@svg (eye)</x-th-numeric-sortable>
     <th>@svg (paperclip)</th>
     <th></th>
+    <th></th>
   </tr>
   </thead>
   <tbody>
@@ -41,6 +42,11 @@
             </span>
           </a>
         @endif
+      </td>
+      <td class="md:text-right leading-none text-xl whitespace-nowrap">
+        <a class="tooltipped tooltipped-n" aria-label="@lang('acp.gigs.create_similar')" href="{{ to('acp/gigs/create', ['source_id' => $model->id]) }}">
+          @svg (plus)
+        </a>
       </td>
       <td class="md:text-right leading-none text-xl">
         <a href="{{ to('acp/dev/gig-templates/{template}', str_replace('.', '_', $model->slug)) }}">

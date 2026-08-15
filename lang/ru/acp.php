@@ -63,6 +63,7 @@ return [
     'gigs.show' => 'Концерт',
     'gigs.index' => 'Концерты',
     'gigs.create' => 'Новый концерт',
+    'gigs.create_similar' => 'Создать похожий концерт',
 
     'images.show' => 'Изображение',
     'images.view' => 'Засчитать просмотр',

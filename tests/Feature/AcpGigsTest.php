@@ -22,6 +22,46 @@ class AcpGigsTest extends TestCase
             ->assertSeeLivewire(GigForm::class);
     }
 
+    public function testCreatePrefilled()
+    {
+        $artist = ArtistFactory::new()
+            ->withSlug('phpunit-artist')
+            ->withTitle('Phpunit Artist')
+            ->create();
+
+        $city = CityFactory::new()->create();
+
+        $source = GigFactory::new()
+            ->withArtist($artist)
+            ->withCity($city)
+            ->withDate('2024-03-01 20:00:00')
+            ->withMetaDescription(
+                russianMetaDescription: 'Описание концерта на русском',
+                englishMetaDescription: 'English concert description',
+            )
+            ->withMetaImage('https://example.com/phpunit-artist.jpg')
+            ->withSlug('phpunit-artist.2024.03.01')
+            ->withTitle(
+                russianTitle: 'Концерт Phpunit Artist в Городе',
+                englishTitle: 'Phpunit Artist in City',
+            )
+            ->create();
+
+        \Livewire::test(GigForm::class, ['sourceId' => $source->id])
+            ->assertSet('id', null)
+            ->assertSet('sourceId', $source->id)
+            ->assertSet('artistId', $artist->id)
+            ->assertSet('cityId', $city->id)
+            ->assertSet('titleEn', 'Phpunit Artist in City')
+            ->assertSet('titleRu', 'Концерт Phpunit Artist в Городе')
+            ->assertSet('metaImage', 'https://example.com/phpunit-artist.jpg')
+            ->assertSet('metaDescriptionEn', 'English concert description')
+            ->assertSet('metaDescriptionRu', 'Описание концерта на русском')
+            ->assertSet('date', '2024-03-01T20:00:00')
+            ->assertSet('slug', 'phpunit-artist.2024.03.01')
+            ->assertSet('status', GigStatus::Hidden);
+    }
+
     public function testEdit()
     {
         $gig = GigFactory::new()->create();
