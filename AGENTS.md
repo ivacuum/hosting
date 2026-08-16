@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This is a Laravel application serving as a personal website for notes, trip stories, and concert history. It takes advantage of modern PHP features, and Livewire for dynamic interactions. It is a production-grade app that serves pretty high-load for a modest server.
+This is a Laravel application serving as a personal website for notes, trip stories, and concert history. It takes advantage of modern PHP features, and Livewire for dynamic interactions. It is a production-grade app that serves pretty high-load for a modest FreeBSD server.
 
 ## Architecture & Conventions
 
