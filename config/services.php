@@ -21,10 +21,6 @@ return [
         'proxy' => env('RTO_PROXY'),
     ],
 
-    'ollama' => [
-        'base_url' => env('OLLAMA_API_BASE_URL', 'http://localhost:11434/api/'),
-    ],
-
     'telegram' => [
         'admin_id' => (int) env('TELEGRAM_ADMIN_ID', 0),
         'api_url' => env('TELEGRAM_API_URL', 'https://api.telegram.org'),
