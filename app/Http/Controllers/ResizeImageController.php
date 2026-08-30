@@ -19,6 +19,7 @@ class ResizeImageController
 
         try {
             $response = $http
+                ->connectTimeout(3)
                 ->timeout(10)
                 ->sink($tempFile)
                 ->get($request->image);

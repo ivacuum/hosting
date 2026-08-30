@@ -123,6 +123,7 @@ class Rto
     {
         return $this->http
             ->baseUrl(self::SITE_ENDPOINT)
+            ->connectTimeout(3)
             ->timeout(\App::runningInConsole() ? 60 : 15)
             ->retry(5, 5000)
             ->withOptions([

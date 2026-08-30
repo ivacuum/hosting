@@ -50,6 +50,7 @@ class InstagramApi
                 CarbonInterval::seconds(4)->totalMilliseconds,
                 CarbonInterval::seconds(8)->totalMilliseconds,
             ])
+            ->connectTimeout(3)
             ->timeout(30)
             ->throw()
             ->withQueryParameters(['access_token' => $accessToken]);

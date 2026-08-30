@@ -32,6 +32,7 @@ class WanikaniApi
     {
         return $this->http
             ->baseUrl('https://api.wanikani.com/v2/')
+            ->connectTimeout(3)
             ->timeout(10)
             ->withToken($this->apiKey)
             ->withHeader('Wanikani-Revision', '20170710');

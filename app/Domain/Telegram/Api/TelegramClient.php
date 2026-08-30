@@ -175,6 +175,7 @@ class TelegramClient
 
         return $this->http
             ->baseUrl("{$apiUrl}/bot{$botToken}/")
+            ->connectTimeout(3)
             ->timeout(\App::runningInConsole() ? 60 : 15)
             ->throw();
     }

@@ -28,6 +28,7 @@ class SteamApi
     private function configureClient()
     {
         return $this->http
+            ->connectTimeout(3)
             ->timeout(10)
             ->throw();
     }
