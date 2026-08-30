@@ -88,6 +88,12 @@ export default class Shortcuts {
 
       if (!link) return false
 
+      if (link instanceof HTMLAnchorElement) {
+        link.click()
+
+        return true
+      }
+
       const url = link.getAttribute('href')
 
       if (!url) return false
