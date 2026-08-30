@@ -125,7 +125,7 @@ class Rto
             ->baseUrl(self::SITE_ENDPOINT)
             ->connectTimeout(3)
             ->timeout(\App::runningInConsole() ? 60 : 15)
-            ->retry(5, 5000)
+            ->retry(times: 5, sleepMilliseconds: 5000)
             ->withOptions([
                 RequestOptions::PROXY => Config::RtoProxy->get(),
             ]);
