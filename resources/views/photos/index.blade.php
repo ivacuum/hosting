@@ -4,9 +4,9 @@
 <div class="grid md:grid-cols-2 lg:grid-cols-3 -mx-4 sm:mx-0">
   @foreach ($photos as $photo)
     <div>
-      <a class="block relative w-full pb-[75%]" href="{{ $photo->www() }}">
+      <a class="block relative aspect-4/3 w-full overflow-hidden" href="{{ $photo->www() }}">
         <img
-          class="absolute top-0 left-0 w-full object-cover"
+          class="absolute inset-0 object-contain size-full"
           src="{{ $photo->thumbnailUrl() }}"
           srcset="{{ $photo->thumbnailUrl() }} 500w, {{ $photo->mobileUrl() }} 1000w"
           alt=""
