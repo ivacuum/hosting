@@ -2,21 +2,16 @@
 
 namespace App\Domain\Wanikani\Api;
 
-use App\Http\HttpRequest;
+use App\Http\HttpRequestV2;
+use Illuminate\Http\Client\PendingRequest;
+use Illuminate\Http\Client\Response;
 
-class SubjectRequest implements HttpRequest
+readonly class SubjectRequest implements HttpRequestV2
 {
     public function __construct(private int $id) {}
 
-    #[\Override]
-    public function endpoint(): string
+    public function send(PendingRequest $http): Response
     {
-        return "subjects/{$this->id}";
-    }
-
-    #[\Override]
-    public function jsonSerialize(): array
-    {
-        return [];
+        return $http->get("subjects/{$this->id}");
     }
 }

@@ -9,7 +9,7 @@ class SubjectsResponse
 {
     private Collection $subjects;
 
-    public function __construct(Response $response)
+    public function __construct(public Response $response)
     {
         $this->subjects = $response->collect('data')
             ->map(static fn ($object) => match ($object['object']) {
@@ -21,19 +21,19 @@ class SubjectsResponse
     }
 
     /** @return Collection<int, KanjiEntity> */
-    public function getKanjis()
+    public function getKanjis(): Collection
     {
         return $this->subjects->filter(static fn ($subject) => $subject instanceof KanjiEntity);
     }
 
     /** @return Collection<int, RadicalEntity> */
-    public function getRadicals()
+    public function getRadicals(): Collection
     {
         return $this->subjects->filter(static fn ($subject) => $subject instanceof RadicalEntity);
     }
 
     /** @return Collection<int, VocabularyEntity> */
-    public function getVocabularies()
+    public function getVocabularies(): Collection
     {
         return $this->subjects->filter(static fn ($subject) => $subject instanceof VocabularyEntity);
     }
