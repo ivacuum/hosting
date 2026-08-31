@@ -24,7 +24,9 @@ class TemplatesController
         }
 
         foreach ($findTripTemplates->execute() as $template) {
-            if (!preg_match("/{$filter}/", $template->getBasename('.blade.php'))) {
+            $templateName = $template->getBasename('.blade.php');
+
+            if (!preg_match("/{$filter}/", $templateName)) {
                 continue;
             }
 
@@ -63,9 +65,15 @@ class TemplatesController
             $pics = preg_match_all('/\.jpe?g/', $contents);
             $total->pics += $pics;
 
+            $routeParameters = [$templateName];
+
+            if (preg_match('/^(.+)-part-(\d+)$/', $templateName, $matches)) {
+                $routeParameters = ['template' => $matches[1], 'part' => (int) $matches[2]];
+            }
+
             $templates->push((object) [
-                'www' => path([TemplatesController::class, 'show'], $template->getBasename('.blade.php')),
-                'name' => $template->getBasename('.blade.php'),
+                'www' => path([TemplatesController::class, 'show'], $routeParameters),
+                'name' => $templateName,
                 'i18n' => (object) $i18n,
                 'pics' => $pics,
             ]);
@@ -90,7 +98,11 @@ class TemplatesController
         $trip->loadCityAndCountry();
 
         if ($request->boolean('images')) {
-            $path = resource_path("views/{$trip->templatePath()}.blade.php");
+            $part = $request->integer('part');
+            $editableTemplate = $part
+                ? "{$template}-part-{$part}"
+                : $template;
+            $path = resource_path("views/life/trips/{$editableTemplate}.blade.php");
             $content = \File::get($path);
 
             $lines = explode("\n", $content);

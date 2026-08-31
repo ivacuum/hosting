@@ -6,7 +6,7 @@
 @endsection
 
 @section('content_footer')
-    <div class="mt-4"><a class="btn btn-primary" href="?images=1">Запилить картинки</a></div>
+    <div class="mt-4"><a class="btn btn-primary" href="{{ fullUrl(['images' => 1]) }}">Запилить картинки</a></div>
   </div>
 </div>
 @endsection

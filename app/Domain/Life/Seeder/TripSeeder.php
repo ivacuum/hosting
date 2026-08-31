@@ -18,7 +18,7 @@ class TripSeeder extends Seeder
     public function run()
     {
         // Для каждого шаблона нужно создать поездку
-        foreach ($this->findTripTemplates->execute() as $template) {
+        foreach ($this->findTripTemplates->execute(includePartials: false) as $template) {
             $slug = str($template->getBasename('.blade.php'))->replace('_', '.');
             $citySlug = $slug->before('.');
 

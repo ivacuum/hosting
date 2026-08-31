@@ -6,13 +6,19 @@ use Symfony\Component\Finder\Finder;
 
 class FindTripTemplatesAction
 {
-    public function execute()
+    public function execute(bool $includePartials = true)
     {
-        return Finder::create()
+        $finder = Finder::create()
             ->files()
             ->in(resource_path('views/life/trips'))
             ->name('*.blade.php')
             ->notName('base.blade.php')
             ->sortByName();
+
+        if (!$includePartials) {
+            $finder->notName('*-part-*.blade.php');
+        }
+
+        return $finder;
     }
 }
