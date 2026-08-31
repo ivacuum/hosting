@@ -13,11 +13,11 @@
   @foreach ($photos as $photo)
     <div>
       <a
-        class="block relative w-full pb-[75%]"
+        class="block relative aspect-4/3 w-full overflow-hidden"
         href="{{ to('photos/{photo}', [$photo, $tag->getForeignKey() => $tag]) }}"
       >
         <img
-          class="absolute top-0 left-0 w-full object-cover"
+          class="absolute inset-0 object-contain size-full"
           src="{{ $photo->thumbnailUrl() }}"
           srcset="{{ $photo->thumbnailUrl() }} 500w, {{ $photo->mobileUrl() }} 1000w"
           alt=""
