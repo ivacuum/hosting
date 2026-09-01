@@ -2,6 +2,7 @@
 
 namespace App\Domain\Log\Listener;
 
+use App\Domain\Log\Action\FillExternalHttpRequestTransferStatsAction;
 use App\Domain\Log\Action\FilterOutCredentialsAction;
 use App\Domain\Log\Action\GetExternalServiceByHostAction;
 use App\Domain\Log\Models\ExternalHttpRequest;
@@ -14,6 +15,7 @@ class LogExternalHttpRequest
 {
     public function __construct(
         private FilterOutCredentialsAction $filterOutCredentials,
+        private FillExternalHttpRequestTransferStatsAction $fillTransferStats,
         private GetExternalServiceByHostAction $getExternalServiceByHost,
     ) {}
 
@@ -34,7 +36,6 @@ class LogExternalHttpRequest
         $response = $event->response;
         $uri = $request->toPsrRequest()->getUri();
         $stats = $response->handlerStats();
-        $totalTimeUs = $stats['total_time_us'] ?? (($stats['total_time'] ?? 0) * 1_000_000);
 
         $model = new ExternalHttpRequest;
         $model->host = $uri->getHost();
@@ -43,18 +44,18 @@ class LogExternalHttpRequest
         $model->method = $request->method();
         $model->scheme = $uri->getScheme();
         $model->http_code = $response->status();
-        $model->created_at = now()->subMicroseconds($totalTimeUs);
         $model->http_version = $stats['http_version'] ?? '';
         $model->redirect_url = $stats['redirect_url'] ?? '';
         $model->request_body = $request->body();
         $model->service_name = $this->getExternalServiceByHost->execute($uri->getHost());
         $model->response_body = $this->responseBodyInUtf8($response->body());
         $model->response_size = $this->responseSize($response);
-        $model->total_time_us = $totalTimeUs;
         $model->redirect_count = $stats['redirect_count'] ?? 0;
         $model->request_headers = $request->headers();
-        $model->redirect_time_us = $stats['redirect_time_us'] ?? (($stats['redirect_time'] ?? 0) * 1_000_000);
         $model->response_headers = $response->headers();
+
+        $this->fillTransferStats->execute($model, $stats);
+        $model->created_at = now()->subMicroseconds($model->total_time_us);
 
         $this->filterOutCredentials->execute($model);
 
