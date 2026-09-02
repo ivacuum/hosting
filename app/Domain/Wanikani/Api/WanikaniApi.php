@@ -35,7 +35,6 @@ readonly class WanikaniApi
         return $this->http
             ->createPendingRequest()
             ->baseUrl('https://api.wanikani.com/v2/')
-            ->acceptJson()
             ->connectTimeout(3)
             ->timeout(10)
             ->withToken($this->apiKey)
