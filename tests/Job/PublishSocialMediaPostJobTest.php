@@ -2,8 +2,7 @@
 
 namespace Tests\Job;
 
-use App\Domain\Instagram\InstagramCreateMediaResponse;
-use App\Domain\Instagram\InstagramPublishMediaResponse;
+use App\Domain\Instagram\InstagramApiFake;
 use App\Domain\Life\Factory\PhotoFactory;
 use App\Domain\SocialMedia\Factory\SocialMediaPostFactory;
 use App\Domain\SocialMedia\Job\PublishSocialMediaPostJob;
@@ -17,11 +16,11 @@ class PublishSocialMediaPostJobTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testOk()
+    public function testOk(): void
     {
         \Http::fake([
-            ...InstagramCreateMediaResponse::fakeSuccess('container-id'),
-            ...InstagramPublishMediaResponse::fakeSuccess('media-id'),
+            ...InstagramApiFake::createMedia('container-id'),
+            ...InstagramApiFake::publishMedia('media-id'),
         ]);
 
         $post = SocialMediaPostFactory::new()
@@ -54,11 +53,9 @@ class PublishSocialMediaPostJobTest extends TestCase
         });
     }
 
-    public function testRetryOnCreateMediaFailure()
+    public function testDoesNotRetryCreateMediaFailure(): void
     {
-        \Http::fake([
-            ...InstagramCreateMediaResponse::fakeInvalidMedia(),
-        ]);
+        \Http::fake(InstagramApiFake::createMediaInvalid());
 
         Sleep::fake();
 
@@ -73,22 +70,18 @@ class PublishSocialMediaPostJobTest extends TestCase
 
         $this->expectException(\Illuminate\Http\Client\RequestException::class);
 
-        $this->app->call($job->handle(...));
+        try {
+            $this->app->call($job->handle(...));
+        } finally {
+            \Http::assertSentCount(1);
+        }
     }
 
-    public function testRetryPublish()
+    public function testRetryPublish(): void
     {
-        $fakeMediaNotAvailableResponse = InstagramPublishMediaResponse::fakeMediaNotAvailable();
-        $fakeSuccessResponse = InstagramPublishMediaResponse::fakeSuccess();
-        $mediaPublishUrl = array_key_first($fakeMediaNotAvailableResponse);
-
         \Http::fake([
-            ...InstagramCreateMediaResponse::fakeSuccess('container-id'),
-            ...[
-                $mediaPublishUrl => \Http::sequence()
-                    ->pushResponse(array_first($fakeMediaNotAvailableResponse))
-                    ->pushResponse(array_first($fakeSuccessResponse)),
-            ],
+            ...InstagramApiFake::createMedia('container-id'),
+            ...InstagramApiFake::publishMediaNotAvailableThenSuccess(),
         ]);
 
         Sleep::fake();

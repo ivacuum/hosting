@@ -3,10 +3,7 @@
 namespace Tests\Feature;
 
 use App\Domain\Instagram\InstagramApi;
-use App\Domain\Instagram\InstagramCreateMediaResponse;
-use App\Domain\Instagram\InstagramMeResponse;
-use App\Domain\Instagram\InstagramPublishMediaResponse;
-use App\Domain\Instagram\InstagramRefreshAccessTokenResponse;
+use App\Domain\Instagram\InstagramApiFake;
 use App\Domain\Log\Models\ExternalHttpRequest;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -15,11 +12,9 @@ class InstagramApiTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testCreateMedia()
+    public function testCreateMedia(): void
     {
-        \Http::fake([
-            ...InstagramCreateMediaResponse::fakeSuccess('12345'),
-        ]);
+        \Http::fake(InstagramApiFake::createMedia('12345'));
 
         $response = $this->app
             ->make(InstagramApi::class)
@@ -29,11 +24,9 @@ class InstagramApiTest extends TestCase
         $this->assertSame('12345', $response->containerId);
     }
 
-    public function testMe()
+    public function testMe(): void
     {
-        \Http::fake([
-            ...InstagramMeResponse::fakeSuccess(),
-        ]);
+        \Http::fake(InstagramApiFake::me());
 
         $response = $this->app
             ->make(InstagramApi::class)
@@ -42,11 +35,9 @@ class InstagramApiTest extends TestCase
         $this->assertTrue($response->successful);
     }
 
-    public function testNoCredentialsLogged()
+    public function testNoCredentialsLogged(): void
     {
-        \Http::fake([
-            ...InstagramRefreshAccessTokenResponse::fakeSuccess('new-secret-token'),
-        ]);
+        \Http::fake(InstagramApiFake::refreshAccessToken('new-secret-token'));
 
         $this->app
             ->make(InstagramApi::class)
@@ -62,11 +53,9 @@ class InstagramApiTest extends TestCase
         $this->assertStringNotContainsString('new-secret-token', $json);
     }
 
-    public function testPublishMedia()
+    public function testPublishMedia(): void
     {
-        \Http::fake([
-            ...InstagramPublishMediaResponse::fakeSuccess('1973456852'),
-        ]);
+        \Http::fake(InstagramApiFake::publishMedia('1973456852'));
 
         $response = $this->app
             ->make(InstagramApi::class)
@@ -76,11 +65,9 @@ class InstagramApiTest extends TestCase
         $this->assertSame('1973456852', $response->id);
     }
 
-    public function testRefreshAccessToken()
+    public function testRefreshAccessToken(): void
     {
-        \Http::fake([
-            ...InstagramRefreshAccessTokenResponse::fakeSuccess('new_token'),
-        ]);
+        \Http::fake(InstagramApiFake::refreshAccessToken('new_token'));
 
         $response = $this->app
             ->make(InstagramApi::class)

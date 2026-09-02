@@ -3,7 +3,7 @@
 namespace Tests\Feature;
 
 use App\Console\Commands\RefreshSocialMediaTokens;
-use App\Domain\Instagram\InstagramRefreshAccessTokenResponse;
+use App\Domain\Instagram\InstagramApiFake;
 use App\Domain\SocialMedia\Factory\SocialMediaTokenFactory;
 use App\Factory\UserFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -13,11 +13,9 @@ class RefreshSocialMediaTokenTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testOk()
+    public function testOk(): void
     {
-        \Http::fake([
-            ...InstagramRefreshAccessTokenResponse::fakeSuccess('new_token'),
-        ]);
+        \Http::fake(InstagramApiFake::refreshAccessToken('new_token'));
 
         $user = UserFactory::new()->create();
 

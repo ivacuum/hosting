@@ -2,20 +2,15 @@
 
 namespace App\Domain\Instagram;
 
-use App\Http\HttpRequest;
+use App\Http\HttpRequestV2;
+use Illuminate\Http\Client\PendingRequest;
+use Illuminate\Http\Client\Response;
 
-readonly class InstagramMeRequest implements HttpRequest
+readonly class InstagramMeRequest implements HttpRequestV2
 {
-    #[\Override]
-    public function endpoint(): string
+    public function send(PendingRequest $http): Response
     {
-        return 'me';
-    }
-
-    #[\Override]
-    public function jsonSerialize(): array
-    {
-        return [
+        return $http->get('me', [
             'fields' => implode(',', [
                 'user_id',
                 'username',
@@ -26,6 +21,6 @@ readonly class InstagramMeRequest implements HttpRequest
                 'follows_count',
                 'media_count',
             ]),
-        ];
+        ]);
     }
 }

@@ -2,69 +2,58 @@
 
 namespace App\Domain\Instagram;
 
-use App\Http\HttpPost;
-use App\Http\HttpRequest;
-use Carbon\CarbonInterval;
+use App\Http\HttpRequestV2;
 use Illuminate\Http\Client\Factory;
+use Illuminate\Http\Client\PendingRequest;
+use Illuminate\Http\Client\Response;
 
-class InstagramApi
+readonly class InstagramApi
 {
     public function __construct(
         private Factory $http,
     ) {}
 
-    public function createMedia(string $accessToken, string $imageUrl, string $caption)
+    public function createMedia(string $accessToken, string $imageUrl, string $caption): InstagramCreateMediaResponse
     {
         $request = new InstagramCreateMediaRequest($imageUrl, $caption);
 
         return new InstagramCreateMediaResponse($this->sendRequest($request, $accessToken));
     }
 
-    public function me(string $accessToken)
+    public function me(string $accessToken): InstagramMeResponse
     {
         $request = new InstagramMeRequest;
 
         return new InstagramMeResponse($this->sendRequest($request, $accessToken));
     }
 
-    public function publishMedia(string $accessToken, string $creationId)
+    public function publishMedia(string $accessToken, string $creationId): InstagramPublishMediaResponse
     {
         $request = new InstagramPublishMediaRequest($creationId);
 
         return new InstagramPublishMediaResponse($this->sendRequest($request, $accessToken));
     }
 
-    public function refreshAccessToken(string $accessToken)
+    public function refreshAccessToken(string $accessToken): InstagramRefreshAccessTokenResponse
     {
         $request = new InstagramRefreshAccessTokenRequest;
 
         return new InstagramRefreshAccessTokenResponse($this->sendRequest($request, $accessToken));
     }
 
-    private function configureClient(string $accessToken)
+    private function http(string $accessToken): PendingRequest
     {
         return $this->http
+            ->createPendingRequest()
             ->baseUrl('https://graph.vacuum.name/v23.0/')
-            ->retry([
-                CarbonInterval::seconds(2)->totalMilliseconds,
-                CarbonInterval::seconds(4)->totalMilliseconds,
-                CarbonInterval::seconds(8)->totalMilliseconds,
-            ])
             ->connectTimeout(3)
             ->timeout(30)
             ->throw()
             ->withQueryParameters(['access_token' => $accessToken]);
     }
 
-    private function sendRequest(HttpRequest $request, string $accessToken)
+    private function sendRequest(HttpRequestV2 $request, string $accessToken): Response
     {
-        $http = $this->configureClient($accessToken);
-
-        $method = match (true) {
-            $request instanceof HttpPost => $http->post(...),
-            default => $http->get(...),
-        };
-
-        return $method($request->endpoint(), $request->jsonSerialize());
+        return $request->send($this->http($accessToken));
     }
 }

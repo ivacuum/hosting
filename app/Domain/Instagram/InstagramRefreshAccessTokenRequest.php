@@ -2,21 +2,16 @@
 
 namespace App\Domain\Instagram;
 
-use App\Http\HttpRequest;
+use App\Http\HttpRequestV2;
+use Illuminate\Http\Client\PendingRequest;
+use Illuminate\Http\Client\Response;
 
-readonly class InstagramRefreshAccessTokenRequest implements HttpRequest
+readonly class InstagramRefreshAccessTokenRequest implements HttpRequestV2
 {
-    #[\Override]
-    public function endpoint(): string
+    public function send(PendingRequest $http): Response
     {
-        return 'refresh_access_token';
-    }
-
-    #[\Override]
-    public function jsonSerialize(): array
-    {
-        return [
+        return $http->get('refresh_access_token', [
             'grant_type' => 'ig_refresh_token',
-        ];
+        ]);
     }
 }

@@ -2,9 +2,11 @@
 
 namespace App\Domain\Instagram;
 
-use App\Http\HttpPost;
+use App\Http\HttpRequestV2;
+use Illuminate\Http\Client\PendingRequest;
+use Illuminate\Http\Client\Response;
 
-readonly class InstagramCreateMediaRequest implements HttpPost
+readonly class InstagramCreateMediaRequest implements HttpRequestV2
 {
     public function __construct(
         private string $imageUrl,
@@ -15,18 +17,11 @@ readonly class InstagramCreateMediaRequest implements HttpPost
         }
     }
 
-    #[\Override]
-    public function endpoint(): string
+    public function send(PendingRequest $http): Response
     {
-        return 'me/media';
-    }
-
-    #[\Override]
-    public function jsonSerialize(): array
-    {
-        return [
+        return $http->post('me/media', [
             'image_url' => $this->imageUrl,
             'caption' => $this->caption,
-        ];
+        ]);
     }
 }
