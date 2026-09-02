@@ -2,9 +2,11 @@
 
 namespace App\Domain\Steam;
 
-use App\Http\HttpRequest;
+use App\Http\HttpRequestV2;
+use Illuminate\Http\Client\PendingRequest;
+use Illuminate\Http\Client\Response;
 
-readonly class SteamGameDetailsRequest implements HttpRequest
+readonly class SteamGameDetailsRequest implements HttpRequestV2
 {
     public function __construct(
         private int $appId,
@@ -12,19 +14,12 @@ readonly class SteamGameDetailsRequest implements HttpRequest
         private SteamLanguage $language,
     ) {}
 
-    #[\Override]
-    public function endpoint(): string
+    public function send(PendingRequest $http): Response
     {
-        return 'https://store.steampowered.com/api/appdetails';
-    }
-
-    #[\Override]
-    public function jsonSerialize(): array
-    {
-        return [
+        return $http->get('https://store.steampowered.com/api/appdetails', [
             'cc' => $this->countryCode->value,
             'l' => $this->language->value,
             'appids' => $this->appId,
-        ];
+        ]);
     }
 }

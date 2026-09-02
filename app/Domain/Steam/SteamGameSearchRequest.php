@@ -2,27 +2,22 @@
 
 namespace App\Domain\Steam;
 
-use App\Http\HttpRequest;
+use App\Http\HttpRequestV2;
+use Illuminate\Http\Client\PendingRequest;
+use Illuminate\Http\Client\Response;
 
-readonly class SteamGameSearchRequest implements HttpRequest
+readonly class SteamGameSearchRequest implements HttpRequestV2
 {
     public function __construct(
         private string $query,
     ) {}
 
-    #[\Override]
-    public function endpoint(): string
+    public function send(PendingRequest $http): Response
     {
-        return 'https://store.steampowered.com/api/storesearch';
-    }
-
-    #[\Override]
-    public function jsonSerialize(): array
-    {
-        return [
+        return $http->get('https://store.steampowered.com/api/storesearch', [
             'term' => $this->query,
             'l' => SteamLanguage::English->value,
             'cc' => SteamCountryCode::Kyrgyzstan->value,
-        ];
+        ]);
     }
 }

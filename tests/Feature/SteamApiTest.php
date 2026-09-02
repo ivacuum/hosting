@@ -3,23 +3,21 @@
 namespace Tests\Feature;
 
 use App\Domain\Steam\SteamApi;
+use App\Domain\Steam\SteamApiFake;
 use App\Domain\Steam\SteamCountryCode;
-use App\Domain\Steam\SteamGameDetailsResponse;
 use App\Domain\Steam\SteamGameEntity;
-use App\Domain\Steam\SteamGameSearchResponse;
 use App\Domain\Steam\SteamLanguage;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 
 class SteamApiTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testGameDetails()
+    public function testGameDetails(): void
     {
-        \Http::fake([
-            ...SteamGameDetailsResponse::fakeSuccess(646570),
-        ]);
+        Http::fake(SteamApiFake::gameDetails(646570));
 
         $response = $this->app
             ->make(SteamApi::class)
@@ -27,16 +25,13 @@ class SteamApiTest extends TestCase
 
         $this->assertTrue($response->successful);
         $this->assertInstanceOf(SteamGameEntity::class, $response->game);
-
         $this->assertSame(646570, $response->game->appId);
-        $this->assertTrue(true);
+        $this->assertTrue($response->response->successful());
     }
 
-    public function testGameDetailsNotFound()
+    public function testGameDetailsNotFound(): void
     {
-        \Http::fake([
-            ...SteamGameDetailsResponse::fakeNotFound(111),
-        ]);
+        Http::fake(SteamApiFake::gameDetailsNotFound(111));
 
         $response = $this->app
             ->make(SteamApi::class)
@@ -45,11 +40,9 @@ class SteamApiTest extends TestCase
         $this->assertFalse($response->successful);
     }
 
-    public function testSearchGames()
+    public function testSearchGames(): void
     {
-        \Http::fake([
-            ...SteamGameSearchResponse::fakeSuccess(),
-        ]);
+        Http::fake(SteamApiFake::searchGames());
 
         $response = $this->app
             ->make(SteamApi::class)
