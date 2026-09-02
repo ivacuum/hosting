@@ -2,9 +2,7 @@
 
 namespace App\Domain\Telegram\Api;
 
-use App\Http\HttpRequest;
-
-readonly class EditMessageTextRequest implements HttpRequest
+readonly class EditMessageTextRequest extends TelegramRequest
 {
     public function __construct(
         private int $chatId,

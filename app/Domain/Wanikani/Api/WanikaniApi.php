@@ -2,7 +2,7 @@
 
 namespace App\Domain\Wanikani\Api;
 
-use App\Http\HttpRequestV2;
+use App\Http\HttpRequest;
 use Illuminate\Container\Attributes\Config;
 use Illuminate\Http\Client\Factory;
 use Illuminate\Http\Client\PendingRequest;
@@ -41,7 +41,7 @@ readonly class WanikaniApi
             ->withHeader('Wanikani-Revision', '20170710');
     }
 
-    private function sendRequest(HttpRequestV2 $request): Response
+    private function sendRequest(HttpRequest $request): Response
     {
         return $request->send($this->http());
     }

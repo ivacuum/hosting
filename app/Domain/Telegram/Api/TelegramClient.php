@@ -2,11 +2,12 @@
 
 namespace App\Domain\Telegram\Api;
 
-use App\Action\FilterNullsAction;
-use App\Http\HttpRequest;
-use GuzzleHttp\Exception\ClientException;
+use Illuminate\Container\Attributes\Config;
 use Illuminate\Http\Client\Factory;
+use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
+use Illuminate\Support\Facades\App;
 
 class TelegramClient
 {
@@ -18,50 +19,48 @@ class TelegramClient
     private LanguageCode|null $languageCode = null;
     private InlineKeyboardMarkup|null $replyMarkup = null;
 
-    public function __construct(private Factory $http, private FilterNullsAction $filterNulls)
-    {
-        $this->disableWebPagePreview = config('services.telegram.disable_web_page_preview');
+    public function __construct(
+        private readonly Factory $http,
+        #[Config('services.telegram.api_url')]
+        private readonly string $apiUrl,
+        #[Config('services.telegram.bot_token')]
+        private readonly string $botToken,
+        #[Config('services.telegram.disable_web_page_preview')]
+        bool|null $disableWebPagePreview,
+    ) {
+        $this->disableWebPagePreview = $disableWebPagePreview;
     }
 
-    public function asResponse()
+    public function asResponse(): self
     {
-        $telegram = clone $this;
-        $telegram->asResponse = true;
-
-        return $telegram;
+        return clone ($this, ['asResponse' => true]);
     }
 
-    public function chat(int $chatId)
+    public function chat(int $chatId): self
     {
-        $telegram = clone $this;
-        $telegram->chatId = $chatId;
-
-        return $telegram;
+        return clone ($this, ['chatId' => $chatId]);
     }
 
-    public function deleteMyCommands()
+    public function deleteMyCommands(): TelegramResponse|array
     {
         $request = new DeleteMyCommandsRequest($this->languageCode);
 
         return $this->send($request);
     }
 
-    public function disableWebPagePreview(bool $disableWebPagePreview = true)
+    public function disableWebPagePreview(bool $disableWebPagePreview = true): self
     {
-        $telegram = clone $this;
-        $telegram->disableWebPagePreview = $disableWebPagePreview;
-
-        return $telegram;
+        return clone ($this, ['disableWebPagePreview' => $disableWebPagePreview]);
     }
 
-    public function editMessageReplyMarkup(int $messageId)
+    public function editMessageReplyMarkup(int $messageId): TelegramResponse|array
     {
         $request = new EditMessageReplyMarkupRequest($this->chatId, $messageId, $this->replyMarkup);
 
         return $this->send($request);
     }
 
-    public function editMessageText(int $messageId, string $text)
+    public function editMessageText(int $messageId, string $text): TelegramResponse|array
     {
         $request = new EditMessageTextRequest(
             $this->chatId,
@@ -73,49 +72,37 @@ class TelegramClient
         return $this->send($request);
     }
 
-    public function html()
+    public function html(): self
     {
         return $this->parseMode(ParseMode::Html);
     }
 
-    public function languageCode(LanguageCode|null $languageCode)
+    public function languageCode(LanguageCode|null $languageCode): self
     {
-        $telegram = clone $this;
-        $telegram->languageCode = $languageCode;
-
-        return $telegram;
+        return clone ($this, ['languageCode' => $languageCode]);
     }
 
-    public function markdown()
+    public function markdown(): self
     {
         return $this->parseMode(ParseMode::Markdown);
     }
 
-    public function parseMode(ParseMode $parseMode)
+    public function parseMode(ParseMode $parseMode): self
     {
-        $telegram = clone $this;
-        $telegram->parseMode = $parseMode;
-
-        return $telegram;
+        return clone ($this, ['parseMode' => $parseMode]);
     }
 
-    public function replyMarkup(InlineKeyboardMarkup|null $replyMarkup)
+    public function replyMarkup(InlineKeyboardMarkup|null $replyMarkup): self
     {
-        $telegram = clone $this;
-        $telegram->replyMarkup = $replyMarkup;
-
-        return $telegram;
+        return clone ($this, ['replyMarkup' => $replyMarkup]);
     }
 
-    public function replyToMessageId(int $messageId)
+    public function replyToMessageId(int $messageId): self
     {
-        $telegram = clone $this;
-        $telegram->replyToMessageId = $messageId;
-
-        return $telegram;
+        return clone ($this, ['replyToMessageId' => $messageId]);
     }
 
-    public function sendLocation(string $lat, string $lon)
+    public function sendLocation(string $lat, string $lon): TelegramResponse|array
     {
         $request = new SendLocationRequest(
             $this->chatId,
@@ -128,7 +115,7 @@ class TelegramClient
         return $this->send($request);
     }
 
-    public function sendMessage(string $text)
+    public function sendMessage(string $text): TelegramResponse|array
     {
         $request = new SendMessageRequest(
             $this->chatId,
@@ -141,7 +128,7 @@ class TelegramClient
         return $this->send($request);
     }
 
-    public function sendPhoto(string $fileId, string|null $caption = null)
+    public function sendPhoto(string $fileId, string|null $caption = null): TelegramResponse|array
     {
         $request = new SendPhotoRequest(
             $this->chatId,
@@ -154,60 +141,43 @@ class TelegramClient
         return $this->send($request);
     }
 
-    public function setMyCommands(BotCommand ...$commands)
+    public function setMyCommands(BotCommand ...$commands): TelegramResponse|array
     {
         $request = new SetMyCommandsRequest($commands, $this->languageCode);
 
         return $this->send($request);
     }
 
-    public function setWebhook(string $url, string|null $secretToken = null)
+    public function setWebhook(string $url, string|null $secretToken = null): TelegramResponse|array
     {
         $request = new SetWebhookRequest($url, $secretToken);
 
         return $this->send($request);
     }
 
-    private function configureClient()
+    private function http(): PendingRequest
     {
-        $botToken = config('services.telegram.bot_token');
-        $apiUrl = config('services.telegram.api_url');
-
         return $this->http
-            ->baseUrl("{$apiUrl}/bot{$botToken}/")
+            ->createPendingRequest()
+            ->baseUrl("{$this->apiUrl}/bot{$this->botToken}/")
             ->connectTimeout(3)
-            ->timeout(\App::runningInConsole() ? 60 : 15)
+            ->timeout(App::runningInConsole() ? 60 : 15)
             ->throw();
     }
 
-    private function payload(HttpRequest $request)
-    {
-        $payload = $request->jsonSerialize();
-
-        if (is_array($payload)) {
-            if ($this->asResponse) {
-                $payload['method'] = $request->endpoint();
-            }
-
-            return $this->filterNulls->execute($payload);
-        }
-
-        return $payload;
-    }
-
-    private function send(HttpRequest $request)
+    private function send(TelegramRequest $request): TelegramResponse|array
     {
         if ($this->asResponse) {
-            return $this->payload($request);
+            return $request->responsePayload();
         }
 
-        try {
-            $response = $this->configureClient()
-                ->post($request->endpoint(), $this->payload($request));
+        return new TelegramResponse($this->sendRequest($request));
+    }
 
-            return new TelegramResponse($response);
-        } catch (ClientException $e) {
-            throw TelegramException::errorResponse($e);
+    private function sendRequest(TelegramRequest $request): Response
+    {
+        try {
+            return $request->send($this->http());
         } catch (RequestException $e) {
             throw TelegramException::fromLaravelRequestException($e);
         } catch (\Throwable $e) {

@@ -2,7 +2,10 @@
 
 namespace App\Http;
 
-interface HttpRequest extends \JsonSerializable
+use Illuminate\Http\Client\PendingRequest;
+use Illuminate\Http\Client\Response;
+
+interface HttpRequest
 {
-    public function endpoint(): string;
+    public function send(PendingRequest $http): Response;
 }

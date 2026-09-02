@@ -2,7 +2,7 @@
 
 namespace App\Domain\Steam;
 
-use App\Http\HttpRequestV2;
+use App\Http\HttpRequest;
 use Illuminate\Http\Client\Factory;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Client\Response;
@@ -36,7 +36,7 @@ readonly class SteamApi
             ->throw();
     }
 
-    private function sendRequest(HttpRequestV2 $request): Response
+    private function sendRequest(HttpRequest $request): Response
     {
         return $request->send($this->http());
     }

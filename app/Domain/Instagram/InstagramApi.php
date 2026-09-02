@@ -2,7 +2,7 @@
 
 namespace App\Domain\Instagram;
 
-use App\Http\HttpRequestV2;
+use App\Http\HttpRequest;
 use Illuminate\Http\Client\Factory;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Client\Response;
@@ -52,7 +52,7 @@ readonly class InstagramApi
             ->withQueryParameters(['access_token' => $accessToken]);
     }
 
-    private function sendRequest(HttpRequestV2 $request, string $accessToken): Response
+    private function sendRequest(HttpRequest $request, string $accessToken): Response
     {
         return $request->send($this->http($accessToken));
     }

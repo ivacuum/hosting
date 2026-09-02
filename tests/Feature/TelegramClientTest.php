@@ -60,7 +60,8 @@ class TelegramClientTest extends TestCase
             ->sendMessage('Some info to notify about');
 
         \Http::assertSent(static function (Request $request) {
-            return $request->url() === 'https://api.telegram.org/bot1234:token/sendMessage'
+            return $request->method() === 'POST'
+                && $request->url() === 'https://api.telegram.org/bot1234:token/sendMessage'
                 && $request['chat_id'] === 12345
                 && $request['text'] === 'Some info to notify about';
         });

@@ -2,11 +2,11 @@
 
 namespace App\Domain\Instagram;
 
-use App\Http\HttpRequestV2;
+use App\Http\HttpRequest;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Client\Response;
 
-readonly class InstagramRefreshAccessTokenRequest implements HttpRequestV2
+readonly class InstagramRefreshAccessTokenRequest implements HttpRequest
 {
     public function send(PendingRequest $http): Response
     {

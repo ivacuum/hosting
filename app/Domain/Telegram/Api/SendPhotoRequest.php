@@ -2,9 +2,7 @@
 
 namespace App\Domain\Telegram\Api;
 
-use App\Http\HttpRequest;
-
-readonly class SendPhotoRequest implements HttpRequest
+readonly class SendPhotoRequest extends TelegramRequest
 {
     public function __construct(
         private int $chatId,

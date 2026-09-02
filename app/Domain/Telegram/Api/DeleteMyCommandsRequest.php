@@ -2,9 +2,7 @@
 
 namespace App\Domain\Telegram\Api;
 
-use App\Http\HttpRequest;
-
-readonly class DeleteMyCommandsRequest implements HttpRequest
+readonly class DeleteMyCommandsRequest extends TelegramRequest
 {
     public function __construct(private LanguageCode|null $languageCode = null) {}
 

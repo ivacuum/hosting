@@ -2,9 +2,7 @@
 
 namespace App\Domain\Telegram\Api;
 
-use App\Http\HttpRequest;
-
-readonly class SetMyCommandsRequest implements HttpRequest
+readonly class SetMyCommandsRequest extends TelegramRequest
 {
     /** @param array<BotCommand> $commands */
     public function __construct(

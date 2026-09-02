@@ -2,14 +2,14 @@
 
 namespace App\Domain\Instagram;
 
-use App\Http\HttpRequestV2;
+use App\Http\HttpRequest;
 use Carbon\CarbonInterval;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Client\Response;
 use Throwable;
 
-readonly class InstagramPublishMediaRequest implements HttpRequestV2
+readonly class InstagramPublishMediaRequest implements HttpRequest
 {
     public function __construct(private string $creationId) {}
 
