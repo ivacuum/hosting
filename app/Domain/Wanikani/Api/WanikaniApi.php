@@ -2,6 +2,7 @@
 
 namespace App\Domain\Wanikani\Api;
 
+use App\Domain\Log\ExternalService;
 use App\Http\HttpRequest;
 use Illuminate\Container\Attributes\Config;
 use Illuminate\Http\Client\Factory;
@@ -34,6 +35,7 @@ readonly class WanikaniApi
     {
         return $this->http
             ->createPendingRequest()
+            ->withAttributes(['service' => ExternalService::Wanikani])
             ->baseUrl('https://api.wanikani.com/v2/')
             ->connectTimeout(3)
             ->timeout(10)

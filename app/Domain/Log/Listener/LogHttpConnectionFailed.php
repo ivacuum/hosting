@@ -48,7 +48,7 @@ class LogHttpConnectionFailed
         $model->http_version = '';
         $model->redirect_url = '';
         $model->request_body = $request->body();
-        $model->service_name = $this->getExternalServiceByHost->execute($uri->getHost());
+        $model->service_name = $request->attributes()['service'] ?? $this->getExternalServiceByHost->execute($uri->getHost());
         $model->response_body = '';
         $model->response_size = 0;
         $model->redirect_count = 0;

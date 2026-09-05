@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Domain\Log\ExternalService;
 use App\Domain\Log\HttpFailureCategory;
 use App\Domain\Log\Models\ExternalHttpRequest;
 use GuzzleHttp\Exception\ConnectException;
@@ -32,6 +33,7 @@ class ExternalHttpRequestLoggingTest extends TestCase
 
         $request = ExternalHttpRequest::query()->latest('id')->firstOrFail();
 
+        $this->assertSame(ExternalService::Wanikani, $request->service_name);
         $this->assertSame('api.wanikani.com', $request->host);
         $this->assertSame('/v2/subjects/555', $request->path);
         $this->assertNull($request->http_code);

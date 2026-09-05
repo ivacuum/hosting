@@ -2,6 +2,7 @@
 
 namespace App\Domain\Steam;
 
+use App\Domain\Log\ExternalService;
 use App\Http\HttpRequest;
 use Illuminate\Http\Client\Factory;
 use Illuminate\Http\Client\PendingRequest;
@@ -31,6 +32,7 @@ readonly class SteamApi
     {
         return $this->http
             ->createPendingRequest()
+            ->withAttributes(['service' => ExternalService::Steam])
             ->connectTimeout(3)
             ->timeout(10)
             ->throw();

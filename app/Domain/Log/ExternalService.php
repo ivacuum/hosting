@@ -8,6 +8,7 @@ enum ExternalService: string
     case Instagram = 'instagram';
     case Life = 'life';
     case Rutracker = 'rto';
+    case Steam = 'steam';
     case Telegram = 'telegram';
     case Unknown = '';
     case Vk = 'vk';
