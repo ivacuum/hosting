@@ -4,6 +4,7 @@ namespace App\Domain\Steam;
 
 use App\Domain\Log\ExternalService;
 use App\Http\HttpRequest;
+use App\Http\HttpStash;
 use Illuminate\Http\Client\Factory;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Client\Response;
@@ -12,6 +13,7 @@ readonly class SteamApi
 {
     public function __construct(
         private Factory $http,
+        private HttpStash $stash,
     ) {}
 
     public function gameDetails(int $appId, SteamCountryCode $countryCode, SteamLanguage $language): SteamGameDetailsResponse
@@ -40,6 +42,6 @@ readonly class SteamApi
 
     private function sendRequest(HttpRequest $request): Response
     {
-        return $request->send($this->http());
+        return $this->stash->store($request, fn () => $request->send($this->http()));
     }
 }

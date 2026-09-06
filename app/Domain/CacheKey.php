@@ -26,6 +26,8 @@ enum CacheKey: string
     case PhotosPoints = 'photos.points.all';
     case PhotosPointsForTrip = 'photos.points.trip'; // Отключено
 
+    case SteamGameDetails = 'http.steam.game-details.v1.{key}';
+
     case TripsPublishedByCity = 'trips.published.by-cities';
     case TripsPublishedByCountry = 'trips.published.by-country';
     case TripsPublishedWithCover = 'trips.published.with-cover';
@@ -44,7 +46,8 @@ enum CacheKey: string
 
             self::PhotosPointsForTrip => CarbonInterval::minutes(0),
 
-            self::MagnetStatsByCategories => CarbonInterval::minutes(15),
+            self::MagnetStatsByCategories,
+            self::SteamGameDetails => CarbonInterval::minutes(15),
 
             self::PhotosPoints => CarbonInterval::minutes(30),
 

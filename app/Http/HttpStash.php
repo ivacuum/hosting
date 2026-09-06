@@ -11,17 +11,27 @@ class HttpStash
 
     public function store(HttpRequest $request, callable $fn): Response
     {
-        if ($request instanceof CacheableRequest) {
-            $cachedResponse = $this->cache->remember(
-                $request->cacheKey(),
-                $request->cacheTtl(),
-                static fn () => CachedResponse::fromResponse($fn())
-                    ->jsonSerialize(),
-            );
-
-            return CachedResponse::toResponse($cachedResponse);
+        if (!$request instanceof CacheableRequest) {
+            return $fn();
         }
 
-        return $fn();
+        $key = $request->cacheKey();
+        $cachedResponse = rescue(fn (): array|null => $this->cache->get($key));
+
+        if ($cachedResponse !== null) {
+            return HttpResponseSnapshot::toResponse($cachedResponse);
+        }
+
+        $response = $fn();
+        $body = $response->toPsrResponse()->getBody();
+
+        if ($response->successful() && $body->isReadable() && $body->isSeekable() && $request->shouldCache($response)) {
+            $cachedResponse = HttpResponseSnapshot::fromResponse($response);
+            $ttl = $request->cacheTtl();
+
+            rescue(fn () => $this->cache->put($key, $cachedResponse, $ttl));
+        }
+
+        return $response;
     }
 }
