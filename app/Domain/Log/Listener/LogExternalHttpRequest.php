@@ -5,11 +5,11 @@ namespace App\Domain\Log\Listener;
 use App\Domain\Log\Action\FillExternalHttpRequestTransferStatsAction;
 use App\Domain\Log\Action\FilterOutCredentialsAction;
 use App\Domain\Log\Action\GetExternalServiceByHostAction;
+use App\Domain\Log\Action\GetHttpBodyForLoggingAction;
+use App\Domain\Log\Action\RunHttpLoggingAction;
 use App\Domain\Log\Models\ExternalHttpRequest;
 use Illuminate\Http\Client\Events\ResponseReceived;
 use Illuminate\Http\Client\Response;
-
-use function Illuminate\Support\defer;
 
 class LogExternalHttpRequest
 {
@@ -17,24 +17,17 @@ class LogExternalHttpRequest
         private FilterOutCredentialsAction $filterOutCredentials,
         private FillExternalHttpRequestTransferStatsAction $fillTransferStats,
         private GetExternalServiceByHostAction $getExternalServiceByHost,
+        private GetHttpBodyForLoggingAction $getHttpBodyForLogging,
+        private RunHttpLoggingAction $runHttpLogging,
     ) {}
 
     public function handle(ResponseReceived $event): void
     {
-        if (\App::runningInConsole()) {
-            $this->saveRequest($event);
-
-            return;
-        }
-
-        defer(fn () => $this->saveRequest($event))->always();
-    }
-
-    protected function saveRequest(ResponseReceived $event)
-    {
         $request = $event->request;
         $response = $event->response;
-        $uri = $request->toPsrRequest()->getUri();
+        $psrRequest = $request->toPsrRequest();
+        $psrResponse = $response->toPsrResponse();
+        $uri = $psrRequest->getUri();
         $stats = $response->handlerStats();
 
         $model = new ExternalHttpRequest;
@@ -46,9 +39,16 @@ class LogExternalHttpRequest
         $model->http_code = $response->status();
         $model->http_version = $stats['http_version'] ?? '';
         $model->redirect_url = $stats['redirect_url'] ?? '';
-        $model->request_body = $request->body();
+        $model->request_body = $this->getHttpBodyForLogging->execute(
+            $psrRequest->getBody(),
+            $psrRequest->getHeaderLine('Content-Type'),
+        );
         $model->service_name = $request->attributes()['service'] ?? $this->getExternalServiceByHost->execute($uri->getHost());
-        $model->response_body = $this->responseBodyInUtf8($response->body());
+        $model->response_body = $this->getHttpBodyForLogging->execute(
+            $psrResponse->getBody(),
+            $psrResponse->getHeaderLine('Content-Type'),
+            skip: $request->attributes()['skip_response_body_logging'] ?? false,
+        );
         $model->response_size = $this->responseSize($response);
         $model->redirect_count = $stats['redirect_count'] ?? 0;
         $model->request_headers = $request->headers();
@@ -59,31 +59,18 @@ class LogExternalHttpRequest
 
         $this->filterOutCredentials->execute($model);
 
-        $model->save();
+        $this->runHttpLogging->execute(fn () => $model->save());
     }
 
-    private function responseBodyInUtf8(string $responseBody): string
-    {
-        if (mb_check_encoding($responseBody) === false) {
-            if (mb_check_encoding($responseBody, 'windows-1251') === true) {
-                return iconv('windows-1251', 'utf-8', $responseBody);
-            }
-
-            return 'Not valid UTF-8.';
-        }
-
-        return $responseBody;
-    }
-
-    private function responseSize(Response $response)
+    private function responseSize(Response $response): int
     {
         $stats = $response->handlerStats();
-        $responseSize = $stats['download_content_length'] ?? null;
 
-        if ($responseSize >= 0) {
-            return $responseSize ?? 0;
-        }
-
-        return mb_strlen($response->body());
+        return max(0, (int) (
+            $response->toPsrResponse()->getBody()->getSize()
+            ?? $stats['size_download']
+            ?? $stats['download_content_length']
+            ?? 0
+        ));
     }
 }

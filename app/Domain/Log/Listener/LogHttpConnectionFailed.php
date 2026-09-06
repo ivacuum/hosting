@@ -5,10 +5,10 @@ namespace App\Domain\Log\Listener;
 use App\Domain\Log\Action\FillExternalHttpRequestTransferStatsAction;
 use App\Domain\Log\Action\FilterOutCredentialsAction;
 use App\Domain\Log\Action\GetExternalServiceByHostAction;
+use App\Domain\Log\Action\GetHttpBodyForLoggingAction;
+use App\Domain\Log\Action\RunHttpLoggingAction;
 use App\Domain\Log\Models\ExternalHttpRequest;
 use Illuminate\Http\Client\Events\ConnectionFailed;
-
-use function Illuminate\Support\defer;
 
 class LogHttpConnectionFailed
 {
@@ -16,23 +16,15 @@ class LogHttpConnectionFailed
         private FilterOutCredentialsAction $filterOutCredentials,
         private FillExternalHttpRequestTransferStatsAction $fillTransferStats,
         private GetExternalServiceByHostAction $getExternalServiceByHost,
+        private GetHttpBodyForLoggingAction $getHttpBodyForLogging,
+        private RunHttpLoggingAction $runHttpLogging,
     ) {}
 
     public function handle(ConnectionFailed $event): void
     {
-        if (\App::runningInConsole()) {
-            $this->saveRequest($event);
-
-            return;
-        }
-
-        defer(fn () => $this->saveRequest($event))->always();
-    }
-
-    protected function saveRequest(ConnectionFailed $event)
-    {
         $request = $event->request;
-        $uri = $request->toPsrRequest()->getUri();
+        $psrRequest = $request->toPsrRequest();
+        $uri = $psrRequest->getUri();
         $previous = $event->exception->getPrevious();
         $stats = method_exists($previous, 'getHandlerContext')
             ? $previous->getHandlerContext()
@@ -42,17 +34,20 @@ class LogHttpConnectionFailed
         $model->host = $uri->getHost();
         $model->path = $uri->getPath();
         $model->query = $uri->getQuery();
-        $model->method = $request->toPsrRequest()->getMethod();
+        $model->method = $psrRequest->getMethod();
         $model->scheme = $uri->getScheme();
         $model->http_code = null;
         $model->http_version = '';
         $model->redirect_url = '';
-        $model->request_body = $request->body();
+        $model->request_body = $this->getHttpBodyForLogging->execute(
+            $psrRequest->getBody(),
+            $psrRequest->getHeaderLine('Content-Type'),
+        );
         $model->service_name = $request->attributes()['service'] ?? $this->getExternalServiceByHost->execute($uri->getHost());
         $model->response_body = '';
         $model->response_size = 0;
         $model->redirect_count = 0;
-        $model->request_headers = $request->toPsrRequest()->getHeaders();
+        $model->request_headers = $psrRequest->getHeaders();
         $model->response_headers = '';
 
         $this->fillTransferStats->execute($model, $stats, failed: true);
@@ -60,6 +55,6 @@ class LogHttpConnectionFailed
 
         $this->filterOutCredentials->execute($model);
 
-        $model->save();
+        $this->runHttpLogging->execute(fn () => $model->save());
     }
 }

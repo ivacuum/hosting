@@ -39,6 +39,11 @@ class FilterOutCredentialsAction
 
         if (str_contains($http->path, 'refresh_access_token')) {
             $json = json_decode($http->response_body, true);
+
+            if (!is_array($json)) {
+                return;
+            }
+
             $json['access_token'] = 'redacted';
 
             $http->response_body = json_encode($json);

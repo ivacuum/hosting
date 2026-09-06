@@ -14,11 +14,68 @@ use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\Factory;
 use Illuminate\Support\Facades\Http;
 use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\StreamInterface;
 use Tests\TestCase;
 
 class ExternalHttpRequestLoggingTest extends TestCase
 {
     use DatabaseTransactions;
+
+    public function testDoesNotLogBinaryBodies(): void
+    {
+        $requestBody = "\x00\x01\x02\xFF";
+        $responseBody = "\xFF\xD8\xFF\xE0\x00\x10";
+
+        Http::fake([
+            'https://example.com/v2/binary' => Factory::response(
+                $responseBody,
+                headers: ['Content-Type' => 'image/jpeg'],
+            ),
+        ]);
+
+        Http::withBody($requestBody, 'application/octet-stream')
+            ->post('https://example.com/v2/binary');
+
+        $request = ExternalHttpRequest::query()->latest('id')->firstOrFail();
+
+        $this->assertSame('example.com', $request->host);
+        $this->assertSame('/v2/binary', $request->path);
+        $this->assertSame('', $request->request_body);
+        $this->assertSame('', $request->response_body);
+        $this->assertSame(strlen($responseBody), $request->response_size);
+    }
+
+    public function testDoesNotLogStreamedResponseBody(): void
+    {
+        $body = 'Downloaded text that must not be logged.';
+
+        Http::fake([
+            'https://example.com/v2/streamed' => Factory::response(
+                $body,
+                headers: ['Content-Type' => 'text/plain'],
+            ),
+        ]);
+
+        $tempFile = tmpfile();
+
+        $this->assertIsResource($tempFile);
+
+        try {
+            Http::withAttributes(['skip_response_body_logging' => true])
+                ->sink($tempFile)
+                ->get('https://example.com/v2/streamed');
+
+            $request = ExternalHttpRequest::query()->latest('id')->firstOrFail();
+
+            $this->assertSame('example.com', $request->host);
+            $this->assertSame('/v2/streamed', $request->path);
+            $this->assertSame('', $request->response_body);
+            $this->assertSame(strlen($body), $request->response_size);
+            $this->assertSame($body, stream_get_contents($tempFile));
+        } finally {
+            fclose($tempFile);
+        }
+    }
 
     public function testLogsConnectionFailure(): void
     {
@@ -119,12 +176,14 @@ class ExternalHttpRequestLoggingTest extends TestCase
         );
     }
 
-    private function responseHandler(): callable
-    {
-        return static function (RequestInterface $request, array $options): PromiseInterface {
+    private function responseHandler(
+        array|string|StreamInterface $body = ['id' => 555],
+        array $headers = ['X-Request-Id' => 'request-123'],
+    ): callable {
+        return static function (RequestInterface $request, array $options) use ($body, $headers): PromiseInterface {
             $response = Factory::psr7Response(
-                ['id' => 555],
-                headers: ['X-Request-Id' => 'request-123'],
+                $body,
+                headers: $headers,
             );
 
             $options['on_stats'](new TransferStats($request, $response, 0.25, handlerStats: [

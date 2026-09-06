@@ -21,6 +21,7 @@ class ResizeImageController
             $response = $http
                 ->connectTimeout(3)
                 ->timeout(10)
+                ->withAttributes(['skip_response_body_logging' => true])
                 ->sink($tempFile)
                 ->get($request->image);
         } catch (ClientException $e) {
