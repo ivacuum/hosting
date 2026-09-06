@@ -215,18 +215,6 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 
 - If you receive an "Illuminate\Foundation\ViteException: Unable to locate file in Vite manifest" error, you can run `yarn run build` or ask the user to run `yarn run dev` or `composer run dev`.
 
-=== laravel-octane/core rules ===
-
-# Laravel Octane
-
-This application uses Laravel Octane, a long-running PHP server. The application bootstraps once and handles many requests within the same process.
-
-- Never store request-specific state in singletons or static properties, because it can leak across requests.
-- Use `config('octane.server')` to detect the active driver (`swoole`, `roadrunner`, or `frankenphp`).
-- Prefer scoped bindings (`$this->app->scoped()`) over singletons for per-request services.
-
-When working on Octane-specific features (concurrency, shared tables, memory, driver configuration, testing), invoke `octane-development` for detailed rules.
-
 === livewire/core rules ===
 
 # Livewire

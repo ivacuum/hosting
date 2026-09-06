@@ -20,6 +20,11 @@ use Laravel\Octane\Listeners\ReportException;
 use Laravel\Octane\Listeners\StopWorkerIfNecessary;
 use Laravel\Octane\Octane;
 
+// Keep this configuration dormant until Octane is reinstalled
+if (!class_exists(Octane::class)) {
+    return [];
+}
+
 return [
     'server' => env('OCTANE_SERVER', 'swoole'),
     'https' => env('OCTANE_HTTPS', false),
