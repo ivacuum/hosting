@@ -9,19 +9,23 @@ This is a Laravel application serving as a personal website for notes, trip stor
 The project follows a specific structure deviating slightly from standard Laravel defaults:
 
 - **Models:** Located in the root of `app/` (e.g., `app/User.php`). Migration to `app/Models` folder is pending.
-- **Actions:** Business logic is encapsulated in Action classes within `app/Action/` and `app/Domain/*/Action/`.
-- **Domains:** Value Objects, Enums, and domain-specific logic reside in `app/Domain/`. Directories inside can mirror the Laravel directory structure convention.
+- **Actions:** Business logic is encapsulated in Action classes within `app/Action/` and `app/Domain/*/Action/`. When creating new logic, check if it fits into an Action class.
+- **Domains:** Value Objects, Enums, and domain-specific logic reside in `app/Domain/`. Prefer an existing domain when possible. Directories inside can mirror the Laravel directory structure convention.
 - **Seeders:** Located in `app/Seeder/` and `app/Domain/*/Seeder/` (not `database/seeders`).
 - **Livewire:** Components in `app/Livewire/` and `app/Domain/*/Livewire/`.
 - **Factories:** Custom factory classes live in `app/Factory/` and `app/Domain/*/Factory/`. They are plain PHP builders (static `new()` entry point, immutable `with*()` modifiers that return a cloned instance, `make()` to build an unsaved model, `create()` to persist). **Do not use Eloquent factories** (`Illuminate\Database\Eloquent\Factories\Factory`) — not for tests, not for seeding.
 - **ADR:** Architectural Decision Records are stored in `adr/` in Russian.
 - **Eloquent:** `Model::automaticallyEagerLoadRelationships()` is enabled in `AppServiceProvider`, and `preventLazyLoading` is on outside production. Do **not** manually eager-load relations in controllers/actions "for safety" — relationships load automatically. Only add explicit `with()` when you're consciously restricting the loaded set or shaping the query.
+- **Migrations:** Always delete the `down` method from database migrations.
+- **Octane Compatibility:** Keep new and modified code compatible with long-running workers: do not retain request-specific state in singletons or static properties, prefer scoped bindings for per-request services, and avoid capturing the current request or user in long-lived objects.
+- **Test value:** Every added or changed test should protect a meaningful behavior or a plausible failure mode. Prefer the smallest set of tests that would catch a realistic regression. Extend existing coverage when appropriate; avoid redundant cases, assertions about implementation details, and tests that merely restate configuration or framework behavior.
+- **Verification vs. retained tests:** Verify every code change, but distinguish temporary verification from permanent regression coverage. You may write and run temporary tests or checks to exercise changed code. Retain tests only when they protect meaningful behavior or a plausible failure mode, add useful coverage beyond existing tests, and assert observable outcomes rather than incidental implementation details. Before finishing, review newly added tests: improve valuable cases and remove disposable checks you created. Report temporary verification separately from retained tests. Never remove pre-existing tests merely because they do not meet these criteria.
 
 ## Guidelines
 
 - **Do not overwrite user edits.** The user may change code between messages. If something changed, understand *why* and build on it.
-- For Testing guidelines, see `.agents/guidelines/tests.md`.
-- For Metrics guidelines, see `.agents/guidelines/metrics.md`. `App\Events\Stats\*` events have **no per-event listeners** — a wildcard listener pushes them to a Redis Stream (aggregated by the `app:metrics:process` cron). Never assume a `Stats\*` event is "dead" just because `grep` finds no listener.
+- Before creating or changing tests, read `.agents/guidelines/tests.md`.
+- Before analyzing or changing metrics events, collection, or aggregation, read `.agents/guidelines/metrics.md`. `App\Events\Stats\*` events have **no per-event listeners** — a wildcard listener pushes them to a Redis Stream (aggregated by the `app:metrics:process` cron). Never assume a `Stats\*` event is "dead" just because `grep` finds no listener.
 
 ## Key Commands
 
@@ -36,18 +40,12 @@ The project follows a specific structure deviating slightly from standard Larave
 
 ### Database
 
-- **Reset & Seed:** `composer fresh` (Runs `migrate:fresh` and seeds using `App\Seeder\DatabaseSeeder`)
+- **Reset & Seed:** Use `composer fresh` instead of `php artisan db:seed` (runs `migrate:fresh` and seeds using `App\Seeder\DatabaseSeeder`).
 
 ### Testing
 
-- **Run Tests:** `composer test` (Parallel execution)
+- **Verification:** Use `composer test` (parallel execution).
 - **Run Tests (Fresh DB):** `composer test-fresh`
-
-## Configuration
-
-- **Env:** `.env` file (copy from `.env.example`).
-- **Docker:** Services defined in `docker-compose.yml` (mysql, redis, meilisearch, nginx, php-fpm).
-- **PHP:** Custom `Dockerfile` in root.
 
 ## I18n
 
@@ -63,18 +61,9 @@ Translations are done either in Laravel traditional way using `__(key)` or using
 
 Russian is the default language of this project. English is optional. When translating, keep the author style.
 
-## Notes
+## Framework Guidance
 
-- Act as a Senior Laravel Developer, Senior DevOps, and SRE.
-- When creating new logic, check if it fits into an `Action` class.
-- Respect the `app/Factory/` and `app/Domain/*/Factory/` location for custom model factories (see Factories above).
-- Respect the `app/Seeder/` and `app/Domain/*/Seeder/` location for database seeding.
-- Try to use existing domain from `app/Domain/` if possible.
-- Always delete `down` method from database migrations.
-- Use `composer test` for verification, as it runs tests in parallel.
-- Always use `composer fresh` instead of `php artisan db:seed`.
-- Always write tests for new features and test new code.
-- The project uses `laravel/octane`, so be mindful of state persistence in memory across requests if modifying bootstrapping logic.
+The project-specific conventions above specialize the general framework guidance below.
 
 <laravel-boost-guidelines>
 === foundation rules ===
