@@ -8,8 +8,12 @@ use App\Domain\Telegram\Api\InlineKeyboardMarkup;
 use App\Domain\Telegram\Api\TelegramClient;
 use App\Domain\Telegram\Api\TelegramException;
 use App\Domain\Telegram\Api\TelegramResponse;
+use App\Factory\ChatMessageFactory;
+use App\Factory\UserFactory;
+use App\Notifications\ChatMessagePublishedAdminNotification;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\Client\Request;
+use PHPUnit\Framework\Attributes\TestWith;
 use Tests\TestCase;
 
 class TelegramClientTest extends TestCase
@@ -30,6 +34,49 @@ class TelegramClientTest extends TestCase
         app(TelegramClient::class)
             ->chat(12345)
             ->sendMessage('New message from mail@example.com');
+    }
+
+    #[TestWith(['', 'user \#42'])]
+    #[TestWith(['Автор_#1!', 'Автор\_\#1\!'])]
+    public function testChatMessageNotificationEscapesMarkdown(string $login, string $expectedAuthor): void
+    {
+        \Http::fake([
+            ...TelegramResponse::fakeSuccess(),
+        ]);
+
+        config([
+            'services.telegram.admin_id' => 12345,
+            'services.telegram.bot_token' => '1234:token',
+        ]);
+
+        $text = <<<'TEXT'
+            # Заголовок _курсив_ *жирный* [ссылка](https://example.com/a-b?q=1#section)
+            ~текст~ `код` > цитата + - = | {текст} . !
+            Путь C:\temp\file, уже \# и \.
+            <тег> & "кавычки" 'апостроф'
+            TEXT;
+
+        $expectedText = <<<'TEXT'
+            \# Заголовок \_курсив\_ \*жирный\* \[ссылка\]\(https://example\.com/a\-b?q\=1\#section\)
+            \~текст\~ \`код\` \> цитата \+ \- \= \| \{текст\} \. \!
+            Путь C:\\temp\\file, уже \\\# и \\\.
+            <тег\> & "кавычки" 'апостроф'
+            TEXT;
+
+        $user = UserFactory::new()->withId(42)->withLogin($login)->make();
+        $chatMessage = ChatMessageFactory::new()->withText($text)->make();
+        $chatMessage->setRelation('user', $user);
+
+        $chatMessage->notifyNow(new ChatMessagePublishedAdminNotification($chatMessage));
+
+        \Http::assertSentCount(1);
+        \Http::assertSent(static function (Request $request) use ($expectedAuthor, $expectedText): bool {
+            return $request->method() === 'POST'
+                && $request->url() === 'https://api.telegram.org/bot1234:token/sendMessage'
+                && $request['chat_id'] === 12345
+                && $request['parse_mode'] === 'MarkdownV2'
+                && $request['text'] === "💬 Сообщение в чат от {$expectedAuthor}\n{$expectedText}";
+        });
     }
 
     public function testNoCredentialsLogged()
