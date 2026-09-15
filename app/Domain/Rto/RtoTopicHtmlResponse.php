@@ -2,18 +2,34 @@
 
 namespace App\Domain\Rto;
 
+use GuzzleHttp\Promise\PromiseInterface;
+use Illuminate\Http\Client\Factory;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Str;
 use Symfony\Component\DomCrawler\Crawler;
 
-class RtoTopicHtmlResponse
+readonly class RtoTopicHtmlResponse
 {
     public string $body;
     public string $announcer;
 
-    public function __construct(string $html)
+    public function __construct(public Response $response)
     {
+        $html = $response->body();
+
         $this->body = $this->parseBodyHtml($html);
         $this->announcer = $this->parseAnnouncerLink($this->parseMagnetLink($html));
+    }
+
+    public static function fakeSuccess(string $body, string $announcer): PromiseInterface
+    {
+        return Factory::response(
+            '<div class="post_body">' . $body
+            . '<fieldset class="attach"><span class="attach_link">'
+            . '<a class="magnet-link" href="magnet:?xt=urn:btih:0123456789abcdef0123456789abcdef01234567&tr='
+            . urlencode($announcer) . '"></a></span></fieldset></div>',
+            headers: ['Content-Type' => 'text/html; charset=UTF-8'],
+        );
     }
 
     private function parseAnnouncerLink(string $magnetLink): string

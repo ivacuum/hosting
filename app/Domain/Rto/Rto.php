@@ -3,15 +3,16 @@
 namespace App\Domain\Rto;
 
 use App\Domain\Config;
+use App\Domain\Log\ExternalService;
+use App\Http\HttpRequest;
 use GuzzleHttp\RequestOptions;
 use Illuminate\Http\Client\Factory;
+use Illuminate\Http\Client\PendingRequest;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Uri;
 
-class Rto
+readonly class Rto
 {
-    private const string API_ENDPOINT = 'https://api-rto.vacuum.name/v1/';
-    private const string SITE_ENDPOINT = 'https://rto.vacuum.name/forum/';
-
     public function __construct(private Factory $http) {}
 
     public function findTopicId(int|string|null $input): int|null
@@ -43,27 +44,14 @@ class Rto
         return null;
     }
 
-    public function torrentData($input): RtoTorrentData|null
-    {
-        if (null === $topicId = $this->findTopicId($input)) {
-            return null;
-        }
-
-        return new RtoTorrentData(
-            $this->topicDataById($topicId),
-            $this->parseTopicBody($topicId)
-        );
-    }
-
     public function parseTopicBody(int $topicId): RtoTopicHtmlResponse
     {
-        $response = $this->configureSiteClient()
-            ->get("viewtopic.php?t={$topicId}");
+        $request = new RtoTopicHtmlRequest($topicId);
 
-        return new RtoTopicHtmlResponse($response->body());
+        return new RtoTopicHtmlResponse($this->sendRequest($request));
     }
 
-    public function topicDataById(int $id)
+    public function topicDataById(int $id): RtoTopicData
     {
         $response = $this->topicDataByIds([$id])
             ->getTopic($id);
@@ -79,64 +67,48 @@ class Rto
         return $response;
     }
 
+    /** @param list<int> $ids */
     public function topicDataByIds(array $ids): RtoGetTorTopicDataResponse
     {
-        $response = $this->configureApiClient()
-            ->get('get_tor_topic_data', [
-                'by' => 'topic_id',
-                'val' => implode(',', $ids),
-            ]);
+        $request = new RtoTopicDataRequest($ids);
 
-        if ($error = $response->json('error')) {
-            $this->throwApiException($error);
-        }
-
-        return new RtoGetTorTopicDataResponse($response);
+        return new RtoGetTorTopicDataResponse($this->sendRequest($request));
     }
 
     public function topicIdByHash(string $hash): int|null
     {
-        $response = $this->configureApiClient()
-            ->get('get_topic_id', [
-                'by' => 'hash',
-                'val' => $hash,
-            ]);
+        $request = new RtoTopicIdRequest($hash);
 
-        if ($error = $response->json('error')) {
-            $this->throwApiException($error);
+        return new RtoTopicIdResponse($this->sendRequest($request), $hash)
+            ->topicId;
+    }
+
+    public function torrentData(int|string|null $input): RtoTorrentData|null
+    {
+        if (null === $topicId = $this->findTopicId($input)) {
+            return null;
         }
 
-        return $response->object()->result->{$hash};
+        return new RtoTorrentData(
+            $this->topicDataById($topicId),
+            $this->parseTopicBody($topicId)
+        );
     }
 
-    private function configureApiClient()
+    private function http(): PendingRequest
     {
         return $this->http
-            ->baseUrl(self::API_ENDPOINT)
-            ->timeout(\App::runningInConsole() ? 60 : 15)
-            ->withOptions([
-                RequestOptions::PROXY => Config::RtoProxy->get(),
-            ]);
-    }
-
-    private function configureSiteClient()
-    {
-        return $this->http
-            ->baseUrl(self::SITE_ENDPOINT)
+            ->createPendingRequest()
             ->connectTimeout(3)
-            ->timeout(\App::runningInConsole() ? 60 : 15)
-            ->retry(times: 5, sleepMilliseconds: 5000)
+            ->timeout(app()->runningInConsole() ? 60 : 15)
+            ->withAttributes(['service' => ExternalService::Rutracker])
             ->withOptions([
                 RequestOptions::PROXY => Config::RtoProxy->get(),
             ]);
     }
 
-    private function throwApiException(array $error): never
+    private function sendRequest(HttpRequest $request): Response
     {
-        if ($error['code'] === 1 && $error['text'] === 'Temporarily disabled') {
-            throw new RtoTemporarilyUnavailableException($error['text'], $error['code']);
-        }
-
-        throw new RtoApiException($error['text'], $error['code']);
+        return $request->send($this->http())->throw();
     }
 }

@@ -4,6 +4,7 @@ namespace Tests\Job;
 
 use App\Domain\Magnet\Factory\MagnetFactory;
 use App\Domain\Magnet\Job\FetchTorrentBodyJob;
+use App\Domain\Rto\RtoFake;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -17,9 +18,7 @@ class FetchTorrentBodyJobTest extends TestCase
         $announcer = 'announcer';
         $magnet = MagnetFactory::new()->withRtoId(911)->create();
 
-        \Http::fake([
-            'rto.vacuum.name/forum/viewtopic.php?t=911' => \Http::response('<div class="post_body">' . $body . '<fieldset class="attach"><span class="attach_link"><a class="magnet-link" href="magnet:?xt=urn:btih:info_hash&tr=' . urlencode($announcer) . '"></a></span></fieldset></div>'),
-        ]);
+        \Http::fake(RtoFake::parseTopicBody(911, $body, $announcer));
 
         $job = new FetchTorrentBodyJob(911);
         $this->app->call($job->handle(...));

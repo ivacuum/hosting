@@ -6,6 +6,7 @@ use App\Domain\Magnet\Factory\MagnetFactory;
 use App\Domain\Magnet\Job\FetchTorrentBodyJob;
 use App\Domain\Magnet\Job\FetchTorrentMetaJob;
 use App\Domain\Magnet\MagnetStatus;
+use App\Domain\Rto\RtoFake;
 use App\Domain\Rto\RtoTopicData;
 use App\Domain\Rto\RtoTopicStatus;
 use App\Domain\Telegram\Api\TelegramResponse;
@@ -114,11 +115,7 @@ class FetchTorrentMetaJobTest extends TestCase
         $magnet = MagnetFactory::new()->withRtoId(911)->create();
 
         \Http::fake([
-            'api-rto.vacuum.name/v1/get_tor_topic_data?by=topic_id&val=911' => \Http::response([
-                'result' => [
-                    911 => null,
-                ],
-            ]),
+            ...RtoFake::topicDataByIdsNotFound(911),
             ...TelegramResponse::fakeSuccess(),
         ]);
 
@@ -168,11 +165,7 @@ class FetchTorrentMetaJobTest extends TestCase
     private function fakeHttpClient(RtoTopicData $topicData)
     {
         \Http::fake([
-            "api-rto.vacuum.name/v1/get_tor_topic_data?by=topic_id&val={$topicData->id}" => \Http::response([
-                'result' => [
-                    $topicData->id => $topicData->toJson(),
-                ],
-            ]),
+            ...RtoFake::topicDataByIds($topicData),
             ...TelegramResponse::fakeSuccess(),
         ]);
     }
