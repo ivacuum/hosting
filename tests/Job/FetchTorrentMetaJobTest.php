@@ -6,11 +6,13 @@ use App\Domain\Magnet\Factory\MagnetFactory;
 use App\Domain\Magnet\Job\FetchTorrentBodyJob;
 use App\Domain\Magnet\Job\FetchTorrentMetaJob;
 use App\Domain\Magnet\MagnetStatus;
+use App\Domain\Rto\RtoApiException;
 use App\Domain\Rto\RtoFake;
 use App\Domain\Rto\RtoTopicData;
 use App\Domain\Rto\RtoTopicStatus;
 use App\Domain\Telegram\Api\TelegramResponse;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Exceptions;
 use Tests\TestCase;
 
 class FetchTorrentMetaJobTest extends TestCase
@@ -160,6 +162,41 @@ class FetchTorrentMetaJobTest extends TestCase
 
         $this->assertSame($size, $magnet->size);
         $this->assertSame($title, $magnet->title);
+    }
+
+    public function testTemporarilyUnavailableApiSkipsRefreshWithoutReportingEachBatch(): void
+    {
+        \Bus::fake();
+        \Notification::fake();
+        Exceptions::fake();
+
+        $firstMagnet = MagnetFactory::new()->withRtoId(911)->create()->refresh();
+        $secondMagnet = MagnetFactory::new()->withRtoId(912)->create()->refresh();
+        $firstAttributes = $firstMagnet->getAttributes();
+        $secondAttributes = $secondMagnet->getAttributes();
+
+        \Http::fake(RtoFake::topicDataByIdsTemporarilyUnavailable(911));
+
+        $this->app->call(new FetchTorrentMetaJob(911)->handle(...));
+        $this->app->call(new FetchTorrentMetaJob(912)->handle(...));
+
+        $this->assertSame($firstAttributes, $firstMagnet->fresh()->getAttributes());
+        $this->assertSame($secondAttributes, $secondMagnet->fresh()->getAttributes());
+
+        \Http::assertSentCount(1);
+        \Bus::assertNothingDispatched();
+        \Notification::assertNothingSent();
+        Exceptions::assertNothingReported();
+    }
+
+    public function testUnexpectedApiErrorIsNotSwallowed(): void
+    {
+        \Http::fake(RtoFake::topicDataByIdsTooManyTopics());
+
+        $this->expectException(RtoApiException::class);
+        $this->expectExceptionMessageIs('Param [val] is over the limit of 50 (you sent 100 values)');
+
+        $this->app->call(new FetchTorrentMetaJob(...range(1, 100))->handle(...));
     }
 
     private function fakeHttpClient(RtoTopicData $topicData)

@@ -26,6 +26,9 @@ enum CacheKey: string
     case PhotosPoints = 'photos.points.all';
     case PhotosPointsForTrip = 'photos.points.trip'; // Отключено
 
+    /** RTO API недоступен где-то с середины лета 2026, поэтому уменьшаем количество запросов к нему */
+    case RtoApiUnavailable = 'http.rto.api-unavailable.v1';
+
     case SteamGameDetails = 'http.steam.game-details.v1.{key}';
 
     case TripsPublishedByCity = 'trips.published.by-cities';
@@ -50,6 +53,8 @@ enum CacheKey: string
             self::SteamGameDetails => CarbonInterval::minutes(15),
 
             self::PhotosPoints => CarbonInterval::minutes(30),
+
+            self::RtoApiUnavailable => CarbonInterval::hours(2),
 
             self::IcuLocales => CarbonInterval::day(),
 

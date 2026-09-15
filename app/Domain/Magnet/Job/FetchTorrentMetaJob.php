@@ -8,6 +8,7 @@ use App\Domain\Magnet\Models\Magnet;
 use App\Domain\Magnet\Notification\MagnetDuplicateDeletedAdminNotification;
 use App\Domain\Magnet\Notification\MagnetNotFoundAndDeletedAdminNotification;
 use App\Domain\Rto\Rto;
+use App\Domain\Rto\RtoTemporarilyUnavailableException;
 use App\Jobs\AbstractJob;
 use Illuminate\Queue\Attributes\Tries;
 
@@ -22,13 +23,19 @@ class FetchTorrentMetaJob extends AbstractJob
         $this->rtoIds = $rtoIds;
     }
 
-    public function handle(Rto $rto)
+    public function handle(Rto $rto): void
     {
+        try {
+            $topics = $rto->topicDataByIds($this->rtoIds)->topics;
+        } catch (RtoTemporarilyUnavailableException) {
+            return;
+        }
+
         $magnets = Magnet::query()
             ->whereIn('rto_id', $this->rtoIds)
             ->get();
 
-        foreach ($rto->topicDataByIds($this->rtoIds)->topics as $id => $response) {
+        foreach ($topics as $id => $response) {
             /** @var \App\Domain\Magnet\Models\Magnet $magnet */
             $magnet = $magnets->firstWhere('rto_id', $id);
 

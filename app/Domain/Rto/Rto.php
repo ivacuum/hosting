@@ -5,6 +5,7 @@ namespace App\Domain\Rto;
 use App\Domain\Config;
 use App\Domain\Log\ExternalService;
 use App\Http\HttpRequest;
+use App\Http\HttpStash;
 use GuzzleHttp\RequestOptions;
 use Illuminate\Http\Client\Factory;
 use Illuminate\Http\Client\PendingRequest;
@@ -13,7 +14,10 @@ use Illuminate\Support\Uri;
 
 readonly class Rto
 {
-    public function __construct(private Factory $http) {}
+    public function __construct(
+        private Factory $http,
+        private HttpStash $stash,
+    ) {}
 
     public function findTopicId(int|string|null $input): int|null
     {
@@ -109,6 +113,6 @@ readonly class Rto
 
     private function sendRequest(HttpRequest $request): Response
     {
-        return $request->send($this->http())->throw();
+        return $this->stash->store($request, fn () => $request->send($this->http())->throw());
     }
 }
