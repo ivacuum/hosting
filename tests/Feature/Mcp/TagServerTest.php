@@ -14,11 +14,7 @@ class TagServerTest extends TestCase
         $this->postJson('mcp/tags', [
             'jsonrpc' => '2.0',
             'id' => 1,
-            'method' => 'initialize',
-            'params' => [
-                'protocolVersion' => '2025-06-18',
-                'clientInfo' => ['name' => 'test', 'version' => '1.0.0'],
-            ],
+            'method' => 'tools/list',
         ], ['Authorization' => 'Bearer test-mcp-token'])
             ->assertOk();
     }
