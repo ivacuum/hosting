@@ -87,6 +87,3 @@
   @lang('acp.dev.index')
 @endcomponent
 @endsection
-
-@section('counters')
-@endsection

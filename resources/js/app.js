@@ -1,5 +1,4 @@
 import Map from './yandex-map'
-import YandexMetrika from './yandex-metrika'
 
 import NewsViewsObserver from './news-views-observer'
 import MagnetsViewsObserver from './magnets-views-observer'
@@ -20,9 +19,7 @@ import Shortcuts from './shortcuts'
 /**
  * @namespace window.AppOptions
  * @property {string} locale
- * @property {boolean} loggedIn
  * @property {string} csrfToken
- * @property {number} yandexMetrikaId
  */
 
 class Application {
@@ -32,7 +29,6 @@ class Application {
     this.beacon = new Beacon(this.options.csrfToken)
     this.locale = this.options.locale
     this.map = new Map(this.locale)
-    this.metrika = new YandexMetrika(this.options.yandexMetrikaId)
     this.photoViewer = new PhotoViewer()
 
     document.addEventListener('DOMContentLoaded', () => {

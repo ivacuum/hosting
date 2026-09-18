@@ -169,9 +169,7 @@
 <script>
 window.AppOptions = JSON.parse('<?= json_encode([
   'locale' => $locale,
-  'loggedIn' => Auth::check(),
   'csrfToken' => csrf_token(),
-  'yandexMetrikaId' => 5266444,
 ], JSON_HEX_APOS) ?>')
 </script>
 @vite('node_modules/mousetrap/mousetrap.min.js')
@@ -179,8 +177,5 @@ window.AppOptions = JSON.parse('<?= json_encode([
 @stack('js_vendor')
 @vite('resources/js/app.js')
 @stack('js')
-@section('counters')
-@include('tpl.counters')
-@show
 </body>
 </html>

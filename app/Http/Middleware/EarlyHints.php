@@ -21,8 +21,6 @@ class EarlyHints
         $links = [
             '<https://life.ivacuum.org>; rel=preconnect',
             '<https://ivacuum.org>; rel=preconnect',
-            '<https://mc.yandex.ru>; rel=preconnect',
-            '<https://mc.yandex.com>; rel=preconnect',
             "</assets/{$manifest['resources/css/app.css']['file']}>; rel=preload; as=style",
             "</assets/{$manifest['resources/js/app.js']['file']}>; rel=preload; as=script",
             "</assets/{$manifest['resources/css/InterVariable.woff2']['file']}>; rel=preload; as=font",
