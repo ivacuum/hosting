@@ -38,7 +38,6 @@ return [
     'dcpp-hubs.create' => 'Новый хаб',
 
     'dev.svg' => 'SVG',
-    'dev.logs' => 'Логи',
     'dev.index' => 'Разработка',
     'dev.templates.index' => 'Шаблоны поездок',
     'dev.thumbnails.index' => 'Миниатюры',

@@ -38,7 +38,6 @@ return [
     'dcpp-hubs.create' => 'New hub',
 
     'dev.svg' => 'SVG',
-    'dev.logs' => 'Logs',
     'dev.index' => 'Dev',
     'dev.templates.index' => 'Trip templates',
     'dev.thumbnails.index' => 'Thumbnails',

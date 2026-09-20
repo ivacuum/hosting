@@ -12,9 +12,6 @@
     <x-nav-link-to href="{{ to('acp/dev/thumbnails') }}" is-active="{{ $routeUri === 'acp/dev/thumbnails' }}">
       @lang('acp.dev.thumbnails.index')
     </x-nav-link-to>
-    <x-nav-link-to href="{{ to('acp/dev/logs') }}" is-active="{{ $routeUri === 'acp/dev/logs' }}">
-      @lang('acp.dev.logs')
-    </x-nav-link-to>
     <x-nav-link-to href="{{ to('acp/dev/svg') }}" is-active="{{ $routeUri === 'acp/dev/svg' }}">
       @lang('acp.dev.svg')
     </x-nav-link-to>
