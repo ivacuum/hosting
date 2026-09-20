@@ -3,11 +3,14 @@
 namespace Tests\Feature;
 
 use App\Domain\Telegram\Api\TelegramResponse;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 
 class UploadTest extends TestCase
 {
+    use DatabaseTransactions;
+
     public function testIndex()
     {
         $this->get('up')
