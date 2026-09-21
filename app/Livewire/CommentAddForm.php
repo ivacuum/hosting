@@ -19,6 +19,7 @@ use Livewire\Component;
 
 class CommentAddForm extends Component
 {
+    public string $mail = '';
     public string $text = '';
     public string $email = '';
     public Issue|Magnet|News|Trip $model;
@@ -26,6 +27,12 @@ class CommentAddForm extends Component
     public function submit(FindUserByEmailOrCreateAction $findUserByEmailOrCreate, CommentRateLimiter $limiter)
     {
         $this->validate();
+
+        if ($this->mail !== '') {
+            event(new \App\Events\Stats\SpammerTrappedLivewire);
+
+            throw ValidationException::withMessages(['mail' => __('auth.spammer_trapped')]);
+        }
 
         if (!$this->model->canBeCommented()) {
             throw ValidationException::withMessages(['text' => 'Эту страницу нельзя прокомментировать.']);

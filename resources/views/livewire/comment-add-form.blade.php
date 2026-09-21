@@ -48,7 +48,7 @@
         </div>
       @endif
       <form wire:submit="submit">
-        {{ ViewHelper::inputHiddenMail() }}
+        <input hidden type="text" name="mail" wire:model="mail">
 
         @if (!Auth::check())
           <div class="mb-2">

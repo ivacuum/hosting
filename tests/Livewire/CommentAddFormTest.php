@@ -172,4 +172,25 @@ class CommentAddFormTest extends TestCase
             ->call('submit')
             ->assertHasErrors('text');
     }
+
+    public function testHoneypot(): void
+    {
+        \Event::fake(\App\Events\Stats\SpammerTrappedLivewire::class);
+        \Mail::fake();
+
+        $news = NewsFactory::new()->create();
+
+        \Livewire::test(CommentAddForm::class, ['model' => $news])
+            ->set('email', 'comment-honeypot@example.com')
+            ->set('text', 'Automated comment')
+            ->set('mail', 'bot')
+            ->call('submit')
+            ->assertHasErrors(['mail' => __('auth.spammer_trapped')]);
+
+        $this->assertDatabaseMissing('users', ['email' => 'comment-honeypot@example.com']);
+        $this->assertFalse($news->comments()->exists());
+
+        \Event::assertDispatched(\App\Events\Stats\SpammerTrappedLivewire::class);
+        \Mail::assertNothingOutgoing();
+    }
 }
