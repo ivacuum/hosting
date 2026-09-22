@@ -30,6 +30,7 @@ class CommentAddFormTest extends TestCase
     #[TestWith(['Что означает EEXJHdFzqdFXgjMbPdP?'])]
     public function testAcceptsLegitimateComments(string $text): void
     {
+        \Event::fake(\App\Events\Stats\RuleNotRandomTokenTriggered::class);
         \Mail::fake();
 
         $news = NewsFactory::new()->create();
@@ -44,6 +45,7 @@ class CommentAddFormTest extends TestCase
 
         $this->assertSame($text, $comment->html);
         $this->assertSame(CommentStatus::Pending, $comment->status);
+        \Event::assertNotDispatched(\App\Events\Stats\RuleNotRandomTokenTriggered::class);
         \Mail::assertQueued(CommentConfirmMail::class);
     }
 
@@ -226,6 +228,7 @@ class CommentAddFormTest extends TestCase
     #[TestWith([" \tEEXJHdFzqdFXgjMbPdP\n"])]
     public function testRejectsRandomTokenComments(string $text): void
     {
+        \Event::fake(\App\Events\Stats\RuleNotRandomTokenTriggered::class);
         \Mail::fake();
 
         $news = NewsFactory::new()->create();
@@ -238,6 +241,7 @@ class CommentAddFormTest extends TestCase
 
         $this->assertDatabaseMissing('users', ['email' => 'random-token-comment@example.com']);
         $this->assertFalse($news->comments()->exists());
+        \Event::assertDispatchedOnce(\App\Events\Stats\RuleNotRandomTokenTriggered::class);
         \Mail::assertNothingOutgoing();
     }
 }

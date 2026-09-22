@@ -15,6 +15,8 @@ class NotRandomTokenRule implements ValidationRule
         }
 
         if (preg_match_all('/[A-Z]/', $text) >= 4 && preg_match_all('/[a-z]/', $text) >= 4) {
+            event(new \App\Events\Stats\RuleNotRandomTokenTriggered);
+
             $fail('validation.not_random_token')->translate();
         }
     }
