@@ -16,11 +16,36 @@ use App\Mail\CommentConfirmMail;
 use App\Notifications\IssueCommentedNotification;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use PHPUnit\Framework\Attributes\TestWith;
 use Tests\TestCase;
 
 class CommentAddFormTest extends TestCase
 {
     use DatabaseTransactions;
+
+    #[TestWith(['Спасибо!'])]
+    #[TestWith(['Thanks!'])]
+    #[TestWith(['Internationalization'])]
+    #[TestWith(['ОЧЕНЬ КРАСИВО'])]
+    #[TestWith(['Что означает EEXJHdFzqdFXgjMbPdP?'])]
+    public function testAcceptsLegitimateComments(string $text): void
+    {
+        \Mail::fake();
+
+        $news = NewsFactory::new()->create();
+
+        \Livewire::test(CommentAddForm::class, ['model' => $news])
+            ->set('email', 'legitimate-comment@example.com')
+            ->set('text', $text)
+            ->call('submit')
+            ->assertHasNoErrors();
+
+        $comment = $news->comments()->sole();
+
+        $this->assertSame($text, $comment->html);
+        $this->assertSame(CommentStatus::Pending, $comment->status);
+        \Mail::assertQueued(CommentConfirmMail::class);
+    }
 
     public function testCommentIssueAsUser()
     {
@@ -191,6 +216,28 @@ class CommentAddFormTest extends TestCase
         $this->assertFalse($news->comments()->exists());
 
         \Event::assertDispatched(\App\Events\Stats\SpammerTrappedLivewire::class);
+        \Mail::assertNothingOutgoing();
+    }
+
+    #[TestWith(['EEXJHdFzqdFXgjMbPdP'])]
+    #[TestWith(['DVrLxRFRUVitavbeG'])]
+    #[TestWith(['rJDeeVuuwjfvazGAkxDIIP'])]
+    #[TestWith(['wUlOLgWsEHmRNzZSxVCzMmw'])]
+    #[TestWith([" \tEEXJHdFzqdFXgjMbPdP\n"])]
+    public function testRejectsRandomTokenComments(string $text): void
+    {
+        \Mail::fake();
+
+        $news = NewsFactory::new()->create();
+
+        \Livewire::test(CommentAddForm::class, ['model' => $news])
+            ->set('email', 'random-token-comment@example.com')
+            ->set('text', $text)
+            ->call('submit')
+            ->assertHasErrors(['text' => __('validation.not_random_token')]);
+
+        $this->assertDatabaseMissing('users', ['email' => 'random-token-comment@example.com']);
+        $this->assertFalse($news->comments()->exists());
         \Mail::assertNothingOutgoing();
     }
 }

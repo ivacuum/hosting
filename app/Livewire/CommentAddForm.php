@@ -13,6 +13,7 @@ use App\Issue;
 use App\News;
 use App\RateLimit\CommentRateLimiter;
 use App\Rules\EmailRule;
+use App\Rules\NotRandomTokenRule;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
@@ -78,7 +79,7 @@ class CommentAddForm extends Component
     protected function rules()
     {
         return [
-            'text' => 'required|max:1000',
+            'text' => ['bail', 'required', 'string', 'max:1000', new NotRandomTokenRule],
             'email' => Rule::when(auth()->guest(), EmailRule::rules()),
         ];
     }

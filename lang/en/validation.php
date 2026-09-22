@@ -104,6 +104,7 @@ return [
 
     'at_least_few_words' => 'The :attribute must contain at least :min words.',
     'concurrency_control' => 'Another user has updated this resource since this page was loaded. Please refresh the page and try again.',
+    'not_random_token' => 'Unable to submit the comment.',
 
     'custom' => [
         /*
