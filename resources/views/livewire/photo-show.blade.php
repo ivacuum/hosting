@@ -73,9 +73,9 @@
     </div>
   </div>
   @if ($prev)
-    <img hidden src="{{ $prev->originalUrl() }}" alt="">
+    <link rel="preload" as="image" href="{{ $prev->originalUrl() }}" fetchpriority="low">
   @endif
   @if ($next)
-    <img hidden src="{{ $next->originalUrl() }}" alt="">
+    <link rel="preload" as="image" href="{{ $next->originalUrl() }}" fetchpriority="low">
   @endif
 </div>

@@ -27,8 +27,8 @@ class PhotoShowTest extends TestCase
             'tripId' => $trip->id,
         ])
             ->assertSee('wire:navigate', false)
-            ->assertSeeHtml('<img hidden src="' . $next->originalUrl() . '" alt="">')
-            ->assertSeeHtml('<img hidden src="' . $prev->originalUrl() . '" alt="">')
+            ->assertSeeHtml('<link rel="preload" as="image" href="' . $next->originalUrl() . '" fetchpriority="low">')
+            ->assertSeeHtml('<link rel="preload" as="image" href="' . $prev->originalUrl() . '" fetchpriority="low">')
             ->assertSee("trip_id={$trip->id}", false);
     }
 
