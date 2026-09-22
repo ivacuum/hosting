@@ -12,7 +12,7 @@ readonly class RtoTopicHtmlRequest implements HttpRequest
 
     public function send(PendingRequest $http): Response
     {
-        return $http->get('https://rto.vacuum.name/forum/viewtopic.php', [
+        return $http->get('https://rutracker.org/forum/viewtopic.php', [
             't' => $this->topicId,
         ]);
     }

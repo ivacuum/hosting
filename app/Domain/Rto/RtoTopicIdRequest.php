@@ -25,7 +25,7 @@ readonly class RtoTopicIdRequest implements CacheableRequest, HttpRequest
 
     public function send(PendingRequest $http): Response
     {
-        return $http->get('https://api-rto.vacuum.name/v1/get_topic_id', [
+        return $http->get('https://api.rutracker.cc/v1/get_topic_id', [
             'by' => 'hash',
             'val' => $this->hash,
         ]);

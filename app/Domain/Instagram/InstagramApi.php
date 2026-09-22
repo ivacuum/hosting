@@ -45,7 +45,7 @@ readonly class InstagramApi
     {
         return $this->http
             ->createPendingRequest()
-            ->baseUrl('https://graph.vacuum.name/v23.0/')
+            ->baseUrl('https://graph.instagram.com/v23.0/')
             ->connectTimeout(3)
             ->timeout(30)
             ->throw()

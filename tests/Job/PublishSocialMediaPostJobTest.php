@@ -42,13 +42,13 @@ class PublishSocialMediaPostJobTest extends TestCase
         $this->assertSame(SocialMediaPostStatus::Published, $post->status);
 
         \Http::assertSent(static function (Request $request) {
-            return $request->url() === 'https://graph.vacuum.name/v23.0/me/media?access_token=token'
+            return $request->url() === 'https://graph.instagram.com/v23.0/me/media?access_token=token'
                 && $request['image_url'] === 'https://life-r2.ivacuum.org/test/IMG_1234.jpg'
                 && $request['caption'] === 'caption';
         });
 
         \Http::assertSent(static function (Request $request) {
-            return $request->url() === 'https://graph.vacuum.name/v23.0/me/media_publish?access_token=token'
+            return $request->url() === 'https://graph.instagram.com/v23.0/me/media_publish?access_token=token'
                 && $request['creation_id'] === 'container-id';
         });
     }
@@ -107,13 +107,13 @@ class PublishSocialMediaPostJobTest extends TestCase
         \Http::assertSentCount(3);
 
         \Http::assertSent(static function (Request $request) {
-            return $request->url() === 'https://graph.vacuum.name/v23.0/me/media?access_token=token'
+            return $request->url() === 'https://graph.instagram.com/v23.0/me/media?access_token=token'
                 && $request['image_url'] === 'https://life-r2.ivacuum.org/test/IMG_1234.jpg'
                 && $request['caption'] === 'caption';
         });
 
         \Http::assertSent(static function (Request $request) {
-            return $request->url() === 'https://graph.vacuum.name/v23.0/me/media_publish?access_token=token'
+            return $request->url() === 'https://graph.instagram.com/v23.0/me/media_publish?access_token=token'
                 && $request['creation_id'] === 'container-id';
         });
     }

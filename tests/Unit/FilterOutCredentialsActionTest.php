@@ -20,7 +20,7 @@ class FilterOutCredentialsActionTest extends TestCase
 
         $request = new ExternalHttpRequest;
         $request->scheme = 'https';
-        $request->host = 'graph.vacuum.name';
+        $request->host = 'graph.instagram.com';
         $request->path = '/refresh_access_token';
         $request->query = 'access_token=secret';
         $request->service_name = ExternalService::Instagram;
