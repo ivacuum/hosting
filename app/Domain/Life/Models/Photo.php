@@ -100,7 +100,9 @@ class Photo extends Model
 
     public function mobileUrl(): string
     {
-        return "https://life.ivacuum.org/-/1000x750/{$this->slug}";
+        return $this->isGig()
+            ? "https://life.ivacuum.org/-/1000x750/gigs/{$this->slug}"
+            : "https://life.ivacuum.org/-/1000x750/{$this->slug}";
     }
 
     public function newSlugPrefix(string $newPrefix): void
