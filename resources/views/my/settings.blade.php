@@ -11,7 +11,7 @@
     @method('put')
     @csrf
 
-    <div class="grid gap-6">
+    <div class="grid gap-6 mb-4">
       <div>
         <div class="font-bold">@lang('Магнеты')</div>
           <input type="hidden" name="magnet_short_title" value="0">
@@ -89,47 +89,6 @@
           <x-invalid-feedback field="notification_delivery_method"/>
         </div>
       @endif
-
-      <div>
-        <div class="font-bold">@lang('Уведомления о новых публикациях')</div>
-        <input type="hidden" name="notify_gigs" value="{{ App\Domain\NotificationDeliveryMethod::Disabled }}">
-        <label class="flex gap-2 items-center">
-          <input
-            class="not-checked:border-gray-300 text-sky-600 rounded-sm"
-            type="checkbox"
-            name="notify_gigs"
-            value="{{ App\Domain\NotificationDeliveryMethod::Mail }}"
-            {{ old('notify_gigs', $user->notify_gigs->isEnabled()) ? 'checked' : '' }}
-          >
-          @lang('Концерты')
-        </label>
-
-        <input type="hidden" name="notify_news" value="{{ App\Domain\NotificationDeliveryMethod::Disabled }}">
-        <label class="flex gap-2 items-center">
-          <input
-            class="not-checked:border-gray-300 text-sky-600 rounded-sm"
-            type="checkbox"
-            name="notify_news"
-            value="{{ App\Domain\NotificationDeliveryMethod::Mail }}"
-            {{ old('notify_news', $user->notify_news->isEnabled()) ? 'checked' : '' }}
-          >
-          @lang('Новости сайта')
-        </label>
-
-        <div class="mb-4">
-          <input type="hidden" name="notify_trips" value="{{ App\Domain\NotificationDeliveryMethod::Disabled }}">
-          <label class="flex gap-2 items-center">
-            <input
-              class="not-checked:border-gray-300 text-sky-600 rounded-sm"
-              type="checkbox"
-              name="notify_trips"
-              value="{{ App\Domain\NotificationDeliveryMethod::Mail }}"
-              {{ old('notify_trips', $user->notify_trips->isEnabled()) ? 'checked' : '' }}
-            >
-            @lang('Путешествия')
-          </label>
-        </div>
-      </div>
     </div>
 
     <button class="btn btn-primary">

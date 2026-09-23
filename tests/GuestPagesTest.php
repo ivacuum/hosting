@@ -17,7 +17,6 @@ class GuestPagesTest extends TestCase
     #[TestWith(['/retracker'])]
     #[TestWith(['/retracker/dev'])]
     #[TestWith(['/retracker/usage'])]
-    #[TestWith(['/subscriptions'])]
     public function testGuestPages200(string $url)
     {
         $this->get($url)->assertOk();

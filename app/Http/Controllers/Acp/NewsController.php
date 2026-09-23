@@ -7,13 +7,8 @@ use App\Action\Acp\ResponseToCreateAction;
 use App\Action\Acp\ResponseToDestroyAction;
 use App\Action\Acp\ResponseToEditAction;
 use App\Action\Acp\ResponseToShowAction;
-use App\Domain\NotificationDeliveryMethod;
-use App\Domain\SessionKey;
-use App\Domain\UserStatus;
 use App\News;
-use App\Notifications\NewsPublishedNotification;
 use App\Scope\NewsCurrentLocaleScope;
-use App\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;
@@ -63,23 +58,6 @@ class NewsController extends Controller
     public function edit(News $news, ResponseToEditAction $responseToEdit)
     {
         return $responseToEdit->execute($news);
-    }
-
-    public function notify(News $news)
-    {
-        if (!$news->status->isPublished()) {
-            return back()->with(SessionKey::FlashMessage->value, 'Для рассылки уведомлений новость должна быть опубликована');
-        }
-
-        $users = User::query()
-            ->where('notify_news', NotificationDeliveryMethod::Mail)
-            ->where('status', UserStatus::Active)
-            ->where('locale', $news->locale)
-            ->get();
-
-        \Notification::send($users, new NewsPublishedNotification($news));
-
-        return back()->with(SessionKey::FlashMessage->value, "Уведомления разосланы пользователям: {$users->count()}");
     }
 
     public function show(News $news, ResponseToShowAction $responseToShow)

@@ -20,6 +20,4 @@ return [
 
     'gigs.rss.description' => 'Stories about attended gigs.',
     'trips.rss.description' => 'Travel stories.',
-
-    'newsletter.description' => 'Get an email when I publish a new story.',
 ];

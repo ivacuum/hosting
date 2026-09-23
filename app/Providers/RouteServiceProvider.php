@@ -73,13 +73,6 @@ class RouteServiceProvider extends ServiceProvider
             ];
         });
 
-        RateLimiter::for('subscription', static function (Request $request) {
-            return [
-                Limit::perMinute(3)->by($request->ip()),
-                Limit::perMinute(3)->by($request->input('email')),
-            ];
-        });
-
         RateLimiter::for('typo', static function (Request $request) {
             return Limit::perMinute(3)->by($request->ip());
         });

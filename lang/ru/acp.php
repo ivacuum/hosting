@@ -91,7 +91,6 @@ return [
     'news.show' => 'Новость',
     'news.index' => 'Новости',
     'news.create' => 'Написать новость',
-    'news.notify' => 'Уведомить о публикации',
 
     'photos.add' => 'Добавить фотку',
     'photos.edit' => 'Редактирование',
@@ -120,7 +119,6 @@ return [
     'trips.show' => 'Поездка',
     'trips.index' => 'Поездки',
     'trips.create' => 'Новая поездка',
-    'trips.notify' => 'Уведомить о публикации',
 
     'users.add' => 'Добавить пользователя',
     'users.edit' => 'Редактирование',

@@ -3,7 +3,6 @@
 namespace App\Observers;
 
 use App\Domain\Avatar\Avatar;
-use App\Events\Stats;
 use App\User;
 use Illuminate\Support\Str;
 
@@ -58,30 +57,6 @@ class UserObserver
 
             if ($lastAvatar) {
                 app(Avatar::class)->delete($lastAvatar);
-            }
-        }
-
-        if ($user->isDirty('notify_gigs')) {
-            if ($user->notify_gigs->isEnabled()) {
-                event(new Stats\GigsSubscribed);
-            } elseif ($user->notify_gigs->isDisabled()) {
-                event(new Stats\GigsUnsubscribed);
-            }
-        }
-
-        if ($user->isDirty('notify_news')) {
-            if ($user->notify_news->isEnabled()) {
-                event(new Stats\NewsSubscribed);
-            } elseif ($user->notify_news->isDisabled()) {
-                event(new Stats\NewsUnsubscribed);
-            }
-        }
-
-        if ($user->isDirty('notify_trips')) {
-            if ($user->notify_trips->isEnabled()) {
-                event(new Stats\TripsSubscribed);
-            } elseif ($user->notify_trips->isDisabled()) {
-                event(new Stats\TripsUnsubscribed);
             }
         }
     }

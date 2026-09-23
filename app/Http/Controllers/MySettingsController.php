@@ -18,9 +18,6 @@ class MySettingsController
     {
         $user = $request->user;
         $user->locale = $request->theLocale;
-        $user->notify_gigs = $request->notifyGigs;
-        $user->notify_news = $request->notifyNews;
-        $user->notify_trips = $request->notifyTrips;
         $user->magnet_short_title = $request->magnetShortTitle;
         $user->notification_delivery_method = $request->notificationDeliveryMethod;
         $user->save();

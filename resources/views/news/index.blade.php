@@ -9,26 +9,6 @@
 @section('content')
 <div class="flex flex-wrap gap-4 items-center mb-6">
   <h1 class="font-medium text-3xl tracking-tight mb-1">@lang('Новости')</h1>
-  @if (Auth::check())
-    <form action="@lng/subscriptions" method="post">
-      {{ ViewHelper::inputHiddenMail() }}
-      <button class="btn btn-default text-sm py-1 small-caps svg-flex svg-label">
-        @svg (mail)
-        @lang(Auth::user()->notify_news->isEnabled() ? 'mail.unsubscribe' : 'mail.subscribe')
-      </button>
-      <input type="hidden" name="news" value="{{ Auth::user()->notify_news->isEnabled() ? App\Domain\NotificationDeliveryMethod::Disabled : App\Domain\NotificationDeliveryMethod::Mail }}">
-      @method('put')
-      @csrf
-    </form>
-  @else
-    <a
-      class="btn btn-default text-sm py-1 svg-flex svg-label small-caps"
-      href="@lng/subscriptions?news=1"
-    >
-      @svg (mail)
-      @lang('mail.subscribe')
-    </a>
-  @endif
   <a
     class="text-lg svg-flex svg-label small-caps"
     href="@lng/news/rss"

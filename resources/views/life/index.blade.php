@@ -9,23 +9,6 @@
   <section class="pt-0">
     <div class="flex flex-wrap gap-4 items-center mb-1">
       <h1 class="font-medium text-3xl tracking-tight mb-1">@lang('Поездки')</h1>
-      @if (Auth::check())
-        <form action="@lng/subscriptions" method="post">
-          {{ ViewHelper::inputHiddenMail() }}
-          <button class="btn btn-default leading-none text-sm small-caps svg-flex svg-label">
-            @svg (mail)
-            {{ Auth::user()->notify_trips->isEnabled() ? __('mail.unsubscribe') : __('mail.subscribe') }}
-          </button>
-          <input type="hidden" name="trips" value="{{ Auth::user()->notify_trips->isEnabled() ? App\Domain\NotificationDeliveryMethod::Disabled : App\Domain\NotificationDeliveryMethod::Mail }}">
-          @method('put')
-          @csrf
-        </form>
-      @else
-        <a class="btn btn-default leading-none text-sm svg-flex svg-label small-caps" href="@lng/subscriptions?trips=1">
-          @svg (mail)
-          @lang('mail.subscribe')
-        </a>
-      @endif
       <a class="svg-flex svg-label small-caps" href="@lng/life/rss">
         @svg (rss-square)
         rss

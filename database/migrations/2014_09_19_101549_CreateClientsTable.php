@@ -403,9 +403,6 @@ return new class extends Migration {
             $table->unsignedTinyInteger('status')->default(App\Domain\UserStatus::Inactive->value);
             $table->string('locale', 10)->default(App\Domain\Locale::Rus->value);
             $table->unsignedTinyInteger('magnet_short_title')->default(0);
-            $table->unsignedTinyInteger('notify_gigs')->default(App\Domain\NotificationDeliveryMethod::Disabled->value);
-            $table->unsignedTinyInteger('notify_news')->default(App\Domain\NotificationDeliveryMethod::Disabled->value);
-            $table->unsignedTinyInteger('notify_trips')->default(App\Domain\NotificationDeliveryMethod::Disabled->value);
             $table->unsignedTinyInteger('notification_delivery_method')->default(App\Domain\NotificationDeliveryMethod::Disabled->value);
             $table->string('avatar')->default('');
             $table->unsignedBigInteger('telegram_id')->nullable();

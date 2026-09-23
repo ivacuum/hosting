@@ -4,7 +4,6 @@ namespace App\Factory;
 
 use App\Comment;
 use App\Domain\Life\Factory\TripFactory;
-use App\Domain\Life\Mail\TripPublishedMail;
 use App\Domain\Life\Models\Trip;
 use App\Domain\Locale;
 use App\Email;
@@ -87,7 +86,7 @@ class EmailFactory
     public function withTripPublished(Trip|TripFactory|null $trip = null): self
     {
         return clone ($this, [
-            'template' => class_basename(TripPublishedMail::class),
+            'template' => 'TripPublishedMail',
             'relation' => $trip ?? TripFactory::new(),
             'relationType' => new Trip()->getMorphClass(),
         ]);

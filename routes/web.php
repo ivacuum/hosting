@@ -234,11 +234,6 @@ Route::view('retracker', 'retracker.index');
 Route::view('retracker/dev', 'retracker.dev');
 Route::view('retracker/usage', 'retracker.usage');
 
-Route::get('subscriptions', [Ctrl\SubscriptionController::class, 'edit']);
-Route::post('subscriptions', [Ctrl\SubscriptionController::class, 'store'])->middleware('throttle:subscription');
-Route::put('subscriptions', [Ctrl\SubscriptionController::class, 'update'])->middleware('auth');
-Route::get('subscriptions/confirm', [Ctrl\SubscriptionController::class, 'confirm'])->middleware('auth');
-
 Route::get('torrent', Ctrl\TorrentPromoController::class);
 
 Route::middleware('nav:Тренажеры,trainers')->group(static function () {

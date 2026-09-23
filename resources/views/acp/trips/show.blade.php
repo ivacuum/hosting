@@ -12,9 +12,5 @@
     <img class="max-w-full h-auto rounded-sm" src="{{ $model->metaImage() }}" alt="">
   </div>
 @endif
-<form class="mt-4" action="{{ to('acp/trips/{trip}/notify', $model) }}" method="post">
-  @csrf
-  <button class="btn btn-default">@lang("$tpl.notify")</button>
-</form>
 @parent
 @endsection

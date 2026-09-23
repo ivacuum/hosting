@@ -6,10 +6,8 @@ use App\Domain\Config;
 use App\Domain\UserStatus;
 use App\Events\Stats\UserFoundByEmailWhenCommentAdded;
 use App\Events\Stats\UserFoundByEmailWhenIssueAdded;
-use App\Events\Stats\UserFoundByEmailWhenSubscribing;
 use App\Events\Stats\UserRegisteredAutoWhenCommentAdded;
 use App\Events\Stats\UserRegisteredAutoWhenIssueAdded;
-use App\Events\Stats\UserRegisteredAutoWhenSubscribing;
 use App\Exceptions\EmailHostUnavailableForAutoRegistration;
 use App\User;
 
@@ -17,8 +15,8 @@ class FindUserByEmailOrCreateAction
 {
     public function execute(
         string $email,
-        UserRegisteredAutoWhenCommentAdded|UserRegisteredAutoWhenIssueAdded|UserRegisteredAutoWhenSubscribing $userRegisteredEvent,
-        UserFoundByEmailWhenCommentAdded|UserFoundByEmailWhenIssueAdded|UserFoundByEmailWhenSubscribing $userFoundEvent,
+        UserRegisteredAutoWhenCommentAdded|UserRegisteredAutoWhenIssueAdded $userRegisteredEvent,
+        UserFoundByEmailWhenCommentAdded|UserFoundByEmailWhenIssueAdded $userFoundEvent,
         UserStatus $status = UserStatus::Inactive,
     ) {
         if ($user = User::query()->firstWhere('email', $email)) {

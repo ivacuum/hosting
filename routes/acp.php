@@ -34,7 +34,6 @@ Route::resource('external-identities', Acp\ExternalIdentitiesController::class)-
 Route::resource('files', Acp\FilesController::class)->except(['store', 'update']);
 
 Route::resource('gigs', Acp\GigsController::class)->except(['store', 'update']);
-Route::post('gigs/{gig}/notify', Acp\GigPublishedNotifyController::class);
 
 Route::resource('images', Acp\ImagesController::class)->except(['create', 'edit', 'store', 'update']);
 Route::post('images/batch', [Acp\ImagesController::class, 'batch']);
@@ -51,7 +50,6 @@ Route::get('metrics', [Acp\MetricsController::class, 'index']);
 Route::get('metrics/{event}', [Acp\MetricsController::class, 'show']);
 
 Route::resource('news', Acp\NewsController::class)->except(['store', 'update']);
-Route::post('news/{news}/notify', [Acp\NewsController::class, 'notify']);
 
 Route::delete('photos/{photo}/tags', [Acp\PhotosController::class, 'destroyTags']);
 Route::delete('photos/{photo}/tags/{tag}', [Acp\PhotosController::class, 'destroyTag']);
@@ -63,6 +61,5 @@ Route::resource('tags', Acp\TagsController::class)->except(['store', 'update']);
 
 Route::resource('trips', Acp\TripsController::class)->except(['store', 'update']);
 Route::get('trips/{trip}/instagram-cover', Acp\TripInstagramCoverController::class);
-Route::post('trips/{trip}/notify', Acp\TripPublishedNotifyController::class);
 
 Route::resource('users', Acp\UsersController::class)->except(['create', 'store', 'update']);

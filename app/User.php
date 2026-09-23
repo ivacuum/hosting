@@ -28,9 +28,6 @@ use Illuminate\Notifications\Notifiable;
  * @property UserStatus $status
  * @property string $locale
  * @property int $magnet_short_title
- * @property NotificationDeliveryMethod $notify_gigs
- * @property NotificationDeliveryMethod $notify_news
- * @property NotificationDeliveryMethod $notify_trips
  * @property NotificationDeliveryMethod $notification_delivery_method
  * @property string $avatar
  * @property int $telegram_id
@@ -79,9 +76,6 @@ class User extends Authenticatable implements HasLocalePreference
         'avatar' => '',
         'password' => '',
         'remember_token' => null,
-        'notify_gigs' => NotificationDeliveryMethod::Disabled,
-        'notify_news' => NotificationDeliveryMethod::Disabled,
-        'notify_trips' => NotificationDeliveryMethod::Disabled,
         'notification_delivery_method' => NotificationDeliveryMethod::Disabled,
     ];
 
@@ -250,9 +244,6 @@ class User extends Authenticatable implements HasLocalePreference
         return [
             'root' => 'bool',
             'status' => UserStatus::class,
-            'notify_gigs' => NotificationDeliveryMethod::class,
-            'notify_news' => NotificationDeliveryMethod::class,
-            'notify_trips' => NotificationDeliveryMethod::class,
             'last_login_at' => 'datetime',
             'email_verified_at' => 'datetime',
             'magnet_short_title' => 'int',

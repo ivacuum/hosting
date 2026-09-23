@@ -11,23 +11,6 @@
 @section('content')
 <div class="flex flex-wrap gap-4 items-center mb-2">
   <h1 class="font-medium text-3xl tracking-tight mb-1">@lang('Посещенные и ожидаемые концерты')</h1>
-  @if (Auth::check())
-    <form action="@lng/subscriptions" method="post">
-      {{ ViewHelper::inputHiddenMail() }}
-      <button class="btn btn-default text-sm py-1 small-caps svg-flex svg-label">
-        @svg (mail)
-        @lang(Auth::user()->notify_gigs->isEnabled() ? 'mail.unsubscribe' : 'mail.subscribe')
-      </button>
-      <input type="hidden" name="gigs" value="{{ Auth::user()->notify_gigs->isEnabled() ? App\Domain\NotificationDeliveryMethod::Disabled : App\Domain\NotificationDeliveryMethod::Mail }}">
-      @method('put')
-      @csrf
-    </form>
-  @else
-    <a class="btn btn-default text-sm py-1 svg-flex svg-label small-caps" href="@lng/subscriptions?gigs=1">
-      @svg (mail)
-      @lang('mail.subscribe')
-    </a>
-  @endif
   <a class="svg-flex svg-label small-caps" href="@lng/life/gigs/rss">
     @svg (rss-square)
     rss

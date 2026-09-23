@@ -90,7 +90,6 @@ return [
     'news.show' => 'News',
     'news.index' => 'News',
     'news.create' => 'Compose news',
-    'news.notify' => 'Notify about publication',
 
     'photos.add' => 'Create photo',
     'photos.edit' => 'Edit photo',
@@ -119,7 +118,6 @@ return [
     'trips.show' => 'Trip',
     'trips.index' => 'Trips',
     'trips.create' => 'New trip',
-    'trips.notify' => 'Notify about publication',
 
     'users.add' => 'Create user',
     'users.edit' => 'Edit',
