@@ -30,7 +30,7 @@ class VocabularyTrainerTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\VocabularyAnsweredHiragana::class);
     }
 
-    public function testAnswerRightInKanji()
+    public function testAnswerRightInKanji(): void
     {
         $vocab = VocabularyFactory::new()
             ->withLevel(1)
@@ -43,7 +43,8 @@ class VocabularyTrainerTest extends TestCase
             ->call('setVocabId', $vocab->id)
             ->set('answer', '東京証券取引所')
             ->call('check')
-            ->assertSet('answered', 1);
+            ->assertSet('answered', 1)
+            ->assertSet('answer', '');
 
         \Event::assertDispatched(\App\Events\Stats\VocabularyAnsweredKanji::class);
     }
@@ -128,24 +129,6 @@ class VocabularyTrainerTest extends TestCase
             ->assertSet('openSettings', true);
 
         \Event::assertDispatched(\App\Events\Stats\VocabularyDifficultyIncreased::class);
-    }
-
-    public function testRightAnswerGetsCleared()
-    {
-        $vocab = VocabularyFactory::new()
-            ->withLevel(1)
-            ->withCharacter('東京証券取引所')
-            ->create();
-
-        \Event::fake(\App\Events\Stats\VocabularyAnsweredKanji::class);
-
-        \Livewire::test(VocabularyTrainer::class)
-            ->call('setVocabId', $vocab->id)
-            ->set('answer', '東京証券取引所')
-            ->call('check')
-            ->assertSet('answer', '');
-
-        \Event::assertDispatched(\App\Events\Stats\VocabularyAnsweredKanji::class);
     }
 
     public function testSkip()

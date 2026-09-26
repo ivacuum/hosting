@@ -12,6 +12,18 @@ class NumberTrainerTest extends TestCase
     use DatabaseTransactions;
     use MockGetNumberLocales;
 
+    public function testCorrectNumericAnswerIsCountedAndCleared(): void
+    {
+        \Livewire::test(NumberTrainer::class)
+            ->set('lang', 'en')
+            ->set('number', 55)
+            ->assertSet('spellOut', 'fifty-five')
+            ->set('answer', 55)
+            ->call('check')
+            ->assertSet('answered', 1)
+            ->assertSet('answer', '');
+    }
+
     public function testCustomInterval()
     {
         \Livewire::test(NumberTrainer::class)
@@ -44,45 +56,11 @@ class NumberTrainerTest extends TestCase
             ->assertHasErrors('maximum');
     }
 
-    public function testMinimumIntervalForced()
-    {
-        \Livewire::test(NumberTrainer::class)
-            ->set('lang', 'en')
-            ->set('customInterval', true)
-            ->set('minimum', 11)
-            ->assertSet('maximum', 16)
-            ->assertHasNoErrors()
-            ->set('maximum', 11)
-            ->assertSet('minimum', 6)
-            ->assertHasNoErrors();
-    }
-
     public function testDetermineLocale()
     {
         \Livewire::withQueryParams(['lang' => 'de'])
             ->test(NumberTrainer::class)
             ->assertSet('lang', 'de');
-    }
-
-    public function testEnglish()
-    {
-        \Livewire::test(NumberTrainer::class)
-            ->set('lang', 'en')
-            ->set('number', 55)
-            ->assertSet('spellOut', 'fifty-five')
-            ->set('answer', 55)
-            ->call('check')
-            ->assertSet('answered', 1);
-    }
-
-    public function testGuessingNumbers()
-    {
-        \Livewire::test(NumberTrainer::class)
-            ->set('lang', 'en')
-            ->set('number', 2)
-            ->set('answer', 2)
-            ->call('check')
-            ->assertSet('answered', 1);
     }
 
     public function testGuessingSpellOut()
@@ -118,6 +96,19 @@ class NumberTrainerTest extends TestCase
             ->set('answer', 'sam')
             ->call('check')
             ->assertSet('answered', 1);
+    }
+
+    public function testMinimumIntervalForced()
+    {
+        \Livewire::test(NumberTrainer::class)
+            ->set('lang', 'en')
+            ->set('customInterval', true)
+            ->set('minimum', 11)
+            ->assertSet('maximum', 16)
+            ->assertHasNoErrors()
+            ->set('maximum', 11)
+            ->assertSet('minimum', 6)
+            ->assertHasNoErrors();
     }
 
     public function testResetCustomMinimumAndMaximumWhenValuesAreNotPredefined()
@@ -158,16 +149,6 @@ class NumberTrainerTest extends TestCase
             ->assertSet('incorrectAnswer', false)
             ->assertSet('shouldReveal', true)
             ->assertSet('revealed', 2);
-    }
-
-    public function testRightAnswerGetsCleared()
-    {
-        \Livewire::test(NumberTrainer::class)
-            ->set('lang', 'en')
-            ->set('number', 1)
-            ->set('answer', 1)
-            ->call('check')
-            ->assertSet('answer', '');
     }
 
     public function testSkip()
