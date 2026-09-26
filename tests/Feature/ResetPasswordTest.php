@@ -28,27 +28,33 @@ class ResetPasswordTest extends TestCase
         $this->assertAuthenticated();
     }
 
-    public function testSubmitGuest()
+    public function testSubmitGuest(): void
     {
-        $user = UserFactory::new()->create();
+        $user = UserFactory::new()->withPassword('old-password')->create();
         $broker = $this->app->make(PasswordBroker::class);
         $token = $broker->createToken($user);
+
+        $this->assertTrue(\Hash::check('old-password', $user->password));
 
         $this->from("auth/password/reset/{$token}")
             ->post('auth/password/reset', [
                 'email' => $user->email,
                 'token' => $token,
-                'password' => 'secret42',
+                'password' => 'new-password',
             ])
             ->assertSessionHasNoErrors()
             ->assertRedirect('/');
 
-        $this->assertAuthenticated();
+        $user->refresh();
+
+        $this->assertTrue(\Hash::check('new-password', $user->password));
+        $this->assertFalse(\Hash::check('old-password', $user->password));
+        $this->assertAuthenticatedAs($user);
     }
 
-    public function testSubmitUser()
+    public function testSubmitUser(): void
     {
-        $this->be($user = UserFactory::new()->create());
+        $this->be($user = UserFactory::new()->withPassword('old-password')->create());
 
         $broker = $this->app->make(PasswordBroker::class);
         $token = $broker->createToken($user);
@@ -57,11 +63,15 @@ class ResetPasswordTest extends TestCase
             ->post('auth/password/reset', [
                 'email' => $user->email,
                 'token' => $token,
-                'password' => 'secret42',
+                'password' => 'new-password',
             ])
             ->assertSessionHasNoErrors()
             ->assertRedirect('/');
 
-        $this->assertAuthenticated();
+        $user->refresh();
+
+        $this->assertTrue(\Hash::check('new-password', $user->password));
+        $this->assertFalse(\Hash::check('old-password', $user->password));
+        $this->assertAuthenticatedAs($user);
     }
 }
