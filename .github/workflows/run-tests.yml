@@ -63,7 +63,9 @@ jobs:
       - run: yarn build
 
       - name: Install graphicsmagick
-        run: sudo apt install graphicsmagick
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y graphicsmagick
 
       - name: Prepare Laravel Application
         run: |
