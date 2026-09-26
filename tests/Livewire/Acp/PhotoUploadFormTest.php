@@ -6,7 +6,6 @@ use App\Domain\Exif\ReadRawExifDataAction;
 use App\Domain\Life\Factory\GigFactory;
 use App\Domain\Life\Factory\PhotoFactory;
 use App\Domain\Life\Factory\TripFactory;
-use App\Domain\Life\Models\Photo;
 use App\Factory\UserFactory;
 use App\Livewire\Acp\PhotoUploadForm;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -18,7 +17,7 @@ class PhotoUploadFormTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testDoesNotOverwriteImage()
+    public function testDoesNotOverwriteImage(): void
     {
         \Storage::fake('photos');
         \Storage::fake(FileUploadConfiguration::disk());
@@ -37,24 +36,23 @@ class PhotoUploadFormTest extends TestCase
             ->withSlug('our-phpunit-trip/IMG_0013.jpg')
             ->create();
 
+        \Storage::disk('photos')->put($photo->slug, 'original image');
+
         \Livewire::actingAs($user)
             ->test(PhotoUploadForm::class)
             ->set('tripId', $trip->id)
             ->set('file', $file);
 
-        $uploadedPhoto = Photo::query()->firstWhere([
-            'rel_type' => $trip->getMorphClass(),
-            'rel_id' => $trip->id,
-        ]);
+        $trip->refresh();
+        $uploadedPhoto = $trip->photos->sole();
 
-        $this->assertNotNull($uploadedPhoto);
         $this->assertTrue($uploadedPhoto->is($photo));
         $this->assertSame('our-phpunit-trip/IMG_0013.jpg', $uploadedPhoto->slug);
 
-        \Storage::disk('photos')->assertMissing('our-phpunit-trip/IMG_0013.jpg');
+        $this->assertSame('original image', \Storage::disk('photos')->get($photo->slug));
     }
 
-    public function testGigPhoto()
+    public function testGigPhoto(): void
     {
         \Storage::fake('photos');
         \Storage::fake(FileUploadConfiguration::disk());
@@ -68,17 +66,12 @@ class PhotoUploadFormTest extends TestCase
             ->set('gigId', $gig->id)
             ->set('file', $file);
 
-        $photo = Photo::query()->firstWhere([
-            'rel_type' => $gig->getMorphClass(),
-            'rel_id' => $gig->id,
-        ]);
-
-        $this->assertNotNull($photo);
+        $this->assertSame('phpunit-gig/IMG_0025.jpg', $gig->photos->sole()->slug);
 
         \Storage::disk('photos')->assertExists('gigs/phpunit-gig/IMG_0025.jpg');
     }
 
-    public function testPngToJpeg()
+    public function testPngToJpeg(): void
     {
         \Storage::fake('photos');
         \Storage::fake(FileUploadConfiguration::disk());
@@ -92,12 +85,8 @@ class PhotoUploadFormTest extends TestCase
             ->set('gigId', $gig->id)
             ->set('file', $file);
 
-        $photo = Photo::query()->firstWhere([
-            'rel_type' => $gig->getMorphClass(),
-            'rel_id' => $gig->id,
-        ]);
+        $photo = $gig->photos->sole();
 
-        $this->assertNotNull($photo);
         $this->assertSame('phpunit-gig/IMG_1234.jpg', $photo->slug);
         $this->assertNull($photo->point);
 
@@ -113,18 +102,9 @@ class PhotoUploadFormTest extends TestCase
         $validFile = UploadedFile::fake()->image('valid.jpg');
         $trip = TripFactory::new()->withSlug('phpunit-trip')->create();
         $user = UserFactory::new()->root()->create();
-        $readAttempts = 0;
-
-        $this->mock(ReadRawExifDataAction::class)
-            ->expects('execute')
-            ->twice()
-            ->andReturnUsing(function () use (&$readAttempts): array {
-                if ($readAttempts++ === 0) {
-                    throw new \RuntimeException('Не удалось прочитать EXIF.');
-                }
-
-                return [];
-            });
+        $readExif = $this->mock(ReadRawExifDataAction::class);
+        $readExif->expects('execute')->ordered()->andThrow(new \RuntimeException('Не удалось прочитать EXIF.'));
+        $readExif->expects('execute')->ordered()->andReturn([]);
 
         \Livewire::actingAs($user)
             ->test(PhotoUploadForm::class)
@@ -152,7 +132,7 @@ class PhotoUploadFormTest extends TestCase
         \Storage::disk('photos')->assertExists('phpunit-trip/valid.jpg');
     }
 
-    public function testReplaceTripPhoto()
+    public function testReplaceTripPhoto(): void
     {
         \Storage::fake('photos');
         \Storage::fake(FileUploadConfiguration::disk());
@@ -171,22 +151,22 @@ class PhotoUploadFormTest extends TestCase
             ->withSlug('our-phpunit-trip/IMG_0013.jpg')
             ->create();
 
+        \Storage::disk('photos')->put($photo->slug, 'original image');
+
         \Livewire::actingAs($user)
             ->test(PhotoUploadForm::class)
             ->set('tripId', $trip->id)
             ->set('shouldOverwriteImage', true)
             ->set('file', $file);
 
-        $uploadedPhoto = Photo::query()->firstWhere([
-            'rel_type' => $trip->getMorphClass(),
-            'rel_id' => $trip->id,
-        ]);
+        $trip->refresh();
+        $uploadedPhoto = $trip->photos->sole();
 
-        $this->assertNotNull($uploadedPhoto);
         $this->assertTrue($uploadedPhoto->is($photo));
         $this->assertSame('our-phpunit-trip/IMG_0013.jpg', $uploadedPhoto->slug);
 
         \Storage::disk('photos')->assertExists('our-phpunit-trip/IMG_0013.jpg');
+        $this->assertNotSame('original image', \Storage::disk('photos')->get($photo->slug));
     }
 
     public function testTemporaryUploadFailureIsRecordedFromTheLivewireErrorBag(): void
@@ -214,7 +194,7 @@ class PhotoUploadFormTest extends TestCase
             ]);
     }
 
-    public function testTripPhoto()
+    public function testTripPhoto(): void
     {
         \Storage::fake('photos');
         \Storage::fake(FileUploadConfiguration::disk());
@@ -236,13 +216,8 @@ class PhotoUploadFormTest extends TestCase
                 'status' => 'success',
             ]);
 
-        $photo = Photo::query()->firstWhere([
-            'rel_type' => $trip->getMorphClass(),
-            'rel_id' => $trip->id,
-        ]);
-
-        $this->assertNotNull($photo);
-        $this->assertSame('phpunit-trip/IMG_0011.jpg', $photo->slug);
+        $trip->refresh();
+        $this->assertSame('phpunit-trip/IMG_0011.jpg', $trip->photos->sole()->slug);
 
         \Storage::disk('photos')->assertExists('phpunit-trip/IMG_0011.jpg');
     }
