@@ -13,164 +13,62 @@ class ParseWanikaniTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testKanaVocabulary()
+    public function testKanaVocabulary(): void
     {
-        \Http::fake([
-            'api.wanikani.com/v2/subjects?hidden=false&levels=2' => \Http::response([
-                'data' => [
-                    [
-                        'data' => [
-                            'auxiliary_meanings' => [],
-                            'characters' => 'おはよう',
-                            'context_sentences' => [
-                                [
-                                    'en' => 'Good morning',
-                                    'ja' => 'おはよう',
-                                ],
-                            ],
-                            'created_at' => '2023-03-14T13:35:00.000000Z',
-                            'document_url' => 'https://www.wanikani.com/kanji/%E3%81%8A%E3%81%AF%E3%82%88%E3%81%86',
-                            'hidden_at' => null,
-                            'level' => 2,
-                            'meaning_mnemonic' => '',
-                            'meanings' => [
-                                [
-                                    'accepted_answer' => true,
-                                    'meaning' => 'Good Morning',
-                                    'primary' => true,
-                                ],
-                                [
-                                    'accepted_answer' => true,
-                                    'meaning' => 'Morning',
-                                    'primary' => false,
-                                ],
-                            ],
-                            'parts_of_speech' => ['expression'],
-                            'pronunciation_audios' => [
-                                [
-                                    'content_type' => 'audio/mpeg',
-                                    'metadata' => [
-                                        'gender' => 'male',
-                                        'pronunciation' => 'おはよう',
-                                        'source_id' => 44756,
-                                        'voice_actor_id' => 2,
-                                        'voice_actor_name' => 'Kenichi',
-                                        'voice_description' => 'Tokyo accent',
-                                    ],
-                                    'url' => 'https://files.wanikani.com/s7fk83n1v8okf5m97u9f5hdot633',
-                                ],
-                                [
-                                    'content_type' => 'audio/mpeg',
-                                    'metadata' => [
-                                        'gender' => 'female',
-                                        'pronunciation' => 'おはよう',
-                                        'source_id' => 44697,
-                                        'voice_actor_id' => 1,
-                                        'voice_actor_name' => 'Kyoko',
-                                        'voice_description' => 'Tokyo accent',
-                                    ],
-                                    'url' => 'https://files.wanikani.com/0vvhxbklb9od9913t2641bv23514',
-                                ],
-                            ],
-                            'slug' => 'おはよう',
-                        ],
-                        'id' => 9177,
-                        'object' => 'kana_vocabulary',
-                        'url' => 'https://api.wanikani.com/v2/subjects/9177',
-                    ],
+        $this->fakeSubject(9177, 'kana_vocabulary', [
+            'level' => 2,
+            'characters' => 'おはよう',
+            'meanings' => [
+                ['accepted_answer' => true, 'meaning' => 'Good Morning'],
+                ['accepted_answer' => true, 'meaning' => 'Morning'],
+            ],
+            'context_sentences' => [['en' => 'Good morning', 'ja' => 'おはよう']],
+            'parts_of_speech' => ['expression'],
+            'pronunciation_audios' => [
+                [
+                    'content_type' => 'audio/mpeg',
+                    'metadata' => ['voice_actor_id' => 2, 'pronunciation' => 'おはよう'],
+                    'url' => 'https://files.wanikani.com/morning-male',
                 ],
-                'object' => 'collection',
-                'pages' => [
-                    'next_url' => null,
-                    'per_page' => 1000,
-                    'previous_url' => null,
+                [
+                    'content_type' => 'audio/mpeg',
+                    'metadata' => ['voice_actor_id' => 1, 'pronunciation' => 'おはよう'],
+                    'url' => 'https://files.wanikani.com/morning-female',
                 ],
-                'total_count' => 1,
-                'url' => 'https://api.wanikani.com/v2/subjects',
-            ]),
-        ]);
+            ],
+        ], level: 2);
 
-        $this->artisan(ParseWanikani::class, ['min_level' => 2, 'max_level' => 2]);
+        $this->artisan(ParseWanikani::class, ['min_level' => 2, 'max_level' => 2])->assertSuccessful();
 
-        $vocab = Vocabulary::query()->firstWhere('wk_id', 9177);
+        $vocab = Vocabulary::query()->where('wk_id', 9177)->sole();
 
         $this->assertSame(2, $vocab->level);
         $this->assertSame('おはよう', $vocab->character);
         $this->assertSame('good morning, morning', $vocab->meaning);
         $this->assertSame('おはよう', $vocab->kana);
         $this->assertSame("おはよう\nGood morning", $vocab->sentences);
-        $this->assertSame('0vvhxbklb9od9913t2641bv23514', $vocab->female_audio->slug);
-        $this->assertSame('s7fk83n1v8okf5m97u9f5hdot633', $vocab->male_audio->slug);
+        $this->assertSame('morning-female', $vocab->female_audio->slug);
+        $this->assertSame('morning-male', $vocab->male_audio->slug);
     }
 
-    public function testKanji()
+    public function testKanji(): void
     {
-        \Http::fake([
-            'api.wanikani.com/v2/subjects?hidden=false&levels=1' => \Http::response([
-                'data' => [
-                    [
-                        'data' => [
-                            'amalgamation_subject_ids' => [1, 2, 3],
-                            'auxiliary_meanings' => [],
-                            'characters' => '口口口',
-                            'component_subject_ids' => [16],
-                            'created_at' => '2012-02-27T18:08:16.000000Z',
-                            'document_url' => 'https://www.wanikani.com/kanji/%E5%8F%A3',
-                            'hidden_at' => null,
-                            'level' => 13,
-                            'meaning_hint' => '',
-                            'meaning_mnemonic' => '',
-                            'meanings' => [
-                                [
-                                    'accepted_answer' => true,
-                                    'meaning' => 'Mouth-Mouth',
-                                    'primary' => true,
-                                ],
-                            ],
-                            'reading_hint' => '',
-                            'reading_mnemonic' => '',
-                            'readings' => [
-                                [
-                                    'accepted_answer' => true,
-                                    'primary' => true,
-                                    'reading' => 'こう',
-                                    'type' => 'onyomi',
-                                ],
-                                [
-                                    'accepted_answer' => true,
-                                    'primary' => true,
-                                    'reading' => 'く',
-                                    'type' => 'onyomi',
-                                ],
-                                [
-                                    'accepted_answer' => false,
-                                    'primary' => false,
-                                    'reading' => 'くち',
-                                    'type' => 'kunyomi',
-                                ],
-                            ],
-                            'slug' => '口',
-                            'visually_similar_subject_ids' => [],
-                        ],
-                        'id' => 452,
-                        'object' => 'kanji',
-                        'url' => 'https://api.wanikani.com/v2/subjects/452',
-                    ],
-                ],
-                'object' => 'collection',
-                'pages' => [
-                    'next_url' => 'https://api.wanikani.com/v2/subjects?page_after_id=1000',
-                    'per_page' => 1000,
-                    'previous_url' => null,
-                ],
-                'total_count' => 9016,
-                'url' => 'https://api.wanikani.com/v2/subjects',
-            ]),
+        $this->fakeSubject(452, 'kanji', [
+            'level' => 13,
+            'characters' => '口口口',
+            'component_subject_ids' => [16],
+            'visually_similar_subject_ids' => [],
+            'meanings' => [['meaning' => 'Mouth-Mouth']],
+            'readings' => [
+                ['accepted_answer' => true, 'primary' => true, 'reading' => 'こう', 'type' => 'onyomi'],
+                ['accepted_answer' => true, 'primary' => true, 'reading' => 'く', 'type' => 'onyomi'],
+                ['accepted_answer' => false, 'primary' => false, 'reading' => 'くち', 'type' => 'kunyomi'],
+            ],
         ]);
 
-        $this->artisan(ParseWanikani::class);
+        $this->artisan(ParseWanikani::class)->assertSuccessful();
 
-        $kanji = Kanji::query()->firstWhere('wk_id', 452);
+        $kanji = Kanji::query()->where('wk_id', 452)->sole();
 
         $this->assertSame(13, $kanji->level);
         $this->assertSame('口口口', $kanji->character);
@@ -180,154 +78,32 @@ class ParseWanikaniTest extends TestCase
         $this->assertSame('onyomi', $kanji->important_reading);
     }
 
-    public function testRadical()
+    public function testRadical(): void
     {
-        \Http::fake([
-            'api.wanikani.com/v2/subjects?hidden=false&levels=1' => \Http::response([
-                'data' => [
-                    [
-                        'data' => [
-                            'amalgamation_subject_ids' => [1, 2, 3],
-                            'auxiliary_meanings' => [],
-                            'character_images' => [
-                                [
-                                    'content_type' => 'image/svg+xml',
-                                    'metadata' => [
-                                        'inline_styles' => false,
-                                    ],
-                                    'url' => 'https://cdn.wanikani.com/images/576-subject-1-without-css-original.svg?1520987227',
-                                ],
-                            ],
-                            'characters' => '一一一',
-                            'created_at' => '2012-02-27T18:08:16.000000Z',
-                            'document_url' => 'https://www.wanikani.com/radicals/ground',
-                            'hidden_at' => null,
-                            'level' => 12,
-                            'meaning_mnemonic' => '',
-                            'meanings' => [
-                                [
-                                    'accepted_answer' => true,
-                                    'meaning' => 'Ground-Ground',
-                                    'primary' => true,
-                                ],
-                            ],
-                            'slug' => 'ground',
-                        ],
-                        'id' => 1,
-                        'object' => 'radical',
-                        'url' => 'https://api.wanikani.com/v2/subjects/1',
-                    ],
-                ],
-                'object' => 'collection',
-                'pages' => [
-                    'next_url' => 'https://api.wanikani.com/v2/subjects?page_after_id=1000',
-                    'per_page' => 1000,
-                    'previous_url' => null,
-                ],
-                'total_count' => 9016,
-                'url' => 'https://api.wanikani.com/v2/subjects',
-            ]),
+        $this->fakeSubject(1, 'radical', [
+            'level' => 12,
+            'characters' => '一一一',
+            'character_images' => [],
+            'amalgamation_subject_ids' => [],
+            'meanings' => [['meaning' => 'Ground-Ground']],
         ]);
 
-        $this->artisan(ParseWanikani::class);
+        $this->artisan(ParseWanikani::class)->assertSuccessful();
 
-        $radical = Radical::query()->firstWhere('wk_id', 1);
+        $radical = Radical::query()->where('wk_id', 1)->sole();
 
         $this->assertSame(12, $radical->level);
         $this->assertSame('一一一', $radical->character);
         $this->assertSame('ground-ground', $radical->meaning);
     }
 
-    public function testVocabulary()
+    public function testVocabulary(): void
     {
-        \Http::fake([
-            'api.wanikani.com/v2/subjects?hidden=false&levels=1' => \Http::response([
-                'data' => [
-                    [
-                        'data' => [
-                            'amalgamation_subject_ids' => [1, 2, 3],
-                            'auxiliary_meanings' => [],
-                            'characters' => '力力力',
-                            'component_subject_ids' => [447],
-                            'context_sentences' => [
-                                [
-                                    'en' => 'English',
-                                    'ja' => 'ますか',
-                                ],
-                            ],
-                            'created_at' => '2012-02-27T18:08:16.000000Z',
-                            'document_url' => 'https://www.wanikani.com/kanji/%E5%8A%9B',
-                            'hidden_at' => null,
-                            'level' => 14,
-                            'meaning_mnemonic' => '',
-                            'meanings' => [
-                                [
-                                    'accepted_answer' => true,
-                                    'meaning' => 'Power-Power',
-                                    'primary' => true,
-                                ],
-                                [
-                                    'accepted_answer' => true,
-                                    'meaning' => 'Strength-Strength',
-                                    'primary' => false,
-                                ],
-                            ],
-                            'parts_of_speech' => ['noun'],
-                            'pronunciation_audios' => [
-                                [
-                                    'content_type' => 'audio/mpeg',
-                                    'metadata' => [
-                                        'gender' => 'female',
-                                        'pronunciation' => 'ちから',
-                                        'source_id' => 21641,
-                                        'voice_actor_id' => 1,
-                                        'voice_actor_name' => 'Kyoko',
-                                        'voice_description' => 'Tokyo accent',
-                                    ],
-                                    'url' => 'https://files.wanikani.com/female',
-                                ],
-                                [
-                                    'content_type' => 'audio/mpeg',
-                                    'metadata' => [
-                                        'gender' => 'male',
-                                        'pronunciation' => 'ちから',
-                                        'source_id' => 2726,
-                                        'voice_actor_id' => 2,
-                                        'voice_actor_name' => 'Kenichi',
-                                        'voice_description' => 'Tokyo accent',
-                                    ],
-                                    'url' => 'https://files.wanikani.com/male',
-                                ],
-                            ],
-                            'reading_mnemonic' => '',
-                            'readings' => [
-                                [
-                                    'accepted_answer' => true,
-                                    'primary' => true,
-                                    'reading' => 'ちから',
-                                ],
-                            ],
-                            'slug' => '力',
-                        ],
-                        'id' => 2484,
-                        'object' => 'vocabulary',
-                        'url' => 'https://api.wanikani.com/v2/subjects/2484',
-                    ],
-                ],
-                'object' => 'collection',
-                'pages' => [
-                    'next_url' => 'https://api.wanikani.com/v2/subjects?page_after_id=1000',
-                    'per_page' => 1000,
-                    'previous_url' => null,
-                ],
-                'total_count' => 9016,
-                'url' => 'https://api.wanikani.com/v2/subjects',
-            ]),
-        ]);
+        $this->fakeSubject(2484, 'vocabulary', $this->vocabularyData());
 
-        $this->artisan(ParseWanikani::class);
+        $this->artisan(ParseWanikani::class)->assertSuccessful();
 
-        $vocab = Vocabulary::query()->firstWhere('wk_id', 2484);
+        $vocab = Vocabulary::query()->where('wk_id', 2484)->sole();
 
         $this->assertSame(14, $vocab->level);
         $this->assertSame('力力力', $vocab->character);
@@ -338,115 +114,58 @@ class ParseWanikaniTest extends TestCase
         $this->assertSame('male', $vocab->male_audio->slug);
     }
 
-    public function testVocabularyWithRightPronunciationAudio()
+    public function testVocabularyWithRightPronunciationAudio(): void
     {
-        \Http::fake([
-            'api.wanikani.com/v2/subjects?hidden=false&levels=1' => \Http::response([
-                'data' => [
-                    [
-                        'data' => [
-                            'amalgamation_subject_ids' => [1, 2, 3],
-                            'auxiliary_meanings' => [],
-                            'characters' => '力力力',
-                            'component_subject_ids' => [447],
-                            'context_sentences' => [
-                                [
-                                    'en' => 'English',
-                                    'ja' => 'ますか',
-                                ],
-                            ],
-                            'created_at' => '2012-02-27T18:08:16.000000Z',
-                            'document_url' => 'https://www.wanikani.com/kanji/%E5%8A%9B',
-                            'hidden_at' => null,
-                            'level' => 14,
-                            'meaning_mnemonic' => '',
-                            'meanings' => [
-                                [
-                                    'accepted_answer' => true,
-                                    'meaning' => 'Power-Power',
-                                    'primary' => true,
-                                ],
-                                [
-                                    'accepted_answer' => true,
-                                    'meaning' => 'Strength-Strength',
-                                    'primary' => false,
-                                ],
-                            ],
-                            'parts_of_speech' => ['noun'],
-                            'pronunciation_audios' => [
-                                [
-                                    'content_type' => 'audio/mpeg',
-                                    'metadata' => [
-                                        'gender' => 'male',
-                                        'pronunciation' => 'ひとつ',
-                                        'source_id' => 21642,
-                                        'voice_actor_id' => 2,
-                                        'voice_actor_name' => 'Kenichi',
-                                        'voice_description' => 'Tokyo accent',
-                                    ],
-                                    'url' => 'https://files.wanikani.com/vz0nsb17j90pyvz7voewcqgrd6i1',
-                                ],
-                                [
-                                    'content_type' => 'audio/mpeg',
-                                    'metadata' => [
-                                        'gender' => 'female',
-                                        'pronunciation' => 'ちから',
-                                        'source_id' => 21641,
-                                        'voice_actor_id' => 1,
-                                        'voice_actor_name' => 'Kyoko',
-                                        'voice_description' => 'Tokyo accent',
-                                    ],
-                                    'url' => 'https://files.wanikani.com/female',
-                                ],
-                                [
-                                    'content_type' => 'audio/mpeg',
-                                    'metadata' => [
-                                        'gender' => 'male',
-                                        'pronunciation' => 'ちから',
-                                        'source_id' => 2726,
-                                        'voice_actor_id' => 2,
-                                        'voice_actor_name' => 'Kenichi',
-                                        'voice_description' => 'Tokyo accent',
-                                    ],
-                                    'url' => 'https://files.wanikani.com/male',
-                                ],
-                            ],
-                            'reading_mnemonic' => '',
-                            'readings' => [
-                                [
-                                    'accepted_answer' => true,
-                                    'primary' => true,
-                                    'reading' => 'ちから',
-                                ],
-                            ],
-                            'slug' => '力',
-                        ],
-                        'id' => 2484,
-                        'object' => 'vocabulary',
-                        'url' => 'https://api.wanikani.com/v2/subjects/2484',
-                    ],
-                ],
-                'object' => 'collection',
-                'pages' => [
-                    'next_url' => 'https://api.wanikani.com/v2/subjects?page_after_id=1000',
-                    'per_page' => 1000,
-                    'previous_url' => null,
-                ],
-                'total_count' => 9016,
-                'url' => 'https://api.wanikani.com/v2/subjects',
-            ]),
+        $data = $this->vocabularyData();
+        array_unshift($data['pronunciation_audios'], [
+            'content_type' => 'audio/mpeg',
+            'metadata' => ['voice_actor_id' => 2, 'pronunciation' => 'ひとつ'],
+            'url' => 'https://files.wanikani.com/wrong-pronunciation',
         ]);
 
-        $this->artisan(ParseWanikani::class);
+        $this->fakeSubject(2484, 'vocabulary', $data);
 
-        $vocab = Vocabulary::query()->firstWhere('wk_id', 2484);
+        $this->artisan(ParseWanikani::class)->assertSuccessful();
 
-        $this->assertSame(14, $vocab->level);
-        $this->assertSame('力力力', $vocab->character);
-        $this->assertSame('power-power, strength-strength', $vocab->meaning);
-        $this->assertSame('ちから', $vocab->kana);
-        $this->assertSame("ますか\nEnglish", $vocab->sentences);
+        $vocab = Vocabulary::query()->where('wk_id', 2484)->sole();
+
         $this->assertSame('female', $vocab->female_audio->slug);
         $this->assertSame('male', $vocab->male_audio->slug);
+    }
+
+    private function fakeSubject(int $id, string $type, array $data, int $level = 1): void
+    {
+        \Http::fake([
+            "api.wanikani.com/v2/subjects?hidden=false&levels={$level}" => \Http::response([
+                'data' => [['id' => $id, 'object' => $type, 'data' => $data]],
+            ]),
+        ]);
+    }
+
+    private function vocabularyData(): array
+    {
+        return [
+            'level' => 14,
+            'characters' => '力力力',
+            'meanings' => [
+                ['accepted_answer' => true, 'meaning' => 'Power-Power'],
+                ['accepted_answer' => true, 'meaning' => 'Strength-Strength'],
+            ],
+            'readings' => [['accepted_answer' => true, 'primary' => true, 'reading' => 'ちから']],
+            'context_sentences' => [['en' => 'English', 'ja' => 'ますか']],
+            'parts_of_speech' => ['noun'],
+            'pronunciation_audios' => [
+                [
+                    'content_type' => 'audio/mpeg',
+                    'metadata' => ['voice_actor_id' => 1, 'pronunciation' => 'ちから'],
+                    'url' => 'https://files.wanikani.com/female',
+                ],
+                [
+                    'content_type' => 'audio/mpeg',
+                    'metadata' => ['voice_actor_id' => 2, 'pronunciation' => 'ちから'],
+                    'url' => 'https://files.wanikani.com/male',
+                ],
+            ],
+        ];
     }
 }
