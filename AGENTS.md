@@ -18,8 +18,21 @@ The project follows a specific structure deviating slightly from standard Larave
 - **Eloquent:** `Model::automaticallyEagerLoadRelationships()` is enabled in `AppServiceProvider`, and `preventLazyLoading` is on outside production. Do **not** manually eager-load relations in controllers/actions "for safety" — relationships load automatically. Only add explicit `with()` when you're consciously restricting the loaded set or shaping the query.
 - **Migrations:** Always delete the `down` method from database migrations.
 - **Octane Compatibility:** Keep new and modified code compatible with long-running workers: do not retain request-specific state in singletons or static properties, prefer scoped bindings for per-request services, and avoid capturing the current request or user in long-lived objects.
-- **Test value:** Every added or changed test should protect a meaningful behavior or a plausible failure mode. Prefer the smallest set of tests that would catch a realistic regression. Extend existing coverage when appropriate; avoid redundant cases, assertions about implementation details, and tests that merely restate configuration or framework behavior.
-- **Verification vs. retained tests:** Verify every code change, but distinguish temporary verification from permanent regression coverage. You may write and run temporary tests or checks to exercise changed code. Retain tests only when they protect meaningful behavior or a plausible failure mode, add useful coverage beyond existing tests, and assert observable outcomes rather than incidental implementation details. Before finishing, review newly added tests: improve valuable cases and remove disposable checks you created. Report temporary verification separately from retained tests. Never remove pre-existing tests merely because they do not meet these criteria.
+
+## Test scope
+
+- Verify every code change using appropriate existing tests or checks.
+- Treat retained tests as maintenance and review costs. Prefer the smallest set that protects meaningful behavior.
+- Inspect existing coverage first. Zero new tests is valid when that coverage adequately verifies the change. Extend existing tests where appropriate.
+- For a bug fix, prefer one regression test reproducing the reported failure.
+- For a feature, cover the main behavior and distinct, realistic failure modes.
+- Every additional test must catch a plausible regression the other tests would miss.
+- Assert observable outcomes. Do not test framework guarantees, incidental implementation details, or unchanged behavior merely because it is nearby.
+- Do not duplicate coverage across layers or enumerate input variations unless they exercise meaningfully different behavior.
+- Temporary tests or checks may be used for verification without being retained. Before finishing, review newly added tests and remove disposable checks.
+- Never remove pre-existing tests merely because they do not meet these criteria.
+- Stop when the changed behavior and its important risks are covered.
+- In the final response, briefly explain what new coverage protects and report temporary verification separately from retained tests.
 
 ## Guidelines
 
@@ -36,16 +49,18 @@ The project follows a specific structure deviating slightly from standard Larave
 - **Start Environment:** `docker-compose up -d`
 - **Frontend Dev:** `yarn dev`
 - **Frontend Build:** `yarn build`
-- **Code Analysis:** `composer pint` (Style), `composer rector` (Refactoring)
+- **Code Analysis:** `composer pint` (full-project style formatting), `composer rector` (Refactoring)
 
 ### Database
 
-- **Reset & Seed:** Use `composer fresh` instead of `php artisan db:seed` (runs `migrate:fresh` and seeds using `App\Seeder\DatabaseSeeder`).
+- **Reset & Seed:** Use `composer fresh`. This project intentionally resets the database when seeding; its initial dataset supports development. The command runs `migrate:fresh` with `App\Seeder\DatabaseSeeder`.
 
 ### Testing
 
-- **Verification:** Use `composer test` (parallel execution).
-- **Run Tests (Fresh DB):** `composer test-fresh`
+- **Targeted verification:** Run the narrowest relevant test file or filter: `php artisan test --compact --no-interaction <path>` or `php artisan test --compact --no-interaction --filter=<name>`.
+- **Full suite:** `composer test` (parallel execution).
+- **Full suite with recreated test databases:** `composer test-fresh`.
+- Use targeted verification by default. Broaden testing when the change affects shared behavior or targeted results leave a concrete concern unresolved.
 
 ## I18n
 
@@ -79,7 +94,7 @@ This application is a Laravel application running on PHP 8.5. You are an expert 
 Before relying on a package's API, confirm its installed version:
 
 - PHP packages: run `composer show --direct` to list direct dependencies with versions, or `composer show <vendor/package>` for a single package.
-- JS packages: check `package.json` for the installed versions.
+- JS packages: `package.json` declares dependencies and version ranges. Check the installed package for its exact version, or the lockfile for the locked version.
 
 ## Skills Activation
 
@@ -102,7 +117,7 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 
 ## Frontend Bundling
 
-- If the user doesn't see a frontend change reflected in the UI, it could mean they need to run `yarn run build`, `yarn run dev`, or `composer run dev`. Ask them.
+- If frontend changes are not reflected in the UI, check whether Vite is serving current assets. Use `yarn build` for a production build or `yarn dev` for the development server, as appropriate.
 
 ## Documentation Files
 
@@ -170,7 +185,6 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 
 # Test Enforcement
 
-- Test every code change by adding or updating a test.
 - Run the affected tests and ensure they pass.
 - Test the changed behavior and its important failure modes, but do not add tests beyond them.
 
@@ -181,10 +195,6 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 - Use `php artisan make:` commands to create new files (i.e. migrations, controllers, models, etc.). You can list available Artisan commands using `php artisan list` and check their parameters with `php artisan [command] --help`.
 - If you're creating a generic PHP class, use `php artisan make:class`.
 - Pass `--no-interaction` to all Artisan commands to ensure they work without user input. You should also pass the correct `--options` to ensure correct behavior.
-
-### Model Creation
-
-- When creating new models, create useful factories and seeders for them too. Ask the user if they need any other things, using `php artisan make:model --help` to check the available options.
 
 ## APIs & Eloquent Resources
 
@@ -202,7 +212,7 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 
 ## Vite Error
 
-- If you receive an "Illuminate\Foundation\ViteException: Unable to locate file in Vite manifest" error, you can run `yarn run build` or ask the user to run `yarn run dev` or `composer run dev`.
+- If Vite reports a missing manifest entry, check that the referenced source file exists and is configured correctly. Rebuild with `yarn build` when the manifest is stale.
 
 === livewire/core rules ===
 
@@ -217,7 +227,7 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 # Laravel Pint Code Formatter
 
 - If you have modified any PHP files, you must run `vendor/bin/pint --dirty --format agent` before finalizing changes to ensure your code matches the project's expected style.
-- Do not run `vendor/bin/pint --test --format agent`, simply run `vendor/bin/pint --format agent` to fix any formatting issues.
+- Do not run `vendor/bin/pint --test --format agent`, simply run `vendor/bin/pint --dirty --format agent` to fix any formatting issues.
 
 === phpunit/core rules ===
 
