@@ -41,7 +41,7 @@ class CommentAddFormTest extends TestCase
             ->call('submit')
             ->assertHasNoErrors();
 
-        $comment = $news->comments()->sole();
+        $comment = $news->comments->sole();
 
         $this->assertSame($text, $comment->html);
         $this->assertSame(CommentStatus::Pending, $comment->status);
@@ -49,7 +49,7 @@ class CommentAddFormTest extends TestCase
         \Mail::assertQueued(CommentConfirmMail::class);
     }
 
-    public function testCommentIssueAsUser()
+    public function testCommentIssueAsUser(): void
     {
         \Notification::fake();
 
@@ -59,18 +59,19 @@ class CommentAddFormTest extends TestCase
         \Livewire::actingAs($user)
             ->test(CommentAddForm::class, ['model' => $issue])
             ->set('text', '<p>Comment issue</p>')
-            ->call('submit');
+            ->call('submit')
+            ->assertHasNoErrors();
 
         \Notification::assertSentTo($issue->user, IssueCommentedNotification::class);
 
-        $comment = $user->comments->first();
+        $comment = $issue->comments->sole();
 
-        $this->assertCount(1, $user->comments);
+        $this->assertSame($user->id, $comment->user_id);
         $this->assertSame(CommentStatus::Published, $comment->status);
         $this->assertSame('<p>Comment issue</p>', $comment->html);
     }
 
-    public function testCommentMagnetAsUser()
+    public function testCommentMagnetAsUser(): void
     {
         $magnet = MagnetFactory::new()->create();
         $user = UserFactory::new()->create();
@@ -80,18 +81,19 @@ class CommentAddFormTest extends TestCase
         \Livewire::actingAs($user)
             ->test(CommentAddForm::class, ['model' => $magnet])
             ->set('text', 'Comment magnet')
-            ->call('submit');
+            ->call('submit')
+            ->assertHasNoErrors();
 
-        $comment = $user->comments->first();
+        $comment = $magnet->comments->sole();
 
-        $this->assertCount(1, $user->comments);
+        $this->assertSame($user->id, $comment->user_id);
         $this->assertSame(CommentStatus::Published, $comment->status);
         $this->assertSame('Comment magnet', $comment->html);
 
         \Event::assertDispatched(CommentPublished::class);
     }
 
-    public function testCommentNewsAsGuest()
+    public function testCommentNewsAsGuest(): void
     {
         \Event::fake([
             UserRegisteredAuto::class,
@@ -104,7 +106,8 @@ class CommentAddFormTest extends TestCase
         \Livewire::test(CommentAddForm::class, ['model' => $news])
             ->set('email', 'guest-commentator@example.com')
             ->set('text', 'Comment <em>text</em>')
-            ->call('submit');
+            ->call('submit')
+            ->assertHasNoErrors();
 
         \Event::assertDispatched(UserRegisteredAuto::class);
         \Mail::assertQueued(CommentConfirmMail::class);
@@ -112,11 +115,11 @@ class CommentAddFormTest extends TestCase
 
         $user = User::query()
             ->where(['email' => 'guest-commentator@example.com'])
-            ->firstOrFail();
+            ->sole();
         $user->activate();
-        $comment = $user->comments->first();
+        $comment = $news->comments->sole();
 
-        $this->assertCount(1, $user->comments);
+        $this->assertSame($user->id, $comment->user_id);
         $this->assertSame(CommentStatus::Pending, $comment->status);
         $this->assertSame('Comment &lt;em&gt;text&lt;/em&gt;', $comment->html);
 
@@ -131,7 +134,7 @@ class CommentAddFormTest extends TestCase
         \Event::assertDispatched(CommentPublished::class);
     }
 
-    public function testCommentNewsAsUser()
+    public function testCommentNewsAsUser(): void
     {
         $news = NewsFactory::new()->create();
         $user = UserFactory::new()->create();
@@ -142,19 +145,20 @@ class CommentAddFormTest extends TestCase
             ->test(CommentAddForm::class, ['model' => $news])
             ->set('text', 'Comment news')
             ->call('submit')
+            ->assertHasNoErrors()
             ->assertDispatched(LivewireEvent::RefreshComments->name)
             ->assertSet('text', '');
 
-        $comment = $user->comments->first();
+        $comment = $news->comments->sole();
 
-        $this->assertCount(1, $user->comments);
+        $this->assertSame($user->id, $comment->user_id);
         $this->assertSame(CommentStatus::Published, $comment->status);
         $this->assertSame('Comment news', $comment->html);
 
         \Event::assertDispatched(CommentPublished::class);
     }
 
-    public function testCommentTripAsUser()
+    public function testCommentTripAsUser(): void
     {
         $trip = TripFactory::new()->create();
         $user = UserFactory::new()->create();
@@ -164,18 +168,19 @@ class CommentAddFormTest extends TestCase
         \Livewire::actingAs($user)
             ->test(CommentAddForm::class, ['model' => $trip])
             ->set('text', 'Comment trip')
-            ->call('submit');
+            ->call('submit')
+            ->assertHasNoErrors();
 
-        $comment = $user->comments->first();
+        $comment = $trip->comments->sole();
 
-        $this->assertCount(1, $user->comments);
+        $this->assertSame($user->id, $comment->user_id);
         $this->assertSame(CommentStatus::Published, $comment->status);
         $this->assertSame('Comment trip', $comment->html);
 
         \Event::assertDispatched(CommentPublished::class);
     }
 
-    public function testEscape()
+    public function testEscape(): void
     {
         $news = NewsFactory::new()->create();
         $user = UserFactory::new()->create();
@@ -185,10 +190,10 @@ class CommentAddFormTest extends TestCase
             ->set('text', 'Comment <em>text</em> " & \'')
             ->call('submit');
 
-        $this->assertSame('Comment &lt;em&gt;text&lt;/em&gt; &quot; &amp; &#039;', $user->comments->first()->html);
+        $this->assertSame('Comment &lt;em&gt;text&lt;/em&gt; &quot; &amp; &#039;', $news->comments->sole()->html);
     }
 
-    public function testHiddenNews()
+    public function testHiddenNews(): void
     {
         $news = NewsFactory::new()->hidden()->create();
         $user = UserFactory::new()->create();
@@ -198,6 +203,8 @@ class CommentAddFormTest extends TestCase
             ->set('text', 'Comment <em>text</em>')
             ->call('submit')
             ->assertHasErrors('text');
+
+        $this->assertFalse($news->comments()->exists());
     }
 
     public function testHoneypot(): void
