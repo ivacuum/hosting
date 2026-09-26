@@ -13,14 +13,6 @@ class PhotoTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testIndex()
-    {
-        PhotoFactory::new()->withTrip()->create();
-
-        $this->get('photos')
-            ->assertOk();
-    }
-
     public function testCities()
     {
         $photo = PhotoFactory::new()->withTrip()->create();
@@ -79,47 +71,32 @@ class PhotoTest extends TestCase
             ->assertOk();
     }
 
+    public function testIndex()
+    {
+        PhotoFactory::new()->withTrip()->create();
+
+        $this->get('photos')
+            ->assertOk();
+    }
+
     public function testMap()
     {
         $this->get('photos/map')
             ->assertOk();
     }
 
-    public function testMapPointsOfAllTrips()
-    {
-        PhotoFactory::new()->withTrip()->create();
-
-        $this->getJson('photos/map')
-            ->assertOk()
-            ->assertJsonStructure([
-                'type',
-                'features' => [
-                    '*' => [
-                        'type',
-                        'id',
-                        'geometry' => [
-                            'type',
-                            'coordinates' => [0, 1],
-                        ],
-                        'properties' => [
-                            'balloonContent',
-                            'clusterCaption',
-                        ],
-                    ],
-                ],
-            ]);
-    }
-
-    public function testMapPointAtEquator()
+    public function testMapPointAtEquator(): void
     {
         $photo = PhotoFactory::new()
             ->withPoint(0, 15)
             ->withTrip()
             ->create();
 
-        $this->assertTrue($photo->isOnMap());
-        $this->assertSame('0', $photo->point->lat);
-        $this->assertSame('15', $photo->point->lon);
+        $this->getJson("photos/map?trip_id={$photo->rel_id}")
+            ->assertOk()
+            ->assertJsonCount(1, 'features')
+            ->assertJsonPath('features.0.id', $photo->id)
+            ->assertJsonPath('features.0.geometry.coordinates', ['0', '15']);
     }
 
     public function testMapPointOfOnePhoto()
@@ -140,15 +117,46 @@ class PhotoTest extends TestCase
             ->assertJsonPath('features.0.properties.clusterCaption', basename($photo->slug));
     }
 
-    public function testMapPointsOfOneTrip()
+    public function testMapPointsOfAllTrips(): void
+    {
+        $firstPhoto = PhotoFactory::new()->withPoint(5, 15)->withTrip()->create();
+        $secondPhoto = PhotoFactory::new()->withPoint(25, 35)->withTrip()->create();
+
+        $this->getJson('photos/map')
+            ->assertOk()
+            ->assertJsonFragment(['id' => $firstPhoto->id])
+            ->assertJsonFragment(['id' => $secondPhoto->id])
+            ->assertJsonStructure([
+                'type',
+                'features' => [
+                    '*' => [
+                        'type',
+                        'id',
+                        'geometry' => [
+                            'type',
+                            'coordinates' => [0, 1],
+                        ],
+                        'properties' => [
+                            'balloonContent',
+                            'clusterCaption',
+                        ],
+                    ],
+                ],
+            ]);
+    }
+
+    public function testMapPointsOfOneTrip(): void
     {
         $photo = PhotoFactory::new()
             ->withPoint(5, 15)
             ->withTrip()
             ->create();
 
+        PhotoFactory::new()->withPoint(25, 35)->withTrip()->create();
+
         $this->getJson("photos/map?trip_id={$photo->rel_id}")
             ->assertOk()
+            ->assertJsonCount(1, 'features')
             ->assertJsonPath('type', 'FeatureCollection')
             ->assertJsonPath('features.0.type', 'Feature')
             ->assertJsonPath('features.0.id', $photo->id)
@@ -189,15 +197,6 @@ class PhotoTest extends TestCase
             ->assertDontSee($hiddenTag->title);
     }
 
-    public function testTrips()
-    {
-        $trip = TripFactory::new()->metaImage()->create();
-
-        $this->get('photos/trips')
-            ->assertOk()
-            ->assertSee($trip->title);
-    }
-
     public function testTrip()
     {
         $photo = PhotoFactory::new()->withTrip()->create();
@@ -205,5 +204,14 @@ class PhotoTest extends TestCase
         $this->get("photos/trips/{$photo->rel->id}")
             ->assertOk()
             ->assertSee($photo->rel->title);
+    }
+
+    public function testTrips()
+    {
+        $trip = TripFactory::new()->metaImage()->create();
+
+        $this->get('photos/trips')
+            ->assertOk()
+            ->assertSee($trip->title);
     }
 }
