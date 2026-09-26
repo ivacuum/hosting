@@ -6,8 +6,8 @@ use App\Domain\Locale;
 use App\Domain\NewsStatus;
 use App\Factory\NewsFactory;
 use App\Livewire\Acp\NewsForm;
-use App\News;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use PHPUnit\Framework\Attributes\TestWith;
 use Tests\TestCase;
 
 class AcpNewsTest extends TestCase
@@ -31,12 +31,20 @@ class AcpNewsTest extends TestCase
             ->assertSeeLivewire(NewsForm::class);
     }
 
-    public function testIndex()
+    #[TestWith([Locale::Rus], 'Russian')]
+    #[TestWith([Locale::Eng], 'English')]
+    public function testIndex(Locale $locale): void
     {
-        NewsFactory::new()->create();
+        $factory = NewsFactory::new()->withLocale($locale);
+        $first = $factory->withTitle('First phpunit post')->create();
+        $second = $factory->withTitle('Second phpunit post')->create();
 
-        $this->get('acp/news')
-            ->assertOk();
+        $this->get(match ($locale) {
+            Locale::Eng => 'en/acp/news',
+            default => 'acp/news',
+        })
+            ->assertOk()
+            ->assertSee([$first->title, $second->title]);
     }
 
     public function testShow()
@@ -47,48 +55,29 @@ class AcpNewsTest extends TestCase
             ->assertOk();
     }
 
-    public function testStore()
+    #[TestWith([Locale::Rus], 'Russian')]
+    #[TestWith([Locale::Eng], 'English')]
+    public function testStore(Locale $locale): void
     {
-        $news = NewsFactory::new()
-            ->withTitle('Store Russian Post Like It Is Done In ACP')
-            ->make();
+        $this->app->setLocale($locale->value);
 
         \Livewire::test(NewsForm::class)
-            ->set('title', $news->title)
-            ->set('markdown', $news->markdown)
+            ->set('title', 'phpunit news')
+            ->set('markdown', '**New body**')
             ->call('submit')
             ->assertHasNoErrors()
-            ->assertRedirect('/acp/news');
+            ->assertRedirect(match ($locale) {
+                Locale::Eng => '/en/acp/news',
+                default => '/acp/news',
+            });
 
-        $model = News::query()->firstWhere(['title' => $news->title]);
-
-        $this->assertSame(Locale::Rus, $model->locale);
-
-        $this->get('acp/news')
-            ->assertSee($news->title);
-    }
-
-    public function testStoreEnglish()
-    {
-        $news = NewsFactory::new()
-            ->withTitle('Store English Post Like It Is Done In ACP')
-            ->make();
-
-        $this->app->setLocale(Locale::Eng->value);
-
-        \Livewire::test(NewsForm::class)
-            ->set('title', $news->title)
-            ->set('markdown', $news->markdown)
-            ->call('submit')
-            ->assertHasNoErrors()
-            ->assertRedirect('/en/acp/news');
-
-        $model = News::query()->firstWhere(['title' => $news->title]);
-
-        $this->assertSame(Locale::Eng, $model->locale);
-
-        $this->get('en/acp/news')
-            ->assertSee($news->title);
+        $this->assertDatabaseHas('news', [
+            'title' => 'phpunit news',
+            'markdown' => '**New body**',
+            'html' => "<p><strong>New body</strong></p>\n",
+            'locale' => $locale->value,
+            'user_id' => auth()->id(),
+        ]);
     }
 
     public function testUpdate()
