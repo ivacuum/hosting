@@ -244,5 +244,25 @@ class GameSeeder extends Seeder
             ->withReleasedAt('2020-06-18')
             ->withFinishedAt('2020-12-04')
             ->create();
+
+        GameFactory::new()
+            ->withSteamId(2321470)
+            ->withTitle('Deep Rock Galactic: Survivor')
+            ->withSlug('deep-rock-galactic-survivor')
+            ->withShortDescriptionEn("DEEP ROCK GALACTIC: SURVIVOR is a single player survivor-like auto-shooter. Take on hordes of lethal aliens, mine riches, and unlock powerful upgrades to survive, as you wield the full arsenal of Deep Rock Galactic. It's one dwarf against all of Planet Hoxxes!")
+            ->withShortDescriptionRu('DEEP ROCK GALACTIC: SURVIVOR — это одиночный сурвайвор-лайк автошутер. Сражайтесь с полчищами смертоносных инопланетян, добывайте богатства и открывайте мощные улучшения, вооружившись всем арсеналом Deep Rock Galactic. Один дворф против всей планеты Хокссес!')
+            ->withReleasedAt('2025-09-17')
+            ->withFinishedAt('2025-10-28')
+            ->create();
+
+        GameFactory::new()
+            ->withSteamId(1942280)
+            ->withTitle('Brotato')
+            ->withSlug('brotato')
+            ->withShortDescriptionEn('Brotato is a top-down arena shooter roguelite where you play a potato wielding up to 6 weapons at a time to fight off hordes of aliens. Choose from a variety of traits and items to create unique builds and survive until help arrives.')
+            ->withShortDescriptionRu('Brotato — аренный шутер с элементами «рогалика», в котором вы играете за вооруженную картофелину, дающую отпор ордам пришельцев. Берите до 6 видов оружия, выбирайте черты и предметы, придумывайте тактику и выживайте до прибытия подмоги.')
+            ->withReleasedAt('2023-06-23')
+            ->withFinishedAt('2025-07-23')
+            ->create();
     }
 }
