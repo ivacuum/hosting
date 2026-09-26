@@ -45,19 +45,21 @@ class AcpDcppHubsTest extends TestCase
             ->assertOk();
     }
 
-    public function testStore()
+    public function testStore(): void
     {
-        $hub = DcppHubFactory::new()->make();
-
         \Livewire::test(DcppHubForm::class)
-            ->set('title', $hub->title)
-            ->set('address', $hub->address)
+            ->set('title', 'phpunit hub')
+            ->set('address', 'phpunit-hub.example.com')
+            ->set('port', 1411)
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/dcpp-hubs');
 
-        $this->get('acp/dcpp-hubs')
-            ->assertSee($hub->title);
+        $this->assertDatabaseHas('dcpp_hubs', [
+            'title' => 'phpunit hub',
+            'address' => 'phpunit-hub.example.com',
+            'port' => 1411,
+        ]);
     }
 
     public function testUpdate()

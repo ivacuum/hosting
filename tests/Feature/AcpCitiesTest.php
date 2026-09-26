@@ -56,7 +56,7 @@ class AcpCitiesTest extends TestCase
             ->assertSee($city->title);
     }
 
-    public function testStore()
+    public function testStore(): void
     {
         $country = CountryFactory::new()->create();
 
@@ -69,8 +69,12 @@ class AcpCitiesTest extends TestCase
             ->assertHasNoErrors()
             ->assertRedirect('/acp/cities');
 
-        $this->get('acp/cities')
-            ->assertSee('phpunit ru');
+        $this->assertDatabaseHas('cities', [
+            'slug' => 'phpunit slug',
+            'title_en' => 'phpunit en',
+            'title_ru' => 'phpunit ru',
+            'country_id' => $country->id,
+        ]);
     }
 
     public function testUpdate()

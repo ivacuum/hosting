@@ -18,17 +18,16 @@ class MySettingsTest extends TestCase
             ->assertOk();
     }
 
-    public function testUpdateLocale()
+    public function testUpdateLocale(): void
     {
-        $user = UserFactory::new()->make();
-        $user->locale = Locale::Eng->value;
-        $user->save();
+        $user = UserFactory::new()->withLocale(Locale::Rus)->create();
 
         \Event::fake(\App\Events\Stats\MySettingsChanged::class);
 
         $this->be($user)
             ->put('my/settings', ['locale' => Locale::Eng->value])
-            ->assertFound();
+            ->assertFound()
+            ->assertSessionHasNoErrors();
 
         $user->refresh();
 
@@ -37,17 +36,18 @@ class MySettingsTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\MySettingsChanged::class);
     }
 
-    public function testUpdateTorrentShortTitle()
+    public function testUpdateTorrentShortTitle(): void
     {
-        $user = UserFactory::new()->make();
-        $user->magnet_short_title = 0;
-        $user->save();
+        $user = UserFactory::new()->create();
+
+        $this->assertSame(0, $user->magnet_short_title);
 
         \Event::fake(\App\Events\Stats\MySettingsChanged::class);
 
         $this->be($user)
             ->put('my/settings', ['magnet_short_title' => 1])
-            ->assertFound();
+            ->assertFound()
+            ->assertSessionHasNoErrors();
 
         $user->refresh();
 

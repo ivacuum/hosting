@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Factory\UserFactory;
+use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -52,15 +53,19 @@ class RegisterTest extends TestCase
         ]);
     }
 
-    public function testSubmitGuest()
+    public function testSubmitGuest(): void
     {
         $this->from('auth/register')
             ->post('auth/register', [
                 'email' => 'phpunit@example.com',
                 'password' => 'secret42',
             ])
-            ->assertRedirect('/');
+            ->assertRedirect('/')
+            ->assertSessionHasNoErrors();
 
-        $this->assertAuthenticated();
+        $user = User::query()->where('email', 'phpunit@example.com')->sole();
+
+        $this->assertAuthenticatedAs($user);
+        $this->assertTrue(\Hash::check('secret42', $user->password));
     }
 }

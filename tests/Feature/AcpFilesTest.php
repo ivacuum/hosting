@@ -47,26 +47,29 @@ class AcpFilesTest extends TestCase
             ->assertOk();
     }
 
-    public function testStore()
+    public function testStore(): void
     {
         \Storage::fake('files');
         \Storage::fake(FileUploadConfiguration::disk());
 
-        $file = FileFactory::new()->make();
         $uploadedFile = UploadedFile::fake()->image('IMG_0025.jpg');
 
         \Livewire::test(FileForm::class)
-            ->set('title', $file->title)
-            ->set('slug', $file->slug)
+            ->set('title', 'phpunit file')
+            ->set('slug', 'phpunit-file')
             ->set('upload', $uploadedFile)
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/files');
 
-        $this->get('acp/files')
-            ->assertSee($file->title);
+        $this->assertDatabaseHas('files', [
+            'title' => 'phpunit file',
+            'slug' => 'phpunit-file',
+            'extension' => 'jpg',
+            'size' => $uploadedFile->getSize(),
+        ]);
 
-        \Storage::disk('files')->assertExists("{$file->slug}.jpg");
+        \Storage::disk('files')->assertExists('phpunit-file.jpg');
     }
 
     public function testUpdate()

@@ -44,19 +44,19 @@ class AcpArtistsTest extends TestCase
             ->assertOk();
     }
 
-    public function testStore()
+    public function testStore(): void
     {
-        $artist = ArtistFactory::new()->make();
-
         \Livewire::test(ArtistForm::class)
-            ->set('title', $artist->title)
-            ->set('slug', $artist->slug)
+            ->set('title', 'phpunit artist')
+            ->set('slug', 'phpunit-acp-artist')
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/artists');
 
-        $this->get('acp/artists')
-            ->assertSee($artist->title);
+        $this->assertDatabaseHas('artists', [
+            'title' => 'phpunit artist',
+            'slug' => 'phpunit-acp-artist',
+        ]);
     }
 
     public function testUpdate()

@@ -29,7 +29,7 @@ class ForgotPasswordTest extends TestCase
         $this->assertAuthenticated();
     }
 
-    public function testSubmitGuest()
+    public function testSubmitGuest(): void
     {
         \Mail::fake();
 
@@ -42,7 +42,7 @@ class ForgotPasswordTest extends TestCase
 
         $this->assertGuest();
 
-        \Mail::assertQueued(ResetPasswordMail::class);
+        \Mail::assertQueued(ResetPasswordMail::class, fn (ResetPasswordMail $mail): bool => $mail->hasTo($user->email));
         \Mail::assertOutgoingCount(1);
     }
 }

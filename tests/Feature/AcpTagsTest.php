@@ -44,19 +44,19 @@ class AcpTagsTest extends TestCase
             ->assertOk();
     }
 
-    public function testStore()
+    public function testStore(): void
     {
-        $tag = TagFactory::new()->make();
-
         \Livewire::test(TagForm::class)
-            ->set('titleRu', $tag->title_ru)
-            ->set('titleEn', $tag->title_en)
+            ->set('titleRu', 'phpunit мосты')
+            ->set('titleEn', 'phpunit bridges')
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/tags');
 
-        $this->get('acp/tags')
-            ->assertSee($tag->title);
+        $this->assertDatabaseHas('tags', [
+            'title_ru' => 'phpunit мосты',
+            'title_en' => 'phpunit bridges',
+        ]);
     }
 
     public function testUpdate()

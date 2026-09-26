@@ -46,21 +46,23 @@ class AcpCountriesTest extends TestCase
             ->assertSee($country->title);
     }
 
-    public function testStore()
+    public function testStore(): void
     {
-        $country = CountryFactory::new()->make();
-
         \Livewire::test(CountryForm::class)
-            ->set('slug', $country->slug)
-            ->set('emoji', $country->emoji)
-            ->set('titleEn', $country->title_en)
-            ->set('titleRu', $country->title_ru)
+            ->set('slug', 'phpunit-country')
+            ->set('emoji', '🇯🇵')
+            ->set('titleEn', 'phpunit japan')
+            ->set('titleRu', 'phpunit япония')
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/countries');
 
-        $this->get('acp/countries')
-            ->assertSee($country->title);
+        $this->assertDatabaseHas('countries', [
+            'slug' => 'phpunit-country',
+            'emoji' => '🇯🇵',
+            'title_en' => 'phpunit japan',
+            'title_ru' => 'phpunit япония',
+        ]);
     }
 
     public function testUpdate()

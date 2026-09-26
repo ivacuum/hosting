@@ -89,9 +89,14 @@ class AcpGigsTest extends TestCase
             ->assertSee($gig->title);
     }
 
-    public function testStore()
+    public function testStore(): void
     {
-        $artist = ArtistFactory::new()->withTitle('phpunit artist')->create();
+        $this->travelTo('2024-03-01');
+
+        $artist = ArtistFactory::new()
+            ->withSlug('phpunit-artist')
+            ->withTitle('phpunit artist')
+            ->create();
         $city = CityFactory::new()->create();
 
         \Livewire::test(GigForm::class)
@@ -102,8 +107,14 @@ class AcpGigsTest extends TestCase
             ->assertHasNoErrors()
             ->assertRedirect('/acp/gigs');
 
-        $this->get('acp/gigs')
-            ->assertSee('phpunit artist');
+        $this->assertDatabaseHas('gigs', [
+            'city_id' => $city->id,
+            'artist_id' => $artist->id,
+            'date' => '2024-03-01 00:00:00',
+            'slug' => 'phpunit-artist.2024',
+            'title_en' => 'phpunit artist',
+            'title_ru' => 'phpunit artist',
+        ]);
     }
 
     public function testUpdate()
