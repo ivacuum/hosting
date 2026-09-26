@@ -16,6 +16,12 @@ return [
             'path' => env('LOG_SINGLE_PATH', storage_path('logs/laravel.log')),
             'level' => env('LOG_LEVEL', 'debug'),
             'replace_placeholders' => true,
+
+            'formatter' => Monolog\Formatter\JsonFormatter::class,
+            'formatter_with' => [
+                'appendNewline' => true,
+                'includeStacktraces' => true,
+            ],
         ],
 
         'daily' => [

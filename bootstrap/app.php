@@ -52,6 +52,7 @@ return Application::configure(basePath: dirname(__DIR__))
             users: static fn () => to('/'),
         );
 
+        $middleware->prepend(\App\Http\Middleware\AddRequestContext::class);
         $middleware->append(\App\Http\Middleware\SetLocale::class);
         $middleware->append(\App\Http\Middleware\EarlyHints::class);
 
