@@ -52,8 +52,6 @@ enum CacheKey: string
             self::MagnetStatsByCategories,
             self::SteamGameDetails => CarbonInterval::minutes(15),
 
-            self::PhotosPoints => CarbonInterval::minutes(30),
-
             self::RtoApiUnavailable => CarbonInterval::hours(2),
 
             self::IcuLocales => CarbonInterval::day(),
@@ -61,6 +59,7 @@ enum CacheKey: string
             self::GamesFrontPageById,
             self::MyVisibleGigs,
             self::MyVisibleTrips,
+            self::PhotosPoints,
             self::TripsPublishedWithCover => CarbonInterval::week(),
 
             self::CitiesById,
