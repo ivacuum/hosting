@@ -4,100 +4,51 @@ namespace Tests\Unit;
 
 use App\Action\FilterNullsAction;
 use Illuminate\Foundation\Testing\Attributes\UnitTest;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use PHPUnit\Framework\Attributes\TestWith;
 use Tests\TestCase;
 
 class FilterNullsActionTest extends TestCase
 {
-    use DatabaseTransactions;
-
     #[UnitTest]
-    public function testOk()
+    public function testRecursivelyRemovesOnlyNullValues(): void
     {
-        $action = new FilterNullsAction;
+        $result = new FilterNullsAction()->execute([
+            'null' => null,
+            'text' => 'string',
+            'zero' => 0,
+            'false' => false,
+            'empty' => '',
+            'nested' => ['null' => null, 'list' => [null, 'kept'], 'empty' => []],
+        ]);
 
         $this->assertSame([
             'text' => 'string',
-            'chat_id' => 1,
-            'reply_markup' => [
-                'inline_keyboard' => [
-                    [
-                        [
-                            'text' => 'Yes',
-                            'callback_data' => 'secret:yes',
-                        ],
-                    ],
-                    [
-                        [
-                            'url' => 'https://example.com',
-                            'text' => 'Link',
-                        ],
-                    ],
-                ],
-            ],
-            'json_serializable' => [
-                'string' => 'string',
-                'int' => 0,
-                'array' => [
-                    'string' => 'string',
-                    'int' => 0,
-                    'array' => [],
-                ],
-            ],
-        ], $action->execute([
-            'null' => null,
-            'text' => 'string',
-            'chat_id' => 1,
-            'reply_markup' => [
-                'inline_keyboard' => [
-                    [
-                        [
-                            'url' => null,
-                            'text' => 'Yes',
-                            'callback_data' => 'secret:yes',
-                        ],
-                    ],
-                    [
-                        [
-                            'url' => 'https://example.com',
-                            'text' => 'Link',
-                            'callback_data' => null,
-                        ],
-                    ],
-                ],
-                'help' => null,
-            ],
-            'json_serializable' => [
-                'string' => new class implements \JsonSerializable {
-                    public function jsonSerialize(): string
-                    {
-                        return 'string';
-                    }
-                },
-                'null' => new class implements \JsonSerializable {
-                    public function jsonSerialize(): null
-                    {
-                        return null;
-                    }
-                },
-                'int' => new class implements \JsonSerializable {
-                    public function jsonSerialize(): int
-                    {
-                        return 0;
-                    }
-                },
-                'array' => new class implements \JsonSerializable {
-                    public function jsonSerialize(): array
-                    {
-                        return [
-                            'string' => 'string',
-                            'int' => 0,
-                            'null' => null,
-                            'array' => [],
-                        ];
-                    }
-                },
-            ],
-        ]));
+            'zero' => 0,
+            'false' => false,
+            'empty' => '',
+            'nested' => ['list' => [1 => 'kept'], 'empty' => []],
+        ], $result);
+    }
+
+    #[UnitTest]
+    #[TestWith(['string', ['value' => 'string']], 'string')]
+    #[TestWith([0, ['value' => 0]], 'zero')]
+    #[TestWith([null, []], 'null')]
+    #[TestWith([['null' => null, 'zero' => 0, 'empty' => []], ['value' => ['zero' => 0, 'empty' => []]]], 'nested array')]
+    public function testSerializesValuesBeforeFiltering(mixed $value, array $expected): void
+    {
+        $serializable = new class($value) implements \JsonSerializable {
+            public function __construct(private mixed $value) {}
+
+            public function jsonSerialize(): mixed
+            {
+                return $this->value;
+            }
+        };
+
+        $this->assertSame(
+            ['nested' => $expected],
+            new FilterNullsAction()->execute(['nested' => ['value' => $serializable]]),
+        );
     }
 }
