@@ -22,9 +22,11 @@ class MetricsController
         Metric::query()
             ->tap(new MetricWeekScope)
             ->get()
-            ->map(static function (Metric $item) use (&$metrics, &$dates) {
-                $dates[$item->date->toDateString()] = true;
-                $metrics[$item->event][$item->date->toDateString()] = $item->count;
+            ->each(static function (Metric $item) use (&$metrics, &$dates) {
+                $date = $item->date->toDateString();
+
+                $dates[$date] = true;
+                $metrics[$item->event][$date] = $item->count;
             });
 
         return view('acp.metrics.index', [
