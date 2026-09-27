@@ -25,7 +25,7 @@ Route::get('dev/templates', [Acp\Dev\TemplatesController::class, 'index']);
 Route::get('dev/templates/{template}', [Acp\Dev\TemplatesController::class, 'show']);
 Route::get('dev/thumbnails', [Acp\Dev\ThumbnailsController::class, 'index']);
 Route::post('dev/thumbnails', [Acp\Dev\ThumbnailsController::class, 'store']);
-Route::get('dev/thumbnails/clean', [Acp\Dev\ThumbnailsController::class, 'clean']);
+Route::delete('dev/thumbnails/clean', [Acp\Dev\ThumbnailsController::class, 'clean']);
 
 Route::resource('emails', Acp\EmailsController::class)->except(['create', 'edit', 'store', 'update']);
 

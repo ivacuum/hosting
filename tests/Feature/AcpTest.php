@@ -10,6 +10,18 @@ class AcpTest extends TestCase
     use BeAdmin;
     use DatabaseTransactions;
 
+    public function testClean(): void
+    {
+        \Storage::fake('temp');
+        \Storage::disk('temp')->put('thumbnail.jpg', 'test image');
+
+        $this
+            ->delete('acp/dev/thumbnails/clean')
+            ->assertRedirect('acp/dev/thumbnails');
+
+        \Storage::disk('temp')->assertMissing('thumbnail.jpg');
+    }
+
     public function testRoot()
     {
         $this->get('acp')->assertOk();
