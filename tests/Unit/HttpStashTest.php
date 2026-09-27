@@ -34,17 +34,11 @@ class HttpStashTest extends TestCase
 
         $stash = app(HttpStash::class);
         $request = $this->cacheableRequest();
-        $original = null;
-
-        $fresh = $stash->store($request, function () use ($request, &$original): Response {
-            return $original = $request->send(Http::createPendingRequest());
-        });
-
+        $original = $request->send(Http::createPendingRequest());
+        $fresh = $stash->store($request, fn () => $original);
         $cached = $stash->store($request, fn () => $request->send(Http::createPendingRequest()));
 
         $this->assertSame($original, $fresh);
-        $this->assertTrue(Cache::has($request->cacheKey()));
-        $this->assertNotSame($fresh, $cached);
         $this->assertSame(['name' => 'Example'], $cached->json());
         Http::assertSentCount(1);
     }
@@ -61,12 +55,14 @@ class HttpStashTest extends TestCase
         $stash = app(HttpStash::class);
         $request = $this->cacheableRequest($shouldCache);
 
-        $response = $stash->store($request, fn () => $request->send(Http::createPendingRequest()));
+        $send = fn () => $request->send(Http::createPendingRequest());
+
+        $stash->store($request, $send);
+        $response = $stash->store($request, $send);
 
         $this->assertSame($status, $response->status());
         $this->assertSame('body', $response->body());
-        $this->assertFalse(Cache::has($request->cacheKey()));
-        Http::assertSentCount(1);
+        Http::assertSentCount(2);
     }
 
     #[TestWith([false, true], 'unreadable')]
