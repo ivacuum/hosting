@@ -76,9 +76,5 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('typo', static function (Request $request) {
             return Limit::perMinute(3)->by($request->ip());
         });
-
-        RateLimiter::for('upload', static function (Request $request) {
-            return Limit::perMinute(3)->by($request->ip());
-        });
     }
 }
