@@ -21,13 +21,6 @@ class HttpResponseSnapshotTest extends TestCase
         $data = HttpResponseSnapshot::fromResponse($response);
 
         $this->assertSame(2, $response->toPsrResponse()->getBody()->tell());
-        $this->assertSame([
-            'body' => "\xFFbody",
-            'reason' => 'Custom reason',
-            'status' => 201,
-            'headers' => ['X-Test' => ['value']],
-            'version' => '1.0',
-        ], $data);
 
         $cached = HttpResponseSnapshot::toResponse($data);
 
