@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Domain\SessionKey;
-use App\Domain\UserStatus;
 use App\Email;
 use App\Events\MailReported;
 use App\Events\Stats\MailClicked;
@@ -16,9 +15,11 @@ class MailController extends Controller
 {
     public function click(MailClickForm $request, Guard $auth, string $timestamp, int $id)
     {
-        $email = Email::query()->find($id);
+        $email = $request->isSigned
+            ? Email::query()->find($id)
+            : null;
 
-        if ($email === null || !\URL::hasValidSignature($request)) {
+        if ($email === null) {
             return redirect($request->goto);
         }
 
@@ -26,16 +27,15 @@ class MailController extends Controller
             $email->incrementClicks();
         }
 
-        if ($email->user_id) {
-            /** @var User $user */
-            if (null !== $user = User::query()->find($email->user_id)) {
-                $user->activate();
+        $user = $email->user;
 
-                if ($user->status === UserStatus::Active && $auth->id() !== $user->id) {
-                    $auth->login($user);
+        if ($user !== null) {
+            $user->activate();
 
-                    event(new \App\Events\Stats\UserAutologinWithEmailLink);
-                }
+            if ($user->isActive() && $auth->id() !== $user->id) {
+                $auth->login($user);
+
+                event(new \App\Events\Stats\UserAutologinWithEmailLink);
             }
         }
 
