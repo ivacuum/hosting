@@ -27,16 +27,16 @@ class MailController extends Controller
             $email->incrementClicks();
         }
 
-        $user = $email->user;
+        $user = $email->created_at->isAfter(now()->subDay())
+            ? $email->user
+            : null;
 
-        if ($user !== null) {
-            $user->activate();
+        $user?->activate();
 
-            if ($user->isActive() && $auth->id() !== $user->id) {
-                $auth->login($user);
+        if ($user?->isActive() && $auth->id() !== $user->id) {
+            $auth->login($user);
 
-                event(new \App\Events\Stats\UserAutologinWithEmailLink);
-            }
+            event(new \App\Events\Stats\UserAutologinWithEmailLink);
         }
 
         event(new MailClicked);

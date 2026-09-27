@@ -15,10 +15,15 @@ class MailClickTest extends TestCase
 
     public function testAuthenticated()
     {
+        $this->travelTo('2026-09-27 12:00:00');
+
         $email = EmailFactory::new()
             ->withComment(1)
             ->withTemplate(CommentConfirmMail::class)
+            ->withUser(UserFactory::new()->inactive())
             ->create();
+
+        $this->travel(24 * 60 * 60 - 1)->seconds();
 
         $goto = '/404/';
         $clicks = $email->clicks;
@@ -38,9 +43,25 @@ class MailClickTest extends TestCase
 
         $this->assertEquals($clicks + 1, $email->clicks);
         $this->assertAuthenticated();
+        $this->assertTrue($email->user->isActive());
 
         \Event::assertDispatched(\App\Events\Stats\MailClicked::class);
         \Event::assertDispatched(\App\Events\Stats\UserAutologinWithEmailLink::class);
+    }
+
+    public function testDayOldMailRedirectsWithoutActivationOrLogin(): void
+    {
+        $this->travelTo('2026-09-27 12:00:00');
+
+        $email = EmailFactory::new()->withUser(UserFactory::new()->inactive())->create();
+        $link = $email->signedLink('/my');
+
+        $this->travel(24)->hours();
+
+        $this->get($link)->assertRedirect('/my');
+
+        $this->assertGuest();
+        $this->assertFalse($email->user->fresh()->isActive());
     }
 
     public function testInvalidSignaturesAllowSameOriginRedirectsWithoutAuthentication(): void
