@@ -48,7 +48,7 @@ class MetricsAggregator
     public function push(string $event): void
     {
         if ($this->ifMetricExists->execute($event)) {
-            @$this->metrics[$event]++;
+            $this->metrics[$event] = ($this->metrics[$event] ?? 0) + 1;
         }
     }
 }

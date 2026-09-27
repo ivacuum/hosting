@@ -19,10 +19,10 @@ class GetTripCountByCitiesAction
             ->get(['id', 'city_id', 'status'])
             ->each(static function (Trip $trip) use (&$tripCount) {
                 if ($trip->status->isPublished()) {
-                    @$tripCount[$trip->city_id]['published'] += 1;
+                    $tripCount[$trip->city_id]['published'] = ($tripCount[$trip->city_id]['published'] ?? 0) + 1;
                 }
 
-                @$tripCount[$trip->city_id]['total'] += 1;
+                $tripCount[$trip->city_id]['total'] = ($tripCount[$trip->city_id]['total'] ?? 0) + 1;
             });
 
         return $tripCount;
