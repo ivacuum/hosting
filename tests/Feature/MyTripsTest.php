@@ -74,6 +74,25 @@ class MyTripsTest extends TestCase
 
     public function testStore()
     {
+        $markdown = <<<'MARKDOWN'
+            **Safe Markdown** and <b>untrusted HTML</b>.
+
+            <script>alert('unsafe')</script>
+
+            <img src="invalid" onerror="alert('unsafe')">
+
+            [Unsafe link](javascript:alert%281%29)
+
+            ![Markdown image](https://example.com/markdown.jpg)
+
+            https://example.com/single.jpg
+
+            https://example.com/first.jpg
+            https://example.com/second.png
+
+            `<b>Code example</b>`
+            MARKDOWN;
+
         $city = CityFactory::new()
             ->withTitle('phpunit city ru', 'phpunit city en')
             ->create();
@@ -86,7 +105,7 @@ class MyTripsTest extends TestCase
                 'status' => TripStatus::Published->value,
                 'city_id' => $city->id,
                 'date_end' => '2025-01-08',
-                'markdown' => 'Markdown text',
+                'markdown' => $markdown,
                 'title_en' => 'phpunit EN',
                 'title_ru' => 'phpunit RU',
                 'date_start' => '2025-01-01',
@@ -97,6 +116,20 @@ class MyTripsTest extends TestCase
 
         $this->assertSame('phpunit city en', $trip->title_en);
         $this->assertSame('phpunit city ru', $trip->title_ru);
+        $this->assertSame($markdown, $trip->markdown);
+
+        $html = $trip->html;
+
+        $this->assertStringNotContainsString('<script', $html);
+        $this->assertStringNotContainsString('<b>', $html);
+        $this->assertStringNotContainsString('onerror=', $html);
+        $this->assertStringNotContainsString('href="javascript:', $html);
+        $this->assertStringContainsString('<strong>Safe Markdown</strong>', $html);
+        $this->assertStringContainsString('src="https://example.com/markdown.jpg"', $html);
+        $this->assertStringContainsString('data-src="https://example.com/single.jpg"', $html);
+        $this->assertStringContainsString('data-src="https://example.com/first.jpg"', $html);
+        $this->assertStringContainsString('data-src="https://example.com/second.png"', $html);
+        $this->assertStringContainsString('<code>&lt;b&gt;Code example&lt;/b&gt;</code>', $html);
     }
 
     public function testUpdate()

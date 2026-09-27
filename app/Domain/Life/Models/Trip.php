@@ -6,6 +6,7 @@ use App\Comment;
 use App\Domain\CommentStatus;
 use App\Domain\Life\Action\FormatTripPeriodAction;
 use App\Domain\Life\Action\FormatTripPeriodWithYearAction;
+use App\Domain\Life\Action\RenderTripMarkdownAction;
 use App\Domain\Life\Observer\TripObserver;
 use App\Domain\Life\Policy\TripPolicy;
 use App\Domain\Life\TripStatus;
@@ -14,13 +15,11 @@ use App\Http\Controllers\LifeController;
 use App\Http\Controllers\UserTravelTripController;
 use App\Traits;
 use App\User;
-use App\Utilities\TextImagesParser;
 use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
-use League\CommonMark\CommonMarkConverter;
 
 /**
  * @property int $id
@@ -288,17 +287,10 @@ class Trip extends Model
     protected function markdown(): Attribute
     {
         return Attribute::make(
-            set: static function ($value) {
-                $converter = new CommonMarkConverter([
-                    'max_nesting_level' => 15,
-                    'allow_unsafe_links' => false,
-                ]);
-
-                return [
-                    'markdown' => $value ?? '',
-                    'html' => $converter->convert((new TextImagesParser)->parse($value ?? ''))->getContent(),
-                ];
-            },
+            set: static fn (string|null $value): array => [
+                'markdown' => $value ?? '',
+                'html' => app(RenderTripMarkdownAction::class)->execute($value ?? ''),
+            ],
         );
     }
 
