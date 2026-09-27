@@ -172,7 +172,7 @@
 
   <p>Промежуток времени можно выразить с помощью предлогов <strong>von</strong> и <strong>bis</strong> и дней недели без артикля.</p>
 
-  <h3 class="font-medium text-2xl tracking-tight mt-12 mb-2">Года</h3>
+  <h3 class="font-medium text-2xl tracking-tight mt-12 mb-2">Годы</h3>
   <p>Читаются сотнями. Например, 1998 год: девятнадцать сотен, восемь и девяносто — neunzehn&middot;hundert&middot;acht&middot;und&middot;neunzig.</p>
   <div>В речи:</div>
   <p>
