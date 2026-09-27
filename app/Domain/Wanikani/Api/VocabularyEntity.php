@@ -4,7 +4,7 @@ namespace App\Domain\Wanikani\Api;
 
 use Illuminate\Support\Collection;
 
-class VocabularyEntity
+readonly class VocabularyEntity
 {
     public function __construct(
         public int $id,

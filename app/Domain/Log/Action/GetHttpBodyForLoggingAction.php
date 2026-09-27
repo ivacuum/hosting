@@ -35,7 +35,9 @@ class GetHttpBodyForLoggingAction
 
     private function isText(string $contentType): bool
     {
-        $mediaType = strtolower(trim(explode(';', $contentType, 2)[0]));
+        $mediaType = explode(';', $contentType, 2)[0]
+            |> trim(...)
+            |> strtolower(...);
 
         return str_starts_with($mediaType, 'text/')
             || str_ends_with($mediaType, '+json')

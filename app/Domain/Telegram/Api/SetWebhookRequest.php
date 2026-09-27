@@ -6,7 +6,7 @@ readonly class SetWebhookRequest extends TelegramRequest
 {
     public function __construct(
         private string $url,
-        private string|null $secretToken = null,
+        #[\SensitiveParameter] private string|null $secretToken = null,
     ) {}
 
     public function endpoint(): string

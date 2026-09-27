@@ -18,22 +18,13 @@ class AssignTagsToPhotoAction
             return ['attached' => 0, 'skipped' => 0];
         }
 
-        $alreadyAttached = $photo->tags()
-            ->whereIn('tags.id', $tagIds)
-            ->pluck('tags.id')
-            ->all();
-
-        $newIds = array_values(array_diff($tagIds, $alreadyAttached));
-
-        if ($newIds !== []) {
-            $existing = $this->findExistingTagIds->execute($newIds);
-
-            $photo->tags()->attach($existing);
-        }
+        $existingTagIds = $this->findExistingTagIds->execute($tagIds);
+        $changes = $photo->tags()->syncWithoutDetaching($existingTagIds);
+        $attached = count($changes['attached']);
 
         return [
-            'attached' => count($newIds),
-            'skipped' => count($alreadyAttached),
+            'attached' => $attached,
+            'skipped' => count($existingTagIds) - $attached,
         ];
     }
 }

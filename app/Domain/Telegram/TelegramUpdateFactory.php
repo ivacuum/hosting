@@ -13,7 +13,8 @@ class TelegramUpdateFactory
     private string $firstName = 'First';
     private string $languageCode = 'en';
 
-    public function deeplink(string $deeplink)
+    #[\NoDiscard]
+    public function deeplink(string $deeplink): self
     {
         return $this->withText("/start {$deeplink}");
     }
@@ -50,17 +51,20 @@ class TelegramUpdateFactory
         return new self;
     }
 
-    public function photo()
+    #[\NoDiscard]
+    public function photo(): self
     {
         return $this->withText('/photo');
     }
 
-    public function start()
+    #[\NoDiscard]
+    public function start(): self
     {
         return $this->withText('/start');
     }
 
-    public function withText(string $text)
+    #[\NoDiscard]
+    public function withText(string $text): self
     {
         return clone ($this, ['text' => $text]);
     }

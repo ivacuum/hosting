@@ -24,6 +24,7 @@ class TelegramClient
         #[Config('services.telegram.api_url')]
         private readonly string $apiUrl,
         #[Config('services.telegram.bot_token')]
+        #[\SensitiveParameter]
         private readonly string $botToken,
         #[Config('services.telegram.disable_web_page_preview')]
         bool|null $disableWebPagePreview,
@@ -31,11 +32,13 @@ class TelegramClient
         $this->disableWebPagePreview = $disableWebPagePreview;
     }
 
+    #[\NoDiscard]
     public function asResponse(): self
     {
         return clone ($this, ['asResponse' => true]);
     }
 
+    #[\NoDiscard]
     public function chat(int $chatId): self
     {
         return clone ($this, ['chatId' => $chatId]);
@@ -48,6 +51,7 @@ class TelegramClient
         return $this->send($request);
     }
 
+    #[\NoDiscard]
     public function disableWebPagePreview(bool $disableWebPagePreview = true): self
     {
         return clone ($this, ['disableWebPagePreview' => $disableWebPagePreview]);
@@ -72,31 +76,37 @@ class TelegramClient
         return $this->send($request);
     }
 
+    #[\NoDiscard]
     public function html(): self
     {
         return $this->parseMode(ParseMode::Html);
     }
 
+    #[\NoDiscard]
     public function languageCode(LanguageCode|null $languageCode): self
     {
         return clone ($this, ['languageCode' => $languageCode]);
     }
 
+    #[\NoDiscard]
     public function markdown(): self
     {
         return $this->parseMode(ParseMode::Markdown);
     }
 
+    #[\NoDiscard]
     public function parseMode(ParseMode $parseMode): self
     {
         return clone ($this, ['parseMode' => $parseMode]);
     }
 
+    #[\NoDiscard]
     public function replyMarkup(InlineKeyboardMarkup|null $replyMarkup): self
     {
         return clone ($this, ['replyMarkup' => $replyMarkup]);
     }
 
+    #[\NoDiscard]
     public function replyToMessageId(int $messageId): self
     {
         return clone ($this, ['replyToMessageId' => $messageId]);
@@ -148,7 +158,7 @@ class TelegramClient
         return $this->send($request);
     }
 
-    public function setWebhook(string $url, string|null $secretToken = null): TelegramResponse|array
+    public function setWebhook(string $url, #[\SensitiveParameter] string|null $secretToken = null): TelegramResponse|array
     {
         $request = new SetWebhookRequest($url, $secretToken);
 

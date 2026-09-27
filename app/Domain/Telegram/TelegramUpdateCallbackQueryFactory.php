@@ -54,7 +54,8 @@ class TelegramUpdateCallbackQueryFactory
         return new self;
     }
 
-    public function withData(string $data)
+    #[\NoDiscard]
+    public function withData(string $data): self
     {
         return clone ($this, ['data' => $data]);
     }

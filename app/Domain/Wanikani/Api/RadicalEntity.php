@@ -4,7 +4,7 @@ namespace App\Domain\Wanikani\Api;
 
 use Illuminate\Support\Collection;
 
-class RadicalEntity
+readonly class RadicalEntity
 {
     public function __construct(
         public int $id,
@@ -25,7 +25,7 @@ class RadicalEntity
             $json['level'],
             $json['characters'] ?? '',
             $svgUrl,
-            collect($json['meanings'])->first()['meaning'],
+            array_first($json['meanings'])['meaning'],
             collect($json['amalgamation_subject_ids'])
         );
     }

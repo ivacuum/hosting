@@ -3,9 +3,8 @@
 namespace App\Domain\Rto;
 
 use Carbon\CarbonImmutable;
-use Carbon\CarbonInterface;
 
-class RtoTopicData
+readonly class RtoTopicData
 {
     private const array TITLE_REPLACE_FROM = [' )', ' ,', 'HD (1080p)'];
     private const array TITLE_REPLACE_TO = [')', ',', 'HD 1080p'];
@@ -14,13 +13,13 @@ class RtoTopicData
         public int $id,
         public string $title,
         public string $infoHash,
-        public CarbonInterface $registeredAt,
+        public CarbonImmutable $registeredAt,
         public RtoTopicStatus $status,
         public int $size,
         public int $forumId,
         public int $posterId,
         public int $seeders,
-        public CarbonInterface $seederLastSeenAt,
+        public CarbonImmutable $seederLastSeenAt,
     ) {}
 
     public static function fromArray(int $id, array $payload): self

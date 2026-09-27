@@ -4,7 +4,7 @@ namespace App\Domain\Wanikani\Api;
 
 use Illuminate\Support\Collection;
 
-class KanjiEntity
+readonly class KanjiEntity
 {
     public function __construct(
         public int $id,

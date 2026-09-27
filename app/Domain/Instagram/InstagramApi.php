@@ -13,35 +13,35 @@ readonly class InstagramApi
         private Factory $http,
     ) {}
 
-    public function createMedia(string $accessToken, string $imageUrl, string $caption): InstagramCreateMediaResponse
+    public function createMedia(#[\SensitiveParameter] string $accessToken, string $imageUrl, string $caption): InstagramCreateMediaResponse
     {
         $request = new InstagramCreateMediaRequest($imageUrl, $caption);
 
         return new InstagramCreateMediaResponse($this->sendRequest($request, $accessToken));
     }
 
-    public function me(string $accessToken): InstagramMeResponse
+    public function me(#[\SensitiveParameter] string $accessToken): InstagramMeResponse
     {
         $request = new InstagramMeRequest;
 
         return new InstagramMeResponse($this->sendRequest($request, $accessToken));
     }
 
-    public function publishMedia(string $accessToken, string $creationId): InstagramPublishMediaResponse
+    public function publishMedia(#[\SensitiveParameter] string $accessToken, string $creationId): InstagramPublishMediaResponse
     {
         $request = new InstagramPublishMediaRequest($creationId);
 
         return new InstagramPublishMediaResponse($this->sendRequest($request, $accessToken));
     }
 
-    public function refreshAccessToken(string $accessToken): InstagramRefreshAccessTokenResponse
+    public function refreshAccessToken(#[\SensitiveParameter] string $accessToken): InstagramRefreshAccessTokenResponse
     {
         $request = new InstagramRefreshAccessTokenRequest;
 
         return new InstagramRefreshAccessTokenResponse($this->sendRequest($request, $accessToken));
     }
 
-    private function http(string $accessToken): PendingRequest
+    private function http(#[\SensitiveParameter] string $accessToken): PendingRequest
     {
         return $this->http
             ->createPendingRequest()
@@ -52,7 +52,7 @@ readonly class InstagramApi
             ->withQueryParameters(['access_token' => $accessToken]);
     }
 
-    private function sendRequest(HttpRequest $request, string $accessToken): Response
+    private function sendRequest(HttpRequest $request, #[\SensitiveParameter] string $accessToken): Response
     {
         return $request->send($this->http($accessToken));
     }
