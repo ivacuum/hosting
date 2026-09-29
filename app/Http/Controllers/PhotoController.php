@@ -117,7 +117,8 @@ class PhotoController
 
         $next = Photo::query()
             ->where('id', '>', $photo->id)
-            ->tap(new PhotoPublishedScope);
+            ->tap(new PhotoPublishedScope)
+            ->orderBy('id');
 
         $prev = Photo::query()
             ->where('id', '<', $photo->id)
