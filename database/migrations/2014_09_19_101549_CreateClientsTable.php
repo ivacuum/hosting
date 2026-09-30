@@ -97,6 +97,8 @@ return new class extends Migration {
             $table->unsignedInteger('clicks')->default(0);
             $table->unsignedInteger('views')->default(0);
             $table->timestamps();
+
+            $table->index(['rel_type', 'rel_id']);
         });
 
         Schema::create('external_http_requests', function (Blueprint $table) {
