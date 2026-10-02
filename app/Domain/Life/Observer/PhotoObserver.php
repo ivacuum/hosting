@@ -14,11 +14,16 @@ class PhotoObserver
     {
         $photo->deleteFiles();
 
+        $this->cache->forgetMyVisibleTrips();
         $this->cache->forgetPhotoPoints();
     }
 
     public function saved(Photo $photo): void
     {
+        if ($photo->wasRecentlyCreated || $photo->wasChanged(['rel_type', 'rel_id'])) {
+            $this->cache->forgetMyVisibleTrips();
+        }
+
         if ($photo->wasRecentlyCreated || $photo->wasChanged(['point', 'status', 'rel_type', 'rel_id', 'slug'])) {
             $this->cache->forgetPhotoPoints();
         }

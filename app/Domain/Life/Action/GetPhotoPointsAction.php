@@ -16,21 +16,30 @@ class GetPhotoPointsAction
 
     public function execute(int|null $tripId): array
     {
-        $key = $tripId
-            ? CacheKey::PhotosPointsForTrip
-            : CacheKey::PhotosPoints;
+        if ($tripId !== null) {
+            return $this->photoPoints($tripId);
+        }
 
-        return $this->cache->remember($key, $key->ttl(), static function () use ($tripId): array {
-            $photos = Photo::query()
-                ->with('rel')
-                ->tap(new PhotoForTripScope($tripId))
-                ->tap(new PhotoPublishedScope)
-                ->tap(new PhotoOnMapScope)
-                ->orderBy('id')
-                ->get();
+        $key = CacheKey::PhotosPoints;
 
-            return new PhotoPointCollectionResponse($photos)
-                ->jsonSerialize();
-        });
+        return $this->cache->remember(
+            $key->key(app()->getLocale()),
+            $key->ttl(),
+            fn (): array => $this->photoPoints(null),
+        );
+    }
+
+    private function photoPoints(int|null $tripId): array
+    {
+        $photos = Photo::query()
+            ->with('rel')
+            ->tap(new PhotoForTripScope($tripId))
+            ->tap(new PhotoPublishedScope)
+            ->tap(new PhotoOnMapScope)
+            ->orderBy('id')
+            ->get();
+
+        return new PhotoPointCollectionResponse($photos)
+            ->jsonSerialize();
     }
 }

@@ -23,8 +23,7 @@ enum CacheKey: string
     case MyVisibleGigs = 'my.gigs.visible';
     case MyVisibleTrips = 'my.trips.visible';
 
-    case PhotosPoints = 'photos.points.all';
-    case PhotosPointsForTrip = 'photos.points.trip'; // Отключено
+    case PhotosPoints = 'photos.points.all.{key}';
 
     /** RTO API недоступен где-то с середины лета 2026, поэтому уменьшаем количество запросов к нему */
     case RtoApiUnavailable = 'http.rto.api-unavailable.v1';
@@ -46,8 +45,6 @@ enum CacheKey: string
     {
         return match ($this) {
             self::MetricsNextStartId => null,
-
-            self::PhotosPointsForTrip => CarbonInterval::minutes(0),
 
             self::MagnetStatsByCategories,
             self::SteamGameDetails => CarbonInterval::minutes(15),

@@ -3,6 +3,7 @@
 namespace App\Utilities;
 
 use App\Domain\CacheKey;
+use App\Domain\Locale;
 use Illuminate\Cache\Repository;
 
 class CacheHelper
@@ -46,12 +47,16 @@ class CacheHelper
         ]);
     }
 
-    public function forgetPhotoPoints()
+    public function forgetMyVisibleTrips(): void
     {
-        $this->cache->deleteMultiple([
-            CacheKey::PhotosPoints,
-            CacheKey::PhotosPointsForTrip,
-        ]);
+        $this->cache->forget(CacheKey::MyVisibleTrips);
+    }
+
+    public function forgetPhotoPoints(): void
+    {
+        foreach (Locale::cases() as $locale) {
+            $this->cache->forget(CacheKey::PhotosPoints->key($locale->value));
+        }
     }
 
     public function forgetTrips()
