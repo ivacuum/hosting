@@ -52,7 +52,8 @@ return [
                 ExponentialBackoff::class => [
                     100_000,
                     1_000_000,
-                    true,
+                    // Jitter в Predis 3.6.1 вызывал предупреждение о потере точности float → int.
+                    false,
                 ],
             ],
         ],
@@ -74,7 +75,8 @@ return [
                 ExponentialBackoff::class => [
                     100_000,
                     1_000_000,
-                    true,
+                    // Jitter в Predis 3.6.1 вызывал предупреждение о потере точности float → int.
+                    false,
                 ],
             ],
         ],
