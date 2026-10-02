@@ -41,7 +41,7 @@ class ImageViewerServer extends Command
         $this->server->start();
     }
 
-    public function handleRequest(Request $request, Response $response)
+    public function handleRequest(Request $request, Response $response): void
     {
         $this->acceptedConnections++;
 
@@ -54,13 +54,17 @@ class ImageViewerServer extends Command
         if (preg_match('/^\/g\/(?<date>\d{6})\/(?<subfolder>[st]\/)?(?<slug>\d+_[\da-zA-Z]{10}\.[a-z]{3,4})$/', $request->server['request_uri'], $matches)) {
             $date = implode('/', str_split($matches['date'], 2));
 
+            $response->status(302);
+            $response->header('X-Accel-Redirect', "/d/g/{$date}/{$matches['subfolder']}{$matches['slug']}");
+            $response->end();
+
             if (in_array($matches['subfolder'], ['', 's/'])) {
-                event(new GalleryImageViewed("{$matches['date']}/{$matches['slug']}"));
+                try {
+                    event(new GalleryImageViewed("{$matches['date']}/{$matches['slug']}"));
+                } catch (\Throwable $e) {
+                    report($e);
+                }
             }
-
-            $response->detach();
-
-            $this->server->send($response->fd, "HTTP/1.1 302 Found\r\nContent-Length: 0\r\nX-Accel-Redirect: /d/g/{$date}/{$matches['subfolder']}{$matches['slug']}\r\n\r\n");
 
             return;
         }

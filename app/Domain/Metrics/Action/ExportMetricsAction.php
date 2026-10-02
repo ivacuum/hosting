@@ -4,6 +4,7 @@ namespace App\Domain\Metrics\Action;
 
 use App\Domain\Metrics\RedisKey;
 use Illuminate\Support\Facades\Redis;
+use Predis\Command\RawCommand;
 
 class ExportMetricsAction
 {
@@ -26,8 +27,12 @@ class ExportMetricsAction
             }
         }
 
-        // XADD stream * key value
-        // Redis::xadd(RedisKey::Metrics->value, ['json' => json_encode($metrics, JSON_THROW_ON_ERROR)]);
-        Redis::client()->executeRaw(['XADD', RedisKey::Metrics->value, '*', 'json', json_encode($metrics, JSON_THROW_ON_ERROR)]);
+        // RawCommand сохраняет ключ без префикса, executeCommand применяет `max_retries`
+        Redis::client()->executeCommand(new RawCommand('XADD', [
+            RedisKey::Metrics->value,
+            '*',
+            'json',
+            json_encode($metrics, JSON_THROW_ON_ERROR),
+        ]));
     }
 }

@@ -30,8 +30,11 @@ class PushMetricAction
 
     private function export(): void
     {
-        $this->exportMetrics->execute($this->metrics);
-        $this->resetMetrics();
+        try {
+            $this->exportMetrics->execute($this->metrics);
+        } finally {
+            $this->resetMetrics();
+        }
     }
 
     private function isLocalOrProduction(): bool
