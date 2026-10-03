@@ -50,6 +50,31 @@ enum MagnetCategory: int
         };
     }
 
+    public function parentId(): int
+    {
+        return match ($this) {
+            self::ForeignCinema,
+            self::RussianCinema,
+            self::ForeignTvSeries,
+            self::RussianTvSeries,
+            self::Cartoons,
+            self::CartoonSeries,
+            self::Anime => 1,
+
+            self::ActionGames,
+            self::RpgGames,
+            self::ArcadeGames,
+            self::AdventureGames,
+            self::SimulatorGames,
+            self::StrategyGames,
+            self::OnlineGames,
+            self::OldGames,
+            self::OtherGames => 25,
+
+            self::Other => 0,
+        };
+    }
+
     public function title(): string
     {
         return match ($this) {

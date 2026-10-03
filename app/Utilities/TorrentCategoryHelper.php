@@ -2,110 +2,38 @@
 
 namespace App\Utilities;
 
+use App\Domain\Magnet\MagnetCategory;
+
 class TorrentCategoryHelper
 {
     // При увеличении вложенности понадобится поменять проверку в методе canPost
     protected $categories = [
         1 => [
-            'title' => 'Кинематограф', // Кинематограф
+            'title' => 'Кинематограф',
             'parent' => 0,
         ],
-        2 => [
-            'icon' => 'film',
-            'title' => 'Зарубежное кино',
-            'parent' => 1,
-        ],
-        3 => [
-            'icon' => 'film',
-            'title' => 'Отечественное кино',
-            'parent' => 1,
-        ],
-        4 => [
-            'icon' => 'collection-play',
-            'title' => 'Зарубежные сериалы',
-            'parent' => 1,
-        ],
-        5 => [
-            'icon' => 'collection-play',
-            'title' => 'Русские сериалы',
-            'parent' => 1,
-        ],
-        7 => [
-            'icon' => 'film',
-            'title' => 'Мультфильмы',
-            'parent' => 1,
-        ],
-        8 => [
-            'icon' => 'collection-play',
-            'title' => 'Мультсериалы',
-            'parent' => 1,
-        ],
-        9 => [
-            'icon' => 'film',
-            'title' => 'Аниме',
-            'parent' => 1,
-        ],
-
-        //
         25 => [
             'title' => 'Игры для Windows',
-            'parent' => 0,
-        ],
-        26 => [
-            'icon' => 'gamepad',
-            'title' => 'Action',
-            'parent' => 25,
-        ],
-        27 => [
-            'icon' => 'gamepad',
-            'title' => 'RPG',
-            'parent' => 25,
-        ],
-        28 => [
-            'icon' => 'gamepad',
-            'title' => 'Аркады',
-            'parent' => 25,
-        ],
-        29 => [
-            'icon' => 'gamepad',
-            'title' => 'Приключения и квесты',
-            'parent' => 25,
-        ],
-        30 => [
-            'icon' => 'gamepad',
-            'title' => 'Симуляторы',
-            'parent' => 25,
-        ],
-        31 => [
-            'icon' => 'gamepad',
-            'title' => 'Стратегии',
-            'parent' => 25,
-        ],
-        32 => [
-            'icon' => 'gamepad',
-            'title' => 'Онлайн игры',
-            'parent' => 25,
-        ],
-        33 => [
-            'icon' => 'gamepad',
-            'title' => 'Старые игры',
-            'parent' => 25,
-        ],
-        34 => [
-            'icon' => 'gamepad',
-            'title' => 'Другие игры',
-            'parent' => 25,
-        ],
-
-        //
-        35 => [
-            'icon' => 'file-text-o',
-            'title' => 'Прочее',
             'parent' => 0,
         ],
     ];
 
     protected $tree;
+
+    public function __construct()
+    {
+        $this->categories += collect(MagnetCategory::cases())
+            ->mapWithKeys(static fn (MagnetCategory $category) => [
+                $category->value => [
+                    'icon' => $category->icon(),
+                    'title' => $category->title(),
+                    'parent' => $category->parentId(),
+                ],
+            ])
+            ->all();
+
+        ksort($this->categories);
+    }
 
     public function breadcrumbs($id)
     {
