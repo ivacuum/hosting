@@ -68,11 +68,15 @@ class NumberTrainer extends Component
             : [$this->number];
     }
 
-    public function check()
+    public function check(): void
     {
         $answer = Str::trim(mb_strtolower($this->answer));
 
         if (in_array($answer, $this->acceptedAnswers())) {
+            if (!$this->shouldReveal) {
+                $this->recordAnalytics('answered');
+            }
+
             match ($this->guessingSpellOut) {
                 true => event(new \App\Events\Stats\NumberAnsweredSpellOut),
                 false => event(new \App\Events\Stats\NumberAnsweredNumber),
@@ -88,7 +92,7 @@ class NumberTrainer extends Component
         $this->reveal();
     }
 
-    public function mount(GetNumberLocalesAction $getNumberLocales)
+    public function mount(GetNumberLocalesAction $getNumberLocales): void
     {
         $this->locales = collect($getNumberLocales->execute())
             ->mapWithKeys(static fn (string $locale) => [$locale => \Locale::getDisplayName($locale, \App::getLocale())])
@@ -104,7 +108,7 @@ class NumberTrainer extends Component
         event(new \App\Events\Stats\NumberMounted);
     }
 
-    public function reveal()
+    public function reveal(): void
     {
         if ($this->shouldReveal) {
             $this->incorrectAnswer = false;
@@ -113,13 +117,14 @@ class NumberTrainer extends Component
             return;
         }
 
+        $this->recordAnalytics('revealed');
         $this->shouldReveal = true;
         $this->revealed++;
 
         event(new \App\Events\Stats\NumberAnswerRevealed);
     }
 
-    public function skip()
+    public function skip(): void
     {
         if ($this->shouldReveal === false) {
             $this->skipped++;
@@ -139,7 +144,7 @@ class NumberTrainer extends Component
         return $formatter->format($this->number);
     }
 
-    public function updatedCustomInterval()
+    public function updatedCustomInterval(): void
     {
         if (!$this->customInterval) {
             $this->resetValidation('minimum');
@@ -161,7 +166,7 @@ class NumberTrainer extends Component
         };
     }
 
-    public function updatedGuessingSpellOut()
+    public function updatedGuessingSpellOut(): void
     {
         match ($this->guessingSpellOut) {
             true => event(new \App\Events\Stats\NumberGuessingSpellOut),
@@ -169,7 +174,7 @@ class NumberTrainer extends Component
         };
     }
 
-    public function updatedLang()
+    public function updatedLang(): void
     {
         $this->next();
         $this->dispatch(LivewireEvent::LanguageChanged->name, $this->lang);
@@ -177,7 +182,7 @@ class NumberTrainer extends Component
         event(new \App\Events\Stats\NumberLanguageSelected);
     }
 
-    public function updatedMaximum()
+    public function updatedMaximum(): void
     {
         $this->maximum = max(self::MAXIMUM_AT_LEAST, min($this->maximum, self::MAXIMUM_AT_MOST));
         $this->minimum = min($this->minimum, $this->maximum - self::MINIMAL_INTERVAL);
@@ -185,7 +190,7 @@ class NumberTrainer extends Component
         $this->resetValidation('minimum');
     }
 
-    public function updatedMinimum()
+    public function updatedMinimum(): void
     {
         $this->minimum = max(self::MINIMUM_AT_LEAST, min($this->minimum, self::MAXIMUM_AT_MOST - self::MINIMAL_INTERVAL));
         $this->maximum = max($this->minimum + self::MINIMAL_INTERVAL, $this->maximum);
@@ -193,7 +198,7 @@ class NumberTrainer extends Component
         $this->resetValidation('maximum');
     }
 
-    public function updatedSayOutLoud()
+    public function updatedSayOutLoud(): void
     {
         match ($this->sayOutLoud) {
             true => event(new \App\Events\Stats\NumberListen),
@@ -216,7 +221,7 @@ class NumberTrainer extends Component
         return random_int(1, mb_strlen($this->maximum) - 1);
     }
 
-    private function pickRandomNumber()
+    private function pickRandomNumber(): void
     {
         if ($this->customInterval) {
             $this->number = random_int($this->minimum, $this->maximum);
@@ -236,6 +241,19 @@ class NumberTrainer extends Component
         }
 
         $this->sayOutLoud();
+    }
+
+    private function recordAnalytics(string $event): void
+    {
+        logs()->debug("number_trainer.{$event}", [
+            'language' => $this->lang,
+            'answer_mode' => $this->guessingSpellOut ? 'spell_out' : 'number',
+            'presentation' => $this->sayOutLoud ? 'audio' : 'text',
+            'interval_type' => $this->customInterval ? 'custom' : 'predefined',
+            'min' => $this->minimum,
+            'max' => $this->maximum,
+            'number' => $this->number,
+        ]);
     }
 
     private function sayOutLoud()
