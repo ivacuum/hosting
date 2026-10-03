@@ -2,58 +2,52 @@
 
 ## Project Overview
 
-This is a Laravel application serving as a personal website for notes, trip stories, and concert history. It takes advantage of modern PHP features, and Livewire for dynamic interactions. It is a production-grade app that serves pretty high-load for a modest FreeBSD server. It doesn't use Octane yet.
+This is a Laravel application serving as a personal website for notes, trip stories, and concert history. Production runs on a modest FreeBSD server under high load; keep CPU, memory, and database costs in mind.
 
 ## Architecture & Conventions
 
-The project follows a specific structure deviating slightly from standard Laravel defaults:
-
-- **Models:** Located in the root of `app/` (e.g., `app/User.php`). Migration to `app/Models` folder is pending.
+- **Models:** Located in the root of `app/` (e.g., `app/User.php`) and in `app/Domain/*/Models/`. Migration of root-level models to `app/Models/` is planned but deferred.
 - **Actions:** Business logic is encapsulated in Action classes within `app/Action/` and `app/Domain/*/Action/`. When creating new logic, check if it fits into an Action class.
-- **Domains:** Value Objects, Enums, and domain-specific logic reside in `app/Domain/`. Prefer an existing domain when possible. Directories inside can mirror the Laravel directory structure convention.
+- **Domains:** Keep domain-specific functionality together under `app/Domain/`. Prefer extending an existing domain and follow its internal structure.
 - **Seeders:** Located in `app/Seeder/` and `app/Domain/*/Seeder/` (not `database/seeders`).
 - **Livewire:** Components in `app/Livewire/` and `app/Domain/*/Livewire/`.
-- **Factories:** Custom factory classes live in `app/Factory/` and `app/Domain/*/Factory/`. They are plain PHP builders (static `new()` entry point, immutable `with*()` modifiers that return a cloned instance, `make()` to build an unsaved model, `create()` to persist). **Do not use Eloquent factories** (`Illuminate\Database\Eloquent\Factories\Factory`) — not for tests, not for seeding.
+- **Factories:** Use the custom immutable builders in `app/Factory/` and `app/Domain/*/Factory/`. Never use Eloquent factories, including in tests and seeders.
 - **ADR:** Architectural Decision Records are stored in `adr/` in Russian.
-- **Eloquent:** `Model::automaticallyEagerLoadRelationships()` is enabled in `AppServiceProvider`, and `preventLazyLoading` is on outside production. Do **not** manually eager-load relations in controllers/actions "for safety" — relationships load automatically. Only add explicit `with()` when you're consciously restricting the loaded set or shaping the query.
+- **Eloquent:** Rely on automatic relationship eager loading. Use explicit `with()` only to restrict or shape related data, not defensively.
 - **Migrations:** Always delete the `down` method from database migrations.
-- **Octane Compatibility:** Keep new and modified code compatible with long-running workers: do not retain request-specific state in singletons or static properties, prefer scoped bindings for per-request services, and avoid capturing the current request or user in long-lived objects.
+- **Long-running workers:** Keep new and modified code compatible with long-running workers, regardless of whether Octane is adopted. Never retain request or user state in long-lived objects or statics; use scoped bindings for per-request services.
 
 ## Test scope
 
 - Verify every code change using appropriate existing tests or checks.
-- Treat retained tests as maintenance and review costs. Prefer the smallest set that protects meaningful behavior.
-- Inspect existing coverage first. Zero new tests is valid when that coverage adequately verifies the change. Extend existing tests where appropriate.
-- For a bug fix, prefer one regression test reproducing the reported failure.
-- For a feature, cover the main behavior and distinct, realistic failure modes.
-- Every additional test must catch a plausible regression the other tests would miss.
-- Assert observable outcomes. Do not test framework guarantees, incidental implementation details, or unchanged behavior merely because it is nearby.
-- Do not duplicate coverage across layers or enumerate input variations unless they exercise meaningfully different behavior.
+- Minimize the number of retained tests. Every test adds maintenance and review cost; more tests are not inherently better.
+- Inspect existing coverage first. Prefer extending an existing test, and add no tests when existing coverage adequately protects the change.
+- For a bug fix, aim for one focused regression test. For a feature, cover its core behavior with the smallest possible set.
+- Add another test only for a distinct, realistic failure that the other tests would miss. Skip speculative edge cases, equivalent input variations, framework guarantees, and assertions that merely mirror the implementation.
+- Stop once the changed behavior and its important risks are covered. Do not expand coverage merely because related code is nearby.
 - Temporary tests or checks may be used for verification without being retained. Before finishing, review newly added tests and remove disposable checks.
-- Never remove pre-existing tests merely because they do not meet these criteria.
-- Stop when the changed behavior and its important risks are covered.
+- Leave unrelated tests alone. Within the task’s scope, remove or consolidate redundant tests while preserving coverage of distinct, realistic failures.
 - In the final response, briefly explain what new coverage protects and report temporary verification separately from retained tests.
 
 ## Guidelines
 
-- **Do not overwrite user edits.** The user may change code between messages. If something changed, understand *why* and build on it.
 - Before creating or changing tests, read `.agents/guidelines/tests.md`.
-- Before analyzing or changing metrics events, collection, or aggregation, read `.agents/guidelines/metrics.md`. `App\Events\Stats\*` events have **no per-event listeners** — a wildcard listener pushes them to a Redis Stream (aggregated by the `app:metrics:process` cron). Never assume a `Stats\*` event is "dead" just because `grep` finds no listener.
+- Before analyzing or changing metrics, read `.agents/guidelines/metrics.md`. `App\Events\Stats\*` events use a wildcard listener; missing per-event listeners do not mean an event is unused.
 
 ## Key Commands
 
-`AI_AGENT=1` has to be passed to every composer and artisan command to let `laravel/pao` optimize the output of the tool for an agent.
+Prefix every Composer and Artisan command with `AI_AGENT=1` for Laravel Pao’s concise, agent-friendly output, even when examples omit it.
 
 ### Development
 
 - **Start Environment:** `docker-compose up -d`
 - **Frontend Dev:** `yarn dev`
 - **Frontend Build:** `yarn build`
-- **Code Analysis:** `composer pint` (full-project style formatting), `composer rector` (Refactoring)
+- **Code Analysis:** `composer pint` (full-project style formatting), `composer rector` (refactoring dry run)
 
 ### Database
 
-- **Reset & Seed:** Use `composer fresh`. This project intentionally resets the database when seeding; its initial dataset supports development. The command runs `migrate:fresh` with `App\Seeder\DatabaseSeeder`.
+- **Reset & Seed:** `composer fresh` should restore a known initial development state, independent of any previously accumulated data.
 
 ### Testing
 
