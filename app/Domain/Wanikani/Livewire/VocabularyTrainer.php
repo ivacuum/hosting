@@ -24,13 +24,17 @@ class VocabularyTrainer extends Component
     public bool $openSettings = false;
     public string $answer = '';
 
-    public function check()
+    public function check(): void
     {
         $this->openSettings = false;
 
         $answer = Str::trim(mb_strtolower($this->answer));
 
         if (in_array($answer, $this->acceptedAnswers())) {
+            if (!$this->reveal) {
+                $this->recordAnalytics('answered');
+            }
+
             match ($answer) {
                 $this->vocab->toRomaji() => event(new \App\Events\Stats\VocabularyAnsweredRomaji),
                 $this->vocab->toKatakana() => event(new \App\Events\Stats\VocabularyAnsweredKatakana),
@@ -50,6 +54,7 @@ class VocabularyTrainer extends Component
             return;
         }
 
+        $this->recordAnalytics('revealed');
         $this->reveal = true;
         $this->revealed++;
 
@@ -157,6 +162,17 @@ class VocabularyTrainer extends Component
             'www' => $this->vocab->www(),
             'meaning' => $this->vocab->meaning,
             'character' => $this->vocab->character,
+        ]);
+    }
+
+    private function recordAnalytics(string $event): void
+    {
+        logs()->debug("vocabulary_trainer.{$event}", [
+            'syllabary' => $this->hiragana ? 'hiragana' : 'katakana',
+            'min_level' => $this->startLevel(),
+            'max_level' => $this->endLevel(),
+            'vocabulary_id' => $this->vocab->id,
+            'word' => $this->vocab->character,
         ]);
     }
 
