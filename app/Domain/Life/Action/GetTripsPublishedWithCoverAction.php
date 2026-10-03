@@ -9,6 +9,7 @@ use App\Domain\Life\Scope\TripPublishedScope;
 use App\Domain\Life\Scope\TripWithCoverScope;
 use Illuminate\Cache\Repository;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Arr;
 
 class GetTripsPublishedWithCoverAction
 {
@@ -18,17 +19,22 @@ class GetTripsPublishedWithCoverAction
     {
         $key = CacheKey::TripsPublishedWithCover;
 
-        return $this->cache->remember($key, $key->ttl(), static function () {
+        $ids = $this->cache->remember($key, $key->ttl(), static function (): array {
             return Trip::query()
                 ->tap(new TripPublishedScope)
                 ->tap(new TripOfAdminScope)
                 ->tap(new TripWithCoverScope)
-                ->orderByDesc('date_start')
-                ->get();
-        })->when($count > 0, static function (Collection $trips) use ($count) {
-            return $trips->count() > $count
-                ? $trips->random($count)
-                : $trips;
+                ->pluck('id')
+                ->all();
         });
+
+        if ($count > 0 && count($ids) > $count) {
+            $ids = Arr::random($ids, $count);
+        }
+
+        return Trip::query()
+            ->whereKey($ids)
+            ->orderByDesc('date_start')
+            ->get();
     }
 }

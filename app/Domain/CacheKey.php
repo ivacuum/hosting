@@ -32,7 +32,7 @@ enum CacheKey: string
 
     case TripsPublishedByCity = 'trips.published.by-cities';
     case TripsPublishedByCountry = 'trips.published.by-country';
-    case TripsPublishedWithCover = 'trips.published.with-cover';
+    case TripsPublishedWithCover = 'trips.published.with-cover.v2';
 
     case VkWallGet = 'vk.wall.get.{key}';
 
