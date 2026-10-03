@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Domain\Locale;
 use App\Email;
 
 class EmailObserver
@@ -9,7 +10,7 @@ class EmailObserver
     public function creating(Email $email)
     {
         if (!$email->locale) {
-            $email->locale = \App::getLocale();
+            $email->locale = Locale::from(\App::getLocale());
         }
     }
 }

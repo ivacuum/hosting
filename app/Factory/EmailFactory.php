@@ -43,7 +43,7 @@ class EmailFactory
         $email = new Email;
         $email->to = fake()->safeEmail();
         $email->clicks = 0;
-        $email->locale = Locale::Rus->value;
+        $email->locale = Locale::Rus;
         $email->rel_id = match (true) {
             $this->relation instanceof Comment,
             $this->relation instanceof Trip,

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Domain\Locale;
 use App\Http\Controllers\MailController;
 use App\Observers\EmailObserver;
 use App\Policies\EmailPolicy;
@@ -16,7 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $rel_id
  * @property string $to
  * @property string $template
- * @property string $locale
+ * @property Locale $locale
  * @property int $clicks
  * @property int $views
  * @property \Carbon\CarbonImmutable $created_at
@@ -84,6 +85,7 @@ class Email extends Model
     protected function casts(): array
     {
         return [
+            'locale' => Locale::class,
             'user_id' => 'int',
         ];
     }

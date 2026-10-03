@@ -17,7 +17,7 @@ class CommentConfirmMail extends Mailable implements ShouldQueue
     {
         $this->email = $this->email($comment->emails(), $comment->user);
         $this->confirmLink = $this->email->signedLink(
-            path_locale(CommentConfirmController::class, $comment, false, $comment->user->locale)
+            path_locale(CommentConfirmController::class, $comment, false, $comment->user->locale->value)
         );
 
         $this->comment = $comment->withoutRelations();

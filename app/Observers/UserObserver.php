@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Domain\Avatar\Avatar;
+use App\Domain\Locale;
 use App\User;
 use Illuminate\Support\Str;
 
@@ -11,7 +12,7 @@ class UserObserver
     public function creating(User $user)
     {
         if (!$user->locale) {
-            $user->locale = \App::getLocale();
+            $user->locale = Locale::from(\App::getLocale());
         }
 
         if (!$user->ip) {
@@ -67,7 +68,7 @@ class UserObserver
         $user->salt = Str::trim($user->salt);
         $user->email = Str::trim($user->email);
         $user->avatar = Str::trim($user->avatar);
-        $user->locale = Str::trim($user->locale ?? config('app.locale'));
+        $user->locale ??= Locale::from(config('app.locale'));
 
         if (filled($user->login)) {
             $user->login = Str::trim($user->login);

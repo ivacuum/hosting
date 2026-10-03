@@ -47,7 +47,7 @@ class UserFactory
         $user->root = $this->root;
         $user->email = $this->email ?? fake()->uuid() . '@example.com';
         $user->login = $this->login;
-        $user->locale = $this->locale->value;
+        $user->locale = $this->locale;
         $user->status = $this->status;
         $user->last_login_at = $this->lastLoginAt;
         $user->telegram_id = $this->telegramUserId;

@@ -31,7 +31,7 @@ class MySettingsTest extends TestCase
 
         $user->refresh();
 
-        $this->assertSame(Locale::Eng->value, $user->locale);
+        $this->assertSame(Locale::Eng, $user->locale);
 
         \Event::assertDispatched(\App\Events\Stats\MySettingsChanged::class);
     }

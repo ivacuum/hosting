@@ -4,6 +4,7 @@ namespace App;
 
 use App\Domain\Avatar\Avatar;
 use App\Domain\Life\Models\Trip;
+use App\Domain\Locale;
 use App\Domain\Magnet\Models\Magnet;
 use App\Domain\NotificationDeliveryMethod;
 use App\Domain\SocialMedia\Models\SocialMediaToken;
@@ -26,7 +27,7 @@ use Illuminate\Notifications\Notifiable;
  * @property string $password
  * @property string $salt
  * @property UserStatus $status
- * @property string $locale
+ * @property Locale $locale
  * @property int $magnet_short_title
  * @property NotificationDeliveryMethod $notification_delivery_method
  * @property string $avatar
@@ -207,7 +208,7 @@ class User extends Authenticatable implements HasLocalePreference
     #[\Override]
     public function preferredLocale(): string|null
     {
-        return $this->locale;
+        return $this->locale?->value;
     }
 
     public function publicName(): string
@@ -243,6 +244,7 @@ class User extends Authenticatable implements HasLocalePreference
     {
         return [
             'root' => 'bool',
+            'locale' => Locale::class,
             'status' => UserStatus::class,
             'last_login_at' => 'datetime',
             'email_verified_at' => 'datetime',

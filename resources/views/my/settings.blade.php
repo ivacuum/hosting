@@ -40,7 +40,7 @@
               type="radio"
               name="locale"
               value="{{ $loc }}"
-              {{ old('locale', $user->locale ?: App\Domain\Config::Locale->get()) === $loc ? 'checked' : '' }}
+              {{ old('locale', $user->locale?->value ?? App\Domain\Config::Locale->get()) === $loc ? 'checked' : '' }}
             >
             @lang("locale.{$loc}")
           </label>
