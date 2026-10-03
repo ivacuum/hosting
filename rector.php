@@ -7,9 +7,9 @@ use Rector\Config\RectorConfig;
 return RectorConfig::configure()
     ->withPreparedSets(deadCode: true)
     ->withAttributesSets(phpunit: true)
+    ->withComposerBased(phpunit: true, laravel: true)
     ->withPhpSets()
     ->withSets([
-        Rector\PHPUnit\Set\PHPUnitSetList::PHPUNIT_110,
         Rector\PHPUnit\Set\PHPUnitSetList::PHPUNIT_CODE_QUALITY,
     ])
     ->withPaths([
@@ -26,5 +26,4 @@ return RectorConfig::configure()
         // Ложные срабатывания на контроллерах
         Rector\Php81\Rector\Array_\ArrayToFirstClassCallableRector::class,
         Rector\Php81\Rector\Property\ReadOnlyPropertyRector::class,
-        Rector\Php81\Rector\FuncCall\NullToStrictStringFuncCallArgRector::class,
     ]);
