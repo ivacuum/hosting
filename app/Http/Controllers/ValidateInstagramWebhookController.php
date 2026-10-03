@@ -8,7 +8,7 @@ class ValidateInstagramWebhookController
 {
     public function __invoke(InstagramWebhook $request)
     {
-        logs()->info('Instagram verify token payload: ' . json_encode($request->all(), \JSON_PRETTY_PRINT));
+        logs()->info('instagram.webhook_verification_requested', ['payload' => $request->all()]);
 
         return $request->challenge;
     }

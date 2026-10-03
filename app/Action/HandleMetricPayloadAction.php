@@ -22,7 +22,10 @@ class HandleMetricPayloadAction
         foreach ($json as $payload) {
             try {
                 if (empty($payload['event'])) {
-                    logs()->warning('Metrics: payload missing event', ['payload' => $payload]);
+                    logs()->warning('metrics.payload_rejected', [
+                        'reason' => 'missing_event',
+                        'payload' => $payload,
+                    ]);
 
                     continue;
                 }
@@ -58,7 +61,10 @@ class HandleMetricPayloadAction
             } catch (\Throwable $e) {
                 report($e);
 
-                logs()->warning('Metrics: skipping malformed payload item', ['payload' => $payload]);
+                logs()->warning('metrics.payload_rejected', [
+                    'reason' => 'malformed_payload',
+                    'payload' => $payload,
+                ]);
             }
         }
     }

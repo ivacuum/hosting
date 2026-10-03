@@ -8,6 +8,6 @@ class InstagramWebhookController
 {
     public function __invoke(InstagramWebhookForm $request)
     {
-        logs()->info('Instagram event payload: ' . json_encode($request->payload, \JSON_PRETTY_PRINT));
+        logs()->info('instagram.webhook_received', ['payload' => $request->payload]);
     }
 }

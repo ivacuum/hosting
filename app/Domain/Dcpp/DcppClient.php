@@ -47,14 +47,14 @@ class DcppClient
             $response = iconv('windows-1251', 'utf-8', $response);
         }
 
-        logs()->debug("Response: {$response}");
+        logs()->debug('dcpp.response_received', ['response' => $response]);
 
         return $response;
     }
 
     public function send(string $request): void
     {
-        logs()->debug("Request: {$request}");
+        logs()->debug('dcpp.request_sending', ['request' => $request]);
 
         fwrite($this->socket, $request);
     }

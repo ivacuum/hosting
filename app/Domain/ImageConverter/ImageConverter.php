@@ -74,7 +74,9 @@ class ImageConverter
                 unlink($destination);
             }
 
-            logs()->error('Could not convert source: ' . $source, [
+            logs()->error('image_converter.conversion_failed', [
+                'source' => $source,
+                'exit_code' => $returnCode,
                 'output' => $output,
                 'command' => $command,
             ]);

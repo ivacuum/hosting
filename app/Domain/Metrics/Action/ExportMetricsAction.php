@@ -23,7 +23,7 @@ class ExportMetricsAction
 
         if ($this->shouldLog) {
             foreach ($metrics as $metric) {
-                logs()->debug(json_encode($metric, JSON_THROW_ON_ERROR));
+                logs()->debug('metrics.exported', $metric);
             }
         }
 

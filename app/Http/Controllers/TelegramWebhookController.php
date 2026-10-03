@@ -20,7 +20,7 @@ class TelegramWebhookController
         event(new \App\Events\Stats\TelegramWebhookReceived);
 
         if (app()->isLocal()) {
-            $logger->info(json_encode($request->all(), \JSON_PRETTY_PRINT));
+            $logger->info('telegram.webhook_received', ['payload' => $request->all()]);
         }
 
         $response = Pipeline::send($request)

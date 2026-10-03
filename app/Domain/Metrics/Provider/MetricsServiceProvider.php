@@ -41,7 +41,7 @@ class MetricsServiceProvider extends ServiceProvider
         });
 
         \Event::listen(WorkerStopping::class, static function () {
-            \Log::info("Worker is stopping...\n");
+            logs()->info('queue.worker_stopping');
         });
     }
 }
