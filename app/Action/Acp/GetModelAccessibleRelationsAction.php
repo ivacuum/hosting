@@ -11,7 +11,6 @@ class GetModelAccessibleRelationsAction
 {
     public function __construct(private GenerateModelRelationLinkAction $generateModelRelationLink) {}
 
-    /** @return Collection|ModelAccessibleRelation[] */
     public function execute(Model $model, array $showWithCount = []): Collection
     {
         if (count($showWithCount) < 1) {

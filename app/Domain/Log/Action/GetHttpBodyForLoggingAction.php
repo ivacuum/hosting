@@ -23,7 +23,7 @@ class GetHttpBodyForLoggingAction
         }
 
         if (mb_check_encoding($body) === false) {
-            if (mb_check_encoding($body, 'windows-1251') === true) {
+            if (mb_check_encoding($body, 'windows-1251')) {
                 return iconv('windows-1251', 'utf-8', $body);
             }
 

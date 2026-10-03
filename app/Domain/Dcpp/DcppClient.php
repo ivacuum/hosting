@@ -43,7 +43,7 @@ class DcppClient
     {
         $response = fread($this->socket, 4096);
 
-        if (mb_check_encoding($response, 'windows-1251') === true) {
+        if (mb_check_encoding($response, 'windows-1251')) {
             $response = iconv('windows-1251', 'utf-8', $response);
         }
 

@@ -78,7 +78,7 @@ class GetHttpBodyForLoggingActionTest extends TestCase
         $stream->seek(2);
 
         $this->expectException(\RuntimeException::class);
-        $this->expectExceptionMessage('Read failed');
+        $this->expectExceptionMessageIsOrContains('Read failed');
 
         try {
             new GetHttpBodyForLoggingAction()->execute($stream, 'text/plain');

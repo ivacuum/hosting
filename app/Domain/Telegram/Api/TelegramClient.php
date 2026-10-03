@@ -14,7 +14,6 @@ class TelegramClient
     private int $chatId;
     private bool $asResponse = false;
     private int|null $replyToMessageId = null;
-    private bool|null $disableWebPagePreview;
     private ParseMode|null $parseMode = null;
     private LanguageCode|null $languageCode = null;
     private InlineKeyboardMarkup|null $replyMarkup = null;
@@ -27,10 +26,8 @@ class TelegramClient
         #[\SensitiveParameter]
         private readonly string $botToken,
         #[Config('services.telegram.disable_web_page_preview')]
-        bool|null $disableWebPagePreview,
-    ) {
-        $this->disableWebPagePreview = $disableWebPagePreview;
-    }
+        private bool|null $disableWebPagePreview,
+    ) {}
 
     #[\NoDiscard]
     public function asResponse(): self

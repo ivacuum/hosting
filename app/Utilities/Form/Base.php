@@ -29,7 +29,6 @@ abstract class Base implements Htmlable
 
     /**
      * @param  \Illuminate\Contracts\Support\Arrayable|array  $values
-     * @return $this
      */
     public function classes($values): self
     {
