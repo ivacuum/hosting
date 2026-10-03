@@ -185,9 +185,6 @@ Route::get('news/{year}/{month}', Ctrl\NewsBcController::class);
 Route::get('news/{year}/{month}/{day}', Ctrl\NewsBcController::class);
 Route::get('news/{year}/{month}/{day}/{slug}', Ctrl\NewsBcController::class);
 
-// Route::get('parser/vk/{page?}/{date?}', [Ctrl\ParserVk::class, 'index'])->where('date', '\d{4}-\d{2}-\d{2}');
-// Route::post('parser/vk', [Ctrl\ParserVk::class, 'indexPost']);
-
 Route::middleware('nav:Фотки,photos')->group(static function () {
     Route::get('photos', [Ctrl\PhotoController::class, 'index']);
 

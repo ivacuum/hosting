@@ -81,15 +81,6 @@
       <div>Исторический форум сервиса для обмена файлами внутри локальной сети Билайн.</div>
       {{--<p class="text-gray-500">Дата запуска: 5 июля 2010 г.</p>--}}
     </div>
-    <?php /*
-    <div>
-      <a class="flex items-center mb-2 link-parent" href="@lng/parser/vk">
-        <h2 class="font-semibold text-2xl"><span class="link">@lang('Парсер ВК')</span></h2>
-      </a>
-      <div>Ежедневная подборка десяти лучших постов выбранных страниц и групп ВК.</div>
-      {{--<div class="text-gray-500">Дата запуска: 2 октября 2014 г.</div>--}}
-    </div>
-    */ ?>
   @endru
   <div>
     <a class="flex gap-2 items-center mb-2 link-parent" href="@lng/trainers">

@@ -34,8 +34,6 @@ enum CacheKey: string
     case TripsPublishedByCountry = 'trips.published.by-country';
     case TripsPublishedWithCover = 'trips.published.with-cover.v2';
 
-    case VkWallGet = 'vk.wall.get.{key}';
-
     public function key(string $replace): string
     {
         return str_replace('{key}', $replace, $this->value);
