@@ -39,7 +39,6 @@
 
   <form action="@lng/auth/login" method="post">
     {{ ViewHelper::inputHiddenMail() }}
-    @csrf
 
     <div class="mb-4">
       <input

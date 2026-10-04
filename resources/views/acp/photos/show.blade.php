@@ -30,7 +30,6 @@
           #{{ $tag->title }}
         </a>
         <form method="POST" action="{{ to('acp/photos/{photo}/tags/{tag}', [$model, $tag]) }}">
-          @csrf
           @method('DELETE')
           <button class="h-full cursor-pointer px-2 text-red-600 hover:bg-red-600 hover:text-white" type="submit" aria-label="{{ __('Удалить тэг') }} {{ $tag->title }}" title="@lang('Удалить тэг')">×</button>
         </form>
@@ -38,7 +37,6 @@
     @endforeach
 
     <form method="POST" action="{{ to('acp/photos/{photo}/tags', $model) }}" onsubmit="return confirm('@lang('Удалить все тэги?')')">
-      @csrf
       @method('DELETE')
       <button class="cursor-pointer rounded-sm border border-red-600 px-2 py-1 text-sm text-red-600 hover:bg-red-600 hover:text-white" type="submit">@lang('Удалить все тэги')</button>
     </form>

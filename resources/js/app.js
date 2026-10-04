@@ -20,14 +20,13 @@ import Shortcuts from './shortcuts'
 /**
  * @namespace window.AppOptions
  * @property {string} locale
- * @property {string} csrfToken
  */
 
 class Application {
   constructor() {
     this.options = window.AppOptions
 
-    this.beacon = new Beacon(this.options.csrfToken)
+    this.beacon = new Beacon()
     this.locale = this.options.locale
     this.map = new Map(this.locale)
     this.photoViewer = new PhotoViewer()

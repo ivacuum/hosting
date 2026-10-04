@@ -10,7 +10,6 @@
     </span>
     Закрыто
     <form class="inline" action="{{ path(App\Http\Controllers\Acp\IssueOpenController::class, $model) }}" method="post">
-      @csrf
       <button class="btn btn-default text-sm leading-none">
         Открыть
       </button>
@@ -21,7 +20,6 @@
     </span>
     Открыто
     <form class="inline" action="{{ path(App\Http\Controllers\Acp\IssueCloseController::class, $model) }}" method="post">
-      @csrf
       <button class="btn btn-default text-sm leading-none">
         Закрыть
       </button>

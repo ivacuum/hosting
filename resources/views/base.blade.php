@@ -169,7 +169,6 @@
 <script>
 window.AppOptions = JSON.parse('<?= json_encode([
   'locale' => $locale,
-  'csrfToken' => csrf_token(),
 ], JSON_HEX_APOS) ?>')
 </script>
 @vite('node_modules/mousetrap/mousetrap.min.js')

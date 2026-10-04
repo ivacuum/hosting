@@ -5,7 +5,6 @@
   <h3 class="font-medium text-2xl mb-2">@lang('auth.password_remind_title')</h3>
   <form action="{{ path([App\Http\Controllers\Auth\ForgotPassword::class, 'sendResetLink']) }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
-    @csrf
 
     <div class="my-4">
       <input

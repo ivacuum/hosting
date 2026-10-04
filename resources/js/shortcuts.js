@@ -27,7 +27,6 @@ export default class Shortcuts {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-CSRF-TOKEN': window['AppOptions'].csrfToken,
         },
         body: JSON.stringify({ selection }),
       })

@@ -1,8 +1,7 @@
 export default class Beacon {
-  constructor(csrfToken, endpoint = '/js/beacon') {
+  constructor(endpoint = '/js/beacon') {
     this.data = []
     this.endpoint = endpoint
-    this.csrfToken = csrfToken
     this.threshold = 100
   }
 
@@ -34,7 +33,6 @@ export default class Beacon {
     const data = new FormData()
 
     data.append('events', JSON.stringify(this.data))
-    data.append('_token', this.csrfToken)
 
     this.data = []
 

@@ -22,5 +22,3 @@
 @if (!empty($goto))
   <input type="hidden" name="goto" value="{{ $goto }}">
 @endif
-
-@csrf

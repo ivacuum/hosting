@@ -7,7 +7,6 @@
   <form action="@lng/my/password" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @method('put')
-    @csrf
 
     @if ($hasPassword)
       <div class="mb-4">
@@ -53,7 +52,6 @@
   <h3 class="font-medium text-2xl mb-2 mt-12">@lang('auth.forgot_password')</h3>
   <form action="{{ path([App\Http\Controllers\Auth\ForgotPassword::class, 'sendResetLink']) }}" method="post">
     {{ ViewHelper::inputHiddenMail() }}
-    @csrf
 
     @ru
       <p>Ссылка будет отправлена на вашу электронную почту <span class="font-bold">{{ Auth::user()->email }}</span></p>

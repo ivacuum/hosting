@@ -9,7 +9,6 @@
   <form action="@lng/my/settings" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @method('put')
-    @csrf
 
     <div class="grid gap-6 mb-4">
       <div>

@@ -11,7 +11,6 @@
   @endru
   <form action="@lng/promocodes-coupons/firstvds" method="post">
     {{ ViewHelper::inputHiddenMail() }}
-    @csrf
 
     <div class="max-w-[500px]">
       <div class="flex w-full">

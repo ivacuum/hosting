@@ -17,9 +17,6 @@ document.addEventListener('submit', (e) => {
 
   fetch(url, {
     method: 'POST',
-    headers: {
-      'X-CSRF-TOKEN': window['AppOptions'].csrfToken,
-    },
     body: formData
   })
     .then(() => document.location.reload())

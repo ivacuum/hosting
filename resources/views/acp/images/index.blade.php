@@ -142,7 +142,6 @@ document.addEventListener('click', (e) => {
   fetch(target.getAttribute('href'), {
     method: 'DELETE',
     headers: {
-      'X-CSRF-TOKEN': window['AppOptions'].csrfToken,
       'X-Requested-With': 'XMLHttpRequest',
     },
   })

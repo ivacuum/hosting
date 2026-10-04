@@ -177,7 +177,6 @@
 
         <form action="@lng/magnets/request" method="post">
           {{ ViewHelper::inputHiddenMail() }}
-          @csrf
 
           <div class="mb-4">
             <label class="font-bold">Поисковый запрос</label>

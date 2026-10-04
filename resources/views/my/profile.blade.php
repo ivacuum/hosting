@@ -7,7 +7,6 @@
   <form action="@lng/my/profile" method="post">
     {{ ViewHelper::inputHiddenMail() }}
     @method('put')
-    @csrf
 
     <div class="mb-4">
       <label class="font-bold">@lang('Логин')</label>

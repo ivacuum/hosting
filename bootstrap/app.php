@@ -1,7 +1,6 @@
 <?php
 
 use App\Exceptions\RedirectUnauthenticatedGuest;
-use App\Exceptions\RenderTokenMismatch;
 use App\Exceptions\SendToSentry;
 use App\Exceptions\SkipDatabaseOffline;
 use App\Http\Middleware\AcpNavigation;
@@ -47,6 +46,8 @@ return Application::configure(basePath: dirname(__DIR__))
         ...(glob(__DIR__ . '/../app/Domain/*/Console/Commands', GLOB_ONLYDIR) ?: []),
     ])
     ->withMiddleware(static function (Middleware $middleware) {
+        $middleware->preventRequestForgery(originOnly: true);
+
         $middleware->redirectTo(
             guests: static fn () => to('auth/login'),
             users: static fn () => to('/'),
@@ -74,7 +75,6 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(static function (Exceptions $exceptions) {
         $exceptions->renderable(app(RedirectUnauthenticatedGuest::class));
-        $exceptions->renderable(app(RenderTokenMismatch::class));
 
         $exceptions->reportable(app(SkipDatabaseOffline::class));
         $exceptions->reportable(app(SendToSentry::class));

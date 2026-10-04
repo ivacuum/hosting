@@ -114,9 +114,6 @@ export default class EventHandlers {
     if (clicked === undefined) {
       fetch(target.dataset.action, {
         method: 'POST',
-        headers: {
-          'X-CSRF-TOKEN': window['AppOptions'].csrfToken,
-        },
       })
 
       target.dataset.clicked = '1'
@@ -138,9 +135,6 @@ export default class EventHandlers {
     if (clicked === undefined) {
       fetch(target.dataset.action, {
         method: 'POST',
-        headers: {
-          'X-CSRF-TOKEN': window['AppOptions'].csrfToken,
-        },
       })
 
       target.dataset.clicked = '1'
