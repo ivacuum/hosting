@@ -38,7 +38,7 @@ class GigFactory
         $title = fake()->word() . ' ' . fake()->numberBetween(2000, 3000);
 
         $gig = new Gig;
-        $gig->date = $this->date ?? CarbonImmutable::instance(fake()->dateTimeBetween('-4 years'))->startOfDay();
+        $gig->date = $this->date ?? CarbonImmutable::instance(fake()->dateTimeBetween('2007-01-01'))->startOfDay();
         $gig->slug = $this->slug ?? \Str::slug($title);
         $gig->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $gig->status = $this->status;
