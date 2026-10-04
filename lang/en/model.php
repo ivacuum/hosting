@@ -10,6 +10,7 @@ return [
     'email' => 'Email',
     'photo' => 'Photo',
     'title' => 'Title',
+    'views' => 'Views',
     'author' => 'Author',
     'clicks' => 'Clicks',
     'filter' => 'Filter',
@@ -76,7 +77,6 @@ return [
     'kanji.similar_kanji' => 'Similar kanji',
     'kanji.radicals_count' => 'Radicals',
 
-    'magnet.views' => 'Views',
     'magnet.clicks' => 'Magnet clicked',
     'magnet.rto_id' => 'RTO ID',
     'magnet.status' => 'Status',

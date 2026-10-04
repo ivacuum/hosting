@@ -12,6 +12,7 @@ return [
     'email' => 'Электронная почта',
     'photo' => 'Фото',
     'title' => 'Название',
+    'views' => 'Просмотры',
     'author' => 'Автор',
     'clicks' => 'Клики',
     'filter' => 'Фильтр',
@@ -84,7 +85,6 @@ return [
     'kanji.similar_kanji' => 'Похожие кандзи',
     'kanji.radicals_count' => 'Ключи',
 
-    'magnet.views' => 'Просмотры',
     'magnet.clicks' => 'Клики по магнету',
     'magnet.rto_id' => 'RTO ID',
     'magnet.status' => 'Состояние',
