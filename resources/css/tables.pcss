@@ -1,25 +1,18 @@
 @media (max-width: 767.98px) {
-  .table-adaptive,
-  .table-adaptive thead,
-  .table-adaptive tbody,
-  .table-adaptive tfoot,
-  .table-adaptive tr,
-  .table-adaptive td,
-  .table-adaptive th {
+  .table-adaptive:not(.table-scroll *),
+  .table-adaptive:not(.table-scroll *) :is(thead, tbody, tfoot, tr, td, th) {
     display: block;
   }
 
-  .table-adaptive tr {
+  .table-adaptive:not(.table-scroll *) tr {
     padding: .5rem 0;
   }
 
-  .table-adaptive td,
-  .table-adaptive th {
+  .table-adaptive:not(.table-scroll *) :is(td, th) {
     text-align: center;
   }
 
-  .table-adaptive td:empty,
-  .table-adaptive th:empty {
+  .table-adaptive:not(.table-scroll *) :is(td, th):empty {
     display: none;
   }
 }

@@ -43,7 +43,9 @@
 @endif
 
 @if (count($models))
-  @yield('content-list')
+  <div class="table-scroll max-md:overflow-x-auto max-md:text-sm">
+    @yield('content-list')
+  </div>
 @else
   @yield('content-list-empty')
 @endif
