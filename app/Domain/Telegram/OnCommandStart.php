@@ -8,7 +8,7 @@ class OnCommandStart
 {
     public function __construct(private Action\OnCommandStartAction $onCommandStart) {}
 
-    public function handle(TelegramWebhook $request, \Closure $next)
+    public function handle(TelegramWebhook $request, \Closure $next): array|null
     {
         if ($this->shouldHandle($request)) {
             return $this

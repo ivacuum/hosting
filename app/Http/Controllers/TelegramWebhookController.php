@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Pipeline;
 
 class TelegramWebhookController
 {
-    public function __invoke(Logger $logger, TelegramWebhook $request)
+    public function __invoke(Logger $logger, TelegramWebhook $request): array|null
     {
         if ($request->shouldIgnoreWebhook) {
             return null;
@@ -23,18 +23,12 @@ class TelegramWebhookController
             $logger->info('telegram.webhook_received', ['payload' => $request->all()]);
         }
 
-        $response = Pipeline::send($request)
+        return Pipeline::send($request)
             ->through([
                 OnCommandPhoto::class,
                 OnCommandStart::class,
                 OnCallbackQueryPhotoOnMap::class,
             ])
-            ->then(static fn (array|TelegramWebhook $result) => $result);
-
-        if ($response instanceof TelegramWebhook) {
-            return [];
-        }
-
-        return $response;
+            ->then(static fn (): null => null) ?? [];
     }
 }

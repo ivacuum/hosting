@@ -8,7 +8,7 @@ class OnCommandPhoto
 {
     public function __construct(private Action\OnCommandPhotoAction $onCommandPhoto) {}
 
-    public function handle(TelegramWebhook $request, \Closure $next)
+    public function handle(TelegramWebhook $request, \Closure $next): array|null
     {
         if ($this->shouldHandle($request)) {
             return $this

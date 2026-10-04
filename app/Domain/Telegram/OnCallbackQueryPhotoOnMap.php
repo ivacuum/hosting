@@ -8,7 +8,7 @@ class OnCallbackQueryPhotoOnMap
 {
     public function __construct(private Action\OnCallbackQueryPhotoOnMapAction $onCallbackQueryPhotoOnMap) {}
 
-    public function handle(TelegramWebhook $request, \Closure $next)
+    public function handle(TelegramWebhook $request, \Closure $next): array|null
     {
         if ($this->shouldHandle($request)) {
             $photoId = str($request->callbackQuery->data)
