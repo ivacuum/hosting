@@ -10,7 +10,7 @@ use App\Domain\Rto\RtoApiException;
 use App\Domain\Rto\RtoFake;
 use App\Domain\Rto\RtoTopicData;
 use App\Domain\Rto\RtoTopicStatus;
-use App\Domain\Telegram\Api\TelegramResponse;
+use App\Domain\Telegram\Api\TelegramApiFake;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Exceptions;
 use Tests\TestCase;
@@ -118,7 +118,7 @@ class FetchTorrentMetaJobTest extends TestCase
 
         \Http::fake([
             ...RtoFake::topicDataByIdsNotFound(911),
-            ...TelegramResponse::fakeSuccess(),
+            ...TelegramApiFake::sendMessage(),
         ]);
 
         \Event::fake(\App\Events\Stats\TorrentNotFoundDeleted::class);
@@ -203,7 +203,7 @@ class FetchTorrentMetaJobTest extends TestCase
     {
         \Http::fake([
             ...RtoFake::topicDataByIds($topicData),
-            ...TelegramResponse::fakeSuccess(),
+            ...TelegramApiFake::sendMessage(),
         ]);
     }
 }

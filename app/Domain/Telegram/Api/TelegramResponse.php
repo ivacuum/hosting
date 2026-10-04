@@ -17,26 +17,22 @@ readonly class TelegramResponse
         $this->successful = $response->json('ok');
     }
 
-    public static function fakeBadMarkdown()
+    public static function fakeBadMarkdown(): PromiseInterface
     {
-        return [
-            'api.telegram.org/*' => Factory::response([
-                'ok' => false,
-                'error_code' => 400,
-                'description' => "Bad Request: can't parse entities: Character '.' is reserved and must be escaped with the preceding '\\'",
-            ], 400),
-        ];
+        return Factory::response([
+            'ok' => false,
+            'error_code' => 400,
+            'description' => "Bad Request: can't parse entities: Character '.' is reserved and must be escaped with the preceding '\\'",
+        ], 400);
     }
 
-    public static function fakeBlockedByUser()
+    public static function fakeBlockedByUser(): PromiseInterface
     {
-        return [
-            'api.telegram.org/*' => Factory::response([
-                'ok' => false,
-                'error_code' => 403,
-                'description' => 'Forbidden: bot was blocked by the user',
-            ], 403),
-        ];
+        return Factory::response([
+            'ok' => false,
+            'error_code' => 403,
+            'description' => 'Forbidden: bot was blocked by the user',
+        ], 403);
     }
 
     public static function fakeCallbackQueryAnswered(): PromiseInterface
@@ -56,12 +52,20 @@ readonly class TelegramResponse
         ], 400);
     }
 
-    public static function fakeSuccess()
+    public static function fakeMessageSent(int $messageId = 123): PromiseInterface
     {
-        return [
-            'api.telegram.org/*' => Factory::response([
-                'ok' => true,
-            ]),
-        ];
+        return Factory::response([
+            'ok' => true,
+            'result' => ['message_id' => $messageId],
+        ]);
+    }
+
+    public static function fakeWebhookSet(): PromiseInterface
+    {
+        return Factory::response([
+            'ok' => true,
+            'result' => true,
+            'description' => 'Webhook was set',
+        ]);
     }
 }

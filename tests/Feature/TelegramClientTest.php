@@ -8,7 +8,6 @@ use App\Domain\Telegram\Api\InlineKeyboardMarkup;
 use App\Domain\Telegram\Api\TelegramApiFake;
 use App\Domain\Telegram\Api\TelegramClient;
 use App\Domain\Telegram\Api\TelegramException;
-use App\Domain\Telegram\Api\TelegramResponse;
 use App\Factory\ChatMessageFactory;
 use App\Factory\UserFactory;
 use App\Notifications\ChatMessagePublishedAdminNotification;
@@ -41,9 +40,7 @@ class TelegramClientTest extends TestCase
 
     public function testBadMarkdown()
     {
-        \Http::fake([
-            ...TelegramResponse::fakeBadMarkdown(),
-        ]);
+        \Http::fake(TelegramApiFake::sendMessageBadMarkdown());
 
         config(['services.telegram.bot_token' => '1234:token']);
 
@@ -59,9 +56,7 @@ class TelegramClientTest extends TestCase
     #[TestWith(['Автор_#1!', 'Автор\_\#1\!'])]
     public function testChatMessageNotificationEscapesMarkdown(string $login, string $expectedAuthor): void
     {
-        \Http::fake([
-            ...TelegramResponse::fakeSuccess(),
-        ]);
+        \Http::fake(TelegramApiFake::sendMessage());
 
         config([
             'services.telegram.admin_id' => 12345,
@@ -100,9 +95,7 @@ class TelegramClientTest extends TestCase
 
     public function testNoCredentialsLogged()
     {
-        \Http::fake([
-            ...TelegramResponse::fakeSuccess(),
-        ]);
+        \Http::fake(TelegramApiFake::sendMessage());
 
         app(TelegramClient::class)
             ->chat(12345)
@@ -115,9 +108,7 @@ class TelegramClientTest extends TestCase
 
     public function testSendMessage()
     {
-        \Http::fake([
-            ...TelegramResponse::fakeSuccess(),
-        ]);
+        \Http::fake(TelegramApiFake::sendMessage());
 
         config(['services.telegram.bot_token' => '1234:token']);
 
@@ -154,9 +145,7 @@ class TelegramClientTest extends TestCase
 
     public function testSendMessageWithDisabledWebPagePreview()
     {
-        \Http::fake([
-            ...TelegramResponse::fakeSuccess(),
-        ]);
+        \Http::fake(TelegramApiFake::sendMessage());
 
         config(['services.telegram.bot_token' => '1234:token']);
 
@@ -175,9 +164,7 @@ class TelegramClientTest extends TestCase
 
     public function testSendMessageWithInlineKeyboard()
     {
-        \Http::fake([
-            ...TelegramResponse::fakeSuccess(),
-        ]);
+        \Http::fake(TelegramApiFake::sendMessage());
 
         config(['services.telegram.bot_token' => '1234:token']);
 
@@ -213,9 +200,7 @@ class TelegramClientTest extends TestCase
 
     public function testSetWebhook()
     {
-        \Http::fake([
-            ...TelegramResponse::fakeSuccess(),
-        ]);
+        \Http::fake(TelegramApiFake::setWebhook());
 
         config(['services.telegram.bot_token' => '1234:token']);
 
