@@ -11,12 +11,8 @@ use Illuminate\Support\Facades\Pipeline;
 
 class TelegramWebhookController
 {
-    public function __invoke(Logger $logger, TelegramWebhook $request): array|null
+    public function __invoke(Logger $logger, TelegramWebhook $request): array
     {
-        if ($request->shouldIgnoreWebhook) {
-            return null;
-        }
-
         event(new \App\Events\Stats\TelegramWebhookReceived);
 
         if (app()->isLocal()) {

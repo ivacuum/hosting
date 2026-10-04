@@ -7,6 +7,7 @@ use App\Domain\Telegram\TelegramUpdateCallbackQueryFactory;
 use App\Domain\Telegram\TelegramUpdateFactory;
 use App\Factory\LinkRequestFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use PHPUnit\Framework\Attributes\TestWith;
 use Tests\TestCase;
 
 class TelegramBotTest extends TestCase
@@ -108,5 +109,36 @@ class TelegramBotTest extends TestCase
         $this->assertSame('Не удалось найти ваш запрос на привязку аккаунта. Пожалуйста, повторите попытку на сайте.', $response->json('text'));
         $this->assertSame(1, $response->json('chat_id'));
         $this->assertSame('sendMessage', $response->json('method'));
+    }
+
+    public function testStartCommandWithSecret(): void
+    {
+        config(['services.telegram.webhook_secret_token' => 'webhook-secret']);
+
+        $this
+            ->postJson(
+                'telegram/webhook',
+                TelegramUpdateFactory::new()
+                    ->start()
+                    ->make(),
+                ['X-Telegram-Bot-Api-Secret-Token' => 'webhook-secret']
+            )
+            ->assertOk()
+            ->assertJsonPath('method', 'sendMessage');
+    }
+
+    #[TestWith(['webhook-secret', 'wrong-secret'], 'Mismatched secret')]
+    #[TestWith(['webhook-secret', null], 'Missing header')]
+    public function testUnauthorizedWebhookRejectedBeforePayloadParsing(string $expectedToken, string|null $providedToken): void
+    {
+        config(['services.telegram.webhook_secret_token' => $expectedToken]);
+
+        if ($providedToken !== null) {
+            $this->withHeader('X-Telegram-Bot-Api-Secret-Token', $providedToken);
+        }
+
+        $this
+            ->postJson('telegram/webhook', ['message' => ['chat' => ['id' => 'invalid']]])
+            ->assertForbidden();
     }
 }

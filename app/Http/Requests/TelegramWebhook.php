@@ -11,11 +11,25 @@ use Illuminate\Foundation\Http\FormRequest;
 #[FailOnUnknownFields(false)]
 class TelegramWebhook extends FormRequest
 {
-    public readonly bool $shouldIgnoreWebhook;
     public readonly int|null $chatId;
     public readonly int|null $messageId;
     public readonly Message|null $message;
     public readonly CallbackQuery|null $callbackQuery;
+
+    public function authorize(): bool
+    {
+        $expectedToken = Config::TelegramWebhookSecretToken->get();
+
+        if ($expectedToken === null || $expectedToken === '') {
+            return true;
+        }
+
+        $providedToken = $this->header('X-Telegram-Bot-Api-Secret-Token');
+
+        return is_string($expectedToken)
+            && is_string($providedToken)
+            && hash_equals($expectedToken, $providedToken);
+    }
 
     public function rules(): array
     {
@@ -35,6 +49,5 @@ class TelegramWebhook extends FormRequest
         $this->callbackQuery = $this->has('callback_query')
             ? CallbackQuery::fromArray($this->json('callback_query'))
             : null;
-        $this->shouldIgnoreWebhook = $this->header('X-Telegram-Bot-Api-Secret-Token') !== Config::TelegramWebhookSecretToken->get();
     }
 }
