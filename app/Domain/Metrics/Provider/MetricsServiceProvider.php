@@ -11,6 +11,7 @@ use Illuminate\Queue\Events\JobProcessed;
 use Illuminate\Queue\Events\JobReleased;
 use Illuminate\Queue\Events\JobReleasedAfterException;
 use Illuminate\Queue\Events\JobTimedOut;
+use Illuminate\Queue\Events\UniqueJobSkipped;
 use Illuminate\Queue\Events\WorkerStarting;
 use Illuminate\Queue\Events\WorkerStopping;
 use Illuminate\Support\ServiceProvider;
@@ -90,6 +91,17 @@ class MetricsServiceProvider extends ServiceProvider
                 'uuid' => $event->job->uuid(),
                 'attempts' => $event->job->attempts(),
                 'timeout' => $event->timeout,
+            ]);
+        });
+
+        \Event::listen(UniqueJobSkipped::class, static function (UniqueJobSkipped $event): void {
+            logs()->info('queue.unique_job_skipped', [
+                'connection' => $event->job->connection ?? null,
+                'queue' => $event->job->queue ?? null,
+                'job' => $event->job::class,
+                'unique_id' => method_exists($event->job, 'uniqueId')
+                    ? $event->job->uniqueId()
+                    : ($event->job->uniqueId ?? ''),
             ]);
         });
 
