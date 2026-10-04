@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Domain\Log\Models\ExternalHttpRequest;
 use App\Domain\Telegram\Api\InlineKeyboardButton;
 use App\Domain\Telegram\Api\InlineKeyboardMarkup;
+use App\Domain\Telegram\Api\TelegramApiFake;
 use App\Domain\Telegram\Api\TelegramClient;
 use App\Domain\Telegram\Api\TelegramException;
 use App\Domain\Telegram\Api\TelegramResponse;
@@ -19,6 +20,24 @@ use Tests\TestCase;
 class TelegramClientTest extends TestCase
 {
     use DatabaseTransactions;
+
+    public function testAnswerCallbackQuery(): void
+    {
+        \Http::fake(TelegramApiFake::answerCallbackQuery());
+
+        config(['services.telegram.bot_token' => '1234:token']);
+
+        $response = app(TelegramClient::class)
+            ->answerCallbackQuery('callback-query-42');
+
+        $this->assertTrue($response->successful);
+
+        \Http::assertSent(static function (Request $request): bool {
+            return $request->method() === 'POST'
+                && $request->url() === 'https://api.telegram.org/bot1234:token/answerCallbackQuery'
+                && $request->data() === ['callback_query_id' => 'callback-query-42'];
+        });
+    }
 
     public function testBadMarkdown()
     {

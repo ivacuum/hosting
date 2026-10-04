@@ -5,7 +5,7 @@ namespace App\Support\Telegram;
 readonly class CallbackQuery
 {
     public function __construct(
-        public int $id,
+        public string $id,
         public string $data,
         public User $from,
         public Message $message,

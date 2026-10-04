@@ -18,7 +18,7 @@ class TelegramUpdateCallbackQueryFactory
         return [
             'update_id' => $this->updateId,
             'callback_query' => [
-                'id' => 1,
+                'id' => 'callback-query-1',
                 'from' => [
                     'id' => $this->chatId,
                     'is_bot' => false,

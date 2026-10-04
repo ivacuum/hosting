@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Domain\Life\Factory\PhotoFactory;
+use App\Domain\Telegram\Api\TelegramApiFake;
 use App\Domain\Telegram\TelegramUpdateCallbackQueryFactory;
 use App\Domain\Telegram\TelegramUpdateFactory;
 use App\Factory\LinkRequestFactory;
@@ -14,8 +15,10 @@ class TelegramBotTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testCallbackQueryPhotoOnMap()
+    public function testCallbackQueryPhotoOnMap(): void
     {
+        \Http::fake(TelegramApiFake::answerCallbackQuery());
+
         $photo = PhotoFactory::new()
             ->withPoint(10, 20)
             ->withTrip()
@@ -140,5 +143,22 @@ class TelegramBotTest extends TestCase
         $this
             ->postJson('telegram/webhook', ['message' => ['chat' => ['id' => 'invalid']]])
             ->assertForbidden();
+    }
+
+    public function testUnhandledCallbackQueryAcknowledged(): void
+    {
+        \Http::fake(TelegramApiFake::answerCallbackQuery());
+
+        $this
+            ->postJson(
+                'telegram/webhook',
+                TelegramUpdateCallbackQueryFactory::new()
+                    ->withData('unknown:1')
+                    ->make()
+            )
+            ->assertOk()
+            ->assertExactJson([]);
+
+        \Http::assertSentCount(1);
     }
 }
