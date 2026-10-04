@@ -9,6 +9,7 @@ import './bottom-tabbar'
 import './entity-action'
 import './password-eye'
 import './select-all'
+import './timeline'
 
 import Beacon from './beacon'
 import EventHandlers from './events'
