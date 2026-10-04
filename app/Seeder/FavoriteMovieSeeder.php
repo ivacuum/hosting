@@ -218,6 +218,7 @@ class FavoriteMovieSeeder extends Seeder
         $movie->kp_id = 404900;
         $movie->title_en = 'Breaking Bad';
         $movie->title_ru = 'Во все тяжкие';
+        $movie->is_tv_series = 1;
         $movie->save();
 
         $movie = new FavoriteMovie;
@@ -541,6 +542,7 @@ class FavoriteMovieSeeder extends Seeder
         $movie->kp_id = 1176115;
         $movie->title_en = 'Bodyguard';
         $movie->title_ru = 'Телохранитель';
+        $movie->is_tv_series = 1;
         $movie->save();
 
         $movie = new FavoriteMovie;
