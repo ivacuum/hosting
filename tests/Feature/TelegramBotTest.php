@@ -38,6 +38,93 @@ class TelegramBotTest extends TestCase
         $this->assertSame('20', $response->json('longitude'));
         $this->assertSame(1, $response->json('reply_to_message_id'));
         $this->assertSame('sendLocation', $response->json('method'));
+
+        \Http::assertSentCount(1);
+    }
+
+    public function testCallbackQueryPhotoOnMapDeletedPhoto(): void
+    {
+        \Http::fake(TelegramApiFake::answerCallbackQuery());
+        \Storage::fake('photos');
+
+        $photo = PhotoFactory::new()
+            ->withPoint(10, 20)
+            ->withTrip()
+            ->withUser()
+            ->create();
+
+        $photo->delete();
+
+        $this
+            ->postJson(
+                'telegram/webhook',
+                TelegramUpdateCallbackQueryFactory::new()
+                    ->withData("photoOnMap:{$photo->id}")
+                    ->make()
+            )
+            ->assertOk()
+            ->assertExactJson([
+                'method' => 'answerCallbackQuery',
+                'callback_query_id' => 'callback-query-1',
+                'text' => 'Местоположение этой фотографии больше недоступно.',
+            ]);
+
+        \Http::assertNothingSent();
+    }
+
+    public function testCallbackQueryPhotoOnMapUnpublishedPhoto(): void
+    {
+        \Http::fake(TelegramApiFake::answerCallbackQuery());
+
+        $photo = PhotoFactory::new()
+            ->hidden()
+            ->withPoint(10, 20)
+            ->withTrip()
+            ->withUser()
+            ->create();
+
+        $this
+            ->postJson(
+                'telegram/webhook',
+                TelegramUpdateCallbackQueryFactory::new()
+                    ->withData("photoOnMap:{$photo->id}")
+                    ->make()
+            )
+            ->assertOk()
+            ->assertExactJson([
+                'method' => 'answerCallbackQuery',
+                'callback_query_id' => 'callback-query-1',
+                'text' => 'Местоположение этой фотографии больше недоступно.',
+            ]);
+
+        \Http::assertNothingSent();
+    }
+
+    public function testCallbackQueryPhotoOnMapWithoutCoordinates(): void
+    {
+        \Http::fake(TelegramApiFake::answerCallbackQuery());
+
+        $photo = PhotoFactory::new()
+            ->withPoint('', '')
+            ->withTrip()
+            ->withUser()
+            ->create();
+
+        $this
+            ->postJson(
+                'telegram/webhook',
+                TelegramUpdateCallbackQueryFactory::new()
+                    ->withData("photoOnMap:{$photo->id}")
+                    ->make()
+            )
+            ->assertOk()
+            ->assertExactJson([
+                'method' => 'answerCallbackQuery',
+                'callback_query_id' => 'callback-query-1',
+                'text' => 'Местоположение этой фотографии больше недоступно.',
+            ]);
+
+        \Http::assertNothingSent();
     }
 
     public function testPhotoCommand()
@@ -157,8 +244,11 @@ class TelegramBotTest extends TestCase
                     ->make()
             )
             ->assertOk()
-            ->assertExactJson([]);
+            ->assertExactJson([
+                'method' => 'answerCallbackQuery',
+                'callback_query_id' => 'callback-query-1',
+            ]);
 
-        \Http::assertSentCount(1);
+        \Http::assertNothingSent();
     }
 }

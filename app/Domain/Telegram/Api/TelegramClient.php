@@ -29,9 +29,9 @@ class TelegramClient
         private bool|null $disableWebPagePreview,
     ) {}
 
-    public function answerCallbackQuery(string $callbackQueryId): TelegramResponse|array
+    public function answerCallbackQuery(string $callbackQueryId, string|null $text = null): TelegramResponse|array
     {
-        $request = new AnswerCallbackQueryRequest($callbackQueryId);
+        $request = new AnswerCallbackQueryRequest($callbackQueryId, $text);
 
         return $this->send($request);
     }

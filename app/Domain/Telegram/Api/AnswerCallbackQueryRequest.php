@@ -6,6 +6,7 @@ readonly class AnswerCallbackQueryRequest extends TelegramRequest
 {
     public function __construct(
         private string $callbackQueryId,
+        private string|null $text = null,
     ) {}
 
     public function endpoint(): string
@@ -17,6 +18,7 @@ readonly class AnswerCallbackQueryRequest extends TelegramRequest
     {
         return [
             'callback_query_id' => $this->callbackQueryId,
+            'text' => $this->text,
         ];
     }
 }

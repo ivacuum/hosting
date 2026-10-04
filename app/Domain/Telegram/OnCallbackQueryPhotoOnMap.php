@@ -17,7 +17,7 @@ class OnCallbackQueryPhotoOnMap
 
             return $this
                 ->onCallbackQueryPhotoOnMap
-                ->execute($request->chatId, $photoId, $request->messageId);
+                ->execute($request->chatId, $photoId, $request->messageId, $request->callbackQuery->id);
         }
 
         return $next($request);

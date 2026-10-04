@@ -24,20 +24,32 @@ class TelegramWebhookController
             $logger->info('telegram.webhook_received', ['payload' => $request->all()]);
         }
 
-        if ($request->callbackQuery !== null) {
-            try {
-                $telegram->answerCallbackQuery($request->callbackQuery->id);
-            } catch (TelegramException $exception) {
-                report($exception);
-            }
-        }
-
-        return Pipeline::send($request)
+        $response = Pipeline::send($request)
             ->through([
                 OnCommandPhoto::class,
                 OnCommandStart::class,
                 OnCallbackQueryPhotoOnMap::class,
             ])
-            ->then(static fn (): null => null) ?? [];
+            ->then(static fn (): null => null);
+
+        if ($request->callbackQuery === null) {
+            return $response ?? [];
+        }
+
+        if ($response === null) {
+            return $telegram->asResponse()->answerCallbackQuery($request->callbackQuery->id);
+        }
+
+        if (($response['method'] ?? null) === 'answerCallbackQuery') {
+            return $response;
+        }
+
+        try {
+            $telegram->answerCallbackQuery($request->callbackQuery->id);
+        } catch (TelegramException $exception) {
+            report($exception);
+        }
+
+        return $response;
     }
 }
