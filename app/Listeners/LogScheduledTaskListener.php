@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use Illuminate\Console\Application;
 use Illuminate\Console\Events\ScheduledBackgroundTaskFinished;
 use Illuminate\Console\Events\ScheduledTaskFailed;
 use Illuminate\Console\Events\ScheduledTaskFinished;
@@ -18,21 +19,17 @@ class LogScheduledTaskListener
         $status = match (true) {
             $event instanceof ScheduledTaskStarting => 'starting',
             $event instanceof ScheduledTaskSkipped => 'skipped',
-            $event instanceof ScheduledTaskFailed => 'failed',
             $event instanceof ScheduledTaskFinished && $task->skippedBecauseOverlapping => 'skipped_overlapping',
             $event instanceof ScheduledTaskFinished && $task->runInBackground => 'starting_background',
-            $event instanceof ScheduledTaskFinished => 'finished',
+            $event instanceof ScheduledTaskFinished,
             $task->exitCode === 0 => 'finished',
             default => 'failed',
         };
 
         $context = [
-            'event' => class_basename($event),
-            'task' => $task->description ?? $task->getSummaryForDisplay(),
-            'command' => $task->command,
-            'expression' => $task->expression,
-            'background' => $task->runInBackground,
-            'status' => $status,
+            'command' => $task->command === null
+                ? $task->getSummaryForDisplay()
+                : str($task->command)->chopStart(Application::formatCommandString(''))->toString(),
         ];
 
         if ($status === 'finished' || $status === 'failed') {
