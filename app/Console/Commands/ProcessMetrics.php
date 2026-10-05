@@ -27,12 +27,11 @@ class ProcessMetrics extends Command
         ViewsAggregator $viewsAggregator,
         ImageViewsAggregator $imageViewsAggregator,
         PhotoViewsAggregator $photoViewsAggregator,
-    ) {
-        $nextStartId = $cache->get(CacheKey::MetricsNextStartId) ?? RedisStreamId::FromTheStart->value;
+    ): int {
+        $startId = $cache->get(CacheKey::MetricsNextStartId) ?? RedisStreamId::FromTheStart->value;
+        $nextStartId = $startId;
 
-        $this->line("Processing metrics from id: <info>{$nextStartId}</info>");
-
-        $metrics = $fetchMetrics->execute($nextStartId);
+        $metrics = $fetchMetrics->execute($startId);
         $processed = 0;
 
         foreach ($metrics as $key => $json) {
@@ -49,39 +48,38 @@ class ProcessMetrics extends Command
         }
 
         if ($processed === 0) {
-            $this->line('There was nothing to process.');
-
             return self::SUCCESS;
         }
 
-        $this->table(
-            ['Metric', 'Value'],
-            collect($metricsAggregator->data())
-                ->filter()
-                ->map(static fn ($value, $key) => [$key, $value])
-                ->all(),
-        );
-
-        DB::beginTransaction();
+        $context = [
+            'stream_entries' => $processed,
+            'metrics' => collect($metricsAggregator->data())->filter()->all(),
+            'start_id' => $startId,
+            'next_start_id' => $nextStartId,
+        ];
 
         try {
-            $metricsAggregator->export();
-            $viewsAggregator->export();
-            $imageViewsAggregator->export();
-            $photoViewsAggregator->export();
-
-            DB::commit();
+            DB::transaction(static function () use (
+                $metricsAggregator,
+                $viewsAggregator,
+                $imageViewsAggregator,
+                $photoViewsAggregator,
+            ): void {
+                $metricsAggregator->export();
+                $viewsAggregator->export();
+                $imageViewsAggregator->export();
+                $photoViewsAggregator->export();
+            });
         } catch (\Throwable $e) {
             report($e);
-            DB::rollBack();
-
-            $this->error('Processing failed, cursor not advanced.');
 
             return self::FAILURE;
         }
 
         $cache->put(CacheKey::MetricsNextStartId, $nextStartId, CacheKey::MetricsNextStartId->ttl());
 
-        $this->line("Processed metric stream entries: <info>{$processed}</info>");
+        logs()->info('metrics.processed', $context);
+
+        return self::SUCCESS;
     }
 }
