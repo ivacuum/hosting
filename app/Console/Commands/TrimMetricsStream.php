@@ -10,8 +10,10 @@ use Illuminate\Console\Attributes\Signature;
 #[Description('Trim metrics streams')]
 class TrimMetricsStream extends Command
 {
-    public function handle(TrimMetricsStreamAction $trimMetricsStream)
+    public function handle(TrimMetricsStreamAction $trimMetricsStream): void
     {
-        $this->line("Entries trimmed: <info>{$trimMetricsStream->execute()}</info>");
+        logs()->info('metrics.stream_trimmed', [
+            'trimmed_entries' => $trimMetricsStream->execute(),
+        ]);
     }
 }
