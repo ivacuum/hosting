@@ -46,7 +46,9 @@ class ImageViewerServer extends Command
         $this->acceptedConnections++;
 
         if (app()->isLocal()) {
-            $this->info($request->server['request_uri']);
+            logs()->debug('image_viewer.request_received', [
+                'uri' => $request->server['request_uri'],
+            ]);
         }
 
         // $referrer = $request->header['referer'] ?? null;
@@ -79,21 +81,33 @@ class ImageViewerServer extends Command
 
         $this->server->on('start', function (Server $server) {
             $this->started = true;
-            $this->info("Принимаем входящие пакеты по адресу TCP {$server->host}:{$server->port}");
+            logs()->info('image_viewer.started', [
+                'host' => $server->host,
+                'port' => $server->port,
+                'pid' => getmypid(),
+            ]);
 
             // Ctrl+C
             Process::signal(SIGINT, function () {
-                $this->info('Получен сигнал SIGINT');
+                logs()->info('image_viewer.signal_received', [
+                    'signal' => 'SIGINT',
+                    'pid' => getmypid(),
+                ]);
                 $this->stop();
             });
         });
 
         $this->server->on('shutdown', function () {
-            $this->info("Сервис остановлен. Подключений принято: {$this->acceptedConnections}");
+            logs()->info('image_viewer.stopped', [
+                'accepted_connections' => $this->acceptedConnections,
+                'pid' => getmypid(),
+            ]);
         });
 
         $this->server->on('workerstop', function () {
-            $this->info('WorkerStop');
+            logs()->info('image_viewer.worker_stopped', [
+                'pid' => getmypid(),
+            ]);
         });
     }
 
