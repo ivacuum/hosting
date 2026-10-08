@@ -9,7 +9,7 @@ use Illuminate\Console\Attributes\Signature;
 use Illuminate\Contracts\Console\Isolatable;
 use Illuminate\Database\Eloquent\Builder;
 
-#[Signature('app:refresh-social-media-tokens {--user_id}')]
+#[Signature('app:refresh-social-media-tokens {--user_id=}')]
 #[Description('Refresh expiring social media access tokens')]
 class RefreshSocialMediaTokens extends Command implements Isolatable
 {
@@ -21,7 +21,7 @@ class RefreshSocialMediaTokens extends Command implements Isolatable
             ->when($userId, static fn (Builder $query) => $query->where('user_id', $userId))
             ->where('expired_at', '<', today()->addWeek());
 
-        foreach ($query->lazy() as $token) {
+        foreach ($query->lazyById() as $token) {
             $response = $instagram->refreshAccessToken($token->token);
 
             $token->token = $response->accessToken;
