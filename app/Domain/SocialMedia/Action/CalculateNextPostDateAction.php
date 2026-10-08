@@ -16,6 +16,7 @@ class CalculateNextPostDateAction
         $query = SocialMediaPost::query()
             ->whereBelongsTo($user)
             ->where('status', SocialMediaPostStatus::Queued)
+            ->where('published_at', '>=', $nextSlot)
             ->orderBy('published_at');
 
         foreach ($query->lazy() as $post) {
