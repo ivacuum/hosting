@@ -21,13 +21,11 @@ class LimitRateWithRedisAction
             $this->redis, $limit->key, $limit->maxAttempts, $limit->decaySeconds
         );
 
-        if ($limiter->tooManyAttempts()) {
+        if (!$limiter->acquire()) {
             event(new RateLimitExceeded($limit->key, $limit->maxAttempts));
 
             return true;
         }
-
-        $limiter->acquire();
 
         return false;
     }
