@@ -56,7 +56,7 @@ return new class extends Migration {
             $table->unsignedInteger('user_id');
             $table->string('rel_type');
             $table->unsignedBigInteger('rel_id');
-            $table->unsignedTinyInteger('status')->default(App\Domain\CommentStatus::Published->value);
+            $table->unsignedTinyInteger('status')->default(App\Domain\CommentStatus::Published);
             $table->text('html');
             $table->timestamps();
 
@@ -163,7 +163,7 @@ return new class extends Migration {
             $table->string('slug');
             $table->unsignedBigInteger('size')->default(0);
             $table->string('extension', 25);
-            $table->unsignedTinyInteger('status')->default(App\Domain\FileStatus::Hidden->value);
+            $table->unsignedTinyInteger('status')->default(App\Domain\FileStatus::Hidden);
             $table->unsignedInteger('downloads')->default(0);
             $table->timestamps();
         });
@@ -188,7 +188,7 @@ return new class extends Migration {
             $table->string('title_en')->default('');
             $table->string('slug')->unique();
             $table->timestamp('date');
-            $table->tinyInteger('status')->unsigned()->default(App\Domain\Life\GigStatus::Hidden->value);
+            $table->tinyInteger('status')->unsigned()->default(App\Domain\Life\GigStatus::Hidden);
             $table->string('meta_title_ru')->default('');
             $table->string('meta_title_en')->default('');
             $table->string('meta_description_ru')->default('');
@@ -211,7 +211,7 @@ return new class extends Migration {
         Schema::create('issues', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->unsignedTinyInteger('status')->default(App\Domain\IssueStatus::Pending->value);
+            $table->unsignedTinyInteger('status')->default(App\Domain\IssueStatus::Pending);
             $table->string('name');
             $table->string('email');
             $table->string('title');
@@ -277,7 +277,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('size')->default(0);
             $table->char('info_hash', 40);
             $table->string('announcer');
-            $table->unsignedTinyInteger('status')->default(App\Domain\Magnet\MagnetStatus::Published->value);
+            $table->unsignedTinyInteger('status')->default(App\Domain\Magnet\MagnetStatus::Published);
             $table->unsignedInteger('clicks')->default(0);
             $table->unsignedInteger('views')->default(0);
             $table->timestamp('registered_at')->nullable();
@@ -380,7 +380,7 @@ return new class extends Migration {
             $table->string('slug');
             $table->timestamp('date_start');
             $table->timestamp('date_end');
-            $table->unsignedTinyInteger('status')->default(App\Domain\Life\TripStatus::Inactive->value);
+            $table->unsignedTinyInteger('status')->default(App\Domain\Life\TripStatus::Inactive);
             $table->text('markdown');
             $table->text('html');
             $table->string('meta_title_ru')->default('');
@@ -402,10 +402,10 @@ return new class extends Migration {
             // $table->text('two_factor_secret')->nullable();
             // $table->text('two_factor_recovery_codes')->nullable();
             $table->string('salt', 5)->default('');
-            $table->unsignedTinyInteger('status')->default(App\Domain\UserStatus::Inactive->value);
-            $table->string('locale', 10)->default(App\Domain\Locale::Rus->value);
+            $table->unsignedTinyInteger('status')->default(App\Domain\UserStatus::Inactive);
+            $table->string('locale', 10)->default(App\Domain\Locale::Rus);
             $table->unsignedTinyInteger('magnet_short_title')->default(0);
-            $table->unsignedTinyInteger('notification_delivery_method')->default(App\Domain\NotificationDeliveryMethod::Disabled->value);
+            $table->unsignedTinyInteger('notification_delivery_method')->default(App\Domain\NotificationDeliveryMethod::Disabled);
             $table->string('avatar')->default('');
             $table->unsignedBigInteger('telegram_id')->nullable();
             $table->ipAddress('ip')->default('');

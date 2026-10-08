@@ -49,7 +49,7 @@ class SignInTest extends TestCase
         $this->get('auth/facebook/callback')
             ->assertRedirect('auth/login')
             ->assertSessionHas(
-                SessionKey::FlashMessage->value,
+                SessionKey::FlashMessage,
                 static fn (HtmlString $message) => str_contains($message->toHtml(), 'auth/facebook?rerequest=1'),
             );
 
@@ -188,7 +188,7 @@ class SignInTest extends TestCase
         $this->get('auth/google/callback')
             ->assertRedirect('auth/login')
             ->assertSessionHas(
-                SessionKey::FlashMessage->value,
+                SessionKey::FlashMessage,
                 'Мы не можем вас зарегистрировать, так как не получили от Гугла вашу электронную почту',
             );
 
@@ -308,7 +308,7 @@ class SignInTest extends TestCase
         $this->get('auth/vk/callback')
             ->assertRedirect('auth/login')
             ->assertSessionHas(
-                SessionKey::FlashMessage->value,
+                SessionKey::FlashMessage,
                 static fn (HtmlString $message) => str_contains($message->toHtml(), 'auth/vk?revoke=1'),
             );
 

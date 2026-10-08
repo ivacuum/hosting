@@ -40,9 +40,9 @@
           {{ $model->id }}
         </a>
       </td>
-      <td class="leading-none text-2xl bg-{{ $model->provider->value }}-600 hover:bg-{{ $model->provider->value }}-700">
+      <td class="leading-none text-2xl bg-{{ $model->provider }}-600 hover:bg-{{ $model->provider }}-700">
         <?php $icon = $model->provider->value ?>
-        <a class="text-white hover:text-white" href="{{ $model->externalLink() }}">
+        <a class="flex items-center justify-center text-white hover:text-white" href="{{ $model->externalLink() }}">
           @svg ($icon)
         </a>
       </td>

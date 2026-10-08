@@ -75,7 +75,7 @@ class AcpNewsTest extends TestCase
             'title' => 'phpunit news',
             'markdown' => '**New body**',
             'html' => "<p><strong>New body</strong></p>\n",
-            'locale' => $locale->value,
+            'locale' => $locale,
             'user_id' => auth()->id(),
         ]);
     }
