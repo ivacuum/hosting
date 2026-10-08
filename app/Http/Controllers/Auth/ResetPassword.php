@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Domain\SessionKey;
-use App\Domain\UserStatus;
 use App\Events\Stats\UserPasswordResetted;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
@@ -14,14 +13,6 @@ use Illuminate\Contracts\Auth\PasswordBroker;
 
 class ResetPassword extends Controller
 {
-    /**
-     * Флаг будет установлен в true, если пользователю запрещено
-     * восстанавливать пароль (см. userStatusesOkToReset())
-     *
-     * @var bool
-     */
-    protected $bannedUser = false;
-
     public function index($token = null)
     {
         abort_unless($token, 404);
@@ -38,17 +29,7 @@ class ResetPassword extends Controller
             'password_confirmation' => $request->password,
         ];
 
-        $response = $broker->reset($credentials, function (User $user, string $password) {
-            if (in_array($user->status, $this->userStatusesOkToReset())) {
-                $this->resetOkCallback($user, $password);
-            } else {
-                $this->bannedUser = true;
-            }
-        });
-
-        if ($this->bannedUser) {
-            return $this->sendBannedResponse($request);
-        }
+        $response = $broker->reset($credentials, $this->resetOkCallback(...));
 
         return $response === PasswordBroker::PASSWORD_RESET
             ? $this->sendOkResponse($response)
@@ -74,13 +55,6 @@ class ResetPassword extends Controller
         \Auth::login($user);
     }
 
-    protected function sendBannedResponse(ResetPasswordForm $request)
-    {
-        return back()
-            ->withInput(['email' => $request->email])
-            ->with(SessionKey::FlashMessage->value, __('passwords.banned'));
-    }
-
     protected function sendFailedResponse(ResetPasswordForm $request, string $response)
     {
         return back()
@@ -94,13 +68,5 @@ class ResetPassword extends Controller
 
         return redirect($this->redirectPath())
             ->with(SessionKey::FlashMessage->value, __($response));
-    }
-
-    protected function userStatusesOkToReset()
-    {
-        return [
-            UserStatus::Inactive,
-            UserStatus::Active,
-        ];
     }
 }

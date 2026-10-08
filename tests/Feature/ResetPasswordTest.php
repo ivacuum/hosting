@@ -2,9 +2,11 @@
 
 namespace Tests\Feature;
 
+use App\Domain\UserStatus;
 use App\Factory\UserFactory;
 use Illuminate\Auth\Passwords\PasswordBroker;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use PHPUnit\Framework\Attributes\TestWith;
 use Tests\TestCase;
 
 class ResetPasswordTest extends TestCase
@@ -28,9 +30,11 @@ class ResetPasswordTest extends TestCase
         $this->assertAuthenticated();
     }
 
-    public function testSubmitGuest(): void
+    #[TestWith([UserStatus::Active])]
+    #[TestWith([UserStatus::Inactive])]
+    public function testSubmitGuest(UserStatus $status): void
     {
-        $user = UserFactory::new()->withPassword('old-password')->create();
+        $user = UserFactory::new()->withStatus($status)->withPassword('old-password')->create();
         $broker = $this->app->make(PasswordBroker::class);
         $token = $broker->createToken($user);
 
@@ -47,6 +51,7 @@ class ResetPasswordTest extends TestCase
 
         $user->refresh();
 
+        $this->assertSame(UserStatus::Active, $user->status);
         $this->assertTrue(\Hash::check('new-password', $user->password));
         $this->assertFalse(\Hash::check('old-password', $user->password));
         $this->assertAuthenticatedAs($user);
