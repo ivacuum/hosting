@@ -42,4 +42,17 @@ class GetPointFromGpsDataActionTest extends TestCase
         $this->assertSame($latitude, $point->lat);
         $this->assertSame($longitude, $point->lon);
     }
+
+    #[UnitTest]
+    public function testNullifiedCoordinatesHaveNoLocation(): void
+    {
+        $point = new GetPointFromGpsDataAction()->execute([
+            'GPSLatitudeRef' => 'N',
+            'GPSLatitude' => ['53/1', '1/1', '0/0'],
+            'GPSLongitudeRef' => 'E',
+            'GPSLongitude' => ['129/1', '43/1', '1244/100'],
+        ]);
+
+        $this->assertNull($point);
+    }
 }

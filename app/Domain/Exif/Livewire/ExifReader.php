@@ -4,12 +4,12 @@ namespace App\Domain\Exif\Livewire;
 
 use App\Domain\Exif\DivideExifValueAction;
 use App\Domain\Exif\GetExifValueForHumansAction;
+use App\Domain\Exif\GetPointFromGpsDataAction;
 use App\Domain\Exif\GetTakenAtFromExifDataAction;
 use App\Domain\Exif\Jobs\DeleteTempLivewireFileJob;
 use App\Domain\Exif\RateLimit\ExifReaderRateLimiter;
 use App\Domain\Exif\ReadExifDataAction;
 use App\Domain\Exif\ShouldDeleteImageForTestAction;
-use App\Utilities\ExifHelper;
 use Carbon\CarbonImmutable;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Validate;
@@ -45,6 +45,7 @@ class ExifReader extends Component
     }
 
     public function submit(
+        GetPointFromGpsDataAction $getPointFromGpsData,
         GetTakenAtFromExifDataAction $getTakenAtFromExifData,
         ReadExifDataAction $readExifData,
         ShouldDeleteImageForTestAction $shouldDeleteImageForTest,
@@ -78,10 +79,9 @@ class ExifReader extends Component
             $this->data = $readExifData->execute($this->image->getRealPath());
             $this->read = true;
             $this->date = $getTakenAtFromExifData->execute($this->data);
-            [
-                'lat' => $this->lat,
-                'lon' => $this->lon
-            ] = ExifHelper::latLon($this->data);
+            $point = $getPointFromGpsData->execute($this->data);
+            $this->lat = $point?->lat;
+            $this->lon = $point?->lon;
             $this->gpsImageDirection = ($this->data['GPSImgDirection'] ?? null)
                 ? app(DivideExifValueAction::class)->execute($this->data['GPSImgDirection'])
                 : null;

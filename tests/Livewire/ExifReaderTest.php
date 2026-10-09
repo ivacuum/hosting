@@ -58,27 +58,34 @@ class ExifReaderTest extends TestCase
             ->assertHasErrors(['image' => 'Файл уже удален с сервера. Загрузите его, пожалуйста, еще раз.']);
     }
 
-    public function testDivisionByZeroPreventedForNullifiedGpsData()
+    public function testDivisionByZeroPreventedForNullifiedGpsData(): void
     {
         \Queue::fake([DeleteTempLivewireFileJob::class]);
         \Storage::fake(FileUploadConfiguration::disk());
 
+        $data = [
+            'Model' => 'Camera with unavailable GPS',
+            'GPSAltitude' => '0/0',
+            'GPSAltitudeRef' => chr(0),
+            'GPSLatitudeRef' => 'N',
+            'GPSLatitude' => ['0/0', '0/0', '0/0'],
+            'GPSLongitudeRef' => 'E',
+            'GPSLongitude' => ['0/0', '0/0', '0/0'],
+        ];
+
         $this->mock(ReadRawExifDataAction::class)
             ->expects('execute')
-            ->andReturn([
-                'GPSAltitude' => '0/0',
-                'GPSAltitudeRef' => chr(0),
-            ]);
+            ->andReturn($data);
 
         $image = UploadedFile::fake()->image('exif.jpg');
 
         \Livewire::test(ExifReader::class)
             ->set('image', $image)
             ->call('submit')
-            ->assertSet('data', [
-                'GPSAltitude' => '0/0',
-                'GPSAltitudeRef' => chr(0),
-            ]);
+            ->assertHasNoErrors()
+            ->assertSet('lat', null)
+            ->assertSet('lon', null)
+            ->assertSet('data', $data);
     }
 
     public function testImageDeleteJobQueued()

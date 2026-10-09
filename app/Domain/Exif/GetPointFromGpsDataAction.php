@@ -18,6 +18,10 @@ class GetPointFromGpsDataAction
         $lat = $this->convertDegreesToFloat($exifData['GPSLatitude']);
         $lon = $this->convertDegreesToFloat($exifData['GPSLongitude']);
 
+        if ($lat === null || $lon === null) {
+            return null;
+        }
+
         if ($exifData['GPSLatitudeRef'] == 'S') {
             $lat *= -1;
         }
@@ -26,20 +30,18 @@ class GetPointFromGpsDataAction
             $lon *= -1;
         }
 
-        $locale = localeconv();
-
-        // Обработка разделителей с учетом текущей локали
-        $lat = str_replace($locale['decimal_point'], '.', round($lat, 6));
-        $lon = str_replace($locale['decimal_point'], '.', round($lon, 6));
-
-        return new Point($lat, $lon);
+        return new Point((string) round($lat, 6), (string) round($lon, 6));
     }
 
-    private function convertDegreesToFloat(array $coordinates): float
+    private function convertDegreesToFloat(array $coordinates): float|null
     {
         $degreesAry = explode('/', $coordinates[0]);
         $minutesAry = explode('/', $coordinates[1]);
         $secondsAry = explode('/', $coordinates[2]);
+
+        if ($degreesAry[1] == 0 || $minutesAry[1] == 0 || $secondsAry[1] == 0) {
+            return null;
+        }
 
         $degrees = $degreesAry[0] / $degreesAry[1];
         $minutes = $minutesAry[0] / $minutesAry[1];
