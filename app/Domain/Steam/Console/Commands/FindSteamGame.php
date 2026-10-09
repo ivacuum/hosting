@@ -29,15 +29,18 @@ class FindSteamGame extends Command implements Isolatable
         $english = $steam->gameDetails($steamId, SteamCountryCode::Kyrgyzstan, SteamLanguage::English)->game;
         $russian = $steam->gameDetails($steamId, SteamCountryCode::Kyrgyzstan, SteamLanguage::Russian)->game;
 
-        $slug = Str::slug($english->name);
+        $title = var_export($english->name, true);
+        $slug = var_export(Str::slug($english->name), true);
+        $shortDescriptionEn = var_export($english->shortDescription, true);
+        $shortDescriptionRu = var_export($russian->shortDescription, true);
 
         echo <<<"TEXT"
 GameFactory::new()
     ->withSteamId({$english->appId})
-    ->withTitle("{$english->name}")
-    ->withSlug("{$slug}")
-    ->withShortDescriptionEn("{$english->shortDescription}")
-    ->withShortDescriptionRu("{$russian->shortDescription}")
+    ->withTitle({$title})
+    ->withSlug({$slug})
+    ->withShortDescriptionEn({$shortDescriptionEn})
+    ->withShortDescriptionRu({$shortDescriptionRu})
     ->withReleasedAt('{$english->releasedAt->toDateString()}')
     ->create();
 
