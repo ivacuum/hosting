@@ -34,7 +34,7 @@ class GigsRssController
         $cover = '<p><a href="' . $link . '?from=rss-image"><img src="' . $gig->meta_image . '" alt=""></a></p>';
 
         return [
-            'title' => htmlspecialchars($gig->metaTitle()),
+            'title' => $gig->metaTitle(),
             'link' => $link . '?from=rss-title',
             'guid' => $link,
             'description' => "<p>{$gig->metaDescription()}</p>{$cover}",

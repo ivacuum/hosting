@@ -37,7 +37,7 @@ class TripsRssController
         $cover = '<p><a href="' . $link . '?from=rss-image"><img src="' . $trip->metaImage() . '" alt=""></a></p>';
 
         return [
-            'title' => htmlspecialchars($trip->metaTitle()),
+            'title' => $trip->metaTitle(),
             'link' => $link . '?from=rss-title',
             'guid' => $link,
             'description' => "<p>{$trip->metaDescription()}</p>{$cover}",

@@ -33,7 +33,7 @@ class NewsRssController
         $link = url($news->www());
 
         return [
-            'title' => htmlspecialchars($news->title),
+            'title' => $news->title,
             'link' => $link . '?from=rss-title',
             'guid' => $link,
             'description' => $news->html,
