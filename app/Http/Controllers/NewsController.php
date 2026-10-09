@@ -6,18 +6,16 @@ use App\Http\Requests\NewsShowForm;
 use App\News;
 use App\Scope\NewsCurrentLocaleScope;
 use App\Scope\NewsPublishedScope;
-use Illuminate\Database\Eloquent\Builder;
 
 class NewsController
 {
-    public function index($year = null, $month = null, $day = null)
+    public function index()
     {
         $news = News::query()
             ->with('user')
             ->withCount('commentsPublished AS comments_count')
             ->tap(new NewsPublishedScope)
             ->tap(new NewsCurrentLocaleScope)
-            ->when($year || $month || $day, static fn (Builder $query) => $query->whereBetween('created_at', News::interval($year, $month, $day)))
             ->orderByDesc('created_at')
             ->paginate(10);
 

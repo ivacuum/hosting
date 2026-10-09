@@ -7,7 +7,6 @@ use App\Domain\Locale;
 use App\Domain\NewsStatus;
 use App\Observers\NewsObserver;
 use App\Policies\NewsPolicy;
-use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -77,22 +76,6 @@ class News extends Model
     public function www(string|null $anchor = null): string
     {
         return path([Http\Controllers\NewsController::class, 'show'], $this->id) . $anchor;
-    }
-
-    // Static methods
-    public static function interval(int $year, int|null $month = null, int|null $day = null): array
-    {
-        $start = CarbonImmutable::createFromDate($year, $month, $day);
-
-        if ($day !== null) {
-            return [$start->startOfDay(), $start->endOfDay()];
-        }
-
-        if ($month !== null) {
-            return [$start->startOfMonth(), $start->endOfMonth()];
-        }
-
-        return [$start->startOfYear(), $start->endOfYear()];
     }
 
     #[\Override]
