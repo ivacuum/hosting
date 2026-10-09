@@ -6,7 +6,7 @@ use App\Domain\Wanikani\Models\Burnable;
 use App\Domain\Wanikani\Models\Kanji;
 use App\Domain\Wanikani\Models\Radical;
 use App\Domain\Wanikani\Models\Vocabulary;
-use Illuminate\Database\QueryException;
+use Illuminate\Database\UniqueConstraintViolationException;
 
 class BurnAction
 {
@@ -17,7 +17,7 @@ class BurnAction
             $burn->user_id = $userId;
 
             return $burnable->burnable()->save($burn) ?: null;
-        } catch (QueryException) {
+        } catch (UniqueConstraintViolationException) {
             return null;
         }
     }
