@@ -7,11 +7,22 @@ use App\Domain\Rto\RtoApiException;
 use App\Domain\Rto\RtoFake;
 use App\Domain\Rto\RtoTemporarilyUnavailableException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use PHPUnit\Framework\Attributes\TestWith;
 use Tests\TestCase;
 
 class RtoTest extends TestCase
 {
     use DatabaseTransactions;
+
+    #[TestWith(['12345', 12345], 'topic ID')]
+    #[TestWith(['https://rutracker.org/forum/viewtopic.php?t=12345', 12345], 'topic URL')]
+    #[TestWith(['12345.6', null], 'fractional ID')]
+    #[TestWith(['https://rutracker.org/forum/viewtopic.php?t=12345.6', null], 'fractional URL ID')]
+    #[TestWith(['0', null], 'zero ID')]
+    public function testFindTopicIdRequiresPositiveInteger(string $input, int|null $expected): void
+    {
+        $this->assertSame($expected, app(Rto::class)->findTopicId($input));
+    }
 
     public function testTemporarilyDisabledErrorThrowsDedicatedException(): void
     {

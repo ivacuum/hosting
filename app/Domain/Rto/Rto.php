@@ -22,7 +22,7 @@ readonly class Rto
     public function findTopicId(int|string|null $input): int|null
     {
         if (is_numeric($input)) {
-            return $input;
+            return $this->parseTopicId($input);
         }
 
         if ($input === null) {
@@ -33,11 +33,7 @@ readonly class Rto
             if (\Str::contains($input, ['://rutracker.org', '://rutracker.net', '://rutracker.nl'])) {
                 $query = Uri::of($input)->query();
 
-                if (!$query->has('t')) {
-                    return null;
-                }
-
-                return $query->integer('t');
+                return $this->parseTopicId($query->get('t'));
             }
         }
 
@@ -109,6 +105,11 @@ readonly class Rto
             ->withOptions([
                 RequestOptions::PROXY => Config::RtoProxy->get(),
             ]);
+    }
+
+    private function parseTopicId(mixed $value): int|null
+    {
+        return filter_var($value, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]) ?: null;
     }
 
     private function sendRequest(HttpRequest $request): Response
