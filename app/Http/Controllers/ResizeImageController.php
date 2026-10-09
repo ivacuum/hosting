@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Domain\ImageConverter\ImageConverter;
 use App\Http\Requests\ResizeImageForm;
-use GuzzleHttp\Exception\ClientException;
 use Illuminate\Http\Client\Factory;
 
 class ResizeImageController
@@ -17,16 +16,12 @@ class ResizeImageController
         $tempFile = tmpfile();
         $tempFilepath = stream_get_meta_data($tempFile)['uri'];
 
-        try {
-            $response = $http
-                ->connectTimeout(3)
-                ->timeout(10)
-                ->withAttributes(['skip_response_body_logging' => true])
-                ->sink($tempFile)
-                ->get($request->image);
-        } catch (ClientException $e) {
-            abort($e->getCode());
-        }
+        $response = $http
+            ->connectTimeout(3)
+            ->timeout(10)
+            ->withAttributes(['skip_response_body_logging' => true])
+            ->sink($tempFile)
+            ->get($request->image);
 
         abort_unless($response->ok(), $response->status());
 
@@ -37,6 +32,6 @@ class ResizeImageController
 
         event(new \App\Events\Stats\ImageResizedOnDemand);
 
-        return response()->file($resizedImage, ['Content-Type' => $request->mimeByExtension()]);
+        return response()->file($resizedImage);
     }
 }

@@ -6,17 +6,21 @@ use App\Action\GetResizeImageWhitelistAction;
 use App\Domain\ImageConverter\ImageConverter;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
+use PHPUnit\Framework\Attributes\TestWith;
 use Tests\TestCase;
 
 class ResizeImageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testConvertGigJpg()
+    #[TestWith(['gigs/image.jpg'])]
+    #[TestWith(['image.jpg'])]
+    #[TestWith(['image.png'])]
+    public function testConvertUsesOutputMimeType(string $path): void
     {
         \Event::fake(\App\Events\Stats\ImageResizedOnDemand::class);
         \Http::fake([
-            'https://example.com/gigs/image.jpg' => \Http::response(),
+            "https://example.com/{$path}" => \Http::response(),
         ]);
 
         $this->mock(GetResizeImageWhitelistAction::class)
@@ -28,30 +32,7 @@ class ResizeImageTest extends TestCase
         $imageConverter->expects('quality')->andReturnSelf();
         $imageConverter->expects('convert')->andReturn(UploadedFile::fake()->image('image.jpg'));
 
-        $this->get('resize/400x300/example.com/gigs/image.jpg')
-            ->assertOk()
-            ->assertHeader('Content-Type', 'image/jpeg');
-
-        \Event::assertDispatched(\App\Events\Stats\ImageResizedOnDemand::class);
-    }
-
-    public function testConvertTripJpg()
-    {
-        \Event::fake(\App\Events\Stats\ImageResizedOnDemand::class);
-        \Http::fake([
-            'https://example.com/image.jpg' => \Http::response(),
-        ]);
-
-        $this->mock(GetResizeImageWhitelistAction::class)
-            ->expects('execute')
-            ->andReturn(['example.com']);
-
-        $imageConverter = $this->mock(ImageConverter::class);
-        $imageConverter->expects('resize')->withArgs([400, 300])->andReturnSelf();
-        $imageConverter->expects('quality')->andReturnSelf();
-        $imageConverter->expects('convert')->andReturn(UploadedFile::fake()->image('image.jpg'));
-
-        $this->get('resize/400x300/example.com/image.jpg')
+        $this->get("resize/400x300/example.com/{$path}")
             ->assertOk()
             ->assertHeader('Content-Type', 'image/jpeg');
 

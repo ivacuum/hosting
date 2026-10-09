@@ -13,23 +13,12 @@ class ResizeImageForm extends FormRequest
     public int $height;
     public string $image;
 
-    private string|null $extension = null;
-
     public function authorize(GetResizeImageWhitelistAction $getResizeImageWhitelist): bool
     {
         return $this->isWhitelisted(
             $getResizeImageWhitelist->execute(),
             $this->route('domain')
         );
-    }
-
-    public function mimeByExtension(): string
-    {
-        return match ($this->extension) {
-            'jpg' => 'image/jpeg',
-            'png' => 'image/png',
-            default => 'image',
-        };
     }
 
     public function rules(): array
@@ -56,7 +45,6 @@ class ResizeImageForm extends FormRequest
         $this->image = "https://{$this->route('domain')}/{$this->route('path')}";
         $this->width = $this->integer('width');
         $this->height = $this->integer('height');
-        $this->extension = $this->input('extension');
     }
 
     #[\Override]
