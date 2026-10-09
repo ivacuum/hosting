@@ -19,8 +19,10 @@ class FilterOutCredentialsAction
         $http->path = str_replace($values, $keys, $http->path);
         $http->query = str_replace($values, $keys, $http->query);
 
-        if (!empty($http->request_headers['Authorization'][0])) {
-            $http->request_headers['Authorization'][0] = str_replace($values, $keys, $http->request_headers['Authorization'][0]);
+        foreach ($http->request_headers ?? [] as $name => $headerValues) {
+            if (strcasecmp($name, 'Authorization') === 0) {
+                $http->request_headers[$name] = str_replace($values, $keys, $headerValues);
+            }
         }
 
         match ($http->service_name) {
