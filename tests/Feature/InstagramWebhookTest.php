@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use PHPUnit\Framework\Attributes\TestWith;
 use Tests\TestCase;
 
 class InstagramWebhookTest extends TestCase
@@ -40,5 +41,15 @@ class InstagramWebhookTest extends TestCase
             ->assertOk();
 
         $this->assertSame('1234567890', $response->content());
+    }
+
+    #[TestWith(['expected-token'], 'mismatched token')]
+    #[TestWith([null], 'unconfigured token')]
+    public function testVerifyRejectsInvalidToken(string|null $expectedToken): void
+    {
+        config(['services.instagram.webhook_verify_token' => $expectedToken]);
+
+        $this->get('instagram/webhook?hub.mode=subscribe&hub.challenge=1234567890&hub.verify_token=wrong-token')
+            ->assertForbidden();
     }
 }

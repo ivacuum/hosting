@@ -7,8 +7,22 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class InstagramWebhook extends FormRequest
 {
-    public readonly bool $shouldIgnoreWebhook;
     public readonly string|null $challenge;
+
+    public function authorize(): bool
+    {
+        try {
+            $expectedToken = Config::InstagramWebhookVerifyToken->get();
+        } catch (\InvalidArgumentException) {
+            return false;
+        }
+
+        $providedToken = $this->input('hub_verify_token');
+
+        return $expectedToken !== ''
+            && is_string($providedToken)
+            && hash_equals($expectedToken, $providedToken);
+    }
 
     public function rules(): array
     {
@@ -20,20 +34,8 @@ class InstagramWebhook extends FormRequest
     }
 
     #[\Override]
-    protected function passedValidation()
+    protected function passedValidation(): void
     {
         $this->challenge = $this->input('hub_challenge');
-        $this->shouldIgnoreWebhook = $this->input('hub_verify_token') !== Config::InstagramWebhookVerifyToken->get();
-    }
-
-    private function shouldIgnoreWebhook(): bool
-    {
-        try {
-            $token = Config::InstagramWebhookVerifyToken->get();
-        } catch (\InvalidArgumentException) {
-            return true;
-        }
-
-        return $this->input('hub_verify_token') !== $token;
     }
 }
