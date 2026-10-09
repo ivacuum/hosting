@@ -9,6 +9,7 @@ readonly class EditMessageTextRequest extends TelegramRequest
         private int $messageId,
         private string $text,
         private bool|null $disableWebPagePreview = false,
+        private ParseMode|null $parseMode = null,
         private InlineKeyboardMarkup|null $replyMarkup = null,
     ) {}
 
@@ -22,7 +23,7 @@ readonly class EditMessageTextRequest extends TelegramRequest
         return [
             'text' => $this->text,
             'chat_id' => $this->chatId,
-            'parse_mode' => null,
+            'parse_mode' => $this->parseMode?->value,
             'message_id' => $this->messageId,
             'reply_markup' => $this->replyMarkup,
             'disable_web_page_preview' => $this->disableWebPagePreview

@@ -74,7 +74,9 @@ class TelegramClient
             $this->chatId,
             $messageId,
             $text,
-            $this->disableWebPagePreview
+            $this->disableWebPagePreview,
+            $this->parseMode,
+            $this->replyMarkup
         );
 
         return $this->send($request);

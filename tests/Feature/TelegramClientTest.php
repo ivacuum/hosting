@@ -93,6 +93,41 @@ class TelegramClientTest extends TestCase
         });
     }
 
+    public function testEditMessageTextWithFormattingAndKeyboard(): void
+    {
+        \Http::fake([
+            'api.telegram.org/bot*/editMessageText' => \Http::response([
+                'ok' => true,
+                'result' => ['message_id' => 678],
+            ]),
+        ]);
+
+        config(['services.telegram.bot_token' => '1234:token']);
+
+        app(TelegramClient::class)
+            ->chat(12345)
+            ->html()
+            ->disableWebPagePreview()
+            ->replyMarkup(
+                InlineKeyboardMarkup::make()
+                    ->addRow(new InlineKeyboardButton('Confirm', callbackData: 'confirm:yes'))
+            )
+            ->editMessageText(678, '<b>Updated message</b>');
+
+        \Http::assertSent(static function (Request $request): bool {
+            return $request->method() === 'POST'
+                && $request->url() === 'https://api.telegram.org/bot1234:token/editMessageText'
+                && $request['chat_id'] === 12345
+                && $request['message_id'] === 678
+                && $request['text'] === '<b>Updated message</b>'
+                && $request['parse_mode'] === 'html'
+                && $request['disable_web_page_preview'] === true
+                && $request['reply_markup']['inline_keyboard'] === [
+                    [['text' => 'Confirm', 'callback_data' => 'confirm:yes']],
+                ];
+        });
+    }
+
     public function testNoCredentialsLogged()
     {
         \Http::fake(TelegramApiFake::sendMessage());
