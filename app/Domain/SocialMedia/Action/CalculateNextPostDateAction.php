@@ -24,7 +24,9 @@ class CalculateNextPostDateAction
                 return $nextSlot;
             }
 
-            $nextSlot = $nextSlot->addDay();
+            if ($post->published_at->eq($nextSlot)) {
+                $nextSlot = $nextSlot->addDay();
+            }
         }
 
         return $nextSlot;
