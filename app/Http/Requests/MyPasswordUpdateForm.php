@@ -24,14 +24,14 @@ class MyPasswordUpdateForm extends FormRequest
     {
         return [
             ...HtmlFormInfrastructureRules::rules(),
-            'password' => Rule::requiredIf($this->userHasPassword()),
+            'password' => [Rule::requiredIf($this->userHasPassword()), 'nullable', 'string'],
             'new_password' => PasswordRule::rules(),
         ];
     }
 
     public function userHasPassword(): bool
     {
-        return !empty($this->user->password);
+        return !empty($this->user()->password);
     }
 
     #[\Override]
