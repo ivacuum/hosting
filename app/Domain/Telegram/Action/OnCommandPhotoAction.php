@@ -21,12 +21,18 @@ class OnCommandPhotoAction
             ->tap(new PhotoPublishedScope)
             ->tap(new PhotoOnMapScope)
             ->inRandomOrder()
-            ->first(['id'])
-            ->id;
+            ->value('id');
 
-        $photo = Photo::query()
-            ->where('id', '>=', $randomId)
-            ->first();
+        $photo = $randomId === null
+            ? null
+            : Photo::query()->find($randomId);
+
+        if ($photo === null) {
+            return $this->telegram
+                ->asResponse()
+                ->chat($chatId)
+                ->sendMessage(__('Пока нет фотографий для показа. Попробуйте позже.'));
+        }
 
         $url = url($photo->rel->www('#' . basename($photo->slug)));
 
