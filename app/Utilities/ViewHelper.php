@@ -38,7 +38,7 @@ class ViewHelper
 
     public function inputHiddenMail()
     {
-        return new HtmlString('<input hidden type="text" name="mail" value="' . old('mail') . '">');
+        return new HtmlString('<input hidden type="text" name="mail" value="' . e(old('mail')) . '">');
     }
 
     public function magnet(string $infoHash, string $announcer, string $title): string
