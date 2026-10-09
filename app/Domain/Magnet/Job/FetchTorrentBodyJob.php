@@ -19,6 +19,10 @@ class FetchTorrentBodyJob extends AbstractJob implements ShouldBeUnique
     {
         $magnet = Magnet::query()->firstWhere('rto_id', $this->rtoId);
 
+        if ($magnet === null) {
+            return;
+        }
+
         $topicData = $rto->parseTopicBody($magnet->rto_id);
 
         $magnet->html = $topicData->body;
