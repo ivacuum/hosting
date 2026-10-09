@@ -19,7 +19,7 @@ class PublishSocialMediaPosts extends Command implements Isolatable
             ->where('status', SocialMediaPostStatus::Queued)
             ->whereNowOrPast('published_at');
 
-        foreach ($query->lazy() as $post) {
+        foreach ($query->lazyById() as $post) {
             dispatch(new PublishSocialMediaPostJob($post));
         }
 
