@@ -253,6 +253,7 @@ class NumberTrainer extends Component
             'min' => $this->minimum,
             'max' => $this->maximum,
             'number' => $this->number,
+            'answer' => $this->answer,
         ]);
     }
 

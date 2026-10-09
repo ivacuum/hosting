@@ -173,6 +173,7 @@ class VocabularyTrainer extends Component
             'max_level' => $this->endLevel(),
             'vocabulary_id' => $this->vocab->id,
             'word' => $this->vocab->character,
+            'answer' => $this->answer,
         ]);
     }
 
