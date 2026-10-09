@@ -13,6 +13,7 @@ class FormatTripPeriodWithYearActionTest extends TestCase
     #[TestWith(['2022-01-01', '2022-01-01', "January\u{00A0}1,\u{00A0}2022"], 'same day')]
     #[TestWith(['2022-01-01', '2022-01-09', "January\u{00A0}1–9,\u{00A0}2022"], 'same month')]
     #[TestWith(['2022-01-01', '2022-02-01', "January\u{00A0}1 – February\u{00A0}1,\u{00A0}2022"], 'different months')]
+    #[TestWith(['2022-12-30', '2023-01-02', "December\u{00A0}30,\u{00A0}2022 – January\u{00A0}2,\u{00A0}2023"], 'different years')]
     public function testEnglish(string $start, string $end, string $result)
     {
         $this->app->setLocale(Locale::Eng->value);
@@ -25,6 +26,7 @@ class FormatTripPeriodWithYearActionTest extends TestCase
     #[TestWith(['2022-01-01', '2022-01-01', "1\u{00A0}января\u{00A0}2022"], 'same day')]
     #[TestWith(['2022-01-01', '2022-01-09', "1–9\u{00A0}января\u{00A0}2022"], 'same month')]
     #[TestWith(['2022-01-01', '2022-02-01', "1\u{00A0}января – 1\u{00A0}февраля\u{00A0}2022"], 'different months')]
+    #[TestWith(['2022-12-30', '2023-01-02', "30\u{00A0}декабря\u{00A0}2022 – 2\u{00A0}января\u{00A0}2023"], 'different years')]
     public function testRussian(string $start, string $end, string $result)
     {
         $this->app->setLocale(Locale::Rus->value);

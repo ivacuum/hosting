@@ -6,8 +6,14 @@ use Carbon\CarbonInterface;
 
 class FormatTripPeriodWithYearAction
 {
-    public function execute(CarbonInterface $start, CarbonInterface $end)
+    public function execute(CarbonInterface $start, CarbonInterface $end): string
     {
+        if (!$end->isSameYear($start)) {
+            $format = __('life.date.day_month_year');
+
+            return $start->isoFormat($format) . ' – ' . $end->isoFormat($format);
+        }
+
         if ($end->isSameDay($start)) {
             return $start->isoFormat(__('life.date.day_month_year'));
         }
