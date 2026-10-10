@@ -36,9 +36,11 @@ class ViewHelper
         return new HtmlString('<input hidden type="text" name="' . ConcurrencyControlRule::FIELD . '" value="' . md5($value) . '">');
     }
 
-    public function inputHiddenMail()
+    public function inputHiddenMail(): HtmlString
     {
-        return new HtmlString('<input hidden type="text" name="mail" value="' . e(old('mail')) . '">');
+        $mail = old('mail');
+
+        return new HtmlString('<input hidden type="text" name="mail" value="' . e(is_array($mail) ? '1' : $mail) . '">');
     }
 
     public function magnet(string $infoHash, string $announcer, string $title): string
