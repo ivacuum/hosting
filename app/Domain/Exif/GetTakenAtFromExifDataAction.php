@@ -11,7 +11,7 @@ class GetTakenAtFromExifDataAction
     {
         $dateTime = $exifData['DateTimeOriginal'] ?? $exifData['DateTime'] ?? null;
 
-        if ($dateTime === null) {
+        if ($dateTime === null || trim($dateTime) === '') {
             return null;
         }
 
