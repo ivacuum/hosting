@@ -10,13 +10,11 @@ use Illuminate\Console\Attributes\Signature;
 #[Description('Delete a metric')]
 class MetricDelete extends Command
 {
-    public function handle()
+    public function handle(): void
     {
         $metric = $this->argument('metric');
 
-        $count = Metric::query()->where('event', $metric)->count();
-
-        Metric::query()->where('event', $metric)->delete();
+        $count = Metric::query()->where('event', $metric)->delete();
 
         $this->info("Deleted {$metric} (rows: {$count})");
     }
