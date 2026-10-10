@@ -41,7 +41,7 @@
     </div>
 
     <div>
-      @if($this->data['Make'] ?? '' && $this->data['Model'])
+      @if(($this->data['Make'] ?? '') && ($this->data['Model'] ?? ''))
         Снимок сделан на <span class="font-bold">{{ $this->data['Make'] }} {{ $this->data['Model'] }}</span>.
       @endif
       @if($this->size && $this->width && $this->height)
@@ -66,7 +66,7 @@
       @if($this->lat && $this->lon)
         <a href="https://www.google.com/maps/search/?api=1&query={{ $this->lat }}%2C{{ $this->lon }}">Место снимка на карте</a>.
       @endif
-      @if($this->data['GPSAltitude'] ?? '' && $this->data['GPSAltitudeRef'])
+      @if(isset($this->data['GPSAltitude'], $this->data['GPSAltitudeRef']))
         Фотография сделана на высоте <span class="font-bold lowercase">{{ $this->valueForHumans('GPSAltitude', $this->data['GPSAltitude']) }} {{ $this->valueForHumans('GPSAltitudeRef', $this->data['GPSAltitudeRef']) }}</span>.
       @endif
       @if($this->gpsImageDirection)
