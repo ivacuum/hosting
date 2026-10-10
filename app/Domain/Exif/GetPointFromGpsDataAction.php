@@ -9,8 +9,8 @@ class GetPointFromGpsDataAction
     public function execute(array $exifData): Point|null
     {
         if (!isset($exifData['GPSLatitude'], $exifData['GPSLongitude'], $exifData['GPSLatitudeRef'], $exifData['GPSLongitudeRef']) ||
-            !in_array($exifData['GPSLatitudeRef'], ['N', 'E', 'S', 'W']) ||
-            !in_array($exifData['GPSLongitudeRef'], ['N', 'E', 'S', 'W'])
+            !in_array($exifData['GPSLatitudeRef'], ['N', 'S'], true) ||
+            !in_array($exifData['GPSLongitudeRef'], ['E', 'W'], true)
         ) {
             return null;
         }
