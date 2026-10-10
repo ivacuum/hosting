@@ -24,7 +24,7 @@ class MagnetsIndexForm extends FormRequest
     #[\Override]
     protected function passedValidation()
     {
-        $this->searchQuery = mb_strlen($this->input('q', '')) > 1
+        $this->searchQuery = mb_strlen($this->input('q') ?? '') > 1
             ? $this->input('q')
             : null;
 
@@ -36,6 +36,6 @@ class MagnetsIndexForm extends FormRequest
             ? \TorrentCategoryHelper::find($this->categoryId)
             : null;
 
-        $this->isFulltextSearch = $this->input('fulltext', false);
+        $this->isFulltextSearch = $this->boolean('fulltext');
     }
 }
