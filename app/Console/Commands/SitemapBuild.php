@@ -49,6 +49,10 @@ class SitemapBuild extends Command
 
     protected function init(): void
     {
+        $this->count = 0;
+        $this->pages = [];
+        $this->multiple = false;
+
         $this->purge();
 
         $this->now = now()->toDateString();
