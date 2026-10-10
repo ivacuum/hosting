@@ -28,9 +28,23 @@ class UserTravelTest extends TestCase
             ->withUser(UserFactory::new()->withLogin('phpunit-user'))
             ->create();
 
+        TripFactory::new()->withCity($trip->city)->withUser($trip->user)->create();
+
         $this->get("@phpunit-user/travel/cities/{$trip->city->slug}")
             ->assertOk()
             ->assertSee($trip->city->title);
+    }
+
+    public function testCitiesShowRedirectsToTravelersOnlyPublishedTrip(): void
+    {
+        $trip = TripFactory::new()
+            ->withUser(UserFactory::new()->withLogin('phpunit-user'))
+            ->create();
+
+        TripFactory::new()->withCity($trip->city)->withUser()->create();
+
+        $this->get("@phpunit-user/travel/cities/{$trip->city->slug}")
+            ->assertRedirect("@phpunit-user/travel/{$trip->slug}");
     }
 
     public function testCountriesIndex()

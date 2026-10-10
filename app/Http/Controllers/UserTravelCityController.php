@@ -35,8 +35,7 @@ class UserTravelCityController extends UserTravelController
             ->whereBelongsTo($traveler)
             ->withCount('photos')
             ->tap(new TripVisibleScope)
-            ->get()
-            ->groupBy(static fn (Trip $model) => $model->year);
+            ->get();
 
         $publishedTrips = $trips->where('status', TripStatus::Published);
 
@@ -48,6 +47,8 @@ class UserTravelCityController extends UserTravelController
 
             return redirect($trip->www());
         }
+
+        $trips = $trips->groupBy(static fn (Trip $model) => $model->year);
 
         $city->loadCountry();
 
