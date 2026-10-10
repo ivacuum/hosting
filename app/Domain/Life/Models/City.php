@@ -79,8 +79,7 @@ class City extends Model
 
     public function isOnMap(): bool
     {
-        return $this->point?->lat
-            && $this->point?->lon;
+        return $this->point !== null;
     }
 
     public function loadCountry(): void
