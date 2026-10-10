@@ -47,7 +47,7 @@ class TripFactory
         $dateEnd = CarbonImmutable::instance($dateStart)->addDays(random_int(0, 3));
 
         $trip->html = '';
-        $trip->slug = $this->slug ?? \Str::slug($this->englishTitle ?? $title);
+        $trip->slug = $this->slug ?? 'trip-' . \Str::uuid();
         $trip->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $trip->status = $this->status;
         $trip->city_id = match (true) {

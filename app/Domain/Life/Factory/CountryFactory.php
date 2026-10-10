@@ -6,6 +6,8 @@ use App\Domain\Life\Models\Country;
 
 class CountryFactory
 {
+    private string|null $slug = null;
+
     public function create(): Country
     {
         $country = $this->make();
@@ -19,7 +21,7 @@ class CountryFactory
         $title = fake()->country() . ' ' . fake()->randomDigit();
 
         $country = new Country;
-        $country->slug = \Str::slug($title);
+        $country->slug = $this->slug ?? 'country-' . \Str::uuid();
         $country->emoji = '';
         $country->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $country->hashtags = mb_strtolower(str_replace(' ', '', $title));
@@ -32,5 +34,11 @@ class CountryFactory
     public static function new(): self
     {
         return new self;
+    }
+
+    #[\NoDiscard]
+    public function withSlug(string $slug): self
+    {
+        return clone ($this, ['slug' => $slug]);
     }
 }
