@@ -41,7 +41,7 @@ class Google extends Base
         $identity = $this->externalIdentity($userdata);
 
         if ($identity->user_id) {
-            \Auth::loginUsingId($identity->user_id);
+            \Auth::loginUsingId($identity->user_id, true);
 
             event(new UserSignedInWithExternalIdentity);
 

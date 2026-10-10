@@ -150,7 +150,8 @@ class SignInTest extends TestCase
         ]));
 
         $this->get('auth/google/callback')
-            ->assertRedirect('/');
+            ->assertRedirect('/')
+            ->assertCookie(auth()->guard()->getRecallerName());
 
         $this->assertAuthenticatedAs($user);
         $this->assertSame(
