@@ -20,6 +20,8 @@ class FindUserByEmailOrCreateAction
         UserStatus $status = UserStatus::Inactive,
     ) {
         if ($user = User::query()->firstWhere('email', $email)) {
+            event($userFoundEvent);
+
             return $user;
         }
 
@@ -33,12 +35,7 @@ class FindUserByEmailOrCreateAction
         $user->save();
 
         event(new \App\Events\Stats\UserRegisteredAuto);
-
-        if ($user->wasRecentlyCreated) {
-            event($userRegisteredEvent);
-        } else {
-            event($userFoundEvent);
-        }
+        event($userRegisteredEvent);
 
         return $user;
     }
