@@ -9,12 +9,10 @@ use App\Domain\Exif\GetTakenAtFromExifDataAction;
 use App\Domain\Exif\Jobs\DeleteTempLivewireFileJob;
 use App\Domain\Exif\RateLimit\ExifReaderRateLimiter;
 use App\Domain\Exif\ReadExifDataAction;
-use App\Domain\Exif\ShouldDeleteImageForTestAction;
 use Carbon\CarbonImmutable;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
-use Livewire\Features\SupportFileUploads\FileUploadConfiguration;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 
@@ -48,15 +46,8 @@ class ExifReader extends Component
         GetPointFromGpsDataAction $getPointFromGpsData,
         GetTakenAtFromExifDataAction $getTakenAtFromExifData,
         ReadExifDataAction $readExifData,
-        ShouldDeleteImageForTestAction $shouldDeleteImageForTest,
         ExifReaderRateLimiter $rateLimiter,
     ): void {
-        if ($shouldDeleteImageForTest->execute()) {
-            // Не найден другой способ протестировать попытку чтения удаленного файла
-            \Storage::disk(FileUploadConfiguration::disk())
-                ->delete(FileUploadConfiguration::directory() . '/' . $this->image->getFilename());
-        }
-
         if (!$this->image->exists()) {
             $this->resetData();
             $this->image = null;

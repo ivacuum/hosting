@@ -5,7 +5,6 @@ namespace Tests\Livewire;
 use App\Domain\Exif\Jobs\DeleteTempLivewireFileJob;
 use App\Domain\Exif\Livewire\ExifReader;
 use App\Domain\Exif\ReadRawExifDataAction;
-use App\Domain\Exif\ShouldDeleteImageForTestAction;
 use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
@@ -37,17 +36,18 @@ class ExifReaderTest extends TestCase
 
     public function testDeletedImageHandled()
     {
+        \Queue::fake([DeleteTempLivewireFileJob::class]);
         \Storage::fake(FileUploadConfiguration::disk());
-
-        $this->mock(ShouldDeleteImageForTestAction::class)
-            ->expects('execute')
-            ->andReturnTrue();
 
         $image = UploadedFile::fake()->image('exif.jpg');
 
-        \Livewire::test(ExifReader::class)
-            ->set('image', $image)
-            ->call('submit')
+        $component = \Livewire::test(ExifReader::class)
+            ->set('image', $image);
+
+        \Storage::disk(FileUploadConfiguration::disk())
+            ->deleteDirectory(FileUploadConfiguration::directory());
+
+        $component->call('submit')
             ->assertSet('size', 0)
             ->assertSet('width', 0)
             ->assertSet('height', 0)
