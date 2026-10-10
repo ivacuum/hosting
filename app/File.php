@@ -54,11 +54,6 @@ class File extends Model
         return \Storage::disk('files')->url($folder . $this->basename());
     }
 
-    public function headerBasename()
-    {
-        return "filename*=utf-8''" . rawurlencode(htmlspecialchars_decode($this->basename()));
-    }
-
     public function incrementDownloads(): void
     {
         Model::withoutTimestamps(fn () => $this->increment('downloads'));
