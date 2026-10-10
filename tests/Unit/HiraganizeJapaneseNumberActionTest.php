@@ -12,8 +12,10 @@ class HiraganizeJapaneseNumberActionTest extends TestCase
     #[TestWith([300, 'さんびゃく'])]
     #[TestWith([600, 'ろっぴゃく'])]
     #[TestWith([800, 'はっぴゃく'])]
+    #[TestWith([3000, 'さんぜん'])]
+    #[TestWith([8000, 'はっせん'])]
     #[TestWith([9999, 'きゅうせんきゅうひゃくきゅうじゅうきゅう'])]
-    #[TestWith([1234567890, 'じゅうにおくさんせんよんひゃくごじゅうろくまんななせんはっぴゃくきゅうじゅう'])]
+    #[TestWith([1234567890, 'じゅうにおくさんぜんよんひゃくごじゅうろくまんななせんはっぴゃくきゅうじゅう'])]
     public function testEn(int $number, string $result)
     {
         $formatter = new \NumberFormatter('ja', \NumberFormatter::SPELLOUT);
