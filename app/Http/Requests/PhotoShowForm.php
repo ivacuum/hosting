@@ -2,15 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PhotoShowForm extends FormRequest
 {
-    public User $user;
-    public readonly string $email;
-    public readonly string $username;
-
     public readonly int|null $tagId;
     public readonly int|null $cityId;
     public readonly int|null $tripId;
