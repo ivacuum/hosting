@@ -18,4 +18,13 @@ class TrainersNumbersSynopsisTest extends TestCase
             ->assertHasCustomTitle()
             ->assertSeeLivewire(NumberSynopsis::class);
     }
+
+    public function testJapaneseReadings(): void
+    {
+        $this->get('trainers/numbers/synopsis?lang=ja')
+            ->assertOk()
+            ->assertSee('千二百三十四')
+            ->assertSee("sen'nihyakusanjuuyon")
+            ->assertSee('mainasuichi');
+    }
 }

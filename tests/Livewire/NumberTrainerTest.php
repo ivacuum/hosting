@@ -74,6 +74,21 @@ class NumberTrainerTest extends TestCase
             ->assertSet('answered', 1);
     }
 
+    public function testJapaneseAsTranslit(): void
+    {
+        \Livewire::test(NumberTrainer::class)
+            ->set('lang', 'ja')
+            ->set('guessingSpellOut', true)
+            ->set('number', 3000)
+            ->assertSet('spellOut', '三千')
+            ->call('reveal')
+            ->assertSee('三千')
+            ->assertSee('sanzen')
+            ->set('answer', 'sanzen')
+            ->call('check')
+            ->assertSet('answered', 1);
+    }
+
     public function testKeepPredefinedMaximumWhenTogglingCustomIntervalSetting()
     {
         \Livewire::test(NumberTrainer::class)

@@ -10,6 +10,6 @@ trait MockGetNumberLocales
     {
         $this->mock(GetNumberLocalesAction::class)
             ->expects('execute')
-            ->andReturn(['de', 'en', 'ko', 'ru']);
+            ->andReturn(['de', 'en', 'ja', 'ko', 'ru']);
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use App\Action\GetNumberLocalesAction;
-use App\Domain\Japanese\Action\HiraganizeJapaneseNumberAction;
+use App\Domain\Japanese\Action\SpellOutJapaneseNumberAction;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Url;
 use Livewire\Component;
@@ -98,14 +98,14 @@ class NumberSynopsis extends Component
 
         return array_unique([
             $spellOut,
-            $this->transliteration($spellOut),
+            $this->transliteration($spellOut, $number),
         ]);
     }
 
-    public function transliteration(string $spellOut): string
+    public function transliteration(string $spellOut, int $number): string
     {
         if ($this->lang === 'ja') {
-            $spellOut = app(HiraganizeJapaneseNumberAction::class)->execute($spellOut);
+            $spellOut = app(SpellOutJapaneseNumberAction::class)->execute($number);
         }
 
         return \Transliterator::create('NFD; Any-Latin; Latin-Ascii; NFC')

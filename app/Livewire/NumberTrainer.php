@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use App\Action\GetNumberLocalesAction;
-use App\Domain\Japanese\Action\HiraganizeJapaneseNumberAction;
+use App\Domain\Japanese\Action\SpellOutJapaneseNumberAction;
 use App\Domain\LivewireEvent;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Computed;
@@ -267,7 +267,7 @@ class NumberTrainer extends Component
     private function transliterate(string $text): string
     {
         if ($this->lang === 'ja') {
-            $text = app(HiraganizeJapaneseNumberAction::class)->execute($text);
+            $text = app(SpellOutJapaneseNumberAction::class)->execute($this->number);
         }
 
         return \Transliterator::create('NFD; Any-Latin; Latin-Ascii; NFC')
