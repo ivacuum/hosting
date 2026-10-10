@@ -127,6 +127,13 @@ class ImageConverter
         return $this;
     }
 
+    public function jpeg(): self
+    {
+        $this->format = '-format jpeg';
+
+        return $this;
+    }
+
     public function jpegxl(): self
     {
         $this->format = '-format jxl';
@@ -143,6 +150,13 @@ class ImageConverter
         }
 
         $this->gravity = "-gravity {$gravity}";
+
+        return $this;
+    }
+
+    public function png(): self
+    {
+        $this->format = '-format png';
 
         return $this;
     }
@@ -189,6 +203,7 @@ class ImageConverter
         $extension = match ($this->format) {
             '-format heic' => 'heic',
             '-format jxl' => 'jxl',
+            '-format png' => 'png',
             '-format webp' => 'webp',
             default => 'jpg',
         };

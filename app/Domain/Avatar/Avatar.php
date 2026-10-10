@@ -21,7 +21,11 @@ class Avatar
 
     public function resize(UploadedFile $file): UploadedFile
     {
-        return $this->imageConverter
+        $converter = $file->getMimeType() === 'image/png'
+            ? $this->imageConverter->png()
+            : $this->imageConverter->jpeg();
+
+        return $converter
             ->crop(self::WIDTH, self::HEIGHT)
             ->filter(self::FILTER)
             ->quality(self::QUALITY)
@@ -30,9 +34,10 @@ class Avatar
 
     public function upload(UploadedFile $file, int $userId): string
     {
-        $filename = sprintf('%s_%s.%s', $userId, \Str::random(6), strtolower($file->getClientOriginalExtension()));
+        $image = $this->resize($file);
+        $filename = sprintf('%s_%s.%s', $userId, \Str::random(6), $image->extension());
 
-        \Storage::disk('avatars')->putFileAs('', $this->resize($file), $filename);
+        \Storage::disk('avatars')->putFileAs('', $image, $filename);
 
         return $filename;
     }

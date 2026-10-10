@@ -48,12 +48,14 @@ class Image extends Model
         ]);
     }
 
-    public static function newFromFile(UploadedFile $file, $userId): self
+    public static function newFromFile(UploadedFile $file, int $userId): self
     {
+        $extension = $file->getMimeType() === 'image/png' ? 'png' : 'jpg';
+
         $image = new self;
         $image->date = date('ymd');
         $image->size = 0;
-        $image->slug = sprintf('%s_%s.%s', $userId, \Str::random(10), strtolower($file->getClientOriginalExtension()));
+        $image->slug = sprintf('%s_%s.%s', $userId, \Str::random(10), $extension);
         $image->views = 0;
         $image->user_id = $userId;
 
@@ -74,22 +76,39 @@ class Image extends Model
         return \Storage::disk('gallery-raw')->url("{$this->splitDate()}/{$this->slug}");
     }
 
-    public function resize(UploadedFile $file, $newWidth, $newHeight): UploadedFile
+    public function resize(UploadedFile $file, int $newWidth, int $newHeight): UploadedFile
     {
         $source = $file->getRealPath();
 
         [$width, $height, $type] = getimagesize($source);
 
+        $converter = app(ImageConverter::class);
+
+        if ($type === IMAGETYPE_PNG) {
+            $converter->png();
+        }
+
         // Даже маленькие исходники пересохраняем, чтобы повернуть их и почистить профили (exif, icc)
         if ($width <= $newWidth && $height <= $newHeight) {
-            return $this->convertSmallSource($source);
+            return $converter
+                ->autoOrient()
+                ->quality(75)
+                ->convert($source);
         }
 
         if ($type === IMAGETYPE_GIF) {
-            return $this->gifFirstFrame($source, $newWidth, $newHeight);
+            return $converter
+                ->firstFrame()
+                ->resize($newWidth, $newHeight)
+                ->convert($source);
         }
 
-        return $this->convert($source, $newWidth, $newHeight);
+        return $converter
+            ->autoOrient()
+            ->resize($newWidth, $newHeight)
+            ->filter('triangle')
+            ->quality(75)
+            ->convert($source);
     }
 
     public function siteThumbnail(UploadedFile $file): string|false
@@ -135,31 +154,5 @@ class Image extends Model
             'views' => 'int',
             'user_id' => 'int',
         ];
-    }
-
-    private function convert($source, $width, $height): UploadedFile
-    {
-        return app(ImageConverter::class)
-            ->autoOrient()
-            ->resize($width, $height)
-            ->filter('triangle')
-            ->quality(75)
-            ->convert($source);
-    }
-
-    private function convertSmallSource($source): UploadedFile
-    {
-        return app(ImageConverter::class)
-            ->autoOrient()
-            ->quality(75)
-            ->convert($source);
-    }
-
-    private function gifFirstFrame($source, $width, $height): UploadedFile
-    {
-        return app(ImageConverter::class)
-            ->firstFrame()
-            ->resize($width, $height)
-            ->convert($source);
     }
 }
