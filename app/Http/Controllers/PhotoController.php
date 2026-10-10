@@ -142,7 +142,7 @@ class PhotoController
             $prev = $prev->tap(new PhotoForTripsScope($ids));
         } elseif ($request->tripId) {
             // В пределах поездки
-            abort_unless($request->tripId == $photo->rel_id, 404);
+            abort_unless($photo->rel instanceof Trip && $request->tripId == $photo->rel_id, 404);
 
             $next = $next->tap(new PhotoForTripScope($request->tripId));
             $prev = $prev->tap(new PhotoForTripScope($request->tripId));
