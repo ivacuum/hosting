@@ -41,7 +41,7 @@ class FeedbackForm extends Component
     {
         $this->validate();
 
-        if ($this->mail) {
+        if ($this->mail !== '') {
             event(new \App\Events\Stats\SpammerTrappedLivewire);
 
             throw ValidationException::withMessages(['mail' => __('auth.spammer_trapped')]);
