@@ -48,7 +48,7 @@ class ExifReader extends Component
         ReadExifDataAction $readExifData,
         ExifReaderRateLimiter $rateLimiter,
     ): void {
-        if (!$this->image->exists()) {
+        if ($this->image instanceof TemporaryUploadedFile && !$this->image->exists()) {
             $this->resetData();
             $this->image = null;
 

@@ -55,7 +55,9 @@ class ExifReaderTest extends TestCase
             ->assertSet('date', null)
             ->assertSet('read', false)
             ->assertSet('data', [])
-            ->assertHasErrors(['image' => 'Файл уже удален с сервера. Загрузите его, пожалуйста, еще раз.']);
+            ->assertHasErrors(['image' => 'Файл уже удален с сервера. Загрузите его, пожалуйста, еще раз.'])
+            ->call('submit')
+            ->assertHasErrors(['image' => 'required']);
     }
 
     public function testDivisionByZeroPreventedForNullifiedGpsData(): void
