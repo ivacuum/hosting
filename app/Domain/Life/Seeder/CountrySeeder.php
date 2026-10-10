@@ -42,8 +42,7 @@ class CountrySeeder extends Seeder
             'title_en' => $titleEn,
             'emoji' => $emoji,
         ]) {
-            $country = CountryFactory::new()->make();
-            $country->slug = $slug;
+            $country = CountryFactory::new()->withSlug($slug)->make();
             $country->emoji = $emoji;
             $country->hashtags = match ($slug) {
                 'hongkong',

@@ -22,9 +22,8 @@ class TripStatsCalculatorTest extends TestCase
     {
         app()->setLocale($locale);
 
-        $country = CountryFactory::new()->make();
+        $country = CountryFactory::new()->withSlug('japan')->make();
         $country->id = 101;
-        $country->slug = 'japan';
 
         $kyoto = CityFactory::new()->withCountry($country)->withTitle('Киото', 'Kyoto')->make();
         $kyoto->id = 201;
