@@ -6,10 +6,6 @@ class NoCacheHeaders
 {
     public function handle($request, \Closure $next)
     {
-        if (app()->runningUnitTests()) {
-            return $next($request);
-        }
-
         /** @var \Illuminate\Http\Response $response */
         $response = $next($request);
 
