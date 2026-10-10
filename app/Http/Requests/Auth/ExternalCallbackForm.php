@@ -18,6 +18,6 @@ class ExternalCallbackForm extends FormRequest
     #[\Override]
     protected function passedValidation(): void
     {
-        $this->hasError = $this->boolean('error');
+        $this->hasError = $this->has('error');
     }
 }
