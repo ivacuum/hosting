@@ -54,10 +54,8 @@ class Facebook extends Base
             $user = $this->registerUser($userdata);
         }
 
-        if (!$identity->user_id) {
-            $identity->user_id = $user->id;
-            $identity->save();
-        }
+        $identity->user_id = $user->id;
+        $identity->save();
 
         $user->activate();
 
