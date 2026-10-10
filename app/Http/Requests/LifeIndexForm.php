@@ -2,12 +2,13 @@
 
 namespace App\Http\Requests;
 
+use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Http\FormRequest;
 
 class LifeIndexForm extends FormRequest
 {
-    public readonly string|null $to;
-    public readonly string|null $from;
+    public readonly CarbonImmutable|null $to;
+    public readonly CarbonImmutable|null $from;
 
     public function rules(): array
     {
@@ -18,9 +19,9 @@ class LifeIndexForm extends FormRequest
     }
 
     #[\Override]
-    protected function passedValidation()
+    protected function passedValidation(): void
     {
-        $this->to = $this->input('to');
-        $this->from = $this->input('from');
+        $this->to = $this->date('to')?->startOfDay();
+        $this->from = $this->date('from')?->startOfDay();
     }
 }

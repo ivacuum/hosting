@@ -6,6 +6,7 @@ use App\Domain\CacheKey;
 use App\Domain\Life\Models\Trip;
 use App\Domain\Life\Scope\TripOfAdminScope;
 use App\Domain\Life\Scope\TripVisibleScope;
+use Carbon\CarbonImmutable;
 use Illuminate\Cache\Repository;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -14,7 +15,7 @@ class GetMyVisibleTripsAction
 {
     public function __construct(private Repository $cache) {}
 
-    public function execute(string|null $from, string|null $to): Collection
+    public function execute(CarbonImmutable|null $from, CarbonImmutable|null $to): Collection
     {
         if (!$from && !$to) {
             return $this->cache->remember(
@@ -27,7 +28,7 @@ class GetMyVisibleTripsAction
         return $this->findModels($from, $to);
     }
 
-    private function findModels(string|null $from, string|null $to)
+    private function findModels(CarbonImmutable|null $from, CarbonImmutable|null $to): Collection
     {
         return Trip::query()
             ->withCount('photos')

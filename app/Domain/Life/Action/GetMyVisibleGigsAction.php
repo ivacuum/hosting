@@ -4,6 +4,7 @@ namespace App\Domain\Life\Action;
 
 use App\Domain\CacheKey;
 use App\Domain\Life\Models\Gig;
+use Carbon\CarbonImmutable;
 use Illuminate\Cache\Repository;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -12,7 +13,7 @@ class GetMyVisibleGigsAction
 {
     public function __construct(private Repository $cache) {}
 
-    public function execute(string|null $from, string|null $to): Collection
+    public function execute(CarbonImmutable|null $from, CarbonImmutable|null $to): Collection
     {
         if (!$from && !$to) {
             return $this->cache->remember(
@@ -25,7 +26,7 @@ class GetMyVisibleGigsAction
         return $this->findModels($from, $to);
     }
 
-    private function findModels(string|null $from, string|null $to)
+    private function findModels(CarbonImmutable|null $from, CarbonImmutable|null $to): Collection
     {
         return Gig::query()
             ->with('artist')
