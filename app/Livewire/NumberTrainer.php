@@ -111,7 +111,6 @@ class NumberTrainer extends Component
     public function reveal(): void
     {
         if ($this->shouldReveal) {
-            $this->incorrectAnswer = false;
             $this->next();
 
             return;
@@ -212,6 +211,7 @@ class NumberTrainer extends Component
     {
         $this->answer = '';
         $this->shouldReveal = false;
+        $this->incorrectAnswer = false;
         $this->exclude = $this->number;
         $this->pickRandomNumber();
     }

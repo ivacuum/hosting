@@ -180,8 +180,10 @@ class NumberTrainerTest extends TestCase
         \Livewire::test(NumberTrainer::class)
             ->set('answer', 'about to skip')
             ->call('check')
+            ->assertSet('incorrectAnswer', true)
             ->call('skip')
             ->assertSet('answer', '')
+            ->assertSet('incorrectAnswer', false)
             ->assertSet('answered', 0)
             ->assertSet('revealed', 1)
             ->assertSet('skipped', 0);
