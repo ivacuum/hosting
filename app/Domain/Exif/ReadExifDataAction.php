@@ -11,19 +11,9 @@ class ReadExifDataAction
         $data = $this->readRawExifData->execute($filePath);
 
         foreach ($data as $key => $value) {
-            // Непечатные данные не сможем передать в JS
-            if (!mb_check_encoding($value, 'UTF-8')) {
+            if (!mb_check_encoding($key, 'UTF-8') || !mb_check_encoding($value, 'UTF-8')) {
                 unset($data[$key]);
             }
-
-            if (!mb_check_encoding($key, 'UTF-8')) {
-                unset($data[$key]);
-            }
-
-            // Что-то непечатное встречалось
-            // if (str_starts_with($key, 'UndefinedTag:')) {
-            //     unset($data[$key]);
-            // }
         }
 
         return $data;
