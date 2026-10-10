@@ -18,6 +18,6 @@ class GetDirectionInDegreesFromGpsDataAction
             return null;
         }
 
-        return $this->divideExifValue->execute($exifData['GPSImgDirection']);
+        return (int) $this->divideExifValue->execute($exifData['GPSImgDirection']);
     }
 }
