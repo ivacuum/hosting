@@ -25,8 +25,13 @@ class SitemapBuild extends Command
     protected $multiple = false;
     protected $threshold = 50000;
 
-    public function handle()
+    public function handle(): int
     {
+        $validated = validator($this->arguments(), [
+            'threshold' => 'required|integer|min:1',
+        ])->validate();
+
+        $this->threshold = (int) $validated['threshold'];
         $this->init();
         $this->pages();
         $this->write();
@@ -36,6 +41,8 @@ class SitemapBuild extends Command
         }
 
         $this->move();
+
+        return self::SUCCESS;
     }
 
     protected function incrementCounter(): void
@@ -57,7 +64,6 @@ class SitemapBuild extends Command
 
         $this->now = now()->toDateString();
         $this->prefix = url('');
-        $this->threshold = $this->argument('threshold');
     }
 
     protected function move(): void
