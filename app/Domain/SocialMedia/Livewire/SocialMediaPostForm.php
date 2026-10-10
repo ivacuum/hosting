@@ -47,8 +47,12 @@ class SocialMediaPostForm extends Component
         }
     }
 
-    public function pickRandomPhoto()
+    public function pickRandomPhoto(): void
     {
+        if ($this->id) {
+            return;
+        }
+
         $this->photo = app(PickRandomPhotoAction::class)
             ->execute(auth()->user(), $this->photo?->id);
 
