@@ -29,6 +29,12 @@ class FindSteamGame extends Command implements Isolatable
         $english = $steam->gameDetails($steamId, SteamCountryCode::Kyrgyzstan, SteamLanguage::English)->game;
         $russian = $steam->gameDetails($steamId, SteamCountryCode::Kyrgyzstan, SteamLanguage::Russian)->game;
 
+        if ($english === null || $russian === null) {
+            $this->error('Steam did not return game details for the selected game.');
+
+            return self::FAILURE;
+        }
+
         $title = var_export($english->name, true);
         $slug = var_export(Str::slug($english->name), true);
         $shortDescriptionEn = var_export($english->shortDescription, true);
