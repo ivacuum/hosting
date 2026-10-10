@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Domain\Locale;
 use App\Factory\NewsFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\TestWith;
@@ -56,12 +57,14 @@ class NewsTest extends TestCase
             ->assertRedirect('news');
     }
 
-    public function testRedirectToNewsLocale()
+    #[TestWith([Locale::Eng, '', 'en/'])]
+    #[TestWith([Locale::Rus, 'en/', ''])]
+    public function testRedirectToNewsLocale(Locale $locale, string $sourcePrefix, string $targetPrefix): void
     {
-        $news = NewsFactory::new()->english()->create();
+        $news = NewsFactory::new()->withLocale($locale)->create();
 
-        $this->get("news/{$news->id}")
+        $this->get("{$sourcePrefix}news/{$news->id}")
             ->assertMovedPermanently()
-            ->assertRedirect("en/news/{$news->id}");
+            ->assertRedirect("{$targetPrefix}news/{$news->id}");
     }
 }

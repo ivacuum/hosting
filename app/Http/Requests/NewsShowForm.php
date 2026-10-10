@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Http\Controllers\NewsController;
 use App\News;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -22,9 +23,7 @@ class NewsShowForm extends FormRequest
             return '';
         }
 
-        return $this->news->locale->isRussian()
-            ? $this->path()
-            : "/{$this->news->locale->value}/{$this->path()}";
+        return path_locale([NewsController::class, 'show'], $this->news->id, false, $this->news->locale->value);
     }
 
     public function rules(): array
