@@ -19,9 +19,11 @@ class PhotoFactory
     private PhotoStatus $status = PhotoStatus::Published;
 
     private int|Gig|GigFactory|null $gig = null;
-    private Tag|TagFactory|null $tag = null;
     private int|Trip|TripFactory|null $trip = null;
     private int|User|UserFactory|null $user = 1;
+
+    /** @var list<Tag|TagFactory> */
+    private array $tags = [];
 
     public function create(): Photo
     {
@@ -44,12 +46,15 @@ class PhotoFactory
 
         $photo->save();
 
-        if ($this->tag) {
-            $tag = $this->tag instanceof Tag
-                ? $this->tag
-                : $this->tag->create();
+        if ($this->tags !== []) {
+            $tagIds = collect($this->tags)
+                ->map(static fn (Tag|TagFactory $tag): int => (
+                    $tag instanceof TagFactory ? $tag->create() : $tag
+                )->getKey())
+                ->unique()
+                ->all();
 
-            $photo->tags()->attach($tag->getKey());
+            $photo->tags()->attach($tagIds);
         }
 
         return $photo;
@@ -134,7 +139,13 @@ class PhotoFactory
     #[\NoDiscard]
     public function withTag(Tag|TagFactory|null $tag = null): self
     {
-        return clone ($this, ['tag' => $tag ?? TagFactory::new()]);
+        return $this->withTags($tag ?? TagFactory::new());
+    }
+
+    #[\NoDiscard]
+    public function withTags(Tag|TagFactory ...$tags): self
+    {
+        return clone ($this, ['tags' => $tags]);
     }
 
     #[\NoDiscard]

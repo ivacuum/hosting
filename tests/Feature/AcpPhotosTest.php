@@ -39,9 +39,11 @@ class AcpPhotosTest extends TestCase
 
     public function testRemoveAllTags()
     {
-        $photo = PhotoFactory::new()->withTag()->withTrip()->create();
         $secondTag = TagFactory::new()->create();
-        $photo->tags()->attach($secondTag);
+        $photo = PhotoFactory::new()
+            ->withTags(TagFactory::new(), $secondTag)
+            ->withTrip()
+            ->create();
 
         $this->delete("acp/photos/{$photo->id}/tags")
             ->assertRedirect();
@@ -54,10 +56,9 @@ class AcpPhotosTest extends TestCase
 
     public function testRemoveTag()
     {
-        $photo = PhotoFactory::new()->withTag()->withTrip()->create();
-        $tag = $photo->tags->first();
+        $tag = TagFactory::new()->create();
         $remainingTag = TagFactory::new()->create();
-        $photo->tags()->attach($remainingTag);
+        $photo = PhotoFactory::new()->withTags($tag, $remainingTag)->withTrip()->create();
 
         $this->delete("acp/photos/{$photo->id}/tags/{$tag->id}")
             ->assertRedirect();
