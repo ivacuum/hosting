@@ -63,7 +63,7 @@
       @if($this->data['FocalLengthIn35mmFilm'] ?? '')
         Фокусное расстояние <span class="font-bold">{{ $this->data['FocalLengthIn35mmFilm'] }}мм</span>, если сравнивать с камерой.
       @endif
-      @if($this->lat && $this->lon)
+      @if($this->lat !== null && $this->lon !== null)
         <a href="https://www.google.com/maps/search/?api=1&query={{ $this->lat }}%2C{{ $this->lon }}">Место снимка на карте</a>.
       @endif
       @if(isset($this->data['GPSAltitude'], $this->data['GPSAltitudeRef']))
