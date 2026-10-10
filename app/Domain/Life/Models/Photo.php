@@ -68,9 +68,9 @@ class Photo extends Model
         return str_replace('/', ' / ', $this->slug);
     }
 
-    public function deleteFiles()
+    public function deleteFiles(): bool
     {
-        return \Storage::disk('photos')->delete($this->slug);
+        return \Storage::disk('photos')->delete($this->isGig() ? "gigs/{$this->slug}" : $this->slug);
     }
 
     public function filename(): string
