@@ -83,7 +83,7 @@ class CityForm extends Component
 
     public function updatedLat()
     {
-        if (str_contains($this->lat, ', ')) {
+        if ($this->lat !== null && str_contains($this->lat, ', ')) {
             [$this->lat, $this->lon] = explode(', ', $this->lat);
         }
     }
