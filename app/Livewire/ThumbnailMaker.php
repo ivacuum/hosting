@@ -37,9 +37,8 @@ class ThumbnailMaker extends Component
             ->quality(75)
             ->convert($this->file->getRealPath());
 
-        $pathInfo = pathinfo($this->file->getClientOriginalName());
-        $extension = str_replace('jpeg', 'jpg', strtolower($pathInfo['extension']));
-        $filename = "{$pathInfo['filename']}.{$extension}";
+        $basename = pathinfo($this->file->getClientOriginalName(), PATHINFO_FILENAME);
+        $filename = "{$basename}.jpg";
 
         \Storage::disk('temp')->putFileAs('', $image, $filename);
 
