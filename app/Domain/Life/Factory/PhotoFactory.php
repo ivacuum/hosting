@@ -2,6 +2,7 @@
 
 namespace App\Domain\Life\Factory;
 
+use App\Domain\Life\Models\Gig;
 use App\Domain\Life\Models\Photo;
 use App\Domain\Life\Models\Tag;
 use App\Domain\Life\Models\Trip;
@@ -17,6 +18,7 @@ class PhotoFactory
     private string|null $slug = null;
     private PhotoStatus $status = PhotoStatus::Published;
 
+    private int|Gig|GigFactory|null $gig = null;
     private Tag|TagFactory|null $tag = null;
     private int|Trip|TripFactory|null $trip = null;
     private int|User|UserFactory|null $user = 1;
@@ -25,6 +27,13 @@ class PhotoFactory
     {
         $photo = $this->make();
         $photo->user_id ??= ($this->user instanceof UserFactory ? $this->user : UserFactory::new())->create()->id;
+
+        if ($this->gig instanceof GigFactory) {
+            $gig = $this->gig->create();
+
+            $photo->rel_id = $gig->id;
+            $photo->rel_type = $gig->getMorphClass();
+        }
 
         if ($this->trip instanceof TripFactory) {
             $trip = $this->trip->withUser($photo->user_id)->create();
@@ -64,6 +73,8 @@ class PhotoFactory
             : null;
         $photo->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $photo->rel_id = match (true) {
+            $this->gig instanceof Gig => $this->gig->id,
+            is_int($this->gig) => $this->gig,
             $this->trip instanceof Trip => $this->trip->id,
             is_int($this->trip) => $this->trip,
             default => null,
@@ -75,6 +86,8 @@ class PhotoFactory
             default => null,
         };
         $photo->rel_type = match (true) {
+            $this->gig instanceof Gig => $this->gig->getMorphClass(),
+            is_int($this->gig) => new Gig()->getMorphClass(),
             $this->trip instanceof Trip => $this->trip->getMorphClass(),
             is_int($this->trip) => new Trip()->getMorphClass(),
             default => null,
@@ -86,6 +99,15 @@ class PhotoFactory
     public static function new(): self
     {
         return new self;
+    }
+
+    #[\NoDiscard]
+    public function withGig(int|Gig|GigFactory|null $gig = null): self
+    {
+        return clone ($this, [
+            'gig' => $gig ?? GigFactory::new(),
+            'trip' => null,
+        ]);
     }
 
     #[\NoDiscard]
@@ -118,7 +140,10 @@ class PhotoFactory
     #[\NoDiscard]
     public function withTrip(int|Trip|TripFactory|null $trip = null): self
     {
-        return clone ($this, ['trip' => $trip ?? TripFactory::new()->metaImage()]);
+        return clone ($this, [
+            'gig' => null,
+            'trip' => $trip ?? TripFactory::new()->metaImage(),
+        ]);
     }
 
     #[\NoDiscard]
