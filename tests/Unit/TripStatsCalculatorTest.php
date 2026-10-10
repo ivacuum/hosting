@@ -29,20 +29,27 @@ class TripStatsCalculatorTest extends TestCase
         $tokyo = CityFactory::new()->withId(202)->withCountry($country)->withTitle('Токио', 'Tokyo')->make();
         $tokyo->setRelation('country', $country);
 
-        $trip1 = TripFactory::new()->withCity($kyoto)->withSlug('kyoto-2024')->make();
+        $trip1 = TripFactory::new()
+            ->withCity($kyoto)
+            ->withDates('2024-02-28 20:00:00', '2024-03-01 08:00:00')
+            ->withSlug('kyoto-2024')
+            ->make();
         $trip1->setRelation('city', $kyoto);
-        $trip1->date_start = '2024-02-28 20:00:00';
-        $trip1->date_end = '2024-03-01 08:00:00';
 
-        $trip2 = TripFactory::new()->inactive()->withCity($tokyo)->withSlug('tokyo-2024')->make();
+        $trip2 = TripFactory::new()
+            ->inactive()
+            ->withCity($tokyo)
+            ->withDates('2024-02-29 10:00:00', '2024-02-29 12:00:00')
+            ->withSlug('tokyo-2024')
+            ->make();
         $trip2->setRelation('city', $tokyo);
-        $trip2->date_start = '2024-02-29 10:00:00';
-        $trip2->date_end = '2024-02-29 12:00:00';
 
-        $trip3 = TripFactory::new()->withCity($kyoto)->withSlug('kyoto-2025')->make();
+        $trip3 = TripFactory::new()
+            ->withCity($kyoto)
+            ->withDates('2025-01-01 10:00:00', '2025-01-01 12:00:00')
+            ->withSlug('kyoto-2025')
+            ->make();
         $trip3->setRelation('city', $kyoto);
-        $trip3->date_start = '2025-01-01 10:00:00';
-        $trip3->date_end = '2025-01-01 12:00:00';
 
         $stats = new TripStatsCalculator(new Collection([$trip1, $trip2, $trip3]));
 
@@ -95,17 +102,20 @@ class TripStatsCalculatorTest extends TestCase
         $city1 = CityFactory::new()->create();
         $city2 = CityFactory::new()->create();
 
-        $trip1 = TripFactory::new()->withCity($city1)->make();
-        $trip1->date_end = '2015-02-01';
-        $trip1->date_start = '2015-01-01';
+        $trip1 = TripFactory::new()
+            ->withCity($city1)
+            ->withDates('2015-01-01', '2015-02-01')
+            ->make();
 
-        $trip2 = TripFactory::new()->withCity($city2)->make();
-        $trip2->date_end = '2015-02-01';
-        $trip2->date_start = '2015-01-28';
+        $trip2 = TripFactory::new()
+            ->withCity($city2)
+            ->withDates('2015-01-28', '2015-02-01')
+            ->make();
 
-        $trip3 = TripFactory::new()->withCity($city2)->make();
-        $trip3->date_end = '2017-01-01 01:00:00';
-        $trip3->date_start = '2016-12-31 21:00:00';
+        $trip3 = TripFactory::new()
+            ->withCity($city2)
+            ->withDates('2016-12-31 21:00:00', '2017-01-01 01:00:00')
+            ->make();
 
         $trips = new Collection([$trip1, $trip2, $trip3]);
         $stats = new TripStatsCalculator($trips);

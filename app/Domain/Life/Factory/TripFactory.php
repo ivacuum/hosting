@@ -9,6 +9,7 @@ use App\Factory\CommentFactory;
 use App\Factory\UserFactory;
 use App\User;
 use Carbon\CarbonImmutable;
+use Carbon\CarbonInterface;
 
 class TripFactory
 {
@@ -16,6 +17,8 @@ class TripFactory
     private string|null $metaImage = null;
     private string|null $englishTitle = null;
     private string|null $russianTitle = null;
+    private CarbonImmutable|null $dateEnd = null;
+    private CarbonImmutable|null $dateStart = null;
     private TripStatus $status = TripStatus::Published;
 
     private int|City|CityFactory|null $city = null;
@@ -49,8 +52,8 @@ class TripFactory
         $trip = new Trip;
 
         $title = fake()->city() . ' ' . fake()->numberBetween(2000, 3000);
-        $dateStart = CarbonImmutable::instance(fake()->dateTimeBetween('2015-01-01'))->startOfHour();
-        $dateEnd = CarbonImmutable::instance($dateStart)->addDays(random_int(0, 3));
+        $dateStart = $this->dateStart ?? CarbonImmutable::instance(fake()->dateTimeBetween('2015-01-01'))->startOfHour();
+        $dateEnd = $this->dateEnd ?? $dateStart->addDays(random_int(0, 3));
 
         $trip->html = '';
         $trip->slug = $this->slug ?? 'trip-' . \Str::uuid();
@@ -101,6 +104,15 @@ class TripFactory
     public function withComment(CommentFactory|null $commentFactory = null): self
     {
         return clone ($this, ['commentFactory' => $commentFactory ?? CommentFactory::new()]);
+    }
+
+    #[\NoDiscard]
+    public function withDates(CarbonInterface|string $dateStart, CarbonInterface|string $dateEnd): self
+    {
+        return clone ($this, [
+            'dateStart' => CarbonImmutable::make($dateStart),
+            'dateEnd' => CarbonImmutable::make($dateEnd),
+        ]);
     }
 
     #[\NoDiscard]
