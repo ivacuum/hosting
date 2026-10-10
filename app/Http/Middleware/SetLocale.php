@@ -14,6 +14,8 @@ class SetLocale
 
         app()->setLocale($locale);
 
+        \Context::add('locale', $locale);
+
         return $next($request);
     }
 
