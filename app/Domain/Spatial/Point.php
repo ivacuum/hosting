@@ -18,7 +18,7 @@ class Point extends Geometry implements \Stringable
 
     public static function fromPair(string $pair, int $srid = 4326)
     {
-        [$lon, $lat] = explode(' ', trim($pair, "\t\n\r \x0B()"));
+        [$lon, $lat] = preg_split('/\s+/', trim($pair, "\t\n\r \x0B()"));
 
         return new static($lat, $lon, $srid);
     }
