@@ -103,7 +103,9 @@ class ExifReader extends Component
     {
         $this->resetData();
 
-        dispatch(new DeleteTempLivewireFileJob($this->image->getFilename()));
+        if ($this->image instanceof TemporaryUploadedFile) {
+            dispatch(new DeleteTempLivewireFileJob($this->image->getFilename()));
+        }
     }
 
     public function valueForHumans(string $key, int|array|string|null $value): string

@@ -98,9 +98,11 @@ class ExifReaderTest extends TestCase
         $image = UploadedFile::fake()->image('IMG_0025.jpeg');
 
         \Livewire::test(ExifReader::class)
-            ->set('image', $image);
+            ->set('image', $image)
+            ->set('image', null)
+            ->assertHasErrors(['image' => 'required']);
 
-        \Queue::assertPushed(DeleteTempLivewireFileJob::class);
+        \Queue::assertPushed(DeleteTempLivewireFileJob::class, 1);
     }
 
     public function testInvalidDateTime()
