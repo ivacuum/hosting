@@ -26,7 +26,9 @@ class PhotoPointResponse implements \JsonSerializable
                     e($this->photo->rel->www()),
                     e($basename),
                     e($this->photo->rel->title),
-                    $this->photo->rel->period(),
+                    $this->photo->isGig()
+                        ? $this->photo->rel->shortDate()
+                        : $this->photo->rel->period(),
                     $this->photo->rel->year,
                     e($this->photo->thumbnailUrl()),
                     $this->photo->point->lat,

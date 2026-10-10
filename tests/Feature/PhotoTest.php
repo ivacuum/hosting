@@ -117,15 +117,17 @@ class PhotoTest extends TestCase
             ->assertJsonPath('features.0.properties.clusterCaption', basename($photo->slug));
     }
 
-    public function testMapPointsOfAllTrips(): void
+    public function testMapPointsOfAllTripsAndGigs(): void
     {
         $firstPhoto = PhotoFactory::new()->withPoint(5, 15)->withTrip()->create();
         $secondPhoto = PhotoFactory::new()->withPoint(25, 35)->withTrip()->create();
+        $gigPhoto = PhotoFactory::new()->withPoint(45, 55)->withGig()->create();
 
         $this->getJson('photos/map')
             ->assertOk()
             ->assertJsonFragment(['id' => $firstPhoto->id])
             ->assertJsonFragment(['id' => $secondPhoto->id])
+            ->assertJsonFragment(['id' => $gigPhoto->id])
             ->assertJsonStructure([
                 'type',
                 'features' => [
