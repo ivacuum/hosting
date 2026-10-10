@@ -47,7 +47,7 @@ class File extends Model
 
     public function downloadPath()
     {
-        $folder = $this->folder
+        $folder = $this->folder !== ''
             ? "{$this->folder}/"
             : '';
 
