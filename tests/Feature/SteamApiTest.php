@@ -26,6 +26,7 @@ class SteamApiTest extends TestCase
         $this->assertTrue($response->successful);
         $this->assertInstanceOf(SteamGameEntity::class, $response->game);
         $this->assertSame(646570, $response->game->appId);
+        $this->assertSame('2024-07-26', $response->game->releasedAt->toDateString());
         $this->assertTrue($response->response->successful());
     }
 

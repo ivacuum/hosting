@@ -35,6 +35,12 @@ class FindSteamGame extends Command implements Isolatable
             return self::FAILURE;
         }
 
+        if ($english->releasedAt === null) {
+            $this->error('Steam did not return a recognized release date for the selected game.');
+
+            return self::FAILURE;
+        }
+
         $title = var_export($english->name, true);
         $slug = var_export(Str::slug($english->name), true);
         $shortDescriptionEn = var_export($english->shortDescription, true);

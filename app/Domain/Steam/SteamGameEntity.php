@@ -10,7 +10,7 @@ readonly class SteamGameEntity
         public int $appId,
         public string $name,
         public string $shortDescription,
-        public CarbonImmutable $releasedAt,
+        public CarbonImmutable|null $releasedAt,
         public array $genres,
     ) {}
 
