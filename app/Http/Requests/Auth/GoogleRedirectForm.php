@@ -12,7 +12,9 @@ class GoogleRedirectForm extends FormRequest
 
     public function rules(): array
     {
-        return [];
+        return [
+            'goto' => ['nullable', 'string'],
+        ];
     }
 
     #[\Override]
