@@ -86,10 +86,10 @@ class FeedbackForm extends Component
     protected function rules()
     {
         return [
-            'name' => Rule::requiredIf(!$this->hideName),
+            'name' => [Rule::requiredIf(!$this->hideName), 'string', 'max:255'],
             'text' => ['required', 'string', 'max:1000', new AtLeastFewWordsRule(2)],
             'email' => EmailRule::rules(),
-            'title' => Rule::requiredIf(!$this->hideTitle),
+            'title' => [Rule::requiredIf(!$this->hideTitle), 'string', 'max:255'],
         ];
     }
 
