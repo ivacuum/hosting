@@ -8,6 +8,7 @@ use App\Domain\Spatial\Point;
 
 class CityFactory
 {
+    private int|null $id = null;
     private Point|null $point = null;
     private string|null $slug = null;
     private string|null $titleEn = null;
@@ -32,6 +33,7 @@ class CityFactory
         $titleRu = $this->titleRu ?? $title;
 
         $city = new City;
+        $city->id = $this->id;
         $city->iata = '';
         $city->slug = $this->slug ?? 'city-' . \Str::uuid();
         $city->point = $this->point ?? new Point(fake()->latitude(), fake()->longitude());
@@ -57,6 +59,12 @@ class CityFactory
     public function withCountry(int|Country|CountryFactory|null $country = null): self
     {
         return clone ($this, ['country' => $country ?? CountryFactory::new()]);
+    }
+
+    #[\NoDiscard]
+    public function withId(int $id): self
+    {
+        return clone ($this, ['id' => $id]);
     }
 
     #[\NoDiscard]

@@ -21,15 +21,12 @@ class TripStatsCalculatorTest extends TestCase
     {
         app()->setLocale($locale);
 
-        $country = CountryFactory::new()->withSlug('japan')->make();
-        $country->id = 101;
+        $country = CountryFactory::new()->withId(101)->withSlug('japan')->make();
 
-        $kyoto = CityFactory::new()->withCountry($country)->withTitle('Киото', 'Kyoto')->make();
-        $kyoto->id = 201;
+        $kyoto = CityFactory::new()->withId(201)->withCountry($country)->withTitle('Киото', 'Kyoto')->make();
         $kyoto->setRelation('country', $country);
 
-        $tokyo = CityFactory::new()->withCountry($country)->withTitle('Токио', 'Tokyo')->make();
-        $tokyo->id = 202;
+        $tokyo = CityFactory::new()->withId(202)->withCountry($country)->withTitle('Токио', 'Tokyo')->make();
         $tokyo->setRelation('country', $country);
 
         $trip1 = TripFactory::new()->withCity($kyoto)->withSlug('kyoto-2024')->make();
