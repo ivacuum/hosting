@@ -69,7 +69,7 @@ class CityForm extends Component
 
         $city->iata = $this->iata;
         $city->slug = $this->slug;
-        $city->point = $this->lat && $this->lon
+        $city->point = filled($this->lat) && filled($this->lon)
             ? new Point($this->lat, $this->lon)
             : null;
         $city->hashtags = $this->hashtags;
