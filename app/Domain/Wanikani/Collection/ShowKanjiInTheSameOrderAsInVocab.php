@@ -7,28 +7,17 @@ use Illuminate\Database\Eloquent\Collection;
 
 class ShowKanjiInTheSameOrderAsInVocab
 {
+    /** @param list<string> $characters */
     public function __construct(private array $characters) {}
 
-    public function __invoke(Collection $collection)
+    public function __invoke(Collection $collection): Collection
     {
         if (count($this->characters) === 0) {
             return $collection;
         }
 
-        // Сортировка кандзи в порядке использования в словарном слове
         return $collection
-            ->transform(function (Kanji $item) {
-                $item->sort = 0;
-
-                foreach ($this->characters as $i => $character) {
-                    $item->sort = $character === $item->character
-                        ? $i * 10
-                        : $item->sort;
-                }
-
-                return $item;
-            })
-            ->sortBy('sort')
+            ->sortBy(fn (Kanji $kanji): int|false => array_search($kanji->character, $this->characters, true))
             ->values();
     }
 }

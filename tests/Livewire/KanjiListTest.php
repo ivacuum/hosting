@@ -5,7 +5,6 @@ namespace Tests\Livewire;
 use App\Domain\Wanikani\Action\SplitVocabToKanjiAction;
 use App\Domain\Wanikani\Collection\ShowKanjiInTheSameOrderAsInVocab;
 use App\Domain\Wanikani\Factory\KanjiFactory;
-use App\Domain\Wanikani\Factory\VocabularyFactory;
 use App\Domain\Wanikani\Livewire\KanjiList;
 use App\Factory\UserFactory;
 use Illuminate\Database\Eloquent\Collection;
@@ -52,21 +51,17 @@ class KanjiListTest extends TestCase
             ->assertSee($kanji->character);
     }
 
-    public function testVocabKanjiSort()
+    public function testVocabKanjiSort(): void
     {
-        $kanji3 = KanjiFactory::new()->withCharacter('3')->withLevel(99)->create();
-        $kanji2 = KanjiFactory::new()->withCharacter('2')->withLevel(99)->create();
-        $kanji1 = KanjiFactory::new()->withCharacter('1')->withLevel(99)->create();
-        VocabularyFactory::new()->withCharacter('21Ыつ3')->withLevel(99)->create();
+        $day = KanjiFactory::new()->withCharacter('日')->make();
+        $good = KanjiFactory::new()->withCharacter('善')->make();
+        $one = KanjiFactory::new()->withCharacter('一')->make();
 
-        $characters = app(SplitVocabToKanjiAction::class)->execute('213');
+        $characters = app(SplitVocabToKanjiAction::class)->execute('一日一善');
 
-        $this->assertSame(['2', '1', '3'], $characters);
-
-        $collect = new Collection([$kanji1, $kanji2, $kanji3])
+        $collect = new Collection([$day, $good, $one])
             ->pipe(new ShowKanjiInTheSameOrderAsInVocab($characters));
 
-        $this->assertSame([$kanji2->id, $kanji1->id, $kanji3->id], $collect->pluck('id')->all());
-        $this->assertSame([0, 10, 20], $collect->pluck('sort')->all());
+        $this->assertSame(['一', '日', '善'], $collect->pluck('character')->all());
     }
 }
