@@ -15,9 +15,13 @@ class GigObserver
         $this->cache->forgetGigs();
     }
 
-    public function saved()
+    public function saved(Gig $gig): void
     {
         $this->cache->forgetGigs();
+
+        if ($gig->wasChanged(['slug', 'title_ru', 'title_en', 'date'])) {
+            $this->cache->forgetPhotoPoints();
+        }
     }
 
     public function saving(Gig $gig)
