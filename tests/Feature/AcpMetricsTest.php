@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Domain\Metrics\Models\Metric;
+use App\Domain\Metrics\Factory\MetricFactory;
 use App\Events\Stats\Build;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -22,17 +22,17 @@ class AcpMetricsTest extends TestCase
     {
         $event = class_basename(Build::class);
 
-        $metric = new Metric;
-        $metric->date = '2025-06-15';
-        $metric->event = $event;
-        $metric->count = 7;
-        $metric->save();
+        MetricFactory::new()
+            ->withDate('2025-06-15')
+            ->withEvent($event)
+            ->withCount(7)
+            ->create();
 
-        $metric = new Metric;
-        $metric->date = '2025-07-01';
-        $metric->event = $event;
-        $metric->count = 3;
-        $metric->save();
+        MetricFactory::new()
+            ->withDate('2025-07-01')
+            ->withEvent($event)
+            ->withCount(3)
+            ->create();
 
         $this->get("acp/metrics/{$event}")
             ->assertOk()

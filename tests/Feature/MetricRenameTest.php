@@ -3,7 +3,7 @@
 namespace Tests\Feature;
 
 use App\Console\Commands\MetricRename;
-use App\Domain\Metrics\Models\Metric;
+use App\Domain\Metrics\Factory\MetricFactory;
 use App\Events\Stats\Build;
 use App\Events\Stats\HiraganaSelected;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -17,11 +17,11 @@ class MetricRenameTest extends TestCase
     {
         $from = 'DeletedEvent';
 
-        $metric = new Metric;
-        $metric->date = '2025-06-15';
-        $metric->event = $from;
-        $metric->count = 1;
-        $metric->save();
+        MetricFactory::new()
+            ->withDate('2025-06-15')
+            ->withEvent($from)
+            ->withCount(1)
+            ->create();
 
         $this->artisan(MetricRename::class, ['from' => $from, 'to' => 'MaliciousMetric"); DROP TABLE metrics;--'])
             ->assertFailed()
@@ -35,17 +35,17 @@ class MetricRenameTest extends TestCase
         $from = 'DeletedEvent';
         $to = class_basename(HiraganaSelected::class);
 
-        $metric = new Metric;
-        $metric->date = '2025-06-15';
-        $metric->event = $from;
-        $metric->count = 3;
-        $metric->save();
+        MetricFactory::new()
+            ->withDate('2025-06-15')
+            ->withEvent($from)
+            ->withCount(3)
+            ->create();
 
-        $metric = new Metric;
-        $metric->date = '2025-06-15';
-        $metric->event = $to;
-        $metric->count = 2;
-        $metric->save();
+        MetricFactory::new()
+            ->withDate('2025-06-15')
+            ->withEvent($to)
+            ->withCount(2)
+            ->create();
 
         $this->artisan(MetricRename::class, ['from' => $from, 'to' => $to])
             ->assertSuccessful();
@@ -58,11 +58,11 @@ class MetricRenameTest extends TestCase
     {
         $to = class_basename(HiraganaSelected::class);
 
-        $metric = new Metric;
-        $metric->date = '2025-06-15';
-        $metric->event = 'DeletedEvent';
-        $metric->count = 5;
-        $metric->save();
+        MetricFactory::new()
+            ->withDate('2025-06-15')
+            ->withEvent('DeletedEvent')
+            ->withCount(5)
+            ->create();
 
         $this->artisan(MetricRename::class, ['from' => 'DeletedEvent', 'to' => $to])
             ->assertSuccessful()
@@ -77,11 +77,11 @@ class MetricRenameTest extends TestCase
         $from = class_basename(Build::class);
         $to = class_basename(HiraganaSelected::class);
 
-        $metric = new Metric;
-        $metric->date = '2025-06-15';
-        $metric->event = $from;
-        $metric->count = 4;
-        $metric->save();
+        MetricFactory::new()
+            ->withDate('2025-06-15')
+            ->withEvent($from)
+            ->withCount(4)
+            ->create();
 
         $this->artisan(MetricRename::class, ['from' => $from, 'to' => $to])
             ->assertSuccessful();
