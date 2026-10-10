@@ -63,7 +63,7 @@ class VocabularyTrainer extends Component
 
     public function decreaseLevel()
     {
-        $this->validate(['level' => 'integer|min:1|max:6']);
+        $this->validate(['level' => 'integer|min:2|max:6']);
         $this->level--;
         $this->openSettings = true;
 
@@ -72,7 +72,7 @@ class VocabularyTrainer extends Component
 
     public function increaseLevel()
     {
-        $this->validate(['level' => 'integer|min:1|max:6']);
+        $this->validate(['level' => 'integer|min:1|max:5']);
         $this->level++;
         $this->openSettings = true;
 
