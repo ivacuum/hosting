@@ -36,11 +36,21 @@ class LifeTest extends TestCase
     public function testCity()
     {
         $trip = TripFactory::new()->create();
+        TripFactory::new()->withCity($trip->city)->create();
 
         $this->get("life/{$trip->city->slug}")
             ->assertOk()
             ->assertSee($trip->city->title)
             ->assertHasCustomTitle();
+    }
+
+    public function testCityRedirectsToOnlyPublishedTrip(): void
+    {
+        $trip = TripFactory::new()->create();
+        TripFactory::new()->inactive()->withCity($trip->city)->create();
+
+        $this->get("life/{$trip->city->slug}")
+            ->assertRedirect("life/{$trip->slug}");
     }
 
     public function testCountries()
