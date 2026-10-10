@@ -38,6 +38,12 @@ class TripFactory
         return $trip;
     }
 
+    #[\NoDiscard]
+    public function inactive(): self
+    {
+        return $this->withStatus(TripStatus::Inactive);
+    }
+
     public function make(): Trip
     {
         $trip = new Trip;
@@ -107,6 +113,12 @@ class TripFactory
     public function withSlug(string $slug): self
     {
         return clone ($this, ['slug' => $slug]);
+    }
+
+    #[\NoDiscard]
+    public function withStatus(TripStatus $status): self
+    {
+        return clone ($this, ['status' => $status]);
     }
 
     #[\NoDiscard]

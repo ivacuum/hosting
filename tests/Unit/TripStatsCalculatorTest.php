@@ -6,7 +6,6 @@ use App\Domain\Life\Factory\CityFactory;
 use App\Domain\Life\Factory\CountryFactory;
 use App\Domain\Life\Factory\TripFactory;
 use App\Domain\Life\TripStatsCalculator;
-use App\Domain\Life\TripStatus;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\TestWith;
@@ -38,9 +37,8 @@ class TripStatsCalculatorTest extends TestCase
         $trip1->date_start = '2024-02-28 20:00:00';
         $trip1->date_end = '2024-03-01 08:00:00';
 
-        $trip2 = TripFactory::new()->withCity($tokyo)->withSlug('tokyo-2024')->make();
+        $trip2 = TripFactory::new()->inactive()->withCity($tokyo)->withSlug('tokyo-2024')->make();
         $trip2->setRelation('city', $tokyo);
-        $trip2->status = TripStatus::Inactive;
         $trip2->date_start = '2024-02-29 10:00:00';
         $trip2->date_end = '2024-02-29 12:00:00';
 
