@@ -17,6 +17,6 @@ class GetAltitudeInCentimetersFromGpsDataAction
             chr(1), 1 => -1,
         };
 
-        return $this->divideExifValue->execute($exifData['GPSAltitude'], precision: 2) * 100 * $sign;
+        return (int) round($this->divideExifValue->execute($exifData['GPSAltitude'], precision: 2) * 100 * $sign);
     }
 }

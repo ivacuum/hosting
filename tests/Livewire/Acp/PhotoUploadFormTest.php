@@ -203,21 +203,32 @@ class PhotoUploadFormTest extends TestCase
         $user = UserFactory::new()->root()->create();
         $trip = TripFactory::new()->withSlug('phpunit-trip')->withUser($user)->create();
 
+        $this->mock(ReadRawExifDataAction::class)
+            ->expects('execute')
+            ->andReturn([
+                'GPSAltitude' => '29/100',
+                'GPSAltitudeRef' => chr(0),
+                'GPSSpeed' => '1001/1000',
+                'GPSSpeedRef' => 'K',
+            ]);
+
         \Livewire::actingAs($user)
             ->test(PhotoUploadForm::class)
             ->set('tripId', $trip->id)
             ->call('queueFiles', ['IMG_0011.jpeg'])
             ->set('file', $file)
             ->assertSet('processed', 1)
-            ->assertSet('uploaded', 1)
             ->assertSet('uploadResults.0', [
                 'filename' => 'IMG_0011.jpeg',
                 'message' => 'phpunit-trip/IMG_0011.jpg',
                 'status' => 'success',
-            ]);
+            ])
+            ->assertSet('uploaded', 1);
 
         $trip->refresh();
         $this->assertSame('phpunit-trip/IMG_0011.jpg', $trip->photos->sole()->slug);
+        $this->assertSame(29, $trip->photos->sole()->altitude);
+        $this->assertSame(1001, $trip->photos->sole()->speed);
 
         \Storage::disk('photos')->assertExists('phpunit-trip/IMG_0011.jpg');
     }

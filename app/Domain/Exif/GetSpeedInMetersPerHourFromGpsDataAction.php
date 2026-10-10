@@ -16,6 +16,6 @@ class GetSpeedInMetersPerHourFromGpsDataAction
             return null;
         }
 
-        return $this->divideExifValue->execute($exifData['GPSSpeed'], precision: 3) * 1000;
+        return (int) round($this->divideExifValue->execute($exifData['GPSSpeed'], precision: 3) * 1000);
     }
 }
