@@ -9,14 +9,16 @@ class GetTakenAtFromExifDataAction
 {
     public function execute(array $exifData): CarbonImmutable|null
     {
-        if (!isset($exifData['DateTime'])) {
+        $dateTime = $exifData['DateTimeOriginal'] ?? $exifData['DateTime'] ?? null;
+
+        if ($dateTime === null) {
             return null;
         }
 
         try {
-            return CarbonImmutable::createFromFormat('Y:m:d H:i:s', $exifData['DateTime']);
+            return CarbonImmutable::createFromFormat('Y:m:d H:i:s', $dateTime);
         } catch (InvalidFormatException) {
-            return CarbonImmutable::parse($exifData['DateTime']);
+            return CarbonImmutable::parse($dateTime);
         }
     }
 }
