@@ -44,11 +44,13 @@ class GetPointFromGpsDataActionTest extends TestCase
     }
 
     #[UnitTest]
-    public function testNullifiedCoordinatesHaveNoLocation(): void
+    #[TestWith([['53/1', '1/1', '0/0']])]
+    #[TestWith([['53/1', '1/1']])]
+    public function testInvalidCoordinatesHaveNoLocation(array $coordinates): void
     {
         $point = new GetPointFromGpsDataAction()->execute([
             'GPSLatitudeRef' => 'N',
-            'GPSLatitude' => ['53/1', '1/1', '0/0'],
+            'GPSLatitude' => $coordinates,
             'GPSLongitudeRef' => 'E',
             'GPSLongitude' => ['129/1', '43/1', '1244/100'],
         ]);

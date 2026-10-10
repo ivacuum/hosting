@@ -35,6 +35,10 @@ class GetPointFromGpsDataAction
 
     private function convertDegreesToFloat(array $coordinates): float|null
     {
+        if (!isset($coordinates[0], $coordinates[1], $coordinates[2])) {
+            return null;
+        }
+
         $degreesAry = explode('/', $coordinates[0]);
         $minutesAry = explode('/', $coordinates[1]);
         $secondsAry = explode('/', $coordinates[2]);
