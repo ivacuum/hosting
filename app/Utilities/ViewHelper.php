@@ -109,19 +109,6 @@ class ViewHelper
         return $decimal->format($number);
     }
 
-    public function numberShort(int $number): string
-    {
-        $units = ['', 'K', 'M'];
-        $decimals = [0, 0, 0];
-
-        $number = max($number, 0);
-        $pow = floor(($number ? log($number) : 0) / log(1024));
-        $pow = min($pow, count($units) - 1);
-        $number /= 1024 ** $pow;
-
-        return round($number, $decimals[$pow]) . $units[$pow];
-    }
-
     public function paginatorIteration($paginator, $loop): int
     {
         $page = $perPage = 0;
@@ -147,11 +134,6 @@ class ViewHelper
     public function picArbitrary(int $width, int $height, string $folder, string $file): string
     {
         return "https://life.ivacuum.org/-/{$width}x{$height}/{$folder}/{$file}";
-    }
-
-    public function picThumb(string $folder, string $file): string
-    {
-        return "https://life.ivacuum.org/-/100x75/{$folder}/{$file}";
     }
 
     public function plural(string $key, int $count): string
