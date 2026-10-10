@@ -46,7 +46,7 @@
 
       <div class="flex flex-wrap gap-2 md:gap-0 md:flex-col mt-1 md:mt-4">
         <div class="text-gray-500">@lang('Дата снимка')</div>
-        <div>{{ $photo->rel->period() }} {{ $photo->rel->year }}</div>
+        <div>{{ $photo->isGig() ? $photo->rel->shortDate() : $photo->rel->period() }} {{ $photo->rel->year }}</div>
       </div>
 
       <div class="mt-4">

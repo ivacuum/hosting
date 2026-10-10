@@ -113,7 +113,10 @@ class PhotoController
         abort_unless($photo->isPublished(), 404);
 
         $photo->load('rel', 'tags');
-        $photo->rel->loadCityAndCountry();
+
+        if ($photo->rel instanceof Trip) {
+            $photo->rel->loadCityAndCountry();
+        }
 
         $next = Photo::query()
             ->where('id', '>', $photo->id)
@@ -171,6 +174,10 @@ class PhotoController
 
         \Breadcrumbs::push(__('Просмотр фотографии'));
 
+        $period = $photo->isGig()
+            ? $photo->rel->shortDate()
+            : $photo->rel->period();
+
         return view('photos.show', [
             'next' => $next->first(),
             'prev' => $prev->first(),
@@ -179,7 +186,7 @@ class PhotoController
             'cityId' => $request->cityId,
             'tripId' => $request->tripId,
             'countryId' => $request->countryId,
-            'metaTitle' => "{$photo->rel->title}, {$photo->rel->period()} {$photo->rel->year}",
+            'metaTitle' => "{$photo->rel->title}, {$period} {$photo->rel->year}",
         ]);
     }
 

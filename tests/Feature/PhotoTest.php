@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Domain\Life\Factory\CityFactory;
+use App\Domain\Life\Factory\GigFactory;
 use App\Domain\Life\Factory\PhotoFactory;
 use App\Domain\Life\Factory\TagFactory;
 use App\Domain\Life\Factory\TripFactory;
@@ -166,6 +167,25 @@ class PhotoTest extends TestCase
             ->assertJsonPath('features.0.geometry.coordinates.0', '5')
             ->assertJsonPath('features.0.geometry.coordinates.1', '15')
             ->assertJsonPath('features.0.properties.clusterCaption', basename($photo->slug));
+    }
+
+    public function testShowGigPhoto(): void
+    {
+        $gig = GigFactory::new()
+            ->withDate('2025-03-14')
+            ->withTitle('Концерт', 'Concert')
+            ->create();
+
+        $photo = PhotoFactory::new()
+            ->withSlug('test/concert.jpg')
+            ->withGig($gig)
+            ->create();
+
+        $this->get("photos/{$photo->id}")
+            ->assertOk()
+            ->assertViewHas('metaTitle', "Концерт, 14\u{00A0}марта 2025")
+            ->assertSeeText("14\u{00A0}марта 2025")
+            ->assertSee('src="https://life.ivacuum.org/gigs/test/concert.jpg"', false);
     }
 
     public function testTag()
