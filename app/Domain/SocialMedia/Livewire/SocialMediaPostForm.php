@@ -35,8 +35,9 @@ class SocialMediaPostForm extends Component
             $post = SocialMediaPost::query()->findOrFail($this->id);
 
             $this->photo = $post->photo;
+            $this->status = $post->status;
             $this->caption = $post->caption;
-            $this->publishedAt = $post->published_at->toDateTimeLocalString();
+            $this->publishedAt = $post->published_at?->toDateTimeLocalString();
         } else {
             $this->pickRandomPhoto();
 
@@ -83,10 +84,12 @@ class SocialMediaPostForm extends Component
     {
         return [
             'caption' => [
-                'required',
+                Rule::requiredIf($this->status !== SocialMediaPostStatus::Excluded),
+                'nullable',
             ],
             'publishedAt' => [
-                'required',
+                Rule::requiredIf($this->status !== SocialMediaPostStatus::Excluded),
+                'nullable',
                 Rule::unique(SocialMediaPost::class, 'published_at')->ignore($this->id),
             ],
             'status' => [

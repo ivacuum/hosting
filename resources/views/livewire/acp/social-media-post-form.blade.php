@@ -3,7 +3,7 @@
 <form class="grid grid-cols-1 gap-6 md:gap-4" wire:submit="submit">
   <?php $form = LivewireForm::model(\App\Domain\SocialMedia\Models\SocialMediaPost::class); ?>
 
-  {{ $form->textarea('caption')->required() }}
+  {{ $form->textarea('caption')->required(!$this->status?->isExcluded()) }}
 
   <div class="md:grid md:grid-cols-(--form-two-columns) md:gap-4">
     <label class="font-semibold md:leading-6 md:pt-1.5">{{ \ViewHelper::modelFieldTrans('social-media-post', 'photo_id') }}</label>
@@ -18,7 +18,7 @@
   </div>
 
   {{ $form->radio('status')->required()->values(\App\Domain\SocialMedia\SocialMediaPostStatus::labels()) }}
-  {{ $form->datetimeLocal('publishedAt')->required() }}
+  {{ $form->datetimeLocal('publishedAt')->required(!$this->status?->isExcluded()) }}
 
   <div class="sticky-bottom-buttons">
     <div class="md:grid md:grid-cols-(--form-two-columns) md:gap-4">
