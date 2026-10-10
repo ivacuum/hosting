@@ -34,6 +34,7 @@ class TripUpdateForm extends FormRequest
                 'bail',
                 'required',
                 new TripSlug,
+                'max:255',
                 Rule::unique(Trip::class, 'slug')
                     ->where('user_id', $user->id)
                     ->ignore($trip),
@@ -44,8 +45,8 @@ class TripUpdateForm extends FormRequest
             ],
             'city_id' => 'required|integer|min:1',
             'markdown' => ['nullable', 'string'],
-            'title_ru' => [Rule::requiredIf($trip !== null), 'nullable', 'string'],
-            'title_en' => [Rule::requiredIf($trip !== null), 'nullable', 'string'],
+            'title_ru' => [Rule::requiredIf($trip !== null), 'nullable', 'string', 'max:255'],
+            'title_en' => [Rule::requiredIf($trip !== null), 'nullable', 'string', 'max:255'],
             'date_end' => 'required|date|after_or_equal:date_start',
             'date_start' => 'required|date',
         ];
