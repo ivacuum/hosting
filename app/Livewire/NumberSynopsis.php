@@ -122,7 +122,7 @@ class NumberSynopsis extends Component
     protected function rules()
     {
         return [
-            'input' => 'integer|min:0|max:10000000000',
+            'input' => 'required|integer|min:0|max:10000000000',
         ];
     }
 }
