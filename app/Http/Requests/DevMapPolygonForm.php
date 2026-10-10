@@ -10,7 +10,9 @@ class DevMapPolygonForm extends FormRequest
 
     public function rules(): array
     {
-        return [];
+        return [
+            'wkt' => 'nullable|string',
+        ];
     }
 
     #[\Override]
