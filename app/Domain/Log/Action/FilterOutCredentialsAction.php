@@ -13,15 +13,17 @@ class FilterOutCredentialsAction
     {
         $credentials = $this->getAllCredentials->execute();
 
-        $keys = $credentials->keys()->all();
-        $values = $credentials->values()->all();
+        $replacements = array_combine($credentials->values()->all(), $credentials->keys()->all());
 
-        $http->path = str_replace($values, $keys, $http->path);
-        $http->query = str_replace($values, $keys, $http->query);
+        $http->path = strtr($http->path, $replacements);
+        $http->query = strtr($http->query, $replacements);
 
         foreach ($http->request_headers ?? [] as $name => $headerValues) {
             if (strcasecmp($name, 'Authorization') === 0) {
-                $http->request_headers[$name] = str_replace($values, $keys, $headerValues);
+                $http->request_headers[$name] = array_map(
+                    static fn (string $value): string => strtr($value, $replacements),
+                    $headerValues,
+                );
             }
         }
 

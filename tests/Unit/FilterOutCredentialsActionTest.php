@@ -32,4 +32,26 @@ class FilterOutCredentialsActionTest extends TestCase
         $this->assertSame($body, $request->response_body);
         $this->assertSame('access_token=redacted', $request->query);
     }
+
+    public function testOverlappingCredentialsAreFullyRedacted(): void
+    {
+        config(['services' => [
+            'example' => [
+                'api_key' => 'shared-secret',
+                'access_token' => 'shared-secret-private-suffix',
+            ],
+        ]]);
+
+        $request = new ExternalHttpRequest;
+        $request->path = '/shared-secret-private-suffix';
+        $request->query = 'key=shared-secret&token=shared-secret-private-suffix';
+        $request->service_name = ExternalService::Example;
+        $request->request_headers = ['Authorization' => ['Bearer shared-secret-private-suffix']];
+
+        app(FilterOutCredentialsAction::class)->execute($request);
+
+        $this->assertSame('/ExampleAccessToken', $request->path);
+        $this->assertSame('key=ExampleApiKey&token=ExampleAccessToken', $request->query);
+        $this->assertSame(['Bearer ExampleAccessToken'], $request->request_headers['Authorization']);
+    }
 }
