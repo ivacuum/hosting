@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\CarbonInterval;
 use Illuminate\Support\Str;
 use Predis\Retry\Strategy\ExponentialBackoff;
 
@@ -47,11 +48,11 @@ return [
             'backoff_base' => env('REDIS_BACKOFF_BASE', 100),
             'backoff_cap' => env('REDIS_BACKOFF_CAP', 1000),
             'command_retries' => env('REDIS_COMMAND_RETRIES', 0),
-            // Только Predis: задержки в микросекундах, число повторов берется из max_retries.
+            // Только Predis: число повторов берется из max_retries.
             'retry' => [
                 ExponentialBackoff::class => [
-                    100_000,
-                    1_000_000,
+                    (int) CarbonInterval::milliseconds((int) env('REDIS_BACKOFF_BASE', 100))->totalMicroseconds,
+                    (int) CarbonInterval::milliseconds((int) env('REDIS_BACKOFF_CAP', 1000))->totalMicroseconds,
                     // Jitter в Predis 3.6.1 вызывал предупреждение о потере точности float → int.
                     false,
                 ],
@@ -70,11 +71,11 @@ return [
             'backoff_base' => env('REDIS_BACKOFF_BASE', 100),
             'backoff_cap' => env('REDIS_BACKOFF_CAP', 1000),
             'command_retries' => env('REDIS_COMMAND_RETRIES', 0),
-            // Только Predis: задержки в микросекундах, число повторов берется из max_retries.
+            // Только Predis: число повторов берется из max_retries.
             'retry' => [
                 ExponentialBackoff::class => [
-                    100_000,
-                    1_000_000,
+                    (int) CarbonInterval::milliseconds((int) env('REDIS_BACKOFF_BASE', 100))->totalMicroseconds,
+                    (int) CarbonInterval::milliseconds((int) env('REDIS_BACKOFF_CAP', 1000))->totalMicroseconds,
                     // Jitter в Predis 3.6.1 вызывал предупреждение о потере точности float → int.
                     false,
                 ],
