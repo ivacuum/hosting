@@ -22,9 +22,9 @@ class EarlyHints
             '<https://life.ivacuum.org>; rel=preconnect',
             '<https://ivacuum.org>; rel=preconnect',
             "</assets/{$manifest['resources/css/app.css']['file']}>; rel=preload; as=style",
-            "</assets/{$manifest['resources/js/app.js']['file']}>; rel=preload; as=script",
-            "</assets/{$manifest['resources/css/InterVariable.woff2']['file']}>; rel=preload; as=font",
-            "</assets/{$manifest['resources/css/InterVariable-Italic.woff2']['file']}>; rel=preload; as=font",
+            "</assets/{$manifest['resources/js/app.js']['file']}>; rel=modulepreload; as=script; crossorigin",
+            "</assets/{$manifest['resources/css/InterVariable.woff2']['file']}>; rel=preload; as=font; crossorigin",
+            "</assets/{$manifest['resources/css/InterVariable-Italic.woff2']['file']}>; rel=preload; as=font; crossorigin",
         ];
 
         $response->headers->set('Link', implode(', ', $links));
