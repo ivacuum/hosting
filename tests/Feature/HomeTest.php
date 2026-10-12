@@ -33,6 +33,7 @@ class HomeTest extends TestCase
     {
         $this->get('/')
             ->assertOk()
+            ->assertHeader('Link')
             ->assertHasCustomTitle();
     }
 

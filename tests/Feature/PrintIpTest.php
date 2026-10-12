@@ -18,6 +18,7 @@ class PrintIpTest extends TestCase
             ])
             ->get('ip')
             ->assertOk()
+            ->assertHeaderMissing('Link')
             ->assertExactJson([
                 'ip' => '198.51.100.10',
                 'country' => 'WW',

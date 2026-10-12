@@ -14,6 +14,10 @@ class EarlyHints
 
         $response = $next($request);
 
+        if (!str_starts_with($response->headers->get('Content-Type', ''), 'text/html')) {
+            return $response;
+        }
+
         // Еще middleware AddLinkHeadersForPreloadedAssets полезен,
         // но он не сделает preconnect к доменам
         $manifest = json_decode(file_get_contents(public_path('assets/manifest.json')), associative: true);
