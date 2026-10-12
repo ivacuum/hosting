@@ -12,17 +12,9 @@ if (!function_exists('fullUrl')) {
     // Адрес текущей страницы с произвольными параметрами
     function fullUrl(array $params = []): string
     {
-        $request = app('request');
+        $query = http_build_query(array_merge(request()->query(), $params));
 
-        if ($request->getQueryString() === null) {
-            if (empty($params)) {
-                return canonical();
-            }
-
-            return canonical() . '?' . http_build_query($params);
-        }
-
-        return canonical() . '?' . http_build_query(array_merge($request->query(), $params));
+        return canonical() . ($query === '' ? '' : '?' . $query);
     }
 }
 

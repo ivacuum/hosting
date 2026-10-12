@@ -28,13 +28,13 @@ class UrlGeneratorTest extends TestCase
     {
         $this->get('news?foo=bar');
 
-        $this->assertSame('http://localhost/news?', fullUrl(['foo' => null]));
+        $this->assertSame('http://localhost/news', fullUrl(['foo' => null]));
         $this->assertSame('http://localhost/news?foo=bar', fullUrl());
         $this->assertSame('http://localhost/news?foo=bar&baz=qux', fullUrl(['baz' => 'qux']));
 
         $this->get('en/news?foo=bar');
 
-        $this->assertSame('http://localhost/en/news?', fullUrl(['foo' => null]));
+        $this->assertSame('http://localhost/en/news', fullUrl(['foo' => null]));
         $this->assertSame('http://localhost/en/news?foo=bar', fullUrl());
         $this->assertSame('http://localhost/en/news?foo=bar&baz=qux', fullUrl(['baz' => 'qux']));
     }
