@@ -52,9 +52,7 @@ class CityHelper
 
     public function findById(int $id): City|null
     {
-        if (!isset($this->cachedById[$id])) {
-            $this->cachedById = $this->cachedById();
-        }
+        $this->cachedById ??= $this->cachedById();
 
         return $this->cachedById[$id] ?? null;
     }
@@ -71,9 +69,7 @@ class CityHelper
             return null;
         }
 
-        if (!isset($this->cachedBySlug[$slug])) {
-            $this->cachedBySlug = $this->cachedBySlug();
-        }
+        $this->cachedBySlug ??= $this->cachedBySlug();
 
         return $this->cachedBySlug[$slug] ?? null;
     }

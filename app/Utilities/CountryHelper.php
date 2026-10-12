@@ -50,9 +50,7 @@ class CountryHelper
 
     public function findById(int $id): Country|null
     {
-        if (!isset($this->cachedById[$id])) {
-            $this->cachedById = $this->cachedById();
-        }
+        $this->cachedById ??= $this->cachedById();
 
         return $this->cachedById[$id] ?? null;
     }
@@ -69,9 +67,7 @@ class CountryHelper
             return null;
         }
 
-        if (!isset($this->cachedBySlug[$slug])) {
-            $this->cachedBySlug = $this->cachedBySlug();
-        }
+        $this->cachedBySlug ??= $this->cachedBySlug();
 
         return $this->cachedBySlug[$slug] ?? null;
     }
