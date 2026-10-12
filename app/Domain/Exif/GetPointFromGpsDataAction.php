@@ -18,7 +18,7 @@ class GetPointFromGpsDataAction
         $lat = $this->convertDegreesToFloat($exifData['GPSLatitude']);
         $lon = $this->convertDegreesToFloat($exifData['GPSLongitude']);
 
-        if ($lat === null || $lon === null) {
+        if ($lat === null || $lon === null || abs($lat) > 90 || abs($lon) > 180) {
             return null;
         }
 
