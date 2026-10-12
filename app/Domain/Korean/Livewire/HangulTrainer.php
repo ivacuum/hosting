@@ -28,6 +28,10 @@ class HangulTrainer extends Component
         $answer = Str::trim(mb_strtolower($this->answer));
 
         if (in_array($answer, $this->acceptedAnswers())) {
+            if (!$this->reveal) {
+                $this->recordAnalytics('answered');
+            }
+
             if ($answer === $this->romanizeJamo()) {
                 event(new \App\Events\Stats\HangulAnsweredLatin);
             } elseif (in_array($answer, collect()->when(true, $this->appendCyrillicAnswers(...))->all())) {
@@ -46,6 +50,7 @@ class HangulTrainer extends Component
             return;
         }
 
+        $this->recordAnalytics('revealed');
         $this->reveal = true;
         $this->revealed++;
 
@@ -136,5 +141,15 @@ class HangulTrainer extends Component
             'ㅇ' => 'ng',
             default => \Transliterator::create('Hangul-Latin')->transliterate($this->jamo),
         };
+    }
+
+    private function recordAnalytics(string $event): void
+    {
+        logs()->debug("hangul_trainer.{$event}", [
+            'what_to_train' => $this->whatToTrain->name,
+            'italic' => $this->italic,
+            'jamo' => $this->jamo,
+            'answer' => $this->answer,
+        ]);
     }
 }
