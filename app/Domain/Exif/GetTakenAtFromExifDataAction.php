@@ -18,7 +18,11 @@ class GetTakenAtFromExifDataAction
         try {
             return CarbonImmutable::createFromFormat('Y:m:d H:i:s', $dateTime);
         } catch (InvalidFormatException) {
-            return CarbonImmutable::parse($dateTime);
+            try {
+                return CarbonImmutable::parse($dateTime);
+            } catch (InvalidFormatException) {
+                return null;
+            }
         }
     }
 }
