@@ -178,7 +178,7 @@ class TelegramBotTest extends TestCase
 
         \Event::assertDispatched(\App\Events\Stats\TelegramAccountLinked::class);
 
-        $this->assertSame('Запомнили ваш аккаунт. Теперь мы можете получать уведомления от сайта прямо в этот диалог.', $response->json('text'));
+        $this->assertSame('Запомнили ваш аккаунт. Теперь вы можете получать уведомления от сайта прямо в этот диалог.', $response->json('text'));
         $this->assertSame(1, $response->json('chat_id'));
         $this->assertSame('sendMessage', $response->json('method'));
 

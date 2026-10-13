@@ -28,7 +28,7 @@ class OnCommandStartAction
                 return $this->telegram
                     ->asResponse()
                     ->chat($chatId)
-                    ->sendMessage('Запомнили ваш аккаунт. Теперь мы можете получать уведомления от сайта прямо в этот диалог.');
+                    ->sendMessage('Запомнили ваш аккаунт. Теперь вы можете получать уведомления от сайта прямо в этот диалог.');
             }
 
             return $this->telegram
