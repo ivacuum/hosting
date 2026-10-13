@@ -25,7 +25,8 @@ readonly class Message
 
     public function hasStartParameter(): bool
     {
-        return str_starts_with($this->text, '/start ');
+        return $this->text !== null
+            && str_starts_with($this->text, '/start ');
     }
 
     public function startParameter(): string|null

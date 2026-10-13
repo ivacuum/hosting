@@ -127,6 +127,16 @@ class TelegramBotTest extends TestCase
         \Http::assertNothingSent();
     }
 
+    public function testMessageWithoutTextIsIgnored(): void
+    {
+        $payload = TelegramUpdateFactory::new()->make();
+        unset($payload['message']['text']);
+
+        $this->postJson('telegram/webhook', $payload)
+            ->assertOk()
+            ->assertExactJson([]);
+    }
+
     public function testPhotoCommand()
     {
         PhotoFactory::new()
