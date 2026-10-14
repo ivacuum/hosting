@@ -63,6 +63,18 @@ class NumberTrainerTest extends TestCase
             ->assertSet('lang', 'de');
     }
 
+    public function testGermanSpellOutAcceptsLowercaseAnswer(): void
+    {
+        \Livewire::test(NumberTrainer::class)
+            ->set('lang', 'de')
+            ->set('guessingSpellOut', true)
+            ->set('number', 1_000_000)
+            ->assertSet('spellOut', 'eine Million')
+            ->set('answer', 'eine million')
+            ->call('check')
+            ->assertSet('answered', 1);
+    }
+
     public function testGuessingSpellOut()
     {
         \Livewire::test(NumberTrainer::class)

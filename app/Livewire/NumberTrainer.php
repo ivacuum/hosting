@@ -72,7 +72,7 @@ class NumberTrainer extends Component
     {
         $answer = Str::trim(mb_strtolower($this->answer));
 
-        if (in_array($answer, $this->acceptedAnswers())) {
+        if (array_any($this->acceptedAnswers(), static fn (int|string $acceptedAnswer): bool => $answer == mb_strtolower((string) $acceptedAnswer))) {
             if (!$this->shouldReveal) {
                 $this->recordAnalytics('answered');
             }
