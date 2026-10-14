@@ -50,26 +50,27 @@ class ViewHelper
 
     public function metaDescription(string $view, array $replace = []): string
     {
-        if (__("meta_description.{$view}") !== "meta_description.{$view}") {
-            return __("meta_description.{$view}", $replace);
-        }
+        $key = "meta_description.{$view}";
+        $description = __($key, $replace);
 
-        return '';
+        return $description !== $key ? $description : '';
     }
 
     public function metaKeywords(string $view, array $replace = []): string
     {
-        if (__("meta_keywords.{$view}") !== "meta_keywords.{$view}") {
-            return __("meta_keywords.{$view}", $replace);
-        }
+        $key = "meta_keywords.{$view}";
+        $keywords = __($key, $replace);
 
-        return '';
+        return $keywords !== $key ? $keywords : '';
     }
 
     public function metaTitle(string $view, array $replace = []): string
     {
-        if (__("meta_title.{$view}") !== "meta_title.{$view}") {
-            return __("meta_title.{$view}", $replace);
+        $key = "meta_title.{$view}";
+        $title = __($key, $replace);
+
+        if ($title !== $key) {
+            return $title;
         }
 
         $result = __($view);
