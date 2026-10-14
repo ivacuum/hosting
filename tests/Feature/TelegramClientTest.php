@@ -166,16 +166,13 @@ class TelegramClientTest extends TestCase
         $response = app(TelegramClient::class)
             ->asResponse()
             ->chat(12345)
-            ->sendMessage('Some info to notify about');
+            ->sendMessage('0');
 
         $this->assertSame([
-            'text' => 'Some info to notify about',
+            'text' => '0',
             'chat_id' => 12345,
             'method' => 'sendMessage',
         ], $response);
-
-        $this->assertArrayNotHasKey('reply_markup', $response);
-        $this->assertArrayNotHasKey('disable_web_page_preview', $response);
     }
 
     public function testSendMessageWithDisabledWebPagePreview()
