@@ -26,11 +26,6 @@ class Checkbox extends Base
         return $this;
     }
 
-    public function toHtml()
-    {
-        return $this->html();
-    }
-
     public function values(array $values): self
     {
         $this->values = $values;

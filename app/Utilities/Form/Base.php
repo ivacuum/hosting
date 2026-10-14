@@ -4,6 +4,7 @@ namespace App\Utilities\Form;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Contracts\View\View;
 
 abstract class Base implements Htmlable
 {
@@ -68,5 +69,10 @@ abstract class Base implements Htmlable
         $this->entity = str(class_basename($model))->snake('-');
 
         return $this;
+    }
+
+    public function toHtml(): View
+    {
+        return $this->html();
     }
 }

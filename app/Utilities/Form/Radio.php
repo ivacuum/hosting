@@ -28,11 +28,6 @@ class Radio extends Base
         return $this;
     }
 
-    public function toHtml()
-    {
-        return $this->html();
-    }
-
     public function values($values): self
     {
         if ($values instanceof Arrayable) {
