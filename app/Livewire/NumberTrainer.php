@@ -58,14 +58,17 @@ class NumberTrainer extends Component
 
     public function acceptedAnswers(): array
     {
-        $formatter = new \NumberFormatter($this->lang, \NumberFormatter::SPELLOUT);
+        if (!$this->guessingSpellOut) {
+            return [$this->number];
+        }
 
-        return $this->guessingSpellOut
-            ? array_unique([
-                preg_replace('/\x{AD}/u', '', $formatter->format($this->number)),
-                $this->transliterate($formatter->format($this->number)),
-            ])
-            : [$this->number];
+        $formatter = new \NumberFormatter($this->lang, \NumberFormatter::SPELLOUT);
+        $spellOut = $formatter->format($this->number);
+
+        return array_unique([
+            preg_replace('/\x{AD}/u', '', $spellOut),
+            $this->transliterate($spellOut),
+        ]);
     }
 
     public function check(): void
