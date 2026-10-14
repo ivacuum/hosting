@@ -14,7 +14,7 @@ enum CacheKey: string
 
     case GamesFrontPageById = 'games.front-page.id';
 
-    case IcuLocales = 'icu.locales';
+    case IcuLocales = 'icu.locales.v2.{key}';
 
     case MagnetStatsByCategories = 'magnets.stats.by-categories';
 

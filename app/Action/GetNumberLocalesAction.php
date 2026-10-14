@@ -13,17 +13,13 @@ class GetNumberLocalesAction
     {
         $key = CacheKey::IcuLocales;
 
-        return $this->cache->remember($key, $key->ttl(), static function (): array {
-            return collect(\ResourceBundle::getLocales(''))
-                ->reject(static fn (string $locale) => mb_strlen($locale) > 2)
-                ->reject(static function (string $locale) {
+        return $this->cache->remember($key->key(INTL_ICU_VERSION), $key->ttl(), static function (): array {
+            return collect(\ResourceBundle::getLocales('ICUDATA-rbnf'))
+                ->filter(static fn (string $locale) => \Locale::getPrimaryLanguage($locale) === $locale)
+                ->filter(static function (string $locale): bool {
                     $formatter = new \NumberFormatter($locale, \NumberFormatter::SPELLOUT);
 
-                    if ($locale !== $formatter->getLocale()) {
-                        return true;
-                    }
-
-                    return false;
+                    return $locale === $formatter->getLocale(\Locale::ACTUAL_LOCALE);
                 })
                 ->values()
                 ->all();
