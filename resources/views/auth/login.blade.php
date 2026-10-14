@@ -47,7 +47,7 @@
         type="text"
         tabindex="1"
         name="email"
-        value="{{ old('email') }}"
+        value="{{ is_string(old('email')) ? old('email') : '' }}"
         autocomplete="email"
         placeholder="@lang('auth.email_or_login')"
       >

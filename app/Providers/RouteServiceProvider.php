@@ -38,8 +38,10 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         RateLimiter::for('login', static function (Request $request) {
+            $email = $request->input('email');
+
             return [
-                Limit::perMinute(5)->by($request->input('email')),
+                Limit::perMinute(5)->by(is_string($email) ? $email : ''),
                 Limit::perMinute(10)->by($request->ip()),
             ];
         });
@@ -53,23 +55,29 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         RateLimiter::for('password-remind', static function (Request $request) {
+            $email = $request->input('email');
+
             return [
-                Limit::perMinute(3)->by($request->input('email')),
+                Limit::perMinute(3)->by(is_string($email) ? $email : ''),
                 Limit::perMinute(5)->by($request->ip()),
             ];
         });
 
         RateLimiter::for('password-reset', static function (Request $request) {
+            $email = $request->input('email');
+
             return [
-                Limit::perMinute(3)->by($request->input('email')),
+                Limit::perMinute(3)->by(is_string($email) ? $email : ''),
                 Limit::perMinute(5)->by($request->ip()),
             ];
         });
 
         RateLimiter::for('register', static function (Request $request) {
+            $email = $request->input('email');
+
             return [
                 Limit::perMinute(5)->by($request->ip()),
-                Limit::perMinute(5)->by($request->input('email')),
+                Limit::perMinute(5)->by(is_string($email) ? $email : ''),
             ];
         });
 
