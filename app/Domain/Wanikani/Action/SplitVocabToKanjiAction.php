@@ -6,9 +6,7 @@ class SplitVocabToKanjiAction
 {
     public function execute(string $vocab): array
     {
-        return str($this->onlyKanjiCharacters($vocab))
-            ->split(1)
-            ->all();
+        return mb_str_split($this->onlyKanjiCharacters($vocab));
     }
 
     private function onlyKanjiCharacters(string $vocab): string
