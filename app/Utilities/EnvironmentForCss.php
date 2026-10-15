@@ -27,15 +27,15 @@ class EnvironmentForCss implements \Stringable
     {
         if (preg_match('/msie|trident/', $this->userAgent) && !str_contains($this->userAgent, 'opera')) {
             return ['ie'];
-        } elseif (str_contains($this->userAgent, 'edge')) {
+        } elseif (preg_match('/\bedg(?:e|a|ios)?\//', $this->userAgent)) {
             return ['edge'];
-        } elseif (str_contains($this->userAgent, 'firefox')) {
+        } elseif (preg_match('/firefox|fxios/', $this->userAgent)) {
             return ['firefox'];
-        } elseif (str_contains($this->userAgent, 'safari') && !str_contains($this->userAgent, 'chrome')) {
+        } elseif (str_contains($this->userAgent, 'safari') && !preg_match('/chrome|crios/', $this->userAgent)) {
             return ['safari'];
         } elseif (preg_match('/opera|opr/', $this->userAgent)) {
             return ['opera'];
-        } elseif (str_contains($this->userAgent, 'chrome')) {
+        } elseif (preg_match('/chrome|crios/', $this->userAgent)) {
             return ['chrome'];
         }
 
