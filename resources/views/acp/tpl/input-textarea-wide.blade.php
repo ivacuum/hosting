@@ -1,3 +1,4 @@
+@php($value = old($name, $model->{$name}))
 <div class="mb-4">
   <label class="font-bold {{ $required ? 'input-required' : '' }}">{{ $label ?? ViewHelper::modelFieldTrans($entity, $name) }}</label>
   <textarea
@@ -7,7 +8,7 @@
     rows="4"
     placeholder="{{ $placeholder }}"
     id="{{ $entity }}_{{ $name }}"
-  >{{ old($name, $model->{$name}) }}</textarea>
+  >{{ is_array($value) ? '' : $value }}</textarea>
   <x-invalid-feedback field="{{ $name }}"/>
   @if ($help)
     <div class="form-help">{{ $help }}</div>

@@ -61,6 +61,22 @@ class MyTripsTest extends TestCase
             ->assertForbidden();
     }
 
+    public function testEditHandlesArrayValuesAfterValidationFailure(): void
+    {
+        $trip = TripFactory::new()->withUser()->create();
+
+        $this->be($trip->user)
+            ->from("my/trips/{$trip->id}/edit")
+            ->put("my/trips/{$trip->id}", [
+                'title_ru' => ['unexpected'],
+                'markdown' => ['unexpected'],
+            ])
+            ->assertRedirect("my/trips/{$trip->id}/edit")
+            ->assertSessionHasErrors(['title_ru', 'markdown']);
+
+        $this->get("my/trips/{$trip->id}/edit")->assertOk();
+    }
+
     public function testIndex()
     {
         $trip = TripFactory::new()

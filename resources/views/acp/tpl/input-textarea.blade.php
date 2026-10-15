@@ -1,3 +1,4 @@
+@php($value = old($name, $model->{$name}))
 <textarea
   {{ $required ? 'required' : '' }}
   class="the-input {{ implode(' ', $classes) }}"
@@ -5,4 +6,4 @@
   rows="4"
   placeholder="{{ $placeholder }}"
   id="{{ $entity }}_{{ $name }}"
->{{ old($name, $model->{$name}) }}</textarea>
+>{{ is_array($value) ? '' : $value }}</textarea>
