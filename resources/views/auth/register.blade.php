@@ -13,7 +13,7 @@
         class="the-input"
         type="email"
         name="email"
-        value="{{ is_string(old('email')) ? old('email') : '' }}"
+        value="{{ ViewHelper::oldString('email') }}"
         autocomplete="email"
         placeholder="@lang('auth.email')"
       >

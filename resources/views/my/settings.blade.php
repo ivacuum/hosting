@@ -20,7 +20,7 @@
               type="checkbox"
               name="magnet_short_title"
               value="1"
-              {{ old('magnet_short_title', $user->magnet_short_title) ? 'checked' : '' }}
+              {{ ViewHelper::oldString('magnet_short_title', $user->magnet_short_title) ? 'checked' : '' }}
             >
             @lang('Короткие названия раздач')
           </label>
@@ -39,7 +39,7 @@
               type="radio"
               name="locale"
               value="{{ $loc }}"
-              {{ old('locale', $user->locale?->value ?? App\Domain\Config::Locale->get()) === $loc ? 'checked' : '' }}
+              {{ ViewHelper::oldString('locale', $user->locale?->value ?? App\Domain\Config::Locale->get()) === $loc ? 'checked' : '' }}
             >
             @lang("locale.{$loc}")
           </label>
@@ -56,7 +56,7 @@
               type="radio"
               name="notification_delivery_method"
               value="0"
-              {{ old('notification_delivery_method', $user->notification_delivery_method->isDisabled()) ? 'checked' : '' }}
+              {{ ViewHelper::oldString('notification_delivery_method', $user->notification_delivery_method->isDisabled()) ? 'checked' : '' }}
             >
             @lang("Не уведомлять")
           </label>
@@ -66,7 +66,7 @@
               type="radio"
               name="notification_delivery_method"
               value="1"
-              {{ old('notification_delivery_method', $user->notification_delivery_method->isMail()) ? 'checked' : '' }}
+              {{ ViewHelper::oldString('notification_delivery_method', $user->notification_delivery_method->isMail()) ? 'checked' : '' }}
             >
             @lang("Электронная почта")
           </label>
@@ -77,7 +77,7 @@
                 type="radio"
                 name="notification_delivery_method"
                 value="2"
-                {{ old('notification_delivery_method', $user->notification_delivery_method->isTelegram()) ? 'checked' : '' }}
+                {{ ViewHelper::oldString('notification_delivery_method', $user->notification_delivery_method->isTelegram()) ? 'checked' : '' }}
               >
               @if($user->telegram_id)
                 @lang("Телеграм")

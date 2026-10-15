@@ -185,7 +185,7 @@
               class="the-input"
               type="text"
               name="query"
-              value="{{ old('query', $q) }}"
+              value="{{ ViewHelper::oldString('query', $q) }}"
             >
             <x-invalid-feedback field="query"/>
           </div>

@@ -8,7 +8,7 @@
       type="checkbox"
       name="{{ $name }}"
       value="{{ $_value }}"
-      {{ $_value == old($name, $model->{$name}) ? 'checked' : '' }}
+      {{ $_value == ViewHelper::oldString($name, $model->{$name}) ? 'checked' : '' }}
     >
     {{ $_title }}
   </label>

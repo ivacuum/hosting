@@ -47,7 +47,7 @@
         type="text"
         tabindex="1"
         name="email"
-        value="{{ is_string(old('email')) ? old('email') : '' }}"
+        value="{{ ViewHelper::oldString('email') }}"
         autocomplete="email"
         placeholder="@lang('auth.email_or_login')"
       >
@@ -78,7 +78,7 @@
     <div class="flex items-center justify-between">
       <div>
         <label class="flex gap-2 items-center">
-          <input class="not-checked:border-gray-300 text-sky-600" type="checkbox" name="foreign" {{ old('foreign') ? 'checked' : '' }}>
+          <input class="not-checked:border-gray-300 text-sky-600" type="checkbox" name="foreign" {{ ViewHelper::oldString('foreign') ? 'checked' : '' }}>
           @lang('auth.dont_remember')
         </label>
       </div>

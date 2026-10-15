@@ -112,6 +112,15 @@ class ViewHelper
         return $decimal->format($number);
     }
 
+    public function oldString(string $key, mixed $default = null): string
+    {
+        $value = old($key, $default);
+
+        return is_scalar($value) || $value instanceof \Stringable
+            ? (string) $value
+            : '';
+    }
+
     public function paginatorIteration($paginator, $loop): int
     {
         $page = $perPage = 0;

@@ -14,7 +14,7 @@
         class="the-input"
         type="text"
         name="username"
-        value="{{ old('username', Auth::user()->login) }}"
+        value="{{ ViewHelper::oldString('username', Auth::user()->login) }}"
       >
       <x-invalid-feedback field="username"/>
       <div class="form-help">
@@ -33,7 +33,7 @@
         class="the-input"
         type="email"
         name="email"
-        value="{{ old('email', Auth::user()->email) }}"
+        value="{{ ViewHelper::oldString('email', Auth::user()->email) }}"
       >
       <x-invalid-feedback field="email"/>
     </div>
