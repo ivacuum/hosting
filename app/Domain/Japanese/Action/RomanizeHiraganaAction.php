@@ -141,21 +141,17 @@ class RomanizeHiraganaAction
 
     public function execute(string $hiragana): string
     {
-        $length = mb_strlen($hiragana);
+        $characters = mb_str_split($hiragana);
         $result = '';
 
-        foreach (range(1, $length) as $i) {
-            $kana = mb_substr($hiragana, $i - 1, 1);
+        foreach ($characters as $i => $kana) {
             $romaji = self::DICTIONARY[$kana] ?? '';
-            $nextKana = '';
 
             if (!$romaji) {
                 continue;
             }
 
-            if ($i < $length) {
-                $nextKana = mb_substr($hiragana, $i, 1);
-            }
+            $nextKana = $characters[$i + 1] ?? '';
 
             if ($kana === 'っ') {
                 if ($nextKana && $nextRomaji = self::DICTIONARY[$nextKana] ?? '') {
