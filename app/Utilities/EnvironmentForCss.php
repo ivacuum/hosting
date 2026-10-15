@@ -65,10 +65,10 @@ class EnvironmentForCss implements \Stringable
             return ['ios'];
         } elseif (str_contains($this->userAgent, 'mac')) {
             return ['macos'];
-        } elseif (str_contains($this->userAgent, 'linux')) {
-            return ['linux'];
         } elseif (str_contains($this->userAgent, 'android')) {
             return ['android'];
+        } elseif (str_contains($this->userAgent, 'linux')) {
+            return ['linux'];
         }
 
         return [];
