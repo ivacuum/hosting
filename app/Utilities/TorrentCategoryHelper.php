@@ -35,23 +35,6 @@ class TorrentCategoryHelper
         ksort($this->categories);
     }
 
-    public function breadcrumbs($id)
-    {
-        if (empty($this->tree)) {
-            $this->initTree();
-        }
-
-        $category = $this->tree[$id];
-
-        if ($category['parent'] === 0) {
-            return [$category];
-        }
-
-        $parent = $this->categories[$category['parent']];
-
-        return [$parent, $category];
-    }
-
     public function canPost($id)
     {
         if (empty($this->tree)) {
@@ -73,11 +56,6 @@ class TorrentCategoryHelper
         }
 
         return $this->tree[$id]['children'] ?? [];
-    }
-
-    public function exists($id)
-    {
-        return isset($this->categories[$id]);
     }
 
     public function find($id)
