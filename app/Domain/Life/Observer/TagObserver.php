@@ -7,13 +7,9 @@ use Illuminate\Support\Str;
 
 class TagObserver
 {
-    public function deleting(Tag $tag)
+    public function deleting(Tag $tag): void
     {
-        \DB::transaction(static function () use ($tag) {
-            foreach ($tag->photos as $photo) {
-                $photo->tags()->detach($tag->id);
-            }
-        });
+        $tag->photos()->detach();
     }
 
     public function saving(Tag $tag)
