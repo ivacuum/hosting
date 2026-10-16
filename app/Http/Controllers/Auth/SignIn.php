@@ -14,8 +14,6 @@ use App\Http\Requests\Auth\SignInIndexForm;
 
 class SignIn extends Controller
 {
-    protected $username = 'email';
-
     public function index(SignInIndexForm $request)
     {
         if ($request->goto) {
@@ -33,15 +31,11 @@ class SignIn extends Controller
             return $this->sendOkResponse($request);
         }
 
-        $username = $this->username();
-
-        if ($this->attemptLoginCustom($request)) {
+        if ($this->attemptLogin($request, 'login')) {
             $this->loginCustomOkCallback();
 
             return $this->sendOkResponse($request);
         }
-
-        $this->username = $username;
 
         return $this->sendFailedResponse($request);
     }
@@ -58,9 +52,9 @@ class SignIn extends Controller
         return $this->sendLoggedOutResponse();
     }
 
-    protected function attemptLogin(SignInForm $request)
+    protected function attemptLogin(SignInForm $request, string $username = 'email'): bool
     {
-        $credentials = $this->credentials($request);
+        $credentials = $this->credentials($request, $username);
 
         try {
             if (\Auth::attempt($credentials, $request->remember)) {
@@ -88,19 +82,12 @@ class SignIn extends Controller
         return false;
     }
 
-    protected function attemptLoginCustom(SignInForm $request)
-    {
-        $this->username = 'login';
-
-        return $this->attemptLogin($request);
-    }
-
-    protected function credentials(SignInForm $request)
+    protected function credentials(SignInForm $request, string $username): array
     {
         return [
             'status' => UserStatus::Active,
             'password' => $request->password,
-            $this->username() => $request->emailOrLogin,
+            $username => $request->emailOrLogin,
         ];
     }
 
@@ -139,10 +126,5 @@ class SignIn extends Controller
         $request->session()->regenerate();
 
         return $this->sendAuthenticatedResponse();
-    }
-
-    protected function username()
-    {
-        return $this->username;
     }
 }
