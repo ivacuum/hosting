@@ -14,7 +14,7 @@ class MagnetRequestReleaseController
         $link = Magnet::externalSearchLink($request->q);
         $user = $request->user->email ?? 'anonymous';
         $comment = $request->comment
-            ? "\n\n" . $request->comment
+            ? "\n\n" . mb_substr($request->comment, 0, 500)
             : '';
 
         event(new \App\Events\Stats\TorrentReleaseRequested);
