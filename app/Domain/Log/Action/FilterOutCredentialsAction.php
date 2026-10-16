@@ -15,6 +15,11 @@ class FilterOutCredentialsAction
 
         $replacements = array_combine($credentials->values()->all(), $credentials->keys()->all());
 
+        foreach ($credentials as $name => $credential) {
+            $replacements[rawurlencode($credential)] = $name;
+            $replacements[urlencode($credential)] = $name;
+        }
+
         $http->path = strtr($http->path, $replacements);
         $http->query = strtr($http->query, $replacements);
 
