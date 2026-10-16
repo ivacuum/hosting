@@ -22,23 +22,7 @@ if (!function_exists('path')) {
     // Адрес страницы, соответствующий контроллеру
     function path($name, $parameters = [], bool $absolute = false): string
     {
-        $locale = app()->getLocale();
-        $defaultLocale = App\Domain\Config::DefaultLocale->get();
-        $prefix = $locale !== $defaultLocale ? "/{$locale}" : '';
-
-        if (!$prefix) {
-            return app('url')->action($name, $parameters, $absolute);
-        }
-
-        $action = app('url')->action($name, $parameters, false);
-
-        if (str_starts_with($action, $prefix)) {
-            $path = $action;
-        } else {
-            $path = $prefix . ($action === '/' ? '' : $action);
-        }
-
-        return ($absolute ? app('request')->root() : '') . $path;
+        return path_locale($name, $parameters, $absolute, app()->getLocale());
     }
 }
 
