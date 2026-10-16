@@ -17,6 +17,9 @@
   @endcan
   @if (!empty($searchForm))
     <form class="my-1 mr-2">
+      @foreach (Arr::except(request()->query(), ['q', 'page']) as $key => $value)
+        <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+      @endforeach
       <input class="the-input" type="search" name="q" enterkeyhint="search" placeholder="{{ ViewHelper::modelFieldTrans($modelTpl, 'q_placeholder') }}" value="{{ $q ?? '' }}" autocapitalize="none">
     </form>
   @endif
