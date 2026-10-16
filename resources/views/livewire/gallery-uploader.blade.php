@@ -40,7 +40,7 @@
             <div>@lang('Ссылка'):</div>
             <input class="the-input select-all" type="text" value="{{ url($link['original']) }}">
             <div class="mt-2">@lang('Полная картинка'):</div>
-            <input class="the-input select-all" type="text" value="[img]{{ url($link['thumbnail']) }}[/img]">
+            <input class="the-input select-all" type="text" value="[img]{{ url($link['original']) }}[/img]">
           </div>
           <div class="lg:col-span-2"></div>
         @endforeach
