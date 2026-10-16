@@ -123,7 +123,10 @@ class SignIn extends Controller
     {
         return back()
             ->with(SessionKey::FlashMessage->value, __('auth.failed'))
-            ->withInput(['email' => $request->emailOrLogin]);
+            ->withInput([
+                'email' => $request->emailOrLogin,
+                'foreign' => $request->remember ? null : 'on',
+            ]);
     }
 
     protected function sendLoggedOutResponse()
