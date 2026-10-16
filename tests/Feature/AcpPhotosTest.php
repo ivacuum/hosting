@@ -21,6 +21,24 @@ class AcpPhotosTest extends TestCase
             ->assertSeeLivewire(PhotoUploadForm::class);
     }
 
+    public function testDestroy(): void
+    {
+        \Storage::fake('photos');
+
+        $tag = TagFactory::new()->create();
+        $photo = PhotoFactory::new()->withTags($tag)->withTrip()->create();
+
+        $this->delete("acp/photos/{$photo->id}")
+            ->assertOk();
+
+        $this->assertDatabaseMissing('photos', ['id' => $photo->id]);
+        $this->assertDatabaseMissing('taggable', [
+            'rel_type' => $photo->getMorphClass(),
+            'rel_id' => $photo->id,
+        ]);
+        $this->assertDatabaseHas('tags', ['id' => $tag->id]);
+    }
+
     public function testEdit()
     {
         $photo = PhotoFactory::new()->withTrip()->create();

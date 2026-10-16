@@ -12,6 +12,7 @@ class PhotoObserver
 
     public function deleted(Photo $photo): void
     {
+        $photo->tags()->detach();
         $photo->deleteFiles();
 
         $this->cache->forgetMyVisibleTrips();
