@@ -9,6 +9,7 @@ class SignInForm extends FormRequest
 {
     public readonly string $password;
     public readonly string $emailOrLogin;
+    public readonly bool $remember;
 
     public function rules(): array
     {
@@ -16,6 +17,7 @@ class SignInForm extends FormRequest
             ...HtmlFormInfrastructureRules::rules(),
             'email' => ['required', 'string'], // Можно ввести и почту, и логин
             'password' => ['required', 'string'],
+            'foreign' => ['sometimes', 'accepted'],
         ];
     }
 
@@ -23,6 +25,7 @@ class SignInForm extends FormRequest
     protected function passedValidation(): void
     {
         $this->password = $this->input('password');
+        $this->remember = !$this->boolean('foreign');
         $this->emailOrLogin = $this->input('email');
     }
 }

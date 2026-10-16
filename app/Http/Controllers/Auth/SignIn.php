@@ -15,7 +15,6 @@ use App\Http\Requests\Auth\SignInIndexForm;
 class SignIn extends Controller
 {
     protected $username = 'email';
-    protected $remember = true;
 
     public function index(SignInIndexForm $request)
     {
@@ -64,7 +63,7 @@ class SignIn extends Controller
         $credentials = $this->credentials($request);
 
         try {
-            if (\Auth::attempt($credentials, $this->remember)) {
+            if (\Auth::attempt($credentials, $request->remember)) {
                 return true;
             }
         } catch (\RuntimeException) {
@@ -81,7 +80,7 @@ class SignIn extends Controller
             $user->password = $credentials['password'];
             $user->save();
 
-            \Auth::login($user, $this->remember);
+            \Auth::login($user, $request->remember);
 
             return true;
         }

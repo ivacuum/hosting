@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\HtmlString;
 use Laravel\Socialite\Socialite;
 use Laravel\Socialite\Two\User as SocialiteUser;
+use PHPUnit\Framework\Attributes\TestWith;
 use Tests\TestCase;
 
 class SignInTest extends TestCase
@@ -208,19 +209,28 @@ class SignInTest extends TestCase
         $this->assertGuest();
     }
 
-    public function testSubmitGuest()
+    #[TestWith([false], 'personal computer')]
+    #[TestWith([true], 'shared computer')]
+    public function testSubmitGuest(bool $foreign): void
     {
         $user = UserFactory::new()->withPassword('secret42')->create();
 
-        $this->from('auth/login')
+        $response = $this->from('auth/login')
             ->post('auth/login', [
                 'email' => $user->email,
                 'password' => 'secret42',
+                ...($foreign ? ['foreign' => 'on'] : []),
             ])
             ->assertSessionHasNoErrors()
             ->assertRedirect('/');
 
         $this->assertAuthenticated();
+
+        if ($foreign) {
+            $response->assertCookieMissing(auth()->guard()->getRecallerName());
+        } else {
+            $response->assertCookie(auth()->guard()->getRecallerName());
+        }
     }
 
     public function testSubmitGuestWithLegacyMd5Password()
@@ -239,9 +249,11 @@ class SignInTest extends TestCase
             ->post('auth/login', [
                 'email' => $user->email,
                 'password' => $password,
+                'foreign' => 'on',
             ])
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/');
+            ->assertRedirect('/')
+            ->assertCookieMissing(auth()->guard()->getRecallerName());
 
         $this->assertAuthenticated();
 

@@ -18,7 +18,7 @@ return [
     'signed_in_as' => 'Вы вошли как',
     'new_password' => 'Новый пароль',
     'signin_title' => 'Вход на сайт',
-    'dont_remember' => 'Чужой компьютер',
+    'dont_remember' => 'Не запоминать меня',
     'show_password' => 'Показать пароль',
     'hide_password' => 'Скрыть пароль',
     'social_signin' => 'Вход в один клик через соцсети',
