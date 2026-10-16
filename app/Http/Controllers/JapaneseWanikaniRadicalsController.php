@@ -13,6 +13,12 @@ class JapaneseWanikaniRadicalsController
         return view('japanese.wanikani.radicals', [
             'to' => $request->to,
             'from' => $request->from,
+            'radicals' => Radical::query()
+                ->whereBetween('level', [$request->from, $request->to])
+                ->orderBy('level')
+                ->orderBy('meaning')
+                ->get(Radical::LIST_COLUMNS)
+                ->groupBy('level'),
         ]);
     }
 

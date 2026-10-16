@@ -47,12 +47,12 @@ class VocabularyList extends Component
     public function mount(#[CurrentUser] User|null $user = null, int|null $level = null, string|null $kanji = null)
     {
         $this->flat = $kanji !== null;
-        $this->vocabularies = Vocabulary::query()
+        $this->vocabularies ??= Vocabulary::query()
             ->orderBy('level')
             ->orderBy('meaning')
             ->when($kanji, static fn (Builder $query) => $query->where('character', 'LIKE', "%{$kanji}%"))
             ->when($level, static fn (Builder $query) => $query->where('level', $level))
-            ->get(['id', 'level', 'character', 'kana', 'meaning']);
+            ->get(Vocabulary::LIST_COLUMNS);
 
         if ($user) {
             $this->burned = Burnable::query()

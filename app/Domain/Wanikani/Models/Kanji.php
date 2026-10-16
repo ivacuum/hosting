@@ -32,6 +32,8 @@ use Illuminate\Database\Eloquent\Model;
 #[UsePolicy(KanjiPolicy::class)]
 class Kanji extends Model
 {
+    public const array LIST_COLUMNS = ['id', 'level', 'character', 'meaning', 'onyomi', 'kunyomi', 'important_reading'];
+
     // Relations
     public function burnable()
     {

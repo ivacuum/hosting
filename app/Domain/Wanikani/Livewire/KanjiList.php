@@ -33,14 +33,14 @@ class KanjiList extends Component
 
         $characters = $splitVocabToKanji->execute($vocabularyWord ?? '');
 
-        $this->kanjis = Kanji::query()
+        $this->kanjis ??= Kanji::query()
             ->tap(new KanjiRadicalsScope($radicalId))
             ->tap(new KanjiSimilarToScope($this->similarId))
             ->tap(new KanjiLevelScope($this->level))
             ->when($vocabularyWord, static fn (Builder $query) => $query->whereIn('character', $characters))
             ->orderBy('level')
             ->orderBy('meaning')
-            ->get(['id', 'level', 'character', 'meaning', 'onyomi', 'kunyomi', 'important_reading'])
+            ->get(Kanji::LIST_COLUMNS)
             ->pipe(new ShowKanjiInTheSameOrderAsInVocab($characters));
 
         if ($user) {

@@ -25,6 +25,8 @@ use Illuminate\Database\Eloquent\Model;
 #[UsePolicy(RadicalPolicy::class)]
 class Radical extends Model
 {
+    public const array LIST_COLUMNS = ['id', 'level', 'character', 'meaning'];
+
     // Relations
     public function burnable()
     {

@@ -13,6 +13,12 @@ class JapaneseWanikaniKanjiController
         return view('japanese.wanikani.kanjis', [
             'to' => $request->to,
             'from' => $request->from,
+            'kanjis' => Kanji::query()
+                ->whereBetween('level', [$request->from, $request->to])
+                ->orderBy('level')
+                ->orderBy('meaning')
+                ->get(Kanji::LIST_COLUMNS)
+                ->groupBy('level'),
         ]);
     }
 

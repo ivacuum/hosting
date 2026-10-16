@@ -13,6 +13,12 @@ class JapaneseWanikaniVocabularyController
         return view('japanese.wanikani.vocabularies', [
             'to' => $request->to,
             'from' => $request->from,
+            'vocabularies' => Vocabulary::query()
+                ->whereBetween('level', [$request->from, $request->to])
+                ->orderBy('level')
+                ->orderBy('meaning')
+                ->get(Vocabulary::LIST_COLUMNS)
+                ->groupBy('level'),
         ]);
     }
 

@@ -25,12 +25,12 @@ class RadicalList extends Component
     {
         $this->flat = $kanjiId !== null;
 
-        $this->radicals = Radical::query()
+        $this->radicals ??= Radical::query()
             ->when($kanjiId, static fn (Builder $query) => $query->whereRelation('kanjis', 'kanji_id', $kanjiId))
             ->when($this->level, fn (Builder $query) => $query->where('level', $this->level))
             ->orderBy('level')
             ->orderBy('meaning')
-            ->get(['id', 'level', 'character', 'meaning']);
+            ->get(Radical::LIST_COLUMNS);
 
         if ($user) {
             $this->burned = Burnable::query()

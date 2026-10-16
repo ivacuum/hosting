@@ -31,6 +31,8 @@ use Illuminate\Database\Eloquent\Model;
 #[UsePolicy(VocabularyPolicy::class)]
 class Vocabulary extends Model
 {
+    public const array LIST_COLUMNS = ['id', 'level', 'character', 'kana', 'meaning'];
+
     // Relations
     public function burnable()
     {

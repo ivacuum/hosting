@@ -3,7 +3,11 @@
 @section('content')
 <h1 class="font-medium text-3xl tracking-tight mb-2">@lang('japanese.vocabulary')</h1>
 @foreach (range($from, $to) as $level)
-  @livewire(App\Domain\Wanikani\Livewire\VocabularyList::class, ['level' => $level, 'range' => true])
+  @livewire(App\Domain\Wanikani\Livewire\VocabularyList::class, [
+    'level' => $level,
+    'range' => true,
+    'vocabularies' => $vocabularies->get($level, new Illuminate\Database\Eloquent\Collection),
+  ])
 @endforeach
 
 <div class="flex items-center justify-between mt-4">
