@@ -10,7 +10,7 @@
             @if (!empty($categoryId) && $id == $categoryId)
               <mark>{{ $category['title'] }}</mark>
             @else
-              <a class="visited" href="{{ to('magnets', ['category_id' => $id, 'q' => $q]) }}">{{ $category['title'] }}</a>
+              <a class="visited" href="{{ to('magnets', ['category_id' => $id, 'q' => $q, 'fulltext' => $fulltext ?: null]) }}">{{ $category['title'] }}</a>
             @endif
           </h4>
           @if (!empty($category['children']))
@@ -22,7 +22,7 @@
                 @else
                   <a
                     class="visited"
-                    href="{{ to('magnets', ['category_id' => $childId, 'q' => $q]) }}"
+                    href="{{ to('magnets', ['category_id' => $childId, 'q' => $q, 'fulltext' => $fulltext ?: null]) }}"
                   >{{ $child['title'] }}</a>
                 @endif
                 <span class="text-gray-500 text-xs">{{ $stats[$childId] }}</span>
