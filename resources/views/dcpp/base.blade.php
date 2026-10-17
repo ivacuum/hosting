@@ -73,19 +73,10 @@
 
 @section('header_user')
 @if (empty($noLanguageSelector))
-  @ru
-    <a
-      class="px-2 py-3 text-grey-600 dark:text-slate-400 hover:text-grey-900 dark:hover:text-slate-200 whitespace-nowrap js-english"
-      href="/en/{{ $requestUri }}"
-      lang="en"
-    >In English</a>
-  @en
-    <a
-      class="px-2 py-3 text-grey-600 dark:text-slate-400 hover:text-grey-900 dark:hover:text-slate-200 whitespace-nowrap js-russian"
-      href="/{{ $requestUri }}"
-      lang="ru"
-    >По-русски</a>
-  @endru
+  @include('tpl.language-selector', [
+    'links' => $pageLanguageLinks,
+    'linkClasses' => 'px-2 py-3 text-grey-600 dark:text-slate-400 hover:text-grey-900 dark:hover:text-slate-200',
+  ])
 @else
   <div class="w-20"></div>
 @endif

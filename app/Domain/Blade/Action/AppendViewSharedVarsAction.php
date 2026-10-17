@@ -23,7 +23,14 @@ class AppendViewSharedVarsAction
         $routeData = $this->parseRouteData->execute();
         $browserEnv = new EnvironmentForCss($request->userAgent());
         $defaultLocale = Config::DefaultLocale->get();
-        $preferredLocale = $request->getPreferredLanguage(array_keys(Config::Locales->get()));
+        $requestUri = $this->requestUri($request, $locale, $defaultLocale);
+        $languageLinks = $this->languageLinks($requestUri, $request->getQueryString());
+        $offeredLocales = array_column($languageLinks, 'locale');
+        $preferredLocale = $request->getLanguages() === []
+            ? null
+            : $request->getPreferredLanguage(['und', ...$offeredLocales]);
+        $preferredLink = collect($languageLinks)->firstWhere('locale', $preferredLocale);
+        $preferredLocale = $preferredLink['locale'] ?? null;
 
         $this->view->share([
             'tpl' => $routeData->tpl,
@@ -32,6 +39,8 @@ class AppendViewSharedVarsAction
             'locale' => $locale,
             'localeUri' => $this->getLocaleUri->execute(),
             'localePreferred' => $preferredLocale,
+            'pageLanguageLinks' => $languageLinks,
+            'preferredLanguageLink' => $preferredLink,
 
             'goto' => $request->input('goto'),
             'isMobile' => $browserEnv->isMobile(),
@@ -39,9 +48,37 @@ class AppendViewSharedVarsAction
             'isCrawler' => $browserEnv->isCrawler(),
             'isDesktop' => !$browserEnv->isMobile(),
             'cssClasses' => (string) $browserEnv,
-            'requestUri' => $this->requestUri($request, $locale, $defaultLocale),
+            'requestUri' => $requestUri,
             'firstTimeVisit' => \Session::previousUrl() === null,
         ]);
+    }
+
+    /**
+     * @return list<array{locale: string, label: string, href: string}>
+     */
+    private function languageLinks(string $requestUri, string|null $query): array
+    {
+        $path = '/' . trim($requestUri, '/');
+        $pages = config('cfg.language_switcher.pages', []);
+        $locales = $pages[rawurldecode($path)] ?? config('cfg.language_switcher.default');
+        $identities = Config::Locales->get();
+        $default = Config::DefaultLocale->get();
+
+        return collect($locales)
+            ->filter(static fn (string $locale) => array_key_exists($locale, $identities))
+            ->unique()
+            ->map(static function (string $locale) use ($path, $query, $identities, $default): array {
+                $prefix = $locale === $default ? '' : "/{$locale}";
+                $href = $prefix !== '' && $path === '/' ? $prefix : $prefix . $path;
+
+                return [
+                    'locale' => $locale,
+                    'label' => $identities[$locale]['label'] ?? \Locale::getDisplayName($locale, $locale),
+                    'href' => $href . ($query !== null ? '?' . $query : ''),
+                ];
+            })
+            ->values()
+            ->all();
     }
 
     private function requestUri(Request $request, string $locale, string $defaultLocale): string

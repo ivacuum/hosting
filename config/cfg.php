@@ -41,8 +41,15 @@ return [
         ],
     ],
     'locales' => [
-        App\Domain\Locale::Rus->value => ['posix' => 'ru_RU.UTF-8'],
-        App\Domain\Locale::Eng->value => ['posix' => 'en_US.UTF-8'],
+        App\Domain\Locale::Rus->value => ['label' => 'По-русски', 'manifest' => '/pwa-manifest-ru.json'],
+        App\Domain\Locale::Eng->value => ['label' => 'In English', 'manifest' => '/pwa-manifest-en.json'],
+    ],
+    'language_switcher' => [
+        'default' => [
+            App\Domain\Locale::Rus->value,
+            App\Domain\Locale::Eng->value,
+        ],
+        'pages' => [],
     ],
     'magnet_anonymous_releaser' => (int) env('MAGNET_ANONYMOUS_RELEASER', 3),
     'mcp_token' => env('MCP_TOKEN'),

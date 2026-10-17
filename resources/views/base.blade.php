@@ -15,11 +15,14 @@
   <link rel="icon" href="/apple-touch-icon.png">
   <link rel="canonical" href="{{ canonical() }}">
   @yield('pagination_seo')
-  <link rel="manifest" href="/pwa-manifest-{{ $locale }}.json">
+  @if ($manifest = config('cfg.locales.' . $locale . '.manifest'))
+    <link rel="manifest" href="{{ $manifest }}">
+  @endif
   <script async src="/service-worker-installer.js"></script>
   @if (empty($noLanguageSelector))
-    <link rel="alternate" hreflang="en" href="{{ url("en/{$requestUri}") }}">
-    <link rel="alternate" hreflang="ru" href="{{ url($requestUri) }}">
+    @foreach ($pageLanguageLinks as $languageLink)
+      <link rel="alternate" hreflang="{{ $languageLink['locale'] }}" href="{{ url(parse_url($languageLink['href'], PHP_URL_PATH)) }}">
+    @endforeach
   @endif
   @vite('resources/css/app.css')
   @stack('head')
@@ -90,13 +93,10 @@
     @include('tpl.breadcrumbs', ['breadcrumbs' => $breadcrumbs ?? Breadcrumbs::get()])
   @show
   <div class="js-flash-notification">
-    @if ($firstTimeVisit && !Auth::check() && $locale !== $localePreferred && empty($noLanguageSelector) && !$isCrawler && !in_array($locale, request()->getLanguages()))
+    @if ($firstTimeVisit && !Auth::check() && $preferredLanguageLink !== null && $locale !== $localePreferred && empty($noLanguageSelector) && !$isCrawler && !in_array($locale, request()->getLanguages()))
       <x-alert-warning-dismissable>
-        @ru
-          As your browser speaks English, would you like to see the <a class="link" href="{{ url("en/{$requestUri}") }}">English version</a> of this page?
-        @en
-          Так как ваш браузер на русском языке, предлагаем вам <a class="link" href="{{ url($requestUri) }}">русскую версию</a> этой страницы
-        @endru
+        {{ __('Эта страница доступна на предпочитаемом языке вашего браузера.') }}
+        <a class="link" href="{{ $preferredLanguageLink['href'] }}" lang="{{ $preferredLanguageLink['locale'] }}">{{ $preferredLanguageLink['label'] }}</a>
       </x-alert-warning-dismissable>
     @endif
     @if (Session::has(App\Domain\SessionKey::FlashMessage))
@@ -129,23 +129,7 @@
         @show
         @section('i18n')
           @if (empty($noLanguageSelector))
-            <div>
-              @ru
-                <a class="flex flex-wrap gap-1 items-center whitespace-nowrap js-english" href="{{ url("en/{$requestUri}") }}" lang="en">
-                  <div>
-                    @svg (flag/en)
-                  </div>
-                  <div>In English</div>
-                </a>
-              @en
-                <a class="flex flex-wrap gap-1 items-center whitespace-nowrap js-russian" href="{{ url($requestUri) }}" lang="ru">
-                  <div>
-                    @svg (flag/ru)
-                  </div>
-                  <div>По-русски</div>
-                </a>
-              @endru
-            </div>
+            @include('tpl.language-selector', ['links' => $pageLanguageLinks])
           @endif
           <div>
             <a href="@lng/contact">

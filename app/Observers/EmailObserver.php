@@ -10,7 +10,7 @@ class EmailObserver
     public function creating(Email $email)
     {
         if (!$email->locale) {
-            $email->locale = Locale::from(\App::getLocale());
+            $email->locale = Locale::forNotification(\App::getLocale());
         }
     }
 }

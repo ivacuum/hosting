@@ -12,7 +12,7 @@ class UserObserver
     public function creating(User $user)
     {
         if (!$user->locale) {
-            $user->locale = Locale::from(\App::getLocale());
+            $user->locale = Locale::forNotification(\App::getLocale());
         }
 
         if (!$user->ip) {
@@ -68,7 +68,7 @@ class UserObserver
         $user->salt = Str::trim($user->salt);
         $user->email = Str::trim($user->email);
         $user->avatar = Str::trim($user->avatar);
-        $user->locale ??= Locale::from(config('app.locale'));
+        $user->locale ??= Locale::forNotification(config('app.locale'));
 
         if (filled($user->login)) {
             $user->login = Str::trim($user->login);

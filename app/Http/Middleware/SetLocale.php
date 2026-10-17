@@ -3,12 +3,12 @@
 namespace App\Http\Middleware;
 
 use App\Domain\Config;
-use App\Domain\Locale;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class SetLocale
 {
-    public function handle(Request $request, \Closure $next)
+    public function handle(Request $request, \Closure $next): Response
     {
         $locale = $this->determineLocale($request);
 
@@ -21,20 +21,29 @@ class SetLocale
 
     private function determineLocale(Request $request): string
     {
-        if ($request->segment(1) === Locale::Eng->value) {
-            return Locale::Eng->value;
-        } elseif ($request->hasHeader('X-Livewire')) {
-            $referrer = $request->header('referer');
+        if ($locale = $this->prefixedLocale($request->segment(1))) {
+            return $locale;
+        }
 
-            if ($referrer) {
-                $firstSegment = Request::create($referrer)->segment(1);
+        if ($request->hasHeader('X-Livewire')) {
+            $firstSegment = Request::create($request->header('referer', ''))->segment(1);
 
-                if ($firstSegment === Locale::Eng->value) {
-                    return Locale::Eng->value;
-                }
+            if ($locale = $this->prefixedLocale($firstSegment)) {
+                return $locale;
             }
         }
 
         return Config::DefaultLocale->get();
+    }
+
+    private function prefixedLocale(string|null $segment): string|null
+    {
+        if ($segment !== null
+            && $segment !== Config::DefaultLocale->get()
+            && array_key_exists($segment, Config::Locales->get())) {
+            return $segment;
+        }
+
+        return null;
     }
 }
