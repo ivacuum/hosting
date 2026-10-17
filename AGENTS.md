@@ -1,64 +1,65 @@
-# Project Context: ivacuum/hosting
+# Project instructions for ivacuum/hosting
 
-## Project Overview
+## Project context
 
-This is a Laravel application serving as a personal website for notes, trip stories, and concert history. Production runs on a modest FreeBSD server under high load; keep CPU, memory, and database costs in mind.
+This Laravel application is a personal website for notes, trip stories, and concert history. Production runs on a modest FreeBSD server under high load. Keep CPU, memory, and database costs in mind.
 
-## Architecture & Conventions
+## Follow project conventions
 
-- **Models:** Located in the root of `app/` (e.g., `app/User.php`) and in `app/Domain/*/Models/`. Migration of root-level models to `app/Models/` is planned but deferred.
-- **Actions:** Business logic is encapsulated in Action classes within `app/Action/` and `app/Domain/*/Action/`. When creating new logic, check if it fits into an Action class.
-- **Domains:** Keep domain-specific functionality together under `app/Domain/`. Prefer extending an existing domain and follow its internal structure.
-- **Seeders:** Located in `app/Seeder/` and `app/Domain/*/Seeder/` (not `database/seeders`).
-- **Livewire:** Components in `app/Livewire/` and `app/Domain/*/Livewire/`.
-- **Factories:** Use the custom immutable builders in `app/Factory/` and `app/Domain/*/Factory/`. Never use Eloquent factories, including in tests and seeders.
-- **ADR:** Architectural Decision Records are stored in `adr/` in Russian.
-- **Eloquent:** Rely on automatic relationship eager loading. Use explicit `with()` only to restrict or shape related data, not defensively.
-- **Migrations:** Always delete the `down` method from database migrations.
-- **Long-running workers:** Keep new and modified code compatible with long-running workers, regardless of whether Octane is adopted. Never retain request or user state in long-lived objects or statics; use scoped bindings for per-request services.
+- Keep models in `app/`, such as `app/User.php`, and `app/Domain/*/Models/`. The move from root-level models to `app/Models/` is deferred.
+- Put business logic in Action classes in `app/Action/` and `app/Domain/*/Action/` when it fits that pattern.
+- Keep domain-specific code in `app/Domain/`. Prefer extending an existing domain and follow its structure.
+- Put seeders in `app/Seeder/` and `app/Domain/*/Seeder/`, not `database/seeders`.
+- Put Livewire components in `app/Livewire/` and `app/Domain/*/Livewire/`.
+- Use the custom immutable builders in `app/Factory/` and `app/Domain/*/Factory/`. Never use Eloquent factories, including in tests and seeders.
+- Write Architectural Decision Records in Russian in `adr/`.
+- Rely on automatic relationship eager loading. Use explicit `with()` only to restrict or shape related data.
+- Delete the `down` method from database migrations.
+- Keep new and modified code compatible with long-running workers, with or without Octane. Never retain request or user state in long-lived objects or statics. Use scoped bindings for per-request services.
 
-## Test scope
+## Keep tests focused
 
-- Verify every code change using appropriate existing tests or checks.
-- Minimize the number of retained tests. Every test adds maintenance and review cost; more tests are not inherently better.
-- Inspect existing coverage first. Prefer extending an existing test, and add no tests when existing coverage adequately protects the change.
-- For a bug fix, aim for one focused regression test. For a feature, cover its core behavior with the smallest possible set.
-- Add another test only for a distinct, realistic failure that the other tests would miss. Skip speculative edge cases, equivalent input variations, framework guarantees, and assertions that merely mirror the implementation.
-- Stop once the changed behavior and its important risks are covered. Do not expand coverage merely because related code is nearby.
-- Temporary tests or checks may be used for verification without being retained. Before finishing, review newly added tests and remove disposable checks.
-- Leave unrelated tests alone. Within the task’s scope, remove or consolidate redundant tests while preserving coverage of distinct, realistic failures.
-- In the final response, briefly explain what new coverage protects and report temporary verification separately from retained tests.
+- Verify every code change with appropriate existing tests or checks.
+- Keep retained tests to a minimum to limit maintenance and review costs.
+- Inspect existing coverage first. Add no tests if existing coverage protects the change. Otherwise, prefer extending an existing test.
+- For a bug fix, aim for one focused regression test. For a feature, cover its core behavior with the smallest possible test set.
+- Add another test only for a distinct, realistic failure that other tests would miss. Skip speculative edge cases, equivalent inputs, framework guarantees, and assertions that mirror the implementation.
+- Stop when tests cover the changed behavior and its important risks. Nearby code alone does not justify more coverage.
+- Use temporary tests or checks when needed. Before finishing, review new tests and remove disposable checks.
+- Leave unrelated tests alone. Within the task's scope, remove or combine redundant tests while preserving coverage of distinct, realistic failures.
+- In the final response, explain what new coverage protects. Report temporary verification separately from retained tests.
 
-## Guidelines
+## Read task-specific guidelines
 
 - Before creating or changing tests, read `.agents/guidelines/tests.md`.
-- Before analyzing or changing metrics, read `.agents/guidelines/metrics.md`. `App\Events\Stats\*` events use a wildcard listener; missing per-event listeners do not mean an event is unused.
+- Before analyzing or changing metrics, read `.agents/guidelines/metrics.md`. `App\Events\Stats\*` events use a wildcard listener. An event without a per-event listener may still be in use.
 
-## Key Commands
+## Run project commands
 
-Prefix every Composer and Artisan command with `AI_AGENT=1` for Laravel Pao’s concise, agent-friendly output, even when examples omit it.
+Prefix every Composer and Artisan command with `AI_AGENT=1` for Laravel Pao's concise output, even when an example omits it.
 
 ### Development
 
-- **Start Environment:** `docker-compose up -d`
-- **Frontend Dev:** `yarn dev`
-- **Frontend Build:** `yarn build`
-- **Code Analysis:** `composer pint` (full-project style formatting), `composer rector` (refactoring dry run)
+- Start the environment with `docker-compose up -d`.
+- Start the frontend dev server with `yarn dev`.
+- Build the frontend with `yarn build`.
+- Format the full project with `composer pint`.
+- Run a refactoring dry run with `composer rector`.
 
 ### Database
 
-- **Reset & Seed:** `composer fresh` should restore a known initial development state, independent of any previously accumulated data.
+- Keep `composer fresh` able to restore a known initial development state, regardless of existing data.
 
 ### Testing
 
-- **Targeted verification:** Run the narrowest relevant test file or filter: `php artisan test --compact --no-interaction <path>` or `php artisan test --compact --no-interaction --filter=<name>`.
-- **Full suite:** `composer test` (parallel execution).
-- **Full suite with recreated test databases:** `composer test-fresh`.
-- Use targeted verification by default. Broaden testing when the change affects shared behavior or targeted results leave a concrete concern unresolved.
+- Run the narrowest relevant test file with `php artisan test --compact --no-interaction <path>` or use `--filter=<name>`.
+- Run the full suite in parallel with `composer test`.
+- Recreate the test databases and run the full suite with `composer test-fresh`.
+- Use targeted tests by default. Broaden testing when a change affects shared behavior or targeted results leave a concrete concern unresolved.
 
-## I18n
+## Translate content
 
-Translations are done either in Laravel traditional way using `__(key)` or using the following syntax:
+Use Laravel's `__(key)` or the following syntax for translations:
 
 ```blade
 \@ru
@@ -68,11 +69,11 @@ Translations are done either in Laravel traditional way using `__(key)` or using
 \@endru
 ```
 
-Russian is the default language of this project. English is optional. When translating, keep the author style.
+Russian is the default language. English is optional. Preserve the author's style when translating.
 
-## Framework Guidance
+## Follow framework guidance
 
-The project-specific conventions above specialize the general framework guidance below.
+Apply the project-specific conventions above when following the framework guidance below.
 
 <laravel-boost-guidelines>
 === foundation rules ===
