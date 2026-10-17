@@ -38,7 +38,7 @@ class VocabularyTrainer extends Component
             match ($answer) {
                 $this->vocab->toRomaji() => event(new \App\Events\Stats\VocabularyAnsweredRomaji),
                 $this->vocab->toKatakana() => event(new \App\Events\Stats\VocabularyAnsweredKatakana),
-                $this->vocab->kana => event(new \App\Events\Stats\VocabularyAnsweredHiragana),
+                $this->vocab->firstKana() => event(new \App\Events\Stats\VocabularyAnsweredHiragana),
                 $this->vocab->character => event(new \App\Events\Stats\VocabularyAnsweredKanji),
             };
 
@@ -123,7 +123,7 @@ class VocabularyTrainer extends Component
         return [
             $this->vocab->toRomaji(),
             $this->vocab->toKatakana(),
-            $this->vocab->kana,
+            $this->vocab->firstKana(),
             $this->vocab->character,
         ];
     }

@@ -15,15 +15,15 @@ class VocabularyTrainerTest extends TestCase
     {
         $vocab = VocabularyFactory::new()
             ->withLevel(1)
-            ->withKana('とうきょうしょうけんとりひきじょ')
-            ->withCharacter('東京証券取引所')
+            ->withKana('あした, あす')
+            ->withCharacter('明日')
             ->create();
 
         \Event::fake(\App\Events\Stats\VocabularyAnsweredHiragana::class);
 
         \Livewire::test(VocabularyTrainer::class)
             ->call('setVocabId', $vocab->id)
-            ->set('answer', 'とうきょうしょうけんとりひきじょ')
+            ->set('answer', 'あした')
             ->call('check')
             ->assertSet('answered', 1);
 
