@@ -1,6 +1,4 @@
 @extends('dcpp.software', [
-  'noLanguageSelector' => $locale === App\Domain\Locale::Rus->value,
-
   'softwareTitle' => __('dcpp.kalugadc'),
   'software' => [
     ['version' => '', 'id' => 12, 'size' => 1_861_500, 'dl_suffix' => ''],

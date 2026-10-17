@@ -19,11 +19,9 @@
     <link rel="manifest" href="{{ $manifest }}">
   @endif
   <script async src="/service-worker-installer.js"></script>
-  @if (empty($noLanguageSelector))
-    @foreach ($pageLanguageLinks as $languageLink)
-      <link rel="alternate" hreflang="{{ $languageLink['locale'] }}" href="{{ url(parse_url($languageLink['href'], PHP_URL_PATH)) }}">
-    @endforeach
-  @endif
+  @foreach ($pageLanguageLinks as $languageLink)
+    <link rel="alternate" hreflang="{{ $languageLink['locale'] }}" href="{{ url(parse_url($languageLink['href'], PHP_URL_PATH)) }}">
+  @endforeach
   @vite('resources/css/app.css')
   @stack('head')
 </head>
@@ -93,7 +91,7 @@
     @include('tpl.breadcrumbs', ['breadcrumbs' => $breadcrumbs ?? Breadcrumbs::get()])
   @show
   <div class="js-flash-notification">
-    @if ($firstTimeVisit && !Auth::check() && $preferredLanguageLink !== null && $locale !== $localePreferred && empty($noLanguageSelector) && !$isCrawler && !in_array($locale, request()->getLanguages()))
+    @if ($firstTimeVisit && !Auth::check() && $preferredLanguageLink !== null && $locale !== $localePreferred && !$isCrawler && !in_array($locale, request()->getLanguages()))
       <x-alert-warning-dismissable>
         {{ __('Эта страница доступна на предпочитаемом языке вашего браузера.') }}
         <a class="link" href="{{ $preferredLanguageLink['href'] }}" lang="{{ $preferredLanguageLink['locale'] }}">{{ $preferredLanguageLink['label'] }}</a>
@@ -128,9 +126,7 @@
           <div>&copy; {{ date('Y') }} vacuum</div>
         @show
         @section('i18n')
-          @if (empty($noLanguageSelector))
-            @include('tpl.language-selector', ['links' => $pageLanguageLinks])
-          @endif
+          @include('tpl.language-selector', ['links' => $pageLanguageLinks])
           <div>
             <a href="@lng/contact">
               @lang('Обратная связь')

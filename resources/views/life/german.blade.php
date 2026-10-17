@@ -1,6 +1,4 @@
-@extends('life.base', [
-  'noLanguageSelector' => $locale === App\Domain\Locale::Rus->value,
-])
+@extends('life.base')
 
 @section('content')
 <h1 class="font-medium text-4xl tracking-tight mb-2">@lang('Немецкий')</h1>

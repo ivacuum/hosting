@@ -1,6 +1,4 @@
-@extends('life.base', [
-  'noLanguageSelector' => true,
-])
+@extends('life.base')
 
 @section('content')
 <h1 class="font-medium text-3xl tracking-tight mb-2">Кириллизация песен PSY</h1>

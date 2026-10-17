@@ -43,7 +43,6 @@ class NewsController
         return view('news.show', [
             'news' => $news,
             'metaTitle' => $news->title,
-            'noLanguageSelector' => true,
         ]);
     }
 }

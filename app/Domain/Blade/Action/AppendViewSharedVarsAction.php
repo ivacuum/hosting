@@ -24,7 +24,8 @@ class AppendViewSharedVarsAction
         $browserEnv = new EnvironmentForCss($request->userAgent());
         $defaultLocale = Config::DefaultLocale->get();
         $requestUri = $this->requestUri($request, $locale, $defaultLocale);
-        $languageLinks = $this->languageLinks($requestUri, $request->getQueryString());
+        $routeUri = $this->routeUri($request, $locale, $defaultLocale);
+        $languageLinks = $this->languageLinks($requestUri, $routeUri, $request->getQueryString());
         $offeredLocales = array_column($languageLinks, 'locale');
         $preferredLocale = $request->getLanguages() === []
             ? null
@@ -44,7 +45,7 @@ class AppendViewSharedVarsAction
 
             'goto' => $request->input('goto'),
             'isMobile' => $browserEnv->isMobile(),
-            'routeUri' => $this->routeUri($request, $locale, $defaultLocale),
+            'routeUri' => $routeUri,
             'isCrawler' => $browserEnv->isCrawler(),
             'isDesktop' => !$browserEnv->isMobile(),
             'cssClasses' => (string) $browserEnv,
@@ -56,11 +57,14 @@ class AppendViewSharedVarsAction
     /**
      * @return list<array{locale: string, label: string, href: string}>
      */
-    private function languageLinks(string $requestUri, string|null $query): array
+    private function languageLinks(string $requestUri, string $routeUri, string|null $query): array
     {
         $path = '/' . trim($requestUri, '/');
+        $page = trim(rawurldecode($requestUri), '/');
         $pages = config('cfg.language_switcher.pages', []);
-        $locales = $pages[rawurldecode($path)] ?? config('cfg.language_switcher.default');
+        $locales = $pages[$page === '' ? '/' : $page]
+            ?? $pages[$routeUri]
+            ?? config('cfg.language_switcher.default');
         $identities = Config::Locales->get();
         $default = Config::DefaultLocale->get();
 

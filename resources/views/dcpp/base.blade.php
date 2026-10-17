@@ -72,7 +72,7 @@
 @endsection
 
 @section('header_user')
-@if (empty($noLanguageSelector))
+@if (array_any($pageLanguageLinks, fn (array $link) => $link['locale'] !== $locale))
   @include('tpl.language-selector', [
     'links' => $pageLanguageLinks,
     'linkClasses' => 'px-2 py-3 text-grey-600 dark:text-slate-400 hover:text-grey-900 dark:hover:text-slate-200',

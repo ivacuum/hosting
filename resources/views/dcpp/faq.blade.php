@@ -1,6 +1,4 @@
-@extends('dcpp.base', [
-  'noLanguageSelector' => $locale === App\Domain\Locale::Rus->value,
-])
+@extends('dcpp.base')
 
 @section('content')
 <h1 class="font-medium text-4xl tracking-tight mb-2">Решение проблем с DC++</h1>

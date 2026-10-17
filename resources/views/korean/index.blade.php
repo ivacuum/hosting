@@ -1,6 +1,4 @@
-@extends('korean.base', [
-  'noLanguageSelector' => true,
-])
+@extends('korean.base')
 
 @section('content')
 <h1 class="font-medium text-3xl tracking-tight mb-2">@lang('meta_title.korean')</h1>

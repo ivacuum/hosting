@@ -1,6 +1,4 @@
-@extends('base', [
-  'noLanguageSelector' => $locale === App\Domain\Locale::Rus->value,
-])
+@extends('base')
 
 @section('content')
 <h1 class="font-medium text-4xl tracking-tight mb-2">{{ $metaTitle }}</h1>
