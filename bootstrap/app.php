@@ -21,24 +21,33 @@ return Application::configure(basePath: dirname(__DIR__))
         web: __DIR__ . '/../routes/web.php',
         commands: __DIR__ . '/../routes/console.php',
         health: '/health-up',
-        then: static function () {
+        then: static function (): void {
+            $locales = array_keys(App\Domain\Config::Locales->get());
+            $defaultLocale = App\Domain\Config::DefaultLocale->get();
+
             Route::prefix('')
                 ->group(__DIR__ . '/../routes/simple.php');
-
-            Route::middleware('web')
-                ->prefix('en')
-                ->name('en.')
-                ->group(__DIR__ . '/../routes/web.php');
 
             Route::middleware(['web', 'auth', Admin::class, AcpNavigation::class])
                 ->prefix('acp')
                 ->name('acp.')
                 ->group(__DIR__ . '/../routes/acp.php');
 
-            Route::middleware(['web', 'auth', Admin::class, AcpNavigation::class])
-                ->prefix('en/acp')
-                ->name('en.acp.')
-                ->group(__DIR__ . '/../routes/acp.php');
+            foreach ($locales as $locale) {
+                if ($locale === $defaultLocale) {
+                    continue;
+                }
+
+                Route::middleware('web')
+                    ->prefix($locale)
+                    ->name("{$locale}.")
+                    ->group(__DIR__ . '/../routes/web.php');
+
+                Route::middleware(['web', 'auth', Admin::class, AcpNavigation::class])
+                    ->prefix("{$locale}/acp")
+                    ->name("{$locale}.acp.")
+                    ->group(__DIR__ . '/../routes/acp.php');
+            }
         }
     )
     ->withCommands([
