@@ -17,6 +17,9 @@
       "spacing": "one"
     },
     "fully_qualified_strict_types": false,
+    "global_namespace_import": {
+      "import_classes": false
+    },
     "linebreak_after_opening_tag": false,
     "not_operator_with_successor_space": false,
     "nullable_type_declaration": {

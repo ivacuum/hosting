@@ -7,7 +7,6 @@ use Carbon\CarbonInterval;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Client\Response;
-use Throwable;
 
 readonly class InstagramPublishMediaRequest implements HttpRequest
 {
@@ -20,7 +19,7 @@ readonly class InstagramPublishMediaRequest implements HttpRequest
                 CarbonInterval::seconds(2)->totalMilliseconds,
                 CarbonInterval::seconds(4)->totalMilliseconds,
                 CarbonInterval::seconds(8)->totalMilliseconds,
-            ], when: static fn (Throwable $exception): bool => $exception instanceof RequestException
+            ], when: static fn (\Throwable $exception): bool => $exception instanceof RequestException
                 && $exception->response->json('error.error_subcode') === 2207027)
             ->post('me/media_publish', [
                 'creation_id' => $this->creationId,
