@@ -22,6 +22,10 @@ class LogHttpConnectionFailed
 
     public function handle(ConnectionFailed $event): void
     {
+        if ($event->request->attributes()['skip_logging'] ?? false) {
+            return;
+        }
+
         $request = $event->request;
         $psrRequest = $request->toPsrRequest();
         $uri = $psrRequest->getUri();

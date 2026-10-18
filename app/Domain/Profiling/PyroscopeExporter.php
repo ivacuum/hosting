@@ -40,6 +40,7 @@ class PyroscopeExporter
             ]);
 
             Http::connectTimeout(0.1)
+                ->withAttributes(['skip_logging' => true])
                 ->timeout(1)
                 ->withBody($body, 'text/plain')
                 ->post(rtrim($this->endpoint, '/') . '/ingest?' . $query)

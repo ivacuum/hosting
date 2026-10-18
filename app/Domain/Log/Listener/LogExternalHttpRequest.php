@@ -23,6 +23,10 @@ class LogExternalHttpRequest
 
     public function handle(ResponseReceived $event): void
     {
+        if ($event->request->attributes()['skip_logging'] ?? false) {
+            return;
+        }
+
         $request = $event->request;
         $response = $event->response;
         $psrRequest = $request->toPsrRequest();
