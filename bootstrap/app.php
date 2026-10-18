@@ -63,6 +63,7 @@ return Application::configure(basePath: dirname(__DIR__))
         );
 
         $middleware->prepend(\App\Http\Middleware\AddRequestContext::class);
+        $middleware->prepend(\App\Http\Middleware\ProfileRequest::class);
         $middleware->append(\App\Http\Middleware\SetLocale::class);
         $middleware->append(\App\Http\Middleware\EarlyHints::class);
 
