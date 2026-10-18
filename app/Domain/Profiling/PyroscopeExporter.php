@@ -4,7 +4,6 @@ namespace App\Domain\Profiling;
 
 use Illuminate\Container\Attributes\Config;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 
 class PyroscopeExporter
 {
@@ -41,12 +40,12 @@ class PyroscopeExporter
             ]);
 
             Http::connectTimeout(0.1)
-                ->timeout(0.2)
+                ->timeout(1)
                 ->withBody($body, 'text/plain')
                 ->post(rtrim($this->endpoint, '/') . '/ingest?' . $query)
                 ->throw();
         } catch (\Throwable $exception) {
-            Log::debug('Pyroscope profile export failed.', ['error' => $exception->getMessage()]);
+            logs()->debug('profiling.export_failed', ['exception' => $exception]);
         }
     }
 }

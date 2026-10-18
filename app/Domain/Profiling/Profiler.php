@@ -46,8 +46,8 @@ class Profiler
             if ($body !== '') {
                 $this->exporter->send($body, $this->startedAt, $stoppedAt, $labels, $this->frequency);
             }
-        } catch (\Throwable) {
-            // Profiling is best-effort and must never affect application requests.
+        } catch (\Throwable $exception) {
+            logs()->debug('profiling.finish_failed', ['exception' => $exception]);
         } finally {
             $this->log = null;
             $this->stoppedAt = null;
@@ -79,10 +79,11 @@ class Profiler
 
             $this->startedAt = microtime(true);
             $this->profiler->start();
-        } catch (\Throwable) {
+        } catch (\Throwable $exception) {
             $this->profiler?->stop();
             $this->profiler?->clearFlushCallback();
             $this->profiler = null;
+            logs()->debug('profiling.start_failed', ['exception' => $exception]);
         }
     }
 }
