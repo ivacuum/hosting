@@ -6,6 +6,7 @@ use App\Domain\Log\Action\FillExternalHttpRequestTransferStatsAction;
 use App\Domain\Log\Action\FilterOutCredentialsAction;
 use App\Domain\Log\Action\GetExternalServiceByHostAction;
 use App\Domain\Log\Action\GetHttpBodyForLoggingAction;
+use App\Domain\Log\Action\LogExternalHttpRequestDebugAction;
 use App\Domain\Log\Action\RunHttpLoggingAction;
 use App\Domain\Log\Models\ExternalHttpRequest;
 use Illuminate\Http\Client\Events\ConnectionFailed;
@@ -17,6 +18,7 @@ class LogHttpConnectionFailed
         private FillExternalHttpRequestTransferStatsAction $fillTransferStats,
         private GetExternalServiceByHostAction $getExternalServiceByHost,
         private GetHttpBodyForLoggingAction $getHttpBodyForLogging,
+        private LogExternalHttpRequestDebugAction $logExternalHttpRequestDebug,
         private RunHttpLoggingAction $runHttpLogging,
     ) {}
 
@@ -59,6 +61,9 @@ class LogHttpConnectionFailed
 
         $this->filterOutCredentials->execute($model);
 
-        $this->runHttpLogging->execute(fn () => $model->save());
+        $this->runHttpLogging->execute(function () use ($model): void {
+            $model->save();
+            $this->logExternalHttpRequestDebug->execute($model);
+        });
     }
 }

@@ -37,7 +37,7 @@ class LogScheduledTaskListener
         }
 
         if ($event instanceof ScheduledTaskFinished && !$task->runInBackground && !$task->skippedBecauseOverlapping) {
-            $context['duration_seconds'] = $event->runtime;
+            $context['duration'] = $event->runtime;
         }
 
         if ($event instanceof ScheduledTaskFailed) {
