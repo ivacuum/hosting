@@ -2,10 +2,6 @@
 
 @extends('base')
 
-@push('head')
-<link rel="alternate" type="application/rss+xml" title="@lang('Новости')" href="{{ url(to('news/rss')) }}">
-@endpush
-
 @section('content')
 <div class="flex flex-wrap gap-4 items-center mb-6">
   <h1 class="font-medium text-3xl tracking-tight mb-1">@lang('Новости')</h1>

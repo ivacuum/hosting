@@ -1,9 +1,5 @@
 @extends('life.base')
 
-@push('head')
-<link rel="alternate" type="application/rss+xml" title="@lang('Заметки')" href="{{ url(to('life/rss')) }}">
-@endpush
-
 @section('content')
 <div class="grid md:grid-cols-2 gap-8">
   <section class="pt-0">

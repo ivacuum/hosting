@@ -24,6 +24,7 @@
   @endforeach
   @vite('resources/css/app.css')
   @stack('head')
+  @head
 </head>
 <body class="flex flex-col tabular-nums min-h-full dark:bg-slate-950 dark:text-slate-400 {{ $bodyClasses ?? 'body-with-bottom-tabbar' }} {{ $cssClasses }}" data-route="{{ $routeUri }}">
 @section('body')

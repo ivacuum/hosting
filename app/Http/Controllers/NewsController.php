@@ -6,10 +6,11 @@ use App\Http\Requests\NewsShowForm;
 use App\News;
 use App\Scope\NewsCurrentLocaleScope;
 use App\Scope\NewsPublishedScope;
+use Laravel\Head\HeadManager;
 
 class NewsController
 {
-    public function index()
+    public function index(HeadManager $head)
     {
         $news = News::query()
             ->with('user')
@@ -18,6 +19,8 @@ class NewsController
             ->tap(new NewsCurrentLocaleScope)
             ->orderByDesc('created_at')
             ->paginate(10);
+
+        $head->feed(url(to('news/rss')), __('Новости'));
 
         return view('news.index', ['news' => $news]);
     }

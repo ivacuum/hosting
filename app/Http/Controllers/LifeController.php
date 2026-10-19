@@ -17,6 +17,7 @@ use App\Domain\Life\Scope\TripVisibleScope;
 use App\Domain\Life\TripStatus;
 use App\Http\Requests\LifeIndexForm;
 use App\Utilities\CityHelper;
+use Laravel\Head\HeadManager;
 
 class LifeController
 {
@@ -24,6 +25,7 @@ class LifeController
         LifeIndexForm $request,
         GetMyVisibleTripsAction $getMyVisibleTrips,
         GetMyVisibleGigsAction $getMyVisibleGigs,
+        HeadManager $head,
     ) {
         $trips = $getMyVisibleTrips->execute($request->from, $request->to);
         $gigs = $getMyVisibleGigs->execute($request->from, $request->to);
@@ -31,6 +33,8 @@ class LifeController
         $models = collect([...$trips, ...$gigs])
             ->sortByDesc(static fn (Gig|Trip $model) => $model->date())
             ->groupBy(static fn (Gig|Trip $model) => $model->year);
+
+        $head->feed(url(to('life/rss')), __('Заметки'));
 
         return view('life.index', [
             'modelsByYears' => $models,
@@ -138,13 +142,15 @@ class LifeController
         ]);
     }
 
-    public function gigs()
+    public function gigs(HeadManager $head)
     {
         $gigs = Gig::query()
             ->with('artist')
             ->orderByDesc('date')
             ->get()
             ->groupBy(static fn (Gig $model) => $model->date->year);
+
+        $head->feed(url(to('life/gigs/rss')), __('Концерты'));
 
         return view('life.gigs', [
             'gigs' => $gigs,

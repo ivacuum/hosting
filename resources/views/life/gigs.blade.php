@@ -4,10 +4,6 @@
 
 @extends('life.base')
 
-@push('head')
-<link rel="alternate" type="application/rss+xml" title="@lang('Концерты')" href="{{ url(to('life/gigs/rss')) }}">
-@endpush
-
 @section('content')
 <div class="flex flex-wrap gap-4 items-center mb-2">
   <h1 class="font-medium text-3xl tracking-tight mb-1">@lang('Посещенные и ожидаемые концерты')</h1>
