@@ -41,8 +41,8 @@ return [
         ],
     ],
     'locales' => [
-        App\Domain\Locale::Rus->value => ['label' => 'По-русски', 'manifest' => '/pwa-manifest-ru.json'],
-        App\Domain\Locale::Eng->value => ['label' => 'In English', 'manifest' => '/pwa-manifest-en.json'],
+        App\Domain\Locale::Rus->value => ['label' => 'По-русски', 'manifest' => '/pwa-manifest-ru.json', 'og_locale' => 'ru_RU'],
+        App\Domain\Locale::Eng->value => ['label' => 'In English', 'manifest' => '/pwa-manifest-en.json', 'og_locale' => 'en_US'],
     ],
     'language_switcher' => [
         'default' => [

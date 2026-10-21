@@ -90,7 +90,6 @@ class LifeController
             ->description($city->metaDescription($trips))
             ->og(
                 type: OgType::Article,
-                url: canonical(),
             );
 
         return view('life.city', [
@@ -123,7 +122,6 @@ class LifeController
             ->description($country->metaDescription($trips))
             ->og(
                 type: OgType::Article,
-                url: canonical(),
             );
 
         return view('life.country', [
@@ -147,8 +145,7 @@ class LifeController
             ->description($gig->metaDescription())
             ->og(
                 type: OgType::Article,
-                url: canonical(),
-                image: $gig->meta_image,
+                image: $gig->meta_image ?: null,
             );
 
         return view($tpl, [
@@ -221,8 +218,7 @@ class LifeController
             ->description($trip->metaDescription())
             ->og(
                 type: OgType::Article,
-                url: canonical(),
-                image: $trip->metaImage(),
+                image: $trip->metaImage() ?: null,
             );
 
         return view($tpl, [

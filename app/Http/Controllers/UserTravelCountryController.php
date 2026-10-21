@@ -39,7 +39,6 @@ class UserTravelCountryController extends UserTravelController
             ->description($country->metaDescription($trips))
             ->og(
                 type: OgType::Article,
-                url: canonical(),
             );
 
         return view('user-travel.country', [

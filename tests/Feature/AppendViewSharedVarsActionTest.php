@@ -39,11 +39,21 @@ class AppendViewSharedVarsActionTest extends TestCase
             ->assertViewHas('goto', $expected);
     }
 
+    #[TestWith(['news?page=2&utm_source=x', 'https://localhost/news?page=2'])]
+    #[TestWith(['news?page=1', 'https://localhost/news'])]
+    #[TestWith(['news?page=abc', 'https://localhost/news'])]
+    public function testCanonicalKeepsOnlyPageNumber(string $url, string $expected)
+    {
+        $this->get($url)
+            ->assertSee("<link rel=\"canonical\" href=\"{$expected}\">", false);
+    }
+
     public function testHreflangAlternatesWithoutQuery()
     {
         $this->get('en/news?page=2')
             ->assertSee('<link rel="alternate" hreflang="ru" href="http://localhost/news">', false)
-            ->assertSee('<link rel="alternate" hreflang="en" href="http://localhost/en/news">', false);
+            ->assertSee('<link rel="alternate" hreflang="en" href="http://localhost/en/news">', false)
+            ->assertSee('<link rel="alternate" hreflang="x-default" href="http://localhost/news">', false);
     }
 
     public function testViewVarsIsCrawler()

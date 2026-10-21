@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>@ru Сергей Панков &middot; Резюме &middot; Веб-программист (Laravel PHP, Vue.js) @en Sergei Pankov &middot; CV &middot; Laravel PHP + Vue.js Developer @endru</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   @vite('resources/css/app.css')
 

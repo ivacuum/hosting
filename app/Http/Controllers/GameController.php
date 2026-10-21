@@ -27,7 +27,6 @@ class GameController
         \Head::title($game->title)
             ->og(
                 type: OgType::Article,
-                url: canonical(),
                 image: $game->libraryImage(),
             );
 

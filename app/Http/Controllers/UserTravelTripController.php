@@ -57,8 +57,7 @@ class UserTravelTripController extends UserTravelController
             ->description($trip->metaDescription())
             ->og(
                 type: OgType::Article,
-                url: canonical(),
-                image: $trip->metaImage(),
+                image: $trip->metaImage() ?: null,
             );
 
         return view('user-travel.show', [

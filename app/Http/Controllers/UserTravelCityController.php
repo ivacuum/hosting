@@ -62,7 +62,6 @@ class UserTravelCityController extends UserTravelController
             ->description($city->metaDescription($trips))
             ->og(
                 type: OgType::Article,
-                url: canonical(),
             );
 
         return view('user-travel.city', [

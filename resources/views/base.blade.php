@@ -7,11 +7,11 @@
   <meta charset="utf-8">
   @head
   <meta name="format-detection" content="telephone=no">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
-  <meta name="theme-color" content="#e7e7e7">
-  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#e7e7e7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#020618" media="(prefers-color-scheme: dark)">
+  <link rel="apple-touch-icon" href="/apple-touch-icon-precomposed.png">
   <link rel="icon" href="/apple-touch-icon.png">
-  <link rel="canonical" href="{{ canonical() }}">
   @if ($manifest = config('cfg.locales.' . $locale . '.manifest'))
     <link rel="manifest" href="{{ $manifest }}">
   @endif

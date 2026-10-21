@@ -8,6 +8,7 @@ use App\Domain\I18n\Action\GetLocaleUriAction;
 use App\Utilities\EnvironmentForCss;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Laravel\Head\HeadManager;
 
 class AppendViewSharedVarsAction
@@ -34,15 +35,26 @@ class AppendViewSharedVarsAction
             : $request->getPreferredLanguage(['und', ...$offeredLocales]);
         $preferredLink = collect($languageLinks)->firstWhere('locale', $preferredLocale);
         $preferredLocale = $preferredLink['locale'] ?? null;
+        $alternates = collect($languageLinks)
+            ->mapWithKeys(static fn (array $link) => [$link['locale'] => url(parse_url($link['href'], PHP_URL_PATH))])
+            ->all();
+
+        if (isset($alternates[$defaultLocale])) {
+            $alternates['x-default'] = $alternates[$defaultLocale];
+        }
+
+        $canonical = $this->canonical($request);
 
         $this->head->when($withHeadDefaults, static fn (HeadManager $head) => $head
             ->title(\ViewHelper::metaTitle($routeUri))
             ->description(\ViewHelper::metaDescription($routeUri))
-            ->alternates(
-                collect($languageLinks)
-                    ->mapWithKeys(static fn (array $link) => [$link['locale'] => url(parse_url($link['href'], PHP_URL_PATH))])
-                    ->all()
-            ));
+            ->canonical($canonical)
+            ->og(
+                url: $canonical,
+                siteName: Config::SiteName->get(),
+                locale: Config::Locales->get()[$locale]['og_locale'],
+            )
+            ->alternates($alternates));
 
         $this->view->share([
             'tpl' => $routeData->tpl,
@@ -63,6 +75,15 @@ class AppendViewSharedVarsAction
             'requestUri' => $requestUri,
             'firstTimeVisit' => \Session::previousUrl() === null,
         ]);
+    }
+
+    private function canonical(Request $request): string
+    {
+        $query = collect($request->only(['page', 'part']))
+            ->filter(static fn (mixed $value) => is_string($value) && ctype_digit($value) && $value > 1)
+            ->all();
+
+        return $request->url() . ($query === [] ? '' : '?' . Arr::query($query));
     }
 
     /**
