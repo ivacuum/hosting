@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Domain\Game\Models\Game;
+use Laravel\Head\Enums\OgType;
 
 class GameController
 {
@@ -23,10 +24,17 @@ class GameController
 
         $reviewTpl = "life.games.{$game->slug}";
 
+        \Head::og(
+            type: OgType::Article,
+            title: $game->title,
+            description: \ViewHelper::metaDescription('games/{game}'),
+            url: canonical(),
+            image: $game->libraryImage(),
+        );
+
         return view('games.show', [
             'game' => $game,
             'slug' => "games/{$game->slug}", // Базовый путь для скриншотов
-            'metaImage' => $game->libraryImage(),
             'metaTitle' => $game->title,
             'reviewTpl' => view()->exists($reviewTpl)
                 ? $reviewTpl

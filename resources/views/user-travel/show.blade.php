@@ -7,7 +7,6 @@
 
 @extends('user-travel.base', [
   'metaTitle' => $trip->metaTitle(),
-  'metaImage' => $trip->metaImage(),
   'metaDescription' => $trip->metaDescription(),
 ])
 

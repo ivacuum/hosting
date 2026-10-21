@@ -8,6 +8,7 @@ use App\Domain\Life\Models\Trip;
 use App\Domain\Life\Scope\TripVisibleScope;
 use App\Domain\Life\TripStatus;
 use App\User;
+use Laravel\Head\Enums\OgType;
 
 class UserTravelCityController extends UserTravelController
 {
@@ -56,6 +57,13 @@ class UserTravelCityController extends UserTravelController
         \Breadcrumbs::push(__('Страны'), "@{$traveler->login}/travel/countries");
         \Breadcrumbs::push($city->country->title, "@{$traveler->login}/travel/countries/{$city->country->slug}");
         \Breadcrumbs::push($city->title);
+
+        \Head::og(
+            type: OgType::Article,
+            title: $city->title,
+            description: $city->metaDescription($trips),
+            url: canonical(),
+        );
 
         return view('user-travel.city', [
             'city' => $city,

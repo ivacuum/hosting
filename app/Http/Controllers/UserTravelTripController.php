@@ -10,6 +10,7 @@ use App\Domain\Life\TripStatus;
 use App\Http\Requests\LifeIndexForm;
 use App\User;
 use Illuminate\Database\Eloquent\Builder;
+use Laravel\Head\Enums\OgType;
 
 class UserTravelTripController extends UserTravelController
 {
@@ -51,6 +52,14 @@ class UserTravelTripController extends UserTravelController
         event(new \App\Events\Stats\TripViewed($trip->id));
 
         $nextTrips = $trip->tap(new TripNextScope($trip))->get();
+
+        \Head::og(
+            type: OgType::Article,
+            title: $trip->metaTitle(),
+            description: $trip->metaDescription(),
+            url: canonical(),
+            image: $trip->metaImage(),
+        );
 
         return view('user-travel.show', [
             'trip' => $trip,

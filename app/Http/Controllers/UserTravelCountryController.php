@@ -6,6 +6,7 @@ use App\Domain\Life\Models\Country;
 use App\Domain\Life\Models\Trip;
 use App\Domain\Life\Scope\TripVisibleScope;
 use App\User;
+use Laravel\Head\Enums\OgType;
 
 class UserTravelCountryController extends UserTravelController
 {
@@ -33,6 +34,13 @@ class UserTravelCountryController extends UserTravelController
         \Breadcrumbs::push($country->title);
 
         event(new \App\Events\Stats\CountryViewed($country->id));
+
+        \Head::og(
+            type: OgType::Article,
+            title: $country->title,
+            description: $country->metaDescription($trips),
+            url: canonical(),
+        );
 
         return view('user-travel.country', [
             'country' => $country,

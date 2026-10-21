@@ -2,14 +2,6 @@
 
 @extends('base')
 
-@push('head')
-<meta content="article" property="og:type">
-<meta content="{{ $metaTitle ?? '' }}" property="og:title">
-<meta content="{{ canonical() }}" property="og:url">
-<meta content="{{ $metaImage ?? '' }}" property="og:image">
-<meta content="{{ $metaDescription ?? '' }}" property="og:description">
-@endpush
-
 @section('brand')
 {{--<a class="site-brand" href="{{ path([App\Http\Controllers\UserTravelTrips::class, 'index'], $traveler->login) }}">{{ '@'.$traveler->login }}<br>@ru путешествует @en travels @endru</a>--}}
 @endsection

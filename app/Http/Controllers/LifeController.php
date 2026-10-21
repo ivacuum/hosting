@@ -17,6 +17,7 @@ use App\Domain\Life\Scope\TripVisibleScope;
 use App\Domain\Life\TripStatus;
 use App\Http\Requests\LifeIndexForm;
 use App\Utilities\CityHelper;
+use Laravel\Head\Enums\OgType;
 use Laravel\Head\HeadManager;
 
 class LifeController
@@ -85,6 +86,13 @@ class LifeController
             ->push($city->country->title, "life/countries/{$city->country->slug}")
             ->push($city->title);
 
+        \Head::og(
+            type: OgType::Article,
+            title: $city->metaTitle(),
+            description: $city->metaDescription($trips),
+            url: canonical(),
+        );
+
         return view('life.city', [
             'city' => $city,
             'metaTitle' => $city->metaTitle(),
@@ -113,6 +121,13 @@ class LifeController
 
         event(new \App\Events\Stats\CountryViewed($country->id));
 
+        \Head::og(
+            type: OgType::Article,
+            title: $country->metaTitle(),
+            description: $country->metaDescription($trips),
+            url: canonical(),
+        );
+
         return view('life.country', [
             'country' => $country,
             'metaTitle' => $country->metaTitle(),
@@ -132,11 +147,18 @@ class LifeController
 
         event(new \App\Events\Stats\GigViewed($gig->id));
 
+        \Head::og(
+            type: OgType::Article,
+            title: $gig->metaTitle(),
+            description: $gig->metaDescription(),
+            url: canonical(),
+            image: $gig->meta_image,
+        );
+
         return view($tpl, [
             'gig' => $gig,
             'slug' => "gigs/{$gig->slug}", // Для собственных фотографий в тексте истории
             'timeline' => $gig->artistTimeline(),
-            'metaImage' => $gig->meta_image,
             'metaTitle' => $gig->metaTitle(),
             'metaDescription' => $gig->metaDescription(),
         ]);
@@ -201,11 +223,18 @@ class LifeController
 
         $nextTrips = $trip->tap(new TripNextScope($trip))->get();
 
+        \Head::og(
+            type: OgType::Article,
+            title: $trip->metaTitle(),
+            description: $trip->metaDescription(),
+            url: canonical(),
+            image: $trip->metaImage(),
+        );
+
         return view($tpl, [
             'trip' => $trip,
             'comments' => true,
             'timeline' => $trip->cityTimeline(),
-            'metaImage' => $trip->metaImage(),
             'metaTitle' => $trip->metaTitle(),
             'nextTrips' => $nextTrips,
             'previousTrips' => $trip->tap(new TripPreviousScope($trip, $nextTrips->count()))
