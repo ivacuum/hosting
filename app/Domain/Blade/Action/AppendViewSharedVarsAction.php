@@ -8,6 +8,7 @@ use App\Domain\I18n\Action\GetLocaleUriAction;
 use App\Utilities\EnvironmentForCss;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
+use Laravel\Head\HeadManager;
 
 class AppendViewSharedVarsAction
 {
@@ -15,6 +16,7 @@ class AppendViewSharedVarsAction
         private ParseRouteDataAction $parseRouteData,
         private Factory $view,
         private GetLocaleUriAction $getLocaleUri,
+        private HeadManager $head,
     ) {}
 
     public function execute(Request $request)
@@ -32,6 +34,13 @@ class AppendViewSharedVarsAction
             : $request->getPreferredLanguage(['und', ...$offeredLocales]);
         $preferredLink = collect($languageLinks)->firstWhere('locale', $preferredLocale);
         $preferredLocale = $preferredLink['locale'] ?? null;
+
+        $this->head
+            ->alternates(
+                collect($languageLinks)
+                    ->mapWithKeys(static fn (array $link) => [$link['locale'] => url(parse_url($link['href'], PHP_URL_PATH))])
+                    ->all()
+            );
 
         $this->view->share([
             'tpl' => $routeData->tpl,

@@ -18,9 +18,6 @@
     <link rel="manifest" href="{{ $manifest }}">
   @endif
   <script async src="/service-worker-installer.js"></script>
-  @foreach ($pageLanguageLinks as $languageLink)
-    <link rel="alternate" hreflang="{{ $languageLink['locale'] }}" href="{{ url(parse_url($languageLink['href'], PHP_URL_PATH)) }}">
-  @endforeach
   @vite('resources/css/app.css')
   @stack('head')
   @head

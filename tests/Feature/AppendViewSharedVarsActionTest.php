@@ -39,6 +39,13 @@ class AppendViewSharedVarsActionTest extends TestCase
             ->assertViewHas('goto', $expected);
     }
 
+    public function testHreflangAlternatesWithoutQuery()
+    {
+        $this->get('en/news?page=2')
+            ->assertSee('<link rel="alternate" hreflang="ru" href="http://localhost/news">', false)
+            ->assertSee('<link rel="alternate" hreflang="en" href="http://localhost/en/news">', false);
+    }
+
     public function testViewVarsIsCrawler()
     {
         $this->get('/')
