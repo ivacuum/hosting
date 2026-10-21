@@ -11,8 +11,6 @@
   <meta content="summary" property="twitter:card">
   <meta content="@knifevacuum" property="twitter:site">
   <meta content="252045193" property="twitter:site:id">
-  <meta content="206702146011627" property="fb:app_id">
-  <meta content="100001136135534" property="fb:admins">
   <meta content="profile" property="og:type">
   <meta content="@ru Сергей Панков &middot; Резюме &middot; Веб-программист (Laravel PHP, Vue.js) @en Sergei Pankov &middot; CV &middot; Laravel PHP + Vue.js Developer @endru" property="og:title">
   <meta content="{{ canonical() }}" property="og:url">
