@@ -20,7 +20,7 @@ class AppendViewSharedVarsAction
         private HeadManager $head,
     ) {}
 
-    public function execute(Request $request, bool $withHeadDefaults = true)
+    public function execute(Request $request)
     {
         $locale = app()->getLocale();
         $routeData = $this->parseRouteData->execute();
@@ -45,7 +45,7 @@ class AppendViewSharedVarsAction
 
         $canonical = $this->canonical($request);
 
-        $this->head->when($withHeadDefaults, static fn (HeadManager $head) => $head
+        $this->head
             ->title(\ViewHelper::metaTitle($routeUri))
             ->description(\ViewHelper::metaDescription($routeUri))
             ->canonical($canonical)
@@ -54,7 +54,7 @@ class AppendViewSharedVarsAction
                 siteName: Config::SiteName->get(),
                 locale: Config::Locales->get()[$locale]['og_locale'],
             )
-            ->alternates($alternates));
+            ->alternates($alternates);
 
         $this->view->share([
             'tpl' => $routeData->tpl,

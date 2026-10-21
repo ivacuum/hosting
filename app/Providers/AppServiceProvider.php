@@ -10,7 +10,6 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\ParallelTesting;
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Testing\Assert;
@@ -21,9 +20,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Blade::withoutDoubleEncoding();
-        Blade::directive('ru', static fn () => '<?php if ($locale === "ru"): ?>');
-        Blade::directive('en', static fn () => '<?php elseif ($locale === "en"): ?>');
-        Blade::directive('de', static fn () => '<?php elseif ($locale === "de"): ?>');
+        Blade::directive('ru', static fn () => '<?php if (($__locale ??= app()->getLocale()) === "ru"): ?>');
+        Blade::directive('en', static fn () => '<?php elseif ($__locale === "en"): ?>');
+        Blade::directive('de', static fn () => '<?php elseif ($__locale === "de"): ?>');
         Blade::directive('endru', static fn () => '<?php endif; ?>');
         Blade::directive('lng', static fn () => '<?php echo $localeUri ?>');
         Blade::directive('svg', static function ($expression) {
@@ -78,18 +77,8 @@ class AppServiceProvider extends ServiceProvider
             return false;
         }, 'Читер');
 
-        $this->livewireSharedVarsWorkaroundForTests();
         $this->parallelTestingSetUpDatabase();
         $this->testMacros();
-    }
-
-    private function livewireSharedVarsWorkaroundForTests(): void
-    {
-        // Middleware в автотестах компонентов Livewire не запускаются,
-        // поэтому нужно помочь передать локаль, иначе в шаблонах не работает @ru
-        if (app()->runningUnitTests()) {
-            View::composer('*', App\Domain\Blade\LivewirePhpUnitViewComposer::class);
-        }
     }
 
     private function parallelTestingSetUpDatabase(): void
