@@ -1,12 +1,10 @@
 <?php /** @var \Illuminate\Pagination\AbstractPaginator $paginator */ ?>
-@section('pagination_seo')
-  @if($paginator->hasMorePages())
-    <link rel="next" id="next_page" href="{{ $paginator->nextPageUrl() }}">
-  @endif
-  @if(!$paginator->onFirstPage())
-    <link rel="prev" id="prev_page" href="{{ $paginator->previousPageUrl() }}">
-  @endif
-@endsection
+@if($paginator->hasMorePages())
+  @php(Head::link('next', $paginator->nextPageUrl(), ['id' => 'next_page']))
+@endif
+@if(!$paginator->onFirstPage())
+  @php(Head::link('prev', $paginator->previousPageUrl(), ['id' => 'prev_page']))
+@endif
 
 <nav class="flex flex-wrap">
   @foreach($elements as $element)

@@ -14,7 +14,6 @@
   <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
   <link rel="icon" href="/apple-touch-icon.png">
   <link rel="canonical" href="{{ canonical() }}">
-  @yield('pagination_seo')
   @if ($manifest = config('cfg.locales.' . $locale . '.manifest'))
     <link rel="manifest" href="{{ $manifest }}">
   @endif
