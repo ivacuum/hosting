@@ -2,7 +2,7 @@
 
 @section('content')
 <h1 class="font-medium text-4xl tracking-tight mb-2">@lang('Популярные DC++ хабы')</h1>
-<div class="grid md:grid-cols-2 gap-8">
+<div class="hanging-punctuation-first lg:text-lg grid md:grid-cols-2 gap-8">
   <div>
     @ru
       <p>Итак, вы установили DC++ клиент и, наверное, уже задались вопросом куда подключиться для обмена файлами? Подключиться нужно к хабу, можно даже сразу к нескольким. А выбрать хаб по нраву можно из списка ниже.</p>
