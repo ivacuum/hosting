@@ -33,6 +33,10 @@ class AppServiceProvider extends ServiceProvider
                 return file_get_contents($path);
             }
 
+            if (!str_contains($icon, '$')) {
+                throw new \InvalidArgumentException("SVG icon [{$icon}] not found at {$path}");
+            }
+
             return "<?php require base_path(\"resources/svg/{$expression}.svg\"); ?>";
         });
         Blade::stringable(static fn (\BackedEnum $enum) => $enum->value);
