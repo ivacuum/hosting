@@ -5,4 +5,5 @@ return [
     'trips' => ':x trip|:x trips',
     'meters' => ':x meter|:x meters',
     'photos' => ':x photo|:x photos',
+    'visits' => ':x visit|:x visits',
 ];
