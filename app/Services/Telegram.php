@@ -20,13 +20,4 @@ class Telegram
 
         SendTelegramMessageJob::dispatch($chatId, $text, true);
     }
-
-    public function notifyAdminProduction(string $text): void
-    {
-        if (!\App::isProduction()) {
-            return;
-        }
-
-        $this->notifyAdmin($text);
-    }
 }

@@ -29,7 +29,7 @@ class Metric extends Model
 
             asort($events);
 
-            return $events ?? [];
+            return $events;
         });
     }
 

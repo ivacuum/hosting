@@ -2,7 +2,6 @@
 
 namespace App\Utilities;
 
-use App\Rules\ConcurrencyControlRule;
 use Carbon\CarbonInterface;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\HtmlString;
@@ -29,11 +28,6 @@ class ViewHelper
         }
 
         return $date->isoFormat('D MMMM YYYY');
-    }
-
-    public function inputHiddenConcurrencyControl($value)
-    {
-        return new HtmlString('<input hidden type="text" name="' . ConcurrencyControlRule::FIELD . '" value="' . md5($value) . '">');
     }
 
     public function inputHiddenMail(): HtmlString

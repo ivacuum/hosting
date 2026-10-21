@@ -134,13 +134,6 @@ class ImageConverter
         return $this;
     }
 
-    public function jpegxl(): self
-    {
-        $this->format = '-format jxl';
-
-        return $this;
-    }
-
     public function gravity(string $gravity): self
     {
         $gravity = strtolower($gravity);

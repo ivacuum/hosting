@@ -13,11 +13,6 @@ enum NotificationDeliveryMethod: int
         return $this === self::Disabled;
     }
 
-    public function isEnabled(): bool
-    {
-        return $this === self::Mail;
-    }
-
     public function isMail(): bool
     {
         return $this === self::Mail;
