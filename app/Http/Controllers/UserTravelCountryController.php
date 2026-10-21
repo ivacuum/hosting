@@ -35,12 +35,12 @@ class UserTravelCountryController extends UserTravelController
 
         event(new \App\Events\Stats\CountryViewed($country->id));
 
-        \Head::og(
-            type: OgType::Article,
-            title: $country->title,
-            description: $country->metaDescription($trips),
-            url: canonical(),
-        );
+        \Head::title($country->title)
+            ->description($country->metaDescription($trips))
+            ->og(
+                type: OgType::Article,
+                url: canonical(),
+            );
 
         return view('user-travel.country', [
             'country' => $country,

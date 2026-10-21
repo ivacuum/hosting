@@ -183,7 +183,7 @@ class PhotoTest extends TestCase
 
         $this->get("photos/{$photo->id}")
             ->assertOk()
-            ->assertViewHas('metaTitle', "Концерт, 14\u{00A0}марта 2025")
+            ->assertSee("<title>Концерт, 14\u{00A0}марта 2025</title>", false)
             ->assertSeeText("14\u{00A0}марта 2025")
             ->assertSee('src="https://life.ivacuum.org/gigs/test/concert.jpg"', false);
     }

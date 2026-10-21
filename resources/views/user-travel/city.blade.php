@@ -1,9 +1,6 @@
 <?php /** @var \App\Domain\Life\Models\City $city */ ?>
 
-@extends('user-travel.base', [
-  'metaTitle' => $city->title,
-  'metaDescription' => $city->metaDescription($modelsByYears),
-])
+@extends('user-travel.base')
 
 @section('content')
 <div id="trip_city_map" class="mb-4 hidden -mx-4 sm:mx-0 h-[50vh]"></div>

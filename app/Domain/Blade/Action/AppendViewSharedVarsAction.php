@@ -19,7 +19,7 @@ class AppendViewSharedVarsAction
         private HeadManager $head,
     ) {}
 
-    public function execute(Request $request)
+    public function execute(Request $request, bool $withHeadDefaults = true)
     {
         $locale = app()->getLocale();
         $routeData = $this->parseRouteData->execute();
@@ -35,12 +35,14 @@ class AppendViewSharedVarsAction
         $preferredLink = collect($languageLinks)->firstWhere('locale', $preferredLocale);
         $preferredLocale = $preferredLink['locale'] ?? null;
 
-        $this->head
+        $this->head->when($withHeadDefaults, static fn (HeadManager $head) => $head
+            ->title(\ViewHelper::metaTitle($routeUri))
+            ->description(\ViewHelper::metaDescription($routeUri))
             ->alternates(
                 collect($languageLinks)
                     ->mapWithKeys(static fn (array $link) => [$link['locale'] => url(parse_url($link['href'], PHP_URL_PATH))])
                     ->all()
-            );
+            ));
 
         $this->view->share([
             'tpl' => $routeData->tpl,

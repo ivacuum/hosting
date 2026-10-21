@@ -19,6 +19,6 @@ class LivewirePhpUnitViewComposer
             return;
         }
 
-        $this->appendViewSharedVars->execute($this->request);
+        $this->appendViewSharedVars->execute($this->request, withHeadDefaults: false);
     }
 }

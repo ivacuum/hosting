@@ -56,14 +56,6 @@ class ViewHelper
         return $description !== $key ? $description : '';
     }
 
-    public function metaKeywords(string $view, array $replace = []): string
-    {
-        $key = "meta_keywords.{$view}";
-        $keywords = __($key, $replace);
-
-        return $keywords !== $key ? $keywords : '';
-    }
-
     public function metaTitle(string $view, array $replace = []): string
     {
         $key = "meta_title.{$view}";

@@ -32,9 +32,10 @@ class JapaneseWanikaniRadicalsController
         \Breadcrumbs::push(__('Уровень :level', ['level' => $radical->level]), "japanese/wanikani/level/{$radical->level}");
         \Breadcrumbs::push($radical->meaning);
 
+        \Head::title(\ViewHelper::metaTitle('japanese/wanikani/radicals/{meaning}', ['radical' => $radical->meaning]));
+
         return view('japanese.wanikani.radical', [
             'radical' => $radical,
-            'metaReplace' => ['radical' => $radical->meaning],
         ]);
     }
 }

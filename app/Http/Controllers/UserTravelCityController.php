@@ -58,12 +58,12 @@ class UserTravelCityController extends UserTravelController
         \Breadcrumbs::push($city->country->title, "@{$traveler->login}/travel/countries/{$city->country->slug}");
         \Breadcrumbs::push($city->title);
 
-        \Head::og(
-            type: OgType::Article,
-            title: $city->title,
-            description: $city->metaDescription($trips),
-            url: canonical(),
-        );
+        \Head::title($city->title)
+            ->description($city->metaDescription($trips))
+            ->og(
+                type: OgType::Article,
+                url: canonical(),
+            );
 
         return view('user-travel.city', [
             'city' => $city,

@@ -101,9 +101,10 @@ class MagnetsController
 
         event(new \App\Events\Stats\TorrentViewed($magnet->id));
 
+        \Head::title($magnet->title);
+
         return view('magnets.show', [
             'magnet' => $magnet,
-            'metaTitle' => $magnet->title,
         ]);
     }
 }

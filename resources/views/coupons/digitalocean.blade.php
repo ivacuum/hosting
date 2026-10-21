@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<h1 class="font-medium text-4xl tracking-tight mb-2">{{ $metaTitle }}</h1>
+<h1 class="font-medium text-4xl tracking-tight mb-2">{{ $heading }}</h1>
 <div class="max-w-[600px]">
   @ru
     <p>Вы когда-нибудь задумывались можно ли бесплатно попробовать услуги одного из лучших хостинг-провайдеров в мире совершенно бесплатно в течение нескольких месяцев? Да, это возможно с помощью промокодов ниже.</p>

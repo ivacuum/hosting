@@ -1,9 +1,6 @@
 <?php /** @var \App\Domain\Life\Models\Country $country */ ?>
 
-@extends('user-travel.base', [
-  'metaTitle' => $country->title,
-  'metaDescription' => $country->metaDescription($modelsByYears),
-])
+@extends('user-travel.base')
 
 @section('content')
 <div class="flex flex-wrap gap-2 items-center mb-2">

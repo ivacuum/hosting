@@ -10,22 +10,22 @@ class CouponController
 {
     public function airbnb()
     {
-        return view('coupons.airbnb', ['metaTitle' => $this->getServiceMetaTitle('airbnb')]);
+        return $this->coupon('coupons.airbnb', 'coupons.airbnb.title');
     }
 
     public function booking()
     {
-        return view('coupons.booking', ['metaTitle' => $this->getServiceMetaTitle('booking')]);
+        return $this->coupon('coupons.booking', 'coupons.booking.title');
     }
 
     public function digitalocean()
     {
-        return view('coupons.digitalocean', ['metaTitle' => $this->getServiceMetaTitle('do')]);
+        return $this->coupon('coupons.digitalocean', 'coupons.do.title');
     }
 
     public function drimsim()
     {
-        return view('coupons.drimsim', ['metaTitle' => $this->getServiceMetaTitle('drimsim')]);
+        return $this->coupon('coupons.drimsim', 'coupons.drimsim.title');
     }
 
     public function firstvds(CouponFirstvdsForm $request)
@@ -39,14 +39,18 @@ class CouponController
 
     public function timeweb()
     {
-        return view('coupons.timeweb', ['metaTitle' => $this->getServiceMetaTitle('timeweb')]);
+        return $this->coupon('coupons.timeweb', 'coupons.timeweb.title');
     }
 
-    protected function getServiceMetaTitle(string $service): string
+    private function coupon(string $view, string $titleKey)
     {
-        return __("coupons.{$service}.title", [
+        $heading = __($titleKey, [
             'month' => now()->isoFormat('MMMM'),
             'year' => now()->year,
         ]);
+
+        \Head::title($heading);
+
+        return view($view, ['heading' => $heading]);
     }
 }

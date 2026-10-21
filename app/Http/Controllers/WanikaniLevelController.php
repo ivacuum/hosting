@@ -8,9 +8,10 @@ class WanikaniLevelController
     {
         \Breadcrumbs::push(__('Уровень :level', ['level' => $level]));
 
+        \Head::title(\ViewHelper::metaTitle('japanese/wanikani/level/{level}', ['level' => $level]));
+
         return view('japanese.wanikani.level', [
             'level' => $level,
-            'metaReplace' => ['level' => $level],
         ]);
     }
 }

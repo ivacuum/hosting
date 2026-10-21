@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<h1 class="font-medium text-4xl tracking-tight mb-2">{{ $metaTitle }}</h1>
+<h1 class="font-medium text-4xl tracking-tight mb-2">{{ $heading }}</h1>
 <div class="max-w-[600px]">
   <p>Хостинг-провайдер Таймвеб регулярно проводит акции для привлечения новых клиентов. Со всеми спецпредложениями всегда можно ознакомиться на их официальном сайте.</p>
   <a class="btn btn-primary" href="https://timeweb.com/ru/services/bonuses/{{ App\Domain\Config::TimewebLink }}">Ознакомиться со всеми акциями</a>

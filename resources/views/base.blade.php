@@ -5,11 +5,9 @@
 <html class="h-full overflow-y-scroll" lang="{{ $locale }}">
 <head>
   <meta charset="utf-8">
-  <title>{{ $metaTitle ?? ViewHelper::metaTitle($routeUri, $metaReplace ?? []) }}</title>
+  @head
   <meta name="format-detection" content="telephone=no">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
-  <meta name="keywords" content="{{ $metaKeywords ?? ViewHelper::metaKeywords($routeUri, $metaReplace ?? []) }}">
-  <meta name="description" content="{{ $metaDescription ?? ViewHelper::metaDescription($routeUri, $metaReplace ?? []) }}">
   <meta name="theme-color" content="#e7e7e7">
   <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
   <link rel="icon" href="/apple-touch-icon.png">
@@ -20,7 +18,6 @@
   <script async src="/service-worker-installer.js"></script>
   @vite('resources/css/app.css')
   @stack('head')
-  @head
 </head>
 <body class="flex flex-col tabular-nums min-h-full dark:bg-slate-950 dark:text-slate-400 {{ $bodyClasses ?? 'body-with-bottom-tabbar' }} {{ $cssClasses }}" data-route="{{ $routeUri }}">
 @section('body')

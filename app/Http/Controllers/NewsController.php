@@ -43,9 +43,10 @@ class NewsController
 
         \Breadcrumbs::push($news->breadcrumb());
 
+        \Head::title($news->title);
+
         return view('news.show', [
             'news' => $news,
-            'metaTitle' => $news->title,
         ]);
     }
 }

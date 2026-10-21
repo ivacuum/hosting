@@ -32,9 +32,10 @@ class JapaneseWanikaniKanjiController
         \Breadcrumbs::push(__('Уровень :level', ['level' => $kanji->level]), "japanese/wanikani/level/{$kanji->level}");
         \Breadcrumbs::push($kanji->character);
 
+        \Head::title(\ViewHelper::metaTitle('japanese/wanikani/kanji/{character}', ['kanji' => $kanji->character]));
+
         return view('japanese.wanikani.kanji', [
             'kanji' => $kanji,
-            'metaReplace' => ['kanji' => $kanji->character],
         ]);
     }
 }

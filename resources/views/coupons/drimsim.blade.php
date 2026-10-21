@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<h1 class="font-medium text-4xl tracking-tight mb-2">{{ $metaTitle }}</h1>
+<h1 class="font-medium text-4xl tracking-tight mb-2">{{ $heading }}</h1>
 <div class="max-w-[600px]">
   @ru
     <p>Если вы только собираетесь заказать симку, то по ссылке ниже можно получить дополнительные 7&nbsp;евро на счет при первом пополнении баланса.</p>

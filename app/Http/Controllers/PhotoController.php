@@ -60,10 +60,11 @@ class PhotoController
 
         \Breadcrumbs::push($city->breadcrumb());
 
+        \Head::title($city->title);
+
         return view('photos.city', [
             'city' => $city,
             'photos' => $photos,
-            'metaTitle' => $city->title,
         ]);
     }
 
@@ -88,10 +89,11 @@ class PhotoController
 
         \Breadcrumbs::push($country->breadcrumb());
 
+        \Head::title($country->title);
+
         return view('photos.country', [
             'photos' => $photos,
             'country' => $country,
-            'metaTitle' => $country->title,
         ]);
     }
 
@@ -178,6 +180,8 @@ class PhotoController
             ? $photo->rel->shortDate()
             : $photo->rel->period();
 
+        \Head::title("{$photo->rel->title}, {$period} {$photo->rel->year}");
+
         return view('photos.show', [
             'next' => $next->first(),
             'prev' => $prev->first(),
@@ -186,7 +190,6 @@ class PhotoController
             'cityId' => $request->cityId,
             'tripId' => $request->tripId,
             'countryId' => $request->countryId,
-            'metaTitle' => "{$photo->rel->title}, {$period} {$photo->rel->year}",
         ]);
     }
 
@@ -202,10 +205,11 @@ class PhotoController
 
         event(new \App\Events\Stats\TagViewed($tag->id));
 
+        \Head::title(html_entity_decode("#{$tag->title} · " . \ViewHelper::plural('photos', $photos->count())));
+
         return view('photos.tag', [
             'tag' => $tag,
             'photos' => $photos,
-            'metaTitle' => "#{$tag->title} · " . \ViewHelper::plural('photos', $photos->count()),
         ]);
     }
 

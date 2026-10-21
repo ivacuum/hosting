@@ -53,13 +53,13 @@ class UserTravelTripController extends UserTravelController
 
         $nextTrips = $trip->tap(new TripNextScope($trip))->get();
 
-        \Head::og(
-            type: OgType::Article,
-            title: $trip->metaTitle(),
-            description: $trip->metaDescription(),
-            url: canonical(),
-            image: $trip->metaImage(),
-        );
+        \Head::title($trip->metaTitle())
+            ->description($trip->metaDescription())
+            ->og(
+                type: OgType::Article,
+                url: canonical(),
+                image: $trip->metaImage(),
+            );
 
         return view('user-travel.show', [
             'trip' => $trip,

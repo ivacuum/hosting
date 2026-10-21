@@ -24,18 +24,16 @@ class GameController
 
         $reviewTpl = "life.games.{$game->slug}";
 
-        \Head::og(
-            type: OgType::Article,
-            title: $game->title,
-            description: \ViewHelper::metaDescription('games/{game}'),
-            url: canonical(),
-            image: $game->libraryImage(),
-        );
+        \Head::title($game->title)
+            ->og(
+                type: OgType::Article,
+                url: canonical(),
+                image: $game->libraryImage(),
+            );
 
         return view('games.show', [
             'game' => $game,
             'slug' => "games/{$game->slug}", // Базовый путь для скриншотов
-            'metaTitle' => $game->title,
             'reviewTpl' => view()->exists($reviewTpl)
                 ? $reviewTpl
                 : null,

@@ -5,10 +5,7 @@
  */
 ?>
 
-@extends('user-travel.base', [
-  'metaTitle' => $trip->metaTitle(),
-  'metaDescription' => $trip->metaDescription(),
-])
+@extends('user-travel.base')
 
 @section('content_header')
 @parent

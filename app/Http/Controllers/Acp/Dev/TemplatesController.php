@@ -135,10 +135,11 @@ class TemplatesController
             \File::put($path, implode("\n", $result));
         }
 
+        \Head::title($slug);
+
         return view('acp.dev.templates.show', [
             'trip' => $trip,
             'extends' => "life.trips.{$template}",
-            'metaTitle' => $slug,
         ]);
     }
 }

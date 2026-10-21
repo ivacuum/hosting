@@ -121,12 +121,13 @@ class GigTemplatesController
             \File::put($path, implode("\n", $result));
         }
 
+        \Head::title($slug);
+
         return view('acp.dev.templates.show', [
             'gig' => $gig,
             'slug' => "gigs/$slug",
             'extends' => "life.gigs.{$template}",
             'timeline' => [],
-            'metaTitle' => $slug,
         ]);
     }
 }

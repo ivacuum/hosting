@@ -86,18 +86,16 @@ class LifeController
             ->push($city->country->title, "life/countries/{$city->country->slug}")
             ->push($city->title);
 
-        \Head::og(
-            type: OgType::Article,
-            title: $city->metaTitle(),
-            description: $city->metaDescription($trips),
-            url: canonical(),
-        );
+        \Head::title($city->metaTitle())
+            ->description($city->metaDescription($trips))
+            ->og(
+                type: OgType::Article,
+                url: canonical(),
+            );
 
         return view('life.city', [
             'city' => $city,
-            'metaTitle' => $city->metaTitle(),
             'modelsByYears' => $trips,
-            'metaDescription' => $city->metaDescription($trips),
         ]);
     }
 
@@ -121,18 +119,16 @@ class LifeController
 
         event(new \App\Events\Stats\CountryViewed($country->id));
 
-        \Head::og(
-            type: OgType::Article,
-            title: $country->metaTitle(),
-            description: $country->metaDescription($trips),
-            url: canonical(),
-        );
+        \Head::title($country->metaTitle())
+            ->description($country->metaDescription($trips))
+            ->og(
+                type: OgType::Article,
+                url: canonical(),
+            );
 
         return view('life.country', [
             'country' => $country,
-            'metaTitle' => $country->metaTitle(),
             'modelsByYears' => $trips,
-            'metaDescription' => $country->metaDescription($trips),
         ]);
     }
 
@@ -147,20 +143,18 @@ class LifeController
 
         event(new \App\Events\Stats\GigViewed($gig->id));
 
-        \Head::og(
-            type: OgType::Article,
-            title: $gig->metaTitle(),
-            description: $gig->metaDescription(),
-            url: canonical(),
-            image: $gig->meta_image,
-        );
+        \Head::title($gig->metaTitle())
+            ->description($gig->metaDescription())
+            ->og(
+                type: OgType::Article,
+                url: canonical(),
+                image: $gig->meta_image,
+            );
 
         return view($tpl, [
             'gig' => $gig,
             'slug' => "gigs/{$gig->slug}", // Для собственных фотографий в тексте истории
             'timeline' => $gig->artistTimeline(),
-            'metaTitle' => $gig->metaTitle(),
-            'metaDescription' => $gig->metaDescription(),
         ]);
     }
 
@@ -223,24 +217,22 @@ class LifeController
 
         $nextTrips = $trip->tap(new TripNextScope($trip))->get();
 
-        \Head::og(
-            type: OgType::Article,
-            title: $trip->metaTitle(),
-            description: $trip->metaDescription(),
-            url: canonical(),
-            image: $trip->metaImage(),
-        );
+        \Head::title($trip->metaTitle())
+            ->description($trip->metaDescription())
+            ->og(
+                type: OgType::Article,
+                url: canonical(),
+                image: $trip->metaImage(),
+            );
 
         return view($tpl, [
             'trip' => $trip,
             'comments' => true,
             'timeline' => $trip->cityTimeline(),
-            'metaTitle' => $trip->metaTitle(),
             'nextTrips' => $nextTrips,
             'previousTrips' => $trip->tap(new TripPreviousScope($trip, $nextTrips->count()))
                 ->get()
                 ->reverse(),
-            'metaDescription' => $trip->metaDescription(),
         ]);
     }
 

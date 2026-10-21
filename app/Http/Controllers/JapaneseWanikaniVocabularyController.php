@@ -32,9 +32,10 @@ class JapaneseWanikaniVocabularyController
         \Breadcrumbs::push(__('Уровень :level', ['level' => $vocab->level]), "japanese/wanikani/level/{$vocab->level}");
         \Breadcrumbs::push($vocab->character);
 
+        \Head::title(\ViewHelper::metaTitle('japanese/wanikani/vocabulary/{characters}', ['vocab' => $vocab->character]));
+
         return view('japanese.wanikani.vocabulary', [
             'vocab' => $vocab,
-            'metaReplace' => ['vocab' => $vocab->character],
         ]);
     }
 }
