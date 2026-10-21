@@ -92,8 +92,16 @@ class PhotosController extends Controller
             ->where('id', '>', $photo->id)
             ->first();
 
-        return $responseToShow->execute($photo)
-            ->with('previous', $previous)
-            ->with('next', $next);
+        if ($previous) {
+            \Head::link('prev', \Acp::show($previous), ['id' => 'prev_page'])
+                ->link('preload', $previous->originalUrl(), ['as' => 'image', 'fetchpriority' => 'low']);
+        }
+
+        if ($next) {
+            \Head::link('next', \Acp::show($next), ['id' => 'next_page'])
+                ->link('preload', $next->originalUrl(), ['as' => 'image', 'fetchpriority' => 'low']);
+        }
+
+        return $responseToShow->execute($photo);
     }
 }

@@ -5,17 +5,6 @@
 ?>
 @extends('acp.show')
 
-@push('head')
-@if ($previous)
-  <link rel="prev" id="prev_page" href="{{ Acp::show($previous) }}">
-  <link rel="preload" as="image" href="{{ $previous->originalUrl() }}" fetchpriority="low">
-@endif
-@if ($next)
-  <link rel="next" id="next_page" href="{{ Acp::show($next) }}">
-  <link rel="preload" as="image" href="{{ $next->originalUrl() }}" fetchpriority="low">
-@endif
-@endpush
-
 @section('content')
 <div class="mt-4">
   <div class="aspect-4/3 w-full max-w-[120vh]">
