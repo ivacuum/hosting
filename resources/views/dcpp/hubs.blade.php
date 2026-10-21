@@ -41,8 +41,5 @@
       'hideTitle' => true,
     ])
   </div>
-  <div class="lg:w-2/3 xl:w-1/2">
-    @include('tpl.google-vertical')
-  </div>
 </div>
 @endsection

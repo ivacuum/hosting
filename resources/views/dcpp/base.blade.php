@@ -3,12 +3,6 @@
   'navbarClasses' => '',
 ])
 
-@push('head')
-@if (App::isProduction())
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-@endif
-@endpush
-
 @section('bottom-tabbar')
 @endsection
 
@@ -79,14 +73,6 @@
   ])
 @else
   <div class="w-20"></div>
-@endif
-@endsection
-
-@section('content_footer')
-@if (empty($noFooterBanner))
-  <div class="my-4">
-    @include('tpl.google-horizontal')
-  </div>
 @endif
 @endsection
 

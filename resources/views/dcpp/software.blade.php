@@ -1,5 +1,4 @@
 @extends('dcpp.base', [
-  'noFooterBanner' => true,
   'contentContainerClasses' => '',
 ])
 
@@ -32,14 +31,6 @@
       @yield('about_software')
     </div>
   </section>
-
-  <div class="mb-4">
-    <div class="container">
-      <div class="-mx-4 sm:mx-0">
-        @include('tpl.google-horizontal')
-      </div>
-    </div>
-  </div>
 
   @if (!empty($softwareScreenshots))
     <section class="bg-gray-700 my-0 py-12 text-grey-200">
@@ -126,9 +117,6 @@
             'title' => 'DC++ Client',
             'hideTitle' => true,
           ])
-        </div>
-        <div class="lg:w-2/3 xl:w-1/2">
-          @include('tpl.google-vertical')
         </div>
       </div>
     </div>
