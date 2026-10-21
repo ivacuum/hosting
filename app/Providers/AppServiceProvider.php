@@ -67,16 +67,6 @@ class AppServiceProvider extends ServiceProvider
             'ExternalIdentity' => App\ExternalIdentity::class,
         ]);
 
-        /**
-         * Обработка доходит до метода только при заполненном значении,
-         * то есть всегда провал, если дошло до обработки
-         */
-        \Validator::extend('empty', static function () {
-            event(new \App\Events\Stats\SpammerTrapped);
-
-            return false;
-        }, 'Читер');
-
         $this->parallelTestingSetUpDatabase();
         $this->testMacros();
     }
