@@ -1,21 +1,29 @@
-<html>
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
 <head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#020618" media="(prefers-color-scheme: dark)">
 <title>{{ $metaTitle ?? '' }}</title>
 <style>
 body {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
   margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
+  padding: 1.5rem max(1rem, env(safe-area-inset-right)) 1.5rem max(1rem, env(safe-area-inset-left));
   color: #a0aec0;
-  display: table;
   font-weight: 100;
   font-family: ui-rounded, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 @media (prefers-color-scheme: dark) {
   body {
-    background: #0f172a;
+    background: #020618;
     color: #94a3b8;
   }
 }
@@ -42,34 +50,23 @@ a:focus {
   margin-top: 2px;
 }
 
-.container {
-  text-align: center;
-  display: table-cell;
-  vertical-align: middle;
-}
-
-.content {
-  text-align: center;
-  display: inline-block;
-}
-
 .title {
-  font-size: 54px;
-  margin-bottom: 40px;
+  max-width: 20em;
+  font-size: clamp(2rem, 9vw, 54px);
+  line-height: 1.2;
+  text-align: center;
+  text-wrap: balance;
+  overflow-wrap: break-word;
 }
 </style>
 </head>
 <body>
-<div class="container">
-  <div class="content">
-    <div class="title">
-      @yield('content')
-      <br><br>
-      <a href="{{ to('/') }}">
-        @svg (home)
-      </a>
-    </div>
-  </div>
+<div class="title">
+  @yield('content')
+  <br><br>
+  <a href="{{ to('/') }}">
+    @svg (home)
+  </a>
 </div>
 </body>
 </html>
