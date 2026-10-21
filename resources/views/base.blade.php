@@ -15,7 +15,6 @@
   @if ($manifest = config('cfg.locales.' . $locale . '.manifest'))
     <link rel="manifest" href="{{ $manifest }}">
   @endif
-  <script async src="/service-worker-installer.js"></script>
   @vite('resources/css/app.css')
   @stack('head')
 </head>
