@@ -1,6 +1,5 @@
-@php($locale = app()->getLocale())
 <!DOCTYPE html>
-<html lang="{{ $locale }}" prefix="og: https://ogp.me/ns#">
+<html lang="{{ app()->getLocale() }}" prefix="og: https://ogp.me/ns#">
 <head>
   <meta charset="utf-8">
   <title>@ru Сергей Панков &middot; Резюме &middot; Веб-программист (Laravel PHP, Vue.js) @en Sergei Pankov &middot; CV &middot; Laravel PHP + Vue.js Developer @endru</title>
