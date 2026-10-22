@@ -22,7 +22,7 @@ class MyPasswordController
         $user = $request->user;
 
         if ($request->userHasPassword() && $request->isPasswordInvalid($hash)) {
-            return back()->withErrors(['password' => 'Неверно введен текущий пароль']);
+            return back()->withErrors(['password' => __('Неверно введен текущий пароль')]);
         }
 
         $user->password = $request->newPassword;
