@@ -9,14 +9,14 @@ use Illuminate\Database\Seeder;
 
 class PhotoSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $this->seedMoscow();
         $this->seedOsaka();
         $this->seedSuwon();
     }
 
-    private function seedMoscow()
+    private function seedMoscow(): void
     {
         $trip = Trip::query()->where('slug', 'msk.2019.09.29')->sole();
 
@@ -26,7 +26,7 @@ class PhotoSeeder extends Seeder
         $factory->hidden()->withSlug('msk.2019.09.29/IMG_1347.jpg')->create();
     }
 
-    private function seedOsaka()
+    private function seedOsaka(): void
     {
         $trip = Trip::query()->where('slug', 'osaka.2019.04.19')->sole();
         $screenshotTag = Tag::query()->where('title_en', 'screenshot')->sole();
@@ -38,7 +38,7 @@ class PhotoSeeder extends Seeder
         $factory->withSlug('osaka.2019.04.19/IMG_9081.png')->withTag($screenshotTag)->create();
     }
 
-    private function seedSuwon()
+    private function seedSuwon(): void
     {
         $trip = Trip::query()->where('slug', 'suwon.2019')->sole();
         $localWritingTag = Tag::query()->where('title_en', 'local writing')->sole();

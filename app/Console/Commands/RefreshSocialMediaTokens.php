@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Builder;
 #[Description('Refresh expiring social media access tokens')]
 class RefreshSocialMediaTokens extends Command implements Isolatable
 {
-    public function handle(InstagramApi $instagram)
+    public function handle(InstagramApi $instagram): int
     {
         $userId = $this->option('user_id');
 

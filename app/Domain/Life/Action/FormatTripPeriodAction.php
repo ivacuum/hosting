@@ -6,7 +6,7 @@ use Carbon\CarbonInterface;
 
 class FormatTripPeriodAction
 {
-    public function execute(CarbonInterface $start, CarbonInterface $end)
+    public function execute(CarbonInterface $start, CarbonInterface $end): string
     {
         if ($end->isSameDay($start)) {
             return $start->isoFormat(__('life.date.day_month'));

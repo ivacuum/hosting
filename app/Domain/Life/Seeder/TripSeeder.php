@@ -15,7 +15,7 @@ class TripSeeder extends Seeder
 {
     public function __construct(private FindTripTemplatesAction $findTripTemplates) {}
 
-    public function run()
+    public function run(): void
     {
         // Для каждого шаблона нужно создать поездку
         foreach ($this->findTripTemplates->execute(includePartials: false) as $template) {

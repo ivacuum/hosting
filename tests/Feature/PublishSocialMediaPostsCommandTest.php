@@ -12,7 +12,7 @@ class PublishSocialMediaPostsCommandTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testQuery()
+    public function testQuery(): void
     {
         \Queue::fake();
 

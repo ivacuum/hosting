@@ -10,7 +10,7 @@ use Illuminate\Contracts\Console\Isolatable;
 #[Description('Do some chores')]
 class Chore extends Command implements Isolatable
 {
-    public function handle()
+    public function handle(): int
     {
         return self::SUCCESS;
     }

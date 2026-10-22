@@ -10,14 +10,14 @@ class JapaneseWanikaniRadicalTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testIndex()
+    public function testIndex(): void
     {
         $this->get('japanese/wanikani/radicals')
             ->assertOk()
             ->assertHasCustomTitle();
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $radical = RadicalFactory::new()->create();
 

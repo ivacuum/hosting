@@ -11,7 +11,7 @@ class MySettingsTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testEdit()
+    public function testEdit(): void
     {
         $this->be(UserFactory::new()->create())
             ->get('my/settings')

@@ -16,7 +16,7 @@ class LivewireForm
         return $this->applySettings(new LivewireForm\DatetimeLocal(...$parameters));
     }
 
-    public function model($model)
+    public function model(object|string $model): static
     {
         $this->model = $model;
 

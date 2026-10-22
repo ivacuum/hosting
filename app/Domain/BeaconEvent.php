@@ -10,7 +10,7 @@ readonly class BeaconEvent
         public string|null $slug,
     ) {}
 
-    public static function fromArray(array $payload)
+    public static function fromArray(array $payload): self
     {
         return new self(
             $payload['event'],

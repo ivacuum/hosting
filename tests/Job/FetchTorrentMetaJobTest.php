@@ -19,7 +19,7 @@ class FetchTorrentMetaJobTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testBodyFetchQueued()
+    public function testBodyFetchQueued(): void
     {
         \Bus::fake();
 
@@ -51,7 +51,7 @@ class FetchTorrentMetaJobTest extends TestCase
         \Bus::assertDispatched(FetchTorrentBodyJob::class);
     }
 
-    public function testDuplicateDeleted()
+    public function testDuplicateDeleted(): void
     {
         $magnet = MagnetFactory::new()->withRtoId(911)->create();
 
@@ -82,7 +82,7 @@ class FetchTorrentMetaJobTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\TorrentDuplicateDeleted::class);
     }
 
-    public function testMetaUpdated()
+    public function testMetaUpdated(): void
     {
         $size = 1234567890;
         $title = 'TITLE';
@@ -112,7 +112,7 @@ class FetchTorrentMetaJobTest extends TestCase
         $this->assertSame($title, $magnet->title);
     }
 
-    public function testNotFoundAndDeleted()
+    public function testNotFoundAndDeleted(): void
     {
         $magnet = MagnetFactory::new()->withRtoId(911)->create();
 
@@ -133,7 +133,7 @@ class FetchTorrentMetaJobTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\TorrentNotFoundDeleted::class);
     }
 
-    public function testPremoderationLeavesTorrentMetaUntouched()
+    public function testPremoderationLeavesTorrentMetaUntouched(): void
     {
         $magnet = MagnetFactory::new()->withRtoId(911)->create();
 
@@ -199,7 +199,7 @@ class FetchTorrentMetaJobTest extends TestCase
         $this->app->call(new FetchTorrentMetaJob(...range(1, 100))->handle(...));
     }
 
-    private function fakeHttpClient(RtoTopicData $topicData)
+    private function fakeHttpClient(RtoTopicData $topicData): void
     {
         \Http::fake([
             ...RtoFake::topicDataByIds($topicData),

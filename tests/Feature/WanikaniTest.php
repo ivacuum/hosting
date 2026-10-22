@@ -9,7 +9,7 @@ class WanikaniTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testIndex()
+    public function testIndex(): void
     {
         $this->get('japanese/wanikani')
             ->assertOk()

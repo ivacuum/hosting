@@ -8,7 +8,7 @@ class PhotoForTagScope
 {
     public function __construct(private int|null $id = null) {}
 
-    public function __invoke(Builder $query)
+    public function __invoke(Builder $query): void
     {
         if ($this->id === null) {
             return;

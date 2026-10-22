@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class TripOfAdminScope
 {
-    public function __invoke(Builder $query)
+    public function __invoke(Builder $query): void
     {
         $query->where('user_id', 1);
     }

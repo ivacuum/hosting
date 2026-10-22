@@ -12,14 +12,14 @@ class AcpTagsTest extends TestCase
     use BeAdmin;
     use DatabaseTransactions;
 
-    public function testCreate()
+    public function testCreate(): void
     {
         $this->get('acp/tags/create')
             ->assertOk()
             ->assertSeeLivewire(TagForm::class);
     }
 
-    public function testEdit()
+    public function testEdit(): void
     {
         $tag = TagFactory::new()->create();
 
@@ -28,7 +28,7 @@ class AcpTagsTest extends TestCase
             ->assertSeeLivewire(TagForm::class);
     }
 
-    public function testIndex()
+    public function testIndex(): void
     {
         TagFactory::new()->create();
 
@@ -36,7 +36,7 @@ class AcpTagsTest extends TestCase
             ->assertOk();
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $tag = TagFactory::new()->create();
 
@@ -59,7 +59,7 @@ class AcpTagsTest extends TestCase
         ]);
     }
 
-    public function testUpdate()
+    public function testUpdate(): void
     {
         $tag = TagFactory::new()->create();
 

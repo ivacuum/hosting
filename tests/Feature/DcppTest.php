@@ -11,7 +11,7 @@ class DcppTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testHubClick()
+    public function testHubClick(): void
     {
         $hub = DcppHubFactory::new()->create();
         $clicks = $hub->clicks;
@@ -24,7 +24,7 @@ class DcppTest extends TestCase
         $this->assertSame($clicks + 1, $hub->clicks);
     }
 
-    public function testHubList()
+    public function testHubList(): void
     {
         $hub = DcppHubFactory::new()->create();
 
@@ -48,7 +48,7 @@ class DcppTest extends TestCase
     #[TestWith(['dc/shakespeer'])]
     #[TestWith(['dc/strongdc'])]
     #[TestWith(['dc/strongdc_install'])]
-    public function testPages(string $url)
+    public function testPages(string $url): void
     {
         $this->get($url)
             ->assertOk()

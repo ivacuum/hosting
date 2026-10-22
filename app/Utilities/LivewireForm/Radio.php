@@ -3,6 +3,7 @@
 namespace App\Utilities\LivewireForm;
 
 use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Contracts\View\View;
 
 class Radio extends Base implements Htmlable
 {
@@ -15,7 +16,7 @@ class Radio extends Base implements Htmlable
         $this->name = $name;
     }
 
-    public function html()
+    public function html(): View
     {
         return view('acp.tpl.livewire.input', $this->buildData());
     }

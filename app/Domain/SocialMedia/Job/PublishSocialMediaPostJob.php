@@ -19,7 +19,7 @@ class PublishSocialMediaPostJob extends AbstractJob implements ShouldBeUnique
 {
     public function __construct(public SocialMediaPost $post) {}
 
-    public function handle(InstagramApi $instagram)
+    public function handle(InstagramApi $instagram): void
     {
         if (!$this->post->status->isQueued() || $this->post->published_at?->isFuture()) {
             return;

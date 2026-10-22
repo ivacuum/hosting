@@ -12,7 +12,7 @@ class GigSeeder extends Seeder
 {
     public function __construct(private FindGigTemplatesAction $findGigTemplates) {}
 
-    public function run()
+    public function run(): void
     {
         $cityIds = City::query()->pluck('id');
 

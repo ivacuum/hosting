@@ -13,7 +13,7 @@ use Illuminate\Support\Collection;
 #[Description('Update magnet releases info from rto')]
 class RtoUpdate extends Command
 {
-    public function handle()
+    public function handle(): void
     {
         Magnet::query()
             ->tap(new MagnetPublishedScope)

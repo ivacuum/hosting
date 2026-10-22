@@ -15,14 +15,14 @@ class AcpGigsTest extends TestCase
     use BeAdmin;
     use DatabaseTransactions;
 
-    public function testCreate()
+    public function testCreate(): void
     {
         $this->get('acp/gigs/create')
             ->assertOk()
             ->assertSeeLivewire(GigForm::class);
     }
 
-    public function testCreatePrefilled()
+    public function testCreatePrefilled(): void
     {
         $artist = ArtistFactory::new()
             ->withSlug('phpunit-artist')
@@ -62,7 +62,7 @@ class AcpGigsTest extends TestCase
             ->assertSet('status', GigStatus::Hidden);
     }
 
-    public function testEdit()
+    public function testEdit(): void
     {
         $gig = GigFactory::new()->create();
 
@@ -72,7 +72,7 @@ class AcpGigsTest extends TestCase
             ->assertSeeLivewire(GigForm::class);
     }
 
-    public function testIndex()
+    public function testIndex(): void
     {
         GigFactory::new()->create();
 
@@ -80,7 +80,7 @@ class AcpGigsTest extends TestCase
             ->assertOk();
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $gig = GigFactory::new()->create();
 
@@ -117,7 +117,7 @@ class AcpGigsTest extends TestCase
         ]);
     }
 
-    public function testUpdate()
+    public function testUpdate(): void
     {
         $gig = GigFactory::new()->create();
 

@@ -10,7 +10,7 @@ class ConfigTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testConfigValuesDoNotThrowException()
+    public function testConfigValuesDoNotThrowException(): void
     {
         foreach (Config::cases() as $case) {
             $case->get();

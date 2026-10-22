@@ -2,6 +2,8 @@
 
 namespace App\Utilities\LivewireForm;
 
+use Illuminate\Contracts\View\View;
+
 class Checkbox extends Base
 {
     use HasManyValues;
@@ -13,7 +15,7 @@ class Checkbox extends Base
         $this->name = $name;
     }
 
-    public function html()
+    public function html(): View
     {
         return view('acp.tpl.livewire.input', $this->buildData());
     }

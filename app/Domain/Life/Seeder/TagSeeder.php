@@ -28,7 +28,7 @@ class TagSeeder extends Seeder
         ['title_ru' => 'часы', 'title_en' => 'clock'],
     ];
 
-    public function run()
+    public function run(): void
     {
         foreach (self::TAGS as [
             'title_ru' => $titleRu,

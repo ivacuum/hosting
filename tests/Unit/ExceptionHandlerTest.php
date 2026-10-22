@@ -11,14 +11,14 @@ class ExceptionHandlerTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testReportSqlError()
+    public function testReportSqlError(): void
     {
         $e = new QueryException('default', 'SELECT 1', [], new \Exception);
 
         $this->assertTrue(app(SkipDatabaseOffline::class)->__invoke($e));
     }
 
-    public function testSkipWhenDatabaseOffline()
+    public function testSkipWhenDatabaseOffline(): void
     {
         $e = new QueryException('default', 'SELECT 1', [], new \Exception('offline', 2002));
 

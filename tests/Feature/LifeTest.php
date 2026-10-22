@@ -12,7 +12,7 @@ class LifeTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testCalendar()
+    public function testCalendar(): void
     {
         // Две поездки и два города, потому что по city_id=1 в календаре исключается Калуга
         TripFactory::new()->create();
@@ -23,7 +23,7 @@ class LifeTest extends TestCase
             ->assertHasCustomTitle();
     }
 
-    public function testCities()
+    public function testCities(): void
     {
         $trip = TripFactory::new()->create();
 
@@ -33,7 +33,7 @@ class LifeTest extends TestCase
             ->assertHasCustomTitle();
     }
 
-    public function testCity()
+    public function testCity(): void
     {
         $trip = TripFactory::new()->create();
         TripFactory::new()->withCity($trip->city)->create();
@@ -53,7 +53,7 @@ class LifeTest extends TestCase
             ->assertRedirect("life/{$trip->slug}");
     }
 
-    public function testCountries()
+    public function testCountries(): void
     {
         $trip = TripFactory::new()->create();
 
@@ -63,7 +63,7 @@ class LifeTest extends TestCase
             ->assertHasCustomTitle();
     }
 
-    public function testCountry()
+    public function testCountry(): void
     {
         $trip = TripFactory::new()->create();
 
@@ -73,7 +73,7 @@ class LifeTest extends TestCase
             ->assertHasCustomTitle();
     }
 
-    public function testGigs()
+    public function testGigs(): void
     {
         $gig = GigFactory::new()->create();
 
@@ -83,7 +83,7 @@ class LifeTest extends TestCase
             ->assertHasCustomTitle();
     }
 
-    public function testGig()
+    public function testGig(): void
     {
         $gig = GigFactory::new()->create();
         $gig->createStoryFile();
@@ -95,7 +95,7 @@ class LifeTest extends TestCase
         $gig->deleteStoryFile();
     }
 
-    public function testIndex()
+    public function testIndex(): void
     {
         $gig = GigFactory::new()->create();
         $trip = TripFactory::new()->create();
@@ -116,14 +116,14 @@ class LifeTest extends TestCase
     #[TestWith(['life/movies'])]
     #[TestWith(['life/podcasts'])]
     #[TestWith(['life/using-in-travels'])]
-    public function testPages(string $url)
+    public function testPages(string $url): void
     {
         $this->get($url)
             ->assertOk()
             ->assertHasCustomTitle();
     }
 
-    public function testTrip()
+    public function testTrip(): void
     {
         $trip = TripFactory::new()->create();
         $trip->createStoryFile();

@@ -11,7 +11,7 @@ class FindRelatedMagnetsActionTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testExecuteReturnsEmptyArrayWhenNoRelatedQuery()
+    public function testExecuteReturnsEmptyArrayWhenNoRelatedQuery(): void
     {
         $magnet = MagnetFactory::new()
             ->withRelatedQuery('')
@@ -22,7 +22,7 @@ class FindRelatedMagnetsActionTest extends TestCase
         $this->assertSame([], $findRelatedMagnets->execute($magnet));
     }
 
-    public function testExecuteReturnsRelatedIdsAndExcludesSelf()
+    public function testExecuteReturnsRelatedIdsAndExcludesSelf(): void
     {
         config(['scout.driver' => 'collection']);
 

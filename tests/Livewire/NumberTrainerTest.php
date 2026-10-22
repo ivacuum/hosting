@@ -24,7 +24,7 @@ class NumberTrainerTest extends TestCase
             ->assertSet('answer', '');
     }
 
-    public function testCustomInterval()
+    public function testCustomInterval(): void
     {
         \Livewire::test(NumberTrainer::class)
             ->set('lang', 'en')
@@ -37,7 +37,7 @@ class NumberTrainerTest extends TestCase
             ->assertSet('number', static fn (int $value) => $value >= 11 && $value <= 19);
     }
 
-    public function testCustomIntervalBoundariesForced()
+    public function testCustomIntervalBoundariesForced(): void
     {
         \Livewire::test(NumberTrainer::class)
             ->set('lang', 'en')
@@ -56,7 +56,7 @@ class NumberTrainerTest extends TestCase
             ->assertHasErrors('maximum');
     }
 
-    public function testDetermineLocale()
+    public function testDetermineLocale(): void
     {
         \Livewire::withQueryParams(['lang' => 'de'])
             ->test(NumberTrainer::class)
@@ -75,7 +75,7 @@ class NumberTrainerTest extends TestCase
             ->assertSet('answered', 1);
     }
 
-    public function testGuessingSpellOut()
+    public function testGuessingSpellOut(): void
     {
         \Livewire::test(NumberTrainer::class)
             ->set('lang', 'en')
@@ -101,7 +101,7 @@ class NumberTrainerTest extends TestCase
             ->assertSet('answered', 1);
     }
 
-    public function testKeepPredefinedMaximumWhenTogglingCustomIntervalSetting()
+    public function testKeepPredefinedMaximumWhenTogglingCustomIntervalSetting(): void
     {
         \Livewire::test(NumberTrainer::class)
             ->set('lang', 'en')
@@ -113,7 +113,7 @@ class NumberTrainerTest extends TestCase
             ->assertSet('maximum', 100);
     }
 
-    public function testKoreanAsTranslit()
+    public function testKoreanAsTranslit(): void
     {
         \Livewire::test(NumberTrainer::class)
             ->set('lang', 'ko')
@@ -125,7 +125,7 @@ class NumberTrainerTest extends TestCase
             ->assertSet('answered', 1);
     }
 
-    public function testMinimumIntervalForced()
+    public function testMinimumIntervalForced(): void
     {
         \Livewire::test(NumberTrainer::class)
             ->set('lang', 'en')
@@ -138,7 +138,7 @@ class NumberTrainerTest extends TestCase
             ->assertHasNoErrors();
     }
 
-    public function testResetCustomMinimumAndMaximumWhenValuesAreNotPredefined()
+    public function testResetCustomMinimumAndMaximumWhenValuesAreNotPredefined(): void
     {
         \Livewire::test(NumberTrainer::class)
             ->set('lang', 'en')
@@ -152,7 +152,7 @@ class NumberTrainerTest extends TestCase
             ->assertSet('maximum', 10);
     }
 
-    public function testReveal()
+    public function testReveal(): void
     {
         \Livewire::test(NumberTrainer::class)
             ->set('lang', 'ru')
@@ -178,7 +178,7 @@ class NumberTrainerTest extends TestCase
             ->assertSet('revealed', 2);
     }
 
-    public function testSkip()
+    public function testSkip(): void
     {
         \Livewire::test(NumberTrainer::class)
             ->set('answer', 'about to skip')
@@ -187,7 +187,7 @@ class NumberTrainerTest extends TestCase
             ->assertSet('skipped', 1);
     }
 
-    public function testSkipAfterWrongAnswer()
+    public function testSkipAfterWrongAnswer(): void
     {
         \Livewire::test(NumberTrainer::class)
             ->set('answer', 'about to skip')
@@ -201,7 +201,7 @@ class NumberTrainerTest extends TestCase
             ->assertSet('skipped', 0);
     }
 
-    public function testSoftHyphensGetStripped()
+    public function testSoftHyphensGetStripped(): void
     {
         \Livewire::test(NumberTrainer::class)
             ->set('lang', 'de')
@@ -213,14 +213,14 @@ class NumberTrainerTest extends TestCase
             ->assertSet('answered', 1);
     }
 
-    public function testUnknownLocale()
+    public function testUnknownLocale(): void
     {
         \Livewire::withQueryParams(['lang' => 'xx'])
             ->test(NumberTrainer::class)
             ->assertSet('lang', 'en');
     }
 
-    public function testWrongAnswer()
+    public function testWrongAnswer(): void
     {
         \Livewire::test(NumberTrainer::class)
             ->set('lang', 'ru')

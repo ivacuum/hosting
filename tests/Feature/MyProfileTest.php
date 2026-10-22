@@ -10,14 +10,14 @@ class MyProfileTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testEdit()
+    public function testEdit(): void
     {
         $this->be(UserFactory::new()->create())
             ->get('my/profile')
             ->assertOk();
     }
 
-    public function testUpdateEmail()
+    public function testUpdateEmail(): void
     {
         $user = UserFactory::new()->create();
         $email = "__{$user->email}";
@@ -39,7 +39,7 @@ class MyProfileTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\MyProfileChanged::class);
     }
 
-    public function testUpdateLogin()
+    public function testUpdateLogin(): void
     {
         $user = UserFactory::new()->withLogin('phpunit')->create();
 

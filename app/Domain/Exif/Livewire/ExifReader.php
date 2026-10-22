@@ -10,6 +10,7 @@ use App\Domain\Exif\Jobs\DeleteTempLivewireFileJob;
 use App\Domain\Exif\RateLimit\ExifReaderRateLimiter;
 use App\Domain\Exif\ReadExifDataAction;
 use Carbon\CarbonImmutable;
+use Illuminate\Contracts\View\View;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -37,7 +38,7 @@ class ExifReader extends Component
     public string|null $lon = null;
     public CarbonImmutable|null $date = null;
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.exif-reader');
     }
@@ -99,7 +100,7 @@ class ExifReader extends Component
         [$this->width, $this->height] = getimagesize($this->image->getRealPath()) ?: [0, 0];
     }
 
-    public function updatedImage()
+    public function updatedImage(): void
     {
         $this->resetData();
 

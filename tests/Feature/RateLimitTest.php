@@ -10,7 +10,7 @@ class RateLimitTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testConfigValuesDoNotThrowException()
+    public function testConfigValuesDoNotThrowException(): void
     {
         foreach (RateLimit::cases() as $case) {
             $case->get();

@@ -22,22 +22,22 @@ class AcpTest extends TestCase
         \Storage::disk('temp')->assertMissing('thumbnail.jpg');
     }
 
-    public function testRoot()
+    public function testRoot(): void
     {
         $this->get('acp')->assertOk();
     }
 
-    public function testPageDev()
+    public function testPageDev(): void
     {
         $this->get('acp/dev')->assertRedirect('/acp/dev/templates');
     }
 
-    public function testPageDevSvg()
+    public function testPageDevSvg(): void
     {
         $this->get('acp/dev/svg')->assertOk();
     }
 
-    public function testPageDevThumbnails()
+    public function testPageDevThumbnails(): void
     {
         $this->get('acp/dev/thumbnails')->assertOk();
     }

@@ -10,7 +10,7 @@ class AppendViewSharedVarsActionTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testViewVarsCssClasses()
+    public function testViewVarsCssClasses(): void
     {
         $this->get('/')
             ->assertViewHas('cssClasses', 'is-desktop');
@@ -20,7 +20,7 @@ class AppendViewSharedVarsActionTest extends TestCase
             ->assertViewHas('cssClasses', 'is-mobile ios');
     }
 
-    public function testViewVarsFirstTimeVisit()
+    public function testViewVarsFirstTimeVisit(): void
     {
         $this->get('/')
             ->assertViewHas('firstTimeVisit', true);
@@ -33,7 +33,7 @@ class AppendViewSharedVarsActionTest extends TestCase
 
     #[TestWith(['/', null])]
     #[TestWith(['/?goto=/news', '/news'])]
-    public function testViewVarsGoto(string $url, string|null $expected)
+    public function testViewVarsGoto(string $url, string|null $expected): void
     {
         $this->get($url)
             ->assertViewHas('goto', $expected);
@@ -42,13 +42,13 @@ class AppendViewSharedVarsActionTest extends TestCase
     #[TestWith(['news?page=2&utm_source=x', 'https://localhost/news?page=2'])]
     #[TestWith(['news?page=1', 'https://localhost/news'])]
     #[TestWith(['news?page=abc', 'https://localhost/news'])]
-    public function testCanonicalKeepsOnlyPageNumber(string $url, string $expected)
+    public function testCanonicalKeepsOnlyPageNumber(string $url, string $expected): void
     {
         $this->get($url)
             ->assertSee("<link rel=\"canonical\" href=\"{$expected}\">", false);
     }
 
-    public function testHreflangAlternatesWithoutQuery()
+    public function testHreflangAlternatesWithoutQuery(): void
     {
         $this->get('en/news?page=2')
             ->assertSee('<link rel="alternate" hreflang="ru" href="http://localhost/news">', false)
@@ -56,7 +56,7 @@ class AppendViewSharedVarsActionTest extends TestCase
             ->assertSee('<link rel="alternate" hreflang="x-default" href="http://localhost/news">', false);
     }
 
-    public function testViewVarsIsCrawler()
+    public function testViewVarsIsCrawler(): void
     {
         $this->get('/')
             ->assertViewHas('isCrawler', false);
@@ -66,7 +66,7 @@ class AppendViewSharedVarsActionTest extends TestCase
             ->assertViewHas('isCrawler', true);
     }
 
-    public function testViewVarsIsDesktop()
+    public function testViewVarsIsDesktop(): void
     {
         $this->get('/')
             ->assertViewHas('isDesktop', true);
@@ -76,7 +76,7 @@ class AppendViewSharedVarsActionTest extends TestCase
             ->assertViewHas('isDesktop', false);
     }
 
-    public function testViewVarsIsMobile()
+    public function testViewVarsIsMobile(): void
     {
         $this->get('/')
             ->assertViewHas('isMobile', false);
@@ -88,7 +88,7 @@ class AppendViewSharedVarsActionTest extends TestCase
 
     #[TestWith(['/', 'ru'])]
     #[TestWith(['en', 'en'])]
-    public function testViewVarsLocale(string $url, string $expected)
+    public function testViewVarsLocale(string $url, string $expected): void
     {
         $this->get($url)
             ->assertViewHas('locale', $expected);
@@ -96,7 +96,7 @@ class AppendViewSharedVarsActionTest extends TestCase
 
     #[TestWith(['en', 'en'])]
     #[TestWith(['ru', 'ru'])]
-    public function testViewVarsLocalePreferred(string $acceptLanguage, string $expected)
+    public function testViewVarsLocalePreferred(string $acceptLanguage, string $expected): void
     {
         $this->withHeader('Accept-Language', $acceptLanguage)
             ->get('/')
@@ -105,7 +105,7 @@ class AppendViewSharedVarsActionTest extends TestCase
 
     #[TestWith(['/', ''])]
     #[TestWith(['en', '/en'])]
-    public function testViewVarsLocaleUri(string $url, string $expected)
+    public function testViewVarsLocaleUri(string $url, string $expected): void
     {
         $this->get($url)
             ->assertViewHas('localeUri', $expected);
@@ -117,7 +117,7 @@ class AppendViewSharedVarsActionTest extends TestCase
     #[TestWith(['en/about', 'about'])]
     #[TestWith(['korean/psy/everyday', 'korean/psy/everyday'])]
     #[TestWith(['en/korean/psy/everyday', 'korean/psy/everyday'])]
-    public function testViewVarsRequestUri(string $url, string $expected)
+    public function testViewVarsRequestUri(string $url, string $expected): void
     {
         $this->get($url)
             ->assertViewHas('requestUri', $expected);
@@ -129,7 +129,7 @@ class AppendViewSharedVarsActionTest extends TestCase
     #[TestWith(['en/about', 'about'])]
     #[TestWith(['korean/psy/everyday', 'korean/psy/{song}'])]
     #[TestWith(['en/korean/psy/everyday', 'korean/psy/{song}'])]
-    public function testViewVarsRouteUri(string $url, string $expected)
+    public function testViewVarsRouteUri(string $url, string $expected): void
     {
         $this->get($url)
             ->assertViewHas('routeUri', $expected);
@@ -138,7 +138,7 @@ class AppendViewSharedVarsActionTest extends TestCase
     #[TestWith(['/', 'home'])]
     #[TestWith(['news', 'news'])]
     #[TestWith(['korean/psy/everyday', 'korean-psy-song'])]
-    public function testViewVarsTpl(string $url, string $expected)
+    public function testViewVarsTpl(string $url, string $expected): void
     {
         $this->get($url)
             ->assertViewHas('tpl', $expected);
@@ -147,7 +147,7 @@ class AppendViewSharedVarsActionTest extends TestCase
     #[TestWith(['/', 'home'])]
     #[TestWith(['news', 'news.index'])]
     #[TestWith(['korean/psy/everyday', 'korean-psy-song'])]
-    public function testViewVarsView(string $url, string $expected)
+    public function testViewVarsView(string $url, string $expected): void
     {
         $this->get($url)
             ->assertViewHas('view', $expected);

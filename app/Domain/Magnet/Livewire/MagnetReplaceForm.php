@@ -6,6 +6,8 @@ use App\Domain\Magnet\Action\UpdateMagnetAction;
 use App\Domain\Magnet\Models\Magnet;
 use App\Domain\Rto\Rto;
 use App\Domain\Rto\RtoTemporarilyUnavailableException;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Livewire\Component;
 
 class MagnetReplaceForm extends Component
@@ -13,12 +15,12 @@ class MagnetReplaceForm extends Component
     public Magnet $magnet;
     public string|null $input = null;
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.magnet-replace-form');
     }
 
-    public function submit(UpdateMagnetAction $updateMagnet)
+    public function submit(UpdateMagnetAction $updateMagnet): RedirectResponse|null
     {
         $this->validate();
 
@@ -49,12 +51,12 @@ class MagnetReplaceForm extends Component
         return redirect($this->magnet->wwwAcp());
     }
 
-    public function updatedInput(Rto $rto)
+    public function updatedInput(Rto $rto): void
     {
         $this->input = $rto->findTopicId($this->input);
     }
 
-    protected function rules()
+    protected function rules(): array
     {
         return ['input' => 'required'];
     }

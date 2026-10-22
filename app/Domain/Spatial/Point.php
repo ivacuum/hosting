@@ -16,7 +16,7 @@ class Point extends Geometry implements \Stringable
         return "{$this->lon} {$this->lat}";
     }
 
-    public static function fromPair(string $pair, int $srid = 4326)
+    public static function fromPair(string $pair, int $srid = 4326): static
     {
         [$lon, $lat] = preg_split('/\s+/', trim($pair, "\t\n\r \x0B()"));
 
@@ -24,7 +24,7 @@ class Point extends Geometry implements \Stringable
     }
 
     #[\Override]
-    public static function fromString(string $wktArgument, int $srid = 4326)
+    public static function fromString(string $wktArgument, int $srid = 4326): static
     {
         return static::fromPair($wktArgument, $srid);
     }

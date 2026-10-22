@@ -13,7 +13,7 @@ class UrlGeneratorTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testCanonical()
+    public function testCanonical(): void
     {
         $this->get('news?foo=bar');
 
@@ -24,7 +24,7 @@ class UrlGeneratorTest extends TestCase
         $this->assertSame('http://localhost/en/news', canonical());
     }
 
-    public function testFullUrl()
+    public function testFullUrl(): void
     {
         $this->get('news?foo=bar');
 
@@ -39,7 +39,7 @@ class UrlGeneratorTest extends TestCase
         $this->assertSame('http://localhost/en/news?foo=bar&baz=qux', fullUrl(['baz' => 'qux']));
     }
 
-    public function testPath()
+    public function testPath(): void
     {
         $this->assertSame('/', path(HomeController::class));
         $this->assertSame('/news/123', path([NewsController::class, 'show'], 123));
@@ -52,7 +52,7 @@ class UrlGeneratorTest extends TestCase
         $this->assertSame('/en/news/123', path([NewsController::class, 'show'], ['id' => 123]));
     }
 
-    public function testPathLocale()
+    public function testPathLocale(): void
     {
         $this->assertSame('/en', path_locale(HomeController::class, [], false, 'en'));
         $this->assertSame('/en/news/123', path_locale([NewsController::class, 'show'], 123, false, 'en'));
@@ -66,7 +66,7 @@ class UrlGeneratorTest extends TestCase
     #[TestWith([['photos/1'], '/en/photos/1'])]
     #[TestWith([['photos/1', ['city_id' => 5, 'tag_id' => 10]], '/en/photos/1?city_id=5&tag_id=10'])]
     #[TestWith([['photos/countries/{country}', ['russia']], '/en/photos/countries/russia'])]
-    public function testToEn(array $input, string $result)
+    public function testToEn(array $input, string $result): void
     {
         $this->app->setLocale(Locale::Eng->value);
 
@@ -80,7 +80,7 @@ class UrlGeneratorTest extends TestCase
     #[TestWith([['photos/1'], '/photos/1'])]
     #[TestWith([['photos/1', ['city_id' => 5, 'tag_id' => 10]], '/photos/1?city_id=5&tag_id=10'])]
     #[TestWith([['photos/countries/{country}', ['russia']], '/photos/countries/russia'])]
-    public function testToRu(array $input, string $result)
+    public function testToRu(array $input, string $result): void
     {
         $this->app->setLocale(Locale::Rus->value);
 

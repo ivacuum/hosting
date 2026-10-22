@@ -10,17 +10,17 @@ class ArtistObserver
 {
     public function __construct(private CacheHelper $cache) {}
 
-    public function deleted()
+    public function deleted(): void
     {
         $this->cache->forgetGigs();
     }
 
-    public function saving(Artist $artist)
+    public function saving(Artist $artist): void
     {
         $this->maintainConsistency($artist);
     }
 
-    public function saved()
+    public function saved(): void
     {
         $this->cache->forgetGigs();
     }

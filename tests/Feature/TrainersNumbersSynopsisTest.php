@@ -11,7 +11,7 @@ class TrainersNumbersSynopsisTest extends TestCase
     use DatabaseTransactions;
     use MockGetNumberLocales;
 
-    public function testIndex()
+    public function testIndex(): void
     {
         $this->get('trainers/numbers/synopsis')
             ->assertOk()

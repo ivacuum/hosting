@@ -11,7 +11,7 @@ class DeleteTempLivewireFileJob extends AbstractJob
 {
     public function __construct(private string $filename) {}
 
-    public function handle()
+    public function handle(): void
     {
         \Storage::disk(FileUploadConfiguration::disk())
             ->delete(FileUploadConfiguration::directory() . '/' . $this->filename);

@@ -145,7 +145,7 @@ class Magnet extends Model
             ->get(static::LIST_COLUMNS);
     }
 
-    public function searchableAs()
+    public function searchableAs(): string
     {
         return 'vac_torrents_v1';
     }
@@ -156,7 +156,7 @@ class Magnet extends Model
         return str_replace('  ', ' ', preg_replace('/\([^)]+\)|\[[^\]]+\]/', '', $this->title));
     }
 
-    public function shouldBeSearchable()
+    public function shouldBeSearchable(): bool
     {
         return $this->status->isPublished();
     }
@@ -167,7 +167,7 @@ class Magnet extends Model
             ->execute($this->title);
     }
 
-    public function toSearchableArray()
+    public function toSearchableArray(): array
     {
         return [
             'id' => $this->id,

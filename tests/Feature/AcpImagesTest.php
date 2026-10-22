@@ -11,7 +11,7 @@ class AcpImagesTest extends TestCase
     use BeAdmin;
     use DatabaseTransactions;
 
-    public function testIndex()
+    public function testIndex(): void
     {
         ImageFactory::new()->create();
 
@@ -19,7 +19,7 @@ class AcpImagesTest extends TestCase
             ->assertOk();
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $image = ImageFactory::new()->create();
 

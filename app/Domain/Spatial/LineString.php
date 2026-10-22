@@ -21,7 +21,7 @@ class LineString extends Geometry implements \Stringable
     }
 
     #[\Override]
-    public static function fromString(string $wktArgument, int $srid = 4326)
+    public static function fromString(string $wktArgument, int $srid = 4326): static
     {
         $pairs = explode(',', trim($wktArgument));
         $points = array_map(static fn ($pair) => Point::fromPair($pair), $pairs);

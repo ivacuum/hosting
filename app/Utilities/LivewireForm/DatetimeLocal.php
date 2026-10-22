@@ -2,6 +2,8 @@
 
 namespace App\Utilities\LivewireForm;
 
+use Illuminate\Contracts\View\View;
+
 class DatetimeLocal extends Base
 {
     public string $type = 'datetime-local';
@@ -11,7 +13,7 @@ class DatetimeLocal extends Base
         $this->name = $name;
     }
 
-    public function html()
+    public function html(): View
     {
         return view('acp.tpl.livewire.input', $this->buildData());
     }

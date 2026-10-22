@@ -13,7 +13,7 @@ class AvatarManagerTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testUserUploadsFirstAvatarAndThenReplacesIt()
+    public function testUserUploadsFirstAvatarAndThenReplacesIt(): void
     {
         \Storage::fake('avatars');
         \Storage::fake(FileUploadConfiguration::disk());
@@ -49,7 +49,7 @@ class AvatarManagerTest extends TestCase
         \Storage::disk('avatars')->assertExists($user->avatar);
     }
 
-    public function testUserDeletesHisAvatar()
+    public function testUserDeletesHisAvatar(): void
     {
         \Storage::fake('avatars');
         \Storage::fake(FileUploadConfiguration::disk());

@@ -11,7 +11,7 @@ class FetchMetricsActionTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testOk()
+    public function testOk(): void
     {
         Redis::expects('client->executeRaw')
             ->with(['XREAD', 'COUNT', 999, 'STREAMS', 'vacuum:metrics', '123']);

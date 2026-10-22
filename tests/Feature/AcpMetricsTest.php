@@ -12,13 +12,13 @@ class AcpMetricsTest extends TestCase
     use BeAdmin;
     use DatabaseTransactions;
 
-    public function testIndex()
+    public function testIndex(): void
     {
         $this->get('acp/metrics')
             ->assertOk();
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $event = class_basename(Build::class);
 

@@ -16,7 +16,7 @@ class FormatMagnetDateActionTest extends TestCase
     #[TestWith(['2022-02-01', '2022-01-01', "January\u{00A0}1"], 'last month')]
     #[TestWith(['2022-01-01', '2021-12-31', "December\u{00A0}31, 2021"], 'last year')]
     #[TestWith(['2022-01-01', '2011-06-01', "June\u{00A0}1, 2011"], 'long ago')]
-    public function testEnglish(string $now, string $commentCreatedAt, string $result)
+    public function testEnglish(string $now, string $commentCreatedAt, string $result): void
     {
         $this->app->setLocale(Locale::Eng->value);
 
@@ -33,7 +33,7 @@ class FormatMagnetDateActionTest extends TestCase
     #[TestWith(['2022-02-01', '2022-01-01', "1\u{00A0}января"], 'last month')]
     #[TestWith(['2022-01-01', '2021-12-31', "31\u{00A0}декабря\u{00A0}2021"], 'last year')]
     #[TestWith(['2022-01-01', '2011-06-01', "1\u{00A0}июня\u{00A0}2011"], 'long ago')]
-    public function testRussian(string $now, string $commentCreatedAt, string $result)
+    public function testRussian(string $now, string $commentCreatedAt, string $result): void
     {
         $this->app->setLocale(Locale::Rus->value);
 

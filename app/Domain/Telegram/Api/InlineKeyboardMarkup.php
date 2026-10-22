@@ -7,7 +7,7 @@ class InlineKeyboardMarkup implements \JsonSerializable
     /** @var array<InlineKeyboardButton[]> */
     private array $rows = [];
 
-    public function addRow(InlineKeyboardButton ...$buttons)
+    public function addRow(InlineKeyboardButton ...$buttons): static
     {
         $this->rows[] = $buttons;
 
@@ -21,7 +21,7 @@ class InlineKeyboardMarkup implements \JsonSerializable
         ];
     }
 
-    public static function make()
+    public static function make(): self
     {
         return new self;
     }

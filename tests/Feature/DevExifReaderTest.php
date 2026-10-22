@@ -10,7 +10,7 @@ class DevExifReaderTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testPage()
+    public function testPage(): void
     {
         $this->get('dev/exif-reader')
             ->assertOk()

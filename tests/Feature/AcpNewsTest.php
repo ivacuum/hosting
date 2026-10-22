@@ -15,14 +15,14 @@ class AcpNewsTest extends TestCase
     use BeAdmin;
     use DatabaseTransactions;
 
-    public function testCreate()
+    public function testCreate(): void
     {
         $this->get('acp/news/create')
             ->assertOk()
             ->assertSeeLivewire(NewsForm::class);
     }
 
-    public function testEdit()
+    public function testEdit(): void
     {
         $news = NewsFactory::new()->create();
 
@@ -47,7 +47,7 @@ class AcpNewsTest extends TestCase
             ->assertSee([$first->title, $second->title]);
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $news = NewsFactory::new()->create();
 
@@ -80,7 +80,7 @@ class AcpNewsTest extends TestCase
         ]);
     }
 
-    public function testUpdate()
+    public function testUpdate(): void
     {
         $news = NewsFactory::new()->create();
 

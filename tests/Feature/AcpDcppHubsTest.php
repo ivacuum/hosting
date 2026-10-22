@@ -13,14 +13,14 @@ class AcpDcppHubsTest extends TestCase
     use BeAdmin;
     use DatabaseTransactions;
 
-    public function testCreate()
+    public function testCreate(): void
     {
         $this->get('acp/dcpp-hubs/create')
             ->assertOk()
             ->assertSeeLivewire(DcppHubForm::class);
     }
 
-    public function testEdit()
+    public function testEdit(): void
     {
         $hub = DcppHubFactory::new()->create();
 
@@ -29,7 +29,7 @@ class AcpDcppHubsTest extends TestCase
             ->assertSeeLivewire(DcppHubForm::class);
     }
 
-    public function testIndex()
+    public function testIndex(): void
     {
         DcppHubFactory::new()->create();
 
@@ -37,7 +37,7 @@ class AcpDcppHubsTest extends TestCase
             ->assertOk();
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $hub = DcppHubFactory::new()->create();
 
@@ -62,7 +62,7 @@ class AcpDcppHubsTest extends TestCase
         ]);
     }
 
-    public function testUpdate()
+    public function testUpdate(): void
     {
         $hub = DcppHubFactory::new()->create();
 

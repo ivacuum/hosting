@@ -14,7 +14,7 @@ class RssTest extends TestCase
     #[TestWith(['life/gigs/rss'])]
     #[TestWith(['life/rss'])]
     #[TestWith(['news/rss'])]
-    public function testFeeds(string $url)
+    public function testFeeds(string $url): void
     {
         $this->get($url)
             ->assertOk()

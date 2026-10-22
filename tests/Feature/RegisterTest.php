@@ -11,7 +11,7 @@ class RegisterTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testFormGuest()
+    public function testFormGuest(): void
     {
         $this->get('auth/register')
             ->assertOk();
@@ -19,7 +19,7 @@ class RegisterTest extends TestCase
         $this->assertGuest();
     }
 
-    public function testFormUser()
+    public function testFormUser(): void
     {
         $this->be(UserFactory::new()->make())
             ->get('auth/register')
@@ -28,7 +28,7 @@ class RegisterTest extends TestCase
         $this->assertAuthenticated();
     }
 
-    public function testMultipleUsersCanRegisterWithoutLogin()
+    public function testMultipleUsersCanRegisterWithoutLogin(): void
     {
         $this->post('auth/register', [
             'email' => 'first-phpunit@example.com',

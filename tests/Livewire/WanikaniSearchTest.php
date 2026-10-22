@@ -14,7 +14,7 @@ class WanikaniSearchTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testSearchForRadical()
+    public function testSearchForRadical(): void
     {
         $radical = RadicalFactory::new()->create();
 
@@ -24,7 +24,7 @@ class WanikaniSearchTest extends TestCase
             ->assertViewHas('radicals', static fn (Collection $radicals) => $radicals->firstWhere('id', $radical->id) !== null);
     }
 
-    public function testSearchForKanji()
+    public function testSearchForKanji(): void
     {
         $kanji = KanjiFactory::new()->create();
 
@@ -34,7 +34,7 @@ class WanikaniSearchTest extends TestCase
             ->assertViewHas('kanjis', static fn (Collection $kanjis) => $kanjis->firstWhere('id', $kanji->id) !== null);
     }
 
-    public function testSearchForVocabulary()
+    public function testSearchForVocabulary(): void
     {
         $vocab = VocabularyFactory::new()->create();
 

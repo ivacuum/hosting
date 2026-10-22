@@ -9,21 +9,21 @@ class RetrackerTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testDev()
+    public function testDev(): void
     {
         $this->get('retracker/dev')
             ->assertOk()
             ->assertHasCustomTitle();
     }
 
-    public function testIndex()
+    public function testIndex(): void
     {
         $this->get('retracker')
             ->assertOk()
             ->assertHasCustomTitle();
     }
 
-    public function testUsage()
+    public function testUsage(): void
     {
         $this->get('retracker/usage')
             ->assertOk()

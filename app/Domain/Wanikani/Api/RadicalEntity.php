@@ -15,7 +15,7 @@ readonly class RadicalEntity
         public Collection $foundInKanji,
     ) {}
 
-    public static function fromArray(int $id, array $json)
+    public static function fromArray(int $id, array $json): self
     {
         $svgUrl = collect($json['character_images'])
             ->first(static fn ($image) => $image['content_type'] === 'image/svg+xml' && !$image['metadata']['inline_styles'])['url'] ?? '';

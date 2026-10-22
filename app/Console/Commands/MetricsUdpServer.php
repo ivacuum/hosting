@@ -45,7 +45,7 @@ class MetricsUdpServer extends Command
         ImageViewsAggregator $imageViewsAggregator,
         PhotoViewsAggregator $photoViewsAggregator,
         PingDatabaseAction $pingDatabase,
-    ) {
+    ): void {
         $this->pingDatabase = $pingDatabase;
         $this->viewsAggregator = $viewsAggregator;
         $this->metricsAggregator = $metricsAggregator;
@@ -64,7 +64,7 @@ class MetricsUdpServer extends Command
         $this->server->start();
     }
 
-    public function cron()
+    public function cron(): void
     {
         $this->pingDatabase->execute();
 
@@ -74,7 +74,7 @@ class MetricsUdpServer extends Command
         $this->photoViewsAggregator->export();
     }
 
-    public function listeners()
+    public function listeners(): void
     {
         $this->server->on('packet', function (Server $server, $input) {
             $this->acceptedConnections++;
@@ -115,7 +115,7 @@ class MetricsUdpServer extends Command
         Timer::tick($this->cronInterval()->totalMilliseconds, $this->cron(...));
     }
 
-    public function stop()
+    public function stop(): void
     {
         if ($this->started) {
             $this->server->shutdown();

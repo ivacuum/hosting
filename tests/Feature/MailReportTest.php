@@ -11,7 +11,7 @@ class MailReportTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testReport()
+    public function testReport(): void
     {
         $email = EmailFactory::new()
             ->withComment(1)

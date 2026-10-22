@@ -22,7 +22,7 @@ class ArtistSeeder extends Seeder
         ['slug' => 'vai', 'title' => 'Steve Vai'],
     ];
 
-    public function run()
+    public function run(): void
     {
         foreach (self::ARTISTS as [
             'slug' => $slug,

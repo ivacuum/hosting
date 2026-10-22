@@ -6,27 +6,27 @@ use App\User;
 
 class CountryPolicy
 {
-    public function create(User $me)
+    public function create(User $me): bool
     {
         return $me->isRoot();
     }
 
-    public function delete(User $me)
+    public function delete(User $me): bool
     {
         return $me->isRoot();
     }
 
-    public function update(User $me)
+    public function update(User $me): bool
     {
         return $me->isRoot();
     }
 
-    public function view(User $me)
+    public function view(User $me): bool
     {
         return $me->isRoot();
     }
 
-    public function viewAny(User $me)
+    public function viewAny(User $me): bool
     {
         return $me->isRoot();
     }

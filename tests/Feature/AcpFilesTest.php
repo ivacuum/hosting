@@ -15,14 +15,14 @@ class AcpFilesTest extends TestCase
     use BeAdmin;
     use DatabaseTransactions;
 
-    public function testCreate()
+    public function testCreate(): void
     {
         $this->get('acp/files/create')
             ->assertOk()
             ->assertSeeLivewire(FileForm::class);
     }
 
-    public function testEdit()
+    public function testEdit(): void
     {
         $file = FileFactory::new()->create();
 
@@ -31,7 +31,7 @@ class AcpFilesTest extends TestCase
             ->assertSeeLivewire(FileForm::class);
     }
 
-    public function testIndex()
+    public function testIndex(): void
     {
         FileFactory::new()->create();
 
@@ -39,7 +39,7 @@ class AcpFilesTest extends TestCase
             ->assertOk();
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $file = FileFactory::new()->create();
 
@@ -72,7 +72,7 @@ class AcpFilesTest extends TestCase
         \Storage::disk('files')->assertExists('phpunit-file.jpg');
     }
 
-    public function testUpdate()
+    public function testUpdate(): void
     {
         $file = FileFactory::new()->create();
 

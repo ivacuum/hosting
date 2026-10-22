@@ -12,7 +12,7 @@ class StorePhotoJob extends AbstractJob
         private string $destinationFilePath,
     ) {}
 
-    public function handle(ImageConverter $imageConverter)
+    public function handle(ImageConverter $imageConverter): void
     {
         $image = $imageConverter
             ->autoOrient()

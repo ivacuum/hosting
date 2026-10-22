@@ -34,7 +34,7 @@ class CountrySeeder extends Seeder
         ['slug' => 'turkey', 'title_ru' => 'Турция', 'title_en' => 'Turkey', 'emoji' => '🇹🇷'],
     ];
 
-    public function run()
+    public function run(): void
     {
         foreach (self::COUNTRIES as [
             'slug' => $slug,

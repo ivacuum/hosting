@@ -13,7 +13,9 @@ use App\Domain\Rto\RtoMagnetNotFoundException;
 use App\Domain\Rto\RtoTemporarilyUnavailableException;
 use App\Domain\Rto\RtoTopicDuplicateException;
 use App\Domain\Rto\RtoTopicNotFoundException;
+use Illuminate\Contracts\View\View;
 use Illuminate\Database\UniqueConstraintViolationException;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
 
@@ -26,12 +28,12 @@ class MagnetAddForm extends Component
     public string $input = '';
     public string $title = '';
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.magnet-add-form');
     }
 
-    public function submit(Rto $rto, MagnetRateLimiter $limiter)
+    public function submit(Rto $rto, MagnetRateLimiter $limiter): RedirectResponse|null
     {
         $this->validate();
 
@@ -104,7 +106,7 @@ class MagnetAddForm extends Component
         return redirect($magnet->www());
     }
 
-    public function updatedInput()
+    public function updatedInput(): void
     {
         if ($this->input === '') {
             $this->resetTopicInfo();
@@ -166,7 +168,7 @@ class MagnetAddForm extends Component
         $this->topicId = $topicData->id;
     }
 
-    protected function rules()
+    protected function rules(): array
     {
         return [
             'input' => 'required',

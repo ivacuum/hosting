@@ -11,7 +11,7 @@ use Illuminate\Database\Seeder;
 
 class MagnetSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $user = UserFactory::new()
             ->withEmail('magnet@example.com')
@@ -106,7 +106,7 @@ TEXT))
         $this->hitman($user);
     }
 
-    private function hitman(User $user)
+    private function hitman(User $user): void
     {
         $factory = MagnetFactory::new()
             ->withCategory(MagnetCategory::ActionGames)

@@ -16,7 +16,7 @@ class MagnetUpdatedNotification extends Notification implements ShouldQueue
 
     public function __construct(public Magnet $magnet) {}
 
-    public function toTelegram()
+    public function toTelegram(): string
     {
         $escape = app(EscapeMarkdownCharactersAction::class);
 
@@ -26,7 +26,7 @@ class MagnetUpdatedNotification extends Notification implements ShouldQueue
         return "Обновлена раздача *{$title}*\n\n{$url}";
     }
 
-    public function via(User $notifiable)
+    public function via(User $notifiable): array
     {
         return $notifiable->telegram_id
             ? [TelegramChannel::class]

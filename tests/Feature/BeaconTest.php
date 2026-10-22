@@ -11,7 +11,7 @@ class BeaconTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testBrowserPayloadWithCsrfTokenIsAccepted()
+    public function testBrowserPayloadWithCsrfTokenIsAccepted(): void
     {
         \Event::fake(Stats\YoutubeOpened::class);
 
@@ -24,13 +24,13 @@ class BeaconTest extends TestCase
         \Event::assertDispatched(Stats\YoutubeOpened::class);
     }
 
-    public function testEmptyEvent()
+    public function testEmptyEvent(): void
     {
         $this->post('js/beacon', $this->payload([['event' => '']]))
             ->assertInvalid(['events.0.event' => 'обязательно для заполнения']);
     }
 
-    public function testEveryPayload()
+    public function testEveryPayload(): void
     {
         \Event::fake([
             Stats\YoutubeOpened::class,
@@ -52,19 +52,19 @@ class BeaconTest extends TestCase
         \Event::assertDispatched(Stats\Photo2000Viewed::class, static fn (Stats\Photo2000Viewed $event) => $event->slug === 'prague.2017.05/IMG_0128.jpg');
     }
 
-    public function testInvalidPayload()
+    public function testInvalidPayload(): void
     {
         $this->post('js/beacon', $this->payload(['bogus' => 'is real']))
             ->assertInvalid(['events.bogus.event' => 'обязательно для заполнения']);
     }
 
-    public function testInvalidPayloadNoEvents()
+    public function testInvalidPayloadNoEvents(): void
     {
         $this->post('js/beacon', ['bogus' => 'is real'])
             ->assertInvalid(['events' => 'обязательно для заполнения']);
     }
 
-    public function testInvalidPayloadEventsNotJson()
+    public function testInvalidPayloadEventsNotJson(): void
     {
         $this->post('js/beacon', ['events' => 'not json'])
             ->assertInvalid(['events' => 'обязательно для заполнения']);
@@ -73,7 +73,7 @@ class BeaconTest extends TestCase
     #[TestWith([Stats\Photo500Viewed::class, '/-/500x375/prague.2017.05/IMG_0128.jpg', 'prague.2017.05/IMG_0128.jpg'])]
     #[TestWith([Stats\Photo1000Viewed::class, '/-/1000x750/prague.2017.05/IMG_0128.jpg', 'prague.2017.05/IMG_0128.jpg'])]
     #[TestWith([Stats\Photo2000Viewed::class, '/prague.2017.05/IMG_0128.jpg', 'prague.2017.05/IMG_0128.jpg'])]
-    public function testPhotoViewCounters(string $event, string $rawSlug, string $processedSlug)
+    public function testPhotoViewCounters(string $event, string $rawSlug, string $processedSlug): void
     {
         \Event::fake($event);
 
@@ -104,7 +104,7 @@ class BeaconTest extends TestCase
     #[TestWith([Stats\NumberVoiceSelected::class])]
     #[TestWith([Stats\YoutubeOpened::class])]
     #[TestWith([Stats\YoutubeClosed::class])]
-    public function testSimpleCounters(string $event)
+    public function testSimpleCounters(string $event): void
     {
         \Event::fake($event);
 
@@ -116,7 +116,7 @@ class BeaconTest extends TestCase
         \Event::assertDispatched($event);
     }
 
-    public function testUnknownEvent()
+    public function testUnknownEvent(): void
     {
         $this->post('js/beacon', $this->payload([['event' => 'unknown thing']]))
             ->assertNoContent();

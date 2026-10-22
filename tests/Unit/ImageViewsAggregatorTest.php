@@ -11,7 +11,7 @@ class ImageViewsAggregatorTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testExport()
+    public function testExport(): void
     {
         $image = ImageFactory::new()->create();
 
@@ -30,7 +30,7 @@ class ImageViewsAggregatorTest extends TestCase
         $this->assertSame('2020-01-01 00:00:00', $image->updated_at->toDateTimeString());
     }
 
-    public function testPush()
+    public function testPush(): void
     {
         $aggregator = $this->app->make(ImageViewsAggregator::class);
         $aggregator->push('123456/1_abc.png');

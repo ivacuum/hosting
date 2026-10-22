@@ -137,7 +137,7 @@ class TelegramBotTest extends TestCase
             ->assertExactJson([]);
     }
 
-    public function testPhotoCommand()
+    public function testPhotoCommand(): void
     {
         PhotoFactory::new()
             ->withPoint(10, 20)
@@ -156,7 +156,7 @@ class TelegramBotTest extends TestCase
         $this->assertSame('sendPhoto', $response->json('method'));
     }
 
-    public function testStartCommand()
+    public function testStartCommand(): void
     {
         $response = $this->postJson(
             'telegram/webhook',
@@ -170,7 +170,7 @@ class TelegramBotTest extends TestCase
         $this->assertSame('sendMessage', $response->json('method'));
     }
 
-    public function testStartCommandWithParameter()
+    public function testStartCommandWithParameter(): void
     {
         \Event::fake(\App\Events\Stats\TelegramAccountLinked::class);
 
@@ -197,7 +197,7 @@ class TelegramBotTest extends TestCase
         $this->assertModelMissing($linkRequest);
     }
 
-    public function testStartCommandWithParameterLinkRequestNotFound()
+    public function testStartCommandWithParameterLinkRequestNotFound(): void
     {
         $response = $this->postJson(
             'telegram/webhook',

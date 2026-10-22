@@ -12,7 +12,7 @@ use Illuminate\Console\Attributes\Signature;
 #[Description('Check if dc++ hubs are online')]
 class PingDcppHubs extends Command
 {
-    public function handle()
+    public function handle(): void
     {
         DcppHub::query()
             ->where('status', DcppHubStatus::Published)

@@ -10,14 +10,14 @@ class JapaneseWanikaniVocabularyTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testIndex()
+    public function testIndex(): void
     {
         $this->get('japanese/wanikani/vocabulary')
             ->assertOk()
             ->assertHasCustomTitle();
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $vocab = VocabularyFactory::new()->create();
 

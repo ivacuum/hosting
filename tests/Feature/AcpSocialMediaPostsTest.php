@@ -16,7 +16,7 @@ class AcpSocialMediaPostsTest extends TestCase
     use BeAdmin;
     use DatabaseTransactions;
 
-    public function testCreate()
+    public function testCreate(): void
     {
         PhotoFactory::new()->withTrip()->create();
 
@@ -25,7 +25,7 @@ class AcpSocialMediaPostsTest extends TestCase
             ->assertSeeLivewire(SocialMediaPostForm::class);
     }
 
-    public function testEdit()
+    public function testEdit(): void
     {
         $post = SocialMediaPostFactory::new()->create();
 
@@ -34,7 +34,7 @@ class AcpSocialMediaPostsTest extends TestCase
             ->assertSeeLivewire(SocialMediaPostForm::class);
     }
 
-    public function testIndex()
+    public function testIndex(): void
     {
         SocialMediaPostFactory::new()->create();
         SocialMediaPostFactory::new()->create();
@@ -43,7 +43,7 @@ class AcpSocialMediaPostsTest extends TestCase
             ->assertOk();
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $post = SocialMediaPostFactory::new()->create();
 
@@ -51,7 +51,7 @@ class AcpSocialMediaPostsTest extends TestCase
             ->assertOk();
     }
 
-    public function testStoreExcluded()
+    public function testStoreExcluded(): void
     {
         $photo = PhotoFactory::new()->withTrip()->create();
 
@@ -75,7 +75,7 @@ class AcpSocialMediaPostsTest extends TestCase
         $this->assertNotNull($post->excluded_at);
     }
 
-    public function testStoreQueued()
+    public function testStoreQueued(): void
     {
         PhotoFactory::new()->withTrip()->create();
 
@@ -98,7 +98,7 @@ class AcpSocialMediaPostsTest extends TestCase
         $this->assertNull($post->excluded_at);
     }
 
-    public function testUpdate()
+    public function testUpdate(): void
     {
         $post = SocialMediaPostFactory::new()
             ->withCaption('phpunit before')

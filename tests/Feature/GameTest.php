@@ -11,14 +11,14 @@ class GameTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testIndex()
+    public function testIndex(): void
     {
         $this->get('games')
             ->assertOk()
             ->assertHasCustomTitle();
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         // С заметкой
         Game::query()

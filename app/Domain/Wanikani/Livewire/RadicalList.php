@@ -6,6 +6,7 @@ use App\Domain\Wanikani\Models\Burnable;
 use App\Domain\Wanikani\Models\Radical;
 use App\User;
 use Illuminate\Container\Attributes\CurrentUser;
+use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 
@@ -21,7 +22,7 @@ class RadicalList extends Component
     public bool $showLabels = false;
     public array $burned = [];
 
-    public function mount(int|null $kanjiId = null, #[CurrentUser] User|null $user = null)
+    public function mount(int|null $kanjiId = null, #[CurrentUser] User|null $user = null): void
     {
         $this->flat = $kanjiId !== null;
 
@@ -43,12 +44,12 @@ class RadicalList extends Component
         }
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.radical-list');
     }
 
-    public function shuffle()
+    public function shuffle(): void
     {
         $this->radicals = $this->radicals->shuffle();
     }

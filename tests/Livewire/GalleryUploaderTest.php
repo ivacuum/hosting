@@ -14,7 +14,7 @@ class GalleryUploaderTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testStore()
+    public function testStore(): void
     {
         \Storage::fake('gallery');
         \Storage::fake(FileUploadConfiguration::disk());

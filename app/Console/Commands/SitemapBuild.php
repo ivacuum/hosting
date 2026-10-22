@@ -223,7 +223,7 @@ class SitemapBuild extends Command
         \Storage::disk('temp')->put('sitemap.xml', $stream);
     }
 
-    private function appendCitiesAndCountries()
+    private function appendCitiesAndCountries(): void
     {
         Country::allWithCitiesAndTrips(1)
             ->filter(static fn (Country $country) => $country->trips_published_count)
@@ -240,7 +240,7 @@ class SitemapBuild extends Command
             });
     }
 
-    private function appendCouponPages()
+    private function appendCouponPages(): void
     {
         $this->page([
             'promocodes-coupons/airbnb',
@@ -256,7 +256,7 @@ class SitemapBuild extends Command
         ], ['0.5', '0.6', '0.7']);
     }
 
-    private function appendDcppPages()
+    private function appendDcppPages(): void
     {
         $this->page([
             'dc',
@@ -289,7 +289,7 @@ class SitemapBuild extends Command
         ], ['0.5', '0.6', '0.7']);
     }
 
-    private function appendGigs()
+    private function appendGigs(): void
     {
         foreach ($this->gigModels() as $model) {
             $this->page("life/{$model->slug}", '0.7');
@@ -297,7 +297,7 @@ class SitemapBuild extends Command
         }
     }
 
-    private function appendJapanesePages()
+    private function appendJapanesePages(): void
     {
         $this->page([
             'japanese',
@@ -309,7 +309,7 @@ class SitemapBuild extends Command
         ], ['0.5', '0.6', '0.7']);
     }
 
-    private function appendKoreanPages()
+    private function appendKoreanPages(): void
     {
         $this->page([
             'korean',
@@ -347,7 +347,7 @@ class SitemapBuild extends Command
         ], ['0.4']);
     }
 
-    private function appendLifePages()
+    private function appendLifePages(): void
     {
         $this->page([
             'life',
@@ -371,7 +371,7 @@ class SitemapBuild extends Command
         ], ['0.5', '0.6', '0.7']);
     }
 
-    private function appendNews()
+    private function appendNews(): void
     {
         $this->page('news', '0.2');
 
@@ -382,7 +382,7 @@ class SitemapBuild extends Command
         }
     }
 
-    private function appendTrips()
+    private function appendTrips(): void
     {
         foreach ($this->tripModels() as $model) {
             $this->page("life/{$model->slug}", '0.7');

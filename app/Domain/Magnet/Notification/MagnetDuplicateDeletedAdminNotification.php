@@ -15,7 +15,7 @@ class MagnetDuplicateDeletedAdminNotification extends Notification implements Sh
 
     public function __construct(public Magnet $magnet) {}
 
-    public function toTelegram()
+    public function toTelegram(): string
     {
         $escape = app(EscapeMarkdownCharactersAction::class);
 
@@ -26,7 +26,7 @@ class MagnetDuplicateDeletedAdminNotification extends Notification implements Sh
         return "🧲️ Раздача закрыта как повторная и удалена\n\n{$title}\n{$externalUrl}\n\n{$url}";
     }
 
-    public function via()
+    public function via(): array
     {
         return [TelegramAdminChannel::class];
     }

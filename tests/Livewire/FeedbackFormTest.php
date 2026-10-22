@@ -13,7 +13,7 @@ class FeedbackFormTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testAdminNotified()
+    public function testAdminNotified(): void
     {
         \Notification::fake();
 
@@ -28,7 +28,7 @@ class FeedbackFormTest extends TestCase
         \Notification::assertSentTimes(IssueReportedNotification::class, 1);
     }
 
-    public function testAsGuest()
+    public function testAsGuest(): void
     {
         \Event::fake([
             \App\Events\Stats\IssueAdded::class,
@@ -57,7 +57,7 @@ class FeedbackFormTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\UserRegisteredAutoWhenIssueAdded::class);
     }
 
-    public function testAsUserWithLogin()
+    public function testAsUserWithLogin(): void
     {
         $user = UserFactory::new()->withLogin('post-issue')->create();
 
@@ -80,7 +80,7 @@ class FeedbackFormTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\IssueAdded::class);
     }
 
-    public function testHoneypot()
+    public function testHoneypot(): void
     {
         \Event::fake(\App\Events\Stats\SpammerTrappedLivewire::class);
         \Notification::fake();
@@ -102,7 +102,7 @@ class FeedbackFormTest extends TestCase
         \Notification::assertNothingSent();
     }
 
-    public function testPageUrlWithLocalePrefix()
+    public function testPageUrlWithLocalePrefix(): void
     {
         \Notification::fake();
 
@@ -121,7 +121,7 @@ class FeedbackFormTest extends TestCase
         $this->assertSame('/en/contact', $issue->page);
     }
 
-    public function testRejectsGibberishWithoutSpaces()
+    public function testRejectsGibberishWithoutSpaces(): void
     {
         \Livewire::test(FeedbackForm::class)
             ->set('name', 'name')
@@ -132,7 +132,7 @@ class FeedbackFormTest extends TestCase
             ->assertHasErrors(['text']);
     }
 
-    public function testWithNameHidden()
+    public function testWithNameHidden(): void
     {
         \Notification::fake();
 
@@ -150,7 +150,7 @@ class FeedbackFormTest extends TestCase
         $this->assertSame('name hidden', $issue->text);
     }
 
-    public function testWithTitleHidden()
+    public function testWithTitleHidden(): void
     {
         \Notification::fake();
 
@@ -168,7 +168,7 @@ class FeedbackFormTest extends TestCase
         $this->assertSame('title hidden', $issue->text);
     }
 
-    public function testWithTitlePrefilled()
+    public function testWithTitlePrefilled(): void
     {
         \Notification::fake();
 

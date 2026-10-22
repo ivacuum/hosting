@@ -10,7 +10,7 @@ use Illuminate\Console\Attributes\Signature;
 #[Description('Request subject from wanikani.com')]
 class WanikaniSubject extends Command
 {
-    public function handle(WanikaniApi $wanikani)
+    public function handle(WanikaniApi $wanikani): void
     {
         $response = $wanikani->subject($this->argument('id'));
 

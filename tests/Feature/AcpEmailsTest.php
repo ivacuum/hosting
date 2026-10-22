@@ -11,7 +11,7 @@ class AcpEmailsTest extends TestCase
     use BeAdmin;
     use DatabaseTransactions;
 
-    public function testIndex()
+    public function testIndex(): void
     {
         EmailFactory::new()->withTripPublished()->create();
 
@@ -19,7 +19,7 @@ class AcpEmailsTest extends TestCase
             ->assertOk();
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $email = EmailFactory::new()->withTripPublished()->create();
 

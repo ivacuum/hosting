@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 
 class GameSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         GameFactory::new()
             ->withSteamId(646570)

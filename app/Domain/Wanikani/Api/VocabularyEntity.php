@@ -18,7 +18,7 @@ readonly class VocabularyEntity
         public Collection $partsOfSpeech,
     ) {}
 
-    public static function fromArray(int $id, array $json, bool $isKanaVocabulary = false)
+    public static function fromArray(int $id, array $json, bool $isKanaVocabulary = false): self
     {
         $primaryReading = $isKanaVocabulary
             ? $json['characters']
@@ -26,13 +26,13 @@ readonly class VocabularyEntity
 
         $audios = collect($json['pronunciation_audios']);
 
-        $maleAudioUrl = $audios->first(static function ($audio) use ($primaryReading) {
+        $maleAudioUrl = $audios->first(static function (array $audio) use ($primaryReading) {
             return $audio['metadata']['voice_actor_id'] === 2
                 && $audio['content_type'] === 'audio/mpeg'
                 && $audio['metadata']['pronunciation'] === $primaryReading;
         })['url'] ?? '';
 
-        $femaleAudioUrl = $audios->first(static function ($audio) use ($primaryReading) {
+        $femaleAudioUrl = $audios->first(static function (array $audio) use ($primaryReading) {
             return $audio['metadata']['voice_actor_id'] === 1
                 && $audio['content_type'] === 'audio/mpeg'
                 && $audio['metadata']['pronunciation'] === $primaryReading;

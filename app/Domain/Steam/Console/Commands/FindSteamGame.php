@@ -17,7 +17,7 @@ use function Laravel\Prompts\search;
 #[Description('Get steam game data for seeder')]
 class FindSteamGame extends Command implements Isolatable
 {
-    public function handle(SteamApi $steam)
+    public function handle(SteamApi $steam): int
     {
         $steamId = search(
             label: 'Game title',

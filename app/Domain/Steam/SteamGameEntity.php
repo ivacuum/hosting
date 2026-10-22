@@ -14,7 +14,7 @@ readonly class SteamGameEntity
         public array $genres,
     ) {}
 
-    public static function fromArray(array $data)
+    public static function fromArray(array $data): self
     {
         return new self(
             $data['steam_appid'],

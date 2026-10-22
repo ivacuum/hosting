@@ -9,7 +9,7 @@ class WellKnownChangePasswordTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testRedirect()
+    public function testRedirect(): void
     {
         $this->get('.well-known/change-password')
             ->assertRedirect('my/password');

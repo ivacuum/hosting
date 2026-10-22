@@ -24,7 +24,7 @@ class IssueCommentedNotification extends Notification implements ShouldQueue
             ->replyTo(Config::SupportEmail->get());
     }
 
-    public function via()
+    public function via(): array
     {
         return ['mail'];
     }

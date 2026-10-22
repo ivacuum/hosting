@@ -3,13 +3,14 @@
 namespace App\Action;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class RedirectAfterUpdateAction
 {
     public function __construct(private Request $request, private ParseRouteDataAction $parseRouteData) {}
 
-    public function execute(Model $model, string $method = 'index')
+    public function execute(Model $model, string $method = 'index'): RedirectResponse
     {
         $goto = $this->request->input('goto', '');
         $controller = $this->parseRouteData->execute()->controller;

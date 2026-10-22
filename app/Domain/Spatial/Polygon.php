@@ -22,7 +22,7 @@ class Polygon extends Geometry implements \Stringable
     }
 
     #[\Override]
-    public static function fromString(string $wktArgument, int $srid = 4326)
+    public static function fromString(string $wktArgument, int $srid = 4326): static
     {
         $str = preg_split('/\)\s*,\s*\(/', substr(trim($wktArgument), 1, -1));
         $lineStrings = array_map(static fn ($geometry) => LineString::fromString($geometry), $str);

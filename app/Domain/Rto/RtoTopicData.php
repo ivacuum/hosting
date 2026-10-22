@@ -38,7 +38,7 @@ readonly class RtoTopicData
         );
     }
 
-    public function toJson()
+    public function toJson(): array
     {
         return [
             'size' => $this->size,

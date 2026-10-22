@@ -14,7 +14,7 @@ class MetricsAggregatorTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testExport()
+    public function testExport(): void
     {
         $metric1 = class_basename(HiraganaSelected::class);
         $metric2 = class_basename(MySettingsChanged::class);
@@ -52,7 +52,7 @@ class MetricsAggregatorTest extends TestCase
         ]);
     }
 
-    public function testNotExist()
+    public function testNotExist(): void
     {
         $event = 'NotExist';
 
@@ -62,7 +62,7 @@ class MetricsAggregatorTest extends TestCase
         $this->assertEmpty($aggregator->data());
     }
 
-    public function testPush()
+    public function testPush(): void
     {
         $event1 = class_basename(TripViewed::class);
         $event2 = class_basename(UserAvatarUploaded::class);

@@ -12,7 +12,7 @@ class FetchTorrentBodyJobTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testOk()
+    public function testOk(): void
     {
         $body = 'new body';
         $announcer = 'announcer';

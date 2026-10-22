@@ -13,7 +13,7 @@ class TripsTemplatesTest extends TestCase
     use BeAdmin;
     use DatabaseTransactions;
 
-    public function testListAndFilters()
+    public function testListAndFilters(): void
     {
         $this->mockTemplates();
 
@@ -22,7 +22,7 @@ class TripsTemplatesTest extends TestCase
             ->assertViewHas('templates', fn (Collection $templates) => $templates->pluck('name')->all() === ['draft']);
     }
 
-    public function testListCanFilterTranslatedTemplates()
+    public function testListCanFilterTranslatedTemplates(): void
     {
         $this->mockTemplates();
 
@@ -31,7 +31,7 @@ class TripsTemplatesTest extends TestCase
             ->assertViewHas('templates', fn (Collection $templates) => $templates->pluck('name')->all() === ['finished']);
     }
 
-    public function testListCanFilterUntranslatedTemplates()
+    public function testListCanFilterUntranslatedTemplates(): void
     {
         $this->mockTemplates();
 
@@ -40,7 +40,7 @@ class TripsTemplatesTest extends TestCase
             ->assertViewHas('templates', fn (Collection $templates) => $templates->pluck('name')->all() === ['draft']);
     }
 
-    public function testListCanShowAllTemplates()
+    public function testListCanShowAllTemplates(): void
     {
         $this->mockTemplates();
 
@@ -52,7 +52,7 @@ class TripsTemplatesTest extends TestCase
             ]);
     }
 
-    public function testListCanShowFinishedTemplates()
+    public function testListCanShowFinishedTemplates(): void
     {
         $this->mockTemplates();
 
@@ -62,7 +62,7 @@ class TripsTemplatesTest extends TestCase
     }
 
     /** @slowThreshold 10000 */
-    public function testTripsTemplates()
+    public function testTripsTemplates(): void
     {
         TripFactory::new()->create();
 

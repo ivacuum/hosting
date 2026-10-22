@@ -7,6 +7,7 @@ use App\Domain\Korean\Action\GetJamoConsonantsAction;
 use App\Domain\Korean\Action\GetJamoVowelsAction;
 use App\Domain\Korean\HangulWhatToTrain;
 use App\Domain\Locale;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -23,7 +24,7 @@ class HangulTrainer extends Component
     public string $exclude = '';
     public HangulWhatToTrain $whatToTrain = HangulWhatToTrain::AllTogether;
 
-    public function check()
+    public function check(): void
     {
         $answer = Str::trim(mb_strtolower($this->answer));
 
@@ -57,19 +58,19 @@ class HangulTrainer extends Component
         event(new \App\Events\Stats\HangulAnswerRevealed);
     }
 
-    public function mount()
+    public function mount(): void
     {
         $this->pickRandomJamo();
 
         event(new \App\Events\Stats\HangulMounted);
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.hangul-trainer');
     }
 
-    public function updatedItalic()
+    public function updatedItalic(): void
     {
         match ($this->italic) {
             true => event(new \App\Events\Stats\HangulFontItalic),
@@ -77,7 +78,7 @@ class HangulTrainer extends Component
         };
     }
 
-    public function updatedShiftPressed()
+    public function updatedShiftPressed(): void
     {
         match ($this->shiftPressed) {
             true => event(new \App\Events\Stats\HangulShiftPressed),
@@ -85,7 +86,7 @@ class HangulTrainer extends Component
         };
     }
 
-    public function updatedWhatToTrain()
+    public function updatedWhatToTrain(): void
     {
         match ($this->whatToTrain) {
             HangulWhatToTrain::AllTogether => event(new \App\Events\Stats\HangulTrainAllTogether),

@@ -13,7 +13,7 @@ class CommentRateLimiterTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testFlooded()
+    public function testFlooded(): void
     {
         Event::fake(RateLimitExceeded::class);
 
@@ -29,7 +29,7 @@ class CommentRateLimiterTest extends TestCase
         Event::assertDispatched(RateLimitExceeded::class);
     }
 
-    public function testFloodedDisabled()
+    public function testFloodedDisabled(): void
     {
         Event::fake(RateLimitExceeded::class);
 
@@ -45,7 +45,7 @@ class CommentRateLimiterTest extends TestCase
         Event::assertNotDispatched(RateLimitExceeded::class);
     }
 
-    public function testIpExceeded()
+    public function testIpExceeded(): void
     {
         Event::fake(RateLimitExceeded::class);
 
@@ -62,7 +62,7 @@ class CommentRateLimiterTest extends TestCase
         Event::assertDispatched(RateLimitExceeded::class);
     }
 
-    public function testUserExceeded()
+    public function testUserExceeded(): void
     {
         Event::fake(RateLimitExceeded::class);
 

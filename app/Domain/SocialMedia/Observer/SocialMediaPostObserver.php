@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 class SocialMediaPostObserver
 {
-    public function saving(SocialMediaPost $post)
+    public function saving(SocialMediaPost $post): void
     {
         $this->ensureStatusTransitionIsCorrect($post);
         $this->ensureDatesAreSet($post);

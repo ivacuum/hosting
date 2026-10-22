@@ -12,7 +12,7 @@ class AcpChatMessagesTest extends TestCase
     use BeAdmin;
     use DatabaseTransactions;
 
-    public function testEdit()
+    public function testEdit(): void
     {
         $chatMessage = ChatMessageFactory::new()->create();
 
@@ -21,7 +21,7 @@ class AcpChatMessagesTest extends TestCase
             ->assertSeeLivewire(ChatMessageForm::class);
     }
 
-    public function testIndex()
+    public function testIndex(): void
     {
         ChatMessageFactory::new()->create();
 
@@ -29,7 +29,7 @@ class AcpChatMessagesTest extends TestCase
             ->assertOk();
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $chatMessage = ChatMessageFactory::new()->create();
 
@@ -37,7 +37,7 @@ class AcpChatMessagesTest extends TestCase
             ->assertOk();
     }
 
-    public function testUpdate()
+    public function testUpdate(): void
     {
         $chatMessage = ChatMessageFactory::new()->create();
 

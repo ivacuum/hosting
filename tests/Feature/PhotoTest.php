@@ -14,7 +14,7 @@ class PhotoTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testCities()
+    public function testCities(): void
     {
         $photo = PhotoFactory::new()->withTrip()->create();
 
@@ -23,7 +23,7 @@ class PhotoTest extends TestCase
             ->assertSee($photo->rel->city->title);
     }
 
-    public function testCity()
+    public function testCity(): void
     {
         $photo = PhotoFactory::new()->withTrip()->create();
 
@@ -32,7 +32,7 @@ class PhotoTest extends TestCase
             ->assertSee($photo->rel->city->title);
     }
 
-    public function testCityWithoutTrips()
+    public function testCityWithoutTrips(): void
     {
         $city = CityFactory::new()->create();
 
@@ -40,7 +40,7 @@ class PhotoTest extends TestCase
             ->assertNotFound();
     }
 
-    public function testCountries()
+    public function testCountries(): void
     {
         $photo = PhotoFactory::new()->withTrip()->create();
 
@@ -49,7 +49,7 @@ class PhotoTest extends TestCase
             ->assertSee($photo->rel->city->country->title);
     }
 
-    public function testCountry()
+    public function testCountry(): void
     {
         $photo = PhotoFactory::new()->withTrip()->create();
 
@@ -58,7 +58,7 @@ class PhotoTest extends TestCase
             ->assertSee($photo->rel->city->country->title);
     }
 
-    public function testCountryWithoutTrips()
+    public function testCountryWithoutTrips(): void
     {
         $city = CityFactory::new()->create();
 
@@ -66,13 +66,13 @@ class PhotoTest extends TestCase
             ->assertNotFound();
     }
 
-    public function testFaq()
+    public function testFaq(): void
     {
         $this->get('photos/faq')
             ->assertOk();
     }
 
-    public function testIndex()
+    public function testIndex(): void
     {
         PhotoFactory::new()->withTrip()->create();
 
@@ -80,7 +80,7 @@ class PhotoTest extends TestCase
             ->assertOk();
     }
 
-    public function testMap()
+    public function testMap(): void
     {
         $this->get('photos/map')
             ->assertOk();
@@ -100,7 +100,7 @@ class PhotoTest extends TestCase
             ->assertJsonPath('features.0.geometry.coordinates', ['0', '15']);
     }
 
-    public function testMapPointOfOnePhoto()
+    public function testMapPointOfOnePhoto(): void
     {
         $photo = PhotoFactory::new()
             ->withPoint(5, 15)
@@ -188,7 +188,7 @@ class PhotoTest extends TestCase
             ->assertSee('src="https://life.ivacuum.org/gigs/test/concert.jpg"', false);
     }
 
-    public function testTag()
+    public function testTag(): void
     {
         $photo = PhotoFactory::new()
             ->withTag()
@@ -200,7 +200,7 @@ class PhotoTest extends TestCase
             ->assertSee($photo->tags->first()->title);
     }
 
-    public function testTags()
+    public function testTags(): void
     {
         $publishedTag = TagFactory::new()
             ->withTitle('phpunit опубликованный тэг', 'phpunit published tag')
@@ -219,7 +219,7 @@ class PhotoTest extends TestCase
             ->assertDontSee($hiddenTag->title);
     }
 
-    public function testTrip()
+    public function testTrip(): void
     {
         $photo = PhotoFactory::new()->withTrip()->create();
 
@@ -228,7 +228,7 @@ class PhotoTest extends TestCase
             ->assertSee($photo->rel->title);
     }
 
-    public function testTrips()
+    public function testTrips(): void
     {
         $trip = TripFactory::new()->metaImage()->create();
 

@@ -24,7 +24,7 @@ class MagnetTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testCategoryFilter()
+    public function testCategoryFilter(): void
     {
         $category = MagnetCategory::ForeignCinema;
         $magnet = MagnetFactory::new()->withCategory($category)->create();
@@ -34,7 +34,7 @@ class MagnetTest extends TestCase
             ->assertSee($magnet->title);
     }
 
-    public function testComments()
+    public function testComments(): void
     {
         $comment = CommentFactory::new()->withMagnet()->create();
 
@@ -43,7 +43,7 @@ class MagnetTest extends TestCase
             ->assertSee($comment->html);
     }
 
-    public function testCreate()
+    public function testCreate(): void
     {
         $user = UserFactory::new()->withId(1)->make();
 
@@ -53,13 +53,13 @@ class MagnetTest extends TestCase
             ->assertSeeLivewire(MagnetAddForm::class);
     }
 
-    public function testFaq()
+    public function testFaq(): void
     {
         $this->get('magnets/faq')
             ->assertOk();
     }
 
-    public function testIndexAsGuest()
+    public function testIndexAsGuest(): void
     {
         $magnet = MagnetFactory::new()->create();
 
@@ -68,14 +68,14 @@ class MagnetTest extends TestCase
             ->assertSee($magnet->title);
     }
 
-    public function testIndexAsUser()
+    public function testIndexAsUser(): void
     {
         $this->be(UserFactory::new()->withId(1)->make())
             ->get('magnets')
             ->assertOk();
     }
 
-    public function testLivewireState()
+    public function testLivewireState(): void
     {
         $stub = MagnetFactory::new()->make();
 
@@ -89,7 +89,7 @@ class MagnetTest extends TestCase
             ->set('categoryId', $stub->category_id->value);
     }
 
-    public function testMagnetClick()
+    public function testMagnetClick(): void
     {
         $magnet = MagnetFactory::new()->create();
         $clicks = $magnet->clicks;
@@ -102,7 +102,7 @@ class MagnetTest extends TestCase
         $this->assertSame($clicks + 1, $magnet->clicks);
     }
 
-    public function testMy()
+    public function testMy(): void
     {
         $magnet = MagnetFactory::new()->create();
 
@@ -112,7 +112,7 @@ class MagnetTest extends TestCase
             ->assertSee($magnet->title);
     }
 
-    public function testPromo()
+    public function testPromo(): void
     {
         \Event::fake(\App\Events\Stats\TorrentPromoViewed::class);
 
@@ -123,7 +123,7 @@ class MagnetTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\TorrentPromoViewed::class);
     }
 
-    public function testRequestRelease()
+    public function testRequestRelease(): void
     {
         \Queue::fake();
 
@@ -136,7 +136,7 @@ class MagnetTest extends TestCase
         \Queue::assertPushed(SendTelegramMessageJob::class);
     }
 
-    public function testSearch()
+    public function testSearch(): void
     {
         $magnet = MagnetFactory::new()
             ->withTitle('title 20172017 something else')
@@ -147,7 +147,7 @@ class MagnetTest extends TestCase
             ->assertSee($magnet->title);
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $magnet = MagnetFactory::new()->create();
 
@@ -156,7 +156,7 @@ class MagnetTest extends TestCase
             ->assertSee($magnet->title);
     }
 
-    public function testShowDeleted()
+    public function testShowDeleted(): void
     {
         $magnet = MagnetFactory::new()->deleted()->create();
 
@@ -164,7 +164,7 @@ class MagnetTest extends TestCase
             ->assertNotFound();
     }
 
-    public function testShowHidden()
+    public function testShowHidden(): void
     {
         $magnet = MagnetFactory::new()->hidden()->create();
 
@@ -172,7 +172,7 @@ class MagnetTest extends TestCase
             ->assertNotFound();
     }
 
-    public function testShowWithRelated()
+    public function testShowWithRelated(): void
     {
         $magnet = MagnetFactory::new()->create();
         $related = MagnetFactory::new()->create();
@@ -187,7 +187,7 @@ class MagnetTest extends TestCase
             ->assertSee($related->title);
     }
 
-    public function testStoreAsAnonymous()
+    public function testStoreAsAnonymous(): void
     {
         \Notification::fake();
 
@@ -219,7 +219,7 @@ class MagnetTest extends TestCase
         \Notification::assertSentTimes(AnonymousMagnetNotification::class, 1);
     }
 
-    public function testStoreAsUser()
+    public function testStoreAsUser(): void
     {
         $stub = MagnetFactory::new()->make();
         $user = UserFactory::new()->create();
@@ -246,7 +246,7 @@ class MagnetTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\TorrentAdded::class);
     }
 
-    public function testStoreDuplicate()
+    public function testStoreDuplicate(): void
     {
         $magnet = MagnetFactory::new()->create();
         $user = UserFactory::new()->create();
@@ -266,7 +266,7 @@ class MagnetTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\TorrentDuplicateFound::class);
     }
 
-    public function testStoreWithCurlError()
+    public function testStoreWithCurlError(): void
     {
         $stub = MagnetFactory::new()->make();
         $user = UserFactory::new()->create();
@@ -304,7 +304,7 @@ class MagnetTest extends TestCase
         Exceptions::assertReported(ConnectionException::class);
     }
 
-    public function testStoreWithRaceCondition()
+    public function testStoreWithRaceCondition(): void
     {
         $stub = MagnetFactory::new()->make();
 
@@ -324,7 +324,7 @@ class MagnetTest extends TestCase
             ->assertHasErrors(['input' => 'Данная раздача уже присутствует на сайте. Вероятно, кто-то добавил ее быстрее вас.']);
     }
 
-    public function testStoreWithRtoTemporarilyUnavailable()
+    public function testStoreWithRtoTemporarilyUnavailable(): void
     {
         \Http::fake([
             'api.rutracker.cc/v1/get_tor_topic_data?by=topic_id&val=1234567890' => \Http::response([
@@ -340,7 +340,7 @@ class MagnetTest extends TestCase
             ->assertHasErrors(['input' => 'Рутрекер временно недоступен. Пожалуйста, повторите попытку позже.']);
     }
 
-    public function testStoreUnescapedTitle()
+    public function testStoreUnescapedTitle(): void
     {
         $stub = MagnetFactory::new()->withTitle('Chlo&#233; Ragnar&#246;k &quot;M&amp;M\'s&quot;')->make();
         $user = UserFactory::new()->create();
@@ -366,7 +366,7 @@ class MagnetTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\TorrentAdded::class);
     }
 
-    private function fakeHttpRequests(Magnet $stub)
+    private function fakeHttpRequests(Magnet $stub): void
     {
         \Http::fake([
             "api.rutracker.cc/v1/get_tor_topic_data?by=topic_id&val={$stub->rto_id}" => \Http::response([

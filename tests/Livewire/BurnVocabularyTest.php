@@ -13,7 +13,7 @@ class BurnVocabularyTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testBurn()
+    public function testBurn(): void
     {
         $user = UserFactory::new()->create();
         $vocab = VocabularyFactory::new()->create();
@@ -25,7 +25,7 @@ class BurnVocabularyTest extends TestCase
         $this->assertSame($user->id, $vocab->burnable->user_id);
     }
 
-    public function testResurrect()
+    public function testResurrect(): void
     {
         $user = UserFactory::new()->create();
         $vocab = VocabularyFactory::new()->create();

@@ -10,7 +10,7 @@ class FileTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testDownload()
+    public function testDownload(): void
     {
         $file = FileFactory::new()->create();
         $downloads = $file->downloads;
@@ -23,7 +23,7 @@ class FileTest extends TestCase
         $this->assertEquals($downloads + 1, $file->downloads);
     }
 
-    public function testIndex()
+    public function testIndex(): void
     {
         $this->get('files')
             ->assertOk();

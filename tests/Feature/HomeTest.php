@@ -10,26 +10,26 @@ class HomeTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testAbout()
+    public function testAbout(): void
     {
         $this->get('about')
             ->assertOk();
     }
 
-    public function testCv()
+    public function testCv(): void
     {
         $this->get('cv')
             ->assertOk()
             ->assertHasCustomTitle();
     }
 
-    public function testHead()
+    public function testHead(): void
     {
         $this->head('/')
             ->assertOk();
     }
 
-    public function testIndex()
+    public function testIndex(): void
     {
         $this->get('/')
             ->assertOk()
@@ -37,7 +37,7 @@ class HomeTest extends TestCase
             ->assertHasCustomTitle();
     }
 
-    public function testIndexWithTrips()
+    public function testIndexWithTrips(): void
     {
         TripFactory::new()->metaImage()->create();
 
@@ -45,7 +45,7 @@ class HomeTest extends TestCase
             ->assertOk();
     }
 
-    public function testRu()
+    public function testRu(): void
     {
         $this->get('ru')
             ->assertNotFound();

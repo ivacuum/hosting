@@ -107,7 +107,7 @@ class CitySeeder extends Seeder
         ],
     ];
 
-    public function run()
+    public function run(): void
     {
         foreach (self::CITIES_BY_COUNTRY as $countrySlug => $cities) {
             $country = Country::query()->firstWhere('slug', $countrySlug);

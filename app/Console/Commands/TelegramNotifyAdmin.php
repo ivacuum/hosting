@@ -10,7 +10,7 @@ use Illuminate\Console\Attributes\Signature;
 #[Description('Notify admin via telegram')]
 class TelegramNotifyAdmin extends Command
 {
-    public function handle(NotifyAdminViaTelegramAction $notifyAdminViaTelegram)
+    public function handle(NotifyAdminViaTelegramAction $notifyAdminViaTelegram): void
     {
         $notifyAdminViaTelegram->execute($this->argument('text'));
     }

@@ -2,6 +2,8 @@
 
 namespace App\Utilities\LivewireForm;
 
+use Illuminate\Contracts\View\View;
+
 class Textarea extends Base
 {
     use HasPlaceholder;
@@ -14,7 +16,7 @@ class Textarea extends Base
         $this->name = $name;
     }
 
-    public function html()
+    public function html(): View
     {
         $tpl = $this->wide
             ? 'acp.tpl.livewire.input-textarea-wide'

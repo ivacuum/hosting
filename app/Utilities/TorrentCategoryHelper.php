@@ -3,6 +3,7 @@
 namespace App\Utilities;
 
 use App\Domain\Magnet\MagnetCategory;
+use Illuminate\Support\Collection;
 
 class TorrentCategoryHelper
 {
@@ -35,7 +36,7 @@ class TorrentCategoryHelper
         ksort($this->categories);
     }
 
-    public function canPost($id)
+    public function canPost($id): bool
     {
         if (empty($this->tree)) {
             $this->initTree();
@@ -44,7 +45,7 @@ class TorrentCategoryHelper
         return empty($this->tree[$id]['children']);
     }
 
-    public function canPostIds()
+    public function canPostIds(): array
     {
         return array_keys(array_filter($this->categories, $this->canPost(...), ARRAY_FILTER_USE_KEY));
     }
@@ -63,7 +64,7 @@ class TorrentCategoryHelper
         return $this->categories[$id] ?? null;
     }
 
-    public function selfAndDescendantsIds($id)
+    public function selfAndDescendantsIds($id): array
     {
         $children = $this->children($id);
 
@@ -74,13 +75,13 @@ class TorrentCategoryHelper
         return array_keys($children);
     }
 
-    public function tree($parentId = 0)
+    public function tree($parentId = 0): Collection
     {
         if (empty($this->tree)) {
             $this->initTree();
         }
 
-        return collect(array_filter($this->tree, static fn ($value) => $value['parent'] === $parentId));
+        return collect(array_filter($this->tree, static fn (array $value) => $value['parent'] === $parentId));
     }
 
     protected function initTree()

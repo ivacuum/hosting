@@ -9,6 +9,7 @@ use App\Domain\SocialMedia\Models\SocialMediaPost;
 use App\Domain\SocialMedia\SocialMediaPostStatus;
 use App\Livewire\WithGoto;
 use Carbon\CarbonImmutable;
+use Illuminate\Contracts\View\View;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Authorize;
 use Livewire\Attributes\Locked;
@@ -29,7 +30,7 @@ class SocialMediaPostForm extends Component
     public CarbonImmutable|string|null $publishedAt = null;
     public SocialMediaPostStatus|null $status = SocialMediaPostStatus::Queued;
 
-    public function mount(CalculateNextPostDateAction $calculateNextPostDate)
+    public function mount(CalculateNextPostDateAction $calculateNextPostDate): void
     {
         if ($this->id) {
             $post = SocialMediaPost::query()->findOrFail($this->id);
@@ -62,7 +63,7 @@ class SocialMediaPostForm extends Component
         $this->caption = "{$this->photo->rel->city->hashtags} {$this->photo->rel->city->country->hashtags}";
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.acp.social-media-post-form');
     }
@@ -84,7 +85,7 @@ class SocialMediaPostForm extends Component
         return redirect()->to(to('acp/social-media-posts/create'));
     }
 
-    protected function rules()
+    protected function rules(): array
     {
         return [
             'caption' => [
@@ -103,7 +104,7 @@ class SocialMediaPostForm extends Component
         ];
     }
 
-    private function store()
+    private function store(): void
     {
         $post = $this->id
             ? SocialMediaPost::query()->findOrFail($this->id)

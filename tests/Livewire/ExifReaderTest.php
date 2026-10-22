@@ -15,7 +15,7 @@ class ExifReaderTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testBinaryDataInUndefinedTagIsStriped()
+    public function testBinaryDataInUndefinedTagIsStriped(): void
     {
         \Queue::fake([DeleteTempLivewireFileJob::class]);
         \Storage::fake(FileUploadConfiguration::disk());
@@ -34,7 +34,7 @@ class ExifReaderTest extends TestCase
             ->assertSet('data', []);
     }
 
-    public function testDeletedImageHandled()
+    public function testDeletedImageHandled(): void
     {
         \Queue::fake([DeleteTempLivewireFileJob::class]);
         \Storage::fake(FileUploadConfiguration::disk());
@@ -90,7 +90,7 @@ class ExifReaderTest extends TestCase
             ->assertSet('data', $data);
     }
 
-    public function testImageDeleteJobQueued()
+    public function testImageDeleteJobQueued(): void
     {
         \Queue::fake();
         \Storage::fake(FileUploadConfiguration::disk());
@@ -105,7 +105,7 @@ class ExifReaderTest extends TestCase
         \Queue::assertPushed(DeleteTempLivewireFileJob::class, 1);
     }
 
-    public function testInvalidDateTime()
+    public function testInvalidDateTime(): void
     {
         \Queue::fake([DeleteTempLivewireFileJob::class]);
         \Storage::fake(FileUploadConfiguration::disk());

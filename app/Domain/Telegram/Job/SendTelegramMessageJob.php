@@ -22,7 +22,7 @@ class SendTelegramMessageJob extends AbstractJob
         private bool $disableWebPagePreview,
     ) {}
 
-    public function handle(TelegramClient $telegram)
+    public function handle(TelegramClient $telegram): void
     {
         $telegram = $telegram
             ->chat($this->chatId)

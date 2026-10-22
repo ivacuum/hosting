@@ -15,7 +15,7 @@ class KanjiListTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testLevel()
+    public function testLevel(): void
     {
         KanjiFactory::new()->withLevel(99)->create();
 
@@ -25,7 +25,7 @@ class KanjiListTest extends TestCase
             ->assertSee($kanji->character);
     }
 
-    public function testShowLabels()
+    public function testShowLabels(): void
     {
         KanjiFactory::new()->withLevel(99)->create();
 
@@ -38,7 +38,7 @@ class KanjiListTest extends TestCase
             ->assertSee($kanji->character);
     }
 
-    public function testShuffle()
+    public function testShuffle(): void
     {
         KanjiFactory::new()->withLevel(99)->create();
 

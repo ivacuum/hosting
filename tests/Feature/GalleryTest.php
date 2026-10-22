@@ -11,7 +11,7 @@ class GalleryTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testIndex()
+    public function testIndex(): void
     {
         $image = ImageFactory::new()->create();
 
@@ -20,7 +20,7 @@ class GalleryTest extends TestCase
             ->assertOk();
     }
 
-    public function testPreview()
+    public function testPreview(): void
     {
         $image = ImageFactory::new()->create();
 
@@ -28,14 +28,14 @@ class GalleryTest extends TestCase
             ->assertOk();
     }
 
-    public function testUploadPage()
+    public function testUploadPage(): void
     {
         $this->be(UserFactory::new()->create())
             ->get('gallery/upload')
             ->assertOk();
     }
 
-    public function testView()
+    public function testView(): void
     {
         $image = ImageFactory::new()->create();
 

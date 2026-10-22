@@ -11,7 +11,7 @@ class TripObserver
 {
     public function __construct(private CacheHelper $cache) {}
 
-    public function deleting(Trip $trip)
+    public function deleting(Trip $trip): void
     {
         \DB::transaction(static function () use ($trip) {
             $trip->comments->each->delete();
@@ -40,7 +40,7 @@ class TripObserver
         $this->maintainConsistency($trip);
     }
 
-    public function updated(Trip $trip)
+    public function updated(Trip $trip): void
     {
         $this->updateTripPhotosSlugPrefix($trip);
     }
@@ -74,7 +74,7 @@ class TripObserver
         }
     }
 
-    private function maintainConsistency(Trip $trip)
+    private function maintainConsistency(Trip $trip): void
     {
         if ($trip->date_end->isBefore($trip->date_start)) {
             throw new \InvalidArgumentException('Trip end date must be on or after its start date.');

@@ -10,14 +10,14 @@ class MyPasswordTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testEdit()
+    public function testEdit(): void
     {
         $this->be(UserFactory::new()->create())
             ->get('my/password')
             ->assertOk();
     }
 
-    public function testSetNewPassword()
+    public function testSetNewPassword(): void
     {
         $newPassword = 'top-secret ';
 
@@ -35,7 +35,7 @@ class MyPasswordTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\MyPasswordChanged::class);
     }
 
-    public function testUpdatePassword()
+    public function testUpdatePassword(): void
     {
         $password = 'top-secret';
         $newPassword = 'password ';

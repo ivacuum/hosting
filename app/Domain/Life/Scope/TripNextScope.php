@@ -10,7 +10,7 @@ class TripNextScope
 {
     public function __construct(private Trip $trip) {}
 
-    public function __invoke(Builder $query)
+    public function __invoke(Builder $query): void
     {
         $query->where('user_id', $this->trip->user_id)
             ->where('date_start', '>=', $this->trip->date_start)

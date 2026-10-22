@@ -8,7 +8,7 @@ class JsonFormatter extends Component
 {
     public string $json = '{"hello":"world"}';
 
-    public function formattedJson()
+    public function formattedJson(): string|false
     {
         try {
             return json_encode(json_decode($this->json, flags: \JSON_THROW_ON_ERROR), \JSON_PRETTY_PRINT | \JSON_UNESCAPED_UNICODE);

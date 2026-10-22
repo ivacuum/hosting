@@ -8,7 +8,7 @@ class ResponseToDestroyAction
 {
     public function __construct(private GetModelControllerAction $getModelController) {}
 
-    public function execute(Model $model)
+    public function execute(Model $model): array
     {
         $model->deleteOrFail();
 

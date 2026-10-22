@@ -11,7 +11,7 @@ class UrlHelperTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testSortWithDefaultIdDescending()
+    public function testSortWithDefaultIdDescending(): void
     {
         $urlHelper = app(UrlHelper::class);
         $urlHelper->setSort(Sort::desc('id'));
@@ -22,7 +22,7 @@ class UrlHelperTest extends TestCase
         $this->assertSame('http://localhost?sk=created_at', $urlHelper->sort('created_at', 'asc'));
     }
 
-    public function testSortWithDefaultTitleAscending()
+    public function testSortWithDefaultTitleAscending(): void
     {
         $urlHelper = app(UrlHelper::class);
         $urlHelper->setSort(Sort::asc('title'));

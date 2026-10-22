@@ -2,6 +2,8 @@
 
 namespace App\Utilities\Form;
 
+use Illuminate\Contracts\View\View;
+
 class Textarea extends Base
 {
     public $name;
@@ -15,7 +17,7 @@ class Textarea extends Base
         $this->name = $name;
     }
 
-    public function html()
+    public function html(): View
     {
         $tpl = $this->wide ? 'input-textarea-wide' : 'input';
 

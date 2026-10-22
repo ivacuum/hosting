@@ -18,7 +18,7 @@ class TelegramSetMyCommands extends Command
         LanguageCode::Russian,
     ];
 
-    public function handle(TelegramClient $telegram)
+    public function handle(TelegramClient $telegram): void
     {
         foreach (self::LANGUAGE_CODES as $languageCode) {
             $response = $telegram

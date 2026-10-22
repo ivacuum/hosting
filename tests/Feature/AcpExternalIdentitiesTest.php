@@ -11,7 +11,7 @@ class AcpExternalIdentitiesTest extends TestCase
     use BeAdmin;
     use DatabaseTransactions;
 
-    public function testIndex()
+    public function testIndex(): void
     {
         ExternalIdentityFactory::new()->create();
 
@@ -19,7 +19,7 @@ class AcpExternalIdentitiesTest extends TestCase
             ->assertOk();
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $externalIdentity = ExternalIdentityFactory::new()->create();
 

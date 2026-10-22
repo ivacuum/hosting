@@ -6,7 +6,7 @@ use App\Domain\Life\Models\Trip;
 
 class LoadTripCityAndCountry
 {
-    public function __invoke(Trip $trip)
+    public function __invoke(Trip $trip): Trip
     {
         $trip->loadCityAndCountry();
 

@@ -13,7 +13,7 @@ class GigTemplatesTest extends TestCase
     use BeAdmin;
     use DatabaseTransactions;
 
-    public function testGigsTemplates()
+    public function testGigsTemplates(): void
     {
         GigFactory::new()->create();
 
@@ -23,7 +23,7 @@ class GigTemplatesTest extends TestCase
         }
     }
 
-    public function testList()
+    public function testList(): void
     {
         $this->mockTemplates();
 
@@ -32,7 +32,7 @@ class GigTemplatesTest extends TestCase
             ->assertViewHas('templates', fn (Collection $templates) => $templates->pluck('name')->all() === ['draft']);
     }
 
-    public function testListCanFilterTranslatedTemplates()
+    public function testListCanFilterTranslatedTemplates(): void
     {
         $this->mockTemplates();
 
@@ -41,7 +41,7 @@ class GigTemplatesTest extends TestCase
             ->assertViewHas('templates', fn (Collection $templates) => $templates->pluck('name')->all() === ['finished']);
     }
 
-    public function testListCanFilterUntranslatedTemplates()
+    public function testListCanFilterUntranslatedTemplates(): void
     {
         $this->mockTemplates();
 
@@ -50,7 +50,7 @@ class GigTemplatesTest extends TestCase
             ->assertViewHas('templates', fn (Collection $templates) => $templates->pluck('name')->all() === ['draft']);
     }
 
-    public function testListCanShowAllTemplates()
+    public function testListCanShowAllTemplates(): void
     {
         $this->mockTemplates();
 
@@ -62,7 +62,7 @@ class GigTemplatesTest extends TestCase
             ]);
     }
 
-    public function testListCanShowFinishedTemplates()
+    public function testListCanShowFinishedTemplates(): void
     {
         $this->mockTemplates();
 

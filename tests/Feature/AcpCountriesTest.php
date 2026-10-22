@@ -12,14 +12,14 @@ class AcpCountriesTest extends TestCase
     use BeAdmin;
     use DatabaseTransactions;
 
-    public function testCreate()
+    public function testCreate(): void
     {
         $this->get('acp/countries/create')
             ->assertOk()
             ->assertSeeLivewire(CountryForm::class);
     }
 
-    public function testEdit()
+    public function testEdit(): void
     {
         $country = CountryFactory::new()->create();
 
@@ -29,7 +29,7 @@ class AcpCountriesTest extends TestCase
             ->assertSeeLivewire(CountryForm::class);
     }
 
-    public function testIndex()
+    public function testIndex(): void
     {
         CountryFactory::new()->create();
 
@@ -37,7 +37,7 @@ class AcpCountriesTest extends TestCase
             ->assertOk();
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $country = CountryFactory::new()->create();
 
@@ -65,7 +65,7 @@ class AcpCountriesTest extends TestCase
         ]);
     }
 
-    public function testUpdate()
+    public function testUpdate(): void
     {
         $country = CountryFactory::new()->create();
 

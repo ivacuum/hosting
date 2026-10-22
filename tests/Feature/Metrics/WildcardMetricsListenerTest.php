@@ -11,7 +11,7 @@ class WildcardMetricsListenerTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testDynamicEvent()
+    public function testDynamicEvent(): void
     {
         $event = new \App\Events\Stats\TripViewed(id: 1);
 
@@ -32,7 +32,7 @@ class WildcardMetricsListenerTest extends TestCase
         $this->assertSame('{"table":"trips","id":1}', json_encode($event));
     }
 
-    public function testStaticEvent()
+    public function testStaticEvent(): void
     {
         $event = new \App\Events\Stats\YoutubeOpened;
 

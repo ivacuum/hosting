@@ -14,7 +14,7 @@ use Illuminate\Support\Sleep;
 #[Description('Parse radicals, kanji or vocabulary from wanikani.com')]
 class ParseWanikani extends Command
 {
-    public function handle(WanikaniApi $wanikani)
+    public function handle(WanikaniApi $wanikani): void
     {
         $sleep = (int) $this->argument('sleep');
         $minLevel = max(1, min(60, $this->argument('min_level')));

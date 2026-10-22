@@ -2,6 +2,8 @@
 
 namespace App\Utilities\LivewireForm;
 
+use Illuminate\Contracts\View\View;
+
 class Text extends Base
 {
     use HasPlaceholder;
@@ -13,7 +15,7 @@ class Text extends Base
         $this->name = $name;
     }
 
-    public function html()
+    public function html(): View
     {
         return view('acp.tpl.livewire.input', $this->buildData());
     }

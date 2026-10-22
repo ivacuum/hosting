@@ -9,7 +9,7 @@ class WanikaniLevelTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testOk()
+    public function testOk(): void
     {
         $this->get('japanese/wanikani/level/1')
             ->assertOk()

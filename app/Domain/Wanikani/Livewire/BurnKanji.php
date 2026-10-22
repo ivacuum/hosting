@@ -6,6 +6,7 @@ use App\Domain\Wanikani\Action\BurnAction;
 use App\Domain\Wanikani\Action\ResurrectAction;
 use App\Domain\Wanikani\Models\Kanji;
 use App\Domain\Wanikani\Scope\UserBurnableScope;
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class BurnKanji extends Component
@@ -13,12 +14,12 @@ class BurnKanji extends Component
     public int $id;
     public bool $burned = false;
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.burn-kanji');
     }
 
-    public function toggleBurned(BurnAction $burn, ResurrectAction $resurrect)
+    public function toggleBurned(BurnAction $burn, ResurrectAction $resurrect): void
     {
         $userId = auth()->id();
 

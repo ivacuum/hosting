@@ -10,7 +10,7 @@ class TripTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testShow()
+    public function testShow(): void
     {
         $trip = TripFactory::new()->create();
 
@@ -18,7 +18,7 @@ class TripTest extends TestCase
             ->assertRedirect($trip->www());
     }
 
-    public function testShowWithAnchor()
+    public function testShowWithAnchor(): void
     {
         $trip = TripFactory::new()->create();
         $anchor = '#anchor';

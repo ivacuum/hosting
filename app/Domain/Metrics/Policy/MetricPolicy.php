@@ -6,17 +6,17 @@ use App\User;
 
 class MetricPolicy
 {
-    public function delete(User $me)
+    public function delete(User $me): bool
     {
         return $me->isRoot();
     }
 
-    public function view(User $me)
+    public function view(User $me): bool
     {
         return $me->isRoot();
     }
 
-    public function viewAny(User $me)
+    public function viewAny(User $me): bool
     {
         return $me->isRoot();
     }

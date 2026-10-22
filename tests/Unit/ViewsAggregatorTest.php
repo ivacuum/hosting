@@ -11,7 +11,7 @@ class ViewsAggregatorTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testExportTripViews()
+    public function testExportTripViews(): void
     {
         $trip = TripFactory::new()->create();
 
@@ -27,7 +27,7 @@ class ViewsAggregatorTest extends TestCase
         $this->assertSame($views + 2, $trip->views);
     }
 
-    public function testPush()
+    public function testPush(): void
     {
         $aggregator = $this->app->make(ViewsAggregator::class);
         $aggregator->push('table', 10);

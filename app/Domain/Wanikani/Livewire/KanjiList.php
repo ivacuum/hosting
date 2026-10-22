@@ -11,6 +11,7 @@ use App\Domain\Wanikani\Scope\KanjiRadicalsScope;
 use App\Domain\Wanikani\Scope\KanjiSimilarToScope;
 use App\User;
 use Illuminate\Container\Attributes\CurrentUser;
+use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 
@@ -27,7 +28,7 @@ class KanjiList extends Component
     public bool $showLabels = false;
     public array $burned = [];
 
-    public function mount(SplitVocabToKanjiAction $splitVocabToKanji, #[CurrentUser] User|null $user = null, int|null $radicalId = null, string|null $vocabularyWord = null)
+    public function mount(SplitVocabToKanjiAction $splitVocabToKanji, #[CurrentUser] User|null $user = null, int|null $radicalId = null, string|null $vocabularyWord = null): void
     {
         $this->flat = $this->similarId !== null || $vocabularyWord !== null;
 
@@ -54,12 +55,12 @@ class KanjiList extends Component
         }
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.kanji-list');
     }
 
-    public function shuffle()
+    public function shuffle(): void
     {
         $this->kanjis = $this->kanjis->shuffle();
     }

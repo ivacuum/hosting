@@ -13,7 +13,7 @@ class FormatTripPeriodActionTest extends TestCase
     #[TestWith(['2022-01-01', '2022-01-01', "January\u{00A0}1"], 'same day')]
     #[TestWith(['2022-01-01', '2022-01-09', "January\u{00A0}1–9"], 'same month')]
     #[TestWith(['2022-01-01', '2022-02-01', "January\u{00A0}1 – February\u{00A0}1"], 'different months')]
-    public function testEnglish(string $start, string $end, string $result)
+    public function testEnglish(string $start, string $end, string $result): void
     {
         $this->app->setLocale(Locale::Eng->value);
 
@@ -25,7 +25,7 @@ class FormatTripPeriodActionTest extends TestCase
     #[TestWith(['2022-01-01', '2022-01-01', "1\u{00A0}января"], 'same day')]
     #[TestWith(['2022-01-01', '2022-01-09', "1–9\u{00A0}января"], 'same month')]
     #[TestWith(['2022-01-01', '2022-02-01', "1\u{00A0}января – 1\u{00A0}февраля"], 'different months')]
-    public function testRussian(string $start, string $end, string $result)
+    public function testRussian(string $start, string $end, string $result): void
     {
         $this->app->setLocale(Locale::Rus->value);
 

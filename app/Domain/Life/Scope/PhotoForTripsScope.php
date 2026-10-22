@@ -9,7 +9,7 @@ class PhotoForTripsScope
 {
     public function __construct(private array $ids = []) {}
 
-    public function __invoke(Builder $query)
+    public function __invoke(Builder $query): void
     {
         if (empty($this->ids)) {
             return;

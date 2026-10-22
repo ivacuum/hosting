@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 
 class DcppHubObserver
 {
-    public function saving(DcppHub $hub)
+    public function saving(DcppHub $hub): void
     {
         $this->maintainConsistency($hub);
     }

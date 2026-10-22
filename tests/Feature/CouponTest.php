@@ -11,7 +11,7 @@ class CouponTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testFirstvdsPost()
+    public function testFirstvdsPost(): void
     {
         $email = 'mail@example.com';
 
@@ -31,7 +31,7 @@ class CouponTest extends TestCase
     #[TestWith(['promocodes-coupons/drimsim'])]
     #[TestWith(['promocodes-coupons/firstvds'])]
     #[TestWith(['promocodes-coupons/timeweb'])]
-    public function testPages(string $url)
+    public function testPages(string $url): void
     {
         $this->get($url)
             ->assertOk();

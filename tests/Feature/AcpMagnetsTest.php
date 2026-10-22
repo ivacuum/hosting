@@ -13,7 +13,7 @@ class AcpMagnetsTest extends TestCase
     use BeAdmin;
     use DatabaseTransactions;
 
-    public function testEdit()
+    public function testEdit(): void
     {
         $magnet = MagnetFactory::new()->create();
 
@@ -22,7 +22,7 @@ class AcpMagnetsTest extends TestCase
             ->assertSeeLivewire(MagnetForm::class);
     }
 
-    public function testIndex()
+    public function testIndex(): void
     {
         MagnetFactory::new()->create();
 
@@ -30,7 +30,7 @@ class AcpMagnetsTest extends TestCase
             ->assertOk();
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $magnet = MagnetFactory::new()->create();
 
@@ -38,7 +38,7 @@ class AcpMagnetsTest extends TestCase
             ->assertOk();
     }
 
-    public function testUpdate()
+    public function testUpdate(): void
     {
         $magnet = MagnetFactory::new()->create();
 

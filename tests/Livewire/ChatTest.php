@@ -12,7 +12,7 @@ class ChatTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testPost()
+    public function testPost(): void
     {
         $text = 'Chat message to post';
         $user = UserFactory::new()->create();

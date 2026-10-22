@@ -14,7 +14,7 @@ class AcpPhotosTest extends TestCase
     use BeAdmin;
     use DatabaseTransactions;
 
-    public function testCreate()
+    public function testCreate(): void
     {
         $this->get('acp/photos/create')
             ->assertOk()
@@ -39,7 +39,7 @@ class AcpPhotosTest extends TestCase
         $this->assertDatabaseHas('tags', ['id' => $tag->id]);
     }
 
-    public function testEdit()
+    public function testEdit(): void
     {
         $photo = PhotoFactory::new()->withTrip()->create();
 
@@ -47,7 +47,7 @@ class AcpPhotosTest extends TestCase
             ->assertOk();
     }
 
-    public function testIndex()
+    public function testIndex(): void
     {
         PhotoFactory::new()->withTrip()->create();
 
@@ -55,7 +55,7 @@ class AcpPhotosTest extends TestCase
             ->assertOk();
     }
 
-    public function testRemoveAllTags()
+    public function testRemoveAllTags(): void
     {
         $secondTag = TagFactory::new()->create();
         $photo = PhotoFactory::new()
@@ -72,7 +72,7 @@ class AcpPhotosTest extends TestCase
         $this->assertDatabaseHas('tags', ['id' => $secondTag->id]);
     }
 
-    public function testRemoveTag()
+    public function testRemoveTag(): void
     {
         $tag = TagFactory::new()->create();
         $remainingTag = TagFactory::new()->create();
@@ -88,7 +88,7 @@ class AcpPhotosTest extends TestCase
         $this->assertDatabaseHas('tags', ['id' => $tag->id]);
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $photo = PhotoFactory::new()->withTrip()->create();
 
@@ -96,7 +96,7 @@ class AcpPhotosTest extends TestCase
             ->assertOk();
     }
 
-    public function testUpdate()
+    public function testUpdate(): void
     {
         $photo = PhotoFactory::new()->withTag()->withTrip()->create();
 

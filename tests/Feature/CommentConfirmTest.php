@@ -11,7 +11,7 @@ class CommentConfirmTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testAlreadyPublished()
+    public function testAlreadyPublished(): void
     {
         $comment = CommentFactory::new()
             ->withNews()
@@ -23,7 +23,7 @@ class CommentConfirmTest extends TestCase
             ->assertSessionHas('message', 'Комментарий уже активирован.');
     }
 
-    public function testForbiddenForStrangers()
+    public function testForbiddenForStrangers(): void
     {
         $stranger = UserFactory::new()->create();
 
@@ -37,7 +37,7 @@ class CommentConfirmTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testHidden()
+    public function testHidden(): void
     {
         $comment = CommentFactory::new()
             ->hidden()
@@ -50,7 +50,7 @@ class CommentConfirmTest extends TestCase
             ->assertSessionHas('message', 'Комментарий уже активирован.');
     }
 
-    public function testPending()
+    public function testPending(): void
     {
         $comment = CommentFactory::new()
             ->pending()

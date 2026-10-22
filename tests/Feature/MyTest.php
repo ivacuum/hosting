@@ -10,7 +10,7 @@ class MyTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testIndex()
+    public function testIndex(): void
     {
         $this->be(UserFactory::new()->withId(1)->make())
             ->get('my')

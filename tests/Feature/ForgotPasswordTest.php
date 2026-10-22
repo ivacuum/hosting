@@ -11,7 +11,7 @@ class ForgotPasswordTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testFormGuest()
+    public function testFormGuest(): void
     {
         $this->get('auth/password/remind')
             ->assertOk();
@@ -19,7 +19,7 @@ class ForgotPasswordTest extends TestCase
         $this->assertGuest();
     }
 
-    public function testFormUser()
+    public function testFormUser(): void
     {
         $this->be(UserFactory::new()->make())
             ->get('auth/password/remind')

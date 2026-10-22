@@ -10,7 +10,7 @@ class GigObserver
 {
     public function __construct(private CacheHelper $cache) {}
 
-    public function deleted()
+    public function deleted(): void
     {
         $this->cache->forgetGigs();
     }
@@ -24,7 +24,7 @@ class GigObserver
         }
     }
 
-    public function saving(Gig $gig)
+    public function saving(Gig $gig): void
     {
         $this->maintainConsistency($gig);
     }

@@ -14,7 +14,7 @@ class LifeSlugRuleTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testUnique()
+    public function testUnique(): void
     {
         $artist = ArtistFactory::new()
             ->withSlug('phpunit-artist')

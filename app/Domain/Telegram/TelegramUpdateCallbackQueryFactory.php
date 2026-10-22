@@ -49,7 +49,7 @@ class TelegramUpdateCallbackQueryFactory
         ];
     }
 
-    public static function new()
+    public static function new(): self
     {
         return new self;
     }

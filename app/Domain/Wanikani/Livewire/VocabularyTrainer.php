@@ -3,6 +3,7 @@
 namespace App\Domain\Wanikani\Livewire;
 
 use App\Domain\Wanikani\Models\Vocabulary;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Str;
 use Livewire\Component;
 
@@ -79,24 +80,24 @@ class VocabularyTrainer extends Component
         event(new \App\Events\Stats\VocabularyDifficultyIncreased);
     }
 
-    public function mount()
+    public function mount(): void
     {
         $this->pickRandomVocab();
 
         event(new \App\Events\Stats\VocabularyMounted);
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.vocabulary-trainer');
     }
 
-    public function setVocabId(int $vocabId)
+    public function setVocabId(int $vocabId): void
     {
         $this->vocab = Vocabulary::query()->findOrFail($vocabId);
     }
 
-    public function skip()
+    public function skip(): void
     {
         if ($this->reveal === false) {
             $this->skipped++;
@@ -108,7 +109,7 @@ class VocabularyTrainer extends Component
         $this->next();
     }
 
-    public function updatedHiragana()
+    public function updatedHiragana(): void
     {
         $this->openSettings = true;
 
@@ -133,7 +134,7 @@ class VocabularyTrainer extends Component
         return min(60, $this->level * 10);
     }
 
-    private function next()
+    private function next(): void
     {
         $this->answer = '';
         $this->reveal = false;
@@ -141,7 +142,7 @@ class VocabularyTrainer extends Component
         $this->pickRandomVocab();
     }
 
-    private function pickRandomVocab()
+    private function pickRandomVocab(): void
     {
         $randomId = Vocabulary::query()
             ->whereIn('level', range($this->startLevel(), $this->endLevel()))
@@ -154,7 +155,7 @@ class VocabularyTrainer extends Component
             ->first();
     }
 
-    private function pushHistory()
+    private function pushHistory(): void
     {
         unset($this->history[self::MAX_HISTORY - 1]);
 

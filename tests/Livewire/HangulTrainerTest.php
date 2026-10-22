@@ -10,7 +10,7 @@ class HangulTrainerTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testRightAnswer()
+    public function testRightAnswer(): void
     {
         \Livewire::test(HangulTrainer::class)
             ->set('jamo', 'ㅎ')
@@ -23,7 +23,7 @@ class HangulTrainerTest extends TestCase
             ->assertSet('answered', 2);
     }
 
-    public function testRightAnswerGetsCleared()
+    public function testRightAnswerGetsCleared(): void
     {
         \Livewire::test(HangulTrainer::class)
             ->set('jamo', 'ㅎ')
@@ -32,7 +32,7 @@ class HangulTrainerTest extends TestCase
             ->assertSet('answer', '');
     }
 
-    public function testRomanizedNg()
+    public function testRomanizedNg(): void
     {
         \Livewire::test(HangulTrainer::class)
             ->set('jamo', 'ㅇ')
@@ -41,7 +41,7 @@ class HangulTrainerTest extends TestCase
             ->assertSet('answered', 1);
     }
 
-    public function testWrongAnswer()
+    public function testWrongAnswer(): void
     {
         \Livewire::test(HangulTrainer::class)
             ->set('jamo', 'ㅎ')

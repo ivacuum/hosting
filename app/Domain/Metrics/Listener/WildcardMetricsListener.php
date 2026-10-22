@@ -8,7 +8,7 @@ class WildcardMetricsListener
 {
     public function __construct(private PushMetricAction $pushMetric) {}
 
-    public function __invoke(string $eventName, array $data)
+    public function __invoke(string $eventName, array $data): void
     {
         $this->pushMetric->execute([
             'event' => class_basename($eventName),

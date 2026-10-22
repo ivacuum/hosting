@@ -10,7 +10,7 @@ class InstagramWebhookTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testEvent()
+    public function testEvent(): void
     {
         $this->post('instagram/webhook', [
             'entry' => [
@@ -33,7 +33,7 @@ class InstagramWebhookTest extends TestCase
         ])->assertOk();
     }
 
-    public function testVerify()
+    public function testVerify(): void
     {
         config(['services.instagram.webhook_verify_token' => 'xxx']);
 

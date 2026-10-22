@@ -10,7 +10,7 @@ class UpdateMagnetAction
 {
     public function __construct(private Rto $rto) {}
 
-    public function execute(Magnet $magnet, int $topicId)
+    public function execute(Magnet $magnet, int $topicId): void
     {
         $data = $this->rto->topicDataById($topicId);
 

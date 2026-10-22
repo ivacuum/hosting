@@ -12,7 +12,7 @@ class TagObserver
         $tag->photos()->detach();
     }
 
-    public function saving(Tag $tag)
+    public function saving(Tag $tag): void
     {
         $this->maintainConsistency($tag);
     }

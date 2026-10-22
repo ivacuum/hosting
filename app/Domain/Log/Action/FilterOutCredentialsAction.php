@@ -9,7 +9,7 @@ class FilterOutCredentialsAction
 {
     public function __construct(private GetAllCredentialsAction $getAllCredentials) {}
 
-    public function execute(ExternalHttpRequest $http)
+    public function execute(ExternalHttpRequest $http): void
     {
         $credentials = $this->getAllCredentials->execute();
 
@@ -38,7 +38,7 @@ class FilterOutCredentialsAction
         };
     }
 
-    private function instagram(ExternalHttpRequest $http)
+    private function instagram(ExternalHttpRequest $http): void
     {
         $http->query = $http
             ->toUri()

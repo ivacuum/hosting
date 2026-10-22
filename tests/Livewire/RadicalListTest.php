@@ -12,7 +12,7 @@ class RadicalListTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testLevel()
+    public function testLevel(): void
     {
         RadicalFactory::new()->withLevel(99)->create();
 
@@ -22,7 +22,7 @@ class RadicalListTest extends TestCase
             ->assertSee($radical->meaning);
     }
 
-    public function testShowLabels()
+    public function testShowLabels(): void
     {
         RadicalFactory::new()->withLevel(99)->create();
 
@@ -35,7 +35,7 @@ class RadicalListTest extends TestCase
             ->assertSee($radical->meaning);
     }
 
-    public function testShuffle()
+    public function testShuffle(): void
     {
         RadicalFactory::new()->withLevel(99)->create();
 

@@ -8,7 +8,7 @@ use Tests\TestCase;
 
 class LivewireLocalizationTest extends TestCase
 {
-    public function testEnglish()
+    public function testEnglish(): void
     {
         $this
             ->withHeaders([
@@ -20,7 +20,7 @@ class LivewireLocalizationTest extends TestCase
         $this->assertSame(Locale::Eng->value, app()->getLocale());
     }
 
-    public function testRussian()
+    public function testRussian(): void
     {
         $this
             ->withHeaders([

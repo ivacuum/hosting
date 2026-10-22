@@ -22,7 +22,7 @@ class AcpUsersTest extends TestCase
     use BeAdmin;
     use DatabaseTransactions;
 
-    public function testDestroy()
+    public function testDestroy(): void
     {
         $user = UserFactory::new()->create();
 
@@ -55,7 +55,7 @@ class AcpUsersTest extends TestCase
         ]);
     }
 
-    public function testEdit()
+    public function testEdit(): void
     {
         $user = UserFactory::new()->create();
 
@@ -64,7 +64,7 @@ class AcpUsersTest extends TestCase
             ->assertSeeLivewire(UserForm::class);
     }
 
-    public function testFilterLastLoginAt()
+    public function testFilterLastLoginAt(): void
     {
         $visibleUser = UserFactory::new()
             ->withLastLoginAt(now()->subDay())
@@ -80,7 +80,7 @@ class AcpUsersTest extends TestCase
             ->assertOk();
     }
 
-    public function testIndex()
+    public function testIndex(): void
     {
         UserFactory::new()->create();
 
@@ -88,7 +88,7 @@ class AcpUsersTest extends TestCase
             ->assertOk();
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $user = UserFactory::new()->create();
 
@@ -96,7 +96,7 @@ class AcpUsersTest extends TestCase
             ->assertOk();
     }
 
-    public function testUpdate()
+    public function testUpdate(): void
     {
         $user = UserFactory::new()->create();
 

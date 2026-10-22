@@ -13,7 +13,7 @@ class AcpCommentsTest extends TestCase
     use BeAdmin;
     use DatabaseTransactions;
 
-    public function testEdit()
+    public function testEdit(): void
     {
         $comment = CommentFactory::new()->withNews()->create();
 
@@ -22,7 +22,7 @@ class AcpCommentsTest extends TestCase
             ->assertSeeLivewire(CommentForm::class);
     }
 
-    public function testIndex()
+    public function testIndex(): void
     {
         CommentFactory::new()->withNews()->create();
 
@@ -30,7 +30,7 @@ class AcpCommentsTest extends TestCase
             ->assertOk();
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $comment = CommentFactory::new()->withNews()->create();
 
@@ -38,7 +38,7 @@ class AcpCommentsTest extends TestCase
             ->assertOk();
     }
 
-    public function testUpdate()
+    public function testUpdate(): void
     {
         $comment = CommentFactory::new()->withNews()->create();
 

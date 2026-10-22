@@ -13,7 +13,7 @@ class BurnKanjiTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testBurn()
+    public function testBurn(): void
     {
         $user = UserFactory::new()->create();
         $kanji = KanjiFactory::new()->create();
@@ -25,7 +25,7 @@ class BurnKanjiTest extends TestCase
         $this->assertSame($user->id, $kanji->burnable->user_id);
     }
 
-    public function testResurrect()
+    public function testResurrect(): void
     {
         $user = UserFactory::new()->create();
         $kanji = KanjiFactory::new()->create();

@@ -10,7 +10,7 @@ class UserTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testIndex()
+    public function testIndex(): void
     {
         UserFactory::new()->create();
 
@@ -18,7 +18,7 @@ class UserTest extends TestCase
             ->assertOk();
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $user = UserFactory::new()->create();
 
@@ -26,7 +26,7 @@ class UserTest extends TestCase
             ->assertOk();
     }
 
-    public function testShow404ForInactive()
+    public function testShow404ForInactive(): void
     {
         $user = UserFactory::new()->inactive()->create();
 

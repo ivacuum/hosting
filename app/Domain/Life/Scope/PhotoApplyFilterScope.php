@@ -8,7 +8,7 @@ class PhotoApplyFilterScope
 {
     public function __construct(private string|null $filter = null) {}
 
-    public function __invoke(Builder $query)
+    public function __invoke(Builder $query): void
     {
         $query
             ->when($this->filter === 'no-geo', static fn (Builder $query) => $query->whereNull('point'))

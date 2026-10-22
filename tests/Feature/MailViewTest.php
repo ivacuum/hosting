@@ -11,7 +11,7 @@ class MailViewTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testCalendar()
+    public function testCalendar(): void
     {
         $email = EmailFactory::new()
             ->withComment(1)

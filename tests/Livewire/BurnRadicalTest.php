@@ -13,7 +13,7 @@ class BurnRadicalTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testBurn()
+    public function testBurn(): void
     {
         $user = UserFactory::new()->create();
         $radical = RadicalFactory::new()->create();
@@ -25,7 +25,7 @@ class BurnRadicalTest extends TestCase
         $this->assertSame($user->id, $radical->burnable->user_id);
     }
 
-    public function testResurrect()
+    public function testResurrect(): void
     {
         $user = UserFactory::new()->create();
         $radical = RadicalFactory::new()->create();

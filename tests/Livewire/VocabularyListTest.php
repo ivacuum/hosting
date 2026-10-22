@@ -12,7 +12,7 @@ class VocabularyListTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testLevel()
+    public function testLevel(): void
     {
         VocabularyFactory::new()->withLevel(99)->create();
 
@@ -22,7 +22,7 @@ class VocabularyListTest extends TestCase
             ->assertSee($vocab->character);
     }
 
-    public function testShowLabels()
+    public function testShowLabels(): void
     {
         VocabularyFactory::new()->withLevel(99)->create();
 
@@ -35,7 +35,7 @@ class VocabularyListTest extends TestCase
             ->assertSee($vocab->character);
     }
 
-    public function testShuffle()
+    public function testShuffle(): void
     {
         VocabularyFactory::new()->withLevel(99)->create();
 

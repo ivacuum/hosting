@@ -10,7 +10,7 @@ use Illuminate\Console\Attributes\Signature;
 #[Description('Get html of the rto topic')]
 class RtoParseTopicBody extends Command
 {
-    public function handle(Rto $rto)
+    public function handle(Rto $rto): int
     {
         \Validator::make($this->arguments(), [
             'topicId' => 'required|integer',

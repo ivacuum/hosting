@@ -14,14 +14,14 @@ class MyTripsTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testCreate()
+    public function testCreate(): void
     {
         $this->be(UserFactory::new()->withId(1)->make())
             ->get('my/trips/create')
             ->assertOk();
     }
 
-    public function testDestroy()
+    public function testDestroy(): void
     {
         $trip = TripFactory::new()->withUser()->create();
 
@@ -32,7 +32,7 @@ class MyTripsTest extends TestCase
         $this->assertDatabaseMissing($trip->getTable(), ['id' => $trip->id]);
     }
 
-    public function testDestroyForbidden()
+    public function testDestroyForbidden(): void
     {
         $trip = TripFactory::new()->withUser()->create();
         $cheater = UserFactory::new()->create();
@@ -42,7 +42,7 @@ class MyTripsTest extends TestCase
             ->assertForbidden();
     }
 
-    public function testEdit()
+    public function testEdit(): void
     {
         $trip = TripFactory::new()->withUser()->create();
 
@@ -51,7 +51,7 @@ class MyTripsTest extends TestCase
             ->assertOk();
     }
 
-    public function testEditForbidden()
+    public function testEditForbidden(): void
     {
         $trip = TripFactory::new()->withUser()->create();
         $cheater = UserFactory::new()->create();
@@ -77,7 +77,7 @@ class MyTripsTest extends TestCase
         $this->get("my/trips/{$trip->id}/edit")->assertOk();
     }
 
-    public function testIndex()
+    public function testIndex(): void
     {
         $trip = TripFactory::new()
             ->withUser(UserFactory::new()->withLogin('phpunit'))
@@ -88,7 +88,7 @@ class MyTripsTest extends TestCase
             ->assertOk();
     }
 
-    public function testStore()
+    public function testStore(): void
     {
         $markdown = <<<'MARKDOWN'
             **Safe Markdown** and <b>untrusted HTML</b>.
@@ -148,7 +148,7 @@ class MyTripsTest extends TestCase
         $this->assertStringContainsString('<code>&lt;b&gt;Code example&lt;/b&gt;</code>', $html);
     }
 
-    public function testUpdate()
+    public function testUpdate(): void
     {
         $trip = TripFactory::new()->withUser()->create();
 
@@ -175,7 +175,7 @@ class MyTripsTest extends TestCase
         $this->assertSame('Some formatted *markdown*', $trip->markdown);
     }
 
-    public function testUpdateForbidden()
+    public function testUpdateForbidden(): void
     {
         $trip = TripFactory::new()->withUser()->create();
         $cheater = UserFactory::new()->create();

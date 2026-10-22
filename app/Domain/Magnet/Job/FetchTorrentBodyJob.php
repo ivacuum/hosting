@@ -15,7 +15,7 @@ class FetchTorrentBodyJob extends AbstractJob implements ShouldBeUnique
 {
     public function __construct(public int $rtoId) {}
 
-    public function handle(Rto $rto)
+    public function handle(Rto $rto): void
     {
         $magnet = Magnet::query()->firstWhere('rto_id', $this->rtoId);
 
@@ -40,7 +40,7 @@ class FetchTorrentBodyJob extends AbstractJob implements ShouldBeUnique
         return CarbonInterval::day()->totalSeconds;
     }
 
-    public function uniqueId()
+    public function uniqueId(): int
     {
         return $this->rtoId;
     }

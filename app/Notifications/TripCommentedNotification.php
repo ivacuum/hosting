@@ -17,7 +17,7 @@ class TripCommentedNotification extends Notification implements ShouldQueue
 
     public function __construct(public Trip $trip, public Comment $comment) {}
 
-    public function toTelegram()
+    public function toTelegram(): string
     {
         $escape = app(EscapeMarkdownCharactersAction::class);
 
@@ -29,7 +29,7 @@ class TripCommentedNotification extends Notification implements ShouldQueue
         return "💬 *{$user}* комментирует поездку *{$title}*\n{$url}\n\n{$text}";
     }
 
-    public function via(User $notifiable)
+    public function via(User $notifiable): array
     {
         if ($notifiable->id === $this->comment->user_id) {
             return [];

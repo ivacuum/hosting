@@ -11,7 +11,7 @@ class TypoTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testTypoPost()
+    public function testTypoPost(): void
     {
         \Notification::fake();
 
@@ -26,7 +26,7 @@ class TypoTest extends TestCase
         \Notification::assertSentTimes(TypoReportedNotification::class, 1);
     }
 
-    public function testTypoPostWithoutPreviousUrlLeadsToError()
+    public function testTypoPostWithoutPreviousUrlLeadsToError(): void
     {
         \Notification::fake();
 

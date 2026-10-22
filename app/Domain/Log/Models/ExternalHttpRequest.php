@@ -61,7 +61,7 @@ class ExternalHttpRequest extends Model
     use MassPrunable;
 
     // Methods
-    public function breadcrumb()
+    public function breadcrumb(): string
     {
         return "#{$this->id}";
     }

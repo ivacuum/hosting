@@ -14,7 +14,7 @@ use function Laravel\Prompts\text;
 #[Description('Print a connection string for clients')]
 class ShadowsocksConnectionString extends Command
 {
-    public function handle()
+    public function handle(): void
     {
         $server = text('What is the server address and port?', 'example.com:12345');
         $cipher = suggest('What is the cipher?', ['aes-256-gcm'], required: true);

@@ -9,7 +9,7 @@ class JapaneseTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testIndex()
+    public function testIndex(): void
     {
         $this->get('japanese')
             ->assertOk()

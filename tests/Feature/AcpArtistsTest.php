@@ -12,14 +12,14 @@ class AcpArtistsTest extends TestCase
     use BeAdmin;
     use DatabaseTransactions;
 
-    public function testCreate()
+    public function testCreate(): void
     {
         $this->get('acp/artists/create')
             ->assertOk()
             ->assertSeeLivewire(ArtistForm::class);
     }
 
-    public function testEdit()
+    public function testEdit(): void
     {
         $artist = ArtistFactory::new()->create();
 
@@ -28,7 +28,7 @@ class AcpArtistsTest extends TestCase
             ->assertSeeLivewire(ArtistForm::class);
     }
 
-    public function testIndex()
+    public function testIndex(): void
     {
         ArtistFactory::new()->create();
 
@@ -36,7 +36,7 @@ class AcpArtistsTest extends TestCase
             ->assertOk();
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $artist = ArtistFactory::new()->create();
 
@@ -59,7 +59,7 @@ class AcpArtistsTest extends TestCase
         ]);
     }
 
-    public function testUpdate()
+    public function testUpdate(): void
     {
         $artist = ArtistFactory::new()->create();
 

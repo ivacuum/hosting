@@ -11,7 +11,7 @@ class UserTravelTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testCitiesIndex()
+    public function testCitiesIndex(): void
     {
         $trip = TripFactory::new()
             ->withUser(UserFactory::new()->withLogin('phpunit-user'))
@@ -22,7 +22,7 @@ class UserTravelTest extends TestCase
             ->assertSee($trip->city->title);
     }
 
-    public function testCitiesShow()
+    public function testCitiesShow(): void
     {
         $trip = TripFactory::new()
             ->withUser(UserFactory::new()->withLogin('phpunit-user'))
@@ -47,7 +47,7 @@ class UserTravelTest extends TestCase
             ->assertRedirect("@phpunit-user/travel/{$trip->slug}");
     }
 
-    public function testCountriesIndex()
+    public function testCountriesIndex(): void
     {
         $trip = TripFactory::new()
             ->withUser(UserFactory::new()->withLogin('phpunit-user'))
@@ -58,7 +58,7 @@ class UserTravelTest extends TestCase
             ->assertSee($trip->city->country->title);
     }
 
-    public function testCountriesShow()
+    public function testCountriesShow(): void
     {
         $trip = TripFactory::new()
             ->withUser(UserFactory::new()->withLogin('phpunit-user'))
@@ -69,7 +69,7 @@ class UserTravelTest extends TestCase
             ->assertSee($trip->city->country->title);
     }
 
-    public function testTripsIndex()
+    public function testTripsIndex(): void
     {
         $trip = TripFactory::new()
             ->withUser(UserFactory::new()->withLogin('phpunit-user'))
@@ -80,7 +80,7 @@ class UserTravelTest extends TestCase
             ->assertSee($trip->title);
     }
 
-    public function testTripsShow()
+    public function testTripsShow(): void
     {
         $trip = TripFactory::new()
             ->withUser(UserFactory::new()->withLogin('phpunit-user'))

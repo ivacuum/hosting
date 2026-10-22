@@ -10,21 +10,21 @@ class CountryObserver
 {
     public function __construct(private CacheHelper $cache) {}
 
-    public function deleted()
+    public function deleted(): void
     {
         $this->cache->forgetCities();
         $this->cache->forgetCountries();
         $this->cache->forgetTrips();
     }
 
-    public function saved()
+    public function saved(): void
     {
         $this->cache->forgetCities();
         $this->cache->forgetCountries();
         $this->cache->forgetTrips();
     }
 
-    public function saving(Country $country)
+    public function saving(Country $country): void
     {
         $this->maintainConsistency($country);
     }

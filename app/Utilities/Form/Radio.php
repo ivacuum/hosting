@@ -3,6 +3,7 @@
 namespace App\Utilities\Form;
 
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Contracts\View\View;
 
 class Radio extends Base
 {
@@ -16,7 +17,7 @@ class Radio extends Base
         $this->name = $name;
     }
 
-    public function html()
+    public function html(): View
     {
         return view('acp.tpl.input', $this->buildData());
     }

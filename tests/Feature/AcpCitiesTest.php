@@ -14,14 +14,14 @@ class AcpCitiesTest extends TestCase
     use BeAdmin;
     use DatabaseTransactions;
 
-    public function testCreate()
+    public function testCreate(): void
     {
         $this->get('acp/cities/create')
             ->assertOk()
             ->assertSeeLivewire(CityForm::class);
     }
 
-    public function testEdit()
+    public function testEdit(): void
     {
         $city = CityFactory::new()->create();
 
@@ -31,7 +31,7 @@ class AcpCitiesTest extends TestCase
             ->assertSeeLivewire(CityForm::class);
     }
 
-    public function testIndex()
+    public function testIndex(): void
     {
         CityFactory::new()->create();
 
@@ -39,7 +39,7 @@ class AcpCitiesTest extends TestCase
             ->assertOk();
     }
 
-    public function testPasteCoordinates()
+    public function testPasteCoordinates(): void
     {
         \Livewire::test(CityForm::class)
             ->set('lat', '54.513678, 36.261341')
@@ -47,7 +47,7 @@ class AcpCitiesTest extends TestCase
             ->assertSet('lon', '36.261341');
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $city = CityFactory::new()->create();
 
@@ -77,7 +77,7 @@ class AcpCitiesTest extends TestCase
         ]);
     }
 
-    public function testUpdate()
+    public function testUpdate(): void
     {
         $city = CityFactory::new()->withPoint(new Point('5.55', '7.77'))->create();
         $country = CountryFactory::new()->create();

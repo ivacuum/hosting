@@ -9,19 +9,19 @@ class DevMapPolygonTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testEmpty()
+    public function testEmpty(): void
     {
         $this->get('dev/map-polygon')
             ->assertOk();
     }
 
-    public function testWithInvalidWkt()
+    public function testWithInvalidWkt(): void
     {
         $this->get('dev/map-polygon?wkt=invalid')
             ->assertOk();
     }
 
-    public function testWithValidWkt()
+    public function testWithValidWkt(): void
     {
         $this->get('dev/map-polygon?wkt=' . urlencode('POLYGON((36 55, 37 55, 37 54, 36 54, 36 55))'))
             ->assertOk();

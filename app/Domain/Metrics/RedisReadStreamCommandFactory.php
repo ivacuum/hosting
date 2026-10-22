@@ -32,12 +32,12 @@ class RedisReadStreamCommandFactory
         return new self;
     }
 
-    public function withCount(int $count)
+    public function withCount(int $count): static
     {
         return clone ($this, ['count' => $count]);
     }
 
-    public function withStreams(RedisStream ...$streams)
+    public function withStreams(RedisStream ...$streams): static
     {
         return clone ($this, ['streams' => $streams]);
     }

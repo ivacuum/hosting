@@ -11,7 +11,7 @@ class TrimMetricsStreamActionTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testOk()
+    public function testOk(): void
     {
         Redis::expects('client->executeRaw')
             ->with(['XTRIM', 'vacuum:metrics', 'MAXLEN', '~', '50000'])

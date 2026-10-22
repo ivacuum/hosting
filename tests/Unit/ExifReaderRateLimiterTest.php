@@ -12,7 +12,7 @@ class ExifReaderRateLimiterTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testGlobalLimitExceeded()
+    public function testGlobalLimitExceeded(): void
     {
         Event::fake(RateLimitExceeded::class);
 

@@ -82,7 +82,7 @@ class TripStatsCalculatorTest extends TestCase
         $this->assertSame('2025-01-01 12:00:00', $stats->lastDate()->toDateTimeString());
     }
 
-    public function testCityVisits()
+    public function testCityVisits(): void
     {
         $trip1 = TripFactory::new()->create();
         $trip2 = TripFactory::new()->create();
@@ -97,7 +97,7 @@ class TripStatsCalculatorTest extends TestCase
         ], $stats->cityVisits()->toArray());
     }
 
-    public function testDaysInTrips()
+    public function testDaysInTrips(): void
     {
         $city1 = CityFactory::new()->create();
         $city2 = CityFactory::new()->create();

@@ -11,7 +11,7 @@ class PhotoViewsAggregatorTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testExport()
+    public function testExport(): void
     {
         $photo = PhotoFactory::new()
             ->withTrip()
@@ -29,7 +29,7 @@ class PhotoViewsAggregatorTest extends TestCase
         $this->assertSame($views + 2, $photo->views);
     }
 
-    public function testPush()
+    public function testPush(): void
     {
         $aggregator = $this->app->make(PhotoViewsAggregator::class);
         $aggregator->push('kaluga.2020/IMG_0001.jpg');

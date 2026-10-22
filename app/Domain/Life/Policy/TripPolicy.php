@@ -7,29 +7,29 @@ use App\User;
 
 class TripPolicy
 {
-    public function create(User $me)
+    public function create(User $me): bool
     {
         return $me->isRoot();
     }
 
-    public function delete(User $me, Trip $trip)
+    public function delete(User $me, Trip $trip): bool
     {
         return $me->isRoot()
             || $me->id === $trip->user_id;
     }
 
-    public function update(User $me, Trip $trip)
+    public function update(User $me, Trip $trip): bool
     {
         return $me->isRoot()
             || $me->id === $trip->user_id;
     }
 
-    public function view(User $me)
+    public function view(User $me): bool
     {
         return $me->isRoot();
     }
 
-    public function viewAny(User $me)
+    public function viewAny(User $me): bool
     {
         return $me->isRoot();
     }

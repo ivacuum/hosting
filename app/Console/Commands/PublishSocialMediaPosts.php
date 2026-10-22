@@ -13,7 +13,7 @@ use Illuminate\Contracts\Console\Isolatable;
 #[Description('Publish queued social media posts')]
 class PublishSocialMediaPosts extends Command implements Isolatable
 {
-    public function handle()
+    public function handle(): int
     {
         $query = SocialMediaPost::query()
             ->where('status', SocialMediaPostStatus::Queued)

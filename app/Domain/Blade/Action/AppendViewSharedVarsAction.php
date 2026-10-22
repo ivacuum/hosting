@@ -20,7 +20,7 @@ class AppendViewSharedVarsAction
         private HeadManager $head,
     ) {}
 
-    public function execute(Request $request)
+    public function execute(Request $request): void
     {
         $locale = app()->getLocale();
         $routeData = $this->parseRouteData->execute();

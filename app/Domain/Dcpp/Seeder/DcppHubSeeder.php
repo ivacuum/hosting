@@ -9,7 +9,7 @@ class DcppHubSeeder extends Seeder
 {
     private const int COUNT = 3;
 
-    public function run()
+    public function run(): void
     {
         for ($i = 0; $i < self::COUNT; $i++) {
             DcppHubFactory::new()->create();

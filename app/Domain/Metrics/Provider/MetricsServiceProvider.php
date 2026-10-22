@@ -18,7 +18,7 @@ use Illuminate\Support\ServiceProvider;
 
 class MetricsServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
         if ($this->app->isLocal() || $this->app->isProduction()) {
             $this->listenForEvents();

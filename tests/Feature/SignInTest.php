@@ -21,7 +21,7 @@ class SignInTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testFacebookCallback()
+    public function testFacebookCallback(): void
     {
         Socialite::fake('facebook', SocialiteUser::fake([
             'id' => 'facebook-1',
@@ -40,7 +40,7 @@ class SignInTest extends TestCase
         $this->assertSame(ExternalIdentityProvider::Facebook, $externalIdentity->provider);
     }
 
-    public function testFacebookCallbackWithoutEmail()
+    public function testFacebookCallbackWithoutEmail(): void
     {
         Socialite::fake('facebook', SocialiteUser::fake([
             'id' => 'facebook-without-email',
@@ -61,7 +61,7 @@ class SignInTest extends TestCase
         ]);
     }
 
-    public function testFacebookRedirect()
+    public function testFacebookRedirect(): void
     {
         $this->get('auth/facebook')
             ->assertRedirectContains('https://www.facebook.com/v23.0/dialog/oauth');
@@ -69,7 +69,7 @@ class SignInTest extends TestCase
         $this->assertGuest();
     }
 
-    public function testFormGuest()
+    public function testFormGuest(): void
     {
         $this->get('auth/login')
             ->assertOk();
@@ -77,7 +77,7 @@ class SignInTest extends TestCase
         $this->assertGuest();
     }
 
-    public function testFormUser()
+    public function testFormUser(): void
     {
         $this->be(UserFactory::new()->make())
             ->get('auth/login')
@@ -87,7 +87,7 @@ class SignInTest extends TestCase
         $this->assertAuthenticated();
     }
 
-    public function testGoogleCallback()
+    public function testGoogleCallback(): void
     {
         Socialite::fake('google', SocialiteUser::fake([
             'id' => 'google-1',
@@ -106,7 +106,7 @@ class SignInTest extends TestCase
         $this->assertSame(ExternalIdentityProvider::Google, $externalIdentity->provider);
     }
 
-    public function testGoogleCallbackActivatesAndLinksExistingUserByEmail()
+    public function testGoogleCallbackActivatesAndLinksExistingUserByEmail(): void
     {
         $user = UserFactory::new()
             ->inactive()
@@ -132,7 +132,7 @@ class SignInTest extends TestCase
         ]);
     }
 
-    public function testGoogleCallbackAuthenticatesExistingLinkedIdentity()
+    public function testGoogleCallbackAuthenticatesExistingLinkedIdentity(): void
     {
         \Event::fake(UserSignedInWithExternalIdentity::class);
 
@@ -165,7 +165,7 @@ class SignInTest extends TestCase
         \Event::assertDispatched(UserSignedInWithExternalIdentity::class);
     }
 
-    public function testGoogleCallbackHonorsIntendedUrl()
+    public function testGoogleCallbackHonorsIntendedUrl(): void
     {
         Socialite::fake('google', SocialiteUser::fake([
             'id' => 'google-intended',
@@ -180,7 +180,7 @@ class SignInTest extends TestCase
         $this->assertAuthenticated();
     }
 
-    public function testGoogleCallbackWithoutEmail()
+    public function testGoogleCallbackWithoutEmail(): void
     {
         Socialite::fake('google', SocialiteUser::fake([
             'id' => 'google-without-email',
@@ -201,7 +201,7 @@ class SignInTest extends TestCase
         ]);
     }
 
-    public function testGoogleRedirect()
+    public function testGoogleRedirect(): void
     {
         $this->get('auth/google')
             ->assertRedirectContains('https://accounts.google.com/o/oauth2/auth');
@@ -233,7 +233,7 @@ class SignInTest extends TestCase
         }
     }
 
-    public function testSubmitGuestWithLegacyMd5Password()
+    public function testSubmitGuestWithLegacyMd5Password(): void
     {
         $password = 'legacy_password';
         $user = UserFactory::new()->create();
@@ -263,7 +263,7 @@ class SignInTest extends TestCase
         $this->assertTrue(password_verify($password, $user->password));
     }
 
-    public function testSubmitGuestWithLegacySaltedMd5Password()
+    public function testSubmitGuestWithLegacySaltedMd5Password(): void
     {
         $password = 'legacy_salted';
         $salt = 'salt1';
@@ -292,7 +292,7 @@ class SignInTest extends TestCase
         $this->assertTrue(password_verify($password, $user->password));
     }
 
-    public function testVkCallback()
+    public function testVkCallback(): void
     {
         Socialite::fake('vk', SocialiteUser::fake([
             'id' => 'vk-1',
@@ -311,7 +311,7 @@ class SignInTest extends TestCase
         $this->assertSame(ExternalIdentityProvider::Vk, $externalIdentity->provider);
     }
 
-    public function testVkCallbackWithoutEmail()
+    public function testVkCallbackWithoutEmail(): void
     {
         Socialite::fake('vk', SocialiteUser::fake([
             'id' => 'vk-without-email',
@@ -332,7 +332,7 @@ class SignInTest extends TestCase
         ]);
     }
 
-    public function testVkRedirect()
+    public function testVkRedirect(): void
     {
         $this->get('auth/vk')
             ->assertRedirectContains('https://oauth.vk.com/authorize');

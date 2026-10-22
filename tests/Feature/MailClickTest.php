@@ -13,7 +13,7 @@ class MailClickTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testAuthenticated()
+    public function testAuthenticated(): void
     {
         $this->travelTo('2026-09-27 12:00:00');
 

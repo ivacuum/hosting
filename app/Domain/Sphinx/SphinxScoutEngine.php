@@ -11,7 +11,7 @@ class SphinxScoutEngine extends Engine
 {
     public function __construct(private SphinxQL $sphinxQl, private Helper $helper) {}
 
-    public function update($models)
+    public function update($models): void
     {
         if ($models->isEmpty()) {
             return;
@@ -33,7 +33,7 @@ class SphinxScoutEngine extends Engine
         $query->execute();
     }
 
-    public function delete($models)
+    public function delete($models): void
     {
         if ($models->isEmpty()) {
             return;
@@ -68,27 +68,27 @@ class SphinxScoutEngine extends Engine
         }
     }
 
-    public function paginate(Builder $builder, $perPage, $page)
+    public function paginate(Builder $builder, $perPage, $page): void
     {
         dd('paginate not implemented');
     }
 
-    public function mapIds($results)
+    public function mapIds($results): void
     {
         dd('mapIds not implemented');
     }
 
-    public function map(Builder $builder, $results, $model)
+    public function map(Builder $builder, $results, $model): void
     {
         dd('map not implemented');
     }
 
-    public function getTotalCount($results)
+    public function getTotalCount($results): void
     {
         dd('getTotalCount not implemented');
     }
 
-    public function flush($model)
+    public function flush($model): void
     {
         $this->ping();
 
@@ -103,7 +103,7 @@ class SphinxScoutEngine extends Engine
 
     public function deleteIndex($name) {}
 
-    private function ping()
+    private function ping(): void
     {
         $this->sphinxQl->getConnection()->ping();
     }

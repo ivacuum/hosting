@@ -9,6 +9,7 @@ use App\Domain\Wanikani\Models\Vocabulary;
 use App\Domain\Wanikani\Scope\UserBurnableScope;
 use App\User;
 use Illuminate\Container\Attributes\CurrentUser;
+use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 
@@ -65,7 +66,7 @@ class VocabularyList extends Component
         }
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.vocabulary-list');
     }

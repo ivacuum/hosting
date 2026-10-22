@@ -39,19 +39,19 @@ class ResizeImageTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\ImageResizedOnDemand::class);
     }
 
-    public function testHostNotWhitelisted()
+    public function testHostNotWhitelisted(): void
     {
         $this->get('resize/400x300/example.com/image.jpg')
             ->assertForbidden();
     }
 
-    public function testNoDomain()
+    public function testNoDomain(): void
     {
         $this->get('resize/400x300')
             ->assertNotFound();
     }
 
-    public function testNoExtension()
+    public function testNoExtension(): void
     {
         // Ускоряет выполнение теста — не рендерит страницу с исключением и стеком
         config(['app.debug' => false]);
@@ -64,13 +64,13 @@ class ResizeImageTest extends TestCase
             ->assertUnprocessable();
     }
 
-    public function testNoPath()
+    public function testNoPath(): void
     {
         $this->get('resize/400x300/example.com')
             ->assertNotFound();
     }
 
-    public function testRemoteImageNotFound()
+    public function testRemoteImageNotFound(): void
     {
         \Http::fake([
             'https://example.com/image.jpg' => \Http::response(status: 404),

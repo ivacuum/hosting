@@ -11,7 +11,7 @@ class VocabularyTrainerTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testAnswerRightInHiragana()
+    public function testAnswerRightInHiragana(): void
     {
         $vocab = VocabularyFactory::new()
             ->withLevel(1)
@@ -49,7 +49,7 @@ class VocabularyTrainerTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\VocabularyAnsweredKanji::class);
     }
 
-    public function testAnswerRightInKatakana()
+    public function testAnswerRightInKatakana(): void
     {
         $vocab = VocabularyFactory::new()
             ->withLevel(1)
@@ -67,7 +67,7 @@ class VocabularyTrainerTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\VocabularyAnsweredKatakana::class);
     }
 
-    public function testAnswerRightInRomaji()
+    public function testAnswerRightInRomaji(): void
     {
         $vocab = VocabularyFactory::new()
             ->withLevel(1)
@@ -85,7 +85,7 @@ class VocabularyTrainerTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\VocabularyAnsweredRomaji::class);
     }
 
-    public function testAnswerWrong()
+    public function testAnswerWrong(): void
     {
         $vocab = VocabularyFactory::new()->withLevel(1)->create();
 
@@ -101,7 +101,7 @@ class VocabularyTrainerTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\VocabularyAnswerRevealed::class);
     }
 
-    public function testDecreaseLevel()
+    public function testDecreaseLevel(): void
     {
         VocabularyFactory::new()->withLevel(1)->create();
         VocabularyFactory::new()->withLevel(11)->create();
@@ -116,7 +116,7 @@ class VocabularyTrainerTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\VocabularyDifficultyDecreased::class);
     }
 
-    public function testIncreaseLevel()
+    public function testIncreaseLevel(): void
     {
         VocabularyFactory::new()->withLevel(1)->create();
         VocabularyFactory::new()->withLevel(11)->create();
@@ -131,7 +131,7 @@ class VocabularyTrainerTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\VocabularyDifficultyIncreased::class);
     }
 
-    public function testSkip()
+    public function testSkip(): void
     {
         VocabularyFactory::new()->withLevel(1)->create();
 
@@ -146,7 +146,7 @@ class VocabularyTrainerTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\VocabularySkipped::class);
     }
 
-    public function testSkipAfterWrongAnswer()
+    public function testSkipAfterWrongAnswer(): void
     {
         VocabularyFactory::new()->withLevel(1)->create();
 
@@ -164,7 +164,7 @@ class VocabularyTrainerTest extends TestCase
         \Event::assertNotDispatched(\App\Events\Stats\VocabularySkipped::class);
     }
 
-    public function testSwitchToHiragana()
+    public function testSwitchToHiragana(): void
     {
         VocabularyFactory::new()->withLevel(1)->create();
 
@@ -178,7 +178,7 @@ class VocabularyTrainerTest extends TestCase
         \Event::assertDispatched(\App\Events\Stats\VocabularySwitchedToHiragana::class);
     }
 
-    public function testSwitchToKatakana()
+    public function testSwitchToKatakana(): void
     {
         VocabularyFactory::new()->withLevel(1)->create();
 

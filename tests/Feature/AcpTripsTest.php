@@ -14,14 +14,14 @@ class AcpTripsTest extends TestCase
     use BeAdmin;
     use DatabaseTransactions;
 
-    public function testCreate()
+    public function testCreate(): void
     {
         $this->get('acp/trips/create')
             ->assertOk()
             ->assertSeeLivewire(TripForm::class);
     }
 
-    public function testEdit()
+    public function testEdit(): void
     {
         $trip = TripFactory::new()->create();
 
@@ -30,7 +30,7 @@ class AcpTripsTest extends TestCase
             ->assertSeeLivewire(TripForm::class);
     }
 
-    public function testIndex()
+    public function testIndex(): void
     {
         TripFactory::new()->create();
 
@@ -38,7 +38,7 @@ class AcpTripsTest extends TestCase
             ->assertOk();
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $trip = TripFactory::new()->create();
 
@@ -46,7 +46,7 @@ class AcpTripsTest extends TestCase
             ->assertOk();
     }
 
-    public function testStore()
+    public function testStore(): void
     {
         $city = CityFactory::new()
             ->withTitle('phpunit city ru', 'phpunit city en')
@@ -64,7 +64,7 @@ class AcpTripsTest extends TestCase
             ->assertSee('phpunit city ru');
     }
 
-    public function testUpdate()
+    public function testUpdate(): void
     {
         $trip = TripFactory::new()->create();
 

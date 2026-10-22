@@ -23,7 +23,7 @@ class ImageViewerServer extends Command
         $this->stop();
     }
 
-    public function handle()
+    public function handle(): void
     {
         \Validator::make($this->arguments(), [
             'host' => 'required|string|ip',
@@ -75,7 +75,7 @@ class ImageViewerServer extends Command
         $response->end('Not Found');
     }
 
-    public function listeners()
+    public function listeners(): void
     {
         $this->server->on('request', $this->handleRequest(...));
 
@@ -111,7 +111,7 @@ class ImageViewerServer extends Command
         });
     }
 
-    public function stop()
+    public function stop(): void
     {
         if ($this->started) {
             $this->server->shutdown();

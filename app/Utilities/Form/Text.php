@@ -2,6 +2,8 @@
 
 namespace App\Utilities\Form;
 
+use Illuminate\Contracts\View\View;
+
 class Text extends Base
 {
     public $name;
@@ -14,7 +16,7 @@ class Text extends Base
         $this->name = $name;
     }
 
-    public function html()
+    public function html(): View
     {
         return view('acp.tpl.input', $this->buildData());
     }

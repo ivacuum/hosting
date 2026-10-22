@@ -12,7 +12,7 @@ class NewsTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testIndex()
+    public function testIndex(): void
     {
         NewsFactory::new()->create();
 
@@ -20,7 +20,7 @@ class NewsTest extends TestCase
             ->assertOk();
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $news = NewsFactory::new()->create();
 
@@ -35,14 +35,14 @@ class NewsTest extends TestCase
     #[TestWith(['news/2010/01'])]
     #[TestWith(['news/2010/01/01'])]
     #[TestWith(['news/2010/01/01/slug'])]
-    public function testBackwardCompatibility(string $url)
+    public function testBackwardCompatibility(string $url): void
     {
         $this->get($url)
             ->assertMovedPermanently()
             ->assertRedirect('news');
     }
 
-    public function testHidden()
+    public function testHidden(): void
     {
         $news = NewsFactory::new()->hidden()->create();
 
@@ -50,7 +50,7 @@ class NewsTest extends TestCase
             ->assertNotFound();
     }
 
-    public function testRedirectToIndex()
+    public function testRedirectToIndex(): void
     {
         $this->get('news/0')
             ->assertMovedPermanently()

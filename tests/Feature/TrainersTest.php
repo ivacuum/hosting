@@ -9,7 +9,7 @@ class TrainersTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testIndex()
+    public function testIndex(): void
     {
         $this->get('trainers')
             ->assertOk()

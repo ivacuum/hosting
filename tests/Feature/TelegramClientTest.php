@@ -38,7 +38,7 @@ class TelegramClientTest extends TestCase
         });
     }
 
-    public function testBadMarkdown()
+    public function testBadMarkdown(): void
     {
         \Http::fake(TelegramApiFake::sendMessageBadMarkdown());
 
@@ -128,7 +128,7 @@ class TelegramClientTest extends TestCase
         });
     }
 
-    public function testNoCredentialsLogged()
+    public function testNoCredentialsLogged(): void
     {
         \Http::fake(TelegramApiFake::sendMessage());
 
@@ -141,7 +141,7 @@ class TelegramClientTest extends TestCase
         $this->assertSame('/botTelegramBotToken/sendMessage', $request->path);
     }
 
-    public function testSendMessage()
+    public function testSendMessage(): void
     {
         \Http::fake(TelegramApiFake::sendMessage());
 
@@ -159,7 +159,7 @@ class TelegramClientTest extends TestCase
         });
     }
 
-    public function testSendMessageAsResponse()
+    public function testSendMessageAsResponse(): void
     {
         config(['services.telegram.bot_token' => '1234:token']);
 
@@ -175,7 +175,7 @@ class TelegramClientTest extends TestCase
         ], $response);
     }
 
-    public function testSendMessageWithDisabledWebPagePreview()
+    public function testSendMessageWithDisabledWebPagePreview(): void
     {
         \Http::fake(TelegramApiFake::sendMessage());
 
@@ -194,7 +194,7 @@ class TelegramClientTest extends TestCase
         });
     }
 
-    public function testSendMessageWithInlineKeyboard()
+    public function testSendMessageWithInlineKeyboard(): void
     {
         \Http::fake(TelegramApiFake::sendMessage());
 
@@ -230,7 +230,7 @@ class TelegramClientTest extends TestCase
         });
     }
 
-    public function testSetWebhook()
+    public function testSetWebhook(): void
     {
         \Http::fake(TelegramApiFake::setWebhook());
 

@@ -10,21 +10,21 @@ class CityObserver
 {
     public function __construct(private CacheHelper $cache) {}
 
-    public function deleted()
+    public function deleted(): void
     {
         $this->cache->forgetCities();
         $this->cache->forgetCountries();
         $this->cache->forgetTrips();
     }
 
-    public function saved()
+    public function saved(): void
     {
         $this->cache->forgetCities();
         $this->cache->forgetCountries();
         $this->cache->forgetTrips();
     }
 
-    public function saving(City $city)
+    public function saving(City $city): void
     {
         $this->maintainConsistency($city);
     }

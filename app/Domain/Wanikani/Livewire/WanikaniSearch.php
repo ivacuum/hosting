@@ -5,6 +5,7 @@ namespace App\Domain\Wanikani\Livewire;
 use App\Domain\Wanikani\Models\Kanji;
 use App\Domain\Wanikani\Models\Radical;
 use App\Domain\Wanikani\Models\Vocabulary;
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class WanikaniSearch extends Component
@@ -27,7 +28,7 @@ class WanikaniSearch extends Component
         $this->resetValidation();
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.wanikani-search');
     }
