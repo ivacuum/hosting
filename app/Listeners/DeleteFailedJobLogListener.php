@@ -10,7 +10,7 @@ use Illuminate\Queue\Events\JobFailed;
 
 class DeleteFailedJobLogListener
 {
-    public function handle(JobFailed $event)
+    public function handle(JobFailed $event): void
     {
         if ($event->job->isDeleted()) {
             $appClass = $this->isSendNotificationJob($event->job)

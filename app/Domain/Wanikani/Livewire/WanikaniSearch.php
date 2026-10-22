@@ -21,7 +21,7 @@ class WanikaniSearch extends Component
     public int $count = 0;
     public string $q = '';
 
-    public function clear()
+    public function clear(): void
     {
         $this->reset();
         $this->resetValidation();
@@ -32,7 +32,7 @@ class WanikaniSearch extends Component
         return view('livewire.wanikani-search');
     }
 
-    public function search()
+    public function search(): void
     {
         $this->validate([
             'q' => ['required', 'string', 'min:3'],

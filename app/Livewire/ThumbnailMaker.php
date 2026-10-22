@@ -27,7 +27,7 @@ class ThumbnailMaker extends Component
     public TemporaryUploadedFile|string|null $file = null;
 
     #[Authorize('create', Photo::class)]
-    public function updatedFile()
+    public function updatedFile(): void
     {
         $this->validate();
 

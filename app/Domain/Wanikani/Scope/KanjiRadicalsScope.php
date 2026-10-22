@@ -8,7 +8,7 @@ class KanjiRadicalsScope
 {
     public function __construct(private int|null $radicalId) {}
 
-    public function __invoke(Builder $query)
+    public function __invoke(Builder $query): void
     {
         if ($this->radicalId === null) {
             return;

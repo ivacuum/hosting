@@ -59,7 +59,7 @@ class Email extends Model
         return $timestamp === $this->getTimestamp();
     }
 
-    public function incrementClicks()
+    public function incrementClicks(): void
     {
         $this->increment('clicks');
     }

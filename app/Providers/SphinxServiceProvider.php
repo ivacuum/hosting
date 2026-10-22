@@ -10,7 +10,7 @@ use Illuminate\Support\ServiceProvider;
 class SphinxServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     #[\Override]
-    public function register()
+    public function register(): void
     {
         $this->app->scoped(ConnectionInterface::class, static function () {
             $connection = new SphinxPdoConnection;

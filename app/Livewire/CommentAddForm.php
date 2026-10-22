@@ -25,7 +25,7 @@ class CommentAddForm extends Component
     public string $email = '';
     public Issue|Magnet|News|Trip $model;
 
-    public function submit(FindUserByEmailOrCreateAction $findUserByEmailOrCreate, CommentRateLimiter $limiter)
+    public function submit(FindUserByEmailOrCreateAction $findUserByEmailOrCreate, CommentRateLimiter $limiter): void
     {
         $this->validate();
 
@@ -76,7 +76,7 @@ class CommentAddForm extends Component
         }
     }
 
-    protected function rules()
+    protected function rules(): array
     {
         return [
             'text' => ['bail', 'required', 'string', 'max:1000', new NotRandomTokenRule],
@@ -84,7 +84,7 @@ class CommentAddForm extends Component
         ];
     }
 
-    private function escapeText()
+    private function escapeText(): string
     {
         if ($this->model instanceof Issue) {
             return $this->text;

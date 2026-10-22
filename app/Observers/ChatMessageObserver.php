@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 
 class ChatMessageObserver
 {
-    public function saving(ChatMessage $chatMessage)
+    public function saving(ChatMessage $chatMessage): void
     {
         $this->maintainConsistency($chatMessage);
     }

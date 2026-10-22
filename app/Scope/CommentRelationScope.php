@@ -15,7 +15,7 @@ class CommentRelationScope
         private int|null $relationId = null,
     ) {}
 
-    public function __invoke(Builder $query)
+    public function __invoke(Builder $query): void
     {
         $query->where('rel_type', $this->relation->getMorphClass())
             ->when($this->relationId, fn (Builder $query) => $query->where('rel_id', $this->relationId));

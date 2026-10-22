@@ -61,7 +61,7 @@ class AcpNavigation
         return $next($request);
     }
 
-    private function push(string $text, string|null $url = null)
+    private function push(string $text, string|null $url = null): void
     {
         \Breadcrumbs::push(__($text), trim($url, '/'));
     }
@@ -75,7 +75,7 @@ class AcpNavigation
             ->implode('.');
     }
 
-    private function pushModel(string $route, $model)
+    private function pushModel(string $route, $model): void
     {
         if (!$model instanceof Model) {
             return;
@@ -87,7 +87,7 @@ class AcpNavigation
         );
     }
 
-    private function pushUrlBased(string $url)
+    private function pushUrlBased(string $url): void
     {
         $transKey = str($url)
             ->replace('/', '.')

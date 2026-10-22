@@ -19,7 +19,7 @@ class TagForm extends Component
     public string|null $titleEn = '';
     public string|null $titleRu = '';
 
-    public function mount()
+    public function mount(): void
     {
         if ($this->id) {
             $tag = Tag::query()->findOrFail($this->id);
@@ -38,7 +38,7 @@ class TagForm extends Component
         return redirect()->to($this->goto ?? to('acp/tags'));
     }
 
-    protected function rules()
+    protected function rules(): array
     {
         $tag = Tag::query()->find($this->id);
 
@@ -54,7 +54,7 @@ class TagForm extends Component
         ];
     }
 
-    private function store()
+    private function store(): void
     {
         $tag = $this->id
             ? Tag::query()->findOrFail($this->id)

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class CommentPublishedScope
 {
-    public function __invoke(Builder $query)
+    public function __invoke(Builder $query): void
     {
         $query->where('status', CommentStatus::Published);
     }

@@ -9,7 +9,7 @@ class UserBurnableScope
 {
     public function __construct(private int|null $userId = null) {}
 
-    public function __invoke(Builder $query)
+    public function __invoke(Builder $query): void
     {
         if ($this->userId === null) {
             return;

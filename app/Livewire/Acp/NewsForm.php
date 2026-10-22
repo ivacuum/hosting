@@ -26,7 +26,7 @@ class NewsForm extends Component
     #[Validate('required')]
     public NewsStatus $status = NewsStatus::Published;
 
-    public function mount()
+    public function mount(): void
     {
         if ($this->id) {
             $news = News::query()->findOrFail($this->id);
@@ -46,7 +46,7 @@ class NewsForm extends Component
         return redirect()->to($this->goto ?? to('acp/news'));
     }
 
-    private function store()
+    private function store(): void
     {
         $news = $this->id
             ? News::query()->findOrFail($this->id)

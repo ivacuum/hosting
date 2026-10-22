@@ -43,7 +43,7 @@ class GigForm extends Component
     public GigStatus $status = GigStatus::Published;
     public CarbonImmutable|string|null $date = '';
 
-    public function mount()
+    public function mount(): void
     {
         if ($this->id) {
             $gig = Gig::query()->findOrFail($this->id);
@@ -88,7 +88,7 @@ class GigForm extends Component
         return redirect()->to($this->goto ?? to('acp/gigs'));
     }
 
-    public function updatedArtistId()
+    public function updatedArtistId(): void
     {
         $artist = Artist::query()->find($this->artistId);
 
@@ -99,7 +99,7 @@ class GigForm extends Component
         }
     }
 
-    protected function rules()
+    protected function rules(): array
     {
         return [
             'date' => 'required|date',
@@ -113,7 +113,7 @@ class GigForm extends Component
         ];
     }
 
-    private function store()
+    private function store(): void
     {
         $gig = $this->id
             ? Gig::query()->findOrFail($this->id)

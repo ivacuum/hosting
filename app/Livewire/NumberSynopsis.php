@@ -20,7 +20,7 @@ class NumberSynopsis extends Component
     #[Url(except: 'en')]
     public string $lang = 'en';
 
-    public function mount(GetNumberLocalesAction $getNumberLocales)
+    public function mount(GetNumberLocalesAction $getNumberLocales): void
     {
         $this->locales = collect($getNumberLocales->execute())
             ->mapWithKeys(static fn (string $locale) => [$locale => \Locale::getDisplayName($locale, \App::getLocale())])
@@ -91,7 +91,7 @@ class NumberSynopsis extends Component
         ];
     }
 
-    public function spellOuts(int $number)
+    public function spellOuts(int $number): array
     {
         $formatter = new \NumberFormatter($this->lang, \NumberFormatter::SPELLOUT);
         $spellOut = $formatter->format($number);
@@ -112,14 +112,14 @@ class NumberSynopsis extends Component
             ->transliterate($spellOut);
     }
 
-    public function updatedInput()
+    public function updatedInput(): void
     {
         $this->validate();
 
         $this->number = $this->input;
     }
 
-    protected function rules()
+    protected function rules(): array
     {
         return [
             'input' => 'required|integer|min:0|max:10000000000',

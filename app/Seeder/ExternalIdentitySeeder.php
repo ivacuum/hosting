@@ -8,7 +8,7 @@ use Illuminate\Database\Seeder;
 
 class ExternalIdentitySeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $user = UserFactory::new()
             ->withEmail('social@example.com')

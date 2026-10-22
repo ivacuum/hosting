@@ -29,7 +29,7 @@ class CountryForm extends Component
     #[Validate('required')]
     public string|null $titleRu = '';
 
-    public function mount()
+    public function mount(): void
     {
         if ($this->id) {
             $country = Country::query()->findOrFail($this->id);
@@ -51,7 +51,7 @@ class CountryForm extends Component
         return redirect()->to($this->goto ?? to('acp/countries'));
     }
 
-    protected function rules()
+    protected function rules(): array
     {
         return [
             'slug' => [
@@ -62,7 +62,7 @@ class CountryForm extends Component
         ];
     }
 
-    private function store()
+    private function store(): void
     {
         $country = $this->id
             ? Country::query()->findOrFail($this->id)

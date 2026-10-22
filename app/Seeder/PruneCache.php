@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 
 class PruneCache extends Seeder
 {
-    public function run(CacheHelper $cache)
+    public function run(CacheHelper $cache): void
     {
         $cache->forgetCities();
         $cache->forgetCountries();

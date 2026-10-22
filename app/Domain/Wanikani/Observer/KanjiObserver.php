@@ -6,7 +6,7 @@ use App\Domain\Wanikani\Models\Kanji;
 
 class KanjiObserver
 {
-    public function deleting(Kanji $kanji)
+    public function deleting(Kanji $kanji): void
     {
         \DB::transaction(static function () use ($kanji) {
             $kanji->burnables()->delete();

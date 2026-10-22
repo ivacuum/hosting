@@ -7,14 +7,14 @@ use Illuminate\Support\Str;
 
 class NewsObserver
 {
-    public function deleting(News $news)
+    public function deleting(News $news): void
     {
         \DB::transaction(static function () use ($news) {
             $news->comments->each->delete();
         });
     }
 
-    public function saving(News $news)
+    public function saving(News $news): void
     {
         $this->maintainConsistency($news);
     }

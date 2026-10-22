@@ -21,12 +21,12 @@ class Chat extends Component
     #[Validate(['required', 'string', 'min:1'])]
     public string $text = '';
 
-    public function boot()
+    public function boot(): void
     {
         $this->dispatch(LivewireEvent::ScrollChatDown->name);
     }
 
-    public function post(Request $request)
+    public function post(Request $request): void
     {
         if ($request->user() === null) {
             throw new AuthorizationException;

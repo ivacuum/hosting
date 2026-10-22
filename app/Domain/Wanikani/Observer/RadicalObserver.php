@@ -6,7 +6,7 @@ use App\Domain\Wanikani\Models\Radical;
 
 class RadicalObserver
 {
-    public function deleting(Radical $radical)
+    public function deleting(Radical $radical): void
     {
         \DB::transaction(static function () use ($radical) {
             $radical->burnables()->delete();

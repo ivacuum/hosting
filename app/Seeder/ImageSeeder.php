@@ -9,7 +9,7 @@ use Illuminate\Http\UploadedFile;
 
 class ImageSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $user = UserFactory::new()
             ->withEmail('gallery@example.com')

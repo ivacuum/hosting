@@ -23,7 +23,7 @@ class AvatarManager extends Component
     ])]
     public $image;
 
-    public function deleteAvatar()
+    public function deleteAvatar(): void
     {
         tap(\Auth::user(), static function (User $user) {
             $user->avatar = '';
@@ -33,13 +33,13 @@ class AvatarManager extends Component
         $this->avatar = '';
     }
 
-    public function mount()
+    public function mount(): void
     {
         $this->avatar = \Auth::user()->avatarUrl();
         $this->resetChosenFile();
     }
 
-    public function updatedImage()
+    public function updatedImage(): void
     {
         $this->validate();
 
@@ -56,7 +56,7 @@ class AvatarManager extends Component
         event(new \App\Events\Stats\UserAvatarUploaded);
     }
 
-    private function resetChosenFile()
+    private function resetChosenFile(): void
     {
         $this->randomId = \Str::random();
     }

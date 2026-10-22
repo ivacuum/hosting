@@ -8,7 +8,7 @@ use Illuminate\Database\Seeder;
 
 class ChatMessageSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         ChatMessageFactory::new()
             ->withText('싸이 올나잇스탠드 2019')

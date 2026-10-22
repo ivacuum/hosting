@@ -7,7 +7,7 @@ use App\Email;
 
 class EmailObserver
 {
-    public function creating(Email $email)
+    public function creating(Email $email): void
     {
         if (!$email->locale) {
             $email->locale = Locale::forNotification(\App::getLocale());

@@ -11,7 +11,7 @@ readonly class CallbackQuery
         public Message $message,
     ) {}
 
-    public static function fromArray(array $payload)
+    public static function fromArray(array $payload): self
     {
         return new self(
             $payload['id'],

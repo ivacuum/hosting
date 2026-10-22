@@ -35,7 +35,7 @@ class File extends Model
     ];
 
     // Methods
-    public function basename()
+    public function basename(): string
     {
         return "{$this->slug}.{$this->extension}";
     }

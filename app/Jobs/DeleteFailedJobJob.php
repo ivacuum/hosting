@@ -9,7 +9,7 @@ class DeleteFailedJobJob extends AbstractJob
 {
     public function __construct(public string $uuid) {}
 
-    public function handle()
+    public function handle(): void
     {
         \DB::table('failed_jobs')
             ->where('uuid', $this->uuid)

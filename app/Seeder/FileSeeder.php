@@ -9,7 +9,7 @@ class FileSeeder extends Seeder
 {
     private const int COUNT = 5;
 
-    public function run()
+    public function run(): void
     {
         for ($i = 0; $i < self::COUNT; $i++) {
             FileFactory::new()

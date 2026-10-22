@@ -7,7 +7,7 @@ use App\Issue;
 
 class IssueObserver
 {
-    public function created(Issue $issue)
+    public function created(Issue $issue): void
     {
         event(new Stats\IssueAdded);
     }

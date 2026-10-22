@@ -52,7 +52,7 @@ class RadicalSeeder extends Seeder
         ],
     ];
 
-    public function run()
+    public function run(): void
     {
         foreach (self::RADICALS as [
             'level' => $level,

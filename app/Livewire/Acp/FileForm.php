@@ -34,7 +34,7 @@ class FileForm extends Component
 
     public TemporaryUploadedFile|string|null $upload = null;
 
-    public function mount()
+    public function mount(): void
     {
         if ($this->id) {
             $file = File::query()->findOrFail($this->id);
@@ -77,7 +77,7 @@ class FileForm extends Component
         return redirect()->to($this->goto ?? to('acp/files'));
     }
 
-    protected function rules()
+    protected function rules(): array
     {
         return [
             'upload' => [

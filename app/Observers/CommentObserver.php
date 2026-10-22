@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 
 class CommentObserver
 {
-    public function created(Comment $comment)
+    public function created(Comment $comment): void
     {
         if ($comment->status->isPending()) {
             \Mail::to($comment->user)
@@ -20,7 +20,7 @@ class CommentObserver
         event(new \App\Events\Stats\CommentAdded);
     }
 
-    public function saved(Comment $comment)
+    public function saved(Comment $comment): void
     {
         if ($comment->isDirty('status')) {
             if ($this->wasPending($comment) && $comment->status->isPublished()) {
@@ -29,7 +29,7 @@ class CommentObserver
         }
     }
 
-    public function saving(Comment $comment)
+    public function saving(Comment $comment): void
     {
         if ($comment->isDirty('status')) {
             /** @var CommentStatus $was */

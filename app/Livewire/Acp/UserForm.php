@@ -23,7 +23,7 @@ class UserForm extends Component
     public UserStatus $status = UserStatus::Active;
     public string|null $email = '';
 
-    public function mount()
+    public function mount(): void
     {
         if ($this->id) {
             $this->user = User::query()->findOrFail($this->id);
@@ -42,7 +42,7 @@ class UserForm extends Component
         return redirect()->to($this->goto ?? to('acp/users'));
     }
 
-    protected function rules()
+    protected function rules(): array
     {
         return [
             'email' => [
@@ -53,7 +53,7 @@ class UserForm extends Component
         ];
     }
 
-    private function store()
+    private function store(): void
     {
         $this->user->email = $this->email;
         $this->user->status = $this->status;

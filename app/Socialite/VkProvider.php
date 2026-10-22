@@ -22,7 +22,7 @@ class VkProvider extends AbstractProvider implements ProviderInterface
         return $this->accessTokenResponse = parent::getAccessTokenResponse($code);
     }
 
-    public function revoke()
+    public function revoke(): static
     {
         $this->revoke = true;
 

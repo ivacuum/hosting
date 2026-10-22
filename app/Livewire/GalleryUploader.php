@@ -29,12 +29,12 @@ class GalleryUploader extends Component
             ->implode("\n");
     }
 
-    public function mount()
+    public function mount(): void
     {
         $this->resetChosenFile();
     }
 
-    public function updatedFiles()
+    public function updatedFiles(): void
     {
         $this->validate();
 
@@ -55,7 +55,7 @@ class GalleryUploader extends Component
         $this->resetChosenFile();
     }
 
-    protected function rules()
+    protected function rules(): array
     {
         return [
             'files.*' => [
@@ -67,7 +67,7 @@ class GalleryUploader extends Component
         ];
     }
 
-    private function resetChosenFile()
+    private function resetChosenFile(): void
     {
         $this->randomId = \Str::random();
     }

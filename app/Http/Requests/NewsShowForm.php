@@ -10,7 +10,7 @@ class NewsShowForm extends FormRequest
 {
     public News|null $news = null;
 
-    public function ensureNewsIsPublished()
+    public function ensureNewsIsPublished(): void
     {
         abort_unless($this->news->status->isPublished(), 404);
     }

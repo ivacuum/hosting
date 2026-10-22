@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\RateLimiter;
 class RouteServiceProvider extends ServiceProvider
 {
     #[\Override]
-    public function boot()
+    public function boot(): void
     {
         $this->configureRateLimiting();
 
@@ -27,7 +27,7 @@ class RouteServiceProvider extends ServiceProvider
         parent::boot();
     }
 
-    private function configureRateLimiting()
+    private function configureRateLimiting(): void
     {
         RateLimiter::for('2fa', static function (Request $request) {
             return Limit::perMinute(5)->by($request->session()->get('login.id'));

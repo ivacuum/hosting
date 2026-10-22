@@ -7,7 +7,7 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 class EventServiceProvider extends ServiceProvider
 {
     #[\Override]
-    public function boot()
+    public function boot(): void
     {
         self::addEventDiscoveryPaths([
             $this->app->path('Listeners'),

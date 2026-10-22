@@ -36,7 +36,7 @@ class TripForm extends Component
     public CarbonImmutable|string|null $dateEnd = '';
     public CarbonImmutable|string|null $dateStart = '';
 
-    public function metaImageSrc()
+    public function metaImageSrc(): string
     {
         $trip = new Trip;
         $trip->slug = $this->slug;
@@ -45,7 +45,7 @@ class TripForm extends Component
         return $trip->metaImage();
     }
 
-    public function mount()
+    public function mount(): void
     {
         if ($this->id) {
             $trip = Trip::query()->findOrFail($this->id);
@@ -78,7 +78,7 @@ class TripForm extends Component
         return redirect()->to($this->goto ?? to('acp/trips'));
     }
 
-    public function updatedCityId()
+    public function updatedCityId(): void
     {
         $city = City::query()->find($this->cityId);
 
@@ -89,7 +89,7 @@ class TripForm extends Component
         }
     }
 
-    protected function rules()
+    protected function rules(): array
     {
         return [
             'slug' => LifeSlug::rules(Trip::query()->find($this->id) ?? new Trip),
@@ -107,7 +107,7 @@ class TripForm extends Component
         ];
     }
 
-    private function store()
+    private function store(): void
     {
         $trip = $this->id
             ? Trip::query()->findOrFail($this->id)

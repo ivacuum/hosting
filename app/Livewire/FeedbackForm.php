@@ -24,7 +24,7 @@ class FeedbackForm extends Component
     public string $email = '';
     public string $title = '';
 
-    public function mount()
+    public function mount(): void
     {
         $user = \Auth::user();
 
@@ -37,7 +37,7 @@ class FeedbackForm extends Component
         }
     }
 
-    public function submit(FindUserByEmailOrCreateAction $findUserByEmailOrCreate, IssueRateLimiter $limiter)
+    public function submit(FindUserByEmailOrCreateAction $findUserByEmailOrCreate, IssueRateLimiter $limiter): void
     {
         $this->validate();
 
@@ -83,7 +83,7 @@ class FeedbackForm extends Component
         session()->flash(SessionKey::FlashMessage, __('Ваше сообщение принято. Мы постараемся отреагировать на него как можно скорее.'));
     }
 
-    protected function rules()
+    protected function rules(): array
     {
         return [
             'name' => [Rule::requiredIf(!$this->hideName), 'string', 'max:255'],

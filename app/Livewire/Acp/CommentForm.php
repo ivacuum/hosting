@@ -25,7 +25,7 @@ class CommentForm extends Component
     #[Validate('required')]
     public CommentStatus $status = CommentStatus::Published;
 
-    public function mount()
+    public function mount(): void
     {
         if ($this->id) {
             $this->comment = Comment::query()->findOrFail($this->id);
@@ -44,7 +44,7 @@ class CommentForm extends Component
         return redirect()->to($this->goto ?? to('acp/comments'));
     }
 
-    private function store()
+    private function store(): void
     {
         $this->comment->html = $this->html;
         $this->comment->status = $this->status;

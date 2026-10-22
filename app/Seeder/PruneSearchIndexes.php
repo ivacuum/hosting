@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 
 class PruneSearchIndexes extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         Magnet::removeAllFromSearch();
     }

@@ -210,7 +210,7 @@ class NumberTrainer extends Component
         $this->next();
     }
 
-    private function next()
+    private function next(): void
     {
         $this->answer = '';
         $this->shouldReveal = false;
@@ -260,7 +260,7 @@ class NumberTrainer extends Component
         ]);
     }
 
-    private function sayOutLoud()
+    private function sayOutLoud(): void
     {
         if ($this->sayOutLoud) {
             $this->dispatch(LivewireEvent::SayOutLoud->name, number: $this->number);

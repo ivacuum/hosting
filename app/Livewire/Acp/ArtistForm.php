@@ -22,7 +22,7 @@ class ArtistForm extends Component
     #[Validate('required')]
     public string|null $title = '';
 
-    public function mount()
+    public function mount(): void
     {
         if ($this->id) {
             $artist = Artist::query()->findOrFail($this->id);
@@ -41,14 +41,14 @@ class ArtistForm extends Component
         return redirect()->to($this->goto ?? to('acp/artists'));
     }
 
-    protected function rules()
+    protected function rules(): array
     {
         return [
             'slug' => LifeSlug::rules(Artist::query()->find($this->id) ?? new Artist),
         ];
     }
 
-    private function store()
+    private function store(): void
     {
         $artist = $this->id
             ? Artist::query()->findOrFail($this->id)

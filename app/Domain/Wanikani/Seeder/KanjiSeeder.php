@@ -66,7 +66,7 @@ class KanjiSeeder extends Seeder
         ],
     ];
 
-    public function run()
+    public function run(): void
     {
         foreach (self::KANJI as $data) {
             $kanji = new Kanji;

@@ -6,7 +6,7 @@ use App\Image;
 
 class ImageObserver
 {
-    public function deleted(Image $image)
+    public function deleted(Image $image): void
     {
         $image->deleteFiles();
     }

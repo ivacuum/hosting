@@ -10,7 +10,7 @@ class CacheHelper
 {
     public function __construct(protected Repository $cache) {}
 
-    public function forgetCities()
+    public function forgetCities(): void
     {
         $this->cache->deleteMultiple([
             CacheKey::CitiesById,
@@ -18,7 +18,7 @@ class CacheHelper
         ]);
     }
 
-    public function forgetCountries()
+    public function forgetCountries(): void
     {
         $this->cache->deleteMultiple([
             CacheKey::CountriesById,
@@ -26,21 +26,21 @@ class CacheHelper
         ]);
     }
 
-    public function forgetGames()
+    public function forgetGames(): void
     {
         $this->cache->deleteMultiple([
             CacheKey::GamesFrontPageById,
         ]);
     }
 
-    public function forgetGigs()
+    public function forgetGigs(): void
     {
         $this->cache->deleteMultiple([
             CacheKey::MyVisibleGigs,
         ]);
     }
 
-    public function forgetMagnets()
+    public function forgetMagnets(): void
     {
         $this->cache->deleteMultiple([
             CacheKey::MagnetStatsByCategories,
@@ -59,7 +59,7 @@ class CacheHelper
         }
     }
 
-    public function forgetTrips()
+    public function forgetTrips(): void
     {
         $this->cache->deleteMultiple([
             CacheKey::MyVisibleTrips,

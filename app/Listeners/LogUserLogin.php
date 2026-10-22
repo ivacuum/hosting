@@ -6,7 +6,7 @@ use Illuminate\Auth\Events\Login;
 
 class LogUserLogin
 {
-    public function handle(Login $event)
+    public function handle(Login $event): void
     {
         event(new \App\Events\Stats\UserSignedIn);
 

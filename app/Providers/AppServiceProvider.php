@@ -17,7 +17,7 @@ use Illuminate\Testing\TestResponse;
 
 class AppServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
         Blade::withoutDoubleEncoding();
         Blade::directive('ru', static fn () => '<?php if (($__locale ??= app()->getLocale()) === "ru"): ?>');
@@ -83,7 +83,7 @@ class AppServiceProvider extends ServiceProvider
         });
     }
 
-    private function testMacros()
+    private function testMacros(): void
     {
         TestResponse::macro('assertHasCustomTitle', function () {
             /** @var TestResponse $this */

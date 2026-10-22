@@ -25,7 +25,7 @@ class ChatMessageForm extends Component
     #[Validate('required')]
     public ChatMessageStatus $status = ChatMessageStatus::Published;
 
-    public function mount()
+    public function mount(): void
     {
         if ($this->id) {
             $this->chatMessage = ChatMessage::query()->findOrFail($this->id);
@@ -44,7 +44,7 @@ class ChatMessageForm extends Component
         return redirect()->to($this->goto ?? to('acp/chat-messages'));
     }
 
-    private function store()
+    private function store(): void
     {
         $this->chatMessage->text = $this->text;
         $this->chatMessage->status = $this->status;

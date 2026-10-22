@@ -10,7 +10,7 @@ class Youtube extends Component
     public string $title;
     public string $start;
 
-    public function mount(int|null $start = null)
+    public function mount(int|null $start = null): void
     {
         $this->start = $start
             ? "&start={$start}"

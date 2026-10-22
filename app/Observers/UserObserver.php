@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 
 class UserObserver
 {
-    public function creating(User $user)
+    public function creating(User $user): void
     {
         if (!$user->locale) {
             $user->locale = Locale::forNotification(\App::getLocale());
@@ -20,7 +20,7 @@ class UserObserver
         }
     }
 
-    public function deleting(User $user)
+    public function deleting(User $user): void
     {
         \DB::transaction(static function () use ($user) {
             $user->chatMessages->each->delete();
@@ -35,14 +35,14 @@ class UserObserver
         });
     }
 
-    public function deleted(User $user)
+    public function deleted(User $user): void
     {
         if ($user->avatar) {
             app(Avatar::class)->delete($user->avatar);
         }
     }
 
-    public function saving(User $user)
+    public function saving(User $user): void
     {
         if ($user->isDirty('password')) {
             $user->password_changed_at = now();
@@ -51,7 +51,7 @@ class UserObserver
         $this->maintainConsistency($user);
     }
 
-    public function saved(User $user)
+    public function saved(User $user): void
     {
         if ($user->isDirty('avatar')) {
             $lastAvatar = $user->getOriginal('avatar');

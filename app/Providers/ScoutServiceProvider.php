@@ -8,7 +8,7 @@ use Laravel\Scout\EngineManager;
 
 class ScoutServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
         $this->app->make(EngineManager::class)
             ->extend('sphinx', static fn () => app(SphinxScoutEngine::class));

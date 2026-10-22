@@ -42,7 +42,7 @@ class CityForm extends Component
     #[Validate('required')]
     public string|null $titleRu = '';
 
-    public function mount()
+    public function mount(): void
     {
         if ($this->id) {
             $city = City::query()->findOrFail($this->id);
@@ -81,14 +81,14 @@ class CityForm extends Component
         return redirect()->to($this->goto ?? to('acp/cities'));
     }
 
-    public function updatedLat()
+    public function updatedLat(): void
     {
         if ($this->lat !== null && str_contains($this->lat, ', ')) {
             [$this->lat, $this->lon] = explode(', ', $this->lat);
         }
     }
 
-    protected function rules()
+    protected function rules(): array
     {
         return [
             'slug' => LifeSlug::rules(City::query()->find($this->id) ?? new City),

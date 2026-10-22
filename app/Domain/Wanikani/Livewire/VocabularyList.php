@@ -24,7 +24,7 @@ class VocabularyList extends Component
     public array $visible = [];
     public int|null $level = null;
 
-    public function burn(int $id, BurnAction $burn, ResurrectAction $resurrect)
+    public function burn(int $id, BurnAction $burn, ResurrectAction $resurrect): void
     {
         $userId = auth()->id();
 
@@ -44,7 +44,7 @@ class VocabularyList extends Component
         }
     }
 
-    public function mount(#[CurrentUser] User|null $user = null, int|null $level = null, string|null $kanji = null)
+    public function mount(#[CurrentUser] User|null $user = null, int|null $level = null, string|null $kanji = null): void
     {
         $this->flat = $kanji !== null;
         $this->vocabularies ??= Vocabulary::query()
@@ -70,12 +70,12 @@ class VocabularyList extends Component
         return view('livewire.vocabulary-list');
     }
 
-    public function reveal(int $id)
+    public function reveal(int $id): void
     {
         $this->visible[$id] = empty($this->visible[$id]);
     }
 
-    public function shuffle()
+    public function shuffle(): void
     {
         $this->vocabularies = $this->vocabularies->shuffle();
     }

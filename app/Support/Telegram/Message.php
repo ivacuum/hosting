@@ -13,7 +13,7 @@ readonly class Message
         public string|null $text,
     ) {}
 
-    public static function fromArray(array $payload)
+    public static function fromArray(array $payload): self
     {
         return new self(
             $payload['message_id'],

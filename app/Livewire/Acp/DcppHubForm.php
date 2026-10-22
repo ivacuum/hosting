@@ -29,7 +29,7 @@ class DcppHubForm extends Component
     #[Validate('required')]
     public DcppHubStatus $status = DcppHubStatus::Published;
 
-    public function mount()
+    public function mount(): void
     {
         if ($this->id) {
             $dcppHub = DcppHub::query()->findOrFail($this->id);
@@ -50,7 +50,7 @@ class DcppHubForm extends Component
         return redirect()->to($this->goto ?? to('acp/dcpp-hubs'));
     }
 
-    private function store()
+    private function store(): void
     {
         $dcppHub = $this->id
             ? DcppHub::query()->findOrFail($this->id)

@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 
 class FileObserver
 {
-    public function saving(File $file)
+    public function saving(File $file): void
     {
         $this->maintainConsistency($file);
     }

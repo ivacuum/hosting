@@ -6,20 +6,20 @@ use Illuminate\Database\Seeder;
 
 class PruneUploads extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $this->pruneAvatars();
         $this->pruneGallery();
         $this->pruneTemp();
     }
 
-    private function pruneAvatars()
+    private function pruneAvatars(): void
     {
         $storage = \Storage::disk('avatars');
         $storage->delete($storage->allFiles());
     }
 
-    private function pruneGallery()
+    private function pruneGallery(): void
     {
         $storage = \Storage::disk('gallery');
         $storage->delete($storage->allFiles());
@@ -29,7 +29,7 @@ class PruneUploads extends Seeder
         }
     }
 
-    private function pruneTemp()
+    private function pruneTemp(): void
     {
         $storage = \Storage::disk('temp');
 

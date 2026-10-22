@@ -13,7 +13,7 @@ class PingDcppHubJob extends AbstractJob implements ShouldBeUnique
 {
     public function __construct(public DcppHub $hub) {}
 
-    public function handle(GetDcppHubInfoAction $getDcppHubInfo)
+    public function handle(GetDcppHubInfoAction $getDcppHubInfo): void
     {
         $dcppHubInfo = $getDcppHubInfo->execute($this->hub->address, $this->hub->port);
 

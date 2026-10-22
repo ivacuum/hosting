@@ -60,7 +60,7 @@ class VocabularySeeder extends Seeder
         ],
     ];
 
-    public function run()
+    public function run(): void
     {
         foreach (self::VOCABULARY as [
             'kana' => $kana,

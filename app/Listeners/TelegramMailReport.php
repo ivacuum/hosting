@@ -6,7 +6,7 @@ use App\Events\MailReported;
 
 class TelegramMailReport extends TelegramNotifier
 {
-    public function handle(MailReported $event)
+    public function handle(MailReported $event): void
     {
         $email = $event->email;
 

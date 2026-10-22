@@ -13,13 +13,13 @@ class IssueSeeder extends Seeder
 {
     use WithoutModelEvents;
 
-    public function run()
+    public function run(): void
     {
         $this->english();
         $this->russian();
     }
 
-    private function english()
+    private function english(): void
     {
         IssueFactory::new()
             ->closed()
@@ -40,7 +40,7 @@ class IssueSeeder extends Seeder
             ->create();
     }
 
-    private function russian()
+    private function russian(): void
     {
         $user = UserFactory::new()
             ->withEmail('issue-ru@example.com')

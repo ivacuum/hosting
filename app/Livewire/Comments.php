@@ -17,7 +17,7 @@ class Comments extends Component
     public Issue|Magnet|News|Trip $model;
 
     #[On(LivewireEvent::RefreshComments->name)]
-    public function freshComments()
+    public function freshComments(): void
     {
         $this->comments = $this->model
             ->commentsPublished()
@@ -26,7 +26,7 @@ class Comments extends Component
             ->get();
     }
 
-    public function mount()
+    public function mount(): void
     {
         $this->freshComments();
     }

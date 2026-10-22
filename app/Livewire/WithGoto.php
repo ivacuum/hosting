@@ -6,7 +6,7 @@ trait WithGoto
 {
     public string|null $goto = null;
 
-    public function mountWithGoto()
+    public function mountWithGoto(): void
     {
         $this->goto = request('goto');
     }

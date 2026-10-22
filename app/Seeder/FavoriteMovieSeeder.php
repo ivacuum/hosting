@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 
 class FavoriteMovieSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $movie = new FavoriteMovie;
         $movie->year = 1988;

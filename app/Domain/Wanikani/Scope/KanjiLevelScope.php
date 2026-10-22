@@ -8,7 +8,7 @@ class KanjiLevelScope
 {
     public function __construct(private int|null $level) {}
 
-    public function __invoke(Builder $query)
+    public function __invoke(Builder $query): void
     {
         if ($this->level === null) {
             return;

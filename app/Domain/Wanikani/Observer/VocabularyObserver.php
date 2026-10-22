@@ -6,7 +6,7 @@ use App\Domain\Wanikani\Models\Vocabulary;
 
 class VocabularyObserver
 {
-    public function deleting(Vocabulary $vocab)
+    public function deleting(Vocabulary $vocab): void
     {
         \DB::transaction(static function () use ($vocab) {
             $vocab->burnables()->delete();

@@ -14,7 +14,7 @@ use App\Notifications\TripCommentedNotification;
 
 class NotifyUsersAboutComment
 {
-    public function handle(CommentPublished $event)
+    public function handle(CommentPublished $event): void
     {
         $model = $event->comment->rel;
 

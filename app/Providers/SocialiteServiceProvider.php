@@ -8,7 +8,7 @@ use Laravel\Socialite\Contracts\Factory;
 
 class SocialiteServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
         /** @var \Laravel\Socialite\SocialiteManager $socialite */
         $socialite = $this->app->make(Factory::class);

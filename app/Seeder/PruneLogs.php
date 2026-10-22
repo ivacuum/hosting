@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 
 class PruneLogs extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         file_put_contents(storage_path('logs/browser.log'), '');
         file_put_contents(storage_path('logs/laravel.log'), '');

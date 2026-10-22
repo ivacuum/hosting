@@ -16,7 +16,7 @@ class PhotoEditForm extends Component
     public $tags;
     public Photo $photo;
 
-    public function mount()
+    public function mount(): void
     {
         $this->tags = $this->photo->tags->modelKeys();
     }
@@ -31,7 +31,7 @@ class PhotoEditForm extends Component
         return redirect()->to($this->goto ?? to('acp/photos'));
     }
 
-    protected function rules()
+    protected function rules(): array
     {
         return [
             'tags' => 'array',

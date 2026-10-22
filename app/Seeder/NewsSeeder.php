@@ -8,7 +8,7 @@ use Illuminate\Database\Seeder;
 
 class NewsSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $author = UserFactory::new()
             ->withEmail('news@example.com')

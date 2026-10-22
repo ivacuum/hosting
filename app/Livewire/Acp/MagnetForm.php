@@ -32,7 +32,7 @@ class MagnetForm extends Component
     #[Validate('required')]
     public MagnetCategory|int|null $categoryId = null;
 
-    public function mount()
+    public function mount(): void
     {
         if ($this->id) {
             $this->magnet = Magnet::query()->findOrFail($this->id);
@@ -53,7 +53,7 @@ class MagnetForm extends Component
         return redirect()->to($this->goto ?? to('acp/magnets'));
     }
 
-    protected function rules()
+    protected function rules(): array
     {
         return [
             'rtoId' => [
@@ -64,7 +64,7 @@ class MagnetForm extends Component
         ];
     }
 
-    private function store()
+    private function store(): void
     {
         $this->magnet->rto_id = $this->rtoId;
         $this->magnet->status = $this->status;

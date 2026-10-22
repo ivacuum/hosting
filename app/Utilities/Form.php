@@ -6,7 +6,7 @@ class Form
 {
     protected $model;
 
-    public function model($model)
+    public function model($model): static
     {
         $this->model = $model;
 

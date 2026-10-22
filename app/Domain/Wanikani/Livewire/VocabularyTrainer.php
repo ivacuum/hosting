@@ -61,7 +61,7 @@ class VocabularyTrainer extends Component
         event(new \App\Events\Stats\VocabularyAnswerRevealed);
     }
 
-    public function decreaseLevel()
+    public function decreaseLevel(): void
     {
         $this->validate(['level' => 'integer|min:2|max:6']);
         $this->level--;
@@ -70,7 +70,7 @@ class VocabularyTrainer extends Component
         event(new \App\Events\Stats\VocabularyDifficultyDecreased);
     }
 
-    public function increaseLevel()
+    public function increaseLevel(): void
     {
         $this->validate(['level' => 'integer|min:1|max:5']);
         $this->level++;

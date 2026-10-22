@@ -6,7 +6,7 @@ use Illuminate\Auth\Events\Login;
 
 class UserEmptySalt
 {
-    public function handle(Login $event)
+    public function handle(Login $event): void
     {
         /** @var \App\User $user */
         $user = $event->user;
