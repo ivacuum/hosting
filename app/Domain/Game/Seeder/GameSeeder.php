@@ -65,7 +65,7 @@ class GameSeeder extends Seeder
             ->withShortDescriptionEn('Dynamic seasons change everything at the world’s greatest automotive festival. Go it alone or team up with others to explore beautiful and historic Britain in a shared open world.')
             ->withShortDescriptionRu('Времена года полностью меняют облик главного автомобильного фестиваля планеты. Исследуйте чудесные пейзажи и исторические достопримечательности Великобритании, путешествуя по открытому миру в одиночку или вместе с другими игроками.')
             ->withReleasedAt('2021-03-09')
-            ->withReleasedAt('2022-02-09')
+            ->withFinishedAt('2022-02-09')
             ->create();
 
         GameFactory::new()
