@@ -11,7 +11,7 @@ class TemplatesController
 {
     public function index(Request $request, FindTripTemplatesAction $findTripTemplates)
     {
-        $filter = $request->query('filter');
+        $filter = $request->string('filter')->toString();
         $finished = $request->query('finished');
         $translated = $request->has('translated') ? $request->boolean('translated') : null;
 
@@ -26,7 +26,7 @@ class TemplatesController
         foreach ($findTripTemplates->execute() as $template) {
             $templateName = $template->getBasename('.blade.php');
 
-            if (!preg_match("/{$filter}/", $templateName)) {
+            if (!str_contains($templateName, $filter)) {
                 continue;
             }
 

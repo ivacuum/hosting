@@ -11,7 +11,7 @@ class GigTemplatesController
 {
     public function index(Request $request, FindGigTemplatesAction $findGigTemplates)
     {
-        $filter = $request->query('filter');
+        $filter = $request->string('filter')->toString();
         $finished = $request->query('finished');
         $translated = $request->has('translated') ? $request->boolean('translated') : null;
 
@@ -24,7 +24,7 @@ class GigTemplatesController
         }
 
         foreach ($findGigTemplates->execute() as $template) {
-            if (!preg_match("/{$filter}/", $template->getBasename('.blade.php'))) {
+            if (!str_contains($template->getBasename('.blade.php'), $filter)) {
                 continue;
             }
 
