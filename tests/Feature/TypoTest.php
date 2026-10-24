@@ -15,7 +15,7 @@ class TypoTest extends TestCase
     {
         \Notification::fake();
 
-        UserFactory::new()->create();
+        UserFactory::new()->root()->create();
 
         $this->from('/')
             ->post('js/typo', ['selection' => 'Typo is right here'])
