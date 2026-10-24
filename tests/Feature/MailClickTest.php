@@ -64,6 +64,18 @@ class MailClickTest extends TestCase
         $this->assertFalse($email->user->fresh()->isActive());
     }
 
+    public function testDoesNotSwitchSignedInUser(): void
+    {
+        $email = EmailFactory::new()->withUser()->create();
+        $signedIn = UserFactory::new()->create();
+
+        $this->actingAs($signedIn)
+            ->get($email->signedLink('/my'))
+            ->assertRedirect('/my');
+
+        $this->assertAuthenticatedAs($signedIn);
+    }
+
     public function testInvalidSignaturesAllowSameOriginRedirectsWithoutAuthentication(): void
     {
         $email = EmailFactory::new()->withUser(UserFactory::new()->inactive())->create();

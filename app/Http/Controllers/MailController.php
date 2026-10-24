@@ -33,7 +33,7 @@ class MailController extends Controller
 
         $user?->activate();
 
-        if ($user?->isActive() && $auth->id() !== $user->id) {
+        if ($user?->isActive() && $auth->guest()) {
             $auth->login($user);
 
             event(new \App\Events\Stats\UserAutologinWithEmailLink);
