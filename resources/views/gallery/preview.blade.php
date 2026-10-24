@@ -10,9 +10,9 @@
     </a>
   </div>
   <div class="lg:col-span-7 xl:col-span-3">
-    <div>Ссылка:</div>
+    <div>@lang('Ссылка'):</div>
     <input class="the-input select-all" type="text" value="{{ $image->originalUrl() }}">
-    <div class="mt-2">Полная картинка:</div>
+    <div class="mt-2">@lang('Полная картинка'):</div>
     <input class="the-input select-all" type="text" value="[img]{{ $image->originalUrl() }}[/img]">
   </div>
 </div>

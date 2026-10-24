@@ -6,9 +6,9 @@
 </div>
 
 <div class="mx-auto max-w-xl mt-6">
-  <div>Ссылка:</div>
+  <div>@lang('Ссылка'):</div>
   <input class="the-input select-all" type="text" value="{{ $image->originalUrl() }}">
-  <div class="mt-2">Полная картинка:</div>
+  <div class="mt-2">@lang('Полная картинка'):</div>
   <input class="the-input select-all" type="text" value="[img]{{ $image->originalUrl() }}[/img]">
 </div>
 @endsection
