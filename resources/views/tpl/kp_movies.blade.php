@@ -16,8 +16,12 @@
         alt=""
       >
       <div class="mt-2 mb-4">
-        <div>{{ $movie->title_ru }}</div>
-        <div class="text-sm">{{ $movie->title_en }}</div>
+        @ru
+          <div>{{ $movie->title_ru }}</div>
+          <div class="text-sm">{{ $movie->title_en }}</div>
+        @en
+          <div>{{ $movie->title_en }}</div>
+        @endru
       </div>
     </a>
   @endforeach

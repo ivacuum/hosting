@@ -27,7 +27,9 @@
           <div><a class="link" href="@lng/life/favorite-posts">Любимые посты</a></div>
           <div><a class="link" href="@lng/life/podcasts">Подкасты</a></div>
           <div><a class="link" href="@lng/life/laundry">Условные обозначения стирки</a></div>
-          <div><a class="link" href="@lng/life/movies">Фильмы и сериалы</a></div>
+        @endru
+        <div><a class="link" href="@lng/life/movies">@lang('Фильмы и сериалы')</a></div>
+        @ru
           <div><a class="link" href="@lng/life/using-in-travels">Чем пользуюсь в путешествиях</a></div>
         @endru
       </nav>
