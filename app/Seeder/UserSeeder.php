@@ -23,11 +23,5 @@ class UserSeeder extends Seeder
             ->withPassword('top-secret')
             ->withLastLoginAt(now()->subDays(5))
             ->create();
-
-        UserFactory::new()
-            ->withEmail('magnets@example.com')
-            ->withLogin('magnets')
-            ->withLastLoginAt(now()->subWeeks(2))
-            ->create();
     }
 }
