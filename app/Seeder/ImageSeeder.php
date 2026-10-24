@@ -14,6 +14,7 @@ class ImageSeeder extends Seeder
         $user = UserFactory::new()
             ->withEmail('gallery@example.com')
             ->withLogin('gallery')
+            ->withPassword('top-secret')
             ->create();
 
         $factory = ImageFactory::new()->withUser($user);

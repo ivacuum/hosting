@@ -16,6 +16,7 @@ class MagnetSeeder extends Seeder
         $user = UserFactory::new()
             ->withEmail('magnet@example.com')
             ->withLogin('magnet')
+            ->withPassword('top-secret')
             ->create();
 
         $factory = MagnetFactory::new()->withUser($user);
