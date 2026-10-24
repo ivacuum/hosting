@@ -157,25 +157,23 @@
               @endforeach
             </select>
           @endif
-          <div class="flex gap-ч1">
-            <div class="flex gap-4 items-center">
-              <label class="flex gap-2 items-center">
-                <input class="not-checked:border-gray-300 text-sky-600" type="radio" wire:model.live="customInterval" value="0">
-                @ru
-                  Предопределенный
-                @en
-                  Predefined
-                @endru
-              </label>
-              <label class="flex gap-2 items-center">
-                <input class="not-checked:border-gray-300 text-sky-600" type="radio" wire:model.live="customInterval" value="1">
-                @ru
-                  Задать свой
-                @en
-                  Customize
-                @endru
-              </label>
-            </div>
+          <div class="flex gap-4 items-center">
+            <label class="flex gap-2 items-center">
+              <input class="not-checked:border-gray-300 text-sky-600" type="radio" wire:model.live="customInterval" value="0">
+              @ru
+                Предопределенный
+              @en
+                Predefined
+              @endru
+            </label>
+            <label class="flex gap-2 items-center">
+              <input class="not-checked:border-gray-300 text-sky-600" type="radio" wire:model.live="customInterval" value="1">
+              @ru
+                Задать свой
+              @en
+                Customize
+              @endru
+            </label>
           </div>
         </div>
         <div>
