@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Acp\Dev;
 
 use App\Domain\Config;
+use App\Domain\Life\Action\ConvertTemplateImagesAction;
 use App\Domain\Life\Action\FindTripTemplatesAction;
 use App\Domain\Life\Models\Trip;
 use Illuminate\Http\Request;
@@ -85,7 +86,7 @@ class TemplatesController
         ]);
     }
 
-    public function show(Request $request, string $template)
+    public function show(Request $request, ConvertTemplateImagesAction $convertTemplateImages, string $template)
     {
         // Внутренние ссылки на шаблоны
         $template = str_replace('.', '_', $template);
@@ -103,36 +104,7 @@ class TemplatesController
                 ? "{$template}-part-{$part}"
                 : $template;
             $path = resource_path("views/life/trips/{$editableTemplate}.blade.php");
-            $content = \File::get($path);
-
-            $lines = explode("\n", $content);
-            $images = $result = [];
-
-            foreach ($lines as $line) {
-                if (preg_match('#^([A-Za-z_\d]+\.[a-z]{3,4})$#', $line, $match)) {
-                    $images[] = str_replace('.jpeg', '.jpg', $match[1]);
-                } else {
-                    $sizeof = count($images);
-
-                    if ($sizeof > 1) {
-                        $result[] = "@include('tpl.fotorama-2x', ['pics' => [";
-
-                        foreach ($images as $image) {
-                            $result[] = "  '{$image}',";
-                        }
-
-                        $result[] = ']])';
-                    } elseif ($sizeof === 1) {
-                        $result[] = "@include('tpl.pic-2x', ['pic' => '{$images[0]}'])";
-                    }
-
-                    $images = [];
-
-                    $result[] = $line;
-                }
-            }
-
-            \File::put($path, implode("\n", $result));
+            \File::put($path, $convertTemplateImages->execute(\File::get($path)));
         }
 
         \Head::title($slug);
