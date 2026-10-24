@@ -10,7 +10,7 @@ Verify chat, comment, image, issue, and magnet moderation through the administra
 - `admin-image-view` covers `GET /acp/images/{id}/view`, which increments the image's view counter and returns to the referring page.
 - `admin-issues` covers `GET /acp/issues`, detail, and `DELETE /acp/issues/{id}`. Issues have no ACP create or edit page.
 - `admin-issue-state` covers `POST /acp/issues/{id}/close` and `POST /acp/issues/{id}/open` with their state preconditions.
-- `admin-issue-batch` covers the declared `POST /acp/issues/batch` actions `close`, `open`, and `delete`, including the current UI request mismatch.
+- `admin-issue-batch` covers the declared `POST /acp/issues/batch` actions `close`, `open`, and `delete`, sent as `ids[]` by the batch form.
 - `admin-magnets` covers `GET /acp/magnets`, detail, edit, and `DELETE /acp/magnets/{id}`. The detail also has an externally backed replacement form.
 - Chat, comment, and magnet edits use `GET /acp/{resource}/{id}/edit` and Livewire submits. Missing resource `POST` and `PUT` save routes are intentional in `routes/acp.php`.
 
@@ -70,7 +70,7 @@ Preconditions:
    Delete only an owned issue through its detail and require its row to disappear. `IssueObserver` does not cascade comments or emails. Check and record any remaining owned related rows.
 
 6. For issue batches, select only owned issue checkboxes and choose **Удалить**, then **Выполнить**. Require actual row absence before passing the action.
-   The current UI sends `ids[]`, but `IssuesController::batch()` reads `selected`. A reload with zero deletions is a failure, not success. Preserve network and SQL evidence of the mismatch.
+   `batch-form.js` sends `ids[]` and `action`, then reloads regardless of the result. A reload with zero deletions is a failure, not success. Submitting with the placeholder action must change nothing and return `200`, not `500`.
    The controller also supports `action=close` for open issues and `action=open` for closed issues, with an affected-row message. Neither action appears in the current issue batch selector.
    Report both batch state actions as uncovered by the browser UI. Do not add options, call fetch, or rename fields in the DOM to manufacture coverage. Successful single-issue state buttons do not prove batch state changes.
 
@@ -86,7 +86,7 @@ Preconditions:
 
 - Read `routes/acp.php`, `app/Http/Controllers/Acp/{ChatMessages,Comments,Images,Issues,Magnets}Controller.php`, and `IssueCloseController.php` and `IssueOpenController.php` for the declared actions. The route group, not the extra action methods, provides their common admin gate.
 - Form sources are `app/Livewire/Acp/{ChatMessage,Comment,Magnet}Form.php` and `resources/views/livewire/acp/`. The browser uses Livewire submits rather than missing resource update routes.
-- `resources/views/acp/issues/index.blade.php`, `resources/views/acp/tpl/batch.blade.php`, and `resources/js/batch-form.js` establish the issue batch mismatch. Keep this gap visible until the application changes.
+- `resources/views/acp/issues/index.blade.php`, `resources/views/acp/tpl/batch.blade.php`, and `resources/js/batch-form.js` define the issue batch request.
 - `CommentObserver` and `NotifyUsersAboutComment` can send issue, news, trip, and magnet notifications when a pending comment becomes published. Local log-mail generation does not authorize external messaging.
 - `ImageSeeder` creates synthetic gallery images. Those can prove gallery management, not recognition or availability of real travel photos. `Photo` and `Image` are separate models and storage paths.
 - `images.type` is read into view data but does not filter the controller query. Do not claim type filtering from an unchanged list.

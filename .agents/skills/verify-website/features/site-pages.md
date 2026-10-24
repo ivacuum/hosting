@@ -44,7 +44,7 @@ Preconditions:
 ## Gotchas
 
 - Missing home cards fail their seeded prerequisites. An otherwise rendered home page does not prove those links or images.
-- `/en/cv` is not registered. Do not invent an English CV route because its template contains English branches.
+- `/cv` and `/en/cv` are both registered in `routes/simple.php`, outside the locale-prefixed web routes. Neither has the shared footer or a locale switch, so `/en/cv` is reachable only by URL. On `/en/cv` the travel link goes to `/en/life`, but the portfolio links (`/gallery`, `/dc`, `/files`, `/retracker`, and others) stay unprefixed.
 - Home hides several directory entries on small screens and in English. Direct navigation does not prove a hidden menu entry works.
 - These informational pages have no content-save operation. Navigation may still emit normal site telemetry.
 - Sources are `routes/web.php`, `routes/simple.php`, `bootstrap/app.php`, `HomeController`, and `resources/views/{index,about,cv,privacy-policy,base}.blade.php` plus `tpl/header-navbar.blade.php`.

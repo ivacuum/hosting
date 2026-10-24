@@ -12,7 +12,7 @@ Browsers and external clients send telemetry, webhook events, image-resize reque
 
 ## How to get to it (user POV)
 
-- Normal trainer, photo, news, and video actions can cause `POST /js/beacon` when the browser leaves or hides the page.
+- Normal trainer, photo, news, video, and `/magnets` list views (`TorrentViewed`) can cause `POST /js/beacon` when the browser leaves or hides the page.
 - Image clients request `/resize/{width}x{height}/{domain}/{path}`. The allowed source domain is `life.ivacuum.org`; the path must name a real JPG or PNG.
 - Instagram sends `GET` and `POST /instagram/webhook`. Telegram sends `POST /telegram/webhook`.
 - An MCP client connects to `/mcp/tags`. Its registered HTTP methods are `GET`, `POST`, and `DELETE`; the installed transport accepts protocol requests through `POST`.

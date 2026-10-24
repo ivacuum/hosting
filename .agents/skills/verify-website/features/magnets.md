@@ -22,7 +22,7 @@ Verify published release discovery, search, personal releases, additions, downlo
 - Detail tag links return to `/magnets?q=...`; `Связанные раздачи` titles enter other details. Comment-feed links include `#comment-{id}`.
 - After searching, expand `Не нашли искомую раздачу? Оставьте нам запрос` for the release-request form.
 - FAQ `Как добавить раздачу?` contains `отдельная страница` to `/magnets/add`. The empty personal list has its own `Добавить раздачу` button.
-- Open copied search, detail, and `/magnets/my` URLs separately. English detail `/en/magnets/{magnet}` deliberately returns 404.
+- Open copied search, detail, and `/magnets/my` URLs separately. The section is Russian-only: every `/en/magnets*` route returns 404, its pages show no `In English` footer link or `hreflang="en"` alternate, and magnet and comment links always point to `/magnets/...`, including on `/en/torrent`.
 - Anonymous visitors see `Пользователям доступен чат`. Its `Пользователям` link enters sign-in with a return destination. Chat appears at `/magnets` only when signed in and the query string is empty.
 
 ## Driving it with Safari MCP

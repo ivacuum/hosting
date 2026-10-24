@@ -54,11 +54,13 @@ Require `status: ready`, the expected run ID and URL, owned server process, matc
 
 ## Drive
 
-Use the existing **Safari MCP** browser harness through the tools available to the agent. Discover exact signatures before calling. In OpenCode, call via `execute` using `tools.safari`; `search({namespace: 'safari'})` lists the catalog. No Playwright/Cypress harness is installed in this repo, so do not invent one or install browser dependencies.
+Use the existing **Safari MCP** browser harness through the tools available to the agent. Discover exact signatures before calling. In OpenCode, call via `execute` using `tools.safari`; `search({namespace: 'safari'})` lists the catalog. In Claude Code the same tools are `mcp__safari__<name>` (for example `mcp__safari__create_tab`); load them through tool search. The steps below use OpenCode names. No Playwright/Cypress harness is installed in this repo, so do not invent one or install browser dependencies.
 
 1. `tools.safari.create_tab({url: instanceUrl + '/life'})`; record its returned handle. Do not reuse the user's active tab. Switch to that handle before subsequent actions if needed.
 2. `tools.safari.get_page_content({region: 'entire_page', includeAccessibilityAttributes: true, includeURLs: true})` supplies fresh node UIDs, text, and hrefs. Prefer UIDs matched by accessible name and route. UIDs are transient; re-extract after navigation or reactive updates. Use the feature file's real `href`, input `name`, or element ID to disambiguate duplicate desktop/mobile links.
 3. `tools.safari.page_interactions({interactions: [...]})` performs actual `click`, `type`, and `keyPress` actions. Use `replaceAll: true` for edits. Batch related typing and clicks; require the resulting page state before continuing. Never set Livewire properties, call component methods, or insert DOM state to simulate success.
+   - Native `<select>`: `click` the select node first to open its popup, then send `selectMenuItem` with the same `node` and the option's visible `text`. `selectMenuItem` alone and arrow keys do not change the value.
+   - `keyPress` accepts single named keys such as `ArrowRight` and `Return`. Modifier chords (`Alt+E`, `Ctrl+Enter`, `Ctrl+Right`) are not supported; the tool silently types their characters instead. Record shortcut-only journeys as NOT_VERIFIED with that reason rather than dispatching synthetic key events.
 4. If an unlabeled field cannot be identified in text extraction, use `get_page_content({format: 'html', region: 'entire_page'})` to associate its UID with the real selector. A DOM lookup via `evaluate_javascript` can inspect/focus that input, but enter values and submit using browser interactions. Do not submit HTTP forms behind the UI for browser proof.
 5. Follow the mapped entry points, including separate locale/mobile/keyboard paths when relevant. Direct navigation is a valid bookmarked entry, not evidence that a menu link works.
 

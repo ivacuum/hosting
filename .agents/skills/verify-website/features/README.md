@@ -20,7 +20,7 @@ Dynamic story slugs, songs, database records, pagination, query filters, and res
 
 ## Driving and proof
 
-- Use Safari MCP through `tools.safari` in OpenCode `execute`. Extract fresh UIDs, then use real click, typing, selection, and key actions. Selectors in the recipes identify controls; they do not authorize internal Livewire setters.
+- Use Safari MCP through `tools.safari` in OpenCode `execute`, or `mcp__safari__*` in Claude Code. See SKILL.md for native select and modifier-key limits. Extract fresh UIDs, then use real click, typing, selection, and key actions. Selectors in the recipes identify controls; they do not authorize internal Livewire setters.
 - Use HTTP clients for machine endpoints, redirects, status/header evidence, and supplemental checks. HTTP form submission is not browser proof of a form workflow.
 - Reset navigation and authentication for each entry point. Record Russian, English, desktop, mobile, keyboard, bookmark, and menu paths separately when they are in scope.
 - Capture the action and resulting state, readable text, screenshot, relevant status/network data, and independent SQL/file/mail evidence under `evidence/FEATURE/`.

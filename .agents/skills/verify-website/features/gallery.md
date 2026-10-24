@@ -51,7 +51,7 @@ Preconditions:
 - The upload input's `max="10"` is not a server-side count rule. Do not claim that the component enforces a ten-file maximum.
 - Originals are processed images, not byte-identical originals. `Image::upload()` auto-orients and fits within 2000 by 2000; thumbnails fit within 150 by 150. EXIF/profile preservation is not the gallery contract.
 - PNG output keeps PNG. Other accepted formats use a `.jpg` slug. Large GIF resizing selects the first frame; do not require animated previews.
-- Individual upload results label a thumbnail BBCode value `Полная картинка`, while combined links and preview/view use originals. Capture this source discrepancy rather than silently correcting the expected output.
+- Every BBCode field, including each individual upload result's `Полная картинка`, uses the original URL: `[img]` + that entry's `Ссылка` + `[/img]`.
 - The index displays `views`, but `GalleryController::show()` does not increment that field. Do not demand a count increment merely because the full image was opened.
 - Seeded gallery fixtures are available for public preview/show checks even when browser upload is blocked. Their success does not prove upload or guest ownership.
 - Source pointers are `routes/web.php`, `resources/views/gallery/*`, `resources/views/{index,cv}.blade.php`, `resources/views/livewire/gallery-uploader.blade.php`, `app/Http/Controllers/GalleryController.php`, `app/Livewire/GalleryUploader.php`, `app/Image.php`, and `app/Seeder/ImageSeeder.php`.

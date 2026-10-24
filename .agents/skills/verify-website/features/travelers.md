@@ -35,8 +35,8 @@ Preconditions:
 4. Open `/@trip` and require redirection to `/@trip/travel`. Require **Поездки**, the traveler breadcrumb, and only that user's nonhidden chronology.
 5. Click **По городам**. Require **Посещенные города** and real city names. Follow a linked city using its actual slug.
 6. If the city has one published trip, require its redirect to the canonical story. Otherwise require the city title, country breadcrumb, year groups, and city map control.
-7. Return and click **По странам**. Require **Посещенные страны**. Follow a linked country and require its title and that traveler's year-grouped trips.
-8. Click the country view's city links and the story's country/city breadcrumbs separately. Check that generated hrefs keep the same traveler login.
+7. Return and click **По странам**. Require **Посещенные страны**. Follow a linked country and require its title and that traveler's year-grouped story links. Country and city detail pages have no subnav and no city links; city links exist only on the countries and cities lists.
+8. From the countries list, click a city link, then click the story's country/city breadcrumbs separately. Check that generated hrefs keep the same traveler login.
 9. Click **По годам** and a published story link. Require the story title, Markdown body, city timeline, adjacent-trip links when present, and comment area.
 10. Enter the corresponding `/trips/{id}` bookmark. Capture the redirect to the same canonical story. Repeat with a real root-owned published trip and require `/life/{slug}` instead.
 11. If an actual link supplies `anchor`, preserve it and require the redirect to retain that fragment. Do not invent an anchor and claim a working in-page target.

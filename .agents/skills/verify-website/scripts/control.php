@@ -629,7 +629,7 @@ function launch(string $root): void
             'DB_DATABASE' => 'hosting', 'DB_USERNAME' => 'root', 'DB_PASSWORD' => 'verification-only', 'DB_SOCKET' => '',
             'REDIS_CLIENT' => 'predis', 'REDIS_URL' => 'redis://127.0.0.1:' . $redisPort,
             'CACHE_STORE' => 'file', 'SESSION_DRIVER' => 'file', 'SESSION_COOKIE' => $state['id'],
-            'MAIL_MAILER' => 'log', 'QUEUE_CONNECTION' => 'sync', 'SCOUT_DRIVER' => 'collection', 'DEBUGBAR_ENABLED' => 'false',
+            'MAIL_MAILER' => 'log', 'MAIL_FROM_ADDRESS' => 'noreply@localhost', 'QUEUE_CONNECTION' => 'sync', 'SCOUT_DRIVER' => 'collection', 'DEBUGBAR_ENABLED' => 'false',
             'LOG_CHANNEL' => 'single', 'AI_AGENT' => '1',
         ];
         $dotenv = '';

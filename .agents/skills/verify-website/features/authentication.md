@@ -31,7 +31,7 @@ Preconditions:
 
 1. Follow a header sign-in link, then separately enter a protected bookmark. Fill `email` and `password` in `form[action='/auth/login']` and click **Войти**. Leave hidden `mail` empty.
 2. Require the intended protected page and authenticated identity. Repeat after logout with `guest` in `email` to prove login-name access separately.
-3. Inspect **Показать пароль**, **Скрыть пароль**, and checkbox `foreign` labelled **Чужой компьютер** through browser actions. Do not infer cookie lifetime from that checkbox.
+3. Inspect **Показать пароль**, **Скрыть пароль**, and checkbox `foreign` labelled **Не запоминать меня** through browser actions. Unticked sign-in should set a `remember_web_*` cookie and ticked sign-in only the session cookie. A failed login keeps the checkbox state.
 4. Submit one wrong password. Require **Электронная почта, логин или пароль неверны**, retained `email`, and no protected access.
 5. Click **Регистрация**. Fill `email` and `password` of at least eight characters, then **Зарегистрироваться**. Require home navigation and an authenticated account.
 6. Query `SELECT id,email,login,status,activation_token FROM users WHERE email = '<registered email>'`. Require an active account with cleared activation token, not a pending confirmation screen.
@@ -48,7 +48,7 @@ Preconditions:
 
 - Source anchors are `routes/web.php`, `app/Http/Controllers/Auth/`, `app/Http/Requests/Auth/`, `resources/views/auth/`, `app/User.php`, and `app/Mail/ResetPasswordMail.php`.
 - Registration currently activates and logs in immediately. Do not describe its declared confirmation endpoint as a working email-verification flow.
-- `foreign` is rendered, but `SignIn` always uses its `remember = true` property. Flag this discrepancy rather than claiming the checkbox changes persistence.
+- `SignInForm` sets `remember` to the inverse of `foreign`, so **Не запоминать меня** controls the remember-me cookie. That cookie is HTTP-only, so `document.cookie` cannot show it; record the cookie check as NOT_VERIFIED unless the harness exposes response headers or a cookie store.
 - OAuth success requires configured provider credentials, a valid browser state and callback code, and an authorized test account. It is blocked here because real external writes are prohibited.
 - Successful callbacks can create or attach `external_identities` by provider UID and email, activate users, and log them in. Seeded `social@example.com` identities are fixtures, not usable provider credentials.
 - Facebook supports `rerequest=1`, VK supports `revoke=1`, and all three starts accept `goto`. Missing-email Facebook and VK feedback links retry with those flags. Inspect only, without external navigation.

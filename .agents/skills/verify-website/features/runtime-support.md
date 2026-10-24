@@ -6,7 +6,7 @@ Visitors receive the site's scripts, manifests, icons, and error pages. Operator
 
 - `runtime-readiness` distinguishes an HTTP response from a usable seeded app.
 - `runtime-errors` renders explicit error pages with matching status codes.
-- `runtime-static` serves manifests, icons, crawler files, and the service-worker scripts.
+- `runtime-static` serves manifests, icons, and crawler files.
 - `runtime-livewire` loads frontend assets and handles normal reactive updates/uploads.
 - `runtime-development` identifies Boost and Debugbar routes without treating them as public product pages.
 
@@ -14,8 +14,8 @@ Visitors receive the site's scripts, manifests, icons, and error pages. Operator
 
 - Readiness is `/health-up`; client-address JSON is `/ip`.
 - Explicit error pages are `/401`, `/403`, `/404`, `/500`, and `/503`. An unknown URL is a separate natural 404 entry.
-- The base page links `pwa-manifest-ru.json` or `pwa-manifest-en.json`, icons, assets, and `/service-worker-installer.js`.
-- Root static files are `/robots.txt`, `/ads.txt`, `/favicon.ico`, `/apple-touch-icon.png`, `/apple-touch-icon-144x144.png`, `/apple-touch-icon-precomposed.png`, both manifests, and both service-worker scripts.
+- The base page links `pwa-manifest-ru.json` or `pwa-manifest-en.json`, icons, and assets. No service-worker script is linked.
+- Root static files are `/robots.txt`, `/favicon.ico`, `/apple-touch-icon.png`, `/apple-touch-icon-144x144.png`, `/apple-touch-icon-precomposed.png`, and both manifests. `/ads.txt` and `/service-worker-installer.js` were removed and return `404`; the leftover `/service-worker.js` contains only a comment and nothing references it.
 - Livewire injects a generated `livewire-…` prefix for its JS, maps, component CSS/JS, update, upload-file, and preview-file endpoints. Read the actual loaded URL instead of hardcoding the generated hash.
 - Local development also registers `POST /_boost/browser-logs` and Debugbar assets, cache deletion, query explain, open, and clockwork routes.
 
@@ -29,8 +29,8 @@ Preconditions:
 - **Health.** Open `/health-up` and save status/body. Require the expected rendered response, then run doctor and open `/life` before calling the instance usable. The HTML health response alone does not prove database seeding or feature availability. Check `/en/health-up` separately if it appears in the current route inventory.
 - **Client address.** Request `/ip`, require JSON keys `ip` and `country`, and compare the IP with the actual local request. `country` can be null without proxy geolocation headers; do not invent a country fixture.
 - **Errors.** Open each explicit error page and require the matching HTTP status and readable site error content. Open a genuinely nonexistent local path and require a natural `404` without internal exception details. Save the status as well as the screenshot; an error-shaped page with status `200` fails.
-- **Manifests and icons.** Fetch each listed root static file and preserve its status/content type. Parse the two manifests, require their `ru-RU` and `en-US` languages, app name, icons, and locale-specific start URLs. Open those start URLs in the owned browser tab and require the corresponding local home page. Manifest icon URLs currently point to the public site, so successful local files do not prove those external URLs loaded.
-- **Service worker.** Inspect the served installer and worker plus recent console errors. The installer registers only on HTTPS or hostname `localhost`; the helper uses `127.0.0.1`, so registration is intentionally skipped by that code. The worker is currently empty and provides no offline cache. Do not claim offline behavior or installation proof from a successful file request.
+- **Manifests and icons.** Fetch each listed root static file and preserve its status/content type. Parse the two manifests, require their `ru-RU` and `en-US` languages, app name, icons, and locale-specific start URLs. Open those start URLs in the owned browser tab and require the corresponding local home page. Manifest icon URLs are relative (`/apple-touch-icon-144x144.png`, `/apple-touch-icon.png`), so fetch them from the local instance.
+- **Service worker.** None is registered. Require the base page to have no service-worker script and the console to have no service-worker errors. Do not claim offline behavior.
 - **Livewire assets.** Drive an actual reactive form from its feature map. Require its generated JS and used component assets to load, then capture the real POST update and visible response. Use the actual upload-file and preview-file requests from gallery/avatar/EXIF workflows when the browser supports file selection. A guessed filename, source-map route, or unused component asset may legitimately be unavailable and is not a substitute for the real host journey.
 - **Browser logs.** If Boost browser logging is active, capture a naturally generated local browser log request and the corresponding run log entry. Do not inject an application error just to create evidence. Absence of log events does not prove delivery through this route.
 - **Debugbar.** With an explicitly enabled disposable Debugbar configuration, use its actual UI to load `/_debugbar/assets`, open a captured request through `/_debugbar/open` or `/_debugbar/clockwork/{id}`, and inspect a captured query before any explain action. Cache deletion and `POST /_debugbar/queries/explain` are development-only mutation boundaries. Never run them against the shared site. With baseline Debugbar disabled, record the UI journey as not verified instead of calling a manually requested route success.

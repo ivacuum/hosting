@@ -26,7 +26,7 @@ Preconditions:
 - **Story.** Click a visible artist link inside the concert list; record its exact href and label. Require the matching concert title, date/context, prose, and loaded media. Save screenshot/text and the route. Independently follow a concert entry in `/life` and a bookmark of that same href.
 - **Timeline.** In the story's artist timeline, click another linked concert and require a changed route and corresponding concert details. Record both titles. If no second published concert exists for that artist, report failed precondition for `concert-timeline`.
 - **Locale.** Use footer `In English` and `По-русски`; require the same story and the expected page language, with actual translated prose where provided.
-- **RSS.** Return to `/life/gigs`, click its `rss` link, and save the feed response. Require valid XML entries and local story links. A browser XML viewer is not a failure; an HTML exception is.
+- **RSS.** Return to `/life/gigs`, click its `rss` link, and save the feed response. Require valid XML; items with local story links appear only for published concerts with a `meta_image`. `GigSeeder` sets no `meta_image`, so a default seed yields a valid channel with zero items. Report that as a seed gap, not a feed failure. A browser XML viewer is not a failure; an HTML exception is.
 
 ## Gotchas
 
