@@ -42,7 +42,7 @@ class IssuesController extends Controller
 
     public function batch()
     {
-        $ids = request('selected', []);
+        $ids = request('ids', []);
         $action = request('action');
 
         $models = Issue::query()->find($ids);
@@ -71,6 +71,7 @@ class IssuesController extends Controller
             'open' => "Открыто обращений: {$affected}",
             'close' => "Закрыто обращений: {$affected}",
             'delete' => "Удалено записей: {$affected}",
+            default => 'Действие не выбрано',
         };
 
         return [
