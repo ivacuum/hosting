@@ -69,6 +69,16 @@ class UserTravelTest extends TestCase
             ->assertSee($trip->city->country->title);
     }
 
+    public function testInactiveTravelerIsNotFound(): void
+    {
+        TripFactory::new()
+            ->withUser(UserFactory::new()->inactive()->withLogin('phpunit-user'))
+            ->create();
+
+        $this->get('@phpunit-user')->assertNotFound();
+        $this->get('@phpunit-user/travel')->assertNotFound();
+    }
+
     public function testTripsIndex(): void
     {
         $trip = TripFactory::new()

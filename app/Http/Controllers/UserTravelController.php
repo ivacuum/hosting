@@ -10,6 +10,8 @@ class UserTravelController extends Controller
 
     private function setup(User $traveler): void
     {
+        abort_unless($traveler->isActive(), 404);
+
         $this->traveler = $traveler;
 
         \Breadcrumbs::push("@{$this->traveler->login}", "@{$this->traveler->login}");
