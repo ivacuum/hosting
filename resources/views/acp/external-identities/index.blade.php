@@ -47,11 +47,7 @@
         </a>
       </td>
       <td>
-        @if ($model->user_id)
-          <a href="{{ Acp::show($model->user) }}">{{ $model->user->email }}</a>
-        @else
-          {{ $model->email }}
-        @endif
+        <a href="{{ Acp::show($model->user) }}">{{ $model->user->email }}</a>
       </td>
       <td>{{ ViewHelper::dateShort($model->updated_at) }}</td>
     </tr>

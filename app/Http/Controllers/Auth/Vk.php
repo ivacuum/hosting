@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Domain\SessionKey;
-use App\Events\Stats\UserSignedInWithExternalIdentity;
 use App\Http\Requests\Auth\ExternalCallbackForm;
 use App\Http\Requests\Auth\VkRedirectForm;
 use App\Socialite\VkProvider;
@@ -42,28 +41,7 @@ class Vk extends Base
                 ->with(SessionKey::FlashMessage->value, $this->noEmailMessage());
         }
 
-        $identity = $this->externalIdentity($userdata);
-
-        if ($identity->user_id) {
-            \Auth::loginUsingId($identity->user_id, true);
-
-            event(new UserSignedInWithExternalIdentity);
-
-            return redirect()->intended();
-        }
-
-        if (null === $user = $this->findUserByEmail($userdata->getEmail())) {
-            $user = $this->registerUser($userdata);
-        }
-
-        $identity->user_id = $user->id;
-        $identity->save();
-
-        $user->activate();
-
-        \Auth::login($user, true);
-
-        return redirect()->intended();
+        return $this->signInWithExternalIdentity($userdata);
     }
 
     protected function noEmailMessage(): HtmlString

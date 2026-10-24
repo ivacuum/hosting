@@ -42,7 +42,7 @@ class GetModelBreadcrumbAction
             $model instanceof DcppHub => $model->address,
             $model instanceof Email => "#{$model->id}",
             $model instanceof ExternalHttpRequest => "#{$model->id}",
-            $model instanceof ExternalIdentity => $model->email ?: ($model->user_id ? $model->user->email : "#{$model->id}"),
+            $model instanceof ExternalIdentity => $model->email ?: $model->user->email,
             $model instanceof FavoriteMovie => $model->title_ru,
             $model instanceof File => $model->title,
             $model instanceof Gig => $model->title,

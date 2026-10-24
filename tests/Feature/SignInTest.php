@@ -165,6 +165,25 @@ class SignInTest extends TestCase
         \Event::assertDispatched(UserSignedInWithExternalIdentity::class);
     }
 
+    public function testGoogleCallbackDoesNotLeaveUnlinkedIdentityWhenRegistrationFails(): void
+    {
+        Socialite::fake('google', SocialiteUser::fake([
+            'id' => 'google-failed-registration',
+            'email' => 'google-failed@example.com',
+        ]));
+
+        User::creating(static fn () => throw new \RuntimeException('Registration failed'));
+
+        $this->get('auth/google/callback')
+            ->assertServerError();
+
+        $this->assertGuest();
+        $this->assertDatabaseMissing('external_identities', [
+            'provider' => ExternalIdentityProvider::Google,
+            'uid' => 'google-failed-registration',
+        ]);
+    }
+
     public function testGoogleCallbackHonorsIntendedUrl(): void
     {
         Socialite::fake('google', SocialiteUser::fake([

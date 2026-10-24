@@ -31,7 +31,7 @@ class ExternalIdentity extends Model
 
     public function breadcrumb(): string
     {
-        return $this->email ?: ($this->user_id ? $this->user->email : "#{$this->id}");
+        return $this->email ?: $this->user->email;
     }
 
     public function externalLink(): string

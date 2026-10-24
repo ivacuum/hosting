@@ -29,7 +29,6 @@ class ExternalIdentitiesController extends Controller
         $models = ExternalIdentity::query()
             ->with('user')
             ->unless($userId === null, static fn (Builder $query) => $query->where('user_id', $userId))
-            ->when($userId === null, static fn (Builder $query) => $query->where('user_id', '<>', 0))
             ->when($provider, static fn (Builder $query) => $query->where('provider', $provider))
             ->orderBy('id', $sort->direction->value)
             ->paginate(40);

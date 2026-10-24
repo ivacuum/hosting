@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\Domain\UserStatus;
 use App\Events\Stats\ExternalIdentityAdded;
 use App\Events\Stats\UserRegisteredWithExternalIdentity;
+use App\Events\Stats\UserSignedInWithExternalIdentity;
 use App\ExternalIdentity;
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Attributes\Controllers\Middleware;
 use Laravel\Socialite\AbstractUser;
 
@@ -15,22 +17,6 @@ use Laravel\Socialite\AbstractUser;
 abstract class Base extends Controller
 {
     protected $provider;
-
-    /**
-     * Поиск или создание новой учетки социального сервиса
-     */
-    protected function externalIdentity(AbstractUser $user): ExternalIdentity
-    {
-        $identity = $this->findIdentityByUid($user->getId());
-
-        if ($identity === null) {
-            $identity = $this->saveExternalIdentity($user);
-        } else {
-            $identity->touch();
-        }
-
-        return $identity;
-    }
 
     /**
      * Поиск учетки по ID в социальном сервисе
@@ -69,19 +55,38 @@ abstract class Base extends Controller
     }
 
     /**
-     * Сохранение поступивших от социального сервиса данных
+     * Вход через социальный сервис с привязкой его учетки к пользователю сайта
      */
-    protected function saveExternalIdentity(AbstractUser $user): ExternalIdentity
+    protected function signInWithExternalIdentity(AbstractUser $userdata): RedirectResponse
     {
-        $externalIdentity = new ExternalIdentity;
-        $externalIdentity->uid = $user->getId();
-        $externalIdentity->email = (string) $user->getEmail();
-        $externalIdentity->provider = $this->provider;
-        $externalIdentity->save();
+        $identity = $this->findIdentityByUid($userdata->getId());
+
+        if ($identity !== null) {
+            $identity->touch();
+
+            \Auth::loginUsingId($identity->user_id, true);
+
+            event(new UserSignedInWithExternalIdentity);
+
+            return redirect()->intended();
+        }
+
+        $user = $this->findUserByEmail($userdata->getEmail()) ?? $this->registerUser($userdata);
+
+        $identity = new ExternalIdentity;
+        $identity->uid = $userdata->getId();
+        $identity->email = (string) $userdata->getEmail();
+        $identity->provider = $this->provider;
+        $identity->user_id = $user->id;
+        $identity->save();
 
         event(new ExternalIdentityAdded);
 
-        return $externalIdentity;
+        $user->activate();
+
+        \Auth::login($user, true);
+
+        return redirect()->intended();
     }
 
     /**
