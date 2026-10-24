@@ -21,7 +21,7 @@
         @ru
           От 2 до 32 символов. Первый символ логина будет использован для аватарки. В случае его отсутствия — первый символ адреса электронной почты
         @en
-          From 2 to 32 characters. First two characters would be used as an avatar. In case of empty username, first two characters of email would be used.
+          From 2 to 32 characters. The first character of the username is used for the avatar. If the username is empty, the first character of the email is used.
         @endru
       </div>
     </div>
