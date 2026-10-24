@@ -33,7 +33,16 @@ class GigSeeder extends Seeder
             $gig->slug = $slug;
             $gig->title_en = $artist->title;
             $gig->title_ru = $artist->title;
+            $gig->meta_image = $this->metaImage($slug);
             $gig->save();
         }
+    }
+
+    private function metaImage(string $slug): string
+    {
+        return match ($slug) {
+            'linkinpark.2015' => 'https://life.ivacuum.org/gigs/linkinpark.2015.08.29.jpg',
+            default => '',
+        };
     }
 }
