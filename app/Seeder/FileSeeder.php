@@ -11,13 +11,16 @@ class FileSeeder extends Seeder
 
     public function run(): void
     {
+        $files = [];
+
         for ($i = 0; $i < self::COUNT; $i++) {
-            FileFactory::new()
-                ->create();
+            $files[] = FileFactory::new()->create();
         }
 
-        FileFactory::new()
-            ->hidden()
-            ->create();
+        $files[] = FileFactory::new()->hidden()->create();
+
+        foreach ($files as $file) {
+            \Storage::disk('files')->put($file->path(), '');
+        }
     }
 }

@@ -47,11 +47,7 @@ class File extends Model
 
     public function downloadPath()
     {
-        $folder = $this->folder !== ''
-            ? "{$this->folder}/"
-            : '';
-
-        return \Storage::disk('files')->url($folder . $this->basename());
+        return \Storage::disk('files')->url($this->path());
     }
 
     public function incrementDownloads(): void
@@ -59,6 +55,15 @@ class File extends Model
         Model::withoutTimestamps(fn () => $this->increment('downloads'));
 
         event(new \App\Events\Stats\FileDownloadClicked);
+    }
+
+    public function path(): string
+    {
+        $folder = $this->folder !== ''
+            ? "{$this->folder}/"
+            : '';
+
+        return $folder . $this->basename();
     }
 
     #[\Override]

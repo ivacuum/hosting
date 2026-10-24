@@ -9,6 +9,7 @@ class PruneUploads extends Seeder
     public function run(): void
     {
         $this->pruneAvatars();
+        $this->pruneFiles();
         $this->pruneGallery();
         $this->pruneTemp();
     }
@@ -17,6 +18,16 @@ class PruneUploads extends Seeder
     {
         $storage = \Storage::disk('avatars');
         $storage->delete($storage->allFiles());
+    }
+
+    private function pruneFiles(): void
+    {
+        $storage = \Storage::disk('files');
+        $storage->delete($storage->allFiles());
+
+        foreach ($storage->allDirectories() as $dir) {
+            $storage->deleteDirectory($dir);
+        }
     }
 
     private function pruneGallery(): void
