@@ -22,7 +22,6 @@ class ImagesController extends Controller
     {
         $sort = $applyIndexGoods->execute(new Image);
 
-        $type = request('type');
         $year = request('year');
         $touch = request('touch');
         $userId = request('user_id');
@@ -41,7 +40,6 @@ class ImagesController extends Controller
             ->paginate(111);
 
         return view('acp.images.index', [
-            'type' => $type,
             'year' => $year,
             'touch' => $touch,
             'models' => $models,
