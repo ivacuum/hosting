@@ -111,6 +111,9 @@ return [
             'rule-name' => 'custom-message',
         ],
         */
+        'files' => [
+            'max' => 'You can upload up to :max files at once',
+        ],
     ],
 
     'attributes' => [],

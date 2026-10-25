@@ -58,6 +58,7 @@ class GalleryUploader extends Component
     protected function rules(): array
     {
         return [
+            'files' => ['array', 'max:10'],
             'files.*' => [
                 'required',
                 'image',

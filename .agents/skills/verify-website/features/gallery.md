@@ -48,7 +48,7 @@ Preconditions:
 
 ## Gotchas
 
-- The upload input's `max="10"` is not a server-side count rule. Do not claim that the component enforces a ten-file maximum.
+- Browsers ignore the upload input's `max="10"`, so choosing more files is possible. The component rejects a selection of more than ten files with `За один раз можно загрузить не более 10 файлов` and saves none of them.
 - Originals are processed images, not byte-identical originals. `Image::upload()` auto-orients and fits within 2000 by 2000; thumbnails fit within 150 by 150. EXIF/profile preservation is not the gallery contract.
 - PNG output keeps PNG. Other accepted formats use a `.jpg` slug. Large GIF resizing selects the first frame; do not require animated previews.
 - Every BBCode field, including each individual upload result's `Полная картинка`, uses the original URL: `[img]` + that entry's `Ссылка` + `[/img]`.

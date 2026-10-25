@@ -108,6 +108,9 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'files' => [
+            'max' => 'За один раз можно загрузить не более :max файлов',
+        ],
         'slug' => [
             'unique' => 'Этот адрес уже занят',
         ],
