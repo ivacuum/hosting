@@ -25,7 +25,7 @@ Preconditions:
 
 - Require a ready isolated instance, local gallery storage URLs, GraphicsMagick, and actual image files in the copied storage. Do not use production upload destinations.
 - Use `guest@example.com` / `top-secret` and verify `/my/profile`. Guest initially owns no seed images.
-- `ImageSeeder` creates 11 images and actual generated files for `gallery@example.com`. That account has no seeded password. Those generated pictures prove gallery storage/rendering only, not real travel-photo content.
+- `ImageSeeder` creates 11 images and actual generated files for `gallery@example.com`. That account signs in with `top-secret`. Those generated pictures prove gallery storage/rendering only, not real travel-photo content.
 - Discover Safari MCP upload capabilities before proceeding. The normal interaction catalog might not support native file selection or file attachment. If no supported path exists, report upload BLOCKED and do not inject files, set `files`, or call `updatedFiles()`.
 - For successful upload, require authorized JPEG, PNG, and GIF files no larger than 6 MiB each. Use at least two files for combined-link behavior. A missing fixture or chooser capability fails that journey rather than allowing a simulated upload.
 
@@ -52,6 +52,6 @@ Preconditions:
 - Originals are processed images, not byte-identical originals. `Image::upload()` auto-orients and fits within 2000 by 2000; thumbnails fit within 150 by 150. EXIF/profile preservation is not the gallery contract.
 - PNG output keeps PNG. Other accepted formats use a `.jpg` slug. Large GIF resizing selects the first frame; do not require animated previews.
 - Every BBCode field, including each individual upload result's `Полная картинка`, uses the original URL: `[img]` + that entry's `Ссылка` + `[/img]`.
-- The index displays `views`, but `GalleryController::show()` does not increment that field. Do not demand a count increment merely because the full image was opened.
+- The index displays `views`, but `GalleryController::show()` does not increment that field. Views come from the separate `ImageViewerServer` process, which this stack does not run. Do not demand a count increment merely because the full image was opened.
 - Seeded gallery fixtures are available for public preview/show checks even when browser upload is blocked. Their success does not prove upload or guest ownership.
 - Source pointers are `routes/web.php`, `resources/views/gallery/*`, `resources/views/{index,cv}.blade.php`, `resources/views/livewire/gallery-uploader.blade.php`, `app/Http/Controllers/GalleryController.php`, `app/Livewire/GalleryUploader.php`, `app/Image.php`, and `app/Seeder/ImageSeeder.php`.

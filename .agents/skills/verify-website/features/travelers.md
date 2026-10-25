@@ -31,7 +31,7 @@ Preconditions:
 
 1. Open `/users`, capture the directory, and click both a row name and an avatar separately. Require `/users/{id}`, public name, **Дата регистрации**, and **Последний вход**.
 2. Compare identity and dates with SQL. Nonzero **Комментарии**, **В галерее**, and **Магнеты** counts appear conditionally. Do not require absent zero-count rows.
-3. If a real inactive user exists, bookmark its numeric profile and require 404 and exclusion from the directory. Do not fabricate a user record to force this branch.
+3. If a real inactive user exists, bookmark its numeric profile, `/@{login}`, and `/@{login}/travel`. Require 404 on each and exclusion from the directory. Do not fabricate a user record to force this branch.
 4. Open `/@trip` and require redirection to `/@trip/travel`. Require **Поездки**, the traveler breadcrumb, and only that user's nonhidden chronology.
 5. Click **По городам**. Require **Посещенные города** and real city names. Follow a linked city using its actual slug.
 6. If the city has one published trip, require its redirect to the canonical story. Otherwise require the city title, country breadcrumb, year groups, and city map control.
@@ -48,7 +48,7 @@ Preconditions:
 ## Gotchas
 
 - Source anchors are `UserController`, `UserHomeController`, `UserTravel*Controller`, `TripController`, `TripVisibleScope`, `resources/views/users/`, `resources/views/user-travel/`, and `components/user-trips-subnav.blade.php`.
-- Numeric profiles require an active user. Login-based traveler binding is separate and does not apply that same active-user check in these controllers.
+- Numeric profiles and login-based traveler pages both require an active user. `UserHomeController` and `UserTravelController` return 404 for an inactive one.
 - The directory does not contain a traveler-home button. Do not invent a global **Пользователи** menu entry or a profile-to-travel link.
 - Hidden trips are excluded by `TripVisibleScope`; inactive trips can remain listed without story links. Slug detail requires a published trip belonging to that traveler.
 - Root canonical stories live under `/life`, even when reached through `/@root/travel`. Ordinary-owner canonical stories use `/@{login}/travel/{slug}`.

@@ -24,8 +24,8 @@ Preconditions:
 
 - Require the ready isolated instance. No account is needed. `FileSeeder` supplies five published rows and one hidden row.
 - Seeded titles, extensions, folders, and initial download counts are random. Record actual values with the run's read-only SQL helper before clicking.
-- `FileFactory` creates metadata only. Standard seeding supplies no downloadable payloads and no historical file IDs used by DC or retracker pages.
-- A complete byte-download journey requires the real intended file in the isolated `files` disk. Missing payloads or historical records are failed prerequisites, not permission to invent replacement files.
+- `FileSeeder` writes an empty placeholder at each seeded row's `folder/slug.extension` on the isolated `files` disk. Standard seeding supplies no real payloads and no historical file IDs used by DC or retracker pages.
+- A complete byte-download journey requires the real intended file. A zero-byte placeholder proves the redirect target resolves, not the payload. Missing historical records are failed prerequisites, not permission to invent replacement files.
 
 1. Open `/cv`, click `dl.ivacuum.ru`, and require `/files`. Independently bookmark `/files` to cover direct entry.
 2. Require the five published title links and columns for ID, title, size, download count, and creation date. Confirm descending IDs and exclusion of the hidden row against read-only SQL.
@@ -33,7 +33,7 @@ Preconditions:
 4. Click that title through Safari interactions. Capture the local request, redirect status, and `Location` destination. Require the destination to match the `files` disk URL plus `folder/slug.extension`.
 5. Read that row again and require `downloads` to increase by one. Reopen `/files` and require its updated count. A broken destination still counts the redirect click.
 6. If the real payload exists, inspect the resulting download or rendered file and require the intended filename and bytes. Record Safari's actual outcome. A screenshot of the original catalog does not prove a completed download.
-7. With the default metadata-only seeds, retain the missing-payload failure even when the counter and redirect pass. Save the failing destination response and do not create a synthetic payload.
+7. With the default seeds, require the destination to return the zero-byte placeholder. Record the byte-content journey as NOT_VERIFIED even when the counter and redirect pass. Save the destination response and do not replace the placeholder with a synthetic payload.
 8. Open the hidden row's `/files/{id}/dl`. Require 404 and no counter change. Repeat for a confirmed nonexistent ID and require 404 rather than a redirect.
 9. Return to `/files` and click `In English`. Require `/en/files` with the same published IDs and titles. Click the same file and require the same storage target and one more counted click.
 10. If more than forty published files exist, click the visible `a#next_page[rel='next']` with href `/files?page=2` and require the next page's rows. Return through `a#prev_page[rel='prev']`. Standard seeds cannot prove second-page navigation. Report that missing prerequisite for the pagination journey.

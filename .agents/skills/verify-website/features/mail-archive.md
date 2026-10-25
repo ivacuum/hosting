@@ -35,7 +35,7 @@ Preconditions:
 4. Compare the URL's timestamp with the record's `created_at` formatted as `YmdHis`. A valid timestamp emits `MailViewed`; immediate `emails.views` need not change before metrics aggregation.
 5. Open the preserved signed click URL from log mail only after the report safety check if it targets reporting. Require its real `goto` destination and an incremented `emails.clicks` for a matching timestamp.
 6. For an actual message less than one day old and owned by a test user, start anonymous before opening its signed link. Require auto-login to that recipient and activation if previously inactive.
-7. Confirm identity through `/my/profile` and SQL ownership. A preexisting browser session for another user can be replaced by the recent-mail click path.
+7. Confirm identity through `/my/profile` and SQL ownership. Then sign in as a different seeded user and open the same recent link. Require the redirect and that `/my/profile` still shows that user: the click logs in only a guest.
 8. For a real message older than one day, repeat only if such data exists. Require the redirect without asserting recent-mail auto-login. Do not age records through SQL.
 9. For a real mail route, open an unsigned copy with a same-origin `goto`, removing the signature rather than inventing one. Require the redirect and unchanged clicks and browser identity.
 10. Check unsigned off-origin `goto` rejection only with a controlled destination and no external navigation. Require 403, not an outbound redirect.

@@ -47,7 +47,7 @@ Preconditions:
 
 2. On **Шаблоны поездок**, record real template links, image counts, RU and EN counts, and **Итого**. Use **Готово** choices **Нет**, **Да**, and **Неважно**, then **Переведено** choices **Да**, **Нет**, and **Неважно**.
    Require `finished=yes`, `finished=any`, and `translated=1` or `0` to match the selected filter. The default unfinished list can be empty. Use **Неважно** to establish actual templates before interpreting an empty filtered result.
-   The controller accepts a regular-expression `filter` query, but the template view has no text search box. Use a safe bookmarked `?filter=...` only as a separate entry. Do not claim a search control exists.
+   The controller accepts a plain substring `filter` query, but the template view has no text search box. Use a bookmarked `?filter=...` only as a separate entry. Do not claim a search control exists.
    Click a listed trip template name and require its rendered trip story, expected slug, and real loaded media. Dots become underscores for the Blade template name. Record the actual link rather than constructing names from titles.
    If a multipart template link contains `part={number}`, follow that link and require the intended part. Do not infer that opening the base story proves every part.
 
@@ -56,7 +56,7 @@ Preconditions:
    Separately follow a real concert list's template icon from `/acp/gigs`. A successful tab entry does not prove the row-icon href.
 
 4. For source rewriting, first save the bytes of the owned template and the chosen preview URL outside the copied app. Require that this is an approved disposable source fixture with image-only lines available to convert.
-   Click **Запилить картинки** on that owned preview. Capture the resulting URL with `images=1` and the rendered output. Inspect the owned file afterward and require contiguous image-only lines to become `tpl.pic-2x` or `tpl.fotorama-2x` includes.
+   Click **Запилить картинки** on that owned preview. Capture the resulting URL with `images=1` and the rendered output. Inspect the owned file afterward and require every contiguous group of image-only lines, including a group at the end of the file and lines ending in CRLF, to become a `tpl.pic-2x` or `tpl.fotorama-2x` include.
    A `.jpeg` filename is rewritten to `.jpg`. Multiple image lines use the gallery include. With trip `part` present, inspect the `-part-{number}.blade.php` file, not the base template.
    Do not create a fixture by modifying a real story during verification. If no owned template exists, report both trip and gig rewrite journeys blocked by missing source fixtures. Ordinary previews remain independently testable.
 
@@ -83,11 +83,10 @@ Preconditions:
 
 ## Gotchas
 
-- Source pointers are `routes/acp.php`, `app/Http/Controllers/Acp/HomeController.php`, `DevController.php`, `Dev/{Templates,GigTemplates,Thumbnails}Controller.php`, and `MetricsController.php`.
+- Source pointers are `routes/acp.php`, `app/Http/Controllers/Acp/HomeController.php`, `DevController.php`, `Dev/{Templates,GigTemplates,Thumbnails}Controller.php`, and `MetricsController.php`. Both template controllers rewrite source through `app/Domain/Life/Action/ConvertTemplateImagesAction.php`.
 - Views live in `resources/views/acp/dev/` and `resources/views/acp/metrics/`. Thumbnail UI logic is `app/Livewire/ThumbnailMaker.php` with `resources/views/livewire/thumbnail-maker.blade.php`.
 - Preview GETs with `images=1` write source. Browser prefetch, copied URLs, and repeat navigation must not accidentally run the rewrite on a non-owned file. Keep read-only preview URLs free of that parameter.
-- Finished detection checks bare image filename lines. Translation detection compares RU and EN directive counts, not translation quality. Trip and gig image-count regexes differ, so do not assert identical counts across the lists.
-- The source rewrite flushes image groups when a non-image line follows. Inspect trailing groups explicitly instead of assuming every final image line was converted.
+- Finished detection checks bare image filename lines. Translation detection compares RU and EN directive counts, not translation quality. Image counts are `.jpg` and `.jpeg` occurrences anywhere in the file, not image lines.
 - `POST /acp/dev/thumbnails` and Livewire normalize filenames differently. The visible Livewire workflow always writes `.jpg`. Do not use its result to certify the resource POST's extension behavior.
 - The `App\Events\Stats\*` wildcard listener writes Redis stream events, and `app:metrics:process` later aggregates the `metrics` table. Missing per-event listeners do not mean an event is unused.
 - The isolated stack starts no scheduler. A click that emits a metric does not promise an immediate ACP count change. This map checks stored metrics, not end-to-end aggregation or production processing.

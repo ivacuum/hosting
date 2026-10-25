@@ -89,7 +89,6 @@ Preconditions:
 - `resources/views/acp/issues/index.blade.php`, `resources/views/acp/tpl/batch.blade.php`, and `resources/js/batch-form.js` define the issue batch request.
 - `CommentObserver` and `NotifyUsersAboutComment` can send issue, news, trip, and magnet notifications when a pending comment becomes published. Local log-mail generation does not authorize external messaging.
 - `ImageSeeder` creates synthetic gallery images. Those can prove gallery management, not recognition or availability of real travel photos. `Photo` and `Image` are separate models and storage paths.
-- `images.type` is read into view data but does not filter the controller query. Do not claim type filtering from an unchanged list.
 - `touch` compares the update year with a year cutoff, not an exact elapsed duration. Record actual row dates instead of asserting a day-level threshold.
 - `ResponseToDestroyAction` returns JSON with a redirect. Batch JavaScript ignores response content. Check saved state independently even when navigation looks successful.
 - No test of a shared seed object is permission to delete it. Missing owned fixtures, an unreachable external service, or an action with no browser control must remain explicit failures or uncovered actions in the report.

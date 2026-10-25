@@ -57,7 +57,7 @@ Preconditions:
    If checking validation, use another owned user's email and require the uniqueness error without changing the saved row. Never test collisions by changing root's email.
 
 4. Open **Социальные учетки** and exercise **ВК**, **Гитхаб**, **Гугл**, **Твиттер**, **Фэйсбук**, and **Яндекс**. Require the matching provider values and identity IDs after each filter.
-   Follow a populated user-detail identity relation to `/acp/external-identities?user_id={id}`. Require only that user's rows. Without `user_id`, the controller excludes identities with `user_id=0`. An explicit zero filter is a different bookmarked entry.
+   Follow a populated user-detail identity relation to `/acp/external-identities?user_id={id}`. Require only that user's rows.
    Click an identity ID, expand **JSON**, and compare provider and user association with the list. Follow **Владелец** and require the correct `/acp/users/{id}`. Keep provider tokens out of screenshots and transcripts.
    On a separate owned identity, click **Удалить** and accept **Запись будет удалена. Продолжить?**. Require its `external_identities` row to disappear and its local user to remain.
    The action deletes the local association. It does not revoke provider tokens, delete a provider account, or prove a subsequent OAuth login. Do not click the external profile icon as a substitute for an ACP detail check.
@@ -79,6 +79,6 @@ Preconditions:
 - `resources/views/livewire/acp/user-form.blade.php` exposes only email and activation status. This is not the personal profile form and cannot edit login, password, root privileges, or avatar.
 - `GetModelAccessibleRelationsAction` suppresses zero-count or unauthorized relation links. An absent link on an empty fixture is not coverage of the relation journey.
 - `UserObserver::deleting()` performs nested model deletions. `ImageObserver`, `MagnetObserver`, `NewsObserver`, and `TripObserver` add file or comment side effects. Inventory those effects before authorizing the user deletion click.
-- `ExternalIdentitySeeder` provides linked identities, not an unlinked `user_id=0` example. The mail and avatar prerequisites may also be absent. Report these seed gaps instead of weakening the assertions.
+- Every external identity belongs to a user, so the list and detail pages always link one. The mail and avatar prerequisites may be absent from the seed. Report these seed gaps instead of weakening the assertions.
 - Generic **JSON** details can contain sensitive fields. Capture only redacted evidence. OAuth provider links and generated mail tracking links can contact external systems and are not required for these ACP record checks.
 - No new test code is required for a map-only change. These recipes describe intended browser coverage and do not assert that a browser drive has already passed.

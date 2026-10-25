@@ -20,7 +20,7 @@ Verify the author's reading, listening, language, household, film, and travel-re
 - Open `/life` through `Заметки`. Under `Избранное`, click `Книги`, `Chillout`, `Любимые посты`, `Подкасты`, `Условные обозначения стирки`, `Фильмы и сериалы`, or `Чем пользуюсь в путешествиях`.
 - Under `Языки`, click `Английский` or `Немецкий` to their corresponding `/life/` routes.
 - Bookmark any route above, including `/life/english#articles` or `/life/laundry#iron`.
-- The English life index exposes `Английский` through its translated label, but hides the Russian-only favorites and German entries.
+- The English life index exposes `Английский` and `Фильмы и сериалы` through their translated labels, but hides the other Russian-only favorites and German entries.
 - Where offered, footer `In English` and `По-русски` preserve the current page path.
 
 ## Driving it with Safari MCP
@@ -43,12 +43,12 @@ Preconditions:
 10. On podcasts, require `Брендятина`, the `iTunes` and `podfm.ru` links, and episodes `Twitter`, `Туполев`, and `FedEx`. Inspect their `/1270/`, `/782/`, and `/102/` podfm hrefs.
 11. On travel tools, require `Мобильные приложения`, `Навигация в городах`, `Выгодные предложения`, `Авиабилеты`, and `Жилье`. Inspect app-store links, `https://wikitravel.org`, and `https://www.aviasales.ru/?marker=79853`.
 12. Click travel tools' `Дримсим` to `/news/271`. Record failure if the intended article is missing, even if news redirects to a working index. Return and require no language switch on the travel-tools page.
-13. Independently bookmark all nine English route variants. Record the actual heading and body language for each. Return through visible locale links where available. Save before/action/after text and screenshots rather than claiming every body is translated.
+13. Independently bookmark all nine English route variants. Record the actual heading and body language for each. On `/en/life/movies`, require `Movies and TV series worth rewatching`, the caption `1991`, and `Terminator 2: Judgement Day` without the Russian title. Return through visible locale links where available. Save before/action/after text and screenshots rather than claiming every body is translated.
 
 ## Gotchas
 
 - These pages do not create or edit user content. Browsing recommendations is not proof of an external purchase, podcast playback, or language exercise.
-- Movies remain bilingual in the card text and use Russian year captions even under `/en`. Most other extras contain Russian-only prose.
+- Russian movie cards show both titles. English cards show only the English title, and English year captions drop `год`. Most other extras contain Russian-only prose.
 - The laundry symbols are inline SVGs, not missing image downloads. Anchor clicks change position and URL, not the database.
 - Missing seeded movies fail the catalog journey. Do not replace real poster assets with synthetic pictures.
 - Sources are the nine `resources/views/life/` templates, `life/index.blade.php`, `tpl/kp_movies.blade.php`, `MovieController`, `FavoriteMovie`, `FavoriteMovieSeeder`, and `routes/web.php`.

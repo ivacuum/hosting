@@ -58,6 +58,6 @@ Preconditions:
 - Comment confirmation is authenticated and owner-authorized. The signed mail wrapper can establish the recipient session; a copied bare confirmation URL is a different path.
 - Issues use different comment escaping from public trip/news/magnet comments. Test each parent type claimed, rather than applying one successful magnet assertion to all models.
 - OAuth alternatives leave the local app and need separate authorization. Their presence does not verify social sign-in.
-- Typo notification generation is not mail and has no durable issue record. A success alert alone does not prove Telegram delivery.
+- Typo notifications go to the lowest-ID root user, `root@example.com` in the seed. Generation is not mail and has no durable issue record. A success alert alone does not prove Telegram delivery.
 - Each embedded feedback parent is a separate entry point even when it shares the same component. One successful `/contact` submission does not verify fixed topics, hidden-name variants, or the captured parent path.
 - Source pointers are `routes/web.php`, `resources/views/{base,issues/create}.blade.php`, `resources/views/livewire/{feedback-form,comment-add-form,comments}.blade.php`, `app/Livewire/{FeedbackForm,CommentAddForm,Comments}.php`, `app/Http/Controllers/{CommentConfirmController,JsTypoController,MailController}.php`, `app/Http/Requests/TypoStoreForm.php`, `app/Policies/CommentPolicy.php`, `app/{Observers/CommentObserver,Mail/CommentConfirmMail}.php`, `resources/js/shortcuts.js`, and the issue/comment rate limiters.

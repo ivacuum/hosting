@@ -22,7 +22,7 @@ Verify published release discovery, search, personal releases, additions, downlo
 - Detail tag links return to `/magnets?q=...`; `Связанные раздачи` titles enter other details. Comment-feed links include `#comment-{id}`.
 - After searching, expand `Не нашли искомую раздачу? Оставьте нам запрос` for the release-request form.
 - FAQ `Как добавить раздачу?` contains `отдельная страница` to `/magnets/add`. The empty personal list has its own `Добавить раздачу` button.
-- Open copied search, detail, and `/magnets/my` URLs separately. The section is Russian-only: every `/en/magnets*` route returns 404, its pages show no `In English` footer link or `hreflang="en"` alternate, and magnet and comment links always point to `/magnets/...`, including on `/en/torrent`.
+- Open copied search, detail, and `/magnets/my` URLs separately. The section is Russian-first: `/en/magnets/{id}` returns 404, while the other `/en/magnets*` routes render. Its pages show no `In English` footer link or `hreflang="en"` alternate, and magnet and comment links always point to `/magnets/...`, including on `/en/torrent`.
 - Anonymous visitors see `Пользователям доступен чат`. Its `Пользователям` link enters sign-in with a return destination. Chat appears at `/magnets` only when signed in and the query string is empty.
 
 ## Driving it with Safari MCP
@@ -30,7 +30,7 @@ Verify published release discovery, search, personal releases, additions, downlo
 Preconditions:
 
 - Require doctor readiness and published seed releases. `MagnetSeeder` provides `Hunt: Showdown`, `Мир героев`, `Головоломка`, and three related Hitman releases, plus hidden/deleted records.
-- Use `guest@example.com` / `top-secret` for authenticated paths and verify `/my/profile`. Seed releases belong to `magnet@example.com`, which has no seeded password. Guest's personal list starts empty.
+- Use `guest@example.com` / `top-secret` for authenticated paths and verify `/my/profile`. Seed releases belong to `magnet@example.com`, which signs in with `top-secret`. Guest's personal list starts empty.
 - The isolated helper uses Scout's collection driver. It cannot prove production morphology, ranking, or title-only versus description-search semantics.
 - Before add/request/comment actions, inspect Rutracker and `services.telegram.admin_id`. Both Telegram paths read that destination, but use different guards. Local mode is not a network sandbox. Require explicit external authorization before real outbound operations.
 - Magnet activation can launch a system torrent client. Require permission and safe protocol handling before clicking. If Safari cannot manage the prompt, report this interaction BLOCKED rather than sending the accounting POST manually.
@@ -68,5 +68,5 @@ Preconditions:
 - The helper has no scheduler. Automatic six-hour source updates and external torrent completion remain unverified.
 - The chat recipe does not authorize sending to a real Telegram destination. A root-only proof does not establish the non-root notification path, and a second tab sharing the same cookie is not a different-user authorization test.
 - Download clicks are real writes even though the accounting response is empty. Only read-only SQL may independently check them.
-- Anonymous users do not see `Мои раздачи`; the direct URL still needs an auth-gate check. Published details are Russian-only even if other magnet pages render under `/en`.
+- Anonymous users do not see `Мои раздачи`; the direct URL still needs an auth-gate check. Published details 404 under `/en` even though other magnet pages render there.
 - Source pointers are `routes/web.php`, `app/Http/Controllers/{MagnetsController,MagnetRequestReleaseController}.php`, their request classes, `app/Domain/Magnet/{Livewire/MagnetAddForm,Action/SearchForMagnetIdsAction,Seeder/MagnetSeeder}.php`, `resources/views/magnets/*`, `resources/views/livewire/magnet-add-form.blade.php`, `resources/js/{events,view-magnet-post}.js`, and `app/Domain/Telegram/Action/NotifyAdminViaTelegramAction.php`.

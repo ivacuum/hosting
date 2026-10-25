@@ -47,6 +47,6 @@ Preconditions:
 - GET `/my/profile` displays the form. Saving uses POST with hidden `_method=put` for PUT `/my/profile`; avatar changes use authenticated Livewire requests independently.
 - See [authentication](authentication.md) for registration, recovery, and OAuth boundaries, [account settings](account-settings.md) for passwords and preferences, and [personal trips](personal-trips.md) for trip management.
 - `Просмотреть профиль` uses the stable `/users/{id}` route, not the separate `/@{login}` traveler home. Do not infer that changing a login must change this link's URL.
-- Blank login is allowed and public name falls back to `user #{id}`. The generated avatar uses one uppercase character of login or email, despite different English help text.
+- Blank login is allowed and public name falls back to `user #{id}`. The generated avatar uses one uppercase character of login or email, as both the Russian and English help text say.
 - Avatar validation accepts only JPEG or PNG images up to 3072 KB. Conversion needs GraphicsMagick. Capture validation/conversion errors and confirm SQL remains unchanged on failure.
 - Source anchors are `MyProfileController`, `MyProfileUpdateForm`, `resources/views/my/profile.blade.php`, `AvatarManager`, `resources/views/livewire/avatar-manager.blade.php`, `app/Domain/Avatar/Avatar.php`, and `UserObserver`.

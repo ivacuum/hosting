@@ -56,5 +56,5 @@ Preconditions:
 - A changed interval affects newly selected questions. Advance before checking the range contract.
 - Reading a hidden `.js-utterance` is not evidence of successful listening. No matching voice means listening remains unverified.
 - Speech playback is a device boundary. A successful Livewire request or a populated select alone cannot prove audible output.
-- Help prose remains Russian in parts of the English trainer. Record actual output rather than assuming full translation.
+- Several help sections have only an `@ru` branch, so the English trainer omits them instead of showing Russian. Record actual output rather than assuming full translation.
 - Source pointers are `routes/web.php`, `resources/views/trainers/*`, `resources/views/livewire/{number-trainer,number-synopsis}.blade.php`, `app/Livewire/{NumberTrainer,NumberSynopsis}.php`, `app/Action/GetNumberLocalesAction.php`, and `app/Domain/Japanese/Action/SpellOutJapaneseNumberAction.php`.
