@@ -23,9 +23,7 @@ return new class extends Migration {
             $table->integer('ssl_verify_result')->nullable()->after('local_port');
             $table->boolean('used_proxy')->nullable()->after('ssl_verify_result');
             $table->unsignedSmallInteger('curl_errno')->nullable()->after('used_proxy');
-            $table->integer('os_errno')->nullable()->after('curl_errno');
-            $table->string('failure_category')->nullable()->after('os_errno');
-            $table->text('curl_error')->nullable()->after('failure_category');
+            $table->string('failure_category')->nullable()->after('curl_errno');
         });
     }
 };
