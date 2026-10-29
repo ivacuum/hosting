@@ -9,7 +9,7 @@
     "ext-swoole": "*",
     "foolz/sphinxql-query-builder": "^3.0",
     "geo-io/wkb-parser": "^1.0",
-    "guzzlehttp/guzzle": "^7.0",
+    "guzzlehttp/guzzle": "^8.3",
     "laravel/framework": "^13.0",
     "laravel/head": "^0.2.2",
     "laravel/mcp": "^1.0",
