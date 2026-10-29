@@ -13,6 +13,7 @@ use App\Domain\Rto\RtoMagnetNotFoundException;
 use App\Domain\Rto\RtoTemporarilyUnavailableException;
 use App\Domain\Rto\RtoTopicDuplicateException;
 use App\Domain\Rto\RtoTopicNotFoundException;
+use App\Domain\Rto\RtoUnreachableException;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Http\RedirectResponse;
@@ -49,18 +50,12 @@ class MagnetAddForm extends Component
             $this->addError('input', 'Рутрекер временно недоступен. Пожалуйста, повторите попытку позже.');
 
             return null;
-        } catch (\Throwable $e) {
+        } catch (RtoUnreachableException) {
             $this->addError('input', 'Возникли сложности с подключением к рутрекеру. Пожалуйста, повторите попытку');
 
-            // Failed to connect() to host or proxy.
-            if (str_starts_with($e->getMessage(), 'cURL error 7:')) {
-                return null;
-            }
-
-            // Connection reset by peer
-            if (str_starts_with($e->getMessage(), 'cURL error 35:')) {
-                return null;
-            }
+            return null;
+        } catch (\Throwable $e) {
+            $this->addError('input', 'Возникли сложности с подключением к рутрекеру. Пожалуйста, повторите попытку');
 
             report($e);
 

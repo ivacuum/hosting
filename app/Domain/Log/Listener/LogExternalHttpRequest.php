@@ -59,6 +59,8 @@ class LogExternalHttpRequest
         $model->redirect_count = $stats['redirect_count'] ?? 0;
         $model->request_headers = $request->headers();
         $model->response_headers = $response->headers();
+        $model->curl_errno = null;
+        $model->failure_category = null;
 
         $this->fillTransferStats->execute($model, $stats);
         $model->created_at = now()->subMicroseconds($model->total_time_us);

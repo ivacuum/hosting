@@ -8,6 +8,8 @@ use App\Domain\Log\Action\GetExternalServiceByHostAction;
 use App\Domain\Log\Action\GetHttpBodyForLoggingAction;
 use App\Domain\Log\Action\LogExternalHttpRequestDebugAction;
 use App\Domain\Log\Action\RunHttpLoggingAction;
+use App\Domain\Log\FailedHttpTransferStats;
+use App\Domain\Log\HttpFailureCategory;
 use App\Domain\Log\Models\ExternalHttpRequest;
 use Illuminate\Http\Client\Events\ConnectionFailed;
 
@@ -15,6 +17,7 @@ class LogHttpConnectionFailed
 {
     public function __construct(
         private FilterOutCredentialsAction $filterOutCredentials,
+        private FailedHttpTransferStats $failedTransferStats,
         private FillExternalHttpRequestTransferStatsAction $fillTransferStats,
         private GetExternalServiceByHostAction $getExternalServiceByHost,
         private GetHttpBodyForLoggingAction $getHttpBodyForLogging,
@@ -31,10 +34,6 @@ class LogHttpConnectionFailed
         $request = $event->request;
         $psrRequest = $request->toPsrRequest();
         $uri = $psrRequest->getUri();
-        $previous = $event->exception->getPrevious();
-        $stats = method_exists($previous, 'getHandlerContext')
-            ? $previous->getHandlerContext()
-            : [];
 
         $model = new ExternalHttpRequest;
         $model->host = $uri->getHost();
@@ -55,8 +54,10 @@ class LogHttpConnectionFailed
         $model->redirect_count = 0;
         $model->request_headers = $psrRequest->getHeaders();
         $model->response_headers = '';
+        $model->curl_errno = $this->failedTransferStats->curlErrno($psrRequest);
+        $model->failure_category = HttpFailureCategory::fromCurlErrno($model->curl_errno);
 
-        $this->fillTransferStats->execute($model, $stats, failed: true);
+        $this->fillTransferStats->execute($model, $this->failedTransferStats->find($psrRequest)?->getHandlerStats() ?? []);
         $model->created_at = now()->subMicroseconds($model->total_time_us);
 
         $this->filterOutCredentials->execute($model);

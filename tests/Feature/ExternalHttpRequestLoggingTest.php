@@ -110,9 +110,7 @@ class ExternalHttpRequestLoggingTest extends TestCase
         $this->assertSame(1, $request->ssl_verify_result);
         $this->assertTrue($request->used_proxy);
         $this->assertSame(6, $request->curl_errno);
-        $this->assertSame(8, $request->os_errno);
         $this->assertSame(HttpFailureCategory::Dns, $request->failure_category);
-        $this->assertSame('Could not resolve host: api.wanikani.com', $request->curl_error);
     }
 
     public function testLogsResponse(): void
@@ -147,18 +145,13 @@ class ExternalHttpRequestLoggingTest extends TestCase
         $this->assertSame(0, $request->ssl_verify_result);
         $this->assertFalse($request->used_proxy);
         $this->assertNull($request->curl_errno);
-        $this->assertNull($request->os_errno);
         $this->assertNull($request->failure_category);
-        $this->assertNull($request->curl_error);
     }
 
     private function connectionFailureHandler(): callable
     {
-        return static fn (RequestInterface $request): PromiseInterface => Create::rejectionFor(
-            new ConnectException('Could not resolve host', $request, handlerContext: [
-                'errno' => 6,
-                'error' => 'Could not resolve host: api.wanikani.com',
-                'os_errno' => 8,
+        return static function (RequestInterface $request, array $options): PromiseInterface {
+            $options['on_stats'](new TransferStats($request, null, 0.0101, 6, [
                 'queue_time_us' => 100,
                 'namelookup_time_us' => 10_000,
                 'connect_time_us' => 10_000,
@@ -172,8 +165,10 @@ class ExternalHttpRequestLoggingTest extends TestCase
                 'local_port' => -1,
                 'ssl_verify_result' => 1,
                 'used_proxy' => 1,
-            ]),
-        );
+            ]));
+
+            return Create::rejectionFor(new ConnectException('Could not resolve host', $request));
+        };
     }
 
     private function responseHandler(
@@ -190,12 +185,12 @@ class ExternalHttpRequestLoggingTest extends TestCase
                 'queue_time_us' => 100,
                 'namelookup_time_us' => 10_000,
                 'connect_time_us' => 30_000,
-                'appconnect_time' => 0.08,
+                'appconnect_time_us' => 80_000,
                 'pretransfer_time_us' => 85_000,
                 'posttransfer_time_us' => 90_000,
                 'starttransfer_time_us' => 200_000,
                 'total_time_us' => 250_000,
-                'redirect_time' => 0.005,
+                'redirect_time_us' => 5_000,
                 'primary_ip' => '203.0.113.10',
                 'primary_port' => 443,
                 'local_ip' => '192.0.2.10',

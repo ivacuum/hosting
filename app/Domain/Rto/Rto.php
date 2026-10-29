@@ -4,9 +4,12 @@ namespace App\Domain\Rto;
 
 use App\Domain\Config;
 use App\Domain\Log\ExternalService;
+use App\Domain\Log\FailedHttpTransferStats;
 use App\Http\HttpRequest;
 use App\Http\HttpStash;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\RequestOptions;
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\Factory;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Client\Response;
@@ -17,6 +20,7 @@ readonly class Rto
     public function __construct(
         private Factory $http,
         private HttpStash $stash,
+        private FailedHttpTransferStats $failedTransferStats,
     ) {}
 
     public function findTopicId(int|string|null $input): int|null
@@ -112,8 +116,33 @@ readonly class Rto
         return filter_var($value, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]) ?: null;
     }
 
+    private function isUnreachable(ConnectionException $exception): bool
+    {
+        $previous = $exception->getPrevious();
+
+        if (!$previous instanceof ConnectException) {
+            return false;
+        }
+
+        return match ($this->failedTransferStats->curlErrno($previous->getRequest())) {
+            // Failed to connect() to host or proxy
+            7 => true,
+            // Connection reset by peer
+            35 => true,
+            default => false,
+        };
+    }
+
     private function sendRequest(HttpRequest $request): Response
     {
-        return $this->stash->store($request, fn () => $request->send($this->http())->throw());
+        try {
+            return $this->stash->store($request, fn () => $request->send($this->http())->throw());
+        } catch (ConnectionException $e) {
+            if ($this->isUnreachable($e)) {
+                throw new RtoUnreachableException($e->getMessage(), previous: $e);
+            }
+
+            throw $e;
+        }
     }
 }

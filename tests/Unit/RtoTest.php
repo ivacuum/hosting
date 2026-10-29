@@ -6,7 +6,12 @@ use App\Domain\Rto\Rto;
 use App\Domain\Rto\RtoApiException;
 use App\Domain\Rto\RtoFake;
 use App\Domain\Rto\RtoTemporarilyUnavailableException;
+use App\Domain\Rto\RtoUnreachableException;
+use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Promise\Create;
+use GuzzleHttp\TransferStats;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Http\Client\Request;
 use PHPUnit\Framework\Attributes\TestWith;
 use Tests\TestCase;
 
@@ -46,6 +51,22 @@ class RtoTest extends TestCase
 
         app(Rto::class)
             ->topicDataByIds(range(1, 100));
+    }
+
+    #[TestWith([7], 'failed to connect')]
+    #[TestWith([35], 'connection reset')]
+    public function testTopicIdByHashThrowsUnreachableExceptionOnConnectionFailure(int $curlErrno): void
+    {
+        \Http::fake(static function (Request $request, array $options) use ($curlErrno) {
+            $options['on_stats'](new TransferStats($request->toPsrRequest(), null, 0.1, $curlErrno));
+
+            return Create::rejectionFor(new ConnectException('Connection failed', $request->toPsrRequest()));
+        });
+
+        $this->expectException(RtoUnreachableException::class);
+
+        app(Rto::class)
+            ->topicIdByHash('0123456789ABCDEF0123456789ABCDEF01234567');
     }
 
     public function testTopicIdByHashThrowsExceptionOnApiError(): void

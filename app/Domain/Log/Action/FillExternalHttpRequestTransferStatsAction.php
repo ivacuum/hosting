@@ -2,12 +2,11 @@
 
 namespace App\Domain\Log\Action;
 
-use App\Domain\Log\HttpFailureCategory;
 use App\Domain\Log\Models\ExternalHttpRequest;
 
 class FillExternalHttpRequestTransferStatsAction
 {
-    public function execute(ExternalHttpRequest $request, array $stats, bool $failed = false): void
+    public function execute(ExternalHttpRequest $request, array $stats): void
     {
         $request->queue_time_us = $this->microseconds($stats, 'queue_time');
         $request->namelookup_time_us = $this->microseconds($stats, 'namelookup_time');
@@ -22,30 +21,13 @@ class FillExternalHttpRequestTransferStatsAction
         $request->primary_port = $this->nullablePort($stats['primary_port'] ?? null);
         $request->local_ip = $stats['local_ip'] ?? null;
         $request->local_port = $this->nullablePort($stats['local_port'] ?? null);
-        $request->ssl_verify_result = $this->nullableInteger($stats['ssl_verify_result'] ?? $stats['ssl_verifyresult'] ?? null);
+        $request->ssl_verify_result = $this->nullableInteger($stats['ssl_verify_result'] ?? null);
         $request->used_proxy = isset($stats['used_proxy']) ? (bool) $stats['used_proxy'] : null;
-        $request->curl_errno = $this->nullableInteger($stats['errno'] ?? null);
-        $request->os_errno = $this->nullableInteger($stats['os_errno'] ?? null);
-        $request->curl_error = $stats['error'] ?? null;
-        $request->failure_category = $failed
-            ? $this->failureCategory($request->curl_errno)
-            : null;
-    }
-
-    private function failureCategory(int|null $curlErrno): HttpFailureCategory
-    {
-        return match ($curlErrno) {
-            5, 6 => HttpFailureCategory::Dns,
-            7 => HttpFailureCategory::Connection,
-            28 => HttpFailureCategory::Timeout,
-            35, 51, 58, 60, 77, 80, 82, 83, 90, 91 => HttpFailureCategory::Tls,
-            default => HttpFailureCategory::Transport,
-        };
     }
 
     private function microseconds(array $stats, string $name): int
     {
-        return (int) ($stats["{$name}_us"] ?? round(($stats[$name] ?? 0) * 1_000_000));
+        return (int) ($stats["{$name}_us"] ?? 0);
     }
 
     private function nullableInteger(mixed $value): int|null

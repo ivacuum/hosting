@@ -3,12 +3,15 @@
 namespace App\Providers;
 
 use App;
+use App\Domain\Log\FailedHttpTransferStats;
 use Carbon\CarbonImmutable;
+use GuzzleHttp\TransferStats;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\ParallelTesting;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
@@ -69,6 +72,10 @@ class AppServiceProvider extends ServiceProvider
             'Vocabulary' => App\Domain\Wanikani\Models\Vocabulary::class,
             'ChatMessage' => App\ChatMessage::class,
             'ExternalIdentity' => App\ExternalIdentity::class,
+        ]);
+
+        Http::globalOptions([
+            'on_stats' => static fn (TransferStats $stats) => app(FailedHttpTransferStats::class)->remember($stats),
         ]);
 
         $this->parallelTestingSetUpDatabase();

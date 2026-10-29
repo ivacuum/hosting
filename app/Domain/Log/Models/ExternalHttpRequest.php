@@ -46,9 +46,7 @@ use Illuminate\Support\Uri;
  * @property int|null $ssl_verify_result
  * @property bool|null $used_proxy
  * @property int|null $curl_errno
- * @property int|null $os_errno
  * @property HttpFailureCategory|null $failure_category
- * @property string|null $curl_error
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  *
@@ -110,7 +108,6 @@ class ExternalHttpRequest extends Model
             'ssl_verify_result' => 'int',
             'used_proxy' => 'bool',
             'curl_errno' => 'int',
-            'os_errno' => 'int',
         ];
     }
 }
