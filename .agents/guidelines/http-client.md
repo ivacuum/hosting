@@ -1,16 +1,17 @@
-# HTTP Client Guidelines
+# HTTP client guidelines
 
-Start with typed, discoverable operations designed for application needs. Favor excellent developer experience. Use the examples as a baseline and add infrastructure as the integration needs it.
+Build each client around the operations the application needs, with typed inputs and outputs. Favor excellent developer experience. Start from the examples below. Add caching, retries, or correlation only when the integration needs them.
 
-## Client Structure
+## Expose typed operations, not raw HTTP
 
-- Clients expose typed application operations, not arbitrary HTTP requests; clients don't have to mirror the external API.
-- Requests own the HTTP method, path, query, body, and operation-specific policies. Call `PendingRequest` methods directly; avoid a generic options abstraction.
-- Responses inspect the complete Laravel HTTP response, handle service-specific errors, and expose typed application data. Keep request and response classes independent; the client connects them.
-- Inject Laravel's HTTP `Factory`. Use a private `http()` for shared authentication, base URL, timeouts, and service attributes; use a private `sendRequest()` to delegate to the request.
-- Use shared actions for reusable transport mechanics, not service-specific decisions. Do not add caching, retries, or correlation unless needed.
+- A client exposes typed application operations, not arbitrary HTTP requests. Its methods don't have to mirror the external API.
+- A request class owns the HTTP method, path, query, body, and operation-specific policies. It calls `PendingRequest` methods directly. Don't add a generic options abstraction.
+- A response class reads the complete Laravel HTTP `Response`, handles service-specific errors, and exposes typed application data.
+- Request and response classes don't depend on each other. The client connects them.
+- The client injects Laravel's HTTP `Factory`. A private `http()` method sets the shared authentication, base URL, timeouts, and service attributes. A private `sendRequest()` method passes that `PendingRequest` to the request.
+- Shared actions hold reusable transport mechanics, not service-specific decisions.
 
-Example classes below belong in separate files in the relevant domain. Imports are shown together for brevity.
+Put each class below in its own file in the relevant domain. The examples list all imports together to save space.
 
 ```php
 use GuzzleHttp\Promise\PromiseInterface;
@@ -94,17 +95,18 @@ class AcmeApi
 }
 ```
 
-Use the integration's actual `ExternalService` case; `Example` is used here for the example host.
+`ExternalService::Example` stands in for the example host. A real client uses the case for its own service.
 
-## Caching
+## Cache only when the request opts in
 
-- Opt in with `CacheableRequest` alongside `HttpRequest`: the request declares `cacheKey()`, `cacheTtl()`, and `shouldCache(Response)`. Shared infrastructure owns storage and response reconstruction.
-- Cache safe reads and successful application results by default. Give negative caching an explicit policy and scope.
-- Ordinary response keys include service, operation, key version, response-varying inputs, and authentication scope. Hash sensitive inputs; use shared service-wide keys only for deliberately service-wide policies.
-- Cache response snapshots so the same parser works on misses and hits. Cacheable parsers should depend only on status, headers, body, protocol version, and reason phrase.
-- Keep cache failures from breaking available integrations. Add stampede protection where concurrent misses justify it.
+- A request opts in to caching by implementing `CacheableRequest` next to `HttpRequest`. It declares `cacheKey()`, `cacheTtl()`, and `shouldCache(Response)`. Shared infrastructure stores the response and rebuilds it on a hit.
+- By default, cache safe reads and successful application results. Caching a negative result needs its own explicit policy and scope.
+- An ordinary cache key includes the service, the operation, a key version, every input that changes the response, and the authentication scope. Hash sensitive inputs. Use a key shared by the whole service only for a deliberate service-wide policy.
+- Cache a snapshot of the response, so the same parser reads both misses and hits. A cacheable parser reads only the status, headers, body, protocol version, and reason phrase.
+- A cache failure must not break an integration that is otherwise available.
+- Add protection against cache stampedes only when concurrent misses are a real cost.
 
-For example, a country list changes rarely. This endpoint returns the same list for every caller, so we can use a shared key and a one-week TTL.
+For example, a country list rarely changes, and the endpoint returns the same list to every caller. The request uses a shared key and a one-week TTL:
 
 ```php
 use Carbon\CarbonInterval;
@@ -155,7 +157,7 @@ readonly class AcmeCountriesResponse
 }
 ```
 
-`HttpStash` is the shared caching helper, provided separately. Inject `HttpStash $stash` alongside the client's existing dependencies:
+`HttpStash` is the shared caching helper. It is not shown here. To route requests through the cache, inject `HttpStash $stash` next to the client's other dependencies and call it from `sendRequest()`:
 
 ```php
 public function countries(): AcmeCountriesResponse
@@ -171,14 +173,14 @@ private function sendRequest(HttpRequest $request): Response
 }
 ```
 
-## Retries and Idempotency
+## Retry only operations that are safe to repeat
 
-- Opt in per operation: requests classify transient failures and bound attempts and total elapsed time. Shared helpers may implement mechanics, but requests own the policy.
-- Retry only operations safe to repeat, with replayable bodies. For writes, use inherent idempotency or a service-supported idempotency key kept stable across immediate and queue retries.
-- Respect service retry metadata; use backoff and jitter where needed. Move long delays to queued work.
-- When correlation is useful, pass a stable operation ID in a service-supported header across attempts and queue retries. Keep it separate from the idempotency key.
+- Each operation opts in to retries. The request decides which failures are transient and limits both the number of attempts and the total time. Shared helpers may implement the mechanics, but the request owns the policy.
+- Retry only an operation that is safe to repeat and has a body you can send again. For a write, rely on an operation that is idempotent by nature or on an idempotency key that the service supports. Keep that key the same across immediate retries and queue retries.
+- Respect the retry metadata that the service returns. Add backoff and jitter where the service needs them. Move long delays to a queued job.
+- To correlate attempts, send a stable operation ID in a header that the service supports. Keep the same ID across attempts and queue retries. Keep the operation ID separate from the idempotency key.
 
-For a service supporting `Idempotency-Key`, this write retries connection failures only. The caller creates and persists the key with the logical operation, then reuses the same key and payload on queue retries.
+The following write targets a service that supports `Idempotency-Key` and retries only connection failures. The caller creates the key, stores it with the logical operation, and sends the same key and payload on every queue retry.
 
 ```php
 use Illuminate\Http\Client\ConnectionException;
@@ -203,18 +205,18 @@ readonly class AcmeCreateCustomerRequest implements HttpRequest
 }
 ```
 
-## Logging
+## Leave logging to the event listener
 
-- Reuse Laravel HTTP event logging existing in the app; keep logging mechanics out of clients.
-- Identify known services with a `service` request attribute containing an `ExternalService` value.
-- Review credential exposure in requests, responses, and reported exceptions when adding an integration. Update service-specific filtering and cover relevant success and failure payloads.
-- Use `withAttributes(['skip_response_body_logging' => true])` to opt out of saving the response body to logs when the logging layer supports this attribute, for example for downloads.
+- If the app already logs Laravel HTTP client events, reuse that logging. Keep logging code out of clients.
+- Identify a known service by setting the `service` request attribute to an `ExternalService` case.
+- When you add an integration, check whether credentials leak into logged requests, logged responses, or reported exceptions. Update the filtering for that service, and test it with the relevant success and failure payloads.
+- To keep a response body out of the log, set `withAttributes(['skip_response_body_logging' => true])`, for example for downloads. The attribute works only if the logging layer supports it.
 
-## Testing and Fakes
+## Fake each service through one class
 
-- Provide one discoverable fake class per service, with methods named after client operations and meaningful failures. Add only scenarios needed by tests, not arbitrary status/payload builders.
-- Keep representative fake payloads beside response parsers; let service fakes map them to URL patterns and return arrays for `Http::fake()`. Use narrow operation patterns and broad patterns only for service-wide failures.
-- Application tests use service fakes to stay independent of endpoint URLs and external payload fields. Focused client/request tests verify the outgoing contract and error handling.
+- Give each service one fake class. Name its methods after the client operations and after the failures that matter. Add only the scenarios that tests need. Don't add builders for arbitrary statuses or payloads.
+- Keep representative fake payloads next to the response parser. The service fake maps those payloads to URL patterns and returns an array for `Http::fake()`. Use a narrow pattern for each operation. Use a broad pattern only for a failure that affects the whole service.
+- Application tests use the service fake, so they don't depend on endpoint URLs or external payload fields. Focused client and request tests check the outgoing request and the error handling.
 
 ```php
 class AcmeApiFake
