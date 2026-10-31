@@ -15,5 +15,6 @@ class PruneCache extends Seeder
         $cache->forgetMagnets();
         $cache->forgetPhotoPoints();
         $cache->forgetTrips();
+        $cache->forgetWanikaniVocabularyIds();
     }
 }

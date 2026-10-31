@@ -2,6 +2,7 @@
 
 namespace App\Domain\Wanikani\Livewire;
 
+use App\Domain\Wanikani\Action\GetRandomVocabularyAction;
 use App\Domain\Wanikani\Models\Vocabulary;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Str;
@@ -144,15 +145,8 @@ class VocabularyTrainer extends Component
 
     private function pickRandomVocab(): void
     {
-        $randomId = Vocabulary::query()
-            ->whereIn('level', range($this->startLevel(), $this->endLevel()))
-            ->inRandomOrder()
-            ->first(['id'])
-            ->id;
-
-        $this->vocab = Vocabulary::query()
-            ->where('id', '>=', $randomId)
-            ->first();
+        $this->vocab = app(GetRandomVocabularyAction::class)
+            ->execute($this->startLevel(), $this->endLevel());
     }
 
     private function pushHistory(): void

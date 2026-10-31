@@ -2,6 +2,7 @@
 
 namespace Tests\Livewire;
 
+use App\Domain\CacheKey;
 use App\Domain\Wanikani\Factory\VocabularyFactory;
 use App\Domain\Wanikani\Livewire\VocabularyTrainer;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -129,6 +130,23 @@ class VocabularyTrainerTest extends TestCase
             ->assertSet('openSettings', true);
 
         \Event::assertDispatched(\App\Events\Stats\VocabularyDifficultyIncreased::class);
+    }
+
+    public function testLevelChangeRefreshesCachedVocabularyIds(): void
+    {
+        $movedVocab = VocabularyFactory::new()->withLevel(1)->create();
+        VocabularyFactory::new()->withLevel(1)->create();
+        $key = CacheKey::WanikaniVocabularyIdsByLevels->key('1-10');
+
+        \Livewire::test(VocabularyTrainer::class);
+        $this->assertContains($movedVocab->id, \Cache::get($key));
+
+        $movedVocab = $movedVocab->fresh();
+        $movedVocab->level = 11;
+        $movedVocab->save();
+
+        \Livewire::test(VocabularyTrainer::class);
+        $this->assertNotContains($movedVocab->id, \Cache::get($key));
     }
 
     public function testSkip(): void

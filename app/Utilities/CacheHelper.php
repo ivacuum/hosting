@@ -68,4 +68,13 @@ class CacheHelper
             CacheKey::TripsPublishedWithCover,
         ]);
     }
+
+    public function forgetWanikaniVocabularyIds(): void
+    {
+        $this->cache->deleteMultiple(
+            collect(range(1, 60, 10))
+                ->map(static fn (int $startLevel) => CacheKey::WanikaniVocabularyIdsByLevels->key($startLevel . '-' . ($startLevel + 9)))
+                ->all()
+        );
+    }
 }

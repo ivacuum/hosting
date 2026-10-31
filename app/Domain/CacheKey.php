@@ -34,6 +34,8 @@ enum CacheKey: string
     case TripsPublishedByCountry = 'trips.published.by-country';
     case TripsPublishedWithCover = 'trips.published.with-cover.v2';
 
+    case WanikaniVocabularyIdsByLevels = 'wanikani.vocabulary.ids.levels.{key}';
+
     public function key(string $replace): string
     {
         return str_replace('{key}', $replace, $this->value);
@@ -60,7 +62,8 @@ enum CacheKey: string
             self::CitiesById,
             self::CitiesBySlug,
             self::CountriesById,
-            self::CountriesBySlug => CarbonInterval::month(),
+            self::CountriesBySlug,
+            self::WanikaniVocabularyIdsByLevels => CarbonInterval::month(),
 
             self::TripsPublishedByCity,
             self::TripsPublishedByCountry => CarbonInterval::year(),
