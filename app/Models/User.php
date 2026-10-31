@@ -17,7 +17,6 @@ use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Notifications\Notifiable;
 
@@ -66,7 +65,7 @@ use Illuminate\Notifications\Notifiable;
 #[ObservedBy(UserObserver::class)]
 #[UsePolicy(UserPolicy::class)]
 #[Hidden(['password', 'salt', 'remember_token', 'two_factor_secret', 'two_factor_recovery_codes'])]
-class User extends Authenticatable implements HasLocalePreference
+class User extends \Illuminate\Foundation\Auth\User implements HasLocalePreference
 {
     use Notifiable;
 

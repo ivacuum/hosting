@@ -3,11 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Cache\RateLimiting\Limit;
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 
-class RouteServiceProvider extends ServiceProvider
+class RouteServiceProvider extends \Illuminate\Foundation\Support\Providers\RouteServiceProvider
 {
     #[\Override]
     public function boot(): void
