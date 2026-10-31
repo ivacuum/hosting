@@ -1,7 +1,7 @@
-import $ from 'jquery'
-
 const absoluteLinkRegexp = /^https?:\/\//
 const imageAlignedMaxWidth = Math.round(document.documentElement.clientWidth / 3) + 50
+const post = document.getElementById('rutracker_post')
+const swing = 'cubic-bezier(0.37, 0, 0.63, 1)'
 
 function convertThumbSrcToOriginal(thumb) {
   return thumb.replace(
@@ -32,9 +32,13 @@ function fitImage(img, maxWidth) {
   return true
 }
 
-function getOriginalImageFromLink($item) {
-  const title = $item.attr('title')
-  const href = $item.parent('.postLink').attr('href')
+function getImageLink(item) {
+  return item.parentElement.matches('.postLink') ? item.parentElement : null
+}
+
+function getOriginalImageFromLink(item) {
+  const title = item.getAttribute('title')
+  const href = getImageLink(item)?.getAttribute('href')
 
   if (-1 !== title.search(/fastpic\.ru\/thumb/)) {
     return ''
@@ -55,102 +59,159 @@ function getLinkIfMatches(href, regexp) {
   return href
 }
 
-function getOriginalSrc($item) {
-  const path = $item.attr('title')
+function getOriginalSrc(item) {
+  const path = item.getAttribute('title')
   const src = convertThumbSrcToOriginal(path)
 
   if (src !== path) {
     return src
   }
 
-  return getOriginalImageFromLink($item) || path
+  return getOriginalImageFromLink(item) || path
 }
 
-function makeFastpicFullviewLink($item) {
-  const title = $item.attr('title')
+function makeFastpicFullviewLink(item) {
+  const link = getImageLink(item)
 
-  if (-1 !== title.search(/fastpic\.ru\/thumb/)) {
-    const $link = $item.parent('.postLink')
-
-    $link.attr('href', $link.attr('href').replace(/\/view\//, '/fullview/'))
-    $link.attr('rel', 'noreferrer')
+  if (link !== null && -1 !== item.getAttribute('title').search(/fastpic\.ru\/thumb/)) {
+    link.setAttribute('href', link.getAttribute('href').replace(/\/view\//, '/fullview/'))
+    link.setAttribute('rel', 'noreferrer')
   }
 }
 
 function renderLinks() {
-  $('.postLink', '.rutracker-post').each((index, item) => {
-    const href = $(item).attr('href')
+  post.querySelectorAll('.postLink').forEach((link) => {
+    const href = link.getAttribute('href')
 
-    if (!absoluteLinkRegexp.test(href)) {
-      $(item).attr('href', `https://rutracker.org/forum/${href}`)
+    if (href !== null && !absoluteLinkRegexp.test(href)) {
+      link.setAttribute('href', `https://rutracker.org/forum/${href}`)
     }
   })
 }
 
 function renderHr() {
-  $('.post-hr', '.rutracker-post').html('<hr class="tLeft">')
-}
-
-function renderImages(context) {
-  const $inSpoilers = $('.sp-body var.postImg', context)
-
-  $('var.postImg', context).not($inSpoilers).each((index, item) => {
-    const $item = $(item)
-    const src = getOriginalSrc($item)
-    const cls = $item.attr('class')
-
-    makeFastpicFullviewLink($item)
-
-    const $img = $(`<img src="${src}" class="${cls}" alt="pic" referrerpolicy="no-referrer">`)
-
-    if ($item.hasClass('postImgAligned')) {
-      $img.on('click', (e) => fitImage(e.currentTarget, imageAlignedMaxWidth))
-      $img.one('load', (e) => fitImage(e.currentTarget, imageAlignedMaxWidth))
-    }
-
-    $item.empty().append($img)
+  post.querySelectorAll('.post-hr').forEach((hr) => {
+    hr.innerHTML = '<hr class="tLeft">'
   })
 }
 
-function renderSpoilers() {
-  $(document).on('click.spoiler', '.rutracker-post .sp-head', (e) => {
-    const $head = $(e.currentTarget)
-    const $body = $head.next('.sp-body')
-    const $wrap = $head.parent('.sp-wrap')
+/**
+ * Картинки загружаются только после открытия соответствующего спойлера
+ */
+function renderImages(root) {
+  root.querySelectorAll('var.postImg').forEach((item) => {
+    const spoiler = item.closest('.sp-body')
 
-    if (!$body.hasClass('inited')) {
-      renderImages($body)
+    if (spoiler !== null && spoiler !== root && root.contains(spoiler)) {
+      return
+    }
 
-      const $foldBtn = $('<div class="sp-fold clickable">[свернуть]</div>').on('click', () => {
-        $head
-          .click()
-          .animate({ opacity: .1 }, 500)
-          .animate({ opacity: 1 }, 700)
+    const img = document.createElement('img')
+    img.src = getOriginalSrc(item)
+    img.className = item.className
+    img.alt = 'pic'
+    img.referrerPolicy = 'no-referrer'
+
+    makeFastpicFullviewLink(item)
+
+    if (item.classList.contains('postImgAligned')) {
+      img.addEventListener('click', (e) => {
+        if (!fitImage(img, imageAlignedMaxWidth)) {
+          e.preventDefault()
+          e.stopPropagation()
+        }
       })
 
-      $body.append($foldBtn).addClass('flow-root inited')
-      $body.parent().addClass('flow-root')
+      img.addEventListener('load', () => fitImage(img, imageAlignedMaxWidth), { once: true })
     }
 
-    if (e.shiftKey) {
-      $head.css('user-select', 'none')
-      e.stopPropagation()
-      e.shiftKey = false
+    item.replaceChildren(img)
+  })
+}
 
-      const fold = $head.hasClass('unfolded')
+function slideToggle(body, open) {
+  const collapsed = { height: '0px', paddingTop: '0px', paddingBottom: '0px' }
+  const current = body.getAnimations().length ? pickSlideStyle(getComputedStyle(body)) : null
 
-      $('.sp-head').filter(function () {
-        return $(this).hasClass('unfolded') ? fold : !fold
-      }).click()
-    } else {
-      $head.toggleClass('unfolded')
-      $wrap.toggleClass('sp-opened')
-      $body.slideToggle('fast')
+  body.getAnimations().forEach((animation) => animation.cancel())
+  body.style.display = 'block'
+
+  const expanded = pickSlideStyle(getComputedStyle(body))
+  const keyframes = open ? [current ?? collapsed, expanded] : [current ?? expanded, collapsed]
+
+  body.style.overflow = 'hidden'
+  body.animate(keyframes, { duration: 200, easing: swing }).onfinish = () => {
+    body.style.overflow = ''
+
+    if (!open) {
+      body.style.display = 'none'
     }
+  }
+}
+
+function pickSlideStyle(style) {
+  return { height: style.height, paddingTop: style.paddingTop, paddingBottom: style.paddingBottom }
+}
+
+function toggleSpoiler(head) {
+  const body = head.nextElementSibling
+  const wrap = head.parentElement
+
+  if (!body.classList.contains('inited')) {
+    renderImages(body)
+
+    const foldButton = document.createElement('div')
+    foldButton.className = 'sp-fold clickable'
+    foldButton.textContent = '[свернуть]'
+    foldButton.addEventListener('click', () => {
+      toggleSpoiler(head)
+      head.animate([
+        { opacity: 1, easing: swing },
+        { opacity: .1, easing: swing, offset: 5 / 12 },
+        { opacity: 1 },
+      ], 1200)
+    })
+
+    body.append(foldButton)
+    body.classList.add('flow-root', 'inited')
+    wrap.classList.add('flow-root')
+  }
+
+  wrap.classList.toggle('sp-opened')
+  slideToggle(body, head.classList.toggle('unfolded'))
+}
+
+/**
+ * Shift+click открывает/закрывает все спойлеры разом
+ */
+function renderSpoilers() {
+  document.addEventListener('click', (e) => {
+    const head = e.target.closest('.rutracker-post .sp-head')
+
+    if (head === null) {
+      return
+    }
+
+    if (!e.shiftKey) {
+      toggleSpoiler(head)
+
+      return
+    }
+
+    head.style.userSelect = 'none'
+    e.stopPropagation()
+
+    const fold = head.classList.contains('unfolded')
+
+    document.querySelectorAll('.rutracker-post .sp-head').forEach((element) => {
+      if (element.classList.contains('unfolded') === fold) {
+        toggleSpoiler(element)
+      }
+    })
   })
 }
 
 renderHr()
-renderImages('.rutracker-post')
+renderImages(post)
 renderSpoilers()
 renderLinks()
