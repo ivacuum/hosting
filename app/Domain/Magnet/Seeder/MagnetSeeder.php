@@ -106,6 +106,12 @@ TEXT))
         $factory->advancedTitle()->deleted()->create();
 
         $this->hitman($user);
+        $this->rutrackerMarkup($user);
+    }
+
+    private function blackRectangle(int $width, int $height): string
+    {
+        return 'data:image/svg+xml,' . rawurlencode("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{$width}\" height=\"{$height}\"><rect width=\"100%\" height=\"100%\"/></svg>");
     }
 
     private function hitman(User $user): void
@@ -131,5 +137,41 @@ HTML);
         $factory->withTitle('Hitman: GOTY Edition [P] [RUS / ENG] (2016) (1.10.2 + 22 DLC)')->create();
         $factory->withTitle('Hitman 2 [P] [RUS + ENG] (2018)')->create();
         $factory->withTitle('Hitman 3 [P] [RUS + ENG + 4] (2021)')->create();
+    }
+
+    /**
+     * Верстка для проверки скрипта `resources/js/view-magnet-post.js`
+     */
+    private function rutrackerMarkup(User $user): void
+    {
+        MagnetFactory::new()
+            ->withCategory(MagnetCategory::RpgGames)
+            ->withTitle('Disco Elysium: The Final Cut [L] [RUS + ENG + 10] (2021) (a9a58aa4 + 1 DLC) [GOG]')
+            ->withUser($user)
+            ->withHtml(<<<HTML
+<span class="post-align" style="text-align: center;"><span style="font-size: 24px; line-height: normal;"><span class="post-b">Disco Elysium: The Final Cut</span></span></span>
+<span class="post-br"><br></span>
+<var class="postImg postImgAligned img-right" title="{$this->blackRectangle(1200, 1600)}">&#10;</var>
+<span class="post-b">Год выпуска</span>: 2021<br>
+<span class="post-b">Жанр</span>: RPG, Detective<br>
+<span class="post-b">Разработчик</span>: ZA/UM<br>
+<span class="post-b">Тип издания</span>: Лицензия<br>
+<span class="post-b">Язык интерфейса</span>: русский, английский<br>
+<span class="post-hr">-</span>
+<span class="post-b">Описание</span>: Вы — детектив, у которого нет ни значка, ни памяти. Расследуйте убийство в портовом районе Ревашоля, допрашивайте свидетелей и спорьте с собственным разумом.<br>
+<span class="post-hr">-</span>
+<var class="postImg" title="{$this->blackRectangle(320, 180)}">&#10;</var> <var class="postImg" title="{$this->blackRectangle(320, 180)}">&#10;</var>
+<div class="sp-wrap"><div class="sp-head folded"><span>Скриншоты</span></div><div class="sp-body"><var class="postImg" title="{$this->blackRectangle(640, 360)}">&#10;</var> <var class="postImg" title="{$this->blackRectangle(640, 360)}">&#10;</var></div></div>
+<div class="sp-wrap"><div class="sp-head folded"><span>Системные требования</span></div><div class="sp-body">
+<span class="post-b">Операционная система</span>: Windows 10<br>
+<span class="post-b">Процессор</span>: Intel Core i5-7500<br>
+<span class="post-b">Оперативная память</span>: 4 GB<br>
+<div class="sp-wrap"><div class="sp-head folded"><span>Схема управления</span></div><div class="sp-body"><var class="postImg" title="{$this->blackRectangle(480, 270)}">&#10;</var></div></div>
+</div></div>
+<div class="sp-wrap"><div class="sp-head folded"><span>Пример конфига</span></div><div class="sp-body"><div class="c-wrap"><div class="c-head"><b>Код:</b></div><div class="c-body">resolution = {{ width }}x{{ height }}</div></div></div></div>
+<span class="post-hr">-</span>
+<a href="viewtopic.php?t=6000000" class="postLink">Предыдущая версия раздачи</a> &middot; <a href="tracker.php?nm=Disco%20Elysium" class="postLink">Другие раздачи</a> &middot; <a href="https://discoelysium.com/" class="postLink">Официальный сайт</a>
+HTML)
+            ->create();
     }
 }

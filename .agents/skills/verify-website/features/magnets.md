@@ -29,7 +29,7 @@ Verify published release discovery, search, personal releases, additions, downlo
 
 Preconditions:
 
-- Require doctor readiness and published seed releases. `MagnetSeeder` provides `Hunt: Showdown`, `Мир героев`, `Головоломка`, and three related Hitman releases, plus hidden/deleted records.
+- Require doctor readiness and published seed releases. `MagnetSeeder` provides `Hunt: Showdown`, `Мир героев`, `Головоломка`, three related Hitman releases, and `Disco Elysium: The Final Cut` with Rutracker post markup, plus hidden/deleted records.
 - Use `guest@example.com` / `top-secret` for authenticated paths and verify `/my/profile`. Seed releases belong to `magnet@example.com`, which signs in with `top-secret`. Guest's personal list starts empty.
 - The isolated helper uses Scout's collection driver. It cannot prove production morphology, ranking, or title-only versus description-search semantics.
 - Before add/request/comment actions, inspect Rutracker and `services.telegram.admin_id`. Both Telegram paths read that destination, but use different guards. Local mode is not a network sandbox. Require explicit external authorization before real outbound operations.
@@ -44,7 +44,7 @@ Preconditions:
 6. Submit a nonsense query and require `Подходящих раздач не найдено.` Submit a one-character query and require normal listing behavior because queries shorter than two characters are ignored.
 7. Follow available paginator links and require preserved filters. Standard seeds fit on one 25-row page; populated next-page proof requires additional authorized data and fails as a missing prerequisite otherwise.
 8. Open a release title and require its rendered description in `#rutracker_post`, size, source link, and discussion. Follow a Hitman related title and a tag link as separate paths.
-9. If the actual description has spoilers or images, click `.sp-head`, `[свернуть]`, and aligned images to verify expand/fold/resize behavior. Standard plain-text seed descriptions do not prove these controls or remote media.
+9. Open `Disco Elysium: The Final Cut` for post rendering. Require `<hr>` separators, images instead of `var.postImg` placeholders outside spoilers, and a right-aligned cover shrunk to about a third of the viewport that toggles to its natural size on click. Click `.sp-head` and require images inside its body to appear only after the first opening, plus a `[свернуть]` control that folds it back. A nested spoiler renders its own images on its own opening. Shift+click a header toggles all spoilers. Relative `.postLink` hrefs must point to `https://rutracker.org/forum/`, while the absolute link stays unchanged. The `Пример конфига` code block contains literal `{{ width }}x{{ height }}`; record what actually renders. Seed images are local `data:` SVG rectangles, so host-specific thumbnail rewriting and remote media remain unverified.
 10. Record `magnets.clicks` for one release through read-only SQL. Click its list `.js-magnet` link once through Safari and require a POST to its rendered `data-action`, HTTP 204, and a one-count persisted increment.
 11. Require the visible `.js-magnet-counter` increment. Click the same element again and require no second accounting POST from that element until reload. Do not equate protocol-client completion with download-accounting success.
 12. Exercise both detail `Магнет` links and a related-release magnet separately. Require their matching release IDs in accounting. Capture console errors because detail links lack the list counter child that `events.js` attempts to update.
