@@ -91,7 +91,7 @@ Before relying on a package's API, confirm its installed version:
 
 ## Skills Activation
 
-This project has domain-specific skills available in `**/skills/**`. You MUST activate the relevant skill whenever you work in that domain—don't wait until you're stuck.
+This project has domain-specific skills available in `.agents/skills/**`. You MUST activate the relevant skill whenever you work in that domain—don't wait until you're stuck.
 
 ## Conventions
 
@@ -110,7 +110,7 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 
 ## Frontend Bundling
 
-- If a frontend change doesn't show in the UI or you get a "Unable to locate file in Vite manifest" error, run `yarn run build` or ask the user to run `yarn run dev` or `composer run dev`.
+- If a frontend change doesn't show in the UI or you get a "Unable to locate file in Vite manifest" error, run `yarn run build` or ask the user to run `yarn run dev`.
 
 ## Documentation Files
 
@@ -128,7 +128,7 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 - Use `get-absolute-url` to resolve the correct scheme, domain, and port for project URLs. Always use this before sharing a URL with the user.
 - Use `browser-logs` to read browser logs, errors, and exceptions. Only recent logs are useful, ignore old entries.
 
-## Searching Documentation (IMPORTANT)
+## Searching Documentation
 
 - Use `search-docs` before changes that depend on Laravel ecosystem APIs, behavior, configuration, or version-specific syntax. Skip it for copy-only edits and other changes where package documentation is irrelevant. Reuse sufficient results already in context instead of searching again.
 - Pass a `packages` array to scope results when you know which packages are relevant.
@@ -144,7 +144,7 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 
 ## Project Rules
 
-- This project contains committed, area-grouped rules in `.ai/rules` when that directory exists, including path-scoped framework guidelines under `.ai/rules/boost`. Before you enter plan mode or create/edit any file, you MUST first: open @.ai/rules/index.md (it maps file globs to rule files), read every rule file whose globs cover the path(s) in scope, and run `grep -rin 'keyword' .ai/rules` to catch what a path match alone misses. Do not write code until you have read and are following every matching rule. If `.ai/rules` does not exist, continue without it.
+- `.ai/rules` holds area-grouped project rules; @.ai/rules/index.md maps file globs to rule files. Before planning or editing a file, read the rule files whose globs match it, and search `.ai/rules` for the topic when a path match may miss a relevant rule.
 
 ## Artisan
 
@@ -204,7 +204,6 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 
 # Livewire
 
-- Livewire allows you to build dynamic, reactive interfaces in PHP without writing JavaScript.
 - You can use Alpine.js for client-side interactions instead of JavaScript frameworks.
 - Keep state server-side so the UI reflects it. Validate and authorize in actions as you would in HTTP requests.
 
@@ -212,8 +211,8 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 
 # Laravel Pint Code Formatter
 
-- If you have modified any PHP files, you must run `vendor/bin/pint --dirty --format agent` before finalizing changes to ensure your code matches the project's expected style.
-- Do not run `vendor/bin/pint --test --format agent`, simply run `vendor/bin/pint --format agent` to fix any formatting issues.
+- After modifying PHP files, run `vendor/bin/pint --dirty --format agent` before finishing.
+- Do not run `vendor/bin/pint --test --format agent`, simply run `vendor/bin/pint --dirty --format agent` to fix any formatting issues.
 
 === phpunit/core rules ===
 
