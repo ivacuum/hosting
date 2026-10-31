@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Domain\SessionKey;
 use App\Http\Requests\MyPasswordUpdateForm;
-use App\User;
+use App\Models\User;
 use Illuminate\Container\Attributes\CurrentUser;
 use Illuminate\Contracts\Hashing\Hasher;
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\NewsShowForm;
-use App\News;
+use App\Models\News;
 use App\Scope\NewsCurrentLocaleScope;
 use App\Scope\NewsPublishedScope;
 use Laravel\Head\HeadManager;

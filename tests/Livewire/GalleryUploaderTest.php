@@ -3,8 +3,8 @@
 namespace Tests\Livewire;
 
 use App\Factory\UserFactory;
-use App\Image;
 use App\Livewire\GalleryUploader;
+use App\Models\Image;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
 use Livewire\Features\SupportFileUploads\FileUploadConfiguration;

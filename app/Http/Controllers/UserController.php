@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Scope\UserActiveScope;
-use App\User;
 
 class UserController
 {

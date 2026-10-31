@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\ChatMessage;
+use App\Models\ChatMessage;
 
 class ChatMessagePublished
 {

@@ -1,4 +1,4 @@
-<?php /** @var App\ExternalIdentity $model */ ?>
+<?php /** @var App\Models\ExternalIdentity $model */ ?>
 
 @extends('acp.list')
 

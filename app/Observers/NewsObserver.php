@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\News;
+use App\Models\News;
 use Illuminate\Support\Str;
 
 class NewsObserver

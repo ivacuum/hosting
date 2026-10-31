@@ -2,7 +2,7 @@
 
 namespace App\Domain\Wanikani\Policy;
 
-use App\User;
+use App\Models\User;
 
 class VocabularyPolicy
 {

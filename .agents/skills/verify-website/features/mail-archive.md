@@ -47,7 +47,7 @@ Preconditions:
 
 ## Gotchas
 
-- Source anchors are `MailController`, `MailClickForm`, `app/Email.php`, `app/Mail/RecordsEmail.php`, `resources/views/emails/comment-confirm.blade.php`, and `resources/views/vendor/mail/html/hit.blade.php`.
+- Source anchors are `MailController`, `MailClickForm`, `app/Models/Email.php`, `app/Mail/RecordsEmail.php`, `resources/views/emails/comment-confirm.blade.php`, and `resources/views/vendor/mail/html/hit.blade.php`.
 - A view request returns 204 even when its row or timestamp is invalid. A 204 alone does not prove a valid tracked view.
 - Valid signatures permit arbitrary signed destinations. Unsigned `goto` must match the current scheme, host, and port. Never turn this verification into an external click journey.
 - Signed clicks increment clicks only for matching timestamps. The recent-mail login branch is separate from that timestamp check, so do not claim timestamp mismatch prevents all login effects.

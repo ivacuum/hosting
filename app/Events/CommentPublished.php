@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\Comment;
+use App\Models\Comment;
 
 class CommentPublished
 {

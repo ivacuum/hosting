@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Image;
+use App\Models\Image;
 
 class GalleryController
 {

@@ -2,7 +2,7 @@
 
 namespace App\Domain\SocialMedia\Policy;
 
-use App\User;
+use App\Models\User;
 
 class SocialMediaPostPolicy
 {

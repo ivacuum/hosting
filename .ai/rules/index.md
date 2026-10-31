@@ -5,7 +5,7 @@ Before planning or editing, find the row whose globs match the file's path and r
 | Applies to | Rule file |
 | --- | --- |
 | app/Http/Controllers/Acp/** | .ai/rules/acp.md |
-| app/*.php, app/**/*Action.php, app/**, app/**/*Job.php | .ai/rules/app.md |
+| app/**/*Action.php, app/**, app/**/*Job.php | .ai/rules/app.md |
 | app/Http/Controllers/** | .ai/rules/controllers.md |
 | app/Domain/** | .ai/rules/domain.md |
 | app/Domain/*/Factory/**, app/Factory/** | .ai/rules/factory.md |

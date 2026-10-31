@@ -2,8 +2,8 @@
 
 namespace App\Mail;
 
-use App\Email;
-use App\User;
+use App\Models\Email;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 trait RecordsEmail

@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Factory;
+namespace App\Domain\Telegram\Factory;
 
-use App\LinkRequest;
-use App\User;
+use App\Domain\Telegram\Models\LinkRequest;
+use App\Factory\UserFactory;
+use App\Models\User;
 use Illuminate\Support\Str;
 
 class LinkRequestFactory

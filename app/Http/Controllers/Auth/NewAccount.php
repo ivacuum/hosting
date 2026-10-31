@@ -9,7 +9,7 @@ use App\Events\Stats\UserRegisteredWithEmail;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
 use App\Http\Requests\Auth\NewAccountForm;
-use App\User;
+use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 
 class NewAccount extends Controller

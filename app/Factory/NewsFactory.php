@@ -4,8 +4,8 @@ namespace App\Factory;
 
 use App\Domain\Locale;
 use App\Domain\NewsStatus;
-use App\News;
-use App\User;
+use App\Models\News;
+use App\Models\User;
 
 class NewsFactory
 {

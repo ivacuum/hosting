@@ -3,7 +3,7 @@
 namespace App\Domain\Telegram\Action;
 
 use App\Domain\Telegram\Api\TelegramClient;
-use App\LinkRequest;
+use App\Domain\Telegram\Models\LinkRequest;
 
 class OnCommandStartAction
 {

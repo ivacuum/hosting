@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Image;
+use App\Models\Image;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 

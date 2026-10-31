@@ -1,4 +1,4 @@
-<?php /** @var \App\Email $model */ ?>
+<?php /** @var \App\Models\Email $model */ ?>
 @extends('acp.list')
 
 @section('content-list')

@@ -25,7 +25,7 @@ Schedule::command('model:prune', [
         // После миграции моделей из App в App\Models
         // можно будет указать App\Domain и App\Models вместо конкретных моделей
         App\Domain\Log\Models\ExternalHttpRequest::class,
-        App\PasswordResetToken::class,
+        App\Models\PasswordResetToken::class,
     ],
 ])
     ->twiceDailyAt(first: 2, second: 14, offset: 35)

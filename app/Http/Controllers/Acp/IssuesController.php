@@ -6,7 +6,7 @@ use App\Action\Acp\ApplyIndexGoodsAction;
 use App\Action\Acp\ResponseToDestroyAction;
 use App\Action\Acp\ResponseToShowAction;
 use App\Domain\IssueStatus;
-use App\Issue;
+use App\Models\Issue;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Domain\NewsStatus;
-use App\News;
+use App\Models\News;
 
 class NewsRssController
 {

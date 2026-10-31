@@ -1,4 +1,4 @@
-<?php /** @var App\Image $model */ ?>
+<?php /** @var App\Models\Image $model */ ?>
 
 @extends('acp.list')
 
@@ -55,7 +55,7 @@
         <td><input class="not-checked:border-gray-300 text-sky-600 models-checkbox" type="checkbox" name="ids[]" value="{{ $model->id }}"></td>
         <td class="md:text-right">{{ $model->id }}</td>
         <td class="md:text-right">
-          <a href="{{ Acp::show(new App\User, $model->user_id) }}">
+          <a href="{{ Acp::show(new App\Models\User, $model->user_id) }}">
             {{ $model->user_id }}
           </a>
           <a href="{{ UrlHelper::filter(['user_id' => $model->user_id]) }}">

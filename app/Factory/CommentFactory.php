@@ -2,14 +2,14 @@
 
 namespace App\Factory;
 
-use App\Comment;
 use App\Domain\CommentStatus;
 use App\Domain\Life\Models\Trip;
 use App\Domain\Magnet\Factory\MagnetFactory;
 use App\Domain\Magnet\Models\Magnet;
-use App\Issue;
-use App\News;
-use App\User;
+use App\Models\Comment;
+use App\Models\Issue;
+use App\Models\News;
+use App\Models\User;
 
 class CommentFactory
 {

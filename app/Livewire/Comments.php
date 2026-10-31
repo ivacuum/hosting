@@ -5,14 +5,14 @@ namespace App\Livewire;
 use App\Domain\Life\Models\Trip;
 use App\Domain\LivewireEvent;
 use App\Domain\Magnet\Models\Magnet;
-use App\Issue;
-use App\News;
+use App\Models\Issue;
+use App\Models\News;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Comments extends Component
 {
-    /** @var \Illuminate\Database\Eloquent\Collection|\App\Comment[] */
+    /** @var \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] */
     public $comments;
     public Issue|Magnet|News|Trip $model;
 

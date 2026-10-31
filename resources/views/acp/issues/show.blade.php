@@ -1,4 +1,4 @@
-<?php /** @var App\Issue $model */ ?>
+<?php /** @var App\Models\Issue $model */ ?>
 
 @extends('acp.show')
 

@@ -2,8 +2,6 @@
 
 namespace App\Action\Acp;
 
-use App\ChatMessage;
-use App\Comment;
 use App\Domain\Dcpp\Models\DcppHub;
 use App\Domain\Life\Models\Artist;
 use App\Domain\Life\Models\City;
@@ -14,14 +12,16 @@ use App\Domain\Life\Models\Tag;
 use App\Domain\Life\Models\Trip;
 use App\Domain\Magnet\Models\Magnet;
 use App\Domain\SocialMedia\Models\SocialMediaPost;
-use App\Email;
-use App\ExternalIdentity;
-use App\File;
 use App\Http\Controllers;
-use App\Image;
-use App\Issue;
-use App\News;
-use App\User;
+use App\Models\ChatMessage;
+use App\Models\Comment;
+use App\Models\Email;
+use App\Models\ExternalIdentity;
+use App\Models\File;
+use App\Models\Image;
+use App\Models\Issue;
+use App\Models\News;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class GetModelControllerAction

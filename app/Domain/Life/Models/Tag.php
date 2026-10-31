@@ -5,7 +5,7 @@ namespace App\Domain\Life\Models;
 use App\Domain\Life\Observer\TagObserver;
 use App\Domain\Life\Policy\TagPolicy;
 use App\Domain\Life\Scope\PhotoPublishedScope;
-use App\News;
+use App\Models\News;
 use App\Traits;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;

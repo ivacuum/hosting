@@ -1,4 +1,4 @@
-<?php /** @var \App\ChatMessage $model */ ?>
+<?php /** @var \App\Models\ChatMessage $model */ ?>
 
 @extends('acp.list')
 

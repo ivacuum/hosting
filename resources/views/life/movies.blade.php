@@ -1,4 +1,4 @@
-<?php /** @var \App\FavoriteMovie $movie */ ?>
+<?php /** @var \App\Domain\Life\Models\FavoriteMovie $movie */ ?>
 
 @extends('life.base')
 

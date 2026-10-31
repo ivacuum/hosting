@@ -8,7 +8,7 @@ use App\Domain\UserStatus;
 use App\Events\Stats\UserSignedInWithExternalIdentity;
 use App\Factory\ExternalIdentityFactory;
 use App\Factory\UserFactory;
-use App\User;
+use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\HtmlString;

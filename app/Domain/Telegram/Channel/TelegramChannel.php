@@ -3,7 +3,7 @@
 namespace App\Domain\Telegram\Channel;
 
 use App\Domain\Telegram\Api\TelegramClient;
-use App\User;
+use App\Models\User;
 
 class TelegramChannel
 {

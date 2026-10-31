@@ -44,7 +44,7 @@ class MyTripController
 
     public function store(TripStoreForm $request, CityHelper $cityHelper)
     {
-        /** @var \App\User $user */
+        /** @var \App\Models\User $user */
         $user = $request->user();
         $city = $cityHelper->findByIdOrFail($request->cityId);
 

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Acp;
 use App\Action\Acp\ApplyIndexGoodsAction;
 use App\Action\Acp\ResponseToDestroyAction;
 use App\Action\Acp\ResponseToShowAction;
-use App\Email;
+use App\Models\Email;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller;

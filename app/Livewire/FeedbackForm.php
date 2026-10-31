@@ -6,7 +6,7 @@ use App\Action\FindUserByEmailOrCreateAction;
 use App\Domain\IssueStatus;
 use App\Domain\SessionKey;
 use App\Events\IssueReported;
-use App\Issue;
+use App\Models\Issue;
 use App\RateLimit\IssueRateLimiter;
 use App\Rules\AtLeastFewWordsRule;
 use App\Rules\EmailRule;

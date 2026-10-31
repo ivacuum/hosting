@@ -2,8 +2,8 @@
 
 namespace App\Factory;
 
-use App\Image;
-use App\User;
+use App\Models\Image;
+use App\Models\User;
 use Carbon\CarbonImmutable;
 use Carbon\CarbonInterface;
 

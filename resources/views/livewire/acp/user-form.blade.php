@@ -1,7 +1,7 @@
 <?php /** @var \App\Livewire\Acp\UserForm $this */ ?>
 
 <form class="grid grid-cols-1 gap-6 md:gap-4" wire:submit="submit">
-  <?php $form = LivewireForm::model(App\User::class); ?>
+  <?php $form = LivewireForm::model(App\Models\User::class); ?>
 
   {{ $form->text('email')->required() }}
   {{ $form->radio('status')->values(App\Domain\UserStatus::labels()) }}

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Domain\Avatar\Avatar;
 use App\Domain\Life\Models\Trip;
@@ -9,6 +9,7 @@ use App\Domain\Magnet\Models\Magnet;
 use App\Domain\NotificationDeliveryMethod;
 use App\Domain\SocialMedia\Models\SocialMediaToken;
 use App\Domain\UserStatus;
+use App\Mail\ResetPasswordMail;
 use App\Observers\UserObserver;
 use App\Policies\UserPolicy;
 use Illuminate\Contracts\Translation\HasLocalePreference;
@@ -219,7 +220,7 @@ class User extends Authenticatable implements HasLocalePreference
     #[\Override]
     public function sendPasswordResetNotification(#[\SensitiveParameter] $token): void
     {
-        \Mail::to($this)->send(new Mail\ResetPasswordMail($token));
+        \Mail::to($this)->send(new ResetPasswordMail($token));
     }
 
     public function uploadAvatar(UploadedFile $file): string

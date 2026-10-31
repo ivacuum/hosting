@@ -4,9 +4,9 @@ namespace Tests\Feature;
 
 use App\Domain\Life\Factory\PhotoFactory;
 use App\Domain\Telegram\Api\TelegramApiFake;
+use App\Domain\Telegram\Factory\LinkRequestFactory;
 use App\Domain\Telegram\TelegramUpdateCallbackQueryFactory;
 use App\Domain\Telegram\TelegramUpdateFactory;
-use App\Factory\LinkRequestFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use PHPUnit\Framework\Attributes\TestWith;
 use Tests\TestCase;

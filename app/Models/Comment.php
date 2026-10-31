@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Action\FormatCommentDateAction;
 use App\Domain\CommentStatus;

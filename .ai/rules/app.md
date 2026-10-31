@@ -1,6 +1,5 @@
 ---
 paths:
-  - 'app/*.php'
   - 'app/**/*Action.php'
   - 'app/**'
   - 'app/**/*Job.php'

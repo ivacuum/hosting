@@ -1,4 +1,4 @@
-<?php /** @var App\User $traveler */ ?>
+<?php /** @var App\Models\User $traveler */ ?>
 
 <nav class="flex flex-wrap gap-3 text-sm lowercase mb-4">
   <div class="whitespace-nowrap">

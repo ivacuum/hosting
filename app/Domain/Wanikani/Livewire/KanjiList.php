@@ -9,7 +9,7 @@ use App\Domain\Wanikani\Models\Kanji;
 use App\Domain\Wanikani\Scope\KanjiLevelScope;
 use App\Domain\Wanikani\Scope\KanjiRadicalsScope;
 use App\Domain\Wanikani\Scope\KanjiSimilarToScope;
-use App\User;
+use App\Models\User;
 use Illuminate\Container\Attributes\CurrentUser;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;

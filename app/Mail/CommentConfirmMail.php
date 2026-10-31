@@ -2,8 +2,8 @@
 
 namespace App\Mail;
 
-use App\Comment;
 use App\Http\Controllers\CommentConfirmController;
+use App\Models\Comment;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 

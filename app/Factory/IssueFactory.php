@@ -3,8 +3,8 @@
 namespace App\Factory;
 
 use App\Domain\IssueStatus;
-use App\Issue;
-use App\User;
+use App\Models\Issue;
+use App\Models\User;
 
 class IssueFactory
 {

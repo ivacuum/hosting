@@ -9,7 +9,7 @@ use App\Domain\Life\Models\Gig;
 use App\Domain\Life\Models\Trip;
 use App\Domain\Life\Scope\TripOfAdminScope;
 use App\Domain\Life\Scope\TripPublishedScope;
-use App\News;
+use App\Models\News;
 use App\Scope\NewsPublishedScope;
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;

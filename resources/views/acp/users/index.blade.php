@@ -1,4 +1,4 @@
-<?php /** @var \App\User $model */ ?>
+<?php /** @var \App\Models\User $model */ ?>
 
 @extends('acp.list', [
   'searchForm' => true,
@@ -69,17 +69,17 @@
         @endif
       </td>
       <td class="md:text-right whitespace-nowrap">
-        <a href="{{ Acp::index(new App\ChatMessage, $model) }}">
+        <a href="{{ Acp::index(new App\Models\ChatMessage, $model) }}">
           {{ ViewHelper::number($model->chat_messages_count) ?: '' }}
         </a>
       </td>
       <td class="md:text-right whitespace-nowrap">
-        <a href="{{ Acp::index(new App\Comment, $model) }}">
+        <a href="{{ Acp::index(new App\Models\Comment, $model) }}">
           {{ ViewHelper::number($model->comments_count) ?: '' }}
         </a>
       </td>
       <td class="md:text-right whitespace-nowrap">
-        <a href="{{ Acp::index(new App\Image, $model) }}">
+        <a href="{{ Acp::index(new App\Models\Image, $model) }}">
           {{ ViewHelper::number($model->images_count) ?: '' }}
         </a>
       </td>
@@ -94,7 +94,7 @@
         </a>
       </td>
       <td class="md:text-right whitespace-nowrap">
-        <a href="{{ Acp::index(new App\Issue, $model) }}">
+        <a href="{{ Acp::index(new App\Models\Issue, $model) }}">
           {{ ViewHelper::number($model->issues_count) ?: '' }}
         </a>
       </td>

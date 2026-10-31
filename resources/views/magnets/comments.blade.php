@@ -1,4 +1,4 @@
-<?php /** @var \App\Comment $comment */ ?>
+<?php /** @var \App\Models\Comment $comment */ ?>
 
 @extends('magnets.base')
 

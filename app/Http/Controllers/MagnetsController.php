@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
 use App\Domain\Locale;
 use App\Domain\Magnet\Action\CountMagnetsByCategoriesAction;
 use App\Domain\Magnet\Action\SearchForMagnetIdsAction;
@@ -11,6 +10,7 @@ use App\Domain\Magnet\Models\Magnet;
 use App\Domain\Magnet\Scope\MagnetFilterByCategoryScope;
 use App\Domain\Magnet\Scope\MagnetPublishedScope;
 use App\Http\Requests\MagnetsIndexForm;
+use App\Models\Comment;
 use App\Scope\CommentPublishedScope;
 use App\Scope\CommentRelationScope;
 use Illuminate\Database\Eloquent\Builder;

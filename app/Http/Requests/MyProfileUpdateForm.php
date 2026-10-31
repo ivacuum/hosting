@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use App\Rules\EmailRule;
 use App\Rules\HtmlFormInfrastructureRules;
 use App\Rules\UsernameRule;
-use App\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 

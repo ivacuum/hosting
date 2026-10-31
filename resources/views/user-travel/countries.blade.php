@@ -1,6 +1,6 @@
 <?php
 /**
- * @var \App\User $traveler
+ * @var \App\Models\User $traveler
  * @var \App\Domain\Life\Models\Country $country
  */
 ?>

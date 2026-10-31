@@ -2,7 +2,7 @@
 
 namespace App\Domain\Log\Policy;
 
-use App\User;
+use App\Models\User;
 
 class ExternalHttpRequestPolicy
 {

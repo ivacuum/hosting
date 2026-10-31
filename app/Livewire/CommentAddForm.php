@@ -3,14 +3,14 @@
 namespace App\Livewire;
 
 use App\Action\FindUserByEmailOrCreateAction;
-use App\Comment;
 use App\Domain\CommentStatus;
 use App\Domain\Life\Models\Trip;
 use App\Domain\LivewireEvent;
 use App\Domain\Magnet\Models\Magnet;
 use App\Domain\SessionKey;
-use App\Issue;
-use App\News;
+use App\Models\Comment;
+use App\Models\Issue;
+use App\Models\News;
 use App\RateLimit\CommentRateLimiter;
 use App\Rules\EmailRule;
 use App\Rules\NotRandomTokenRule;

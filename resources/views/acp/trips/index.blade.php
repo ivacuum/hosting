@@ -73,7 +73,7 @@
         {{ ViewHelper::number($model->views) ?: '' }}
       </td>
       <td class="md:text-right whitespace-nowrap">
-        <a href="{{ Acp::index(new App\Comment, $model) }}">
+        <a href="{{ Acp::index(new App\Models\Comment, $model) }}">
           {{ ViewHelper::number($model->comments_count) ?: '' }}
         </a>
       </td>
@@ -113,7 +113,7 @@
             @svg (file-richtext)
           </a>
         @else
-          <a href="{{ Acp::show(new App\User, $model->user_id) }}">#{{ $model->user_id }}</a>
+          <a href="{{ Acp::show(new App\Models\User, $model->user_id) }}">#{{ $model->user_id }}</a>
         @endif
       </td>
     </tr>

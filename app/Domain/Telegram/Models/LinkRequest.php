@@ -1,7 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Domain\Telegram\Models;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Model;
 

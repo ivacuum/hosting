@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Http\Controllers\NewsController;
-use App\News;
+use App\Models\News;
 use Illuminate\Foundation\Http\FormRequest;
 
 class NewsShowForm extends FormRequest

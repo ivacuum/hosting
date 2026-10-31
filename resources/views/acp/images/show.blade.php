@@ -1,4 +1,4 @@
-<?php /** @var \App\Image $model */ ?>
+<?php /** @var \App\Models\Image $model */ ?>
 
 @extends('acp.show')
 

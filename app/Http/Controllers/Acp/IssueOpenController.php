@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Acp;
 
 use App\Domain\IssueStatus;
-use App\Issue;
+use App\Models\Issue;
 
 class IssueOpenController
 {

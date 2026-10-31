@@ -13,7 +13,7 @@ use App\Domain\Rto\RtoTopicStatus;
 use App\Domain\Telegram\Job\SendTelegramMessageJob;
 use App\Factory\CommentFactory;
 use App\Factory\UserFactory;
-use App\User;
+use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Exceptions;

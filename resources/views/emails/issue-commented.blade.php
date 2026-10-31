@@ -1,7 +1,7 @@
 <?php
 /**
- * @var \App\Issue $issue
- * @var \App\Comment $comment
+ * @var \App\Models\Issue $issue
+ * @var \App\Models\Comment $comment
  */
 ?>
 

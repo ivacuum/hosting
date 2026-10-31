@@ -4,7 +4,7 @@ namespace App\Domain\SocialMedia\Action;
 
 use App\Domain\Life\Models\Photo;
 use App\Domain\Life\Models\Trip;
-use App\User;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 
 class PickRandomPhotoAction

@@ -6,7 +6,7 @@ This Laravel application is a personal website for notes, trip stories, and conc
 
 ## Follow project conventions
 
-- Keep models in `app/`, such as `app/User.php`, and `app/Domain/*/Models/`. The move from root-level models to `app/Models/` is deferred.
+- Keep models in `app/Models/` and `app/Domain/*/Models/`. Put a model in a domain when only that domain uses it.
 - Put business logic in Action classes in `app/Action/` and `app/Domain/*/Action/` when it fits that pattern.
 - Keep domain-specific code in `app/Domain/`. Prefer extending an existing domain and follow its structure.
 - Put seeders in `app/Seeder/` and `app/Domain/*/Seeder/`, not `database/seeders`.

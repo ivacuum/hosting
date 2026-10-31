@@ -46,7 +46,7 @@ Preconditions:
 
 ## Gotchas
 
-- Source anchors are `routes/web.php`, `app/Http/Controllers/Auth/`, `app/Http/Requests/Auth/`, `resources/views/auth/`, `app/User.php`, and `app/Mail/ResetPasswordMail.php`.
+- Source anchors are `routes/web.php`, `app/Http/Controllers/Auth/`, `app/Http/Requests/Auth/`, `resources/views/auth/`, `app/Models/User.php`, and `app/Mail/ResetPasswordMail.php`.
 - Registration currently activates and logs in immediately. Do not describe its declared confirmation endpoint as a working email-verification flow.
 - `SignInForm` sets `remember` to the inverse of `foreign`, so **Не запоминать меня** controls the remember-me cookie. That cookie is HTTP-only, so `document.cookie` cannot show it; record the cookie check as NOT_VERIFIED unless the harness exposes response headers or a cookie store.
 - OAuth success requires configured provider credentials, a valid browser state and callback code, and an authorized test account. It is blocked here because real external writes are prohibited.

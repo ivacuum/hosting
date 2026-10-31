@@ -8,7 +8,7 @@ use App\Domain\Life\Scope\TripPreviousScope;
 use App\Domain\Life\Scope\TripVisibleScope;
 use App\Domain\Life\TripStatus;
 use App\Http\Requests\LifeIndexForm;
-use App\User;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Laravel\Head\Enums\OgType;
 

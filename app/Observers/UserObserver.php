@@ -4,7 +4,7 @@ namespace App\Observers;
 
 use App\Domain\Avatar\Avatar;
 use App\Domain\Locale;
-use App\User;
+use App\Models\User;
 use Illuminate\Support\Str;
 
 class UserObserver

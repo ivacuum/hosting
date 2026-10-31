@@ -2,9 +2,9 @@
 
 namespace App\Mail;
 
-use App\Comment;
-use App\Issue;
-use App\User;
+use App\Models\Comment;
+use App\Models\Issue;
+use App\Models\User;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 

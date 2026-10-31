@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Domain\SessionKey;
-use App\Email;
 use App\Events\MailReported;
 use App\Events\Stats\MailClicked;
 use App\Events\Stats\MailViewed;
 use App\Http\Requests\MailClickForm;
-use App\User;
+use App\Models\Email;
+use App\Models\User;
 use Illuminate\Contracts\Auth\Guard;
 
 class MailController extends Controller

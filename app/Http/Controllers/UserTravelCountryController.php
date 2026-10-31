@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Domain\Life\Models\Country;
 use App\Domain\Life\Models\Trip;
 use App\Domain\Life\Scope\TripVisibleScope;
-use App\User;
+use App\Models\User;
 use Laravel\Head\Enums\OgType;
 
 class UserTravelCountryController extends UserTravelController

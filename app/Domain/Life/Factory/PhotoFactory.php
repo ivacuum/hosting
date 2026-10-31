@@ -9,7 +9,7 @@ use App\Domain\Life\Models\Trip;
 use App\Domain\Life\PhotoStatus;
 use App\Domain\Spatial\Point;
 use App\Factory\UserFactory;
-use App\User;
+use App\Models\User;
 
 class PhotoFactory
 {

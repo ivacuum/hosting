@@ -2,9 +2,9 @@
 
 namespace App\Livewire\Acp;
 
-use App\Comment;
 use App\Domain\CommentStatus;
 use App\Livewire\WithGoto;
+use App\Models\Comment;
 use Livewire\Attributes\Authorize;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;

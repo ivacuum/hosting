@@ -3,7 +3,7 @@
 namespace App\Observers;
 
 use App\Domain\Locale;
-use App\Email;
+use App\Models\Email;
 
 class EmailObserver
 {

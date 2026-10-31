@@ -1,4 +1,4 @@
-<?php /** @var App\Issue $model */ ?>
+<?php /** @var App\Models\Issue $model */ ?>
 
 @extends('acp.list')
 
@@ -54,13 +54,13 @@
           @endif
         </td>
         <td>
-          <a href="{{ Acp::show(new App\User, $model->user_id) }}">
+          <a href="{{ Acp::show(new App\Models\User, $model->user_id) }}">
             <div>{{ $model->email }}</div>
             <div class="text-xs text-gray-500">{{ $model->name }}</div>
           </a>
         </td>
         <td class="md:text-right whitespace-nowrap">
-          <a href="{{ Acp::index(new App\Comment, $model) }}">
+          <a href="{{ Acp::index(new App\Models\Comment, $model) }}">
             {{ ViewHelper::number($model->comments_count) ?: '' }}
           </a>
         </td>

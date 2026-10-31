@@ -3,7 +3,7 @@
 namespace App\Observers;
 
 use App\Events\Stats;
-use App\Issue;
+use App\Models\Issue;
 
 class IssueObserver
 {

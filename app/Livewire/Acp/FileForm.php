@@ -3,8 +3,8 @@
 namespace App\Livewire\Acp;
 
 use App\Domain\FileStatus;
-use App\File;
 use App\Livewire\WithGoto;
+use App\Models\File;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Authorize;
 use Livewire\Attributes\Locked;

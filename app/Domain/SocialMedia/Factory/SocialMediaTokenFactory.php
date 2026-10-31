@@ -4,7 +4,7 @@ namespace App\Domain\SocialMedia\Factory;
 
 use App\Domain\SocialMedia\Models\SocialMediaToken;
 use App\Factory\UserFactory;
-use App\User;
+use App\Models\User;
 use Carbon\CarbonInterface;
 
 class SocialMediaTokenFactory

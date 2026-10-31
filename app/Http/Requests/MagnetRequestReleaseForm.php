@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use App\Rules\HtmlFormInfrastructureRules;
-use App\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class MagnetRequestReleaseForm extends FormRequest

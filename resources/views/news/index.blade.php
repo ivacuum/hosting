@@ -1,4 +1,4 @@
-<?php /** @var \App\News $model */ ?>
+<?php /** @var \App\Models\News $model */ ?>
 
 @extends('base')
 

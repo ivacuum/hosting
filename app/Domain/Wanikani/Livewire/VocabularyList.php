@@ -7,7 +7,7 @@ use App\Domain\Wanikani\Action\ResurrectAction;
 use App\Domain\Wanikani\Models\Burnable;
 use App\Domain\Wanikani\Models\Vocabulary;
 use App\Domain\Wanikani\Scope\UserBurnableScope;
-use App\User;
+use App\Models\User;
 use Illuminate\Container\Attributes\CurrentUser;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;

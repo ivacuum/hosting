@@ -7,7 +7,7 @@ use App\Events\Stats\UserPasswordResetted;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
 use App\Http\Requests\Auth\ResetPasswordForm;
-use App\User;
+use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Contracts\Auth\PasswordBroker;
 

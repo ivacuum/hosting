@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use App\Rules\HtmlFormInfrastructureRules;
 use App\Rules\PasswordRule;
-use App\User;
 use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;

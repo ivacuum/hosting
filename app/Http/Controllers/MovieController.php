@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\FavoriteMovie;
+use App\Domain\Life\Models\FavoriteMovie;
 
 class MovieController
 {

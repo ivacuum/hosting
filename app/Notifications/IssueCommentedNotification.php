@@ -2,11 +2,11 @@
 
 namespace App\Notifications;
 
-use App\Comment;
 use App\Domain\Config;
-use App\Issue;
 use App\Mail\IssueCommentedMail;
-use App\User;
+use App\Models\Comment;
+use App\Models\Issue;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;

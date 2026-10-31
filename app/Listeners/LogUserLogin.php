@@ -10,7 +10,7 @@ class LogUserLogin
     {
         event(new \App\Events\Stats\UserSignedIn);
 
-        /** @var \App\User $user */
+        /** @var \App\Models\User $user */
         $user = $event->user;
 
         $user->ip = request()->ip();

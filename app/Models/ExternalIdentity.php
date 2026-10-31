@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Domain\ExternalIdentityProvider;
 use App\Policies\ExternalIdentityPolicy;
@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $email
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
- * @property \App\User $user
+ * @property \App\Models\User $user
  *
  * @mixin \Eloquent
  */

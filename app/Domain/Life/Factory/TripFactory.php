@@ -7,7 +7,7 @@ use App\Domain\Life\Models\Trip;
 use App\Domain\Life\TripStatus;
 use App\Factory\CommentFactory;
 use App\Factory\UserFactory;
-use App\User;
+use App\Models\User;
 use Carbon\CarbonImmutable;
 use Carbon\CarbonInterface;
 

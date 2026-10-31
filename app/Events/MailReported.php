@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\Email;
+use App\Models\Email;
 use Illuminate\Queue\SerializesModels;
 
 class MailReported

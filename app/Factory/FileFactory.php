@@ -3,7 +3,7 @@
 namespace App\Factory;
 
 use App\Domain\FileStatus;
-use App\File;
+use App\Models\File;
 
 class FileFactory
 {

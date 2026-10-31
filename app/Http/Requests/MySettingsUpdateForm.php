@@ -4,8 +4,8 @@ namespace App\Http\Requests;
 
 use App\Domain\Locale;
 use App\Domain\NotificationDeliveryMethod;
+use App\Models\User;
 use App\Rules\HtmlFormInfrastructureRules;
-use App\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Enum;
 

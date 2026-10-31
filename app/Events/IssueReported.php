@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\Issue;
+use App\Models\Issue;
 
 class IssueReported
 {

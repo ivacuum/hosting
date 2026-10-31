@@ -1,4 +1,4 @@
-<?php /** @var \App\File $model */ ?>
+<?php /** @var \App\Models\File $model */ ?>
 
 @extends('acp.list')
 

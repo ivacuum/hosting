@@ -2,7 +2,7 @@
 
 namespace App\Domain\SocialMedia\Models;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Domain\ChatMessageStatus;
 use App\Observers\ChatMessageObserver;

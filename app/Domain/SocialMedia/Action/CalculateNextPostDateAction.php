@@ -4,7 +4,7 @@ namespace App\Domain\SocialMedia\Action;
 
 use App\Domain\SocialMedia\Models\SocialMediaPost;
 use App\Domain\SocialMedia\SocialMediaPostStatus;
-use App\User;
+use App\Models\User;
 use Carbon\CarbonInterface;
 
 class CalculateNextPostDateAction

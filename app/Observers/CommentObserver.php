@@ -2,10 +2,10 @@
 
 namespace App\Observers;
 
-use App\Comment;
 use App\Domain\CommentStatus;
 use App\Events\CommentPublished;
 use App\Mail\CommentConfirmMail;
+use App\Models\Comment;
 use Illuminate\Support\Str;
 
 class CommentObserver

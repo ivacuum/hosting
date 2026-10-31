@@ -1,7 +1,7 @@
 <?php /** @var \App\Livewire\Acp\NewsForm $this */ ?>
 
 <form class="grid grid-cols-1 gap-6 md:gap-4" wire:submit="submit">
-  <?php $form = LivewireForm::model(App\News::class); ?>
+  <?php $form = LivewireForm::model(App\Models\News::class); ?>
 
   {{ $form->text('title')->required() }}
   {{ $form->radio('status')->required()->values(App\Domain\NewsStatus::labels()) }}

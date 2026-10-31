@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\ChatMessage;
+use App\Models\ChatMessage;
 use Illuminate\Support\Str;
 
 class ChatMessageObserver

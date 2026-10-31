@@ -1,4 +1,4 @@
-<?php /** @var \App\News $model */ ?>
+<?php /** @var \App\Models\News $model */ ?>
 
 @extends('acp.list')
 
@@ -34,7 +34,7 @@
         {{ ViewHelper::number($model->views) ?: '' }}
       </td>
       <td class="md:text-right whitespace-nowrap">
-        <a href="{{ Acp::index(new App\Comment, $model) }}">
+        <a href="{{ Acp::index(new App\Models\Comment, $model) }}">
           {{ ViewHelper::number($model->comments_count) ?: '' }}
         </a>
       </td>

@@ -2,7 +2,6 @@
 
 namespace App\Domain\Magnet\Models;
 
-use App\Comment;
 use App\Domain\CommentStatus;
 use App\Domain\Config;
 use App\Domain\Magnet\Action\FindRelatedMagnetsAction;
@@ -13,7 +12,8 @@ use App\Domain\Magnet\MagnetStatus;
 use App\Domain\Magnet\Observer\MagnetObserver;
 use App\Domain\Magnet\Policy\MagnetPolicy;
 use App\Domain\Magnet\Scope\MagnetPublishedScope;
-use App\User;
+use App\Models\Comment;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
@@ -40,7 +40,7 @@ use Laravel\Scout\Searchable;
  * @property \Carbon\CarbonImmutable $updated_at
  * @property \Illuminate\Database\Eloquent\Collection<int, Comment> $comments
  * @property \Illuminate\Database\Eloquent\Collection<int, Comment> $commentsPublished
- * @property \App\User $user
+ * @property \App\Models\User $user
  * @property-read int $comments_count
  *
  * @mixin \Eloquent

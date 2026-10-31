@@ -7,7 +7,7 @@ use App\Domain\Magnet\MagnetStatus;
 use App\Domain\Magnet\Models\Magnet;
 use App\Factory\CommentFactory;
 use App\Factory\UserFactory;
-use App\User;
+use App\Models\User;
 
 class MagnetFactory
 {

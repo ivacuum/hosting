@@ -2,7 +2,7 @@
 
 namespace App\Domain\Metrics\Policy;
 
-use App\User;
+use App\Models\User;
 
 class MetricPolicy
 {

@@ -2,9 +2,9 @@
 
 namespace App\Livewire\Acp;
 
-use App\ChatMessage;
 use App\Domain\ChatMessageStatus;
 use App\Livewire\WithGoto;
+use App\Models\ChatMessage;
 use Livewire\Attributes\Authorize;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;

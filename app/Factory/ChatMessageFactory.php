@@ -2,9 +2,9 @@
 
 namespace App\Factory;
 
-use App\ChatMessage;
 use App\Domain\ChatMessageStatus;
-use App\User;
+use App\Models\ChatMessage;
+use App\Models\User;
 use Carbon\CarbonInterface;
 
 class ChatMessageFactory

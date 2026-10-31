@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Domain\CommentStatus;
 use App\Domain\IssueStatus;

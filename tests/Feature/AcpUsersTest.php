@@ -13,7 +13,7 @@ use App\Factory\ImageFactory;
 use App\Factory\NewsFactory;
 use App\Factory\UserFactory;
 use App\Livewire\Acp\UserForm;
-use App\User;
+use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 

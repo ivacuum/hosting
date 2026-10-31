@@ -1,4 +1,4 @@
-<?php /** @var \App\FavoriteMovie $movie */ ?>
+<?php /** @var \App\Domain\Life\Models\FavoriteMovie $movie */ ?>
 
 <div
   class="grid gap-x-4 snap-x sm:mx-0 overflow-x-scroll"

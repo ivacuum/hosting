@@ -4,7 +4,7 @@ namespace App\Factory;
 
 use App\Domain\Locale;
 use App\Domain\UserStatus;
-use App\User;
+use App\Models\User;
 use Carbon\CarbonInterface;
 
 class UserFactory

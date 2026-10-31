@@ -2,7 +2,7 @@
 
 namespace App\Domain\Telegram\Action;
 
-use App\LinkRequest;
+use App\Domain\Telegram\Models\LinkRequest;
 use Ramsey\Uuid\Uuid;
 
 class GenerateLinkRequestAction

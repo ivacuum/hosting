@@ -5,7 +5,7 @@ namespace App\Seeder;
 use App\Factory\CommentFactory;
 use App\Factory\IssueFactory;
 use App\Factory\UserFactory;
-use App\User;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 

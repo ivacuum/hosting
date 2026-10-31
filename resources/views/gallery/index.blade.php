@@ -1,4 +1,4 @@
-<?php /** @var App\Image $image */ ?>
+<?php /** @var App\Models\Image $image */ ?>
 
 @extends('gallery.base')
 

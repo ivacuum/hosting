@@ -6,7 +6,7 @@ use App\Domain\Life\Models\Trip;
 use App\Domain\Life\Scope\TripNotToKalugaScope;
 use App\Domain\Life\Scope\TripOfAdminScope;
 use App\Domain\Life\Scope\TripVisibleScope;
-use App\User;
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class LifeCalendarForm extends FormRequest

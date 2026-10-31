@@ -2,12 +2,12 @@
 
 namespace App\Factory;
 
-use App\Comment;
 use App\Domain\Life\Factory\TripFactory;
 use App\Domain\Life\Models\Trip;
 use App\Domain\Locale;
-use App\Email;
-use App\User;
+use App\Models\Comment;
+use App\Models\Email;
+use App\Models\User;
 
 class EmailFactory
 {

@@ -1,4 +1,4 @@
-<?php /** @var \App\Comment $model */ ?>
+<?php /** @var \App\Models\Comment $model */ ?>
 
 @extends('acp.list')
 

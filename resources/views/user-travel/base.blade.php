@@ -1,4 +1,4 @@
-<?php /** @var App\User $traveler */ ?>
+<?php /** @var App\Models\User $traveler */ ?>
 
 @extends('base')
 

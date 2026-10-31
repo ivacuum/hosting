@@ -1,7 +1,7 @@
 <?php /** @var \App\Livewire\Acp\CommentForm $this */ ?>
 
 <form class="grid grid-cols-1 gap-6 md:gap-4" wire:submit="submit">
-  <?php $form = LivewireForm::model(App\Comment::class); ?>
+  <?php $form = LivewireForm::model(App\Models\Comment::class); ?>
 
   {{ $form->radio('status')->required()->values(App\Domain\CommentStatus::labels()) }}
   {{ $form->textarea('html')->required() }}

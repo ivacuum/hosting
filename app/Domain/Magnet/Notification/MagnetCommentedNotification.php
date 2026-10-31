@@ -2,11 +2,11 @@
 
 namespace App\Domain\Magnet\Notification;
 
-use App\Comment;
 use App\Domain\Magnet\Models\Magnet;
 use App\Domain\Telegram\Action\EscapeMarkdownCharactersAction;
 use App\Domain\Telegram\Channel\TelegramChannel;
-use App\User;
+use App\Models\Comment;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;

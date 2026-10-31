@@ -4,8 +4,8 @@ namespace App\Livewire\Acp;
 
 use App\Domain\UserStatus;
 use App\Livewire\WithGoto;
+use App\Models\User;
 use App\Rules\EmailRule;
-use App\User;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Authorize;
 use Livewire\Attributes\Locked;

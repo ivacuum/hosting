@@ -1,6 +1,6 @@
 <?php
 /**
- * @var \App\Email $email
+ * @var \App\Models\Email $email
  * @var string $confirmLink
  */
 ?>

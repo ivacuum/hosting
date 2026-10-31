@@ -3,8 +3,8 @@
 namespace App\Factory;
 
 use App\Domain\ExternalIdentityProvider;
-use App\ExternalIdentity;
-use App\User;
+use App\Models\ExternalIdentity;
+use App\Models\User;
 
 class ExternalIdentityFactory
 {

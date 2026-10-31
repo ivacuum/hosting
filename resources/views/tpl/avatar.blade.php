@@ -1,4 +1,4 @@
-<?php /** @var \App\User $user */ ?>
+<?php /** @var \App\Models\User $user */ ?>
 @if ($user?->avatar)
   <img class="inline-block avatar-{{ $size ?? 100 }} rounded-full {{ $classes ?? '' }}" src="{{ $user->avatarUrl() }}" alt="">
 @else

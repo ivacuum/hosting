@@ -1,6 +1,6 @@
 <?php
 /**
- * @var \App\News $news
+ * @var \App\Models\News $news
  */
 ?>
 

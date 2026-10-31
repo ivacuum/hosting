@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
 use App\Domain\CommentStatus;
 use App\Domain\SessionKey;
+use App\Models\Comment;
 use Illuminate\Routing\Attributes\Controllers\Authorize;
 
 class CommentConfirmController

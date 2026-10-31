@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Domain\Locale;
 use App\Http\Controllers\MailController;
@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $views
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
- * @property \App\User $user
+ * @property \App\Models\User $user
  *
  * @mixin \Eloquent
  */

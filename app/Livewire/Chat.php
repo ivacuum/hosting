@@ -2,10 +2,10 @@
 
 namespace App\Livewire;
 
-use App\ChatMessage;
 use App\Domain\ChatMessageStatus;
 use App\Domain\LivewireEvent;
 use App\Events\ChatMessagePublished;
+use App\Models\ChatMessage;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;

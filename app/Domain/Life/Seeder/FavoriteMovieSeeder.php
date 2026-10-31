@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Seeder;
+namespace App\Domain\Life\Seeder;
 
-use App\FavoriteMovie;
+use App\Domain\Life\Models\FavoriteMovie;
 use Illuminate\Database\Seeder;
 
 class FavoriteMovieSeeder extends Seeder

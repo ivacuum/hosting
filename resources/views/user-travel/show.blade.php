@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\Domain\Life\Models\Trip $trip
- * @var \App\User $traveler
+ * @var \App\Models\User $traveler
  */
 ?>
 

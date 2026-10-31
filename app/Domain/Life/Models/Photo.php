@@ -8,7 +8,7 @@ use App\Domain\Life\PhotoStatus;
 use App\Domain\Life\Policy\PhotoPolicy;
 use App\Domain\SocialMedia\Models\SocialMediaPost;
 use App\Domain\Spatial;
-use App\User;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Model;

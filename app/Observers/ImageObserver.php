@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Image;
+use App\Models\Image;
 
 class ImageObserver
 {

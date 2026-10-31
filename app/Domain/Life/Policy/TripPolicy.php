@@ -3,7 +3,7 @@
 namespace App\Domain\Life\Policy;
 
 use App\Domain\Life\Models\Trip;
-use App\User;
+use App\Models\User;
 
 class TripPolicy
 {

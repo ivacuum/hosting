@@ -7,6 +7,7 @@ use App\Domain\Game\Seeder\GameSeeder;
 use App\Domain\Life\Seeder\ArtistSeeder;
 use App\Domain\Life\Seeder\CitySeeder;
 use App\Domain\Life\Seeder\CountrySeeder;
+use App\Domain\Life\Seeder\FavoriteMovieSeeder;
 use App\Domain\Life\Seeder\GigSeeder;
 use App\Domain\Life\Seeder\PhotoSeeder;
 use App\Domain\Life\Seeder\TagSeeder;

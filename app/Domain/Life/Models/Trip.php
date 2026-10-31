@@ -2,7 +2,6 @@
 
 namespace App\Domain\Life\Models;
 
-use App\Comment;
 use App\Domain\CommentStatus;
 use App\Domain\Life\Action\FormatTripPeriodAction;
 use App\Domain\Life\Action\FormatTripPeriodWithYearAction;
@@ -10,11 +9,12 @@ use App\Domain\Life\Action\RenderTripMarkdownAction;
 use App\Domain\Life\Observer\TripObserver;
 use App\Domain\Life\Policy\TripPolicy;
 use App\Domain\Life\TripStatus;
-use App\Email;
 use App\Http\Controllers\LifeController;
 use App\Http\Controllers\UserTravelTripController;
+use App\Models\Comment;
+use App\Models\Email;
+use App\Models\User;
 use App\Traits;
-use App\User;
 use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;

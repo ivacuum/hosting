@@ -7,7 +7,7 @@ use App\Action\Acp\ResponseToCreateAction;
 use App\Action\Acp\ResponseToDestroyAction;
 use App\Action\Acp\ResponseToEditAction;
 use App\Action\Acp\ResponseToShowAction;
-use App\News;
+use App\Models\News;
 use App\Scope\NewsCurrentLocaleScope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;

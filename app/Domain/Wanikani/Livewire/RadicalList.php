@@ -4,7 +4,7 @@ namespace App\Domain\Wanikani\Livewire;
 
 use App\Domain\Wanikani\Models\Burnable;
 use App\Domain\Wanikani\Models\Radical;
-use App\User;
+use App\Models\User;
 use Illuminate\Container\Attributes\CurrentUser;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;

@@ -1,7 +1,7 @@
 <?php /** @var \App\Livewire\Acp\ChatMessageForm $this */ ?>
 
 <form class="grid grid-cols-1 gap-6 md:gap-4" wire:submit="submit">
-  <?php $form = LivewireForm::model(App\ChatMessage::class); ?>
+  <?php $form = LivewireForm::model(App\Models\ChatMessage::class); ?>
 
   {{ $form->radio('status')->required()->values(App\Domain\ChatMessageStatus::labels()) }}
   {{ $form->textarea('text')->required() }}

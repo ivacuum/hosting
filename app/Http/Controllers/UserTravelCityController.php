@@ -7,7 +7,7 @@ use App\Domain\Life\Models\City;
 use App\Domain\Life\Models\Trip;
 use App\Domain\Life\Scope\TripVisibleScope;
 use App\Domain\Life\TripStatus;
-use App\User;
+use App\Models\User;
 use Laravel\Head\Enums\OgType;
 
 class UserTravelCityController extends UserTravelController

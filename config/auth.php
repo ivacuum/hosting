@@ -6,7 +6,7 @@ return [
         'users' => [
             // database, eloquent
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Models\User::class,
         ],
     ],
 ];

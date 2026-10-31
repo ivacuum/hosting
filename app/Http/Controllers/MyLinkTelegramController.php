@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Domain\Config;
 use App\Domain\Telegram\Action\GenerateLinkRequestAction;
-use App\User;
+use App\Models\User;
 use Illuminate\Container\Attributes\CurrentUser;
 
 class MyLinkTelegramController

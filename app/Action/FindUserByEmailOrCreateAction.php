@@ -9,7 +9,7 @@ use App\Events\Stats\UserFoundByEmailWhenIssueAdded;
 use App\Events\Stats\UserRegisteredAutoWhenCommentAdded;
 use App\Events\Stats\UserRegisteredAutoWhenIssueAdded;
 use App\Exceptions\EmailHostUnavailableForAutoRegistration;
-use App\User;
+use App\Models\User;
 
 class FindUserByEmailOrCreateAction
 {

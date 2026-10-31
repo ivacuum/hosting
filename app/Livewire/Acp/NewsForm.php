@@ -4,7 +4,7 @@ namespace App\Livewire\Acp;
 
 use App\Domain\NewsStatus;
 use App\Livewire\WithGoto;
-use App\News;
+use App\Models\News;
 use Livewire\Attributes\Authorize;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;

@@ -1,4 +1,4 @@
-<?php /** @var \App\File $file */ ?>
+<?php /** @var \App\Models\File $file */ ?>
 
 @extends('base')
 

@@ -3,8 +3,8 @@
 namespace App\Listeners;
 
 use App\Events\TypoReported;
+use App\Models\User;
 use App\Notifications\TypoReportedNotification;
-use App\User;
 
 class NotifyAdminAboutTypo
 {

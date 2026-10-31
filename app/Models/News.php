@@ -1,10 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Domain\CommentStatus;
 use App\Domain\Locale;
 use App\Domain\NewsStatus;
+use App\Http\Controllers\NewsController;
 use App\Observers\NewsObserver;
 use App\Policies\NewsPolicy;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
@@ -75,7 +76,7 @@ class News extends Model
 
     public function www(string|null $anchor = null): string
     {
-        return path([Http\Controllers\NewsController::class, 'show'], $this->id) . $anchor;
+        return path([NewsController::class, 'show'], $this->id) . $anchor;
     }
 
     #[\Override]
