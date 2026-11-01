@@ -7,6 +7,9 @@ use App\Domain\Wanikani\Policy\KanjiPolicy;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 /**
  * @property int $id
@@ -35,22 +38,22 @@ class Kanji extends Model
     public const array LIST_COLUMNS = ['id', 'level', 'character', 'meaning', 'onyomi', 'kunyomi', 'important_reading'];
 
     // Relations
-    public function burnable()
+    public function burnable(): MorphOne
     {
         return $this->morphOne(Burnable::class, 'rel');
     }
 
-    public function burnables()
+    public function burnables(): MorphMany
     {
         return $this->morphMany(Burnable::class, 'rel');
     }
 
-    public function radicals()
+    public function radicals(): BelongsToMany
     {
         return $this->belongsToMany(Radical::class);
     }
 
-    public function similar()
+    public function similar(): BelongsToMany
     {
         return $this->belongsToMany(static::class, 'kanji_similar', relatedPivotKey: 'similar_id');
     }

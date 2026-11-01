@@ -10,6 +10,8 @@ use App\Traits;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 /**
  * @property int $id
@@ -43,13 +45,13 @@ class Country extends Model
     ];
 
     // Relations
-    public function cities()
+    public function cities(): HasMany
     {
         return $this->hasMany(City::class)
             ->orderBy(City::titleField());
     }
 
-    public function trips()
+    public function trips(): HasManyThrough
     {
         return $this->hasManyThrough(Trip::class, City::class)
             ->orderBy('date_start');

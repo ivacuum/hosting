@@ -7,6 +7,9 @@ use App\Domain\Wanikani\Policy\RadicalPolicy;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 /**
  * @property int $id
@@ -28,17 +31,17 @@ class Radical extends Model
     public const array LIST_COLUMNS = ['id', 'level', 'character', 'meaning'];
 
     // Relations
-    public function burnable()
+    public function burnable(): MorphOne
     {
         return $this->morphOne(Burnable::class, 'rel');
     }
 
-    public function burnables()
+    public function burnables(): MorphMany
     {
         return $this->morphMany(Burnable::class, 'rel');
     }
 
-    public function kanjis()
+    public function kanjis(): BelongsToMany
     {
         return $this->belongsToMany(Kanji::class);
     }

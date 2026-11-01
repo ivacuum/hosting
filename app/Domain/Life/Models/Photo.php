@@ -12,6 +12,9 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 /**
@@ -41,12 +44,12 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 class Photo extends Model
 {
     // Relations
-    public function rel()
+    public function rel(): MorphTo
     {
         return $this->morphTo();
     }
 
-    public function socialMediaPost()
+    public function socialMediaPost(): HasOne
     {
         return $this->hasOne(SocialMediaPost::class);
     }
@@ -57,7 +60,7 @@ class Photo extends Model
             ->orderBy(Tag::titleField());
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

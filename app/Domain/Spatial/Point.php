@@ -2,7 +2,7 @@
 
 namespace App\Domain\Spatial;
 
-class Point extends Geometry implements \Stringable
+final class Point extends Geometry implements \Stringable
 {
     public function __construct(
         public readonly string $lat,
@@ -20,13 +20,13 @@ class Point extends Geometry implements \Stringable
     {
         [$lon, $lat] = preg_split('/\s+/', trim($pair, "\t\n\r \x0B()"));
 
-        return new static($lat, $lon, $srid);
+        return new self($lat, $lon, $srid);
     }
 
     #[\Override]
     public static function fromString(string $wktArgument, int $srid = 4326): static
     {
-        return static::fromPair($wktArgument, $srid);
+        return self::fromPair($wktArgument, $srid);
     }
 
     #[\Override]

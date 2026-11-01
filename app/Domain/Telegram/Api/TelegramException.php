@@ -11,11 +11,11 @@ class TelegramException extends \Exception
         $code = $e->response->getStatusCode();
         $description = $e->response->json('description', 'no description given');
 
-        return new static("Telegram responded with an error `{$code} - {$description}`", $code, $e);
+        return new self("Telegram responded with an error `{$code} - {$description}`", $code, $e);
     }
 
     public static function generalError(\Throwable $e): self
     {
-        return new static('The communication with Telegram failed.', 0, $e);
+        return new self('The communication with Telegram failed.', 0, $e);
     }
 }

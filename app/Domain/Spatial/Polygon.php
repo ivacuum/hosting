@@ -2,7 +2,7 @@
 
 namespace App\Domain\Spatial;
 
-class Polygon extends Geometry implements \Stringable
+final class Polygon extends Geometry implements \Stringable
 {
     /** @var array<LineString> */
     public array $items;
@@ -27,7 +27,7 @@ class Polygon extends Geometry implements \Stringable
         $str = preg_split('/\)\s*,\s*\(/', substr(trim($wktArgument), 1, -1));
         $lineStrings = array_map(static fn ($geometry) => LineString::fromString($geometry), $str);
 
-        return new static($srid, ...$lineStrings);
+        return new self($srid, ...$lineStrings);
     }
 
     #[\Override]

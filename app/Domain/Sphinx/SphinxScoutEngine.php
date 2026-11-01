@@ -68,24 +68,24 @@ class SphinxScoutEngine extends Engine
         }
     }
 
-    public function paginate(Builder $builder, $perPage, $page): void
+    public function paginate(Builder $builder, $perPage, $page): never
     {
-        dd('paginate not implemented');
+        throw new \BadMethodCallException('paginate not implemented');
     }
 
-    public function mapIds($results): void
+    public function mapIds($results): never
     {
-        dd('mapIds not implemented');
+        throw new \BadMethodCallException('mapIds not implemented');
     }
 
-    public function map(Builder $builder, $results, $model): void
+    public function map(Builder $builder, $results, $model): never
     {
-        dd('map not implemented');
+        throw new \BadMethodCallException('map not implemented');
     }
 
-    public function getTotalCount($results): void
+    public function getTotalCount($results): never
     {
-        dd('getTotalCount not implemented');
+        throw new \BadMethodCallException('getTotalCount not implemented');
     }
 
     public function flush($model): void
@@ -97,7 +97,10 @@ class SphinxScoutEngine extends Engine
             ->execute();
     }
 
-    public function lazyMap(Builder $builder, $results, $model) {}
+    public function lazyMap(Builder $builder, $results, $model): never
+    {
+        throw new \BadMethodCallException('lazyMap not implemented');
+    }
 
     public function createIndex($name, array $options = []) {}
 

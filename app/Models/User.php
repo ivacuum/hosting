@@ -17,6 +17,8 @@ use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Notifications\Notifiable;
 
@@ -81,57 +83,57 @@ class User extends \Illuminate\Foundation\Auth\User implements HasLocalePreferen
     ];
 
     // Relations
-    public function chatMessages()
+    public function chatMessages(): HasMany
     {
         return $this->hasMany(ChatMessage::class)->chaperone();
     }
 
-    public function comments()
+    public function comments(): HasMany
     {
         return $this->hasMany(Comment::class)->chaperone();
     }
 
-    public function emails()
+    public function emails(): MorphMany
     {
         return $this->morphMany(Email::class, 'rel')->chaperone();
     }
 
-    public function externalIdentities()
+    public function externalIdentities(): HasMany
     {
         return $this->hasMany(ExternalIdentity::class)->chaperone();
     }
 
-    public function images()
+    public function images(): HasMany
     {
         return $this->hasMany(Image::class)->chaperone();
     }
 
-    public function issues()
+    public function issues(): HasMany
     {
         return $this->hasMany(Issue::class)->chaperone();
     }
 
-    public function magnets()
+    public function magnets(): HasMany
     {
         return $this->hasMany(Magnet::class)->chaperone();
     }
 
-    public function news()
+    public function news(): HasMany
     {
         return $this->hasMany(News::class)->chaperone();
     }
 
-    public function receivedEmails()
+    public function receivedEmails(): HasMany
     {
         return $this->hasMany(Email::class)->chaperone();
     }
 
-    public function socialMediaTokens()
+    public function socialMediaTokens(): HasMany
     {
         return $this->hasMany(SocialMediaToken::class)->chaperone();
     }
 
-    public function trips()
+    public function trips(): HasMany
     {
         return $this->hasMany(Trip::class)->chaperone();
     }

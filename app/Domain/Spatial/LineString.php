@@ -2,7 +2,7 @@
 
 namespace App\Domain\Spatial;
 
-class LineString extends Geometry implements \Stringable
+final class LineString extends Geometry implements \Stringable
 {
     /** @var array<Point> */
     public array $items;
@@ -26,7 +26,7 @@ class LineString extends Geometry implements \Stringable
         $pairs = explode(',', trim($wktArgument));
         $points = array_map(static fn ($pair) => Point::fromPair($pair), $pairs);
 
-        return new static($srid, ...$points);
+        return new self($srid, ...$points);
     }
 
     #[\Override]

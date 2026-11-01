@@ -7,6 +7,7 @@ use App\Domain\Life\Policy\ArtistPolicy;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
@@ -22,7 +23,7 @@ use Illuminate\Database\Eloquent\Model;
 class Artist extends Model
 {
     // Relations
-    public function gigs()
+    public function gigs(): HasMany
     {
         return $this->hasMany(Gig::class)
             ->orderByDesc('date');

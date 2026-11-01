@@ -10,6 +10,8 @@ use App\Traits;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
@@ -44,18 +46,18 @@ class City extends Model
     ];
 
     // Relations
-    public function country()
+    public function country(): BelongsTo
     {
         return $this->belongsTo(Country::class);
     }
 
-    public function gigs()
+    public function gigs(): HasMany
     {
         return $this->hasMany(Gig::class)
             ->orderBy('date');
     }
 
-    public function trips()
+    public function trips(): HasMany
     {
         return $this->hasMany(Trip::class)
             ->orderBy('date_start');

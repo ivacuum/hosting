@@ -5,6 +5,7 @@ namespace App\Domain\Telegram\Models;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property int $user_id
@@ -17,7 +18,7 @@ class LinkRequest extends Model
 {
     public const string|null UPDATED_AT = null;
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

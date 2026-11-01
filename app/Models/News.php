@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use League\CommonMark\CommonMarkConverter;
 
 /**
@@ -43,22 +45,22 @@ class News extends Model
     ];
 
     // Relations
-    public function comments()
+    public function comments(): MorphMany
     {
         return $this->morphMany(Comment::class, 'rel');
     }
 
-    public function commentsPublished()
+    public function commentsPublished(): MorphMany
     {
         return $this->comments()->where('status', CommentStatus::Published);
     }
 
-    public function emails()
+    public function emails(): MorphMany
     {
         return $this->morphMany(Email::class, 'rel');
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

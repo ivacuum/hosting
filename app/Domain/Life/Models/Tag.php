@@ -10,6 +10,7 @@ use App\Traits;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 /**
  * @property int $id
@@ -33,17 +34,17 @@ class Tag extends Model
     use Traits\HasLocalizedTitle;
 
     // Relations
-    public function news()
+    public function news(): MorphToMany
     {
         return $this->morphedByMany(News::class, 'rel', 'taggable');
     }
 
-    public function photos()
+    public function photos(): MorphToMany
     {
         return $this->morphedByMany(Photo::class, 'rel', 'taggable');
     }
 
-    public function photosPublished()
+    public function photosPublished(): MorphToMany
     {
         return $this->photos()->tap(new PhotoPublishedScope);
     }

@@ -6,6 +6,7 @@ use App\Domain\ExternalIdentityProvider;
 use App\Policies\ExternalIdentityPolicy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * Учетная запись внешнего сервиса
@@ -24,7 +25,7 @@ use Illuminate\Database\Eloquent\Model;
 #[UsePolicy(ExternalIdentityPolicy::class)]
 class ExternalIdentity extends Model
 {
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

@@ -20,6 +20,8 @@ use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
  * @property int $id
@@ -87,32 +89,32 @@ class Trip extends Model
     ];
 
     // Relations
-    public function city()
+    public function city(): BelongsTo
     {
         return $this->belongsTo(City::class);
     }
 
-    public function comments()
+    public function comments(): MorphMany
     {
         return $this->morphMany(Comment::class, 'rel');
     }
 
-    public function commentsPublished()
+    public function commentsPublished(): MorphMany
     {
         return $this->comments()->where('status', CommentStatus::Published);
     }
 
-    public function emails()
+    public function emails(): MorphMany
     {
         return $this->morphMany(Email::class, 'rel');
     }
 
-    public function photos()
+    public function photos(): MorphMany
     {
         return $this->morphMany(Photo::class, 'rel');
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

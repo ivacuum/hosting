@@ -12,6 +12,9 @@ use App\Scope\CommentRelationScope;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\Relation;
 
 /**
@@ -33,17 +36,17 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 class Comment extends Model
 {
     // Relations
-    public function emails()
+    public function emails(): MorphMany
     {
         return $this->morphMany(Email::class, 'rel');
     }
 
-    public function rel()
+    public function rel(): MorphTo
     {
         return $this->morphTo();
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

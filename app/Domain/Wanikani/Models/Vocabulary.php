@@ -10,6 +10,8 @@ use App\Domain\Wanikani\VocabularyAudio;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 /**
  * @property int $id
@@ -34,12 +36,12 @@ class Vocabulary extends Model
     public const array LIST_COLUMNS = ['id', 'level', 'character', 'kana', 'meaning'];
 
     // Relations
-    public function burnable()
+    public function burnable(): MorphOne
     {
         return $this->morphOne(Burnable::class, 'rel');
     }
 
-    public function burnables()
+    public function burnables(): MorphMany
     {
         return $this->morphMany(Burnable::class, 'rel');
     }
