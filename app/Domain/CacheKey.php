@@ -23,7 +23,7 @@ enum CacheKey: string
     case MyVisibleGigs = 'my.gigs.visible';
     case MyVisibleTrips = 'my.trips.visible';
 
-    case PhotosPoints = 'photos.points.all.{key}';
+    case PhotosPoints = 'photos.points.all.v2.{key}';
 
     /** RTO API недоступен где-то с середины лета 2026, поэтому уменьшаем количество запросов к нему */
     case RtoApiUnavailable = 'http.rto.api-unavailable.v1';

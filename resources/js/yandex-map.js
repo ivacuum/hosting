@@ -1,7 +1,7 @@
 export default class {
   constructor(locale = 'ru') {
     this.api_version = 2.1
-    this.loaded = false
+    this.loading = null
     this.locale = this.getYandexLocale(locale)
     this.map = null
     this.onload = 'App.map.onloadCallback'
@@ -53,23 +53,15 @@ export default class {
   }
 
   load() {
-    return new Promise((resolve) => {
-      if (this.loaded) {
-        resolve()
-        return
-      }
+    this.loading ??= new Promise((resolve) => {
+      this.resolveLoading = resolve
 
       this.appendJsToHead(
         `https://api-maps.yandex.ru/${this.api_version}/?lang=${this.locale}&onload=${this.onload}&ns=`,
       )
-
-      const timer = window.setInterval(() => {
-        if (this.loaded) {
-          window.clearInterval(timer)
-          resolve()
-        }
-      }, 1000)
     })
+
+    return this.loading
   }
 
   mapGeocodeOnClick(point, callback) {
@@ -82,8 +74,8 @@ export default class {
   }
 
   onloadCallback(ymaps) {
-    this.loaded = true
     this.ym = ymaps
+    this.resolveLoading()
   }
 
   placemark(coords, properties = {}, options = {}) {

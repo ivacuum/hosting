@@ -1,4 +1,4 @@
-/** @namespace App.map.ym.ObjectManager */
+import PhotoPoints from './photo-points'
 
 export default class EventHandlers {
   static bind() {
@@ -36,28 +36,19 @@ export default class EventHandlers {
     if (!data.loaded) {
       data.loaded = '1'
 
+      const points = data.action ? PhotoPoints.fetch(data.action) : null
+
       App.map.create(data.container, data.lat, data.lon, undefined, true)
         .then(() => {
-          const manager = new App.map.ym.ObjectManager({
-            clusterize: 1,
-            gridSize: 64,
-          })
-
-          manager.objects.options.set('preset', 'islands#nightCircleDotIcon')
-          manager.clusters.options.set('preset', 'islands#nightClusterIcons')
+          const manager = PhotoPoints.createManager()
 
           App.map.map.geoObjects.add(manager)
 
-          if (data.action) {
-            fetch(data.action, {
-              headers: {
-                'Content-Type': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest',
-              },
-            })
-              .then(response => response.json())
-              .then(json => manager.add(json))
-          }
+          return points?.then((collection) => {
+            manager.add(collection)
+
+            return EventHandlers.fitPhotoPoints(manager)
+          })
         })
     }
 
@@ -118,6 +109,28 @@ export default class EventHandlers {
 
       target.dataset.clicked = '1'
     }
+  }
+
+  /**
+   * Все снимки поездки в кадре. Приближение ограничено уровнем улиц,
+   * чтобы снимки в одной точке не открывали карту на уровне домов
+   */
+  static fitPhotoPoints(manager) {
+    const bounds = manager.getBounds()
+
+    if (bounds === null) {
+      return
+    }
+
+    const { map, ym } = App.map
+    const { center, zoom } = ym.util.bounds.getCenterAndZoom(
+      bounds,
+      map.container.getSize(),
+      map.options.get('projection'),
+      { margin: 32 },
+    )
+
+    return map.setCenter(center, Math.min(zoom, 16), { checkZoomRange: true })
   }
 
   /**

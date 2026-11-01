@@ -32,7 +32,6 @@ class GetPhotoPointsAction
     private function photoPoints(int|null $tripId): array
     {
         $photos = Photo::query()
-            ->with('rel')
             ->tap(new PhotoForTripScope($tripId))
             ->tap(new PhotoPublishedScope)
             ->tap(new PhotoOnMapScope)

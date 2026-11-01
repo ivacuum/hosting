@@ -95,78 +95,74 @@ class PhotoTest extends TestCase
 
         $this->getJson("photos/map?trip_id={$photo->rel_id}")
             ->assertOk()
-            ->assertJsonCount(1, 'features')
-            ->assertJsonPath('features.0.id', $photo->id)
-            ->assertJsonPath('features.0.geometry.coordinates', ['0', '15']);
-    }
-
-    public function testMapPointOfOnePhoto(): void
-    {
-        $photo = PhotoFactory::new()
-            ->withPoint(5, 15)
-            ->withTrip()
-            ->create();
-
-        $this->getJson("photos/map?trip_id={$photo->rel_id}&photo={$photo->slug}")
-            ->assertOk()
-            ->assertJsonPath('type', 'FeatureCollection')
-            ->assertJsonPath('features.0.type', 'Feature')
-            ->assertJsonPath('features.0.id', $photo->id)
-            ->assertJsonPath('features.0.geometry.type', 'Point')
-            ->assertJsonPath('features.0.geometry.coordinates.0', '5')
-            ->assertJsonPath('features.0.geometry.coordinates.1', '15')
-            ->assertJsonPath('features.0.properties.clusterCaption', basename($photo->slug));
+            ->assertJsonCount(1, 'points')
+            ->assertJsonPath('points.0', [0, 15, 0, $photo->filename()]);
     }
 
     public function testMapPointsOfAllTripsAndGigs(): void
     {
-        $firstPhoto = PhotoFactory::new()->withPoint(5, 15)->withTrip()->create();
-        $secondPhoto = PhotoFactory::new()->withPoint(25, 35)->withTrip()->create();
-        $gigPhoto = PhotoFactory::new()->withPoint(45, 55)->withGig()->create();
+        $tripPhoto = PhotoFactory::new()
+            ->withPoint(5, 15)
+            ->withTrip(TripFactory::new()->withDates('2025-03-10', '2025-04-02'))
+            ->create();
 
-        $this->getJson('photos/map')
+        $gigPhoto = PhotoFactory::new()
+            ->withPoint(45, 55)
+            ->withGig(GigFactory::new()->withDate('2025-03-14')->withTitle('Концерт', 'Concert'))
+            ->create();
+
+        $groups = $this->getJson('photos/map')
             ->assertOk()
-            ->assertJsonFragment(['id' => $firstPhoto->id])
-            ->assertJsonFragment(['id' => $secondPhoto->id])
-            ->assertJsonFragment(['id' => $gigPhoto->id])
-            ->assertJsonStructure([
-                'type',
-                'features' => [
-                    '*' => [
-                        'type',
-                        'id',
-                        'geometry' => [
-                            'type',
-                            'coordinates' => [0, 1],
-                        ],
-                        'properties' => [
-                            'balloonContent',
-                            'clusterCaption',
-                        ],
-                    ],
-                ],
-            ]);
+            ->json('groups');
+
+        $this->assertContains([
+            $tripPhoto->rel->www(),
+            "{$tripPhoto->rel->title}, март–апрель 2025",
+            "https://life.ivacuum.org/-/500x375/{$tripPhoto->folder()}",
+        ], $groups);
+
+        $this->assertContains([
+            $gigPhoto->rel->www(),
+            "Концерт, 14\u{00A0}марта 2025",
+            "https://life.ivacuum.org/-/500x375/gigs/{$gigPhoto->folder()}",
+        ], $groups);
     }
 
     public function testMapPointsOfOneTrip(): void
     {
-        $photo = PhotoFactory::new()
+        $trip = TripFactory::new()
+            ->withDates('2025-03-10', '2025-03-12')
+            ->create();
+
+        $firstPhoto = PhotoFactory::new()
             ->withPoint(5, 15)
-            ->withTrip()
+            ->withSlug("{$trip->slug}/first.jpg")
+            ->withTrip($trip)
+            ->create();
+
+        PhotoFactory::new()
+            ->withPoint('5.5', '15.25')
+            ->withSlug("{$trip->slug}/second.jpg")
+            ->withTrip($trip)
             ->create();
 
         PhotoFactory::new()->withPoint(25, 35)->withTrip()->create();
 
-        $this->getJson("photos/map?trip_id={$photo->rel_id}")
+        $this->getJson("photos/map?trip_id={$trip->id}")
             ->assertOk()
-            ->assertJsonCount(1, 'features')
-            ->assertJsonPath('type', 'FeatureCollection')
-            ->assertJsonPath('features.0.type', 'Feature')
-            ->assertJsonPath('features.0.id', $photo->id)
-            ->assertJsonPath('features.0.geometry.type', 'Point')
-            ->assertJsonPath('features.0.geometry.coordinates.0', '5')
-            ->assertJsonPath('features.0.geometry.coordinates.1', '15')
-            ->assertJsonPath('features.0.properties.clusterCaption', basename($photo->slug));
+            ->assertExactJson([
+                'groups' => [
+                    [
+                        $firstPhoto->rel->www(),
+                        "{$trip->title}, март 2025",
+                        "https://life.ivacuum.org/-/500x375/{$trip->slug}",
+                    ],
+                ],
+                'points' => [
+                    [5.0, 15.0, 0, 'first.jpg'],
+                    [5.5, 15.25, 0, 'second.jpg'],
+                ],
+            ]);
     }
 
     public function testShowGigPhoto(): void
