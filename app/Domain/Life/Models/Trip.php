@@ -30,8 +30,10 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
  * @property string $title_ru
  * @property string $title_en
  * @property string $slug
- * @property \Carbon\CarbonImmutable $date_start
- * @property \Carbon\CarbonImmutable $date_end
+ * @property-read \Carbon\CarbonImmutable $date_start
+ * @property-write \DateTimeInterface|string $date_start
+ * @property-read \Carbon\CarbonImmutable $date_end
+ * @property-write \DateTimeInterface|string $date_end
  * @property TripStatus $status
  * @property string $markdown
  * @property string $html
@@ -94,11 +96,13 @@ class Trip extends Model
         return $this->belongsTo(City::class);
     }
 
+    /** @return MorphMany<Comment, $this> */
     public function comments(): MorphMany
     {
         return $this->morphMany(Comment::class, 'rel');
     }
 
+    /** @return MorphMany<Comment, $this> */
     public function commentsPublished(): MorphMany
     {
         return $this->comments()->where('status', CommentStatus::Published);

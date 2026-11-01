@@ -21,7 +21,7 @@ class LifeIndexForm extends FormRequest
     #[\Override]
     protected function passedValidation(): void
     {
-        $this->to = $this->date('to')?->startOfDay();
-        $this->from = $this->date('from')?->startOfDay();
+        $this->to = $this->date('to')?->toImmutable()->startOfDay();
+        $this->from = $this->date('from')?->toImmutable()->startOfDay();
     }
 }

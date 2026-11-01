@@ -23,7 +23,8 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
  * @property string $title_ru
  * @property string $title_en
  * @property string $slug
- * @property \Carbon\CarbonImmutable $date
+ * @property-read \Carbon\CarbonImmutable $date
+ * @property-write \DateTimeInterface|string $date
  * @property GigStatus $status
  * @property string $meta_title_ru
  * @property string $meta_title_en

@@ -22,7 +22,8 @@ use League\CommonMark\CommonMarkConverter;
  * @property string $title
  * @property string $markdown
  * @property string $html
- * @property Locale $locale
+ * @property-read Locale $locale
+ * @property-write Locale|string $locale
  * @property NewsStatus $status
  * @property int $views
  * @property \Carbon\CarbonImmutable $created_at
@@ -45,11 +46,13 @@ class News extends Model
     ];
 
     // Relations
+    /** @return MorphMany<Comment, $this> */
     public function comments(): MorphMany
     {
         return $this->morphMany(Comment::class, 'rel');
     }
 
+    /** @return MorphMany<Comment, $this> */
     public function commentsPublished(): MorphMany
     {
         return $this->comments()->where('status', CommentStatus::Published);

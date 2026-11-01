@@ -25,9 +25,9 @@ class Textarea extends Base
         return view($tpl, $this->buildData());
     }
 
-    public function toHtml()
+    public function toHtml(): string
     {
-        return $this->html();
+        return $this->html()->render();
     }
 
     public function wide(bool $value = true): self

@@ -203,7 +203,7 @@ class FavoriteMovieSeeder extends Seeder
         $movie->kp_id = 306084;
         $movie->title_en = 'The Big Bang Theory';
         $movie->title_ru = 'Теория большого взрыва';
-        $movie->is_tv_series = 1;
+        $movie->is_tv_series = true;
         $movie->save();
 
         $movie = new FavoriteMovie;
@@ -218,7 +218,7 @@ class FavoriteMovieSeeder extends Seeder
         $movie->kp_id = 404900;
         $movie->title_en = 'Breaking Bad';
         $movie->title_ru = 'Во все тяжкие';
-        $movie->is_tv_series = 1;
+        $movie->is_tv_series = true;
         $movie->save();
 
         $movie = new FavoriteMovie;
@@ -275,7 +275,7 @@ class FavoriteMovieSeeder extends Seeder
         $movie->kp_id = 502838;
         $movie->title_en = 'Sherlock';
         $movie->title_ru = 'Шерлок';
-        $movie->is_tv_series = 1;
+        $movie->is_tv_series = true;
         $movie->save();
 
         $movie = new FavoriteMovie;
@@ -290,7 +290,7 @@ class FavoriteMovieSeeder extends Seeder
         $movie->kp_id = 655800;
         $movie->title_en = 'Black Mirror';
         $movie->title_ru = 'Черное зеркало';
-        $movie->is_tv_series = 1;
+        $movie->is_tv_series = true;
         $movie->save();
 
         $movie = new FavoriteMovie;
@@ -298,7 +298,7 @@ class FavoriteMovieSeeder extends Seeder
         $movie->kp_id = 574497;
         $movie->title_en = 'Bron/Broen';
         $movie->title_ru = 'Мост';
-        $movie->is_tv_series = 1;
+        $movie->is_tv_series = true;
         $movie->save();
 
         $movie = new FavoriteMovie;
@@ -306,7 +306,7 @@ class FavoriteMovieSeeder extends Seeder
         $movie->kp_id = 574688;
         $movie->title_en = 'Homeland';
         $movie->title_ru = 'Родина';
-        $movie->is_tv_series = 1;
+        $movie->is_tv_series = true;
         $movie->save();
 
         $movie = new FavoriteMovie;
@@ -328,7 +328,7 @@ class FavoriteMovieSeeder extends Seeder
         $movie->kp_id = 571335;
         $movie->title_en = 'Shameless';
         $movie->title_ru = 'Бесстыдники';
-        $movie->is_tv_series = 1;
+        $movie->is_tv_series = true;
         $movie->save();
 
         $movie = new FavoriteMovie;
@@ -336,7 +336,7 @@ class FavoriteMovieSeeder extends Seeder
         $movie->kp_id = 557806;
         $movie->title_en = 'Suits';
         $movie->title_ru = 'Форс-мажоры';
-        $movie->is_tv_series = 1;
+        $movie->is_tv_series = true;
         $movie->save();
 
         $movie = new FavoriteMovie;
@@ -372,7 +372,7 @@ class FavoriteMovieSeeder extends Seeder
         $movie->kp_id = 581937;
         $movie->title_en = 'House of Cards';
         $movie->title_ru = 'Карточный домик';
-        $movie->is_tv_series = 1;
+        $movie->is_tv_series = true;
         $movie->save();
 
         $movie = new FavoriteMovie;
@@ -408,7 +408,7 @@ class FavoriteMovieSeeder extends Seeder
         $movie->kp_id = 767379;
         $movie->title_en = 'Fargo';
         $movie->title_ru = 'Фарго';
-        $movie->is_tv_series = 1;
+        $movie->is_tv_series = true;
         $movie->save();
 
         $movie = new FavoriteMovie;
@@ -437,7 +437,7 @@ class FavoriteMovieSeeder extends Seeder
         $movie->kp_id = 723959;
         $movie->title_en = 'Silicon Valley';
         $movie->title_ru = 'Кремниевая долина';
-        $movie->is_tv_series = 1;
+        $movie->is_tv_series = true;
         $movie->save();
 
         $movie = new FavoriteMovie;
@@ -445,7 +445,7 @@ class FavoriteMovieSeeder extends Seeder
         $movie->kp_id = 681831;
         $movie->title_en = 'True Detective';
         $movie->title_ru = 'Настоящий детектив';
-        $movie->is_tv_series = 1;
+        $movie->is_tv_series = true;
         $movie->save();
 
         $movie = new FavoriteMovie;
@@ -474,7 +474,7 @@ class FavoriteMovieSeeder extends Seeder
         $movie->kp_id = 821565;
         $movie->title_en = 'Narcos';
         $movie->title_ru = 'Нарко';
-        $movie->is_tv_series = 1;
+        $movie->is_tv_series = true;
         $movie->save();
 
         $movie = new FavoriteMovie;
@@ -489,7 +489,7 @@ class FavoriteMovieSeeder extends Seeder
         $movie->kp_id = 462649;
         $movie->title_en = 'The Night Manager';
         $movie->title_ru = 'Ночной администратор';
-        $movie->is_tv_series = 1;
+        $movie->is_tv_series = true;
         $movie->save();
 
         $movie = new FavoriteMovie;
@@ -497,7 +497,7 @@ class FavoriteMovieSeeder extends Seeder
         $movie->kp_id = 195523;
         $movie->title_en = 'Westworld';
         $movie->title_ru = 'Мир Дикого Запада';
-        $movie->is_tv_series = 1;
+        $movie->is_tv_series = true;
         $movie->save();
 
         $movie = new FavoriteMovie;
@@ -505,7 +505,7 @@ class FavoriteMovieSeeder extends Seeder
         $movie->kp_id = 582358;
         $movie->title_en = '13 Reasons Why';
         $movie->title_ru = '13 причин почему';
-        $movie->is_tv_series = 1;
+        $movie->is_tv_series = true;
         $movie->save();
 
         $movie = new FavoriteMovie;
@@ -520,7 +520,7 @@ class FavoriteMovieSeeder extends Seeder
         $movie->kp_id = 848297;
         $movie->title_en = 'Sneaky Pete';
         $movie->title_ru = 'Подлый Пит';
-        $movie->is_tv_series = 1;
+        $movie->is_tv_series = true;
         $movie->save();
 
         $movie = new FavoriteMovie;
@@ -542,7 +542,7 @@ class FavoriteMovieSeeder extends Seeder
         $movie->kp_id = 1176115;
         $movie->title_en = 'Bodyguard';
         $movie->title_ru = 'Телохранитель';
-        $movie->is_tv_series = 1;
+        $movie->is_tv_series = true;
         $movie->save();
 
         $movie = new FavoriteMovie;

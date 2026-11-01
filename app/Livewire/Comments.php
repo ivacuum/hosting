@@ -12,7 +12,7 @@ use Livewire\Component;
 
 class Comments extends Component
 {
-    /** @var \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] */
+    /** @var \Illuminate\Database\Eloquent\Collection<int, \App\Models\Comment> */
     public $comments;
     public Issue|Magnet|News|Trip $model;
 

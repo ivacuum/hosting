@@ -20,7 +20,8 @@ use League\CommonMark\CommonMarkConverter;
  * @property string $text
  * @property string $html
  * @property string $ip
- * @property \Carbon\CarbonImmutable $created_at
+ * @property-read \Carbon\CarbonImmutable $created_at
+ * @property-write \DateTimeInterface|string|null $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  * @property User $user
  *

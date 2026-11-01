@@ -21,12 +21,16 @@ class CountryHelper
         'hashtags',
     ];
 
+    /** @var Collection<int, Country>|null */
     private Collection|null $cachedById = null;
+
+    /** @var Collection<string, Country>|null */
     private Collection|null $cachedBySlug = null;
 
     public function __construct(private Repository $cache) {}
 
-    public function cachedById()
+    /** @return Collection<int, Country> */
+    public function cachedById(): Collection
     {
         return $this->cache->remember(
             CacheKey::CountriesById,
@@ -37,7 +41,8 @@ class CountryHelper
         );
     }
 
-    public function cachedBySlug()
+    /** @return Collection<string, Country> */
+    public function cachedBySlug(): Collection
     {
         return $this->cache->remember(
             CacheKey::CountriesBySlug,

@@ -26,7 +26,8 @@ use Laravel\Scout\Searchable;
 /**
  * @property int $id
  * @property int $user_id
- * @property MagnetCategory $category_id
+ * @property-read MagnetCategory $category_id
+ * @property-write MagnetCategory|int $category_id
  * @property int $rto_id
  * @property string $title
  * @property string $html
@@ -37,7 +38,8 @@ use Laravel\Scout\Searchable;
  * @property MagnetStatus $status
  * @property int $clicks
  * @property int $views
- * @property \Carbon\CarbonImmutable $registered_at
+ * @property-read \Carbon\CarbonImmutable|null $registered_at
+ * @property-write \DateTimeInterface|string|null $registered_at
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
  * @property \Illuminate\Database\Eloquent\Collection<int, Comment> $comments
@@ -69,11 +71,13 @@ class Magnet extends Model
     ];
 
     // Relations
+    /** @return MorphMany<Comment, $this> */
     public function comments(): MorphMany
     {
         return $this->morphMany(Comment::class, 'rel');
     }
 
+    /** @return MorphMany<Comment, $this> */
     public function commentsPublished(): MorphMany
     {
         return $this->comments()->where('status', CommentStatus::Published);

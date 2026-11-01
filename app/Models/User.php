@@ -40,7 +40,8 @@ use Illuminate\Notifications\Notifiable;
  * @property bool $root
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
- * @property \Carbon\CarbonImmutable $last_login_at
+ * @property-read \Carbon\CarbonImmutable|null $last_login_at
+ * @property-write \DateTimeInterface|string|null $last_login_at
  * @property \Carbon\CarbonImmutable $password_changed_at
  * @property \Carbon\CarbonImmutable $email_verified_at
  * @property \Carbon\CarbonImmutable $telegram_linked_at

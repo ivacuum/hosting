@@ -12,7 +12,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $token
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
- * @property \Carbon\CarbonImmutable $expired_at
+ * @property-read \Carbon\CarbonImmutable $expired_at
+ * @property-write \DateTimeInterface|string $expired_at
  * @property User $user
  *
  * @mixin \Eloquent

@@ -24,7 +24,7 @@ class PingDcppHubJob extends AbstractJob implements ShouldBeUnique
 
     public function uniqueFor(): int
     {
-        return CarbonInterval::day()->totalSeconds;
+        return (int) CarbonInterval::day()->totalSeconds;
     }
 
     public function uniqueId()

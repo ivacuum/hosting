@@ -18,8 +18,8 @@ class DatetimeLocal extends Base
         return view('acp.tpl.livewire.input', $this->buildData());
     }
 
-    public function toHtml()
+    public function toHtml(): string
     {
-        return $this->html();
+        return $this->html()->render();
     }
 }

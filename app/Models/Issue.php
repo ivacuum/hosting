@@ -38,11 +38,13 @@ class Issue extends Model
     use Notifiable;
 
     // Relations
+    /** @return MorphMany<Comment, $this> */
     public function comments(): MorphMany
     {
         return $this->morphMany(Comment::class, 'rel');
     }
 
+    /** @return MorphMany<Comment, $this> */
     public function commentsPublished(): MorphMany
     {
         return $this->comments()->where('status', CommentStatus::Published);

@@ -53,7 +53,7 @@ class LogHttpConnectionFailed
         $model->response_size = 0;
         $model->redirect_count = 0;
         $model->request_headers = $psrRequest->getHeaders();
-        $model->response_headers = '';
+        $model->response_headers = [];
         $model->curl_errno = $this->failedTransferStats->curlErrno($psrRequest);
         $model->failure_category = HttpFailureCategory::fromCurlErrno($model->curl_errno);
 

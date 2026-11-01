@@ -19,7 +19,8 @@ use Illuminate\Http\UploadedFile;
  * @property int $size
  * @property int $views
  * @property \Carbon\CarbonImmutable $created_at
- * @property \Carbon\CarbonImmutable $updated_at
+ * @property-read \Carbon\CarbonImmutable $updated_at
+ * @property-write \DateTimeInterface|string|null $updated_at
  * @property User $user
  *
  * @mixin \Eloquent

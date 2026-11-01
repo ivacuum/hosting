@@ -38,6 +38,7 @@ class Kanji extends Model
     public const array LIST_COLUMNS = ['id', 'level', 'character', 'meaning', 'onyomi', 'kunyomi', 'important_reading'];
 
     // Relations
+    /** @return MorphOne<Burnable, $this> */
     public function burnable(): MorphOne
     {
         return $this->morphOne(Burnable::class, 'rel');

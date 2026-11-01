@@ -20,7 +20,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property SocialMediaPostStatus $status
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
- * @property \Carbon\CarbonImmutable $published_at
+ * @property-read \Carbon\CarbonImmutable|null $published_at
+ * @property-write \DateTimeInterface|string|null $published_at
  * @property \Carbon\CarbonImmutable $excluded_at
  * @property Photo $photo
  * @property User $user

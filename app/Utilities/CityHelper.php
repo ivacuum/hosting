@@ -23,12 +23,16 @@ class CityHelper
         'point',
     ];
 
+    /** @var Collection<int, City>|null */
     private Collection|null $cachedById = null;
+
+    /** @var Collection<string, City>|null */
     private Collection|null $cachedBySlug = null;
 
     public function __construct(private Repository $cache) {}
 
-    public function cachedById()
+    /** @return Collection<int, City> */
+    public function cachedById(): Collection
     {
         return $this->cache->remember(
             CacheKey::CitiesById,
@@ -39,7 +43,8 @@ class CityHelper
         );
     }
 
-    public function cachedBySlug()
+    /** @return Collection<string, City> */
+    public function cachedBySlug(): Collection
     {
         return $this->cache->remember(
             CacheKey::CitiesBySlug,

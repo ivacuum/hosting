@@ -10,13 +10,13 @@ use Livewire\Component;
 
 class WanikaniSearch extends Component
 {
-    /** @var \Illuminate\Database\Eloquent\Collection|\App\Domain\Wanikani\Models\Kanji[] */
+    /** @var \Illuminate\Database\Eloquent\Collection<int, Kanji>|array{} */
     public $kanjis = [];
 
-    /** @var \Illuminate\Database\Eloquent\Collection|\App\Domain\Wanikani\Models\Radical[] */
+    /** @var \Illuminate\Database\Eloquent\Collection<int, Radical>|array{} */
     public $radicals = [];
 
-    /** @var \Illuminate\Database\Eloquent\Collection|\App\Domain\Wanikani\Models\Vocabulary[] */
+    /** @var \Illuminate\Database\Eloquent\Collection<int, Vocabulary>|array{} */
     public $vocabularies = [];
 
     public int $count = 0;

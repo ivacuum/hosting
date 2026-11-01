@@ -4,7 +4,6 @@ namespace App\Utilities\Form;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Htmlable;
-use Illuminate\Contracts\View\View;
 
 abstract class Base implements Htmlable
 {
@@ -71,8 +70,8 @@ abstract class Base implements Htmlable
         return $this;
     }
 
-    public function toHtml(): View
+    public function toHtml(): string
     {
-        return $this->html();
+        return $this->html()->render();
     }
 }

@@ -14,7 +14,7 @@ use Livewire\Component;
 class MagnetReplaceForm extends Component
 {
     public Magnet $magnet;
-    public string|null $input = null;
+    public int|string|null $input = null;
 
     public function render(): View
     {
