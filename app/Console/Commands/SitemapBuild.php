@@ -232,7 +232,7 @@ class SitemapBuild extends Command
                 $this->page("en/life/countries/{$country->slug}", '0.2');
 
                 $country->cities
-                    ->filter(static fn (City $city) => $city->trips_published_count)
+                    ->filter(static fn (City $city) => $city->trips_published_count > 0)
                     ->each(function (City $city) {
                         $this->page("life/{$city->slug}", '0.2');
                         $this->page("en/life/{$city->slug}", '0.2');

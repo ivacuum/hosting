@@ -112,7 +112,7 @@ class MetricsUdpServer extends Command
             $this->info('WorkerStop');
         });
 
-        Timer::tick($this->cronInterval()->totalMilliseconds, $this->cron(...));
+        Timer::tick((int) $this->cronInterval()->totalMilliseconds, $this->cron(...));
     }
 
     public function stop(): void

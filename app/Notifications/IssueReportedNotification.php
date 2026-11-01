@@ -19,7 +19,7 @@ class IssueReportedNotification extends Notification implements ShouldQueue
     {
         $escape = app(EscapeMarkdownCharactersAction::class);
 
-        $id = $escape->execute($this->issue->id);
+        $id = $escape->execute((string) $this->issue->id);
         $page = $escape->execute(url($this->issue->page));
         $text = $escape->execute(htmlspecialchars_decode($this->issue->text, ENT_QUOTES));
         $email = $escape->execute($this->issue->email);

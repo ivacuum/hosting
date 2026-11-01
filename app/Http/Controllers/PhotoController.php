@@ -38,7 +38,7 @@ class PhotoController
         $tripCount = $getTripCountByCities->execute(1);
 
         $cities = $cityHelper->cachedById()
-            ->filter(static fn (City $city) => $tripCount[$city->id]['published'] ?? 0)
+            ->filter(static fn (City $city) => ($tripCount[$city->id]['published'] ?? 0) > 0)
             ->sortBy(City::titleField());
 
         return view('photos.cities', ['cities' => $cities]);

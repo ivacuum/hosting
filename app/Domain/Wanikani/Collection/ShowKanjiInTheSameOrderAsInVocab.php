@@ -10,6 +10,10 @@ class ShowKanjiInTheSameOrderAsInVocab
     /** @param list<string> $characters */
     public function __construct(private array $characters) {}
 
+    /**
+     * @param  Collection<int, Kanji>  $collection
+     * @return Collection<int, Kanji>
+     */
     public function __invoke(Collection $collection): Collection
     {
         if (count($this->characters) === 0) {

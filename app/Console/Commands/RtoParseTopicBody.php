@@ -16,7 +16,7 @@ class RtoParseTopicBody extends Command
             'topicId' => 'required|integer',
         ])->validate();
 
-        dump($rto->parseTopicBody($this->argument('topicId')));
+        dump($rto->parseTopicBody((int) $this->argument('topicId')));
 
         return self::SUCCESS;
     }

@@ -76,16 +76,13 @@ class Comment extends Model
             ->tap(new CommentRelationScope($model))
             ->where('rel_id', $model->id)
             ->get(['user_id'])
-            // Автор новости, заметки, раздачи
-            ->push([
-                'user' => $model->user,
-                'user_id' => $model->user_id,
-            ])
-            // Но без повторений
-            ->unique('user_id')
             ->pluck('user')
+            // Автор новости, заметки, раздачи
+            ->push($model->user)
             // Фильтр удаленных пользователей
-            ->filter(static fn ($value) => $value !== null);
+            ->filter(static fn (User|null $user) => $user !== null)
+            // Но без повторений
+            ->unique('id');
     }
 
     public function www(): string

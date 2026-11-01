@@ -12,7 +12,7 @@ class WanikaniSubject extends Command
 {
     public function handle(WanikaniApi $wanikani): void
     {
-        $response = $wanikani->subject($this->argument('id'));
+        $response = $wanikani->subject((int) $this->argument('id'));
 
         dump($response->json, $response->subject);
     }

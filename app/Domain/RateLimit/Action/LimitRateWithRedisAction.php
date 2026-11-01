@@ -18,7 +18,7 @@ class LimitRateWithRedisAction
         }
 
         $limiter = new DurationLimiter(
-            $this->redis, $limit->key, $limit->maxAttempts, $limit->decaySeconds
+            $this->redis->connection(), $limit->key, $limit->maxAttempts, $limit->decaySeconds
         );
 
         if (!$limiter->acquire()) {

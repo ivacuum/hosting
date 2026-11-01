@@ -51,6 +51,7 @@ class Country extends Model
             ->orderBy(City::titleField());
     }
 
+    /** @return HasManyThrough<Trip, City, $this> */
     public function trips(): HasManyThrough
     {
         return $this->hasManyThrough(Trip::class, City::class)

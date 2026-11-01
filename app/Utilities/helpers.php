@@ -57,7 +57,7 @@ if (!function_exists('to')) {
 
         $prefix = ($locale !== $defaultLocale) ? $locale : '';
 
-        $route = new Illuminate\Routing\Route('', trim("{$prefix}/{$url}", '/'), '');
+        $route = new Illuminate\Routing\Route('', trim("{$prefix}/{$url}", '/'), []);
 
         return app('url')->toRoute($route, $params, false);
     }

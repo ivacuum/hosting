@@ -50,7 +50,7 @@ class SphinxScoutEngine extends Engine
 
         $this->sphinxQl
             ->delete()
-            ->from($model->searchableAs())
+            ->from([$model->searchableAs()])
             ->where('id', 'IN', $ids)
             ->execute();
     }
@@ -62,7 +62,7 @@ class SphinxScoutEngine extends Engine
 
         $query = $this->sphinxQl
             ->select('id')
-            ->from($builder->index ?: $builder->model->searchableAs())
+            ->from([$builder->index ?: $builder->model->searchableAs()])
             ->limit($builder->limit ?: 500);
 
         if ($builder->callback) {

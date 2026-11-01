@@ -13,7 +13,7 @@ class RedisReadStreamCommandFactory
     public function make()
     {
         $payload = collect(['XREAD'])
-            ->when($this->count !== null, fn (Collection $collect) => $collect->push('COUNT', $this->count))
+            ->when($this->count !== null, fn (Collection $collect) => $collect->push('COUNT', (string) $this->count))
             ->push('STREAMS');
 
         foreach ($this->streams as $stream) {

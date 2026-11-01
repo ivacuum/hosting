@@ -132,7 +132,8 @@ class HttpStashTest extends TestCase
 
         $this->assertThrows(
             fn () => app(HttpStash::class)->store($request, fn () => $request->send(Http::createPendingRequest())),
-            fn (ConnectionException $exception): bool => $exception->getMessage() === 'Connection failed.',
+            ConnectionException::class,
+            'Connection failed.',
         );
 
         Http::assertSentCount(1);

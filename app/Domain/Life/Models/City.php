@@ -57,6 +57,7 @@ class City extends Model
             ->orderBy('date');
     }
 
+    /** @return HasMany<Trip, $this> */
     public function trips(): HasMany
     {
         return $this->hasMany(Trip::class)

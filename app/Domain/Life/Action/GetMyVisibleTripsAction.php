@@ -15,6 +15,7 @@ class GetMyVisibleTripsAction
 {
     public function __construct(private Repository $cache) {}
 
+    /** @return Collection<int, Trip> */
     public function execute(CarbonImmutable|null $from, CarbonImmutable|null $to): Collection
     {
         if (!$from && !$to) {

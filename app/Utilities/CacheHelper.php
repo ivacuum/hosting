@@ -12,39 +12,33 @@ class CacheHelper
 
     public function forgetCities(): void
     {
-        $this->cache->deleteMultiple([
+        $this->forget(
             CacheKey::CitiesById,
             CacheKey::CitiesBySlug,
-        ]);
+        );
     }
 
     public function forgetCountries(): void
     {
-        $this->cache->deleteMultiple([
+        $this->forget(
             CacheKey::CountriesById,
             CacheKey::CountriesBySlug,
-        ]);
+        );
     }
 
     public function forgetGames(): void
     {
-        $this->cache->deleteMultiple([
-            CacheKey::GamesFrontPageById,
-        ]);
+        $this->forget(CacheKey::GamesFrontPageById);
     }
 
     public function forgetGigs(): void
     {
-        $this->cache->deleteMultiple([
-            CacheKey::MyVisibleGigs,
-        ]);
+        $this->forget(CacheKey::MyVisibleGigs);
     }
 
     public function forgetMagnets(): void
     {
-        $this->cache->deleteMultiple([
-            CacheKey::MagnetStatsByCategories,
-        ]);
+        $this->forget(CacheKey::MagnetStatsByCategories);
     }
 
     public function forgetMyVisibleTrips(): void
@@ -61,12 +55,12 @@ class CacheHelper
 
     public function forgetTrips(): void
     {
-        $this->cache->deleteMultiple([
+        $this->forget(
             CacheKey::MyVisibleTrips,
             CacheKey::TripsPublishedByCountry,
             CacheKey::TripsPublishedByCity,
             CacheKey::TripsPublishedWithCover,
-        ]);
+        );
     }
 
     public function forgetWanikaniVocabularyIds(): void
@@ -76,5 +70,12 @@ class CacheHelper
                 ->map(static fn (int $startLevel) => CacheKey::WanikaniVocabularyIdsByLevels->key($startLevel . '-' . ($startLevel + 9)))
                 ->all()
         );
+    }
+
+    private function forget(CacheKey ...$keys): void
+    {
+        foreach ($keys as $key) {
+            $this->cache->forget($key);
+        }
     }
 }

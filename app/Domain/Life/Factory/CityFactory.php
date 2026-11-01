@@ -36,7 +36,7 @@ class CityFactory
         $city->id = $this->id;
         $city->iata = '';
         $city->slug = $this->slug ?? 'city-' . \Str::uuid();
-        $city->point = $this->point ?? new Point(fake()->latitude(), fake()->longitude());
+        $city->point = $this->point ?? new Point((string) fake()->latitude(), (string) fake()->longitude());
         $city->views = fake()->optional(0.9, 0)->numberBetween(1, 10000);
         $city->hashtags = mb_strtolower(str_replace(' ', '', $titleEn));
         $city->title_en = $titleEn;

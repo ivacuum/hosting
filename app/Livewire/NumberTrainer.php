@@ -221,7 +221,7 @@ class NumberTrainer extends Component
 
     private function pickOrderOfMagnitude(): int
     {
-        return random_int(1, mb_strlen($this->maximum) - 1);
+        return random_int(1, mb_strlen((string) $this->maximum) - 1);
     }
 
     private function pickRandomNumber(): void

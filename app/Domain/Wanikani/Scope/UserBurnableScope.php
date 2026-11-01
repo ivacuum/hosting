@@ -3,7 +3,7 @@
 namespace App\Domain\Wanikani\Scope;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
 class UserBurnableScope
 {
@@ -15,6 +15,6 @@ class UserBurnableScope
             return;
         }
 
-        $query->with(['burnable' => fn (MorphOne $query) => $query->where('user_id', $this->userId)]);
+        $query->with(['burnable' => fn (Relation $query) => $query->where('user_id', $this->userId)]);
     }
 }

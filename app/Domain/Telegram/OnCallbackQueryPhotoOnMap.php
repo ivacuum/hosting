@@ -13,7 +13,7 @@ class OnCallbackQueryPhotoOnMap
         if ($this->shouldHandle($request)) {
             $photoId = str($request->callbackQuery->data)
                 ->after('photoOnMap:')
-                ->toString();
+                ->toInteger();
 
             return $this
                 ->onCallbackQueryPhotoOnMap

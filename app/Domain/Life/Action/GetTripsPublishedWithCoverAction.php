@@ -15,6 +15,7 @@ class GetTripsPublishedWithCoverAction
 {
     public function __construct(private Repository $cache) {}
 
+    /** @return Collection<int, Trip> */
     public function execute(int|null $count = null): Collection
     {
         $key = CacheKey::TripsPublishedWithCover;
