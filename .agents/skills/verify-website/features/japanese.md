@@ -25,13 +25,13 @@ Verify Japanese resource discovery, kana practice, word practice, WaniKani brows
 
 Preconditions:
 
-- Require doctor readiness, built Vue assets, and the WaniKani seeders. Standard seeds contain 7 radicals, 6 kanji, and 5 vocabulary words, all within levels 1 through 9.
+- Require doctor readiness, built frontend assets, and the WaniKani seeders. Standard seeds contain 7 radicals, 6 kanji, and 5 vocabulary words, all within levels 1 through 9.
 - Use `guest@example.com` / `top-secret` only for learning marks, and verify that identity at `/my/profile` first.
 - Audio requires the remote URLs rendered in `#male_audio` and `#female_audio`. Require actual network/playback evidence, not the presence of volume icons.
 - Missing late-level words, example sentences, or introductory linked subjects fail those journeys. Do not invent data or treat empty lists as successful populated browsing.
 
 1. Follow both discovery paths above and save their href transitions. Require the correct trainer, not just a Japanese heading.
-2. At kana practice, click `Снять выделение` and require `Практиковаться` disabled. Select the first column with `#column_0` or its actual kana cells.
+2. At kana practice, click `Снять выделение` and require `Практиковаться` disabled. Select the first column with its checkbox or its actual kana cells.
 3. Click `Практиковаться`. Type the shown kana's Latin reading in `input[placeholder=kana]` without Enter. Require `Отвечено` to increase and a different question.
 4. Press Space, then separately Enter, to reveal an answer without increasing the answer count. Click the question itself to test the alternate reveal path.
 5. Click `Назад к выбору`. Exercise `Выбрать все`, individual column toggles, `катакана`, and `обе азбуки сразу`. Require questions from the selected columns and syllabaries.

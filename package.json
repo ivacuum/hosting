@@ -13,7 +13,6 @@
     "laravel-vite-plugin": "^3.0",
     "lodash": "^4.18",
     "mousetrap": "1.6.5",
-    "vite": "^8.0",
-    "vue": "3.2.47"
+    "vite": "^8.0"
   }
 }
