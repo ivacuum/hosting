@@ -53,7 +53,7 @@ class Email extends Model
 
     public function getTimestamp(): string
     {
-        return $this->created_at->format(static::TIMESTAMP_FORMAT);
+        return $this->created_at->format(self::TIMESTAMP_FORMAT);
     }
 
     public function hasValidTimestamp(string $timestamp): bool

@@ -71,6 +71,7 @@ class Gig extends Model
         return $this->morphMany(Email::class, 'rel');
     }
 
+    /** @return MorphMany<Photo, $this> */
     public function photos(): MorphMany
     {
         return $this->morphMany(Photo::class, 'rel');

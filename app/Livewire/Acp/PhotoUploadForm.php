@@ -18,6 +18,7 @@ use App\Domain\Life\Models\Photo;
 use App\Domain\Life\Models\Trip;
 use App\Domain\Life\PhotoStatus;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Authorize;
 use Livewire\Attributes\Computed;
@@ -107,7 +108,7 @@ class PhotoUploadForm extends Component
             $basename = "{$filename}.jpg";
             $photoSlug = "{$relation->slug}/{$basename}";
 
-            $photo = $findUploadedPhoto->execute(\Auth::user()->id, $relation, $basename);
+            $photo = $findUploadedPhoto->execute(Auth::user()->id, $relation, $basename);
             $rawExifData = $readRawExifData->execute($this->file->getRealPath());
 
             if ($photo === null) {
@@ -117,7 +118,7 @@ class PhotoUploadForm extends Component
                 $photo->point = $getPointFromGpsData->execute($rawExifData);
                 $photo->views = 0;
                 $photo->status = PhotoStatus::Hidden;
-                $photo->user_id = \Auth::user()->id;
+                $photo->user_id = Auth::user()->id;
             } else {
                 $photo->point ??= $getPointFromGpsData->execute($rawExifData);
             }

@@ -6,6 +6,7 @@ use App\Domain\ModelAccessibleRelation;
 use App\Utilities\NamingHelper;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class GetModelAccessibleRelationsAction
 {
@@ -17,7 +18,7 @@ class GetModelAccessibleRelationsAction
             return collect();
         }
 
-        $me = \Auth::user();
+        $me = Auth::user();
         $relatedByField = [];
 
         foreach ($showWithCount as $field) {

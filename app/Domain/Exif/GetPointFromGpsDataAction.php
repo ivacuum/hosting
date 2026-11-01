@@ -39,18 +39,25 @@ class GetPointFromGpsDataAction
             return null;
         }
 
-        $degreesAry = explode('/', $coordinates[0]);
-        $minutesAry = explode('/', $coordinates[1]);
-        $secondsAry = explode('/', $coordinates[2]);
+        $degrees = $this->rationalToFloat($coordinates[0]);
+        $minutes = $this->rationalToFloat($coordinates[1]);
+        $seconds = $this->rationalToFloat($coordinates[2]);
 
-        if ($degreesAry[1] == 0 || $minutesAry[1] == 0 || $secondsAry[1] == 0) {
+        if ($degrees === null || $minutes === null || $seconds === null) {
             return null;
         }
 
-        $degrees = $degreesAry[0] / $degreesAry[1];
-        $minutes = $minutesAry[0] / $minutesAry[1];
-        $seconds = $secondsAry[0] / $secondsAry[1];
-
         return $degrees + ($minutes * 60 + $seconds) / 3600;
+    }
+
+    private function rationalToFloat(mixed $value): float|null
+    {
+        $parts = is_string($value) ? explode('/', $value) : [];
+
+        if (count($parts) !== 2 || !is_numeric($parts[0]) || !is_numeric($parts[1]) || (float) $parts[1] === 0.0) {
+            return null;
+        }
+
+        return $parts[0] / $parts[1];
     }
 }

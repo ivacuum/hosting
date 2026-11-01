@@ -6,6 +6,7 @@ use App\Domain\SessionKey;
 use App\Http\Requests\Auth\ExternalCallbackForm;
 use App\Http\Requests\Auth\FacebookRedirectForm;
 use Illuminate\Support\HtmlString;
+use Laravel\Socialite\Two\FacebookProvider;
 
 class Facebook extends Base
 {
@@ -16,7 +17,7 @@ class Facebook extends Base
     {
         $driver = \Socialite::driver('facebook');
 
-        if ($request->shouldRerequest) {
+        if ($request->shouldRerequest && $driver instanceof FacebookProvider) {
             $driver = $driver->reRequest();
         }
 

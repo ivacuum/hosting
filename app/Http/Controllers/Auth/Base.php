@@ -11,6 +11,7 @@ use App\Models\ExternalIdentity;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Attributes\Controllers\Middleware;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\AbstractUser;
 
 #[Middleware('guest')]
@@ -64,7 +65,7 @@ abstract class Base extends Controller
         if ($identity !== null) {
             $identity->touch();
 
-            \Auth::loginUsingId($identity->user_id, true);
+            Auth::loginUsingId($identity->user_id, true);
 
             event(new UserSignedInWithExternalIdentity);
 
@@ -84,7 +85,7 @@ abstract class Base extends Controller
 
         $user->activate();
 
-        \Auth::login($user, true);
+        Auth::login($user, true);
 
         return redirect()->intended();
     }

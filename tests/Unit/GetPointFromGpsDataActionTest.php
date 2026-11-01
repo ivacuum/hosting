@@ -46,6 +46,8 @@ class GetPointFromGpsDataActionTest extends TestCase
     #[UnitTest]
     #[TestWith([['53/1', '1/1', '0/0']])]
     #[TestWith([['53/1', '1/1']])]
+    #[TestWith([['53/1', '1/1', 'abc/100']])]
+    #[TestWith([['53', '1/1', '4622/100']])]
     public function testInvalidCoordinatesHaveNoLocation(array $coordinates): void
     {
         $point = new GetPointFromGpsDataAction()->execute([

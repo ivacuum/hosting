@@ -2,8 +2,10 @@
 
 namespace App\Domain\Sphinx;
 
+use App\Domain\Magnet\Models\Magnet;
 use Foolz\SphinxQL\Helper;
 use Foolz\SphinxQL\SphinxQL;
+use Illuminate\Database\Eloquent\Collection;
 use Laravel\Scout\Builder;
 use Laravel\Scout\Engines\Engine;
 
@@ -11,6 +13,7 @@ class SphinxScoutEngine extends Engine
 {
     public function __construct(private SphinxQL $sphinxQl, private Helper $helper) {}
 
+    /** @param Collection<int, Magnet> $models */
     public function update($models): void
     {
         if ($models->isEmpty()) {
@@ -33,6 +36,7 @@ class SphinxScoutEngine extends Engine
         $query->execute();
     }
 
+    /** @param Collection<int, Magnet> $models */
     public function delete($models): void
     {
         if ($models->isEmpty()) {
@@ -51,6 +55,7 @@ class SphinxScoutEngine extends Engine
             ->execute();
     }
 
+    /** @param Builder<Magnet> $builder */
     public function search(Builder $builder)
     {
         $this->ping();
@@ -88,6 +93,7 @@ class SphinxScoutEngine extends Engine
         throw new \BadMethodCallException('getTotalCount not implemented');
     }
 
+    /** @param Magnet $model */
     public function flush($model): void
     {
         $this->ping();

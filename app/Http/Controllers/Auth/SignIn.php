@@ -11,6 +11,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
 use App\Http\Requests\Auth\SignInForm;
 use App\Http\Requests\Auth\SignInIndexForm;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class SignIn extends Controller
 {
@@ -42,7 +44,7 @@ class SignIn extends Controller
 
     public function logout()
     {
-        \Auth::logout();
+        Auth::logout();
 
         session()->invalidate();
         session()->regenerateToken();
@@ -57,7 +59,7 @@ class SignIn extends Controller
         $credentials = $this->credentials($request, $username);
 
         try {
-            if (\Auth::attempt($credentials, $request->remember)) {
+            if (Auth::attempt($credentials, $request->remember)) {
                 return true;
             }
         } catch (\RuntimeException) {
@@ -65,7 +67,7 @@ class SignIn extends Controller
             // Заглушаем его, чтобы попробовать конвертировать старый md5-пароль
         }
 
-        if (null === $user = \Auth::getLastAttempted()) {
+        if (!($user = Auth::getLastAttempted()) instanceof User) {
             return false;
         }
 
@@ -74,7 +76,7 @@ class SignIn extends Controller
             $user->password = $credentials['password'];
             $user->save();
 
-            \Auth::login($user, $request->remember);
+            Auth::login($user, $request->remember);
 
             return true;
         }

@@ -18,10 +18,12 @@ class GetAltitudeInCentimetersFromGpsDataAction
             default => null,
         };
 
-        if ($sign === null) {
+        $altitude = $this->divideExifValue->execute($exifData['GPSAltitude'], precision: 2);
+
+        if ($sign === null || $altitude === null) {
             return null;
         }
 
-        return (int) round($this->divideExifValue->execute($exifData['GPSAltitude'], precision: 2) * 100 * $sign);
+        return (int) round($altitude * 100 * $sign);
     }
 }

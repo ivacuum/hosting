@@ -30,8 +30,8 @@ class GetExifValueForHumansAction
                 2 => 'Автоматическая экспозиция с брекетингом',
                 default => '',
             },
-            'ExposureTime' => "{$this->divideExifValue->execute($value, 5)}сек",
-            'FocalLength' => "{$this->divideExifValue->execute($value)}мм",
+            'ExposureTime' => $this->withUnit($value, 'сек', 5),
+            'FocalLength' => $this->withUnit($value, 'мм'),
             'FocalLengthIn35mmFilm' => match ($value) {
                 24 => 'Основная камера, приближение 1x',
                 default => '',
@@ -53,16 +53,16 @@ class GetExifValueForHumansAction
                 1 => 'Ниже уровня моря',
                 default => '',
             },
-            'GPSAltitude' => \ViewHelper::plural('meters', $this->divideExifValue->execute($value, 0)),
+            'GPSAltitude' => $this->meters($value),
             'GPSSpeedRef' => match ($value) {
                 'K' => 'Километры в час',
                 'M' => 'Мили в час',
                 'N' => 'Узлы',
                 default => '',
             },
-            'GPSSpeed' => $this->divideExifValue->execute($value),
+            'GPSSpeed' => $this->withUnit($value, ''),
             'GPSImgDirection',
-            'GPSDestBearing' => "{$this->divideExifValue->execute($value)}º",
+            'GPSDestBearing' => $this->withUnit($value, 'º'),
             'GPSImgDirectionRef' => match ($value) {
                 'T' => 'Географический Северный полюс',
                 'M' => 'Магнитный Северный полюс',
@@ -85,5 +85,26 @@ class GetExifValueForHumansAction
             },
             default => '',
         };
+    }
+
+    private function divide(int|string|array|null $value, int $precision = 2): float|int|null
+    {
+        return is_string($value)
+            ? $this->divideExifValue->execute($value, $precision)
+            : null;
+    }
+
+    private function meters(int|string|array|null $value): string
+    {
+        $meters = $this->divide($value, 0);
+
+        return $meters === null ? '' : \ViewHelper::plural('meters', (int) $meters);
+    }
+
+    private function withUnit(int|string|array|null $value, string $unit, int $precision = 2): string
+    {
+        $number = $this->divide($value, $precision);
+
+        return $number === null ? '' : "{$number}{$unit}";
     }
 }

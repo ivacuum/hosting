@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -25,7 +26,7 @@ class AvatarManager extends Component
 
     public function deleteAvatar(): void
     {
-        tap(\Auth::user(), static function (User $user) {
+        tap(Auth::user(), static function (User $user) {
             $user->avatar = '';
             $user->save();
         });
@@ -35,7 +36,7 @@ class AvatarManager extends Component
 
     public function mount(): void
     {
-        $this->avatar = \Auth::user()->avatarUrl();
+        $this->avatar = Auth::user()->avatarUrl();
         $this->resetChosenFile();
     }
 
@@ -44,7 +45,7 @@ class AvatarManager extends Component
         $this->validate();
 
         try {
-            $this->avatar = \Auth::user()->uploadAvatar($this->image);
+            $this->avatar = Auth::user()->uploadAvatar($this->image);
         } catch (\Throwable $e) {
             $this->resetChosenFile();
 

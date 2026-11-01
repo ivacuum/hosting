@@ -68,7 +68,7 @@ return new class extends Migration {
             $table->string('title_ru');
             $table->string('title_en');
             $table->string('slug')->unique();
-            $table->string('emoji', 20)->charset('utf8mb4')->collation('utf8mb4_unicode_ci')->collate('utf8mb4_unicode_ci');
+            $table->string('emoji', 20)->charset('utf8mb4')->collation('utf8mb4_unicode_ci');
             $table->string('hashtags')->default('');
             $table->unsignedInteger('views')->default(0);
             $table->timestamps();

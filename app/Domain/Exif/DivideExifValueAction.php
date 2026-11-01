@@ -4,11 +4,15 @@ namespace App\Domain\Exif;
 
 class DivideExifValueAction
 {
-    public function execute(string $value, int $precision = 2): float|int
+    public function execute(string $value, int $precision = 2): float|int|null
     {
         $parts = explode('/', $value);
 
-        if ($parts[0] === '0') {
+        if (count($parts) !== 2 || !is_numeric($parts[0]) || !is_numeric($parts[1]) || (float) $parts[1] === 0.0) {
+            return null;
+        }
+
+        if ((float) $parts[0] === 0.0) {
             return 0;
         }
 

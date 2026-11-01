@@ -10,6 +10,7 @@ use App\Http\Requests\Auth\ResetPasswordForm;
 use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Contracts\Auth\PasswordBroker;
+use Illuminate\Support\Facades\Auth;
 
 class ResetPassword extends Controller
 {
@@ -52,7 +53,7 @@ class ResetPassword extends Controller
 
         event(new PasswordReset($user));
 
-        \Auth::login($user);
+        Auth::login($user);
     }
 
     protected function sendFailedResponse(ResetPasswordForm $request, string $response)

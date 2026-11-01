@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Image;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -39,7 +40,7 @@ class GalleryUploader extends Component
         $this->validate();
 
         foreach ($this->files as $file) {
-            $image = Image::newFromFile($file, \Auth::user()->id);
+            $image = Image::newFromFile($file, Auth::user()->id);
             $image->siteThumbnail($file);
             $image->upload($file);
             $image->save();

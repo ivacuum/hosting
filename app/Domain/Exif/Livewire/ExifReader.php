@@ -74,9 +74,8 @@ class ExifReader extends Component
             $point = $getPointFromGpsData->execute($this->data);
             $this->lat = $point?->lat;
             $this->lon = $point?->lon;
-            $this->gpsImageDirection = ($this->data['GPSImgDirection'] ?? null)
-                ? (int) app(DivideExifValueAction::class)->execute($this->data['GPSImgDirection'])
-                : null;
+            $gpsImageDirection = app(DivideExifValueAction::class)->execute($this->data['GPSImgDirection'] ?? '');
+            $this->gpsImageDirection = $gpsImageDirection === null ? null : (int) $gpsImageDirection;
 
             unset(
                 $this->data['COMPUTED'],

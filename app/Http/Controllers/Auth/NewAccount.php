@@ -11,6 +11,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Requests\Auth\NewAccountForm;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Auth;
 
 class NewAccount extends Controller
 {
@@ -62,7 +63,7 @@ class NewAccount extends Controller
     {
         $user->activate();
 
-        \Auth::login($user, true);
+        Auth::login($user, true);
 
         return redirect(path(HomeController::class));
     }

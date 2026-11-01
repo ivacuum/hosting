@@ -10,6 +10,7 @@ use App\Models\Issue;
 use App\RateLimit\IssueRateLimiter;
 use App\Rules\AtLeastFewWordsRule;
 use App\Rules\EmailRule;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
@@ -26,7 +27,7 @@ class FeedbackForm extends Component
 
     public function mount(): void
     {
-        $user = \Auth::user();
+        $user = Auth::user();
 
         if ($user && $this->name === '') {
             $this->name = $user->login ?? '';
