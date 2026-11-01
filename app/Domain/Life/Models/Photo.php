@@ -29,7 +29,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * @property \Carbon\CarbonImmutable $taken_at
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
- * @property Trip $rel
+ * @property Gig|Trip $rel
  * @property SocialMediaPost $socialMediaPost
  * @property \Illuminate\Database\Eloquent\Collection<int, Tag> $tags
  * @property User $user

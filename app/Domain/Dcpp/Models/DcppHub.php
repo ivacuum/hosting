@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $address
  * @property int $port
  * @property DcppHubStatus $status
- * @property int $is_online
+ * @property bool $is_online
  * @property int $clicks
  * @property \Carbon\CarbonImmutable $queried_at
  * @property \Carbon\CarbonImmutable $created_at
