@@ -11,6 +11,7 @@ use App\Factory\UserFactory;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\HtmlString;
 use Laravel\Socialite\Socialite;
 use Laravel\Socialite\Two\User as SocialiteUser;
@@ -134,7 +135,7 @@ class SignInTest extends TestCase
 
     public function testGoogleCallbackAuthenticatesExistingLinkedIdentity(): void
     {
-        \Event::fake(UserSignedInWithExternalIdentity::class);
+        Event::fake(UserSignedInWithExternalIdentity::class);
 
         $user = UserFactory::new()->withEmail('linked@example.com')->create();
 
@@ -162,7 +163,7 @@ class SignInTest extends TestCase
                 ->where('uid', 'google-linked')
                 ->count(),
         );
-        \Event::assertDispatched(UserSignedInWithExternalIdentity::class);
+        Event::assertDispatched(UserSignedInWithExternalIdentity::class);
     }
 
     public function testGoogleCallbackDoesNotLeaveUnlinkedIdentityWhenRegistrationFails(): void

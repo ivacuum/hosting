@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Factory\UserFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 class MyProfileTest extends TestCase
@@ -22,7 +23,7 @@ class MyProfileTest extends TestCase
         $user = UserFactory::new()->create();
         $email = "__{$user->email}";
 
-        \Event::fake(\App\Events\Stats\MyProfileChanged::class);
+        Event::fake(\App\Events\Stats\MyProfileChanged::class);
 
         $this->be($user)
             ->put('my/profile', [
@@ -36,14 +37,14 @@ class MyProfileTest extends TestCase
         $this->assertSame($email, $user->email);
         $this->assertNull($user->login);
 
-        \Event::assertDispatched(\App\Events\Stats\MyProfileChanged::class);
+        Event::assertDispatched(\App\Events\Stats\MyProfileChanged::class);
     }
 
     public function testUpdateLogin(): void
     {
         $user = UserFactory::new()->withLogin('phpunit')->create();
 
-        \Event::fake(\App\Events\Stats\MyProfileChanged::class);
+        Event::fake(\App\Events\Stats\MyProfileChanged::class);
 
         $this->be($user)
             ->put('my/profile', [
@@ -56,6 +57,6 @@ class MyProfileTest extends TestCase
 
         $this->assertSame('phpunit-phpunit', $user->login);
 
-        \Event::assertDispatched(\App\Events\Stats\MyProfileChanged::class);
+        Event::assertDispatched(\App\Events\Stats\MyProfileChanged::class);
     }
 }

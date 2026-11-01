@@ -6,6 +6,7 @@ use App\Action\GetResizeImageWhitelistAction;
 use App\Domain\ImageConverter\ImageConverter;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Event;
 use PHPUnit\Framework\Attributes\TestWith;
 use Tests\TestCase;
 
@@ -18,7 +19,7 @@ class ResizeImageTest extends TestCase
     #[TestWith(['image.png'])]
     public function testConvertUsesOutputMimeType(string $path): void
     {
-        \Event::fake(\App\Events\Stats\ImageResizedOnDemand::class);
+        Event::fake(\App\Events\Stats\ImageResizedOnDemand::class);
         \Http::fake([
             "https://example.com/{$path}" => \Http::response(),
         ]);
@@ -36,7 +37,7 @@ class ResizeImageTest extends TestCase
             ->assertOk()
             ->assertHeader('Content-Type', 'image/jpeg');
 
-        \Event::assertDispatched(\App\Events\Stats\ImageResizedOnDemand::class);
+        Event::assertDispatched(\App\Events\Stats\ImageResizedOnDemand::class);
     }
 
     public function testHostNotWhitelisted(): void

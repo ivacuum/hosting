@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Domain\Locale;
 use App\Factory\NewsFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Event;
 use PHPUnit\Framework\Attributes\TestWith;
 use Tests\TestCase;
 
@@ -24,12 +25,12 @@ class NewsTest extends TestCase
     {
         $news = NewsFactory::new()->create();
 
-        \Event::fake(\App\Events\Stats\NewsViewed::class);
+        Event::fake(\App\Events\Stats\NewsViewed::class);
 
         $this->get("news/{$news->id}")
             ->assertOk();
 
-        \Event::assertDispatched(\App\Events\Stats\NewsViewed::class);
+        Event::assertDispatched(\App\Events\Stats\NewsViewed::class);
     }
 
     #[TestWith(['news/2010/01'])]

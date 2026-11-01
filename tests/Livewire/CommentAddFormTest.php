@@ -16,6 +16,7 @@ use App\Mail\CommentConfirmMail;
 use App\Models\User;
 use App\Notifications\IssueCommentedNotification;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Event;
 use PHPUnit\Framework\Attributes\TestWith;
 use Tests\TestCase;
 
@@ -30,7 +31,7 @@ class CommentAddFormTest extends TestCase
     #[TestWith(['Что означает EEXJHdFzqdFXgjMbPdP?'])]
     public function testAcceptsLegitimateComments(string $text): void
     {
-        \Event::fake(\App\Events\Stats\RuleNotRandomTokenTriggered::class);
+        Event::fake(\App\Events\Stats\RuleNotRandomTokenTriggered::class);
         \Mail::fake();
 
         $news = NewsFactory::new()->create();
@@ -45,7 +46,7 @@ class CommentAddFormTest extends TestCase
 
         $this->assertSame($text, $comment->html);
         $this->assertSame(CommentStatus::Pending, $comment->status);
-        \Event::assertNotDispatched(\App\Events\Stats\RuleNotRandomTokenTriggered::class);
+        Event::assertNotDispatched(\App\Events\Stats\RuleNotRandomTokenTriggered::class);
         \Mail::assertQueued(CommentConfirmMail::class);
     }
 
@@ -76,7 +77,7 @@ class CommentAddFormTest extends TestCase
         $magnet = MagnetFactory::new()->create();
         $user = UserFactory::new()->create();
 
-        \Event::fake(CommentPublished::class);
+        Event::fake(CommentPublished::class);
 
         \Livewire::actingAs($user)
             ->test(CommentAddForm::class, ['model' => $magnet])
@@ -90,12 +91,12 @@ class CommentAddFormTest extends TestCase
         $this->assertSame(CommentStatus::Published, $comment->status);
         $this->assertSame('Comment magnet', $comment->html);
 
-        \Event::assertDispatched(CommentPublished::class);
+        Event::assertDispatched(CommentPublished::class);
     }
 
     public function testCommentNewsAsGuest(): void
     {
-        \Event::fake([
+        Event::fake([
             UserRegisteredAuto::class,
             CommentPublished::class,
         ]);
@@ -109,7 +110,7 @@ class CommentAddFormTest extends TestCase
             ->call('submit')
             ->assertHasNoErrors();
 
-        \Event::assertDispatched(UserRegisteredAuto::class);
+        Event::assertDispatched(UserRegisteredAuto::class);
         \Mail::assertQueued(CommentConfirmMail::class);
         \Mail::assertOutgoingCount(1);
 
@@ -131,7 +132,7 @@ class CommentAddFormTest extends TestCase
 
         $this->assertSame(CommentStatus::Published, $comment->status);
 
-        \Event::assertDispatched(CommentPublished::class);
+        Event::assertDispatched(CommentPublished::class);
     }
 
     public function testCommentNewsAsUser(): void
@@ -139,7 +140,7 @@ class CommentAddFormTest extends TestCase
         $news = NewsFactory::new()->create();
         $user = UserFactory::new()->create();
 
-        \Event::fake(CommentPublished::class);
+        Event::fake(CommentPublished::class);
 
         \Livewire::actingAs($user)
             ->test(CommentAddForm::class, ['model' => $news])
@@ -155,7 +156,7 @@ class CommentAddFormTest extends TestCase
         $this->assertSame(CommentStatus::Published, $comment->status);
         $this->assertSame('Comment news', $comment->html);
 
-        \Event::assertDispatched(CommentPublished::class);
+        Event::assertDispatched(CommentPublished::class);
     }
 
     public function testCommentTripAsUser(): void
@@ -163,7 +164,7 @@ class CommentAddFormTest extends TestCase
         $trip = TripFactory::new()->create();
         $user = UserFactory::new()->create();
 
-        \Event::fake(CommentPublished::class);
+        Event::fake(CommentPublished::class);
 
         \Livewire::actingAs($user)
             ->test(CommentAddForm::class, ['model' => $trip])
@@ -177,7 +178,7 @@ class CommentAddFormTest extends TestCase
         $this->assertSame(CommentStatus::Published, $comment->status);
         $this->assertSame('Comment trip', $comment->html);
 
-        \Event::assertDispatched(CommentPublished::class);
+        Event::assertDispatched(CommentPublished::class);
     }
 
     public function testEscape(): void
@@ -209,7 +210,7 @@ class CommentAddFormTest extends TestCase
 
     public function testHoneypot(): void
     {
-        \Event::fake(\App\Events\Stats\SpammerTrappedLivewire::class);
+        Event::fake(\App\Events\Stats\SpammerTrappedLivewire::class);
         \Mail::fake();
 
         $news = NewsFactory::new()->create();
@@ -224,7 +225,7 @@ class CommentAddFormTest extends TestCase
         $this->assertDatabaseMissing('users', ['email' => 'comment-honeypot@example.com']);
         $this->assertFalse($news->comments()->exists());
 
-        \Event::assertDispatched(\App\Events\Stats\SpammerTrappedLivewire::class);
+        Event::assertDispatched(\App\Events\Stats\SpammerTrappedLivewire::class);
         \Mail::assertNothingOutgoing();
     }
 
@@ -235,7 +236,7 @@ class CommentAddFormTest extends TestCase
     #[TestWith([" \tEEXJHdFzqdFXgjMbPdP\n"])]
     public function testRejectsRandomTokenComments(string $text): void
     {
-        \Event::fake(\App\Events\Stats\RuleNotRandomTokenTriggered::class);
+        Event::fake(\App\Events\Stats\RuleNotRandomTokenTriggered::class);
         \Mail::fake();
 
         $news = NewsFactory::new()->create();
@@ -248,7 +249,7 @@ class CommentAddFormTest extends TestCase
 
         $this->assertDatabaseMissing('users', ['email' => 'random-token-comment@example.com']);
         $this->assertFalse($news->comments()->exists());
-        \Event::assertDispatchedOnce(\App\Events\Stats\RuleNotRandomTokenTriggered::class);
+        Event::assertDispatchedOnce(\App\Events\Stats\RuleNotRandomTokenTriggered::class);
         \Mail::assertNothingOutgoing();
     }
 }

@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Factory\EmailFactory;
 use App\Mail\CommentConfirmMail;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 class MailViewTest extends TestCase
@@ -18,11 +19,11 @@ class MailViewTest extends TestCase
             ->withTemplate(CommentConfirmMail::class)
             ->create();
 
-        \Event::fake(\App\Events\Stats\MailViewed::class);
+        Event::fake(\App\Events\Stats\MailViewed::class);
 
         $this->get("mail/view/{$email->getTimestamp()}/{$email->id}")
             ->assertNoContent();
 
-        \Event::assertDispatched(\App\Events\Stats\MailViewed::class);
+        Event::assertDispatched(\App\Events\Stats\MailViewed::class);
     }
 }

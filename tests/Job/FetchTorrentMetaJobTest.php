@@ -12,6 +12,7 @@ use App\Domain\Rto\RtoTopicData;
 use App\Domain\Rto\RtoTopicStatus;
 use App\Domain\Telegram\Api\TelegramApiFake;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Exceptions;
 use Tests\TestCase;
 
@@ -70,7 +71,7 @@ class FetchTorrentMetaJobTest extends TestCase
 
         $this->fakeHttpClient($topicData);
 
-        \Event::fake(\App\Events\Stats\TorrentDuplicateDeleted::class);
+        Event::fake(\App\Events\Stats\TorrentDuplicateDeleted::class);
 
         $job = new FetchTorrentMetaJob(911);
         $this->app->call($job->handle(...));
@@ -79,7 +80,7 @@ class FetchTorrentMetaJobTest extends TestCase
 
         $this->assertSame(MagnetStatus::Deleted, $magnet->status);
 
-        \Event::assertDispatched(\App\Events\Stats\TorrentDuplicateDeleted::class);
+        Event::assertDispatched(\App\Events\Stats\TorrentDuplicateDeleted::class);
     }
 
     public function testMetaUpdated(): void
@@ -121,7 +122,7 @@ class FetchTorrentMetaJobTest extends TestCase
             ...TelegramApiFake::sendMessage(),
         ]);
 
-        \Event::fake(\App\Events\Stats\TorrentNotFoundDeleted::class);
+        Event::fake(\App\Events\Stats\TorrentNotFoundDeleted::class);
 
         $job = new FetchTorrentMetaJob(911);
         $this->app->call($job->handle(...));
@@ -130,7 +131,7 @@ class FetchTorrentMetaJobTest extends TestCase
 
         $this->assertSame(MagnetStatus::Deleted, $magnet->status);
 
-        \Event::assertDispatched(\App\Events\Stats\TorrentNotFoundDeleted::class);
+        Event::assertDispatched(\App\Events\Stats\TorrentNotFoundDeleted::class);
     }
 
     public function testPremoderationLeavesTorrentMetaUntouched(): void

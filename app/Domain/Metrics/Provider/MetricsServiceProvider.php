@@ -14,6 +14,7 @@ use Illuminate\Queue\Events\JobTimedOut;
 use Illuminate\Queue\Events\UniqueJobSkipped;
 use Illuminate\Queue\Events\WorkerStarting;
 use Illuminate\Queue\Events\WorkerStopping;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 
 class MetricsServiceProvider extends ServiceProvider
@@ -29,14 +30,14 @@ class MetricsServiceProvider extends ServiceProvider
 
     private function listenForEvents(): void
     {
-        \Event::listen([
+        Event::listen([
             'App\Events\Stats\*',
         ], WildcardMetricsListener::class);
     }
 
     private function logQueueEvents(): void
     {
-        \Event::listen(JobExceptionOccurred::class, static function (JobExceptionOccurred $event): void {
+        Event::listen(JobExceptionOccurred::class, static function (JobExceptionOccurred $event): void {
             logs()->warning('queue.job_exception_occurred', [
                 'connection' => $event->connectionName,
                 'queue' => $event->job->getQueue(),
@@ -48,7 +49,7 @@ class MetricsServiceProvider extends ServiceProvider
             ]);
         });
 
-        \Event::listen(JobFailed::class, static function (JobFailed $event): void {
+        Event::listen(JobFailed::class, static function (JobFailed $event): void {
             logs()->error('queue.job_failed', [
                 'connection' => $event->connectionName,
                 'queue' => $event->job->getQueue(),
@@ -60,7 +61,7 @@ class MetricsServiceProvider extends ServiceProvider
             ]);
         });
 
-        \Event::listen(JobReleased::class, static function (JobReleased $event): void {
+        Event::listen(JobReleased::class, static function (JobReleased $event): void {
             logs()->info('queue.job_released', [
                 'connection' => $event->connectionName,
                 'queue' => $event->job->getQueue(),
@@ -70,7 +71,7 @@ class MetricsServiceProvider extends ServiceProvider
             ]);
         });
 
-        \Event::listen(JobReleasedAfterException::class, static function (JobReleasedAfterException $event): void {
+        Event::listen(JobReleasedAfterException::class, static function (JobReleasedAfterException $event): void {
             logs()->warning('queue.job_released_after_exception', [
                 'connection' => $event->connectionName,
                 'queue' => $event->job->getQueue(),
@@ -83,7 +84,7 @@ class MetricsServiceProvider extends ServiceProvider
             ]);
         });
 
-        \Event::listen(JobTimedOut::class, static function (JobTimedOut $event): void {
+        Event::listen(JobTimedOut::class, static function (JobTimedOut $event): void {
             logs()->error('queue.job_timed_out', [
                 'connection' => $event->connectionName,
                 'queue' => $event->job->getQueue(),
@@ -94,7 +95,7 @@ class MetricsServiceProvider extends ServiceProvider
             ]);
         });
 
-        \Event::listen(UniqueJobSkipped::class, static function (UniqueJobSkipped $event): void {
+        Event::listen(UniqueJobSkipped::class, static function (UniqueJobSkipped $event): void {
             logs()->info('queue.unique_job_skipped', [
                 'connection' => $event->job->connection ?? null,
                 'queue' => $event->job->queue ?? null,
@@ -105,7 +106,7 @@ class MetricsServiceProvider extends ServiceProvider
             ]);
         });
 
-        \Event::listen(WorkerStarting::class, static function (WorkerStarting $event): void {
+        Event::listen(WorkerStarting::class, static function (WorkerStarting $event): void {
             logs()->info('queue.worker_starting', [
                 'connection' => $event->connectionName,
                 'queue' => $event->queue,
@@ -113,7 +114,7 @@ class MetricsServiceProvider extends ServiceProvider
             ]);
         });
 
-        \Event::listen(WorkerStopping::class, static function (WorkerStopping $event): void {
+        Event::listen(WorkerStopping::class, static function (WorkerStopping $event): void {
             logs()->info('queue.worker_stopping', [
                 'connection' => $event->connectionName,
                 'queue' => $event->queue,
@@ -129,15 +130,15 @@ class MetricsServiceProvider extends ServiceProvider
 
     private function triggerStatsOnEvents(): void
     {
-        \Event::listen(JobProcessed::class, static function () {
+        Event::listen(JobProcessed::class, static function () {
             event(new \App\Events\Stats\JobProcessed);
         });
 
-        \Event::listen(MessageSent::class, static function () {
+        Event::listen(MessageSent::class, static function () {
             event(new \App\Events\Stats\MailSent);
         });
 
-        \Event::listen(NotificationSent::class, static function () {
+        Event::listen(NotificationSent::class, static function () {
             event(new \App\Events\Stats\NotificationSent);
         });
     }

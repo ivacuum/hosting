@@ -5,6 +5,7 @@ namespace Tests\Feature\Metrics;
 use App\Domain\Metrics\Action\PushMetricAction;
 use App\Domain\Metrics\Listener\WildcardMetricsListener;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 class WildcardMetricsListenerTest extends TestCase
@@ -23,7 +24,7 @@ class WildcardMetricsListenerTest extends TestCase
                 'data' => $event,
             ]]);
 
-        \Event::listen(['App\Events\Stats\*'], WildcardMetricsListener::class);
+        Event::listen(['App\Events\Stats\*'], WildcardMetricsListener::class);
 
         event($event);
 
@@ -44,7 +45,7 @@ class WildcardMetricsListenerTest extends TestCase
                 'data' => $event,
             ]]);
 
-        \Event::listen(['App\Events\Stats\*'], WildcardMetricsListener::class);
+        Event::listen(['App\Events\Stats\*'], WildcardMetricsListener::class);
 
         event($event);
 

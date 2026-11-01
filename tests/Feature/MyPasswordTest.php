@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Factory\UserFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 class MyPasswordTest extends TestCase
@@ -21,7 +22,7 @@ class MyPasswordTest extends TestCase
     {
         $newPassword = 'top-secret ';
 
-        \Event::fake(\App\Events\Stats\MyPasswordChanged::class);
+        Event::fake(\App\Events\Stats\MyPasswordChanged::class);
 
         $this->be($user = UserFactory::new()->create())
             ->put('my/password', ['new_password' => $newPassword])
@@ -32,7 +33,7 @@ class MyPasswordTest extends TestCase
 
         $this->assertTrue(\Hash::check($newPassword, $user->password));
 
-        \Event::assertDispatched(\App\Events\Stats\MyPasswordChanged::class);
+        Event::assertDispatched(\App\Events\Stats\MyPasswordChanged::class);
     }
 
     public function testUpdatePassword(): void
@@ -40,7 +41,7 @@ class MyPasswordTest extends TestCase
         $password = 'top-secret';
         $newPassword = 'password ';
 
-        \Event::fake(\App\Events\Stats\MyPasswordChanged::class);
+        Event::fake(\App\Events\Stats\MyPasswordChanged::class);
 
         $this->be($user = UserFactory::new()->withPassword($password)->create())
             ->put('my/password', ['password' => $password, 'new_password' => $newPassword])
@@ -51,6 +52,6 @@ class MyPasswordTest extends TestCase
 
         $this->assertTrue(\Hash::check($newPassword, $user->password));
 
-        \Event::assertDispatched(\App\Events\Stats\MyPasswordChanged::class);
+        Event::assertDispatched(\App\Events\Stats\MyPasswordChanged::class);
     }
 }

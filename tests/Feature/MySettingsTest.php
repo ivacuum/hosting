@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Domain\Locale;
 use App\Factory\UserFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 class MySettingsTest extends TestCase
@@ -22,7 +23,7 @@ class MySettingsTest extends TestCase
     {
         $user = UserFactory::new()->withLocale(Locale::Rus)->create();
 
-        \Event::fake(\App\Events\Stats\MySettingsChanged::class);
+        Event::fake(\App\Events\Stats\MySettingsChanged::class);
 
         $this->be($user)
             ->put('my/settings', ['locale' => Locale::Eng->value])
@@ -33,7 +34,7 @@ class MySettingsTest extends TestCase
 
         $this->assertSame(Locale::Eng, $user->locale);
 
-        \Event::assertDispatched(\App\Events\Stats\MySettingsChanged::class);
+        Event::assertDispatched(\App\Events\Stats\MySettingsChanged::class);
     }
 
     public function testUpdateTorrentShortTitle(): void
@@ -42,7 +43,7 @@ class MySettingsTest extends TestCase
 
         $this->assertSame(0, $user->magnet_short_title);
 
-        \Event::fake(\App\Events\Stats\MySettingsChanged::class);
+        Event::fake(\App\Events\Stats\MySettingsChanged::class);
 
         $this->be($user)
             ->put('my/settings', ['magnet_short_title' => 1])
@@ -53,6 +54,6 @@ class MySettingsTest extends TestCase
 
         $this->assertSame(1, $user->magnet_short_title);
 
-        \Event::assertDispatched(\App\Events\Stats\MySettingsChanged::class);
+        Event::assertDispatched(\App\Events\Stats\MySettingsChanged::class);
     }
 }

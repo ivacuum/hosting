@@ -7,6 +7,7 @@ use App\Livewire\FeedbackForm;
 use App\Models\Issue;
 use App\Notifications\IssueReportedNotification;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 class FeedbackFormTest extends TestCase
@@ -30,7 +31,7 @@ class FeedbackFormTest extends TestCase
 
     public function testAsGuest(): void
     {
-        \Event::fake([
+        Event::fake([
             \App\Events\Stats\IssueAdded::class,
             \App\Events\Stats\UserRegisteredAuto::class,
             \App\Events\Stats\UserRegisteredAutoWhenIssueAdded::class,
@@ -52,16 +53,16 @@ class FeedbackFormTest extends TestCase
         $this->assertSame('title', $issue->title);
         $this->assertSame('some text from the guest " & \' <>', $issue->text);
 
-        \Event::assertDispatched(\App\Events\Stats\IssueAdded::class);
-        \Event::assertDispatched(\App\Events\Stats\UserRegisteredAuto::class);
-        \Event::assertDispatched(\App\Events\Stats\UserRegisteredAutoWhenIssueAdded::class);
+        Event::assertDispatched(\App\Events\Stats\IssueAdded::class);
+        Event::assertDispatched(\App\Events\Stats\UserRegisteredAuto::class);
+        Event::assertDispatched(\App\Events\Stats\UserRegisteredAutoWhenIssueAdded::class);
     }
 
     public function testAsUserWithLogin(): void
     {
         $user = UserFactory::new()->withLogin('post-issue')->create();
 
-        \Event::fake(\App\Events\Stats\IssueAdded::class);
+        Event::fake(\App\Events\Stats\IssueAdded::class);
         \Notification::fake();
 
         \Livewire::actingAs($user)
@@ -77,12 +78,12 @@ class FeedbackFormTest extends TestCase
         $this->assertSame('title', $issue->title);
         $this->assertSame('some text from the user', $issue->text);
 
-        \Event::assertDispatched(\App\Events\Stats\IssueAdded::class);
+        Event::assertDispatched(\App\Events\Stats\IssueAdded::class);
     }
 
     public function testHoneypot(): void
     {
-        \Event::fake(\App\Events\Stats\SpammerTrappedLivewire::class);
+        Event::fake(\App\Events\Stats\SpammerTrappedLivewire::class);
         \Notification::fake();
 
         \Livewire::test(FeedbackForm::class)
@@ -98,7 +99,7 @@ class FeedbackFormTest extends TestCase
 
         $this->assertNull($issue);
 
-        \Event::assertDispatched(\App\Events\Stats\SpammerTrappedLivewire::class);
+        Event::assertDispatched(\App\Events\Stats\SpammerTrappedLivewire::class);
         \Notification::assertNothingSent();
     }
 

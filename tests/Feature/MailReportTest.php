@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Factory\EmailFactory;
 use App\Mail\CommentConfirmMail;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 class MailReportTest extends TestCase
@@ -18,7 +19,7 @@ class MailReportTest extends TestCase
             ->withTemplate(CommentConfirmMail::class)
             ->create();
 
-        \Event::fake(\App\Events\MailReported::class);
+        Event::fake(\App\Events\MailReported::class);
 
         $this->be($email->user)
             ->get("mail/report/{$email->getTimestamp()}/{$email->id}")
@@ -26,6 +27,6 @@ class MailReportTest extends TestCase
             ->assertRedirect('/')
             ->assertSessionHas('message');
 
-        \Event::assertDispatched(\App\Events\MailReported::class);
+        Event::assertDispatched(\App\Events\MailReported::class);
     }
 }

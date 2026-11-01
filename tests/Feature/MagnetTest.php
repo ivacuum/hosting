@@ -16,6 +16,7 @@ use App\Factory\UserFactory;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Exceptions;
 use Illuminate\Support\Sleep;
 use Tests\TestCase;
@@ -114,13 +115,13 @@ class MagnetTest extends TestCase
 
     public function testPromo(): void
     {
-        \Event::fake(\App\Events\Stats\TorrentPromoViewed::class);
+        Event::fake(\App\Events\Stats\TorrentPromoViewed::class);
 
         $this->get('torrent')
             ->assertOk()
             ->assertHasCustomTitle();
 
-        \Event::assertDispatched(\App\Events\Stats\TorrentPromoViewed::class);
+        Event::assertDispatched(\App\Events\Stats\TorrentPromoViewed::class);
     }
 
     public function testRequestRelease(): void
@@ -195,7 +196,7 @@ class MagnetTest extends TestCase
 
         $this->fakeHttpRequests($stub);
 
-        \Event::fake(\App\Events\Stats\TorrentAddedAnonymously::class);
+        Event::fake(\App\Events\Stats\TorrentAddedAnonymously::class);
 
         $user = User::query()->find(Config::MagnetAnonymousReleaser->get())
             ?? UserFactory::new()->withId(Config::MagnetAnonymousReleaser->get())->create();
@@ -214,7 +215,7 @@ class MagnetTest extends TestCase
         $this->assertSame($stub->rto_id, $magnet->rto_id);
         $this->assertSame($stub->category_id, $magnet->category_id);
 
-        \Event::assertDispatched(\App\Events\Stats\TorrentAddedAnonymously::class);
+        Event::assertDispatched(\App\Events\Stats\TorrentAddedAnonymously::class);
         \Notification::assertCount(1);
         \Notification::assertSentTimes(AnonymousMagnetNotification::class, 1);
     }
@@ -226,7 +227,7 @@ class MagnetTest extends TestCase
 
         $this->fakeHttpRequests($stub);
 
-        \Event::fake(\App\Events\Stats\TorrentAdded::class);
+        Event::fake(\App\Events\Stats\TorrentAdded::class);
 
         $this->be($user);
 
@@ -243,7 +244,7 @@ class MagnetTest extends TestCase
         $this->assertSame($stub->rto_id, $magnet->rto_id);
         $this->assertSame($stub->category_id, $magnet->category_id);
 
-        \Event::assertDispatched(\App\Events\Stats\TorrentAdded::class);
+        Event::assertDispatched(\App\Events\Stats\TorrentAdded::class);
     }
 
     public function testStoreDuplicate(): void
@@ -253,7 +254,7 @@ class MagnetTest extends TestCase
 
         $this->fakeHttpRequests($magnet);
 
-        \Event::fake(\App\Events\Stats\TorrentDuplicateFound::class);
+        Event::fake(\App\Events\Stats\TorrentDuplicateFound::class);
 
         $this->be($user);
 
@@ -263,7 +264,7 @@ class MagnetTest extends TestCase
 
         $this->assertCount(0, $user->magnets);
 
-        \Event::assertDispatched(\App\Events\Stats\TorrentDuplicateFound::class);
+        Event::assertDispatched(\App\Events\Stats\TorrentDuplicateFound::class);
     }
 
     public function testStoreWithCurlError(): void
@@ -347,7 +348,7 @@ class MagnetTest extends TestCase
 
         $this->fakeHttpRequests($stub);
 
-        \Event::fake(\App\Events\Stats\TorrentAdded::class);
+        Event::fake(\App\Events\Stats\TorrentAdded::class);
 
         $this->be($user);
 
@@ -363,7 +364,7 @@ class MagnetTest extends TestCase
 
         $this->assertSame('Chloé Ragnarök "M&M\'s"', $magnet->title);
 
-        \Event::assertDispatched(\App\Events\Stats\TorrentAdded::class);
+        Event::assertDispatched(\App\Events\Stats\TorrentAdded::class);
     }
 
     private function fakeHttpRequests(Magnet $stub): void

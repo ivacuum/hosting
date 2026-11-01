@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Events\Stats;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Event;
 use PHPUnit\Framework\Attributes\TestWith;
 use Tests\TestCase;
 
@@ -13,7 +14,7 @@ class BeaconTest extends TestCase
 
     public function testBrowserPayloadWithCsrfTokenIsAccepted(): void
     {
-        \Event::fake(Stats\YoutubeOpened::class);
+        Event::fake(Stats\YoutubeOpened::class);
 
         $payload = $this->payload([['event' => 'YoutubeOpened']]);
         $payload['_token'] = csrf_token();
@@ -21,7 +22,7 @@ class BeaconTest extends TestCase
         $this->post('js/beacon', $payload)
             ->assertNoContent();
 
-        \Event::assertDispatched(Stats\YoutubeOpened::class);
+        Event::assertDispatched(Stats\YoutubeOpened::class);
     }
 
     public function testEmptyEvent(): void
@@ -32,7 +33,7 @@ class BeaconTest extends TestCase
 
     public function testEveryPayload(): void
     {
-        \Event::fake([
+        Event::fake([
             Stats\YoutubeOpened::class,
             Stats\NewsViewed::class,
             Stats\Photo2000Viewed::class,
@@ -47,9 +48,9 @@ class BeaconTest extends TestCase
         $this->post('js/beacon', $payload)
             ->assertNoContent();
 
-        \Event::assertDispatched(Stats\YoutubeOpened::class);
-        \Event::assertDispatched(Stats\NewsViewed::class, static fn (Stats\NewsViewed $event) => $event->id === 123);
-        \Event::assertDispatched(Stats\Photo2000Viewed::class, static fn (Stats\Photo2000Viewed $event) => $event->slug === 'prague.2017.05/IMG_0128.jpg');
+        Event::assertDispatched(Stats\YoutubeOpened::class);
+        Event::assertDispatched(Stats\NewsViewed::class, static fn (Stats\NewsViewed $event) => $event->id === 123);
+        Event::assertDispatched(Stats\Photo2000Viewed::class, static fn (Stats\Photo2000Viewed $event) => $event->slug === 'prague.2017.05/IMG_0128.jpg');
     }
 
     public function testInvalidPayload(): void
@@ -75,7 +76,7 @@ class BeaconTest extends TestCase
     #[TestWith([Stats\Photo2000Viewed::class, '/prague.2017.05/IMG_0128.jpg', 'prague.2017.05/IMG_0128.jpg'])]
     public function testPhotoViewCounters(string $event, string $rawSlug, string $processedSlug): void
     {
-        \Event::fake($event);
+        Event::fake($event);
 
         $payload = $this->payload([
             [
@@ -87,7 +88,7 @@ class BeaconTest extends TestCase
         $this->post('js/beacon', $payload)
             ->assertNoContent();
 
-        \Event::assertDispatched($event, static fn ($e) => $e->slug === $processedSlug);
+        Event::assertDispatched($event, static fn ($e) => $e->slug === $processedSlug);
     }
 
     #[TestWith([Stats\HiraganaAnswered::class])]
@@ -106,14 +107,14 @@ class BeaconTest extends TestCase
     #[TestWith([Stats\YoutubeClosed::class])]
     public function testSimpleCounters(string $event): void
     {
-        \Event::fake($event);
+        Event::fake($event);
 
         $payload = $this->payload([['event' => class_basename($event)]]);
 
         $this->post('js/beacon', $payload)
             ->assertNoContent();
 
-        \Event::assertDispatched($event);
+        Event::assertDispatched($event);
     }
 
     public function testUnknownEvent(): void

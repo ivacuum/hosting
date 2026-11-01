@@ -8,6 +8,7 @@ use App\Domain\Telegram\Factory\LinkRequestFactory;
 use App\Domain\Telegram\TelegramUpdateCallbackQueryFactory;
 use App\Domain\Telegram\TelegramUpdateFactory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Event;
 use PHPUnit\Framework\Attributes\TestWith;
 use Tests\TestCase;
 
@@ -172,7 +173,7 @@ class TelegramBotTest extends TestCase
 
     public function testStartCommandWithParameter(): void
     {
-        \Event::fake(\App\Events\Stats\TelegramAccountLinked::class);
+        Event::fake(\App\Events\Stats\TelegramAccountLinked::class);
 
         $linkRequest = LinkRequestFactory::new()
             ->withToken('test')
@@ -186,7 +187,7 @@ class TelegramBotTest extends TestCase
                 ->make()
         );
 
-        \Event::assertDispatched(\App\Events\Stats\TelegramAccountLinked::class);
+        Event::assertDispatched(\App\Events\Stats\TelegramAccountLinked::class);
 
         $this->assertSame('Запомнили ваш аккаунт. Теперь вы можете получать уведомления от сайта прямо в этот диалог.', $response->json('text'));
         $this->assertSame(1, $response->json('chat_id'));

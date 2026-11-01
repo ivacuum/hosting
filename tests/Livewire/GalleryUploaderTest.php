@@ -7,6 +7,7 @@ use App\Livewire\GalleryUploader;
 use App\Models\Image;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Event;
 use Livewire\Features\SupportFileUploads\FileUploadConfiguration;
 use Tests\TestCase;
 
@@ -22,7 +23,7 @@ class GalleryUploaderTest extends TestCase
         $file = UploadedFile::fake()->image('screenshot.png');
         $user = UserFactory::new()->create();
 
-        \Event::fake(\App\Events\Stats\GalleryImageUploaded::class);
+        Event::fake(\App\Events\Stats\GalleryImageUploaded::class);
 
         \Livewire::actingAs($user)
             ->test(GalleryUploader::class)
@@ -30,7 +31,7 @@ class GalleryUploaderTest extends TestCase
 
         $image = Image::query()->firstWhere(['user_id' => $user->id]);
 
-        \Event::assertDispatched(\App\Events\Stats\GalleryImageUploaded::class);
+        Event::assertDispatched(\App\Events\Stats\GalleryImageUploaded::class);
         \Storage::disk('gallery')->assertExists("{$image->splitDate()}/{$image->slug}");
         \Storage::disk('gallery')->assertExists("{$image->splitDate()}/t/{$image->slug}");
     }

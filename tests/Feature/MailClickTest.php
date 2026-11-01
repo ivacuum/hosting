@@ -6,6 +6,7 @@ use App\Factory\EmailFactory;
 use App\Factory\UserFactory;
 use App\Mail\CommentConfirmMail;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 use Uri\WhatWg\Url;
 
@@ -28,7 +29,7 @@ class MailClickTest extends TestCase
         $goto = '/404/';
         $clicks = $email->clicks;
 
-        \Event::fake([
+        Event::fake([
             \App\Events\Stats\MailClicked::class,
             \App\Events\Stats\UserAutologinWithEmailLink::class,
         ]);
@@ -45,8 +46,8 @@ class MailClickTest extends TestCase
         $this->assertAuthenticated();
         $this->assertTrue($email->user->isActive());
 
-        \Event::assertDispatched(\App\Events\Stats\MailClicked::class);
-        \Event::assertDispatched(\App\Events\Stats\UserAutologinWithEmailLink::class);
+        Event::assertDispatched(\App\Events\Stats\MailClicked::class);
+        Event::assertDispatched(\App\Events\Stats\UserAutologinWithEmailLink::class);
     }
 
     public function testDayOldMailRedirectsWithoutActivationOrLogin(): void
