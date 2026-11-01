@@ -45,9 +45,10 @@ class UrlHelper
         return $this;
     }
 
+    /** @param 'asc'|'desc'|null $defaultDir */
     public function sort(string $key, string|null $defaultDir = null): string
     {
-        if ($this->sort->key !== null && $this->sort->key !== $key) {
+        if ($this->sort->key !== $key) {
             // При смене поля сортировки используется
             // направление сортировки по умолчанию
             $dir = match ($defaultDir ?? $this->sort->direction->value) {

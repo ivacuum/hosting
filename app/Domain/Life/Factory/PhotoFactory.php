@@ -20,7 +20,7 @@ class PhotoFactory
 
     private int|Gig|GigFactory|null $gig = null;
     private int|Trip|TripFactory|null $trip = null;
-    private int|User|UserFactory|null $user = 1;
+    private int|User|UserFactory $user = 1;
 
     /** @var list<Tag|TagFactory> */
     private array $tags = [];

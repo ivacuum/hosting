@@ -2,20 +2,18 @@
 
 namespace App\Domain\Spatial;
 
+use Illuminate\Contracts\Database\Query\Expression;
 use Illuminate\Database\Grammar;
-use Illuminate\Database\Query\Expression;
 
-class SpatialExpression extends Expression
+class SpatialExpression implements Expression
 {
+    public function __construct(private LineString|Point|Polygon $geometry) {}
+
     #[\Override]
-    public function getValue(Grammar $grammar)
+    public function getValue(Grammar $grammar): string
     {
-        if (!$this->value instanceof GeometryInterface) {
-            throw new \DomainException('Unexpected value type.');
-        }
+        $wkt = $grammar->escape($this->geometry->toWkt());
 
-        $wkt = $grammar->escape($this->value->toWkt());
-
-        return "ST_GeomFromText({$wkt}, {$this->value->srid}, 'axis-order=long-lat')";
+        return "ST_GeomFromText({$wkt}, {$this->geometry->srid}, 'axis-order=long-lat')";
     }
 }

@@ -8,6 +8,7 @@ class GetSortDirAction
 {
     public function __construct(private Request $request) {}
 
+    /** @return 'asc'|'desc' */
     public function execute(string $defaultSort): string
     {
         $sort = $this->request->input('sk', $defaultSort);

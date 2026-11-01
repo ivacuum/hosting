@@ -12,7 +12,7 @@ class UserFactory
     private bool $root = false;
     private int|null $id = null;
     private int|null $telegramUserId = null;
-    private int|null $magnetShortTitle = 0;
+    private int $magnetShortTitle = 0;
     private string|null $email = null;
     private string|null $login = null;
     private string|null $password = null;

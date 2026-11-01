@@ -32,10 +32,7 @@ class CommentObserver
     public function saving(Comment $comment): void
     {
         if ($comment->isDirty('status')) {
-            /** @var CommentStatus $was */
-            $was = $comment->getOriginal('status');
-
-            if ($was?->isPending() && $comment->status->isPublished()) {
+            if ($comment->getOriginal('status') === CommentStatus::Pending && $comment->status->isPublished()) {
                 $comment->created_at = now();
             }
         }

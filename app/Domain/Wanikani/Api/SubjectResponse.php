@@ -19,6 +19,8 @@ class SubjectResponse
             'radical' => RadicalEntity::fromArray($response->json('id'), $response->json('data')),
             'kanji' => KanjiEntity::fromArray($response->json('id'), $response->json('data')),
             'vocabulary' => VocabularyEntity::fromArray($response->json('id'), $response->json('data')),
+            'kana_vocabulary' => VocabularyEntity::fromArray($response->json('id'), $response->json('data'), true),
+            default => throw new \UnexpectedValueException("Unknown WaniKani subject type: {$response->json('object')}"),
         };
     }
 

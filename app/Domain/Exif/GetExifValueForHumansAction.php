@@ -11,7 +11,7 @@ class GetExifValueForHumansAction
     public function execute(string $key, int|string|array|null $value): string
     {
         return match ($key) {
-            'FileDateTime' => CarbonImmutable::parse($value)?->toDateTimeString(),
+            'FileDateTime' => CarbonImmutable::parse($value)->toDateTimeString(),
             'FileSize' => \ViewHelper::size($value),
             'FileType' => match ($value) {
                 2 => 'JPEG',

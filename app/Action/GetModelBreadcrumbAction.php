@@ -59,6 +59,7 @@ class GetModelBreadcrumbAction
             $model instanceof Trip => $model->title,
             $model instanceof User => $model->email ?? '',
             $model instanceof Vocabulary => $model->character,
+            default => throw new \InvalidArgumentException('Unsupported model: ' . $model::class),
         };
     }
 }

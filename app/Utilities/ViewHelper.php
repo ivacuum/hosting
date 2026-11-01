@@ -98,11 +98,11 @@ class ViewHelper
         return $decimal->format($number);
     }
 
-    public function oldString(string $key, mixed $default = null): string
+    public function oldString(string $key, string|int|float|bool|null $default = null): string
     {
         $value = old($key, $default);
 
-        return is_scalar($value) || $value instanceof \Stringable
+        return is_scalar($value)
             ? (string) $value
             : '';
     }

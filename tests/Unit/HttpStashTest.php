@@ -156,8 +156,11 @@ class HttpStashTest extends TestCase
         };
         $send = fn () => $request->send(Http::createPendingRequest());
 
-        $this->assertSame('body', $stash->store($request, $send)->body());
-        $this->assertSame('body', $stash->store($request, $send)->body());
+        $first = $stash->store($request, $send);
+        $second = $stash->store($request, $send);
+
+        $this->assertSame('body', $first->body());
+        $this->assertSame('body', $second->body());
         Http::assertSentCount(2);
     }
 

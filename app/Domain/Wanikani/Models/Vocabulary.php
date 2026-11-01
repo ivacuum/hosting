@@ -25,7 +25,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
  * @property VocabularyAudio|string $male_audio
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
- * @property Burnable $burnable
+ * @property Burnable|null $burnable
  *
  * @mixin \Eloquent
  */

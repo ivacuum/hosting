@@ -49,6 +49,7 @@ class CyrillicizeJamoAction
             'ㅙ' => ['вэ'],
             'ㅢ' => ['ый', '-и', '-е'],
             'ㅘ' => ['ва'],
+            default => throw new \InvalidArgumentException("Unsupported jamo: {$jamo}"),
         };
     }
 }

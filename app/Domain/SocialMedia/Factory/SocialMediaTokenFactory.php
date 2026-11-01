@@ -12,7 +12,7 @@ class SocialMediaTokenFactory
     private string|null $token = null;
     private CarbonInterface|null $expiresAt = null;
 
-    private int|User|UserFactory|null $user = 1;
+    private int|User|UserFactory $user = 1;
 
     public function create(): SocialMediaToken
     {

@@ -42,6 +42,7 @@ class VocabularyTrainer extends Component
                 $this->vocab->toKatakana() => event(new \App\Events\Stats\VocabularyAnsweredKatakana),
                 $this->vocab->firstKana() => event(new \App\Events\Stats\VocabularyAnsweredHiragana),
                 $this->vocab->character => event(new \App\Events\Stats\VocabularyAnsweredKanji),
+                default => throw new \LogicException('Accepted answer has no matching analytics event.'),
             };
 
             $this->answered++;

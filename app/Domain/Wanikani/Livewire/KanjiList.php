@@ -17,7 +17,7 @@ use Livewire\Component;
 
 class KanjiList extends Component
 {
-    /** @var \Illuminate\Database\Eloquent\Collection|Kanji[] */
+    /** @var \Illuminate\Database\Eloquent\Collection<int, Kanji>|null */
     public $kanjis;
 
     public int|null $level = null;

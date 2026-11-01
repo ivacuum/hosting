@@ -22,7 +22,7 @@ class EmailFactory
         $email = $this->make();
         $email->user_id ??= ($this->user instanceof UserFactory ? $this->user : UserFactory::new())->create()->id;
 
-        if ($email->rel_type === new User()->getMorphClass() && $email->rel_id === null) {
+        if ($email->rel_type === new User()->getMorphClass() && $this->relation === null) {
             $email->rel_id = $email->user_id;
         }
 

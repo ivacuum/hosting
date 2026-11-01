@@ -40,7 +40,7 @@ class SocialMediaPostObserver
 
         $was = $post->getOriginal('status');
 
-        if ($was === null) {
+        if (!$was instanceof SocialMediaPostStatus) {
             return;
         }
 

@@ -15,7 +15,7 @@ use Livewire\Component;
 
 class VocabularyList extends Component
 {
-    /** @var \Illuminate\Database\Eloquent\Collection|\App\Domain\Wanikani\Models\Vocabulary[] */
+    /** @var \Illuminate\Database\Eloquent\Collection<int, \App\Domain\Wanikani\Models\Vocabulary>|null */
     public $vocabularies;
     public bool $flat;
     public bool $range = false;

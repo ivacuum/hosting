@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * @property int $rel_id
  * @property string $rel_type
  * @property string $slug
- * @property Spatial\Point $point
+ * @property Spatial\Point|null $point
  * @property PhotoStatus $status
  * @property int $views
  * @property int $altitude

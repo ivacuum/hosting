@@ -9,7 +9,7 @@ class EmailObserver
 {
     public function creating(Email $email): void
     {
-        if (!$email->locale) {
+        if ($email->getAttribute('locale') === null) {
             $email->locale = Locale::forNotification(\App::getLocale());
         }
     }

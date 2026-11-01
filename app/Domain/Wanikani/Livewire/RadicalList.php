@@ -12,7 +12,7 @@ use Livewire\Component;
 
 class RadicalList extends Component
 {
-    /** @var \Illuminate\Database\Eloquent\Collection<int, \App\Domain\Wanikani\Models\Radical> */
+    /** @var \Illuminate\Database\Eloquent\Collection<int, \App\Domain\Wanikani\Models\Radical>|null */
     public $radicals;
 
     public int|null $level = null;

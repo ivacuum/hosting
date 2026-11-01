@@ -11,7 +11,7 @@ class UserObserver
 {
     public function creating(User $user): void
     {
-        if (!$user->locale) {
+        if ($user->getAttribute('locale') === null) {
             $user->locale = Locale::forNotification(\App::getLocale());
         }
 

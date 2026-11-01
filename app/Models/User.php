@@ -44,7 +44,7 @@ use Illuminate\Notifications\Notifiable;
  * @property-write \DateTimeInterface|string|null $last_login_at
  * @property \Carbon\CarbonImmutable $password_changed_at
  * @property \Carbon\CarbonImmutable $email_verified_at
- * @property \Carbon\CarbonImmutable $telegram_linked_at
+ * @property \Carbon\CarbonImmutable|null $telegram_linked_at
  * @property \Illuminate\Database\Eloquent\Collection<int, ChatMessage> $chatMessages
  * @property \Illuminate\Database\Eloquent\Collection<int, Comment> $comments
  * @property \Illuminate\Database\Eloquent\Collection<int, Email> $emails
@@ -211,7 +211,7 @@ class User extends \Illuminate\Foundation\Auth\User implements HasLocalePreferen
     #[\Override]
     public function preferredLocale(): string|null
     {
-        return $this->locale?->value;
+        return $this->locale->value;
     }
 
     public function publicName(): string

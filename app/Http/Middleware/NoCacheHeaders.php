@@ -6,7 +6,7 @@ class NoCacheHeaders
 {
     public function handle($request, \Closure $next)
     {
-        /** @var \Illuminate\Http\Response $response */
+        /** @var \Symfony\Component\HttpFoundation\Response $response */
         $response = $next($request);
 
         if (method_exists($response, 'header')) {

@@ -36,7 +36,7 @@ class FetchTorrentMetaJob extends AbstractJob
             ->get();
 
         foreach ($topics as $id => $response) {
-            /** @var \App\Domain\Magnet\Models\Magnet $magnet */
+            /** @var \App\Domain\Magnet\Models\Magnet|null $magnet */
             $magnet = $magnets->firstWhere('rto_id', $id);
 
             // Раздача уже заменена

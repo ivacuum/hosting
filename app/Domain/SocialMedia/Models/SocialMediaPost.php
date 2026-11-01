@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property \Carbon\CarbonImmutable $updated_at
  * @property-read \Carbon\CarbonImmutable|null $published_at
  * @property-write \DateTimeInterface|string|null $published_at
- * @property \Carbon\CarbonImmutable $excluded_at
+ * @property \Carbon\CarbonImmutable|null $excluded_at
  * @property Photo $photo
  * @property User $user
  *

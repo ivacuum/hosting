@@ -26,7 +26,7 @@ use Illuminate\Database\Eloquent\Relations\Relation;
  * @property string $html
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
- * @property Issue|Magnet|News|Trip $rel
+ * @property Issue|Magnet|News|Trip|null $rel
  * @property User $user
  *
  * @mixin \Eloquent

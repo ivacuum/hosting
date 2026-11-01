@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
  * @property string $nanori
  * @property \Carbon\CarbonImmutable $created_at
  * @property \Carbon\CarbonImmutable $updated_at
- * @property Burnable $burnable
+ * @property Burnable|null $burnable
  * @property \Illuminate\Database\Eloquent\Collection<int, Burnable> $burnables
  * @property \Illuminate\Database\Eloquent\Collection<int, Radical> $radicals
  * @property \Illuminate\Database\Eloquent\Collection<int, Kanji> $similar

@@ -17,6 +17,7 @@ class SubjectsResponse
                 'kanji' => KanjiEntity::fromArray($object['id'], $object['data']),
                 'vocabulary' => VocabularyEntity::fromArray($object['id'], $object['data']),
                 'kana_vocabulary' => VocabularyEntity::fromArray($object['id'], $object['data'], true),
+                default => throw new \UnexpectedValueException("Unknown WaniKani subject type: {$object['object']}"),
             });
     }
 

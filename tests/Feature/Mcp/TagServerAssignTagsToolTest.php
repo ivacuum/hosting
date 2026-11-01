@@ -49,7 +49,7 @@ class TagServerAssignTagsToolTest extends TestCase
                 ->etc()
             );
 
-        $this->assertSame(2, $photo->refresh()->tags()->count());
+        $this->assertSame(2, $photo->tags()->count());
     }
 
     public function testAssignTagsRejectsUnknownPhoto(): void
