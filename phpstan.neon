@@ -1,0 +1,31 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - vendor/phpstan/phpstan-mockery/extension.neon
+
+parameters:
+    level: 5
+    paths:
+        - app
+        - bootstrap/app.php
+        - bootstrap/providers.php
+        - config
+        - database
+        - routes
+        - tests
+    excludePaths:
+        # Octane пока не установлен, конфиг сохранен на будущее
+        - config/octane.php
+    tmpDir: storage/framework/cache/phpstan
+    additionalConstructors:
+        - Illuminate\Foundation\Http\FormRequest::passedValidation
+    ignoreErrors:
+        # PHPStan не считает `new \ExcimerProfiler` точкой выброса исключения, поэтому не видит, что в catch профайлер может быть еще не создан
+        -
+            identifier: nullsafe.neverNull
+            path: app/Domain/Profiling/Profiler.php
+            count: 2
+        # Laravel объявляет Response::cookies() ненулевым, но у восстановленного снимка кук нет
+        -
+            identifier: method.impossibleType
+            path: tests/Unit/HttpResponseSnapshotTest.php
+            count: 1

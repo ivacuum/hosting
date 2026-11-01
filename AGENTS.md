@@ -57,6 +57,11 @@ Prefix every Composer and Artisan command with `AI_AGENT=1` for Laravel Pao's co
 - Run the narrowest relevant test file with `php artisan test --compact <path>` or use `--filter=<name>`.
 - Use targeted tests by default. Broaden testing when a change affects shared behavior or targeted results leave a concrete concern unresolved.
 
+### Static analysis
+
+- After you change PHP code, run `composer stan`, not `vendor/bin/phpstan`. Only the script sets `APP_ENV=testing`, which Larastan needs to see Livewire's testing macros.
+- Don't add a baseline or `@phpstan-ignore` comments. Use a narrow `ignoreErrors` entry with an explaining comment only for a confirmed false positive.
+
 ## Translate content
 
 Use Laravel's `__(key)` or the following syntax for translations:

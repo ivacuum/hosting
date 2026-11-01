@@ -29,12 +29,14 @@
     "brianium/paratest": "^7.0",
     "fakerphp/faker": "^1.10",
     "fruitcake/laravel-debugbar": "^4.0",
+    "larastan/larastan": "^3.13",
     "laravel/boost": "^2.0",
     "laravel/pao": "^1.0",
     "laravel/pint": "^1.0",
     "laravel/tinker": "^3.0",
     "mockery/mockery": "^1.0",
     "nunomaduro/collision": "^8.1",
+    "phpstan/phpstan-mockery": "^2.0",
     "phpunit/phpunit": "^13.0",
     "rector/rector": "^2.0"
   },
@@ -59,16 +61,16 @@
     "fresh": "@php artisan migrate:fresh --seed --seeder='App\\Seeder\\DatabaseSeeder' --ansi",
     "outdated-direct": "composer outdated --direct",
     "pint": "vendor/bin/pint -v --parallel",
-    "post-root-package-install": [
-      "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-    ],
-    "post-create-project-cmd": [
-      "@php artisan key:generate --ansi"
-    ],
     "post-autoload-dump": [
       "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
       "@php artisan package:discover --ansi",
       "@php artisan vendor:publish --force --tag=livewire:assets --ansi"
+    ],
+    "post-create-project-cmd": [
+      "@php artisan key:generate --ansi"
+    ],
+    "post-root-package-install": [
+      "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
     ],
     "post-update-cmd": [
       "@php artisan ide-helper:generate",
@@ -90,6 +92,7 @@
       "Composer\\Config::disableProcessTimeout",
       "expose"
     ],
+    "stan": "APP_ENV=testing phpstan analyse --memory-limit=2G",
     "test": "@php artisan test --parallel",
     "test-fresh": "@php artisan test --parallel --recreate-databases",
     "test-linear": "vendor/bin/phpunit --colors=always",
