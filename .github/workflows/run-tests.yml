@@ -13,9 +13,10 @@ jobs:
   phpunit:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        php: [ '8.5' ]
-    # continue-on-error: ${{ matrix.php == '8.6' }}
+        php: [ '8.5', '8.6' ]
+    continue-on-error: ${{ matrix.php == '8.6' }}
 
     name: PHP ${{ matrix.php }}
 
@@ -48,7 +49,7 @@ jobs:
           mysql -u root -proot -e 'CREATE DATABASE IF NOT EXISTS tests;'
 
       - name: Run composer install
-        run: composer install --prefer-dist --no-interaction --no-progress
+        run: composer install --prefer-dist --no-interaction --no-progress ${{ matrix.php == '8.6' && '--ignore-platform-req=php+ --ignore-platform-req=ext-swoole' || '' }}
         env:
           # {"http-basic":{"example.com":{"username":"login","password":"key"}}}
           COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
