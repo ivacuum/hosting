@@ -37,7 +37,6 @@ Route::resource('gigs', Acp\GigsController::class)->except(['store', 'update']);
 
 Route::resource('images', Acp\ImagesController::class)->except(['create', 'edit', 'store', 'update']);
 Route::post('images/batch', [Acp\ImagesController::class, 'batch']);
-Route::get('images/{image}/view', [Acp\ImagesController::class, 'view']);
 
 Route::resource('issues', Acp\IssuesController::class)->except(['create', 'edit', 'store', 'update']);
 Route::post('issues/batch', [Acp\IssuesController::class, 'batch']);

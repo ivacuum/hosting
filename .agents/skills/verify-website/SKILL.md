@@ -11,7 +11,7 @@ Start with the index and select the feature documents that match the change. For
 
 ## Launch
 
-Prerequisites: Docker running; PHP 8.5 CLI with `pcntl`, `posix`, and the project's Composer extensions, including Swoole, PDO MySQL, GD, and intl; GraphicsMagick `gm`; Node; rsync; Yarn; populated `vendor/` and `node_modules/`. The launcher checks its process-control capabilities before creating resources. The helpers do not install dependencies. If dependencies are missing, use the lockfiles (`AI_AGENT=1 composer install --no-interaction`, `yarn install --frozen-lockfile`) only with authorization. Docker may pull `mysql:8.4` and `redis:alpine`. Installed MySQL and Redis services are not required or used.
+Prerequisites: Docker running; PHP 8.5 CLI with `pcntl`, `posix`, and the project's Composer extensions, including PDO MySQL, GD, and intl; GraphicsMagick `gm`; Node; rsync; Yarn; populated `vendor/` and `node_modules/`. The launcher checks its process-control capabilities before creating resources. The helpers do not install dependencies. If dependencies are missing, use the lockfiles (`AI_AGENT=1 composer install --no-interaction`, `yarn install --frozen-lockfile`) only with authorization. Docker may pull `mysql:8.4` and `redis:alpine`. Installed MySQL and Redis services are not required or used.
 
 Never run `AI_AGENT=1 composer fresh` in the working checkout: its seeders prune uploads, logs, caches, and search indexes. Verification creates dedicated MySQL and Redis containers for each run. It does not read or reuse the checkout's `.env`, credentials, databases, or Redis connection. In particular, metrics use the hard-coded raw `vacuum:metrics` stream, bypassing `REDIS_PREFIX`; a prefix alone would not isolate those writes on shared Redis.
 

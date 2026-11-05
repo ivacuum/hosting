@@ -6,7 +6,6 @@
   "require": {
     "php": ">=8.5",
     "ext-intl": "*",
-    "ext-swoole": "*",
     "foolz/sphinxql-query-builder": "^3.0",
     "geo-io/wkb-parser": "^1.0",
     "guzzlehttp/guzzle": "^8.0",

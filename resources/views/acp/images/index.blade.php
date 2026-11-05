@@ -23,15 +23,6 @@
       >{{ substr($value, 2) }}</a>
     @endforeach
   </div>
-  <div class="flex">
-    <a class="btn btn-default rounded-r-none {{ !$touch ? 'active' : '' }}" href="{{ UrlHelper::filter(['touch' => null]) }}">@lang('Все')</a>
-    @foreach (range(1, date('Y') - 2009) as $value)
-      <a
-        class="btn btn-default -ml-px {{ $loop->last ? 'rounded-l-none rounded-r' : 'rounded-none' }} {{ $touch == $value ? 'active' : '' }}"
-        href="{{ UrlHelper::filter(['touch' => $value]) }}"
-      >{{ $value }}</a>
-    @endforeach
-  </div>
 </div>
 @endsection
 
@@ -44,8 +35,6 @@
       <x-th key="user_id"/>
       <x-th key="slug"/>
       <x-th-numeric-sortable key="size"/>
-      <x-th-numeric-sortable key="views">@svg (eye)</x-th-numeric-sortable>
-      <x-th-numeric-sortable key="updated_at">@svg (eye-slash)</x-th-numeric-sortable>
       <th></th>
     </tr>
   </thead>
@@ -72,18 +61,6 @@
           </a>
         </td>
         <td class="md:text-right text-gray-500 whitespace-nowrap">{{ ViewHelper::size($model->size) }}</td>
-        <td class="md:text-right whitespace-nowrap">
-          @if ($model->views > 10000)
-            <span class="flex bg-green-600 text-white px-2 font-bold rounded-sm">{{ ViewHelper::number($model->views) }}</span>
-          @else
-            {{ ViewHelper::number($model->views) }}
-          @endif
-        </td>
-        <td>
-          @if ($model->updated_at?->diffInMonths() > 6)
-            {{ $model->updated_at->diffForHumans(syntax: true) }}
-          @endif
-        </td>
         <td>
           <div class="flex">
             <a class="btn btn-default rounded-r-none" href="{{ Acp::show($model) }}">

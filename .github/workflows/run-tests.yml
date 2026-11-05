@@ -27,7 +27,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, bcmath, intl, gd, exif, iconv, fileinfo, swoole
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, bcmath, intl, gd, exif, iconv, fileinfo
           ini-values: error_reporting=E_ALL
           coverage: none
 
@@ -49,7 +49,7 @@ jobs:
           mysql -u root -proot -e 'CREATE DATABASE IF NOT EXISTS tests;'
 
       - name: Run composer install
-        run: composer install --prefer-dist --no-interaction --no-progress ${{ matrix.php == '8.6' && '--ignore-platform-req=php+ --ignore-platform-req=ext-swoole' || '' }}
+        run: composer install --prefer-dist --no-interaction --no-progress ${{ matrix.php == '8.6' && '--ignore-platform-req=php+' || '' }}
         env:
           # {"http-basic":{"example.com":{"username":"login","password":"key"}}}
           COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}

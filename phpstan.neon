@@ -12,9 +12,6 @@ parameters:
         - database
         - routes
         - tests
-    excludePaths:
-        # Octane пока не установлен, конфиг сохранен на будущее
-        - config/octane.php
     tmpDir: storage/framework/cache/phpstan
     additionalConstructors:
         - Illuminate\Foundation\Http\FormRequest::passedValidation

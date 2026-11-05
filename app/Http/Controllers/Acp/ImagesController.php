@@ -23,25 +23,20 @@ class ImagesController extends Controller
         $sort = $applyIndexGoods->execute(new Image);
 
         $year = request('year');
-        $touch = request('touch');
         $userId = request('user_id');
         $imageSize = request('image_size');
 
         $models = Image::query()
             ->when($year, static fn (Builder $query) => $query->whereYear('created_at', $year))
-            ->when($touch, static fn (Builder $query) => $query->whereYear('updated_at', '<=', now()->subYears($touch)->year))
             ->when($userId, static fn (Builder $query) => $query->where('user_id', $userId))
             ->orderBy(match ($sort->key) {
-                'size',
-                'views',
-                'updated_at' => $sort->key,
+                'size' => $sort->key,
                 default => 'id',
             }, $sort->direction->value)
             ->paginate(111);
 
         return view('acp.images.index', [
             'year' => $year,
-            'touch' => $touch,
             'models' => $models,
             'user_id' => $userId,
             'imageSize' => $imageSize,
@@ -81,13 +76,5 @@ class ImagesController extends Controller
     public function show(Image $image, ResponseToShowAction $responseToShow)
     {
         return $responseToShow->execute($image);
-    }
-
-    public function view(Image $image)
-    {
-        $image->views++;
-        $image->save();
-
-        return back();
     }
 }

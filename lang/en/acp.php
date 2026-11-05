@@ -64,7 +64,6 @@ return [
     'gigs.create_similar' => 'Create similar gig',
 
     'images.show' => 'Image',
-    'images.view' => 'Increment views',
     'images.user' => 'Author\'s pics',
     'images.index' => 'Images',
 

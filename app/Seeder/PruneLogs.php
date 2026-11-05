@@ -10,6 +10,5 @@ class PruneLogs extends Seeder
     {
         file_put_contents(storage_path('logs/browser.log'), '');
         file_put_contents(storage_path('logs/laravel.log'), '');
-        file_put_contents(storage_path('logs/swoole_http.log'), '');
     }
 }

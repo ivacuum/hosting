@@ -65,7 +65,6 @@ return [
     'gigs.create_similar' => 'Создать похожий концерт',
 
     'images.show' => 'Изображение',
-    'images.view' => 'Засчитать просмотр',
     'images.user' => 'Картинки автора',
     'images.index' => 'Изображения',
 
