@@ -3,8 +3,11 @@
 return [
     'guidelines' => [
         'exclude' => [
-            // 'phpunit/core',
-            // 'tests',
+            'deployments',
+            'laravel/core',
+            'php',
+            'phpunit/core',
+            'tests',
         ],
     ],
     'skills' => [
