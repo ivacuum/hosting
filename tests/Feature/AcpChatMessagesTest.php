@@ -42,14 +42,14 @@ class AcpChatMessagesTest extends TestCase
         $chatMessage = ChatMessageFactory::new()->create();
 
         \Livewire::test(ChatMessageForm::class, ['id' => $chatMessage->id])
-            ->set('text', 'Markdown text! 🌚️')
+            ->set('text', 'Markdown & text! 🌚️')
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect('/acp/chat-messages');
 
         $chatMessage->refresh();
 
-        $this->assertSame('Markdown text! 🌚️', $chatMessage->text);
+        $this->assertSame('Markdown & text! 🌚️', $chatMessage->text);
         $this->assertNotEmpty($chatMessage->html);
     }
 }

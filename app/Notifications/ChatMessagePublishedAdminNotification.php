@@ -19,7 +19,7 @@ class ChatMessagePublishedAdminNotification extends Notification implements Shou
     {
         $escape = app(EscapeMarkdownCharactersAction::class);
 
-        $text = $escape->execute(htmlspecialchars_decode($this->chatMessage->text, ENT_QUOTES));
+        $text = $escape->execute($this->chatMessage->text);
         $author = $escape->execute($this->chatMessage->user->publicName());
 
         return "💬 Сообщение в чат от {$author}\n{$text}";

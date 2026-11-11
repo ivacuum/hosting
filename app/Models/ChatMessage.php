@@ -65,7 +65,7 @@ class ChatMessage extends Model
                 ]);
 
                 return [
-                    'text' => htmlspecialchars($value),
+                    'text' => $value,
                     'html' => $converter->convert($value)->getContent(),
                 ];
             }
