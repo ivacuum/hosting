@@ -8,6 +8,6 @@ class ImageObserver
 {
     public function deleted(Image $image): void
     {
-        $image->deleteFiles();
+        \DB::afterCommit(static fn () => $image->deleteFiles());
     }
 }

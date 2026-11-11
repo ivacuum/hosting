@@ -13,7 +13,7 @@ class PhotoObserver
     public function deleted(Photo $photo): void
     {
         $photo->tags()->detach();
-        $photo->deleteFiles();
+        \DB::afterCommit(static fn () => $photo->deleteFiles());
 
         $this->cache->forgetMyVisibleTrips();
         $this->cache->forgetPhotoPoints();

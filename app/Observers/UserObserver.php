@@ -3,7 +3,11 @@
 namespace App\Observers;
 
 use App\Domain\Avatar\Avatar;
+use App\Domain\Life\Models\Photo;
 use App\Domain\Locale;
+use App\Domain\SocialMedia\Models\SocialMediaPost;
+use App\Domain\Telegram\Models\LinkRequest;
+use App\Domain\Wanikani\Models\Burnable;
 use App\Models\User;
 use Illuminate\Support\Str;
 
@@ -23,22 +27,30 @@ class UserObserver
     public function deleting(User $user): void
     {
         \DB::transaction(static function () use ($user) {
+            Burnable::query()->where('user_id', $user->id)->delete();
+            LinkRequest::query()->where('user_id', $user->id)->delete();
+            SocialMediaPost::query()->where('user_id', $user->id)->delete();
+
             $user->chatMessages->each->delete();
             $user->comments->each->delete();
             $user->emails->each->delete();
             $user->externalIdentities->each->delete();
             $user->images->each->delete();
+            $user->issues->each->delete();
             $user->magnets->each->delete();
             $user->news->each->delete();
             $user->receivedEmails->each->delete();
+            $user->socialMediaTokens->each->delete();
             $user->trips->each->delete();
+
+            Photo::query()->where('user_id', $user->id)->get()->each->delete();
         });
     }
 
     public function deleted(User $user): void
     {
         if ($user->avatar) {
-            app(Avatar::class)->delete($user->avatar);
+            \DB::afterCommit(static fn () => app(Avatar::class)->delete($user->avatar));
         }
     }
 
