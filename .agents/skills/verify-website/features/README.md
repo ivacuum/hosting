@@ -41,7 +41,7 @@ Dynamic story slugs, songs, database records, pagination, query filters, and res
 - [Downloads](downloads.md) covers file listings, download responses, and download accounting.
 - [Documentation](documentation.md) covers help and hosting articles, sidebar navigation, and contents links.
 - [DC++ guides and hubs](dc-guides.md) covers clients, installation guides, FAQs, hub links, and click accounting.
-- [Coupons and referrals](coupons.md) covers every provider page, referral boundaries, and the FirstVDS request form.
+- [Coupons and referrals](coupons.md) covers every provider page, and referral boundaries.
 - [Torrent and retracker information](torrent-services.md) covers torrent promotion and retracker documentation.
 
 ## Interactive features

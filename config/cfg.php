@@ -90,7 +90,5 @@ return [
     'booking_link' => 'https://www.booking.com/s/34_6/f4544993',
     'digitalocean_link' => 'https://m.do.co/c/0864de50ab6c',
     'drimsim_link' => 'https://drimsim.app.link/3SdHuoxSLN',
-    'firstvds_link' => 'https://firstvds.ru/?from=149161',
-    'firstvds_promocode' => '648149161',
     'timeweb_link' => '?i=19980',
 ];

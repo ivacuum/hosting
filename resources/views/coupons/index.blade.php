@@ -12,7 +12,6 @@
   <h3 class="font-medium text-2xl mt-8 mb-1">@lang('coupons.hosting')</h3>
   <ul>
     <li><a class="link" href="@lng/promocodes-coupons/digitalocean">@lang('coupons.digitalocean')</a></li>
-    <li><a class="link" href="@lng/promocodes-coupons/firstvds">@lang('coupons.firstvds')</a></li>
     @ru
       <li><a class="link" href="@lng/promocodes-coupons/timeweb">@lang('coupons.timeweb')</a></li>
     @endru

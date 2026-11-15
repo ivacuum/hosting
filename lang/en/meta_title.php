@@ -77,8 +77,6 @@ return [
     'photos/tags' => __('Тэги'),
     'photos/trips' => __('Поездки'),
 
-    'promocodes-coupons/firstvds' => __('Промокод на 25% скидку на FirstVDS'),
-
     'retracker' => 'What retracker is and how to use it · retracker.local',
     'retracker/dev' => 'About retracker development',
     'retracker/usage' => 'How to use retracker',

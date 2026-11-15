@@ -222,8 +222,6 @@ Route::middleware('nav:coupons.index,promocodes-coupons')->group(static function
     Route::get('promocodes-coupons/booking', [Ctrl\CouponController::class, 'booking'])->middleware('nav:coupons.booking');
     Route::get('promocodes-coupons/digitalocean', [Ctrl\CouponController::class, 'digitalocean'])->middleware('nav:coupons.digitalocean');
     Route::get('promocodes-coupons/drimsim', [Ctrl\CouponController::class, 'drimsim'])->middleware('nav:coupons.drimsim');
-    Route::view('promocodes-coupons/firstvds', 'coupons.firstvds')->middleware('nav:coupons.firstvds');
-    Route::post('promocodes-coupons/firstvds', [Ctrl\CouponController::class, 'firstvds']);
     Route::get('promocodes-coupons/timeweb', [Ctrl\CouponController::class, 'timeweb'])->middleware('nav:coupons.timeweb');
 });
 

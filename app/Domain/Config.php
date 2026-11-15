@@ -14,8 +14,6 @@ enum Config implements Htmlable
     case DefaultLocale;
     case DigitalOceanLink;
     case DrimsimLink;
-    case FirstVdsLink;
-    case FirstVdsPromocode;
     case InstagramWebhookVerifyToken;
     case IssueFloodInterval;
     case Locale;
@@ -41,8 +39,6 @@ enum Config implements Htmlable
             self::DigitalOceanLink => config()->string('cfg.digitalocean_link'),
             self::DrimsimLink => config()->string('cfg.drimsim_link'),
             self::DefaultLocale => config()->string('cfg.default_locale'),
-            self::FirstVdsLink => config()->string('cfg.firstvds_link'),
-            self::FirstVdsPromocode => config()->string('cfg.firstvds_promocode'),
             self::InstagramWebhookVerifyToken => config()->string('services.instagram.webhook_verify_token'),
             self::IssueFloodInterval => config()->integer('cfg.limits.issue.flood_interval'),
             self::Locale => config()->string('app.locale'),

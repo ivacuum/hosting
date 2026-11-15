@@ -247,7 +247,6 @@ class SitemapBuild extends Command
             'promocodes-coupons/booking',
             'promocodes-coupons/digitalocean',
             'promocodes-coupons/drimsim',
-            'promocodes-coupons/firstvds',
             'promocodes-coupons/timeweb',
 
             'en/promocodes-coupons/airbnb',

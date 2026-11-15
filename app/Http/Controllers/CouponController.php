@@ -2,10 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Domain\SessionKey;
-use App\Http\Requests\CouponFirstvdsForm;
-use App\Mail\FirstvdsPromocodeMail;
-
 class CouponController
 {
     public function airbnb()
@@ -26,15 +22,6 @@ class CouponController
     public function drimsim()
     {
         return $this->coupon('coupons.drimsim', 'coupons.drimsim.title');
-    }
-
-    public function firstvds(CouponFirstvdsForm $request)
-    {
-        \Mail::to($request->email)
-            ->locale(\App::getLocale())
-            ->send(new FirstvdsPromocodeMail);
-
-        return back()->with(SessionKey::FlashMessage->value, __('coupons.promocode_sent'));
     }
 
     public function timeweb()
