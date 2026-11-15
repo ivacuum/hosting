@@ -114,7 +114,11 @@ class NumberTrainerTest extends TestCase
             ->assertSee('sanzen')
             ->set('answer', 'sanzen')
             ->call('check')
-            ->assertSet('answered', 1);
+            ->assertSet('answered', 1)
+            ->set('number', 21)
+            ->set('answer', 'にじゅういち')
+            ->call('check')
+            ->assertSet('answered', 2);
     }
 
     public function testKeepPredefinedMaximumWhenTogglingCustomIntervalSetting(): void

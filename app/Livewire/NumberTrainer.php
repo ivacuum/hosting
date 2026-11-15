@@ -65,10 +65,15 @@ class NumberTrainer extends Component
         $formatter = new \NumberFormatter($this->lang, \NumberFormatter::SPELLOUT);
         // ICU вставляет soft hyphens (de, nl, ...) и zero-width пробелы (th, lo, km), которые никто не набирает
         $spellOut = preg_replace('/\p{Cf}/u', '', $formatter->format($this->number));
+        // ICU пишет японские числа кандзи, а с клавиатуры их набирают хираганой
+        $reading = $this->lang === 'ja'
+            ? app(SpellOutJapaneseNumberAction::class)->execute($this->number)
+            : $spellOut;
 
         return array_unique([
             $spellOut,
-            $this->transliterate($spellOut),
+            $reading,
+            $this->transliterate($reading),
         ]);
     }
 
@@ -270,10 +275,6 @@ class NumberTrainer extends Component
 
     private function transliterate(string $text): string
     {
-        if ($this->lang === 'ja') {
-            $text = app(SpellOutJapaneseNumberAction::class)->execute($this->number);
-        }
-
         return \Transliterator::create('NFD; Any-Latin; Latin-Ascii; NFC')
             ->transliterate($text);
     }
