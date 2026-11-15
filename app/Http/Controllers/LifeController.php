@@ -176,12 +176,6 @@ class LifeController
             return redirect(to('japanese'), 301);
         }
 
-        $tpl = 'life.' . str_replace('.', '_', $page);
-
-        if (view()->exists($tpl)) {
-            return view($tpl, ['page' => $page]);
-        }
-
         if ($trip = $this->getTrip($page)) {
             return $this->trip($trip);
         }
