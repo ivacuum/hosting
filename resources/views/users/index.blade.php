@@ -19,7 +19,7 @@
         <td class="md:text-right">{{ $user->id }}</td>
         <td class="text-center">
           <a href="{{ $user->www() }}">
-            @include('tpl.avatar', ['size' => 50])
+            @include('tpl.avatar')
           </a>
         </td>
         <td><a class="link" href="{{ $user->www() }}">{{ $user->publicName() }}</a></td>

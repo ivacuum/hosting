@@ -14,6 +14,23 @@ class AvatarManagerTest extends TestCase
 {
     use DatabaseTransactions;
 
+    public function testConverterRejectsImageAbovePixelsLimit(): void
+    {
+        \Storage::fake('avatars');
+        \Storage::fake(FileUploadConfiguration::disk());
+
+        config(['cfg.gm_pixels_limit' => 100]);
+
+        $user = UserFactory::new()->create();
+
+        \Livewire::actingAs($user)
+            ->test(AvatarManager::class)
+            ->set('image', UploadedFile::fake()->image('avatar.png', 20, 20))
+            ->assertHasErrors('image');
+
+        $this->assertEmpty($user->refresh()->avatar);
+    }
+
     public function testUserUploadsFirstAvatarAndThenReplacesIt(): void
     {
         \Storage::fake('avatars');

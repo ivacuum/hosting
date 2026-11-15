@@ -14,7 +14,6 @@ class GalleryUploader extends Component
     /** @var \Livewire\Features\SupportFileUploads\TemporaryUploadedFile[] */
     public $files;
     public array $links;
-    public string $randomId;
 
     public function linksWithTags()
     {
@@ -28,11 +27,6 @@ class GalleryUploader extends Component
         return collect($this->links)
             ->pluck('original')
             ->implode("\n");
-    }
-
-    public function mount(): void
-    {
-        $this->resetChosenFile();
     }
 
     public function updatedFiles(): void
@@ -52,8 +46,13 @@ class GalleryUploader extends Component
                 'thumbnail' => $image->thumbnailUrl(),
             ];
         }
+    }
 
-        $this->resetChosenFile();
+    protected function messages(): array
+    {
+        return [
+            'files.*.dimensions' => __('Изображение должно быть не больше :max_width×:max_height пикселей. Уменьшите его и попробуйте снова.'),
+        ];
     }
 
     protected function rules(): array
@@ -65,12 +64,8 @@ class GalleryUploader extends Component
                 'image',
                 'mimetypes:image/gif,image/jpeg,image/png',
                 'max:6144',
+                'dimensions:max_width=8000,max_height=8000',
             ],
         ];
-    }
-
-    private function resetChosenFile(): void
-    {
-        $this->randomId = \Str::random();
     }
 }

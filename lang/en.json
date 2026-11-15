@@ -46,6 +46,7 @@
   "Идет загрузка...": "Uploading...",
   "Избранное": "Favorites",
   "Изменения сохранены": "Changes saved",
+  "Изображение должно быть не больше :max_width×:max_height пикселей. Уменьшите его и попробуйте снова.": "The image must be at most :max_width×:max_height pixels. Resize it and try again.",
   "Индивидуальные ссылки": "Individual links",
   "Интерактивные инструменты для практики иностранных языков.": "Interactive tools to practice foreign languages.",
   "Интервал возможных чисел": "Possible numbers",

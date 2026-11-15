@@ -3,12 +3,16 @@
 namespace App\Domain\ImageConverter;
 
 use Illuminate\Http\UploadedFile;
+use Illuminate\Process\Exceptions\ProcessTimedOutException;
+use Illuminate\Support\Facades\Process;
 
 /**
  * Конвертер изображений с помощью библиотеки GraphicsMagick
  */
 class ImageConverter
 {
+    private const int TIMEOUT = 30;
+
     protected $autoOrient;
     protected $crop;
     protected $filter;
@@ -46,6 +50,8 @@ class ImageConverter
             ' ',
             [
                 config('cfg.gm_bin'),
+                // Защита от decompression bomb: лимит должен стоять перед исходным файлом
+                '-limit pixels ' . (int) config('cfg.gm_pixels_limit'),
                 $this->format,
                 $this->size,
                 escapeshellarg($this->source($source)),
@@ -65,19 +71,22 @@ class ImageConverter
             ]
         );
 
-        $output = [];
-        $returnCode = 0;
-        exec("{$command} 2>&1", $output, $returnCode);
+        // max_execution_time не учитывает время дочернего процесса
+        try {
+            $result = Process::timeout(self::TIMEOUT)->run($command);
+        } catch (ProcessTimedOutException $e) {
+            $result = $e->result;
+        }
 
-        if ($returnCode !== 0 || !file_exists($destination)) {
+        if ($result->failed() || !file_exists($destination)) {
             if (is_file($destination)) {
                 unlink($destination);
             }
 
             logs()->error('image_converter.conversion_failed', [
                 'source' => $source,
-                'exit_code' => $returnCode,
-                'output' => $output,
+                'exit_code' => $result->exitCode(),
+                'output' => $result->errorOutput(),
                 'command' => $command,
             ]);
 

@@ -14,13 +14,15 @@ class AvatarManager extends Component
     use WithFileUploads;
 
     public string $avatar;
-    public string $randomId;
 
     #[Validate([
         'required',
         'image',
         'mimetypes:image/jpeg,image/png',
         'max:3072',
+        'dimensions:max_width=2000,max_height=2000',
+    ], message: [
+        'image.dimensions' => 'Изображение должно быть не больше :max_width×:max_height пикселей. Уменьшите его и попробуйте снова.',
     ])]
     public $image;
 
@@ -37,7 +39,6 @@ class AvatarManager extends Component
     public function mount(): void
     {
         $this->avatar = Auth::user()->avatarUrl();
-        $this->resetChosenFile();
     }
 
     public function updatedImage(): void
@@ -47,18 +48,11 @@ class AvatarManager extends Component
         try {
             $this->avatar = Auth::user()->uploadAvatar($this->image);
         } catch (\Throwable $e) {
-            $this->resetChosenFile();
-
             throw ValidationException::withMessages(['image' => $e->getMessage()]);
+        } finally {
+            $this->reset('image');
         }
 
-        $this->resetChosenFile();
-
         event(new \App\Events\Stats\UserAvatarUploaded);
-    }
-
-    private function resetChosenFile(): void
-    {
-        $this->randomId = \Str::random();
     }
 }

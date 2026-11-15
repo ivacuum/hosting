@@ -22,6 +22,8 @@ return [
     'cron_output' => env('CRON_OUTPUT', '/dev/null'),
     'default_locale' => App\Domain\Locale::Rus->value,
     'gm_bin' => env('GM_BIN', '/usr/bin/env gm convert'),
+    // Около 8 байт на пиксель в сборке Q16, 64 Мп — примерно 500 МБ памяти на одну конвертацию
+    'gm_pixels_limit' => (int) env('GM_PIXELS_LIMIT', 64_000_000),
     'limits' => [
         'exif-reader' => [
             'per_hour' => 100,
