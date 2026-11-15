@@ -9,7 +9,7 @@
   <p>У Петруччи день рождения всего на сутки раньше моего. На сцене поздравляли его, а по пути домой наступил уже и мой.</p>
 @endru
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/dreamtheater.2011.07.12.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/dreamtheater.2011.07.12.jpg', 'width' => 700, 'height' => 350])
   <ol>
     <li>Under a Glass Moon</li>
     <li>These Walls</li>

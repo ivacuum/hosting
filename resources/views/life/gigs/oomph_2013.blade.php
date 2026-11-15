@@ -7,7 +7,7 @@
   <p>Немцам определенно в России понравилось. Выступления стали проходить даже в менее населенных городах нашей родины.</p>
 @endru
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/oomph.2013.10.19.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/oomph.2013.10.19.jpg', 'width' => 494, 'height' => 700])
   <ol>
     <li>Unzerstörbar</li>
     <li>Labyrinth</li>

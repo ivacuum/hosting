@@ -8,6 +8,8 @@
     [
       'full' => 'https://img.ivacuum.ru/g/091002/1_9Xb39T30l4.gif',
       'thumb' => 'https://img.ivacuum.ru/g/091002/s/1_9Xb39T30l4.gif',
+      'width' => 360,
+      'height' => 314,
     ],
   ],
   'developerSite' => 'https://dcplusplus.sourceforge.io/',

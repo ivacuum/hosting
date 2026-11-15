@@ -10,7 +10,7 @@
   <p>Maxidrom festival returns after a long break.</p>
 @endru
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/rammstein.2016.06.19.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/rammstein.2016.06.19.jpg', 'width' => 500, 'height' => 1000])
   <ol>
     <li>Ramm 4</li>
     <li>Reise, Reise</li>

@@ -9,7 +9,7 @@
   <p>Интересно составлен сет — по одной песне с каждого выпущенного альбома с 1989 по 2013 годы. Молодцы, что вернули в программу As I Am и Panic Attack — их нехватало с <a class="link" href="dreamtheater.2009">2009 года</a>.</p>
 @endru
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/dreamtheater.2015.07.03.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/dreamtheater.2015.07.03.jpg', 'width' => 900, 'height' => 1343])
   <ol>
     <li>Afterlife</li>
     <li>Metropolis Pt. 1: The Miracle and the Sleeper</li>

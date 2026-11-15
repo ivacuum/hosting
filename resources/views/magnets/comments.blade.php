@@ -12,7 +12,7 @@
         <div class="comment-avatar-size mt-1">
           <a href="{{ $comment->user->www() }}">
             @if ($comment->user->avatar)
-              <img class="comment-avatar-size rounded-full" src="{{ $comment->user->avatarUrl() }}" alt="">
+              <img class="comment-avatar-size rounded-full" src="{{ $comment->user->avatarUrl() }}" alt="" loading="lazy">
             @else
               @include('tpl.svg-avatar', [
                 'bg' => ViewHelper::avatarBg($comment->user_id),

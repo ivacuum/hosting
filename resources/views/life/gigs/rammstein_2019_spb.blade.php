@@ -215,7 +215,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_0865.jpg'])
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/rammstein.2019.08.02.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/rammstein.2019.08.02.jpg', 'width' => 840, 'height' => 1280])
   <ol>
     <li>Was ich liebe</li>
     <li>Links 2-3-4</li>

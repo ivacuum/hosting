@@ -9,7 +9,7 @@
   <p>Обратно предстояло идти пешком до Киевского вокзала. Навигатором выступала карта автомобильных дорог.</p>
 @endru
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/oomph.2007.04.21.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/oomph.2007.04.21.jpg', 'width' => 400, 'height' => 267])
   <ol>
     <li>Träumst Du</li>
     <li>Unsere Rettung</li>

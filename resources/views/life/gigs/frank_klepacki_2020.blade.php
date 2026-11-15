@@ -7,7 +7,7 @@
   <p>Возможность вживую услышать саундтрек к играм детства — серии Command & Conquer (C&C).</p>
 @endru
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/frank_klepacki.2020.05.23.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/frank_klepacki.2020.05.23.jpg', 'width' => 1296, 'height' => 1842])
   <ol>
     <li>Act on Instinct (C&C)</li>
     <li>Industrial (C&C)</li>

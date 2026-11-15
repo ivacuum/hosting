@@ -7,7 +7,7 @@
   <p></p>
 @endru
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/psy.2019.12.20.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/psy.2019.12.20.jpg', 'width' => 700, 'height' => 990])
   <h5 class="font-medium text-lg mb-1">@ru Сет @en Set @endru 1</h5>
   <ol class="list-inside pl-0">
     <li>챔피언 <span class="text-sm text-gray-500">Champion</span></li>

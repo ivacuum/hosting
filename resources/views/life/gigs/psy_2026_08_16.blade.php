@@ -27,7 +27,7 @@
   <p>На удивление, шоу при дожде более душевным что ли вышло. Наполняемость танцпола и трибун из-за стихии не пострадала. Все по-прежнему были вовлечены. Из минусов — меньше визгов от обливаний концертной водой, так как не было контраста между палящим солнцем и живительной влагой как элемента шоу.</p>
 @endru
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/psy.2026.08.15.gif'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/psy.2026.08.15.gif', 'width' => 750, 'height' => 1000])
   <h5 class="font-medium text-lg mb-1">@ru Сет @en Set @endru 1</h5>
   <ol class="list-inside pl-0">
     <li>나팔바지 <span class="text-sm text-gray-500">Napal Baji</span></li>

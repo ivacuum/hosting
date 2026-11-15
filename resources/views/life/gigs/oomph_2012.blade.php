@@ -7,7 +7,7 @@
   <p>Неожиданно тур в поддержку нового альбома начался в Москве. Сет был неизвестен, непонятно к чему готовиться. Сюрприз был преподнесен уже на пятой песне — ее дали исполнить залу без музыкального сопровождения. Задача оказалась непростой, так как альбом только-только вышел, и к такому предложению мы не были готовы. Еще Augen auf дважды исполнили.</p>
 @endru
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/oomph.2012.05.24.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/oomph.2012.05.24.jpg', 'width' => 583, 'height' => 700])
   <ol>
     <li>Unzerstörbar</li>
     <li>Beim ersten Mal tut's immer weh</li>

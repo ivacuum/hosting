@@ -11,7 +11,7 @@
   <p>Стоило ли идти? Разок определенно интересно увидеть каков он этот рейв. Если бы цена билета была не 4&thinsp;400 ₽, а вдвое меньше, то можно было бы однозначно всем рекомендовать сходить. Публика очень активная.</p>
 @endru
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/prodigy.2016.11.09.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/prodigy.2016.11.09.jpg', 'width' => 1440, 'height' => 2160])
   <ol>
     <li>Breathe</li>
     <li>Nasty</li>

@@ -263,7 +263,7 @@
   'IMG_6199.jpg',
 ]])
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/psy.2018.12.23.jpg', 'includeTitle' => false])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/psy.2018.12.23.jpg', 'width' => 1504, 'height' => 2048, 'includeTitle' => false])
   @ru
     <div class="mb-1">Что было исполнено. На каждую песню можно нажать и посмотреть видео. Сердечком отмечен самый смак.</div>
   @en

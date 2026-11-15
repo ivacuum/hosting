@@ -8,7 +8,7 @@
   <p>Отличная затея начать шоу с заводной песни Fuel. Побольше бы групп делало ставку на активное начало. В целом сет очень понравился, особенно King Nothing и Turn the Page. Вяло зашли зашли The Frayed Ends of Sanity и Nothing Else Matters.</p>
 @endru
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/metallica.2015.08.25.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/metallica.2015.08.25.jpg', 'width' => 709, 'height' => 1063])
   <ol>
     <li>Fuel</li>
     <li>For Whom the Bell Tolls</li>

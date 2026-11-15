@@ -21,7 +21,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_8867.jpg'])
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/oomph.2019.03.23.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/oomph.2019.03.23.jpg', 'width' => 1080, 'height' => 1080])
   <ol>
     <li>TRRR - FCKN - HTLR</li>
     <li>Labyrinth</li>

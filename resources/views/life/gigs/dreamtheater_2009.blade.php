@@ -9,7 +9,7 @@
   <p>На пятой минуте шоу понял, что сорву голос, если не перестану орать, а ведь еще не начались слова!</p>
 @endru
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/dreamtheater.2009.06.10.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/dreamtheater.2009.06.10.jpg', 'width' => 700, 'height' => 495])
   <ol>
     <li>In the Presence of Enemies Pt. 1</li>
     <li>Beyond This Life</li>

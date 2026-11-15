@@ -30,7 +30,7 @@
       <span class="inline-flex bg-grey-600 text-white px-2 font-medium rounded-sm mr-1">4</span>
       Добавить строку «<span class="font-bold">http://retracker.local/announce</span>», как показано на рисунке:
     </p>
-    <p><img class="max-w-full h-auto" src="https://img.ivacuum.ru/g/100710/1_ZnPu3tIvZm.png" alt="" width="469" height="646"></p>
+    <p><img class="max-w-full h-auto" src="https://img.ivacuum.ru/g/100710/1_ZnPu3tIvZm.png" alt="" width="469" height="646" loading="lazy"></p>
 
     <p>
       <span class="inline-flex bg-grey-600 text-white px-2 font-medium rounded-sm mr-1">5</span>

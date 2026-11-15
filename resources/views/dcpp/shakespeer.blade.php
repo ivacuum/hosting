@@ -7,6 +7,8 @@
     [
       'full' => 'https://img.ivacuum.ru/g/091002/1_Km1HDRuJH0.png',
       'thumb' => 'https://img.ivacuum.ru/g/091002/t/1_Km1HDRuJH0.png',
+      'width' => 149,
+      'height' => 85,
     ],
   ] : [],
 ])

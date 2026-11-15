@@ -10,7 +10,7 @@
   <p>В сетлисте можно заметить, что три песни повторяются. Niemand должна была стать последней в сете, но из-за технических заминок три песни пришлось сыграть заново. До этого в <a class="link" href="oomph.2012">2012 году</a> дважды исполнялась Augen auf.</p>
 @endru
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/oomph.2018.09.14.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/oomph.2018.09.14.jpg', 'width' => 1200, 'height' => 2000])
   <ol>
     <li>Gekreuzigt</li>
     <li>Sandmann</li>

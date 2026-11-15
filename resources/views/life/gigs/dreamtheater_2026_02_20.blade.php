@@ -89,7 +89,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_5149.jpg'])
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/dreamtheater.2026.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/dreamtheater.2026.jpg', 'width' => 1134, 'height' => 1417])
   <ol>
     <li>Metropolis Pt. 1: The Miracle and the Sleeper</li>
     <li>Overture 1928</li>

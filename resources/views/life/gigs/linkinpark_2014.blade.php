@@ -7,7 +7,7 @@
   <p>Смело можно сказать, что два вокалиста в группе — это ад! Не дадут спуска практически ни на минуту. Прокричишь куплет, припев будешь уже прыгать и орать, далее все заново. И так 100 минут. Стоило оно того? Однозначно да!</p>
 @endru
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/linkinpark.2014.06.02.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/linkinpark.2014.06.02.jpg', 'width' => 708, 'height' => 1000])
   <ol>
     <li>Guilty All the Same</li>
     <li>Given Up</li>

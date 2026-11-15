@@ -65,7 +65,7 @@ Highlights
   <p>Песен сыграли мало — сказывается их средняя продолжительность в десять минут. Зато охватили большинство выпущенных альбомов в рамках одного выступления.</p>
 @endru
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/opeth.2016.11.17.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/opeth.2016.11.17.jpg', 'width' => 720, 'height' => 1018])
   <ol>
     <li>Sorceress</li>
     <li>Ghost of Perdition</li>

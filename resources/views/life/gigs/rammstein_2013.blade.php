@@ -8,7 +8,7 @@
   <p>Еще одно практичное наблюдение: во время концерта лучше перемещаться, а не стоять в давке. Ноги очень благодарны движениям. В итоге даже к концу дня чувствуешь, что сил еще полно и мог бы еще прыгать и прыгать.</p>
 @endru
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/rammstein.2013.06.08.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/rammstein.2013.06.08.jpg', 'width' => 403, 'height' => 604])
   <ol>
     <li>Ich tu dir weh</li>
     <li>Wollt ihr das Bett in Flammen sehen?</li>

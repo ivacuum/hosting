@@ -22,7 +22,7 @@
   <p>Были некоторые изменения в шоу относительны <a class="link" href="rammstein.2016.06">Москвы</a>. Белый костюм на 1-й песне, на Америке мощнейшее конфетти и прочие мелочи.</p>
 @endru
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/rammstein.2016.07.09.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/rammstein.2016.07.09.jpg', 'width' => 600, 'height' => 750])
   <ol>
     <li>Ramm 4</li>
     <li>Reise, Reise</li>

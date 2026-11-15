@@ -7,7 +7,7 @@
   <p>На концерте всего было около полутора сотен человек — никогда прежде не был на столь малочисленных шоу.</p>
 @endru
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/tfn.2014.12.21.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/tfn.2014.12.21.jpg', 'width' => 721, 'height' => 960])
   <ol>
     <li>Sleepmonster</li>
     <li>Hollow Lights</li>

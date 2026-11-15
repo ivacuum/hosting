@@ -138,7 +138,7 @@ IMG_9386.jpeg
 @endru
 IMG_9387.jpeg
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/rammstein.2024.05.24.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/rammstein.2024.05.24.jpg', 'width' => 1920, 'height' => 1005])
   <ol>
     <li>Ramm 4</li>
     <li>Links 2-3-4</li>

@@ -11,7 +11,7 @@
   <p>Предполагалось, что этот концерт станет первым посещенным заграницей, но потом в график вписался <a class="link" href="rammstein.2016.07">Раммштайн</a> на неделю раньше в той же Германии.</p>
 @endru
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/davidgilmour.2016.07.18.png'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/davidgilmour.2016.07.18.png', 'width' => 680, 'height' => 453])
   <ol>
     <li>5 A.M.</li>
     <li>Rattle That Lock</li>

@@ -7,7 +7,7 @@
   <p>Повторение <a class="link" href="opeth.2016">брюссельской программы</a> в укороченном виде — тогда исполнение было лучше, а у нас зато всегда активная и громкая публика по сравнению с европейской. В целом концерт можно было пропускать — увидеть одно шоу тура достаточно.</p>
 @endru
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/opeth.2017.10.11.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/opeth.2017.10.11.jpg', 'width' => 900, 'height' => 1273])
   <ol>
     <li>Sorceress</li>
     <li>Ghost of Perdition</li>

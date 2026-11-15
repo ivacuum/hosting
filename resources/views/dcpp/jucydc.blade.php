@@ -7,6 +7,8 @@
     [
       'full' => 'https://img.ivacuum.ru/g/091002/1_ZaESRgyfi0.jpg',
       'thumb' => 'https://img.ivacuum.ru/g/091002/s/1_ZaESRgyfi0.jpg',
+      'width' => 360,
+      'height' => 288,
     ],
   ],
   'developerSite' => 'http://www.jucy.eu/',

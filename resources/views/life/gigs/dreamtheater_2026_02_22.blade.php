@@ -45,7 +45,7 @@
   <p>They started with the new album <span class="font-bold">Parasomnia</span>. And played it in its entirety! This explained why there was no curtain before the start — it was directed only for a specific opening song <span class="font-bold">Metropolis Pt. 1</span>, which they didn't play at all this evening.</p>
 @endru
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/dreamtheater.2026.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/dreamtheater.2026.jpg', 'width' => 1134, 'height' => 1417])
   <ol>
     <li>In the Arms of Morpheus</li>
     <li>Night Terror</li>

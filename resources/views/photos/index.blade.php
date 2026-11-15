@@ -10,6 +10,7 @@
           src="{{ $photo->thumbnailUrl() }}"
           srcset="{{ $photo->thumbnailUrl() }} 500w, {{ $photo->mobileUrl() }} 1000w"
           alt=""
+          loading="lazy"
         >
       </a>
     </div>

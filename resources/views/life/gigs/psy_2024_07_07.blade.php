@@ -78,7 +78,7 @@ IMG_9973.jpeg
 IMG_9974.jpeg
 IMG_9975.jpeg
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/psy.2024.07.06.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/psy.2024.07.06.jpg', 'width' => 750, 'height' => 1060])
   <h5 class="font-medium text-lg mb-1">@ru Сет @en Set @endru 1</h5>
   <ol class="list-inside pl-0">
     <li>새 <span class="text-sm text-gray-500">Bird</span></li>

@@ -39,7 +39,7 @@
         <p>
           @foreach ($softwareScreenshots as $screenshot)
             <a href="{{ $screenshot['full'] }}">
-              <img class="inline-block screenshot" src="{{ $screenshot['thumb'] }}" alt="">
+              <img class="inline-block screenshot" src="{{ $screenshot['thumb'] }}" width="{{ $screenshot['width'] }}" height="{{ $screenshot['height'] }}" alt="" loading="lazy">
             </a>
           @endforeach
         </p>

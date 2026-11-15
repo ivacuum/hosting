@@ -23,7 +23,7 @@
   <p>Забавно, что билет на третьего человека покупал будучи в эпл сторе в Сеуле несколькими днями ранее. Люди сдавали ненужные билеты в предверии повышения комиссии за возврат.</p>
 @endru
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/psy.2026.08.22.gif'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/psy.2026.08.22.gif', 'width' => 750, 'height' => 1000])
   <h5 class="font-medium text-lg mb-1">@ru Сет @en Set @endru 1</h5>
   <ol class="list-inside pl-0">
     <li>나팔바지 <span class="text-sm text-gray-500">Napal Baji</span></li>

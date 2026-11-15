@@ -83,7 +83,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4595.jpg'])
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/metallica.2019.07.21.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/metallica.2019.07.21.jpg', 'width' => 500, 'height' => 500])
   <ol>
     <li>Hardwired</li>
     <li>The Memory Remains</li>

@@ -63,7 +63,7 @@
 @endru
 @include('tpl.pic-2x', ['pic' => 'IMG_4322.jpg'])
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/psy.2019.07.13.jpg', 'includeTitle' => false])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/psy.2019.07.13.jpg', 'width' => 700, 'height' => 898, 'includeTitle' => false])
   @ru
     <div class="mb-1">Примерный сетлист.</div>
   @en

@@ -7,7 +7,7 @@
   <p>Спустя два дня после Металлики в Олимпийском выступил Линкин Парк. Набор песен мало отличался от <a class="link" href="linkinpark.2014">прошлого года</a>. В этот раз было два флэшмоба: листы с надписью you are always welcome в начале песни #20 и слоеный флаг РФ после песни #23.</p>
 @endru
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/linkinpark.2015.08.29.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/linkinpark.2015.08.29.jpg', 'width' => 733, 'height' => 1000])
   <ol>
     <li>Papercut</li>
     <li>Given Up</li>

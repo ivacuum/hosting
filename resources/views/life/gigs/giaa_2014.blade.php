@@ -7,7 +7,7 @@
   <p>Заключительный концерт тура ирландцев. Гитаристы играли на одних и тех же гитарах все шоу, из-за этого чуть ли не каждую песню их перенастраивали — это резало глаз после популярных международных коллективов, где у каждой группы целая команда техников и множество предварительно настроенных инструментов.</p>
 @endru
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/giaa.2014.11.23.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/giaa.2014.11.23.jpg', 'width' => 900, 'height' => 1273])
   <ol>
     <li>When Everything Dies</li>
     <li>Transmissions</li>

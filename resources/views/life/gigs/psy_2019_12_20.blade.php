@@ -67,7 +67,7 @@
 @endru
 <livewire:youtube title="191220 PSY (싸이) — It's Art (예술이야) Encore, All Night Stand (올나잇스탠드), Live 2019-12-20" v="mb8W1cExAP8"/>
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/psy.2019.12.20.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/psy.2019.12.20.jpg', 'width' => 700, 'height' => 990])
   <h5 class="font-medium text-lg mb-1">@ru Сет @en Set @endru 1</h5>
   <ol class="list-inside pl-0">
     <li><a class="link" href="https://www.youtube.com/watch?v=Q45pvgd0_Fs&t=595">I LUV IT</a></li>

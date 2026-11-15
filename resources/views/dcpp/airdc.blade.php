@@ -9,15 +9,23 @@
     [
       'full' => 'https://img.ivacuum.ru/g/120207/1_nE5CZz1ute.png',
       'thumb' => 'https://img.ivacuum.ru/g/120207/s/1_nE5CZz1ute.png',
+      'width' => 179,
+      'height' => 140,
     ], [
       'full' => 'https://img.ivacuum.ru/g/120207/1_73UsJceBSs.png',
       'thumb' => 'https://img.ivacuum.ru/g/120207/s/1_73UsJceBSs.png',
+      'width' => 179,
+      'height' => 140,
     ], [
       'full' => 'https://img.ivacuum.ru/g/120207/1_oQUc7FeN89.png',
       'thumb' => 'https://img.ivacuum.ru/g/120207/s/1_oQUc7FeN89.png',
+      'width' => 179,
+      'height' => 140,
     ], [
       'full' => 'https://img.ivacuum.ru/g/120207/1_rGS8EGZEp0.jpg',
       'thumb' => 'https://img.ivacuum.ru/g/120207/s/1_rGS8EGZEp0.jpg',
+      'width' => 179,
+      'height' => 141,
     ],
   ],
   'developerSite' => 'https://airdcpp.net/',

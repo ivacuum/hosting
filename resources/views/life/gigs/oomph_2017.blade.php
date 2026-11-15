@@ -16,7 +16,7 @@
 @endru
 --}}
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/oomph.2017.03.26.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/oomph.2017.03.26.jpg', 'width' => 502, 'height' => 950])
   <ol>
     <li>Das weisse Licht</li>
     <li>Gott ist ein Popstar</li>

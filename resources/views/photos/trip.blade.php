@@ -9,7 +9,7 @@
         class="block relative aspect-4/3 w-full overflow-hidden"
         href="{{ to('photos/{photo}', [$photo, $trip->getForeignKey() => $trip]) }}"
       >
-        <img class="absolute inset-0 object-contain size-full" src="{{ $photo->thumbnailUrl() }}" alt="">
+        <img class="absolute inset-0 object-contain size-full" src="{{ $photo->thumbnailUrl() }}" alt="" loading="lazy">
       </a>
     </div>
   @endforeach

@@ -10,7 +10,7 @@
   <p>За полночь удалось добраться до Крестовского острова. В ближайшей палатке было куплено три полулитровых бутылки воды, так как других не было. Две из них было выпито залпом. Фух, выжил.</p>
 @endru
 
-@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/metallica.2008.07.18.jpg'])
+@component('tpl.setlist', ['cover' => 'https://life.ivacuum.org/gigs/metallica.2008.07.18.jpg', 'width' => 500, 'height' => 500])
   <ol>
     <li>
       <a class="link" href="https://vk.com/video_ext.php?oid=169906990&id=162953982&hash=598cee4929696e81&hd=1">
