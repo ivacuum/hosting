@@ -63,10 +63,11 @@ class NumberTrainer extends Component
         }
 
         $formatter = new \NumberFormatter($this->lang, \NumberFormatter::SPELLOUT);
-        $spellOut = $formatter->format($this->number);
+        // ICU вставляет soft hyphens (de, nl, ...) и zero-width пробелы (th, lo, km), которые никто не набирает
+        $spellOut = preg_replace('/\p{Cf}/u', '', $formatter->format($this->number));
 
         return array_unique([
-            preg_replace('/\x{AD}/u', '', $spellOut),
+            $spellOut,
             $this->transliterate($spellOut),
         ]);
     }

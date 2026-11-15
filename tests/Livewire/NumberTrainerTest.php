@@ -4,6 +4,7 @@ namespace Tests\Livewire;
 
 use App\Livewire\NumberTrainer;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use PHPUnit\Framework\Attributes\TestWith;
 use Tests\Feature\MockGetNumberLocales;
 use Tests\TestCase;
 
@@ -82,6 +83,21 @@ class NumberTrainerTest extends TestCase
             ->set('guessingSpellOut', true)
             ->set('number', 2)
             ->set('answer', 'two')
+            ->call('check')
+            ->assertSet('answered', 1);
+    }
+
+    #[TestWith(['de', 63, 'dreiundsechzig'])]
+    #[TestWith(['th', 11, 'สิบเอ็ด'])]
+    #[TestWith(['th', 11, 'sib xed'])]
+    public function testInvisibleCharactersGetStripped(string $lang, int $number, string $answer): void
+    {
+        \Livewire::test(NumberTrainer::class)
+            ->set('lang', $lang)
+            ->set('guessingSpellOut', true)
+            ->set('number', $number)
+            ->assertSet('spellOut', static fn (string $spellOut) => preg_match('/\p{Cf}/u', $spellOut) === 1)
+            ->set('answer', $answer)
             ->call('check')
             ->assertSet('answered', 1);
     }
@@ -199,18 +215,6 @@ class NumberTrainerTest extends TestCase
             ->assertSet('answered', 0)
             ->assertSet('revealed', 1)
             ->assertSet('skipped', 0);
-    }
-
-    public function testSoftHyphensGetStripped(): void
-    {
-        \Livewire::test(NumberTrainer::class)
-            ->set('lang', 'de')
-            ->set('guessingSpellOut', true)
-            ->set('number', 63)
-            ->assertSet('spellOut', 'drei­und­sechzig') // soft hyphens here
-            ->set('answer', 'dreiundsechzig')
-            ->call('check')
-            ->assertSet('answered', 1);
     }
 
     public function testUnknownLocale(): void
