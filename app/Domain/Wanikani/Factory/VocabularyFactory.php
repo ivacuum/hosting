@@ -22,7 +22,7 @@ class VocabularyFactory
     {
         $vocab = new Vocabulary;
 
-        $vocab->kana = $this->kana ?? fake()->word();
+        $vocab->kana = $this->kana ?? 'ことば';
         $vocab->level = $this->level ?? fake()->numberBetween(1, 60);
         $vocab->wk_id = fake()->unique()->numberBetween(3_000_000_000, 4_294_967_295);
         $vocab->meaning = fake()->words(2, true);

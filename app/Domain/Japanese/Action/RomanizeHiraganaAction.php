@@ -129,49 +129,61 @@ class RomanizeHiraganaAction
         'りゅ' => 'ryu',
         'りょ' => 'ryo',
 
-        'ファ' => 'fa',
+        'ふぁ' => 'fa',
+        'ふぃ' => 'fi',
+        'ふぇ' => 'fe',
+        'ふぉ' => 'fo',
+        'てぃ' => 'ti',
+        'でぃ' => 'di',
+        'ちぇ' => 'che',
+        'しぇ' => 'she',
+        'じぇ' => 'je',
+        'うぃ' => 'wi',
+        'うぇ' => 'we',
 
         'ぁ' => 'a',
         'ぃ' => 'i',
         'ぅ' => 'u',
         'ぇ' => 'e',
         'ぉ' => 'o',
-        'っ' => 't', // xtsu
     ];
 
-    public function execute(string $hiragana): string
+    public function execute(string $kana): string
     {
-        $characters = mb_str_split($hiragana);
+        $characters = mb_str_split(mb_convert_kana($kana, 'c'));
         $result = '';
 
-        foreach ($characters as $i => $kana) {
-            $romaji = self::DICTIONARY[$kana] ?? '';
+        for ($i = 0, $count = count($characters); $i < $count; $i++) {
+            $current = $characters[$i];
+            $next = $characters[$i + 1] ?? '';
 
-            if (!$romaji) {
+            if ($current === 'っ') {
+                $nextRomaji = self::DICTIONARY[$next] ?? throw new \InvalidArgumentException("Next kana: {$next}");
+                $result .= str_starts_with($nextRomaji, 'ch') ? 't' : $nextRomaji[0];
+
                 continue;
             }
 
-            $nextKana = $characters[$i + 1] ?? '';
+            if ($current === 'ー') {
+                $vowel = substr($result, -1);
 
-            if ($kana === 'っ') {
-                if ($nextKana && $nextRomaji = self::DICTIONARY[$nextKana] ?? '') {
-                    $result .= mb_substr($nextRomaji, 0, 1);
-
-                    continue;
+                if (!in_array($vowel, ['a', 'i', 'u', 'e', 'o'], true)) {
+                    throw new \InvalidArgumentException("No vowel to prolong: {$kana}");
                 }
 
-                throw new \InvalidArgumentException("Next kana: {$nextKana}");
-            } elseif (in_array($nextKana, ['ゃ', 'ょ', 'ゅ'])) {
-                if ($nextRomaji = self::DICTIONARY[$kana . $nextKana] ?? '') {
-                    $result .= $nextRomaji;
+                $result .= $vowel;
 
-                    continue;
-                }
-
-                throw new \InvalidArgumentException("Combination: {$kana}{$nextKana}");
+                continue;
             }
 
-            $result .= $romaji;
+            if (isset(self::DICTIONARY[$current . $next])) {
+                $result .= self::DICTIONARY[$current . $next];
+                $i++;
+
+                continue;
+            }
+
+            $result .= self::DICTIONARY[$current] ?? throw new \InvalidArgumentException("Unknown kana: {$current}");
         }
 
         return $result;

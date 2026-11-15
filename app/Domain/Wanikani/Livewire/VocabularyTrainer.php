@@ -32,7 +32,7 @@ class VocabularyTrainer extends Component
 
         $answer = Str::trim(mb_strtolower($this->answer));
 
-        if (in_array($answer, $this->acceptedAnswers())) {
+        if ($answer !== '' && in_array($answer, $this->acceptedAnswers())) {
             if (!$this->reveal) {
                 $this->recordAnalytics('answered');
             }

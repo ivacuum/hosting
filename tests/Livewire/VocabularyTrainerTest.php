@@ -118,6 +118,22 @@ class VocabularyTrainerTest extends TestCase
         Event::assertDispatched(\App\Events\Stats\VocabularyDifficultyDecreased::class);
     }
 
+    public function testEmptyAnswerForKatakanaWordIsWrong(): void
+    {
+        $vocab = VocabularyFactory::new()
+            ->withLevel(1)
+            ->withKana('コーヒー')
+            ->withCharacter('コーヒー')
+            ->create();
+
+        \Livewire::test(VocabularyTrainer::class)
+            ->call('setVocabId', $vocab->id)
+            ->set('answer', ' ')
+            ->call('check')
+            ->assertSet('answered', 0)
+            ->assertSet('reveal', true);
+    }
+
     public function testIncreaseLevel(): void
     {
         VocabularyFactory::new()->withLevel(1)->create();
