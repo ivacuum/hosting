@@ -43,14 +43,11 @@ class AppendViewSharedVarsAction
             $alternates['x-default'] = $alternates[$defaultLocale];
         }
 
-        $canonical = $this->canonical($request);
-
         $this->head
             ->title(\ViewHelper::metaTitle($routeUri))
             ->description(\ViewHelper::metaDescription($routeUri))
-            ->canonical($canonical)
+            ->canonical($this->canonical($request))
             ->og(
-                url: $canonical,
                 siteName: Config::SiteName->get(),
                 locale: Config::Locales->get()[$locale]['og_locale'],
             )

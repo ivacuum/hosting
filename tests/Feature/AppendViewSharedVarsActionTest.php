@@ -45,7 +45,8 @@ class AppendViewSharedVarsActionTest extends TestCase
     public function testCanonicalKeepsOnlyPageNumber(string $url, string $expected): void
     {
         $this->get($url)
-            ->assertSee("<link rel=\"canonical\" href=\"{$expected}\">", false);
+            ->assertSee("<link rel=\"canonical\" href=\"{$expected}\">", false)
+            ->assertSee("<meta property=\"og:url\" content=\"{$expected}\">", false);
     }
 
     public function testHreflangAlternatesWithoutQuery(): void
