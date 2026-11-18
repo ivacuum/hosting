@@ -32,4 +32,5 @@ return [
     'password_reset_title' => 'Установка нового пароля',
     'change_password_email' => 'Нажмите на кнопку для установки нового пароля к учетной записи на сайте **vacuum.name**',
     'password_remind_title' => 'Восстановление пароля',
+    'external_signin_expired' => 'Время на вход истекло. Попробуйте войти еще раз',
 ];

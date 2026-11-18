@@ -1,5 +1,6 @@
 <?php
 
+use App\Exceptions\RedirectInvalidOAuthState;
 use App\Exceptions\RedirectUnauthenticatedGuest;
 use App\Exceptions\SendToSentry;
 use App\Exceptions\SkipDatabaseOffline;
@@ -10,6 +11,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Two\InvalidStateException;
 use Symfony\Component\VarDumper\Cloner\AbstractCloner;
 
 AbstractCloner::$defaultCasters[Carbon\CarbonInterface::class] = App\Caster\CarbonCaster::prune(...);
@@ -85,6 +87,9 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(static function (Exceptions $exceptions) {
         $exceptions->renderable(app(RedirectUnauthenticatedGuest::class));
+        $exceptions->renderable(app(RedirectInvalidOAuthState::class));
+
+        $exceptions->dontReport(InvalidStateException::class);
 
         $exceptions->reportable(app(SkipDatabaseOffline::class));
         $exceptions->reportable(app(SendToSentry::class));

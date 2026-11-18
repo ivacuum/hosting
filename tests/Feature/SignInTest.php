@@ -12,6 +12,7 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Exceptions;
 use Illuminate\Support\HtmlString;
 use Laravel\Socialite\Socialite;
 use Laravel\Socialite\Two\User as SocialiteUser;
@@ -198,6 +199,18 @@ class SignInTest extends TestCase
             ->assertRedirect('/about');
 
         $this->assertAuthenticated();
+    }
+
+    public function testGoogleCallbackWithInvalidState(): void
+    {
+        Exceptions::fake();
+
+        $this->get('auth/google/callback?code=google-code&state=stale-state')
+            ->assertRedirect('auth/login')
+            ->assertSessionHas(SessionKey::FlashMessage->value, __('auth.external_signin_expired'));
+
+        $this->assertGuest();
+        Exceptions::assertNothingReported();
     }
 
     public function testGoogleCallbackWithoutEmail(): void

@@ -32,4 +32,5 @@ return [
     'password_reset_title' => 'Setting up a new password',
     'change_password_email' => 'Follow the link to set up a new password for your vacuum.name account',
     'password_remind_title' => 'Restore password',
+    'external_signin_expired' => 'Your sign-in attempt has expired. Please try again',
 ];
