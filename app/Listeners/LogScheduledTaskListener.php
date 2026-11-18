@@ -40,6 +40,10 @@ class LogScheduledTaskListener
             $context['duration'] = $event->runtime;
         }
 
+        if ($event instanceof ScheduledTaskSkipped) {
+            $context['reason'] = $event->reason?->value;
+        }
+
         if ($event instanceof ScheduledTaskFailed) {
             $context['exception_class'] = $event->exception::class;
             $context['exception_message'] = $event->exception->getMessage();
