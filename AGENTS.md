@@ -52,9 +52,10 @@ Prefix every Composer and Artisan command with `AI_AGENT=1` for Laravel Pao's co
 
 ### Testing
 
+- Create tests with `php artisan make:test --phpunit {name}`. Omit the suite directory: `SomeFeatureTest`, not `Feature/SomeFeatureTest`.
+- Run the narrowest relevant test file with `php artisan test --compact <path>` or use `--filter=<name>`.
 - Run the full suite in parallel with `composer test`.
 - Recreate the test databases and run the full suite with `composer test-fresh`.
-- Run the narrowest relevant test file with `php artisan test --compact <path>` or use `--filter=<name>`.
 - Use targeted tests by default. Broaden testing when a change affects shared behavior or targeted results leave a concrete concern unresolved.
 
 ### Static analysis
